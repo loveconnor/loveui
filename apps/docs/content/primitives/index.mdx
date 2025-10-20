@@ -1,0 +1,109 @@
+---
+title: Base Components
+description: Foundational LoveUI building blocks exposed from the loveui package.
+---
+
+## What are base components?
+
+**Base Components** are the lowest-level LoveUI building blocks — buttons, inputs, switches, tooltips, and other pieces that you compose inside higher-level features and sections. They live in the `loveui` package so they can be imported directly into the docs site and any internal examples.
+
+Unlike the installable features (Gantt, Kanban, etc.), base components stay intentionally lightweight and unopinionated. They mirror the ergonomics of shadcn/ui and Radix UI, but ship with LoveUI's Tailwind tokens, accessible wiring, and TypeScript types.
+
+## When to reach for them
+
+- **Design system glue:** Use base components as the starting point for new UI or when you need finer control than a prebuilt section allows.
+- **Consistent UX:** They inherit tokens, motion settings, and accessibility helpers that match the rest of LoveUI, so everything feels cohesive.
+- **Documentation demos:** The docs app imports base components from `loveui` to showcase core interactions without pulling in heavier features.
+
+## Available base components
+
+All exports live under the `loveui` namespace:
+
+```ts
+import {
+  Alert,
+  AuthLayout,
+  Avatar,
+  Badge,
+  Button,
+  Checkbox,
+  Combobox,
+  DescriptionList,
+  Dialog,
+  Divider,
+  Dropdown,
+  Fieldset,
+  Heading,
+  Input,
+  Link,
+  Listbox,
+  Navbar,
+  Pagination,
+  PasswordInput,
+  Radio,
+  Select,
+  Sidebar,
+  SidebarLayout,
+  StackedLayout,
+  Switch,
+  Table,
+  Text,
+  Textarea,
+} from "loveui"
+```
+
+## Browse by category
+
+Use the sidebar to explore base components organized by purpose:
+
+- **Actions** - Interactive elements like buttons and links
+- **Forms** - Input fields, checkboxes, switches, and form controls
+- **Layout** - Dividers, headings, and text components
+- **Navigation** - Navbar, sidebar, and pagination
+- **Overlays** - Dialogs and dropdown menus
+- **Display** - Alerts, avatars, badges, and data display
+- **Layouts** - Pre-built layout structures for common patterns
+
+## Examples
+
+### Buttons
+
+<Preview path="primitives-buttons" />
+
+### Form controls
+
+<Preview path="primitives-form" />
+
+### Dialog
+
+<Preview path="primitives-dialog" />
+
+## Extending a base component
+
+Base components are just React components inside your workspace (`packages/love-ui/components`). Copy them into your application or wrap them to suit your product's needs.
+
+```tsx title="components/ui/button.tsx"
+"use client"
+
+import type React from "react"
+import { Button as LoveUIButton } from "loveui"
+
+export function Button(props: React.ComponentProps<typeof LoveUIButton>) {
+  return (
+    <LoveUIButton
+      {...props}
+      className="uppercase tracking-wide font-semibold shadow-sm"
+    />
+  )
+}
+```
+
+From here you can attach analytics handlers, add design tokens, or export brand-specific variants while keeping LoveUI's accessibility and state logic intact.
+
+## Relationship to features & sections
+
+- **Base Components** power many higher-level LoveUI features (like Kanban or Dropzone) behind the scenes.
+- **Features** are ready-to-ship, production modules that you pull in via `npx loveui add`.
+- **Sections** are opinionated page slices that compose multiple features and base components together.
+
+Use the right layer for the job — base components for bespoke UI, features for production experiences, and sections for page scaffolding.

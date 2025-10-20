@@ -1,0 +1,144 @@
+---
+title: MCP Server
+description: How to connect LoveUI to AI tools using the Model Context Protocol (MCP).
+---
+
+The **Model Context Protocol (MCP)** is an open standard that lets AI assistants like **Claude**, **Cursor**, and **Windsurf** securely connect to external tools and data sources.  
+
+Think of it as a bridge between your AI development environment and real-world systems — allowing your AI assistant to understand and interact with your projects directly.
+
+LoveUI includes full MCP support, so you can explore, query, and use components right from your AI tool.
+
+---
+
+## Installation Guide
+
+### Step 1: Choose Your AI Tool
+
+Make sure you’re using an AI development tool that supports MCP:
+
+- [Claude Desktop](https://claude.ai/download) — free and great for beginners  
+- [Cursor](https://www.cursor.com/) — AI-powered code editor  
+- [Windsurf by Codeium](https://windsurf.com/) — AI development platform  
+- Or any other MCP-compatible tool
+
+---
+
+### Step 2: Find Your Configuration File
+
+Each AI tool stores its MCP configuration in a slightly different location:
+
+| Tool | Configuration File |
+|------|---------------------|
+| Claude Desktop | `.cursor/mcp.json` |
+| Cursor | `.cursor/mcp.json` |
+| Windsurf | `.codeium/windsurf/mcp_config.json` |
+| Other tools | Refer to your tool’s MCP documentation |
+
+---
+
+### Step 3: Add the LoveUI Configuration
+
+Add this configuration to your MCP config file:
+
+```json
+{
+  "mcpServers": {
+    "love-ui": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://www.loveui.dev/api/mcp/mcp"
+      ]
+    }
+  }
+}
+````
+
+This tells your AI tool to connect to the official **LoveUI MCP server**.
+
+---
+
+### Step 4: Restart Your AI Tool
+
+Once you’ve added the configuration, close and reopen your AI application to apply the changes.
+
+---
+
+### Step 5: Verify the Connection
+
+Try asking your AI assistant:
+
+> What LoveUI components are available for building a dashboard?
+
+If everything is set up correctly, it will list available LoveUI components and show examples from the docs.
+
+---
+
+## Using Multiple MCP Servers
+
+You can connect LoveUI alongside other MCP servers (like GitHub or your local filesystem):
+
+```json
+{
+  "mcpServers": {
+    "love-ui": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://www.loveui.dev/api/mcp/mcp"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/project"]
+    }
+  }
+}
+```
+
+This lets your AI assistant pull from multiple sources — documentation, code, or your own project files — all at once.
+
+---
+
+## Usage Examples
+
+### Get Component Info
+
+> Show me how to use the LoveUI Button component with different variants
+
+Your AI assistant will respond with documentation and code examples.
+
+### Build Layouts
+
+> Help me create a dashboard layout using LoveUI components
+
+Your AI tool can suggest layout patterns and generate example implementations.
+
+### Style Guidance
+
+> What are the recommended spacing tokens in LoveUI?
+
+Get instant access to design tokens, spacing scales, and theming information.
+
+---
+
+## Security and Privacy
+
+### Data Handling
+
+* The LoveUI MCP server **only serves public documentation**.
+* No private data or code ever leaves your system.
+* All communication goes through your AI tool’s secure protocol layer.
+
+### Authentication
+
+* No authentication is required for public component data.
+* Premium or advanced features may use API keys in the future.
+* Always connect using **official LoveUI MCP endpoints** for security.
+
+---
+
+By connecting LoveUI through MCP, you’re enabling a **smarter, AI-assisted development workflow** — one that brings real-time component insights right into your editor.

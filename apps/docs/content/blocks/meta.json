@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "title": "Sections",
+  "pages": [
+    "---Applications---",
+    "codebase",
+    "collaborative-canvas",
+    "roadmap",
+    "---Websites---",
+    "..."
+  ]
+}

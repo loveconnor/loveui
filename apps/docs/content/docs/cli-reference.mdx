@@ -1,0 +1,96 @@
+---
+title: CLI Reference
+description: Commands, flags, and expected output for the LoveUI generator.
+---
+
+The LoveUI CLI extends the shadcn/ui code generator with install recipes, dependency wiring, and quality-of-life tooling. Every command is meant to be safe to run inside your existing React/Next.js project.
+
+<Callout type="warning">
+Run these commands from the root of the project that owns your `components.json`. The CLI writes files relative to that configuration file.
+</Callout>
+
+---
+
+## `npx love-ui add [component]`
+
+Install one or more components into your codebase. The generator copies the component source, updates `components.json`, and installs any dependency packages.
+
+```bash
+npx love-ui add gantt
+```
+
+Sample output:
+
+```text
+✔ Using config: ./components.json
+✔ Resolving component: gantt
+✔ Copying files into @/components/love-ui/gantt
+✔ Installing dependencies: recharts, date-fns
+
+🎉 Done! Import the component with:
+   import { GanttChart } from "@/components/love-ui/gantt"
+```
+
+**Tips**
+- Pass multiple component names (`npx love-ui add gantt kanban qr-code`) to install a whole bundle at once.
+- Use `--overwrite` if you intentionally want to replace local edits. The CLI otherwise protects edited files.
+
+---
+
+## `npx love-ui update`
+
+Sync your installed components with the latest templates from the LoveUI registry. The updater compares file hashes and offers an interactive diff when conflicts appear.
+
+```bash
+npx love-ui update
+```
+
+What it does internally:
+- checks the versions recorded in `.loveui/components.json`
+- downloads the latest component definitions
+- applies safe patches in-place
+- prompts you when local modifications conflict with upstream changes
+
+Example session:
+
+```text
+ℹ Checking installed components…
+ℹ Updates available for: gantt, kanban
+? Apply updates? › (y/N)
+```
+
+After approving, updated files are written and you can review the diff in git.
+
+---
+
+## `npx love-ui list`
+
+Browse the currently published component catalog without leaving your terminal.
+
+```bash
+npx love-ui list
+```
+
+Output includes categories, install names, and short descriptions:
+
+```text
+LoveUI components
+────────────────────────────────────
+• announcement        — Marketing banner with spotlight CTA
+• avatar-stack        — Overlapping avatars with tooltips
+• collaborative-canvas — Multiplayer cursor canvas with presence
+• gantt               — Project planning timeline with dependencies
+…
+```
+
+Use it to double-check component IDs before running `add`, or to quickly scan for new releases.
+
+---
+
+## Troubleshooting the CLI
+
+- Delete the `.loveui` cache folder if you suspect a corrupted download; the CLI will fetch fresh templates on the next run.
+- If dependency installation fails, rerun the command with `--skip-install` and install packages manually via pnpm/npm/yarn.
+- For custom component folders, update `components.json` to point `style` and `outDir` to the paths you expect.
+
+LoveUI commands are safe to rerun—if something goes wrong you can inspect the generated files, tweak them, and rerun the command without fear of losing work.

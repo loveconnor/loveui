@@ -1,0 +1,67 @@
+---
+title: Testing & QA
+description: Standards for validating components before they ship to LoveUI.
+---
+
+Quality is a first-class concern—every contribution should include automated checks and a lightweight manual review. Use this page as your checklist before opening a pull request.
+
+---
+
+## Local previews
+
+Run the docs in development mode to exercise the component or pattern you are touching:
+
+```bash
+pnpm --filter docs dev
+```
+
+This command starts the Next.js docs app on `http://localhost:3000` with hot reload. Add your new examples under `apps/docs/examples/` and reference them via `<Preview path="…" />` so reviewers can interact with the change.
+
+Need to test the CLI? Run it against a throwaway Next.js project using `npx love-ui@latest add <component>` and verify the generated files compile.
+
+---
+
+## Automated checks
+
+Before pushing:
+
+```bash
+pnpm lint
+pnpm test
+pnpm build
+```
+
+- `pnpm lint` runs [Ultracite](https://github.com/loveconnor/ultracite) across the monorepo to enforce formatting and code style.
+- `pnpm test` triggers any component-level tests registered via Turbo (unit tests live alongside packages that ship logic).
+- `pnpm build` ensures the CLI bundles, docs compile, and examples stay type-safe.
+
+If your component adds new dependencies, update `package.json` or the relevant workspace package and make sure `pnpm install` succeeds.
+
+---
+
+## Manual QA checklist
+
+Use this quick pass for every visual component:
+
+- **Accessibility:** Confirm keyboard navigation works, ARIA attributes are set, and focus outlines remain visible.
+- **Responsive behaviour:** Resize between 320px and 1440px to ensure layout and typography hold up.
+- **Dark mode:** Flip the theme switcher in the docs to check tokens and contrast in dark environments.
+- **Theming:** Override tokens (e.g. `--primary`, `--radius`) locally to verify the component respects design-system inputs.
+- **Docs completeness:** Update usage notes, props tables, and examples so readers immediately understand how to adopt the component.
+
+<Callout type="warning">
+If a feature depends on browser APIs (e.g. Clipboard, File System), note the requirements in the docs and guard them behind feature detection.
+</Callout>
+
+---
+
+## Reviewer handoff
+
+When you open a PR, include:
+
+- A short summary of the change and why it’s needed
+- Links to relevant docs pages or Storybook previews
+- Screenshots or GIFs of the component in light and dark mode
+- A note about any breaking changes or migrations required
+
+Following this process keeps LoveUI reliable and makes it easier for maintainers to review changes quickly.

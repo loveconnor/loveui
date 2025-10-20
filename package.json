@@ -1,0 +1,63 @@
+{
+  "name": "love-ui",
+  "version": "1.0.2",
+  "bin": {
+    "loveui": "dist/index.js",
+    "love-ui": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "packages"
+  ],
+  "main": "packages/love-ui/index.ts",
+  "types": "packages/love-ui/index.ts",
+  "exports": {
+    ".": {
+      "import": "./packages/love-ui/index.ts",
+      "require": "./packages/love-ui/index.ts"
+    },
+    "./lib/*": "./packages/love-ui/*",
+    "./components/*": "./packages/love-ui/components/*",
+    "./shadcn-ui/*": "./packages/shadcn-ui/*",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "pnpm run build:cli && turbo build",
+    "build:cli": "tsup --clean",
+    "dev": "turbo dev",
+    "lint": "ultracite lint",
+    "format": "ultracite format",
+    "test": "turbo test",
+    "analyze": "turbo analyze",
+    "bump-deps": "npx npm-check-updates --deep -u -x shiki,next,recharts,require-in-the-middle && pnpm install",
+    "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/shadcn-ui && npx shadcn@latest migrate radix -c packages/shadcn-ui",
+    "clean": "git clean -xdf node_modules"
+  },
+  "devDependencies": {
+    "@auto-it/first-time-contributor": "^11.3.0",
+    "@biomejs/biome": "2.2.5",
+    "@types/node": "^24.7.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3",
+    "ultracite": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "packageManager": "pnpm@10.18.2",
+  "type": "module",
+  "dependencies": {
+    "@headlessui/react": "^2.1.8",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.545.0",
+    "motion": "^12.23.24",
+    "tsup": "^8.5.0",
+    "zod": "^4.1.12"
+  }
+}

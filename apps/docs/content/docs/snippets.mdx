@@ -1,0 +1,278 @@
+---
+title: Component Snippets
+description: Practical recipes that combine LoveUI base components into production workflows.
+---
+
+Snippets show how LoveUI pieces fit together. Each scenario below links to live previews, highlights the relevant features, and offers starter code you can adapt.
+
+---
+
+## Building a dashboard layout
+
+Combine the LoveUI `SidebarLayout`, `Navbar`, and high-level features (Kanban, Gantt, List) to build a dashboard that can scale with product needs.
+
+```tsx
+import { KanbanBoard } from "@/components/love-ui/kanban"
+import { GanttChart } from "@/components/love-ui/gantt"
+import {
+  Navbar,
+  NavbarItem,
+  NavbarSection,
+  NavbarSpacer,
+} from "@/components/love-ui/navbar"
+import {
+  Sidebar,
+  SidebarBody,
+  SidebarHeader,
+  SidebarItem,
+  SidebarSection,
+} from "@/components/love-ui/sidebar"
+import { SidebarLayout } from "@/components/love-ui/sidebar-layout"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+export function Dashboard() {
+  return (
+    <SidebarLayout
+      navbar={
+        <Navbar>
+          <NavbarSection>
+            <NavbarItem current>Product</NavbarItem>
+            <NavbarItem href="#customers">Customers</NavbarItem>
+            <NavbarSpacer />
+            <NavbarItem href="#settings">Settings</NavbarItem>
+          </NavbarSection>
+        </Navbar>
+      }
+      sidebar={
+        <Sidebar>
+          <SidebarHeader>
+            <strong className="text-sm font-semibold">Teams</strong>
+          </SidebarHeader>
+          <SidebarBody>
+            <SidebarSection>
+              <SidebarItem current>Company roadmap</SidebarItem>
+              <SidebarItem href="#design">Design</SidebarItem>
+              <SidebarItem href="#engineering">Engineering</SidebarItem>
+            </SidebarSection>
+          </SidebarBody>
+        </Sidebar>
+      }
+    >
+      <Tabs defaultValue="initiatives" className="space-y-6">
+        <TabsList>
+          <TabsTrigger value="initiatives">Initiatives</TabsTrigger>
+          <TabsTrigger value="timeline">Timeline</TabsTrigger>
+        </TabsList>
+        <TabsContent value="initiatives">
+          <KanbanBoard />
+        </TabsContent>
+        <TabsContent value="timeline">
+          <GanttChart />
+        </TabsContent>
+      </Tabs>
+    </SidebarLayout>
+  )
+}
+```
+
+<Preview path="roadmap" />
+
+This layout keeps navigation, metrics, and collaboration tools cohesive while letting you slot in the exact data views your team needs.
+
+---
+
+## Form validation with LoveUI inputs
+
+LoveUI’s base components pair with React Hook Form or Zod easily. Wire up validation, errors, and inline hints using composable pieces.
+
+```tsx
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import {
+  Field,
+  Fieldset,
+  Legend,
+  Label,
+  ErrorMessage,
+} from "@/components/love-ui/fieldset"
+import { Input } from "@/components/love-ui/input"
+import { Textarea } from "@/components/love-ui/textarea"
+import { Button } from "@/components/love-ui/button"
+
+const schema = z.object({
+  email: z.string().email(),
+  message: z.string().min(10),
+})
+
+type FormValues = z.infer<typeof schema>
+
+export function ContactForm() {
+  const form = useForm<FormValues>({ resolver: zodResolver(schema) })
+
+  return (
+    <form onSubmit={form.handleSubmit(console.log)} className="space-y-6">
+      <Fieldset>
+        <Legend>Need a reply?</Legend>
+        <Field>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            placeholder="you@company.com"
+            data-invalid={form.formState.errors.email ? '' : undefined}
+            {...form.register("email")}
+          />
+          {form.formState.errors.email && (
+            <ErrorMessage>{form.formState.errors.email.message}</ErrorMessage>
+          )}
+        </Field>
+        <Field>
+          <Label htmlFor="message">How can we help?</Label>
+          <Textarea
+            id="message"
+            placeholder="Share the details…"
+            data-invalid={form.formState.errors.message ? '' : undefined}
+            rows={4}
+            {...form.register("message")}
+          />
+          {form.formState.errors.message && (
+            <ErrorMessage>{form.formState.errors.message.message}</ErrorMessage>
+          )}
+        </Field>
+      </Fieldset>
+      <Button type="submit">Send message</Button>
+    </form>
+  )
+}
+```
+
+<Preview path="form" />
+
+Combine `Fieldset`, `Label`, and error helpers to keep accessibility intact while surfacing inline guidance.
+
+---
+
+## Conversational AI surfaces
+
+Create chat-like experiences by composing stacked layouts, presence indicators, and text inputs. The snippet below shows a simple operator console:
+
+```tsx
+import { Avatar } from "@/components/love-ui/avatar"
+import { Button } from "@/components/love-ui/button"
+import { Navbar, NavbarItem, NavbarSection } from "@/components/love-ui/navbar"
+import { StackedLayout } from "@/components/love-ui/stacked-layout"
+import { Text } from "@/components/love-ui/text"
+import { Textarea } from "@/components/love-ui/textarea"
+import { ScrollArea } from "@/components/ui/scroll-area"
+
+function Message({
+  role,
+  content,
+}: {
+  role: "user" | "assistant"
+  content: string
+}) {
+  return (
+    <div className="flex gap-3">
+      <Avatar name={role === "user" ? "You" : "Halo"} />
+      <div className="rounded-lg bg-muted p-3 text-sm">
+        <Text>{content}</Text>
+      </div>
+    </div>
+  )
+}
+
+export function ChatConsole() {
+  return (
+    <StackedLayout
+      navbar={
+        <Navbar>
+          <NavbarSection>
+            <NavbarItem current>Assistant</NavbarItem>
+            <NavbarItem href="#history">History</NavbarItem>
+          </NavbarSection>
+        </Navbar>
+      }
+      sidebar={<div />}
+      fullBleed
+    >
+      <div className="flex h-[600px] flex-col">
+        <ScrollArea className="flex-1 space-y-4 p-4">
+          <Message role="user" content="Generate a launch checklist" />
+          <Message role="assistant" content="Sure! Here are the steps…" />
+        </ScrollArea>
+        <form className="border-t bg-muted/40 p-4">
+          <Textarea
+            placeholder="Ask a question or hand off to a teammate"
+            minRows={2}
+            autoFocus
+          />
+          <div className="mt-2 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="size-2 rounded-full bg-emerald-500" />
+              Live
+            </div>
+            <Button type="submit">Send</Button>
+          </div>
+        </form>
+      </div>
+    </StackedLayout>
+  )
+}
+```
+
+<Preview path="cursor" />
+
+Use snippets like this as a starting point, then wire in real-time data or AI responses to match your product.
+
+---
+
+## Responsive grids and cards
+
+LoveUI’s layout helpers make it straightforward to create responsive marketing or application grids.
+
+```tsx
+import {
+  Navbar,
+  NavbarItem,
+  NavbarSection,
+} from "@/components/love-ui/navbar"
+import { StackedLayout } from "@/components/love-ui/stacked-layout"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+
+export function FeatureGrid() {
+  const features = ["Performance", "Collaboration", "Automations", "Security"]
+
+  return (
+    <StackedLayout
+      navbar={
+        <Navbar>
+          <NavbarSection>
+            <NavbarItem current>Features</NavbarItem>
+            <NavbarItem href="#pricing">Pricing</NavbarItem>
+          </NavbarSection>
+        </Navbar>
+      }
+      sidebar={<div />}
+      fullBleed
+    >
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {features.map((feature) => (
+          <Card key={feature} className="h-full">
+            <CardHeader>
+              <CardTitle>{feature}</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Pair LoveUI base components with narrative copy to spotlight product capabilities.
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </StackedLayout>
+  )
+}
+```
+
+<Preview path="primitives-stacked-layout" />
+
+Combine snippets with the full component catalog or roll them into your own internal library for rapid prototyping.

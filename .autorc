@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "npm",
+    "first-time-contributor",
+    "released"
+  ],
+  "owner": "loveconnor",
+  "repo": "LoveUI",
+  "name": "Connor Love",
+  "email": "loveconnor2005@gmail.com"
+}

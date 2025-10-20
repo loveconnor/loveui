@@ -1,0 +1,107 @@
+---
+title: Philosophy
+description: The design principles that shape LoveUI.
+---
+
+**LoveUI** is guided by a set of core principles that shape how every component is designed and built.  
+These principles ensure that the library stays **flexible**, **accessible**, and **developer-friendly** as it evolves.
+
+---
+
+## Composability
+
+Composability is at the heart of LoveUI.  
+We believe complex interfaces should be built from **small, modular pieces** that fit together naturally.
+
+Each component does one thing well — and works seamlessly with others.  
+You can nest, wrap, or extend components however you like. For example, a simple **Combobox** can stand alone or be composed with a form and a list to create a full **autocomplete search** experience.
+
+LoveUI avoids the “monolithic component” problem where one giant component tries to handle everything.  
+Instead, it follows a **lego-block philosophy** — many small, focused pieces that you can combine to build exactly what your app needs.
+
+You’ll see this reflected in the API design:  
+larger components are often made up of smaller, exported sub-components (like `AIInput`, `AIMessage`, and `AIResponse`).  
+You can use the ready-made version or mix and match the parts for complete control.  
+
+This layered approach gives both beginners and power users the flexibility they need — **simple defaults for fast use, and full composability for deep customization.**
+
+---
+
+## Simplicity
+
+Simplicity drives every decision in LoveUI.  
+A component should be easy to understand, quick to use, and straightforward to maintain.
+
+That means:
+- One import, a few clear props, and you’re ready to go.  
+- Lean, readable code with minimal abstractions.  
+- Preference for plain React + Tailwind over complex config or dependencies.  
+
+For developers, simplicity means less cognitive load.  
+LoveUI components follow familiar conventions (`value`, `onChange`, etc.), so you can integrate them naturally with your state management or form logic.  
+
+And when you need to customize something?  
+You can usually just add Tailwind utilities or tweak a small piece of JSX — no complicated overrides or hidden APIs.
+
+Simplicity keeps components **maintainable, transparent, and fun to use.**
+
+---
+
+## Accessibility
+
+Accessibility isn’t optional — it’s built in.  
+Every LoveUI component follows **WCAG and ARIA** best practices out of the box.
+
+We consider every aspect of accessibility:
+- Full **keyboard navigation**  
+- Proper **roles and labels**  
+- **Color contrast** and **dark mode** support  
+- Respect for **reduced motion preferences**  
+
+If a component animates, it won’t trigger motion sensitivities.  
+If it displays text, it stays readable in both light and dark themes.  
+You can rely on LoveUI components to be **a11y-compliant by default**, saving you time on manual audits and improving usability for everyone.
+
+Accessibility doesn’t just help users with disabilities — it creates smoother, more intuitive interfaces for all.
+
+---
+
+## Performance
+
+Performance is a top priority.  
+LoveUI components are **lightweight, optimized, and only include what you use**.
+
+Since components are installed individually via the CLI, your bundle stays small — no shipping an entire library to the browser.  
+Each piece is plain React with minimal dependencies and static Tailwind CSS classes for efficient rendering.
+
+Under the hood:
+- Components avoid unnecessary re-renders using scoped state and memoization.  
+- Heavy UI elements like tables use **windowing** or **lazy rendering** for large data sets.  
+- Modals, dropdowns, and other on-demand components render only when needed.  
+
+Tailwind’s JIT compiler and tree-shaking handle the rest — your final CSS is compact and optimized automatically.
+
+The goal: **fast to develop, fast to load, fast to use.**
+
+---
+
+## Developer Experience
+
+We believe development should feel smooth, not stressful.  
+LoveUI is designed for a delightful **DX (Developer Experience)** from setup to production.
+
+### What that means in practice:
+- **Documentation & Examples** — Clear docs with plenty of real-world examples and usage patterns.  
+- **TypeScript & IntelliSense** — Full type safety, autocompletion, and inline prop hints right in your editor.  
+- **Sensible Defaults** — Components just work out of the box, with configuration only when you need it.  
+- **Helpful Errors** — Clear feedback when something’s misused (e.g., missing context or invalid props).  
+
+For example, a Theme Switcher component works immediately with the standard `data-theme` attribute — no setup required.  
+But if you want to customize it, you can, easily.
+
+By prioritizing developer experience, we make sure LoveUI gets out of your way so you can focus on **building great apps, not wrestling with your tools.**
+
+---
+
+LoveUI’s philosophy comes down to one idea:  
+**empower developers to build beautiful, accessible, and high-performance interfaces — faster, and with more joy.**

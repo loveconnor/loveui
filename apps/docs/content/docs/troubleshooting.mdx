@@ -1,0 +1,106 @@
+---
+title: Troubleshooting
+description: Common issues and how to fix them when using LoveUI.
+---
+
+If you’re running into problems while using **LoveUI**, this guide covers the most common causes and quick fixes.  
+Most issues can be solved by checking your setup or configuration.
+
+---
+
+## Components Don’t Show the Right Styles
+
+Make sure your project is correctly configured for **Tailwind 4** and **LoveUI’s base styles**.
+
+You should have a `globals.css` file that:
+- Imports Tailwind  
+- Includes the LoveUI (or shadcn/ui) base styles  
+
+If styles still don’t load, try restarting your development server to clear cached CSS.
+
+---
+
+## `npx loveui add` Didn’t Add Anything
+
+Double-check the following:
+
+- You’re running the command from your project root (where `package.json` lives)  
+- Your `components.json` (if using a shadcn-style setup) is configured correctly  
+- You’re using the latest version of the CLI:
+
+```bash
+npx loveui@latest
+```
+
+If it still doesn’t work, please [open an issue on GitHub](https://github.com/loveconnor/loveui/issues) so we can help.
+
+---
+
+## Theme Switching Stuck in Light Mode
+
+LoveUI uses a `data-theme` attribute on the `<html>` element to toggle between themes.
+Check that your app updates this attribute correctly and that your **Tailwind config** is using the proper selector mode (`class` or `data-`).
+
+Example:
+
+```html
+<html data-theme="dark">
+```
+
+If you’re using a custom theme toggle, make sure it’s updating this attribute.
+
+---
+
+## “Module Not Found” on Component Imports
+
+This usually means your **path alias** isn’t configured properly.
+Verify that your `tsconfig.json` includes the correct alias for `@/`:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+Also, confirm the file actually exists in your `components/love-ui` directory.
+
+---
+
+## AI Assistant Can’t Access LoveUI Components
+
+If your MCP-enabled AI assistant (Claude, Cursor, etc.) can’t connect:
+
+1. Make sure your configuration file is valid JSON
+2. Double-check the file path for your tool (e.g. `.cursor/mcp.json`)
+3. Restart your AI application after editing the config
+4. Ensure you have an internet connection — the MCP server runs remotely
+
+---
+
+## MCP `npx` Command Fails
+
+Try these steps:
+
+1. Confirm **Node.js** and **npm** are installed
+2. Run `npm install -g npm` to update npm to the latest version
+3. Check your system’s PATH to ensure npm binaries are included
+
+---
+
+## Slow or Failing Requests to the MCP Server
+
+1. Check your internet connection
+2. Wait a few minutes and try again — the server may be busy
+3. If the issue continues, let us know via GitHub
+
+---
+
+## Still Stuck?
+
+If none of the above helps, open an [issue on GitHub](https://github.com/loveconnor/loveui/issues).
+Include details about your environment (Node version, tool used, and any errors you see), and someone from the team will assist you soon.

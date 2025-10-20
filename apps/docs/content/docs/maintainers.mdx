@@ -1,0 +1,50 @@
+---
+title: Maintainers & Governance
+description: Who stewards LoveUI, how decisions are made, and how you can influence the roadmap.
+---
+
+LoveUI is an open-source project with a transparent decision-making process. This page explains who maintains the project today, how proposals are evaluated, and what to expect from releases.
+
+---
+
+## Maintainers
+
+| Name | Role | GitHub |
+| --- | --- | --- |
+| Connor Love | Creator & Lead Maintainer | [@loveconnor](https://github.com/loveconnor) |
+
+We’re actively looking for more component maintainers and documentation specialists. If you’ve shipped multiple contributions or maintain an addon, reach out in a GitHub discussion so we can formalise the role.
+
+---
+
+## Decision making
+
+1. **Every change starts in an issue or discussion.** Share context, screenshots, and related components so maintainers can respond quickly.
+2. **Small changes → pull requests.** Bug fixes, docs tweaks, and component polish can go straight to a PR. Expect a turn-around within a few days.
+3. **Major changes → RFCs.** For new component categories, CLI behaviour, or theming tokens, open an RFC discussion that outlines the problem, proposal, alternatives, and migration plan.
+4. **Consensus over unilateral decisions.** Maintainers lean on community feedback and usage data. When disagreements arise, we’ll document the final call in the issue thread.
+
+<Callout type="info">
+Have an idea that spans multiple components? Start with a `proposal:`-prefixed discussion so others can weigh in before implementation.
+</Callout>
+
+---
+
+## Release cadence & versioning
+
+- LoveUI follows **semantic versioning** across the npm package and CLI.
+- Component updates are batched and released weekly when changes are ready; emergency fixes ship immediately.
+- The CLI announces breaking changes in the terminal and links to migration notes.
+- All releases are documented in the [changelog](/docs/versioning) with upgrade guidance.
+
+Releases are published from the `main` branch using GitHub Actions. Maintainers sign off once tests, linting, and doc previews pass.
+
+---
+
+## Roadmap touchpoints
+
+- The public [Roadmap](/docs/roadmap) highlights the next major components, CLI features, and documentation work.
+- Quarterly planning issues track multi-component efforts (e.g. accessibility audit, design token overhaul).
+- Community votes and usage metrics guide prioritisation. Make your voice heard by reacting to roadmap issues or sharing feedback in discussions.
+
+If you’d like to steward a feature area—AI integrations, data visualisation, onboarding flows—let us know. LoveUI grows fastest when experts own slices of the system.

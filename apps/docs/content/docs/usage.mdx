@@ -1,0 +1,74 @@
+---
+title: Usage
+description: How to use LoveUI components in your application.
+---
+
+Once you’ve installed a **LoveUI** component, you can import and use it just like any other React component.  
+Because components are added directly into your project’s codebase (not hidden inside a library), you can read, edit, and customize them freely.
+
+---
+
+## Example
+
+Let’s say you’ve installed the **Announcement** component — a simple dismissible banner for updates or notifications.  
+Here’s how you might use it:
+
+```tsx title="Hero.tsx"
+'use client'
+
+import {
+  Announcement,
+  AnnouncementTag,
+  AnnouncementTitle,
+} from '@/components/love-ui/announcement'
+import { ArrowUpRightIcon } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <>
+      <Announcement>
+        <AnnouncementTag>Latest update</AnnouncementTag>
+        <AnnouncementTitle>
+          New feature added
+          <ArrowUpRightIcon
+            size={16}
+            className="shrink-0 text-muted-foreground"
+          />
+        </AnnouncementTitle>
+      </Announcement>
+      {/* Rest of your page... */}
+    </>
+  )
+}
+```
+In this example, you import the component (and its subcomponents) from your `love-ui` folder, then compose them together in JSX.  
+Because the files live inside your codebase, you can open them, tweak styles, or even add new functionality — just like your own components.
+
+LoveUI components are **on-demand**, meaning you only include what you actually use.  
+This keeps your app lean, fast, and easy to maintain.  
+All components share the same theme tokens (colors, fonts, spacing, etc.), so everything stays consistent across your UI.
+
+---
+
+## Extensibility
+
+LoveUI components are built to be flexible.  
+Most extend the native **HTML element props** they’re based on — for example, `AnnouncementTag` extends `HTMLAttributes<HTMLDivElement>`.  
+
+That means you can pass any standard attributes (like `className`, `onClick`, or `style`) and they’ll just work.  
+You can easily add your own functionality or styling without needing to fork or rewrite the component.
+
+---
+
+## Customization
+
+There’s no extra configuration needed after installation.  
+Each component includes its Tailwind CSS classes and any required scripts automatically.
+
+You can:
+- Edit the component file directly to adjust markup or styles  
+- Replace or extend the Tailwind classes  
+- Combine LoveUI components with your own to create unique layouts  
+
+Everything is built to feel native — no wrappers, no hidden logic.  
+You get **full control** and a **fast developer experience** from day one.

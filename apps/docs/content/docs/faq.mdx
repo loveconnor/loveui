@@ -1,0 +1,61 @@
+---
+title: FAQ
+description: Answers to common questions about installing, theming, and shipping with LoveUI.
+---
+
+If you are just getting started or evaluating LoveUI for your team, start here. These answers cover the questions we see most often in GitHub issues and community channels.
+
+---
+
+## Can I use LoveUI without Tailwind?
+
+Not today. LoveUI components rely on Tailwind’s utility classes and design tokens. You can still consume the generated code without Tailwind, but you’d need to port the classnames to your styling system manually. Tailwind CSS + shadcn/ui configured in CSS Variables mode remains the recommended baseline.
+
+---
+
+## Does LoveUI work with Vite or only Next.js?
+
+The LoveUI CLI emits plain React components that run anywhere React 18 works. Next.js is the most common host, but you can install components into Vite, Remix, or Astro projects. Make sure your tooling understands TypeScript, PostCSS, and Tailwind, and update import aliases (e.g. `@/components`) to match your project structure.
+
+---
+
+## How do I customise default colours or spacing?
+
+Override the CSS variables defined in `global.css` and Tailwind will pick up the changes instantly:
+
+```css
+:root {
+  --primary: oklch(0.7 0.2 250);
+  --primary-foreground: oklch(0.98 0.02 250);
+  --radius: 1rem;
+}
+```
+
+See the [Theming & Customization guide](/docs/theming) and the [Design Tokens reference](/docs/design-tokens) for a deeper walkthrough.
+
+---
+
+## How is LoveUI different from shadcn/ui?
+
+shadcn/ui is a phenomenal set of primitives and a CLI generator. LoveUI builds on that foundation by shipping:
+
+- Feature-complete components (Gantt, Kanban, QR code, collaborative cursors, etc.)
+- Opinionated snippets and sections for dashboards, onboarding, marketing pages, and more
+- A CLI that wires dependencies, theming tokens, and documentation together
+- Design guidance and QA standards so teams can build consistently
+
+You still get full source access—LoveUI just saves you months of compositional work.
+
+---
+
+## Can I tree-shake unused components?
+
+Yes. Because the CLI copies source files into your repo, unused components simply don’t exist in your bundle. Only import the pieces you install. If you later remove a component, delete its folder and run your bundler again.
+
+---
+
+## Where do I report bugs or request components?
+
+Open a GitHub issue in the [loveconnor/loveui](https://github.com/loveconnor/loveui/issues) repository. For big ideas, start a discussion with context, potential API shapes, and screenshots. Maintainers triage requests weekly.
+
+Still stuck? Drop a note in the [LoveUI Community page](/docs/community) for guidance.

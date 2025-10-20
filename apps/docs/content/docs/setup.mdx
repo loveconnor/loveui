@@ -1,0 +1,54 @@
+---
+title: Setup
+description: How to install and start using LoveUI in your project.
+---
+
+Setting up **LoveUI** is quick and flexible.  
+You can install components with the **LoveUI CLI** for the fastest experience, or use the **shadcn/ui CLI** if your project already follows that workflow.
+
+This guide walks you through what you need before installation and how to get components running in just a few commands.
+
+---
+
+## Prerequisites
+
+Before you begin, make sure your environment is ready:
+
+- [Node.js](https://nodejs.org/en/download/) **v18+**
+- A [React](https://react.dev/) project **v18+**
+- [shadcn/ui](https://ui.shadcn.com/) configured in **CSS Variables** mode  
+  (Tailwind CSS must be set up and initialized)
+
+<Callout type="warning">
+If you haven’t set up **shadcn/ui** yet, do that first.  
+Follow their [official setup guide](https://ui.shadcn.com/docs/installation) to initialize Tailwind and the base components — LoveUI builds on that foundation.
+</Callout>
+
+<Callout type="info">
+LoveUI currently supports only the **CSS Variables** version of shadcn/ui.
+</Callout>
+
+---
+
+## Installing Components
+
+You can install components using either the **LoveUI CLI** or the **shadcn/ui CLI** — both work the same way.  
+Each command adds the selected component’s code and dependencies directly to your project.
+
+For example, to install the **Gantt Chart** component:
+
+<Installer packageName="gantt" />
+
+After running the command:
+- The component files will be added to `@/components/love-ui/gantt/` (or your configured components folder).
+- Any required dependencies will be installed automatically.
+- You’ll see a confirmation message in your terminal when setup is complete.
+
+Now you can import and use it right away:
+
+```tsx
+import { GanttChart } from "@/components/love-ui/gantt"
+
+export default function Example() {
+  return <GanttChart />
+}

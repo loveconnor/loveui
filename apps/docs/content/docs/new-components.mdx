@@ -1,0 +1,73 @@
+---
+title: New Components
+description: How to add new components to LoveUI.
+---
+
+Contributing new components is one of the most exciting ways to get involved with **LoveUI**.  
+
+Maybe you’ve built something in your own project — a **Maps widget**, an **advanced Date Range Picker**, or even a **visual Org Chart** — and think others could benefit from it.  
+This guide walks you through how to make sure your component is a great fit and how to prepare it for contribution.
+
+---
+
+## Fit & Scope
+
+Before contributing, consider whether your component aligns with **LoveUI’s philosophy**:  
+creating **composable, accessible building blocks** that power modern applications.
+
+A few quick guidelines:
+- ✅ Fits if it solves a **common use case** (e.g., inputs, editors, visual widgets)  
+- ✅ Fits if it adds **meaningful functionality** missing from the core library  
+- 🚫 Avoid overly **niche or one-off** components that only serve very specific needs  
+
+If your component helps developers build faster, cleaner UIs — it’s probably a great fit!
+
+---
+
+## Design Consistency
+
+Consistency keeps the library cohesive and easy to use.  
+
+When designing your component:
+- Use the same **CSS variable theme system** as existing LoveUI components  
+- Follow **accessibility best practices** (keyboard navigation, ARIA labels, etc.)  
+- Ensure it supports **dark mode** and works across breakpoints  
+- Match the overall **design tone and interaction style** of existing components  
+
+For example, if you’re adding a Color Picker, make sure it behaves and feels consistent with similar UI patterns in LoveUI.
+
+---
+
+## Documentation
+
+Every new component needs clear, discoverable documentation.  
+Include a Markdown file for the docs site with:
+
+- A short **overview** of what the component does  
+- **Installation instructions** (e.g. `npx loveui add your-component`)  
+- A **list of features or props**  
+- **Example usage code**  
+- A **props table** (if applicable)
+
+> 💡 Tip: Look at existing component docs for a good template.  
+Great documentation ensures developers can quickly understand and use your contribution.
+
+---
+
+## Testing & Quality
+
+Quality and reliability matter.  
+Before submitting your pull request:
+
+- Test your component manually in the docs environment  
+- Check **responsive layouts** and **edge cases**  
+- Verify behavior in both **controlled and uncontrolled** states (if relevant)  
+- Write basic tests if you can — even snapshot or logic tests help  
+
+All components in LoveUI should feel **production-ready** out of the box.
+
+Once your PR is submitted, maintainers will review and may suggest improvements.  
+Feedback is part of the process — it helps keep LoveUI consistent, accessible, and high-quality.  
+
+When your PR is merged, **congratulations!** 🎉 
+You’ve officially added a new piece to LoveUI — something the entire community can use and build upon.

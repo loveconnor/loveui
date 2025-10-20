@@ -1,0 +1,63 @@
+---
+title: Quick Start
+description: Install LoveUI and render your first component in under two minutes.
+---
+
+LoveUI installs real component code into your project, so you can go from zero to a working UI in a couple of commands. This quick start keeps things focused: install the CLI, drop in a button, and confirm everything renders.
+
+---
+
+## Install the CLI and a component
+
+Run the single command below from the root of your project:
+
+```bash
+npx love-ui@latest add button
+```
+
+The CLI will:
+- scaffold the Button component under `@/components/love-ui/button`
+- install any peer dependencies you are missing
+- register the component in your project's `components.json` (if you are using the shadcn/ui workflow)
+
+<Callout type="info">
+The generator works in any React project that already has Tailwind CSS and shadcn/ui configured in CSS Variables mode. See the full [Setup guide](/docs/setup) if you are starting from scratch.
+</Callout>
+
+---
+
+## Use the component
+
+Create a new page or component and import the Button you just installed:
+
+```tsx
+import { Button } from "@/components/love-ui/button"
+
+export default function QuickStartButton() {
+  return <Button color="blue">Click me</Button>
+}
+```
+
+If you are using Next.js App Router, you can drop this into `app/page.tsx` to verify the installation instantly.
+
+<Callout type="warning">
+LoveUI components follow the shadcn/ui styling system. Make sure `@/components/ui/button` still resolves to your original button if other parts of your code depend on it.
+</Callout>
+
+---
+
+## Confirm it works
+
+Open your dev server and confirm the button renders with full hover, focus, and dark-mode styles. The interactive preview below shows what you should expect:
+
+<Preview path="primitives-buttons" />
+
+---
+
+## What to read next
+
+- Dive deeper into project-wide configuration in the [Setup guide](/docs/setup)
+- Explore real-world usage patterns in the [Usage overview](/docs/usage)
+- Learn how to extend the design system in the [Theming & Customization guide](/docs/theming)
+
+LoveUI ships dozens of production-ready components—once the CLI is set up, you can repeat the `add` command for anything in the catalog.

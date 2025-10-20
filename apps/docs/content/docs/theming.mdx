@@ -1,0 +1,136 @@
+---
+title: Theming & Customization
+description: Override LoveUI design tokens, switch themes, and ship your own visual language.
+---
+
+LoveUI leans on CSS variables and Tailwind tokens so that you can retheme components without forking them. This guide walks through the core levers—global tokens, dark mode, Tailwind utilities, and component variants.
+
+<Callout type="info">
+Looking for the full list of available tokens? Jump to the [Design Tokens reference](/docs/design-tokens) for every variable grouped by category.
+</Callout>
+
+---
+
+## Override global tokens
+
+All LoveUI components read from a shared set of CSS custom properties defined on `:root`. Updating those variables immediately propagates across every component.
+
+```css
+/* app/globals.css */
+:root {
+  --primary: oklch(0.68 0.21 254);
+  --primary-foreground: oklch(0.98 0.04 255);
+  --radius: 0.75rem;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+```
+
+You can scope overrides to specific sections using data attributes:
+
+```jsx
+<section className="bg-muted" style={{
+  // theme a single feature area
+  --primary: "oklch(0.63 0.2 22)",
+  --radius: "1.25rem"
+}}>
+  {/* components inherit the overridden tokens */}
+</section>
+```
+
+---
+
+## Switch themes with `data-theme`
+
+LoveUI ships light and dark palettes out of the box. Toggling the wrapper `data-theme` is enough to switch modes:
+
+```tsx
+export function AppShell({ children }: { children: React.ReactNode }) {
+  const [dark, setDark] = React.useState(false)
+
+  return (
+    <div data-theme={dark ? "dark" : "light"} className="min-h-screen">
+      <Navbar onToggleTheme={() => setDark((v) => !v)} />
+      {children}
+    </div>
+  )
+}
+```
+
+Behind the scenes the `.dark` theme in `global.css` rewrites the same CSS variables (`--background`, `--primary`, etc.), so component code stays identical.
+
+---
+
+## Tailwind alignment
+
+Tailwind gets its values from the same token source via `@theme inline` in `apps/docs/app/global.css`. If you want to extend Tailwind utilities, mirror the variables there as well:
+
+```ts
+// tailwind.config.ts
+import { fontFamily } from "tailwindcss/defaultTheme"
+
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        xl: "calc(var(--radius) + 0.5rem)",
+      },
+      colors: {
+        brand: "var(--primary)",
+        "brand-foreground": "var(--primary-foreground)",
+      },
+    },
+  },
+}
+```
+
+This keeps class-based styling (`bg-brand`, `rounded-xl`) in sync with the CSS variables your components read.
+
+---
+
+## Customize component variants
+
+Because the CLI installs source files, you can safely extend variants or introduce bespoke styling per component. Here is a quick example of adding a "soft" button tone:
+
+```tsx
+// @/components/love-ui/button/index.tsx
+import { Button } from "./button"
+
+export function SoftButton(props: React.ComponentProps<typeof Button>) {
+  return (
+    <Button
+      {...props}
+      className="[--btn-bg:var(--accent)] [--btn-border:color-mix(in oklch, var(--accent) 85%, black 15%)]"
+    />
+  )
+}
+```
+
+Because LoveUI components use descriptive CSS variables (`--btn-bg`, `--btn-hover-overlay`), layering your own variants rarely requires touching the internals.
+
+---
+
+## Quick token cheatsheet
+
+| Token | What it controls | Example override |
+| --- | --- | --- |
+| `--radius` | Base corner radius used for buttons, cards, and inputs | `--radius: 1rem` |
+| `--primary` / `--primary-foreground` | Accent colors for interactive states | `--primary: oklch(0.72 0.21 278)` |
+| `--background` & `--foreground` | Body background and text color | `--background: oklch(0.98 0 0)` |
+| `--muted` / `--muted-foreground` | Neutral surfaces and supporting text | `--muted: oklch(0.94 0 0)` |
+| `--ring` | Focus outlines and borders | `--ring: oklch(0.68 0 0)` |
+
+Need more detail? Head over to the [Design Tokens page](/docs/design-tokens).
+
+---
+
+## Tips for large-scale theming
+
+- Keep tokens descriptive (e.g. `--surface-1`, `--surface-2`) when introducing new layers so component files never depend on brand colors directly.
+- Prefer composition over editing upstream files—wrap base components in your design system then re-export them with your brand defaults.
+- Document any bespoke tokens in your team wiki and update automated visual regression tests before rolling out sweeping changes.
+
+With a clean token strategy you can theme LoveUI for multiple products, white-label experiences, or customer-specific variations without duplicating components.

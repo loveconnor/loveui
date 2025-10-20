@@ -1,0 +1,141 @@
+---
+title: Design Tokens
+description: Canonical color, typography, spacing, and motion tokens that power LoveUI.
+---
+
+LoveUI centralises visual decisions in a set of CSS variables. Components never hard-code colors or spacing—they reference these tokens instead. Use this page as a reference when adjusting themes, building new components, or aligning Tailwind with design specs.
+
+---
+
+## Color tokens
+
+| Token | Purpose | Light value (default) | Dark value |
+| --- | --- | --- | --- |
+| `--background` / `--foreground` | Base surfaces and text | `oklch(1 0 0)` / `oklch(0.145 0 0)` | `oklch(0.145 0 0)` / `oklch(0.985 0 0)` |
+| `--card` / `--card-foreground` | Cards, panels, and feature areas | `oklch(1 0 0)` / `oklch(0.145 0 0)` | `oklch(0.205 0 0)` / `oklch(0.985 0 0)` |
+| `--popover` / `--popover-foreground` | Flyouts, dropdowns, tooltips | `oklch(1 0 0)` / `oklch(0.145 0 0)` | `oklch(0.205 0 0)` / `oklch(0.985 0 0)` |
+| `--primary` / `--primary-foreground` | Primary actions and accents | `oklch(0.623 0.214 259.815)` / `oklch(0.97 0.014 254.604)` | `oklch(0.5808 0.245 262.881)` / `oklch(0.985 0 0)` |
+| `--secondary` / `--secondary-foreground` | Secondary buttons, pills | `oklch(0.97 0 0)` / `oklch(0.205 0 0)` | `oklch(0.269 0 0)` / `oklch(0.985 0 0)` |
+| `--muted` / `--muted-foreground` | Subtle surfaces, supporting text | `oklch(0.97 0 0)` / `oklch(0.556 0 0)` | `oklch(0.269 0 0)` / `oklch(0.708 0 0)` |
+| `--accent` / `--accent-foreground` | Inputs, selection, badges | `oklch(0.97 0 0)` / `oklch(0.205 0 0)` | `oklch(0.269 0 0)` / `oklch(0.985 0 0)` |
+| `--destructive` | Destructive and error states | `oklch(0.577 0.245 27.325)` | `oklch(0.704 0.191 22.216)` |
+| `--border` / `--input` / `--ring` | Borders, inputs, focus outlines | `oklch(0.922 0 0)` / `oklch(0.922 0 0)` / `oklch(0.708 0 0)` | `oklch(1 0 0 / 10%)` / `oklch(1 0 0 / 15%)` / `oklch(0.556 0 0)` |
+| `--chart-1 … --chart-5` | Data visualisation palette | warm orange → teal scale | vivid purple → amber scale |
+
+**Sidebar tokens** mirror the main palette (`--sidebar`, `--sidebar-foreground`, etc.) but allow you to treat navigation shells differently from page content.
+
+---
+
+## Typography
+
+LoveUI expects font families to be provided by your project. Two tokens are referenced throughout the components:
+
+| Token | Usage |
+| --- | --- |
+| `--font-sans` | Primary typeface, used for headings, paragraphs, inputs |
+| `--font-mono` | Inline code, metrics, and technical readouts |
+
+Set these in `global.css` or Tailwind config:
+
+```css
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+```
+
+---
+
+## Spacing & sizing
+
+Spacing follows Tailwind’s `--spacing` scale so that LoveUI’s base components adapt to your configured rhythm. A few bespoke tokens round things out:
+
+| Token | Default | Notes |
+| --- | --- | --- |
+| `--spacing` | `0.25rem` | Tailwind base; used via `calc(--spacing * n)` |
+| `--radius` | `0.625rem` | Base radius. Derived tokens `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-xl` expand from this |
+| `--nav-height` | `61px` | Used by docs layout; adjust when embedding LoveUI in custom shells |
+
+Adjusting `--radius` instantly updates all rounded components. For bespoke controls, rely on the derived tokens to remain optically balanced across sizes.
+
+---
+
+## Z-index & layering
+
+LoveUI components mostly rely on logical stacking contexts instead of hard-coded `z-index` values. If your product demands strict layering rules, introduce your own tokens and reference them where needed:
+
+```css
+:root {
+  --layer-dropdown: 40;
+  --layer-dialog: 50;
+  --layer-toast: 60;
+  --layer-tooltip: 70;
+}
+```
+
+Then use them with utility classes or inline styles:
+
+```tsx
+<DropdownMenuContent className=\"z-[var(--layer-dropdown)]\" />
+```
+
+Keeping even layering decisions tokenised helps teams coordinate overlays across features.
+
+---
+
+## Motion
+
+LoveUI exposes a handful of animation helpers via CSS variables and keyframes:
+
+| Token | Definition | Where it appears |
+| --- | --- | --- |
+| `--animate-accordion-down` | `accordion-down 0.2s ease-out` | Accordion open transitions |
+| `--animate-accordion-up` | `accordion-up 0.2s ease-out` | Accordion close transitions |
+
+Feel free to swap these for custom durations or easings:
+
+```css
+:root {
+  --animate-accordion-down: accordion-down 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+```
+
+---
+
+## Tailwind integration
+
+The docs app demonstrates how to expose tokens as Tailwind colors via `@theme inline` in `global.css`. If you are using a traditional `tailwind.config.ts`, add utility aliases:
+
+```ts
+export default {
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        "primary-foreground": "var(--primary-foreground)",
+        muted: "var(--muted)",
+        ring: "var(--ring)",
+      },
+      borderRadius: {
+        DEFAULT: "var(--radius)",
+        lg: "var(--radius-lg)",
+        full: "9999px",
+      },
+    },
+  },
+}
+```
+
+This ensures class-based styles stay in sync with component internals and prevents “token drift” across your codebase.
+
+---
+
+## Where to override tokens
+
+- Global defaults: update `:root` in your global stylesheet (Next.js `app/globals.css`, Vite `src/styles.css`, etc.).
+- Theme switchers: apply overrides on an element with `data-theme="dark"`, or introduce your own (e.g. `data-theme="brand-b"`).
+- Component scopes: pass inline styles or CSS Modules to override a single component tree without affecting the rest of the page.
+
+Treat these tokens as the source of truth for LoveUI’s look and feel. Keeping overrides centralized makes it easy to roll out new palettes, support multiple brands, or swap between themes on the fly.
