@@ -25,14 +25,6 @@ export const Links = ({
 
   const links = [
     {
-      label: "Docs",
-      href: "/docs",
-      active: pathname === "/docs" || pathname.startsWith("/docs/"),
-      count: undefined,
-      disabled: false,
-      comingSoon: false,
-    },
-    {
       label: "Base Components",
       href: "/primitives",
       active: pathname.startsWith("/primitives"),
@@ -67,6 +59,14 @@ export const Links = ({
         {
       label: "Templates",
       href: "/templates",
+      active: false,
+      count: undefined,
+      disabled: true,
+      comingSoon: true,
+    },
+       {
+      label: "Backgrounds",
+      href: "/backgrounds",
       active: false,
       count: undefined,
       disabled: true,
