@@ -26,7 +26,7 @@ const notifications = [
     id: 2,
     type: "like",
     author: "Thomas Raklovits",
-    username: "@thomasraklovits",
+    username: "@monster0506",
     initials: "TR",
     message: "liked your article",
     time: "4 hours ago",

@@ -22,7 +22,7 @@ const users = [
     name: "Thomas Raklovits",
     email: "thomas@example.com",
     role: "Developer",
-    avatar: "https://github.com/loveconnor.png",
+    avatar: "https://github.com/monster0506.png",
     initials: "TR",
   },
   {

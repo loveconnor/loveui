@@ -15,7 +15,7 @@ const messages = [
   {
     id: 2,
     user: "Thomas Raklovits",
-    avatar: "https://github.com/loveconnor.png",
+    avatar: "https://github.com/monster0506.png",
     initials: "TR",
     message: "Nice one! Just pushed some updates to the UI components.",
     time: "10:32 AM",

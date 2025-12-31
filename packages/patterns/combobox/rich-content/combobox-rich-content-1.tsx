@@ -30,7 +30,7 @@ const users = [
   {
     value: "thomasraklovits",
     label: "Thomas Raklovits",
-    avatar: "https://github.com/loveconnor.png",
+    avatar: "https://github.com/monster0506.png",
   },
   {
     value: "charliecambell",
