@@ -18,7 +18,7 @@ const stories = [
   {
     id: 2,
     author: "Thomas Raklovits",
-    avatar: "https://avatars.githubusercontent.com/u/1234567890?v=4",
+    avatar: "https://github.com/monster0506.png",
     fallback: "TR",
   },
   {
