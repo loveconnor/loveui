@@ -22,7 +22,7 @@ const users = [
   {
     id: 2,
     name: "Thomas Raklovits",
-    avatar: "https://avatars.githubusercontent.com/u/1234567890?v=4",
+    avatar: "https://github.com/monster0506.png",
     message: "I'm not sure if this is working...",
   },
   {
