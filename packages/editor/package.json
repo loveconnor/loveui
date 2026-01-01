@@ -12,7 +12,7 @@
     "@tiptap/extension-subscript": "^3.6.6",
     "@tiptap/extension-superscript": "^3.6.6",
     "@tiptap/extension-table": "^3.6.6",
-    "@tiptap/extension-text-style": "^3.6.6",
+    "@tiptap/extension-text-style": "^3.7.2",
     "@tiptap/extension-typography": "^3.6.6",
     "@tiptap/extensions": "^3.6.6",
     "@tiptap/pm": "^3.6.6",
