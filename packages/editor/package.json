@@ -8,7 +8,7 @@
     "@repo/shadcn-ui": "workspace:*",
     "@tiptap/core": "^3.6.6",
     "@tiptap/extension-code-block-lowlight": "^3.6.6",
-    "@tiptap/extension-list": "^3.6.6",
+    "@tiptap/extension-list": "^3.7.2",
     "@tiptap/extension-subscript": "^3.6.6",
     "@tiptap/extension-superscript": "^3.6.6",
     "@tiptap/extension-table": "^3.6.6",
