@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { Checkbox } from "@/registry/default/ui/checkbox"
-import { CheckboxGroup } from "@/registry/default/ui/checkbox-group"
+import { CheckboxGroup } from "@/registry/default/ui/checkbox"
 import { Label } from "@/registry/default/ui/label"
 
 const mainPermissions = [

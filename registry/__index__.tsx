@@ -73,15 +73,6 @@ import checkbox_group_form from "./default/examples/checkbox-group-form"
 import checkbox_group_nested_parent from "./default/examples/checkbox-group-nested-parent"
 import checkbox_group_parent from "./default/examples/checkbox-group-parent"
 import checkbox_with_description from "./default/examples/checkbox-with-description"
-import code_block from "./default/examples/code-block"
-import code_block_diff from "./default/examples/code-block-diff"
-import code_block_focus from "./default/examples/code-block-focus"
-import code_block_headless from "./default/examples/code-block-headless"
-import code_block_highlight_line from "./default/examples/code-block-highlight-line"
-import code_block_highlight_word from "./default/examples/code-block-highlight-word"
-import code_block_no_highlighting from "./default/examples/code-block-no-highlighting"
-import code_block_numberless from "./default/examples/code-block-numberless"
-import code_block_theme from "./default/examples/code-block-theme"
 import collapsible_demo from "./default/examples/collapsible-demo"
 import combobox_autohighlight from "./default/examples/combobox-autohighlight"
 import combobox_demo from "./default/examples/combobox-demo"
@@ -121,6 +112,11 @@ import fieldset_demo from "./default/examples/fieldset-demo"
 import form_demo from "./default/examples/form-demo"
 import form_zod from "./default/examples/form-zod"
 import frame_demo from "./default/examples/frame-demo"
+import gooey_toast_demo from "./default/examples/gooey-toast-demo"
+import gooey_toast_position from "./default/examples/gooey-toast-position"
+import gooey_toast_promise from "./default/examples/gooey-toast-promise"
+import gooey_toast_states from "./default/examples/gooey-toast-states"
+import gooey_toast_with_button from "./default/examples/gooey-toast-with-button"
 import group_demo from "./default/examples/group-demo"
 import group_with_input from "./default/examples/group-with-input"
 import input_demo from "./default/examples/input-demo"
@@ -301,15 +297,6 @@ export const Index: Record<string, { component: ComponentType }> = {
   "checkbox-group-nested-parent": { component: checkbox_group_nested_parent },
   "checkbox-group-parent": { component: checkbox_group_parent },
   "checkbox-with-description": { component: checkbox_with_description },
-  "code-block": { component: code_block },
-  "code-block-diff": { component: code_block_diff },
-  "code-block-focus": { component: code_block_focus },
-  "code-block-headless": { component: code_block_headless },
-  "code-block-highlight-line": { component: code_block_highlight_line },
-  "code-block-highlight-word": { component: code_block_highlight_word },
-  "code-block-no-highlighting": { component: code_block_no_highlighting },
-  "code-block-numberless": { component: code_block_numberless },
-  "code-block-theme": { component: code_block_theme },
   "collapsible-demo": { component: collapsible_demo },
   "combobox-autohighlight": { component: combobox_autohighlight },
   "combobox-demo": { component: combobox_demo },
@@ -349,6 +336,11 @@ export const Index: Record<string, { component: ComponentType }> = {
   "form-demo": { component: form_demo },
   "form-zod": { component: form_zod },
   "frame-demo": { component: frame_demo },
+  "gooey-toast-demo": { component: gooey_toast_demo },
+  "gooey-toast-position": { component: gooey_toast_position },
+  "gooey-toast-promise": { component: gooey_toast_promise },
+  "gooey-toast-states": { component: gooey_toast_states },
+  "gooey-toast-with-button": { component: gooey_toast_with_button },
   "group-demo": { component: group_demo },
   "group-with-input": { component: group_with_input },
   "input-demo": { component: input_demo },

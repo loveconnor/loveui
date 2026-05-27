@@ -8,7 +8,6 @@
       "registryDependencies": [
         "@loveui/accordion",
         "@loveui/alert",
-        "@loveui/alert-dialog",
         "@loveui/autocomplete",
         "@loveui/avatar",
         "@loveui/badge",
@@ -17,7 +16,6 @@
         "@loveui/card",
         "@loveui/chart",
         "@loveui/checkbox",
-        "@loveui/checkbox-group",
         "@loveui/collapsible",
         "@loveui/combobox",
         "@loveui/context-menu",
@@ -53,7 +51,6 @@
         "@loveui/textarea",
         "@loveui/toast",
         "@loveui/toggle",
-        "@loveui/toggle-group",
         "@loveui/toolbar",
         "@loveui/tooltip"
       ]
@@ -77,7 +74,8 @@
       "files": [
         {
           "path": "registry/default/ui/alert.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AlertDialog as AlertDialogPrimitive } from \"@base-ui-components/react/alert-dialog\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst alertVariants = cva(\n  \"relative grid w-full items-start gap-x-2 gap-y-0.5 rounded-xl border px-3.5 py-3 text-sm text-card-foreground has-data-[slot=alert-action]:grid-cols-[1fr_auto] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-2 has-[>svg]:has-data-[slot=alert-action]:grid-cols-[calc(var(--spacing)*4)_1fr_auto] [&>svg]:h-[1lh] [&>svg]:w-4\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"bg-transparent dark:bg-input/32 [&>svg]:text-muted-foreground\",\n        info: \"border-info/32 bg-info/4 [&>svg]:text-info\",\n        success: \"border-success/32 bg-success/4 [&>svg]:text-success\",\n        warning: \"border-warning/32 bg-warning/4 [&>svg]:text-warning\",\n        error:\n          \"border-destructive/32 bg-destructive/4 [&>svg]:text-destructive\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Alert({\n  className,\n  variant,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof alertVariants>) {\n  return (\n    <div\n      data-slot=\"alert\"\n      role=\"alert\"\n      className={cn(alertVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nfunction AlertTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-title\"\n      className={cn(\"font-medium [svg~&]:col-start-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-description\"\n      className={cn(\n        \"flex flex-col gap-2.5 text-muted-foreground [svg~&]:col-start-2\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AlertAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-action\"\n      className={cn(\n        \"flex gap-1 max-sm:col-start-2 max-sm:mt-2 sm:row-start-1 sm:row-end-3 sm:self-center sm:[[data-slot=alert-description]~&]:col-start-2 sm:[[data-slot=alert-title]~&]:col-start-2 sm:[svg~&]:col-start-2 sm:[svg~[data-slot=alert-description]~&]:col-start-3 sm:[svg~[data-slot=alert-title]~&]:col-start-3\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDialog(props: AlertDialogPrimitive.Root.Props) {\n  return <AlertDialogPrimitive.Root data-slot=\"alert-dialog\" {...props} />\n}\n\nfunction AlertDialogTrigger(props: AlertDialogPrimitive.Trigger.Props) {\n  return (\n    <AlertDialogPrimitive.Trigger data-slot=\"alert-dialog-trigger\" {...props} />\n  )\n}\n\nfunction AlertDialogPortal(props: AlertDialogPrimitive.Portal.Props) {\n  return <AlertDialogPrimitive.Portal {...props} />\n}\n\nfunction AlertDialogBackdrop({\n  className,\n  ...props\n}: AlertDialogPrimitive.Backdrop.Props) {\n  return (\n    <AlertDialogPrimitive.Backdrop\n      data-slot=\"alert-dialog-backdrop\"\n      className={cn(\n        \"fixed inset-0 z-50 bg-black/32 backdrop-blur-sm transition-all duration-200 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDialogPopup({\n  className,\n  ...props\n}: AlertDialogPrimitive.Popup.Props) {\n  return (\n    <AlertDialogPortal>\n      <AlertDialogBackdrop />\n      <div className=\"fixed inset-0 z-50\">\n        <div className=\"flex h-[100dvh] flex-col items-center overflow-hidden pt-6 max-sm:before:flex-1 sm:overflow-y-auto sm:p-4 sm:before:basis-[20vh] sm:after:flex-1\">\n          <AlertDialogPrimitive.Popup\n            data-slot=\"alert-dialog-popup\"\n            className={cn(\n              \"row-start-2 grid w-full min-w-0 origin-top gap-4 border bg-popover bg-clip-padding p-6 text-popover-foreground shadow-lg transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform data-ending-style:opacity-0 data-starting-style:opacity-0 max-sm:overflow-y-auto max-sm:border-none max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))] max-sm:data-ending-style:translate-y-4 max-sm:data-starting-style:translate-y-4 sm:max-w-lg sm:-translate-y-[calc(1.25rem*var(--nested-dialogs))] sm:scale-[calc(1-0.1*var(--nested-dialogs))] sm:rounded-2xl sm:data-ending-style:scale-98 sm:data-starting-style:scale-98 dark:bg-clip-border\",\n              \"relative before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_1px_--theme(--color-black/4%)] max-sm:before:hidden sm:before:rounded-[calc(var(--radius-2xl)-1px)] sm:data-nested:data-ending-style:translate-y-8 sm:data-nested:data-starting-style:translate-y-8 dark:before:shadow-[0_-1px_--theme(--color-white/8%)]\",\n              className\n            )}\n            {...props}\n          />\n        </div>\n      </div>\n    </AlertDialogPortal>\n  )\n}\n\nfunction AlertDialogHeader({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-dialog-header\"\n      className={cn(\"flex flex-col gap-2 text-center sm:text-left\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDialogFooter({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-dialog-footer\"\n      className={cn(\n        \"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDialogTitle({\n  className,\n  ...props\n}: AlertDialogPrimitive.Title.Props) {\n  return (\n    <AlertDialogPrimitive.Title\n      data-slot=\"alert-dialog-title\"\n      className={cn(\"text-lg font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDialogDescription({\n  className,\n  ...props\n}: AlertDialogPrimitive.Description.Props) {\n  return (\n    <AlertDialogPrimitive.Description\n      data-slot=\"alert-dialog-description\"\n      className={cn(\"text-sm text-muted-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDialogClose(props: AlertDialogPrimitive.Close.Props) {\n  return (\n    <AlertDialogPrimitive.Close data-slot=\"alert-dialog-close\" {...props} />\n  )\n}\n\nexport {\n  Alert,\n  AlertTitle,\n  AlertDescription,\n  AlertAction,\n  AlertDialog,\n  AlertDialogPortal,\n  AlertDialogBackdrop,\n  AlertDialogBackdrop as AlertDialogOverlay,\n  AlertDialogTrigger,\n  AlertDialogPopup,\n  AlertDialogPopup as AlertDialogContent,\n  AlertDialogHeader,\n  AlertDialogFooter,\n  AlertDialogTitle,\n  AlertDialogDescription,\n  AlertDialogClose,\n}\n"
         }
       ],
       "cssVars": {
@@ -99,19 +97,9 @@
           "warning": "oklch(0.769 0.188 70.08)",
           "warning-foreground": "oklch(0.828 0.189 84.429)"
         }
-      }
-    },
-    {
-      "name": "alert-dialog",
-      "type": "registry:ui",
+      },
       "dependencies": [
         "@base-ui-components/react"
-      ],
-      "files": [
-        {
-          "path": "registry/default/ui/alert-dialog.tsx",
-          "type": "registry:ui"
-        }
       ]
     },
     {
@@ -244,20 +232,8 @@
       "files": [
         {
           "path": "registry/default/ui/checkbox.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "checkbox-group",
-      "type": "registry:ui",
-      "dependencies": [
-        "@base-ui-components/react"
-      ],
-      "files": [
-        {
-          "path": "registry/default/ui/checkbox-group.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "content": "\"use client\"\n\nimport { Checkbox as CheckboxPrimitive } from \"@base-ui-components/react/checkbox\"\nimport { CheckboxGroup as CheckboxGroupPrimitive } from \"@base-ui-components/react/checkbox-group\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"relative inline-flex size-4 shrink-0 items-center justify-center rounded-[0.25rem] border border-input bg-background bg-clip-padding shadow-xs ring-ring transition-shadow outline-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(0.25rem-1px)] not-disabled:not-data-checked:not-aria-invalid:before:shadow-[0_1px_--theme(--color-black/4%)] focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-64 aria-invalid:border-destructive/36 focus-visible:aria-invalid:border-destructive/64 focus-visible:aria-invalid:ring-destructive/48 dark:bg-clip-border dark:not-data-checked:bg-input/32 dark:not-disabled:not-data-checked:not-aria-invalid:before:shadow-[0_-1px_--theme(--color-white/8%)] dark:aria-invalid:ring-destructive/24 [&:is(:disabled,[data-checked],[aria-invalid])]:shadow-none\",\n        className\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator\n        data-slot=\"checkbox-indicator\"\n        className=\"absolute -inset-px flex items-center justify-center rounded-[0.25rem] text-primary-foreground data-checked:bg-primary data-indeterminate:text-foreground data-unchecked:hidden\"\n        render={(props, state) => (\n          <span {...props}>\n            {state.indeterminate ? (\n              <svg\n                className=\"size-3\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"24\"\n                height=\"24\"\n                viewBox=\"0 0 24 24\"\n                fill=\"none\"\n                stroke=\"currentColor\"\n                strokeWidth=\"3\"\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n              >\n                <path d=\"M5.252 12h13.496\" />\n              </svg>\n            ) : (\n              <svg\n                className=\"size-3\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"24\"\n                height=\"24\"\n                viewBox=\"0 0 24 24\"\n                fill=\"none\"\n                stroke=\"currentColor\"\n                strokeWidth=\"3\"\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n              >\n                <path d=\"M5.252 12.7 10.2 18.63 18.748 5.37\" />\n              </svg>\n            )}\n          </span>\n        )}\n      />\n    </CheckboxPrimitive.Root>\n  )\n}\n\nfunction CheckboxGroup({ className, ...props }: CheckboxGroupPrimitive.Props) {\n  return (\n    <CheckboxGroupPrimitive\n      data-slot=\"checkbox-group\"\n      className={cn(\"flex flex-col items-start gap-3\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Checkbox, CheckboxGroup }\n"
         }
       ]
     },
@@ -673,7 +649,8 @@
       "files": [
         {
           "path": "registry/default/ui/slider.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Slider as SliderPrimitive } from \"@base-ui-components/react/slider\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Slider({\n  className,\n  children,\n  defaultValue,\n  value,\n  min = 0,\n  max = 100,\n  ...props\n}: SliderPrimitive.Root.Props) {\n  const _values = React.useMemo(() => {\n    if (value !== undefined) {\n      return Array.isArray(value) ? value : [value]\n    }\n    if (defaultValue !== undefined) {\n      return Array.isArray(defaultValue) ? defaultValue : [defaultValue]\n    }\n    return [min]\n  }, [value, defaultValue, min])\n\n  return (\n    <SliderPrimitive.Root\n      thumbAlignment=\"edge\"\n      className=\"data-[orientation=horizontal]:w-full\"\n      defaultValue={defaultValue}\n      value={value}\n      min={min}\n      max={max}\n      {...props}\n    >\n      {children}\n      <SliderPrimitive.Control\n        data-slot=\"slider-control\"\n        className={cn(\n          \"flex touch-none select-none data-disabled:opacity-64 data-[disabled]:pointer-events-none data-[orientation=horizontal]:w-full data-[orientation=horizontal]:min-w-44 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:flex-col\",\n          className\n        )}\n      >\n        <SliderPrimitive.Track\n          data-slot=\"slider-track\"\n          className=\"relative grow select-none before:absolute before:rounded-full before:bg-input data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=horizontal]:before:inset-x-0.5 data-[orientation=horizontal]:before:inset-y-0 data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1 data-[orientation=vertical]:before:inset-x-0 data-[orientation=vertical]:before:inset-y-0.5\"\n        >\n          <SliderPrimitive.Indicator\n            data-slot=\"slider-indicator\"\n            className=\"rounded-full bg-primary select-none data-[orientation=horizontal]:ms-0.5 data-[orientation=vertical]:mb-0.5\"\n          />\n          {Array.from({ length: _values.length }, (_, index) => (\n            <SliderPrimitive.Thumb\n              data-slot=\"slider-thumb\"\n              index={index}\n              key={index}\n              className=\"block size-4 shrink-0 rounded-full border border-input bg-white bg-clip-padding shadow-xs transition-shadow outline-none select-none before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/4%)] focus-visible:ring-[3px] focus-visible:ring-ring/24 has-focus-visible:ring-[3px] has-focus-visible:ring-ring/24 data-dragging:ring-[3px] data-dragging:ring-ring/24 dark:border-background dark:bg-clip-border dark:focus-visible:ring-ring/48 dark:data-dragging:ring-ring/48 [&:is(:focus-visible,[data-dragging])]:shadow-none\"\n            />\n          ))}\n        </SliderPrimitive.Track>\n      </SliderPrimitive.Control>\n    </SliderPrimitive.Root>\n  )\n}\n\nfunction SliderValue({ className, ...props }: SliderPrimitive.Value.Props) {\n  return (\n    <SliderPrimitive.Value\n      data-slot=\"slider-value\"\n      className={cn(\"flex justify-end text-sm\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Slider, SliderValue }\n"
         }
       ]
     },
@@ -733,7 +710,8 @@
       "name": "toast",
       "type": "registry:ui",
       "dependencies": [
-        "@base-ui-components/react"
+        "@base-ui-components/react",
+        "@loveui/gooey-toast"
       ],
       "registryDependencies": [
         "@loveui/button"
@@ -741,7 +719,8 @@
       "files": [
         {
           "path": "registry/default/ui/toast.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toast } from \"@base-ui-components/react/toast\"\nimport {\n  CircleAlertIcon,\n  CircleCheckIcon,\n  InfoIcon,\n  LoaderCircleIcon,\n  TriangleAlertIcon,\n} from \"lucide-react\"\n\nimport {\n  gooey,\n  Toaster as GooeyToaster,\n  type GooeyOptions,\n  type GooeyState,\n} from \"@loveui/gooey-toast\"\nimport { cn } from \"@/lib/utils\"\nimport { buttonVariants } from \"@/registry/default/ui/button\"\n\nconst standardToastManager = Toast.createToastManager()\n\nconst TOAST_ICONS = {\n  loading: LoaderCircleIcon,\n  success: CircleCheckIcon,\n  error: CircleAlertIcon,\n  info: InfoIcon,\n  warning: TriangleAlertIcon,\n} as const\n\ntype ToastPosition =\n  | \"top-left\"\n  | \"top-center\"\n  | \"top-right\"\n  | \"bottom-left\"\n  | \"bottom-center\"\n  | \"bottom-right\"\n\ntype ToastVariant = \"default\" | \"standard\" | \"gooey\"\ntype StandardToastOptions = Parameters<typeof standardToastManager.add>[0]\ntype StandardToastUpdateOptions = Parameters<typeof standardToastManager.update>[1]\n\ninterface ToastOptions extends StandardToastOptions {\n  variant?: ToastVariant\n  position?: ToastPosition\n  state?: GooeyState\n  duration?: GooeyOptions[\"duration\"]\n  icon?: GooeyOptions[\"icon\"]\n  styles?: GooeyOptions[\"styles\"]\n  fill?: GooeyOptions[\"fill\"]\n  roundness?: GooeyOptions[\"roundness\"]\n  autopilot?: GooeyOptions[\"autopilot\"]\n  button?: GooeyOptions[\"button\"]\n}\n\ninterface ToastUpdateOptions extends StandardToastUpdateOptions {\n  variant?: ToastVariant\n  position?: ToastPosition\n  state?: GooeyState\n  duration?: GooeyOptions[\"duration\"]\n  icon?: GooeyOptions[\"icon\"]\n  styles?: GooeyOptions[\"styles\"]\n  fill?: GooeyOptions[\"fill\"]\n  roundness?: GooeyOptions[\"roundness\"]\n  autopilot?: GooeyOptions[\"autopilot\"]\n  button?: GooeyOptions[\"button\"]\n}\n\ninterface ToastPromiseOptions<Value> {\n  variant?: ToastVariant\n  position?: ToastPosition\n  loading: string | ToastOptions\n  success: string | ToastOptions | ((result: Value) => string | ToastOptions)\n  error: string | ToastOptions | ((error: unknown) => string | ToastOptions)\n}\n\ninterface ToastProviderProps extends Toast.Provider.Props {\n  position?: ToastPosition\n  gooeyPosition?: ToastPosition\n  gooeyOptions?: Partial<GooeyOptions>\n}\n\nfunction getGooeyState(type?: string, state?: GooeyState): GooeyState {\n  if (state) return state\n  if (\n    type === \"success\" ||\n    type === \"loading\" ||\n    type === \"error\" ||\n    type === \"warning\" ||\n    type === \"info\" ||\n    type === \"action\"\n  ) {\n    return type\n  }\n  return \"success\"\n}\n\nfunction getGooeyButton(options: ToastOptions | ToastUpdateOptions) {\n  if (options.button) return options.button\n\n  const children = options.actionProps?.children\n  const onClick = options.actionProps?.onClick\n  if (typeof children !== \"string\" || !onClick) return undefined\n\n  return {\n    title: children,\n    onClick: () => onClick({} as React.MouseEvent<HTMLButtonElement>),\n  }\n}\n\nfunction toGooeyOptions(options: ToastOptions | ToastUpdateOptions): GooeyOptions {\n  return {\n    title: options.title,\n    description: options.description,\n    position: options.position,\n    duration:\n      options.duration ??\n      (options.timeout === 0 ? null : options.timeout),\n    icon: options.icon,\n    styles: options.styles,\n    fill: options.fill,\n    roundness: options.roundness,\n    autopilot: options.autopilot,\n    button: getGooeyButton(options),\n  }\n}\n\nfunction addGooeyToast(options: ToastOptions) {\n  const state = getGooeyState(options.type, options.state)\n  const config = toGooeyOptions(options)\n\n  if (state === \"loading\") {\n    return (gooey.show as (opts: GooeyOptions & { state: GooeyState }) => string)(\n      { ...config, state }\n    )\n  }\n  return gooey[state](config)\n}\n\nfunction toStandardOptions(options: ToastOptions | ToastUpdateOptions) {\n  const {\n    variant,\n    position,\n    state,\n    duration,\n    icon,\n    styles,\n    fill,\n    roundness,\n    autopilot,\n    button,\n    ...standardOptions\n  } = options\n\n  return standardOptions\n}\n\nfunction resolvePromiseOption<Value>(\n  option: ToastPromiseOptions<Value>[\"success\"],\n  value: Value\n) {\n  return typeof option === \"function\" ? option(value) : option\n}\n\nfunction normalizePromiseOption(option: string | ToastOptions) {\n  return typeof option === \"string\" ? { title: option } : option\n}\n\nconst toastManager = {\n  add(options: ToastOptions) {\n    if (options.variant === \"gooey\") return addGooeyToast(options)\n    return standardToastManager.add(toStandardOptions(options))\n  },\n  close(id: string) {\n    standardToastManager.close(id)\n    gooey.dismiss(id)\n  },\n  update(id: string, options: ToastUpdateOptions) {\n    if (options.variant === \"gooey\") {\n      gooey.dismiss(id)\n      addGooeyToast(options as ToastOptions)\n      return\n    }\n\n    standardToastManager.update(id, toStandardOptions(options))\n  },\n  promise<Value>(\n    promiseValue: Promise<Value>,\n    options: ToastPromiseOptions<Value>\n  ) {\n    if (options.variant === \"gooey\") {\n      return gooey.promise(promiseValue, {\n        position: options.position,\n        loading: normalizePromiseOption(options.loading),\n        success: (result: Value) =>\n          normalizePromiseOption(resolvePromiseOption(options.success, result)),\n        error: (error: unknown) =>\n          normalizePromiseOption(resolvePromiseOption(options.error, error)),\n      })\n    }\n\n    return standardToastManager.promise(promiseValue, {\n      loading: toStandardOptions(normalizePromiseOption(options.loading)),\n      success: (result: Value) =>\n        toStandardOptions(\n          normalizePromiseOption(resolvePromiseOption(options.success, result))\n        ),\n      error: (error: unknown) =>\n        toStandardOptions(\n          normalizePromiseOption(resolvePromiseOption(options.error, error))\n        ),\n    })\n  },\n}\n\nfunction ToastProvider({\n  children,\n  position = \"bottom-right\",\n  gooeyPosition = \"top-right\",\n  gooeyOptions,\n  ...props\n}: ToastProviderProps) {\n  return (\n    <Toast.Provider toastManager={standardToastManager} {...props}>\n      {children}\n      <ToastList position={position} />\n      <GooeyToaster position={gooeyPosition} options={gooeyOptions} />\n    </Toast.Provider>\n  )\n}\n\nfunction ToastList({ position = \"bottom-right\" }: { position: ToastPosition }) {\n  const { toasts } = Toast.useToastManager()\n  const isTop = position.startsWith(\"top\")\n\n  return (\n    <Toast.Portal data-slot=\"toast-portal\">\n      <Toast.Viewport\n        className={cn(\n          \"fixed z-50 mx-auto flex w-[calc(100%-var(--toast-inset)*2)] max-w-90 [--toast-inset:--spacing(4)] sm:[--toast-inset:--spacing(8)]\",\n          // Vertical positioning\n          \"data-[position*=top]:top-(--toast-inset)\",\n          \"data-[position*=bottom]:bottom-(--toast-inset)\",\n          // Horizontal positioning\n          \"data-[position*=left]:left-(--toast-inset)\",\n          \"data-[position*=right]:right-(--toast-inset)\",\n          \"data-[position*=center]:left-1/2 data-[position*=center]:-translate-x-1/2\"\n        )}\n        data-slot=\"toast-viewport\"\n        data-position={position}\n      >\n        {toasts.map((toast) => {\n          const Icon = toast.type\n            ? TOAST_ICONS[toast.type as keyof typeof TOAST_ICONS]\n            : null\n\n          return (\n            <Toast.Root\n              key={toast.id}\n              toast={toast}\n              data-position={position}\n              swipeDirection={\n                position.includes(\"center\")\n                  ? [isTop ? \"up\" : \"down\"]\n                  : position.includes(\"left\")\n                    ? [\"left\", isTop ? \"up\" : \"down\"]\n                    : [\"right\", isTop ? \"up\" : \"down\"]\n              }\n              className={cn(\n                \"absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full rounded-lg border bg-popover bg-clip-padding px-3.5 py-3 text-popover-foreground shadow-lg select-none [transition:transform_.5s_cubic-bezier(.22,1,.36,1),opacity_.5s,height_.15s] before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/4%)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]\",\n                // Base positioning using data-position\n                \"data-[position*=right]:right-0 data-[position*=right]:left-auto\",\n                \"data-[position*=left]:right-auto data-[position*=left]:left-0\",\n                \"data-[position*=center]:right-0 data-[position*=center]:left-0\",\n                \"data-[position*=top]:top-0 data-[position*=top]:bottom-auto data-[position*=top]:origin-top\",\n                \"data-[position*=bottom]:top-auto data-[position*=bottom]:bottom-0 data-[position*=bottom]:origin-bottom\",\n                // Gap fill for hover\n                \"after:absolute after:left-0 after:h-[calc(var(--toast-gap)+1px)] after:w-full\",\n                \"data-[position*=top]:after:top-full\",\n                \"data-[position*=bottom]:after:bottom-full\",\n                // Define some variables\n                \"[--toast-calc-height:var(--toast-frontmost-height,var(--toast-height))] [--toast-gap:--spacing(3)] [--toast-peek:--spacing(3)] [--toast-scale:calc(max(0,1-(var(--toast-index)*.1)))] [--toast-shrink:calc(1-var(--toast-scale))]\",\n                // Define offset-y variable\n                \"data-[position*=top]:[--toast-calc-offset-y:calc(var(--toast-offset-y)+var(--toast-index)*var(--toast-gap)+var(--toast-swipe-movement-y))]\",\n                \"data-[position*=bottom]:[--toast-calc-offset-y:calc(var(--toast-offset-y)*-1+var(--toast-index)*var(--toast-gap)*-1+var(--toast-swipe-movement-y))]\",\n                // Default state transform\n                \"data-[position*=top]:[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)+(var(--toast-index)*var(--toast-peek))+(var(--toast-shrink)*var(--toast-calc-height))))_scale(var(--toast-scale))]\",\n                \"data-[position*=bottom]:[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--toast-peek))-(var(--toast-shrink)*var(--toast-calc-height))))_scale(var(--toast-scale))]\",\n                // Limited state\n                \"data-limited:opacity-0\",\n                // Expanded state\n                \"data-expanded:h-(--toast-height)\",\n                \"data-[position]:data-expanded:[transform:translateX(var(--toast-swipe-movement-x))_translateY(var(--toast-calc-offset-y))]\",\n                // Starting and ending animations\n                \"data-[position*=top]:data-starting-style:[transform:translateY(calc(-100%-var(--toast-inset)))]\",\n                \"data-[position*=bottom]:data-starting-style:[transform:translateY(calc(100%+var(--toast-inset)))]\",\n                \"data-ending-style:opacity-0\",\n                // Ending animations (direction-aware)\n                \"data-ending-style:not-data-limited:not-data-swipe-direction:[transform:translateY(calc(100%+var(--toast-inset)))]\",\n                \"data-ending-style:data-[swipe-direction=left]:[transform:translateX(calc(var(--toast-swipe-movement-x)-100%-var(--toast-inset)))_translateY(var(--toast-calc-offset-y))]\",\n                \"data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+100%+var(--toast-inset)))_translateY(var(--toast-calc-offset-y))]\",\n                \"data-ending-style:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-100%-var(--toast-inset)))]\",\n                \"data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+100%+var(--toast-inset)))]\",\n                // Ending animations (expanded)\n                \"data-expanded:data-ending-style:data-[swipe-direction=left]:[transform:translateX(calc(var(--toast-swipe-movement-x)-100%-var(--toast-inset)))_translateY(var(--toast-calc-offset-y))]\",\n                \"data-expanded:data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+100%+var(--toast-inset)))_translateY(var(--toast-calc-offset-y))]\",\n                \"data-expanded:data-ending-style:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-100%-var(--toast-inset)))]\",\n                \"data-expanded:data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+100%+var(--toast-inset)))]\"\n              )}\n            >\n              <Toast.Content className=\"flex items-center justify-between gap-1.5 overflow-hidden text-sm transition-opacity duration-250 data-behind:pointer-events-none data-behind:opacity-0 data-expanded:pointer-events-auto data-expanded:opacity-100\">\n                <div className=\"flex gap-2\">\n                  {Icon && (\n                    <div\n                      className=\"mt-.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&>svg]:h-[1lh] [&>svg]:w-4\"\n                      data-slot=\"toast-icon\"\n                    >\n                      <Icon className=\"in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=loading]:animate-spin in-data-[type=loading]:opacity-72 in-data-[type=success]:text-success in-data-[type=warning]:text-warning\" />\n                    </div>\n                  )}\n\n                  <div className=\"flex flex-col gap-0.5\">\n                    <Toast.Title\n                      className=\"font-medium\"\n                      data-slot=\"toast-title\"\n                    />\n                    <Toast.Description\n                      className=\"text-muted-foreground\"\n                      data-slot=\"toast-description\"\n                    />\n                  </div>\n                </div>\n                {toast.actionProps && (\n                  <Toast.Action\n                    className={buttonVariants({ size: \"xs\" })}\n                    data-slot=\"toast-action\"\n                  >\n                    {toast.actionProps.children}\n                  </Toast.Action>\n                )}\n              </Toast.Content>\n            </Toast.Root>\n          )\n        })}\n      </Toast.Viewport>\n    </Toast.Portal>\n  )\n}\n\nexport { ToastProvider, type ToastPosition, type ToastVariant, toastManager }\n"
         }
       ]
     },
@@ -754,25 +733,12 @@
       "files": [
         {
           "path": "registry/default/ui/toggle.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toggle as TogglePrimitive } from \"@base-ui-components/react/toggle\"\nimport { ToggleGroup as ToggleGroupPrimitive } from \"@base-ui-components/react/toggle-group\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Separator } from \"@/registry/default/ui/separator\"\n\nconst toggleVariants = cva(\n  \"relative inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-lg border text-sm font-medium whitespace-nowrap transition-shadow outline-none select-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-64 data-pressed:bg-accent data-pressed:text-accent-foreground data-pressed:transition-none dark:hover:bg-accent dark:data-pressed:bg-input/80 pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"border-transparent\",\n        outline:\n          \"border-border bg-clip-padding shadow-xs not-disabled:not-active:not-data-pressed:before:shadow-[0_1px_--theme(--color-black/4%)] dark:bg-input/32 dark:not-disabled:not-data-pressed:before:shadow-[0_-1px_--theme(--color-white/4%)] dark:not-disabled:not-active:not-data-pressed:before:shadow-[0_-1px_--theme(--color-white/8%)] dark:hover:bg-input/64 [&:is(:disabled,:active,[data-pressed])]:shadow-none\",\n      },\n      size: {\n        default: \"h-8 min-w-8 px-[calc(--spacing(2)-1px)]\",\n        sm: \"h-7 min-w-7 px-[calc(--spacing(1.5)-1px)]\",\n        lg: \"h-9 min-w-9 px-[calc(--spacing(2.5)-1px)]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nconst ToggleGroupContext =\n  React.createContext<VariantProps<typeof toggleVariants> | null>(null)\n\nfunction Toggle({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {\n  const context = React.useContext(ToggleGroupContext)\n\n  const resolvedVariant = context?.variant ?? variant\n  const resolvedSize = context?.size ?? size\n\n  return (\n    <TogglePrimitive\n      data-slot=\"toggle\"\n      data-variant={resolvedVariant}\n      data-size={resolvedSize}\n      className={cn(\n        toggleVariants({ variant: resolvedVariant, size: resolvedSize }),\n        context &&\n          resolvedVariant === \"outline\" &&\n          \"border-x-0 not-first:rounded-s-none not-last:rounded-e-none before:[clip-path:inset(-1rem_var(--clip-end)_-1rem_var(--clip-start))] not-first:before:-start-0.5 not-first:before:rounded-s-none not-first:before:[--clip-start:2px] not-last:before:-end-0.5 not-last:before:rounded-e-none not-last:before:[--clip-end:2px] first:border-s last:border-e focus-visible:z-10 not-last:has-[+[data-slot=separator]]:before:[--clip-end:1.5px] [[data-slot=separator]+&]:before:[--clip-start:1.5px]\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </TogglePrimitive>\n  )\n}\n\nfunction ToggleGroup({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  children,\n  ...props\n}: ToggleGroupPrimitive.Props & VariantProps<typeof toggleVariants>) {\n  return (\n    <ToggleGroupPrimitive\n      data-slot=\"toggle-group\"\n      data-variant={variant}\n      data-size={size}\n      className={cn(\n        \"flex w-fit *:pointer-coarse:after:min-w-auto\",\n        variant === \"default\"\n          ? \"gap-0.5\"\n          : \"[--clip-end:-1rem] [--clip-start:-1rem]\",\n        className\n      )}\n      {...props}\n    >\n      <ToggleGroupContext.Provider value={{ variant, size }}>\n        {children}\n      </ToggleGroupContext.Provider>\n    </ToggleGroupPrimitive>\n  )\n}\n\nfunction ToggleGroupSeparator({ className, ...props }: { className?: string }) {\n  return <Separator orientation=\"vertical\" className={className} {...props} />\n}\n\nexport {\n  Toggle,\n  ToggleGroup,\n  Toggle as ToggleGroupItem,\n  ToggleGroupSeparator,\n  toggleVariants,\n}\n"
         }
-      ]
-    },
-    {
-      "name": "toggle-group",
-      "type": "registry:ui",
-      "dependencies": [
-        "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "@loveui/separator",
-        "@loveui/toggle"
-      ],
-      "files": [
-        {
-          "path": "registry/default/ui/toggle-group.tsx",
-          "type": "registry:ui"
-        }
+        "@loveui/separator"
       ]
     },
     {
@@ -1105,13 +1071,14 @@
       "description": "Alert dialog",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/alert-dialog",
+        "@loveui/alert",
         "@loveui/button"
       ],
       "files": [
         {
           "path": "registry/default/examples/alert-dialog-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import {\n  AlertDialog,\n  AlertDialogClose,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogPopup,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/registry/default/ui/alert\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function AlertDialogDemo() {\n  return (\n    <AlertDialog>\n      <AlertDialogTrigger render={<Button variant=\"destructive-outline\" />}>\n        Delete Account\n      </AlertDialogTrigger>\n      <AlertDialogPopup>\n        <AlertDialogHeader>\n          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>\n          <AlertDialogDescription>\n            This action cannot be undone. This will permanently delete\n            your account and remove your data from our servers.\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter>\n          <AlertDialogClose render={<Button variant=\"ghost\" />}>\n            Cancel\n          </AlertDialogClose>\n          <AlertDialogClose render={<Button variant=\"destructive\" />}>\n            Delete Account\n          </AlertDialogClose>\n        </AlertDialogFooter>\n      </AlertDialogPopup>\n    </AlertDialog>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -2153,14 +2120,14 @@
       "description": "Checkbox group",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/checkbox-group",
         "@loveui/checkbox",
         "@loveui/label"
       ],
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function CheckboxGroupDemo() {\n  return (\n    <CheckboxGroup\n      aria-label=\"Select frameworks\"\n      defaultValue={[\"next\"]}\n    >\n      <Label>\n        <Checkbox value=\"next\" />\n        Next.js\n      </Label>\n      <Label>\n        <Checkbox value=\"vite\" />\n        Vite\n      </Label>\n      <Label>\n        <Checkbox value=\"astro\" />\n        Astro\n      </Label>\n    </CheckboxGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -2173,14 +2140,14 @@
       "description": "Checkbox group with disabled item",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/checkbox-group",
         "@loveui/checkbox",
         "@loveui/label"
       ],
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function CheckboxGroupDemo() {\n  return (\n    <CheckboxGroup\n      aria-label=\"Select frameworks\"\n      defaultValue={[\"next\"]}\n    >\n      <Label>\n        <Checkbox value=\"next\" />\n        Next.js\n      </Label>\n      <Label>\n        <Checkbox value=\"vite\" disabled />\n        Vite\n      </Label>\n      <Label>\n        <Checkbox value=\"astro\" />\n        Astro\n      </Label>\n    </CheckboxGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -2194,7 +2161,6 @@
       "description": "Checkbox group in a form",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/checkbox-group",
         "@loveui/checkbox",
         "@loveui/button",
         "@loveui/field",
@@ -2204,7 +2170,8 @@
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-form.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox\"\nimport { Field, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Fieldset, FieldsetLegend } from \"@/registry/default/ui/fieldset\"\nimport { Form } from \"@/registry/default/ui/form\"\n\nexport default function CheckboxGroupFormDemo() {\n  const [loading, setLoading] = React.useState(false)\n  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    const formData = new FormData(e.currentTarget)\n    setLoading(true)\n    await new Promise((r) => setTimeout(r, 800))\n    setLoading(false)\n    const frameworks = formData.getAll(\"frameworks\") as string[]\n    alert(`Selected: ${frameworks.join(\", \") || \"none\"}`)\n  }\n\n  return (\n    <Form onSubmit={onSubmit} className=\"max-w-[160px]\">\n      <Field\n        name=\"frameworks\"\n        className=\"gap-4\"\n        render={(props) => <Fieldset {...props} />}\n      >\n        <FieldsetLegend className=\"text-sm font-medium\">\n          Frameworks\n        </FieldsetLegend>\n        <CheckboxGroup defaultValue={[\"next\"]} disabled={loading}>\n          <FieldLabel>\n            <Checkbox value=\"next\" />\n            Next.js\n          </FieldLabel>\n          <FieldLabel>\n            <Checkbox value=\"vite\" />\n            Vite\n          </FieldLabel>\n          <FieldLabel>\n            <Checkbox value=\"astro\" />\n            Astro\n          </FieldLabel>\n        </CheckboxGroup>\n      </Field>\n      <Button type=\"submit\" disabled={loading}>\n        Submit\n      </Button>\n    </Form>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -2221,14 +2188,14 @@
       "description": "Checkbox group parent with nested children controls",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/checkbox-group",
         "@loveui/checkbox",
         "@loveui/label"
       ],
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-nested-parent.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nconst mainPermissions = [\n  { id: \"view-dashboard\", name: \"View Dashboard\" },\n  { id: \"manage-users\", name: \"Manage Users\" },\n  { id: \"access-reports\", name: \"Access Reports\" },\n]\n\nconst userManagementPermissions = [\n  { id: \"create-user\", name: \"Create User\" },\n  { id: \"edit-user\", name: \"Edit User\" },\n  { id: \"delete-user\", name: \"Delete User\" },\n  { id: \"assign-roles\", name: \"Assign Roles\" },\n]\n\nexport default function CheckboxGroupNestedParentDemo() {\n  const [mainValue, setMainValue] = React.useState<string[]>([])\n  const [managementValue, setManagementValue] = React.useState<string[]>([])\n\n  const managementIsPartial =\n    managementValue.length > 0 &&\n    managementValue.length !== userManagementPermissions.length\n\n  return (\n    <CheckboxGroup\n      aria-labelledby=\"user-permissions-caption\"\n      value={mainValue}\n      onValueChange={(value) => {\n        if (value.includes(\"manage-users\")) {\n          setManagementValue(userManagementPermissions.map((p) => p.id))\n        } else if (\n          managementValue.length === userManagementPermissions.length\n        ) {\n          setManagementValue([])\n        }\n        setMainValue(value)\n      }}\n      allValues={mainPermissions.map((p) => p.id)}\n    >\n      <Label id=\"user-permissions-caption\">\n        <Checkbox parent indeterminate={managementIsPartial} />\n        User Permissions\n      </Label>\n\n      {mainPermissions\n        .filter((p) => p.id !== \"manage-users\")\n        .map((p) => (\n          <Label key={p.id} className=\"ms-4\">\n            <Checkbox value={p.id} />\n            {p.name}\n          </Label>\n        ))}\n\n      <CheckboxGroup\n        aria-labelledby=\"manage-users-caption\"\n        value={managementValue}\n        onValueChange={(value) => {\n          if (value.length === userManagementPermissions.length) {\n            setMainValue((prev) =>\n              Array.from(new Set([...prev, \"manage-users\"]))\n            )\n          } else {\n            setMainValue((prev) => prev.filter((v) => v !== \"manage-users\"))\n          }\n          setManagementValue(value)\n        }}\n        allValues={userManagementPermissions.map((p) => p.id)}\n        className=\"ms-4\"\n      >\n        <Label id=\"manage-users-caption\">\n          <Checkbox parent />\n          Manage Users\n        </Label>\n\n        {userManagementPermissions.map((p) => (\n          <Label key={p.id} className=\"ms-4\">\n            <Checkbox value={p.id} />\n            {p.name}\n          </Label>\n        ))}\n      </CheckboxGroup>\n    </CheckboxGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -2242,14 +2209,14 @@
       "description": "Checkbox group select/deselect all checkboxes",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/checkbox-group",
         "@loveui/checkbox",
         "@loveui/label"
       ],
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-parent.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nconst frameworks = [\n  { id: \"next\", name: \"Next.js\" },\n  { id: \"vite\", name: \"Vite\" },\n  { id: \"astro\", name: \"Astro\" },\n]\n\nexport default function CheckboxGroupParentDemo() {\n  const [value, setValue] = React.useState<string[]>([])\n\n  return (\n    <CheckboxGroup\n      aria-labelledby=\"frameworks-caption\"\n      value={value}\n      onValueChange={setValue}\n      allValues={frameworks.map((framework) => framework.id)}\n    >\n      <Label id=\"frameworks-caption\">\n        <Checkbox name=\"frameworks\" parent />\n        Frameworks\n      </Label>\n\n      {frameworks.map((framework) => (\n        <Label key={framework.id} className=\"ms-4\">\n          <Checkbox value={framework.id} />\n          {framework.name}\n        </Label>\n      ))}\n    </CheckboxGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -2921,179 +2888,11 @@
       ]
     },
     {
-      "name": "code-block",
-      "description": "Multi-file code block with language tabs and copy button.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block"
-      ]
-    },
-    {
-      "name": "code-block-headless",
-      "description": "Headless code block rendering custom header and controls.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-headless.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block",
-        "headless"
-      ]
-    },
-    {
-      "name": "code-block-highlight-line",
-      "description": "Code block example highlighting specific lines.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-highlight-line.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block",
-        "highlight"
-      ]
-    },
-    {
-      "name": "code-block-highlight-word",
-      "description": "Code block example highlighting individual tokens.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-highlight-word.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block",
-        "highlight"
-      ]
-    },
-    {
-      "name": "code-block-numberless",
-      "description": "Code block without line numbers for compact display.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-numberless.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block"
-      ]
-    },
-    {
-      "name": "code-block-no-highlighting",
-      "description": "Code block without syntax highlighting.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-no-highlighting.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block"
-      ]
-    },
-    {
-      "name": "code-block-diff",
-      "description": "Code block showing diff highlighting between revisions.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-diff.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block",
-        "diff"
-      ]
-    },
-    {
-      "name": "code-block-focus",
-      "description": "Code block focusing attention on a highlighted snippet.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-focus.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block"
-      ]
-    },
-    {
-      "name": "code-block-theme",
-      "description": "Code block demonstrating theme switching.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/code-block"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/code-block-theme.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "code",
-        "code-block",
-        "theme"
-      ]
-    },
-    {
       "name": "sandbox",
       "description": "Sandbox with file explorer and code preview.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/sandbox",
-        "@loveui/code-block"
+        "@loveui/sandbox"
       ],
       "files": [
         {
@@ -3111,8 +2910,7 @@
       "description": "Sandbox without the file explorer for a compact layout.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/sandbox",
-        "@loveui/code-block"
+        "@loveui/sandbox"
       ],
       "files": [
         {
@@ -3130,8 +2928,7 @@
       "description": "Rich code editor experience using the editor package.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/editor",
-        "@loveui/code-block"
+        "@loveui/editor"
       ],
       "files": [
         {
@@ -3149,8 +2946,7 @@
       "description": "Comparison slider overlaying before/after code.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/comparison",
-        "@loveui/code-block"
+        "@loveui/comparison"
       ],
       "files": [
         {
@@ -3168,8 +2964,7 @@
       "description": "Comparison slider activated on hover.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/comparison",
-        "@loveui/code-block"
+        "@loveui/comparison"
       ],
       "files": [
         {
@@ -3188,8 +2983,7 @@
       "description": "Comparison slider demonstrating event handlers.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/comparison",
-        "@loveui/code-block"
+        "@loveui/comparison"
       ],
       "files": [
         {
@@ -3209,7 +3003,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3229,7 +3022,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3250,7 +3042,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3270,7 +3061,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3291,7 +3081,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3312,7 +3101,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3333,7 +3121,6 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/contribution-graph",
-        "@loveui/code-block",
         "@faker-js/faker"
       ],
       "files": [
@@ -3353,8 +3140,7 @@
       "description": "Code snippet display with syntax highlighting.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/snippet",
-        "@loveui/code-block"
+        "@loveui/snippet"
       ],
       "files": [
         {
@@ -3372,8 +3158,7 @@
       "description": "Snippet showing install commands for multiple package managers.",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/snippet",
-        "@loveui/code-block"
+        "@loveui/snippet"
       ],
       "files": [
         {
@@ -3670,7 +3455,7 @@
       "description": "Prompt before closing with unsaved changes",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/alert-dialog",
+        "@loveui/alert",
         "@loveui/dialog",
         "@loveui/button",
         "@loveui/form",
@@ -3680,7 +3465,8 @@
       "files": [
         {
           "path": "registry/default/examples/dialog-close-confirmation.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport {\n  AlertDialog,\n  AlertDialogClose,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogPopup,\n  AlertDialogTitle,\n} from \"@/registry/default/ui/alert\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Dialog,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPopup,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/default/ui/dialog\"\nimport { Field } from \"@/registry/default/ui/field\"\nimport { Form } from \"@/registry/default/ui/form\"\nimport { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function DialogCloseConfirmationDemo() {\n  const [dialogOpen, setDialogOpen] = React.useState(false)\n  const [confirmOpen, setConfirmOpen] = React.useState(false)\n  const [value, setValue] = React.useState(\"\")\n\n  return (\n    <Dialog\n      open={dialogOpen}\n      onOpenChange={(o) => {\n        if (!o && value) {\n          setConfirmOpen(true)\n        } else {\n          setDialogOpen(o)\n        }\n      }}\n    >\n      <DialogTrigger render={<Button variant=\"outline\" />}>\n        Compose\n      </DialogTrigger>\n      <DialogPopup showCloseButton={false}>\n        <DialogHeader>\n          <DialogTitle>New message</DialogTitle>\n          <DialogDescription>\n            Type something and try closing.\n          </DialogDescription>\n        </DialogHeader>\n        <Form\n          onSubmit={(event) => {\n            event.preventDefault()\n            // Close the dialog when submitting\n            setDialogOpen(false)\n          }}\n        >\n          <Field>\n            <Textarea\n              value={value}\n              onChange={(e) => setValue(e.target.value)}\n            />\n          </Field>\n          <DialogFooter>\n            <DialogClose render={<Button variant=\"ghost\" />}>\n              Cancel\n            </DialogClose>\n            <Button\n              onClick={() => {\n                setValue(\"\")\n                setDialogOpen(false)\n              }}\n            >\n              Send\n            </Button>\n          </DialogFooter>\n        </Form>\n      </DialogPopup>\n\n      {/* Confirmation dialog */}\n      <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>\n        <AlertDialogPopup>\n          <AlertDialogHeader>\n            <AlertDialogTitle>Discard changes?</AlertDialogTitle>\n            <AlertDialogDescription>\n              Your message will be lost.\n            </AlertDialogDescription>\n          </AlertDialogHeader>\n          <AlertDialogFooter>\n            <AlertDialogClose render={<Button variant=\"ghost\" />}>\n              Go back\n            </AlertDialogClose>\n            <Button\n              onClick={() => {\n                setConfirmOpen(false)\n                setValue(\"\")\n                setDialogOpen(false)\n              }}\n            >\n              Discard\n            </Button>\n          </AlertDialogFooter>\n        </AlertDialogPopup>\n      </AlertDialog>\n    </Dialog>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -3822,14 +3608,14 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/field",
-        "@loveui/checkbox-group",
         "@loveui/checkbox",
         "@loveui/fieldset"
       ],
       "files": [
         {
           "path": "registry/default/examples/field-checkbox-group.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox\"\nimport {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\"\nimport { Fieldset, FieldsetLegend } from \"@/registry/default/ui/fieldset\"\n\nexport default function FieldCheckboxGroupDemo() {\n  return (\n    <Field\n      name=\"frameworks\"\n      className=\"gap-4\"\n      render={(props) => <Fieldset {...props} />}\n    >\n      <FieldsetLegend className=\"text-sm font-medium\">\n        Frameworks\n      </FieldsetLegend>\n      <CheckboxGroup defaultValue={[\"react\"]}>\n        <FieldLabel>\n          <Checkbox value=\"react\" /> React\n        </FieldLabel>\n        <FieldLabel>\n          <Checkbox value=\"vue\" /> Vue\n        </FieldLabel>\n        <FieldLabel>\n          <Checkbox value=\"svelte\" /> Svelte\n        </FieldLabel>\n      </CheckboxGroup>\n      <FieldDescription>\n        Select one or more frameworks.\n      </FieldDescription>\n    </Field>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -5887,14 +5673,15 @@
       "description": "Basic gooey toast",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/gooey-toast",
+        "@loveui/toast",
         "@loveui/select",
         "@loveui/button"
       ],
       "files": [
         {
           "path": "registry/default/examples/gooey-toast-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\"\nimport { toastManager, type ToastPosition } from \"@/registry/default/ui/toast\"\n\nexport default function GooeyToastDemo() {\n  const [position, setPosition] = useState<ToastPosition>(\"top-right\")\n\n  const positions: ToastPosition[] = [\n    \"top-left\",\n    \"top-center\",\n    \"top-right\",\n    \"bottom-left\",\n    \"bottom-center\",\n    \"bottom-right\",\n  ]\n\n  const showToast = (\n    type: \"default\" | \"success\" | \"error\" | \"warning\" | \"info\"\n  ) => {\n    const toasts = {\n      default: {\n        title: \"Event has been created\",\n        description: \"Monday, January 3rd at 6:00pm\",\n      },\n      success: {\n        title: \"Success!\",\n        description: \"Your changes have been saved successfully.\",\n      },\n      error: {\n        title: \"Error occurred\",\n        description: \"Failed to save your changes. Please try again.\",\n      },\n      warning: {\n        title: \"Warning\",\n        description: \"Your session will expire in 5 minutes.\",\n      },\n      info: {\n        title: \"New feature available\",\n        description: \"Check out the new gooey toast component!\",\n      },\n    }\n\n    const config = toasts[type]\n\n    if (type === \"default\") {\n      toastManager.add({ ...config, variant: \"gooey\", position })\n    } else {\n      toastManager.add({ ...config, variant: \"gooey\", position, type })\n    }\n  }\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <div className=\"flex items-center gap-2\">\n        <label htmlFor=\"position\" className=\"text-sm font-medium\">\n          Position:\n        </label>\n        <Select\n          value={position}\n          onValueChange={(v) => setPosition(v as ToastPosition)}\n        >\n          <SelectTrigger id=\"position\" className=\"w-[180px]\">\n            <SelectValue />\n          </SelectTrigger>\n          <SelectContent>\n            {positions.map((pos) => (\n              <SelectItem key={pos} value={pos}>\n                {pos}\n              </SelectItem>\n            ))}\n          </SelectContent>\n        </Select>\n      </div>\n\n      <div className=\"flex flex-wrap gap-2\">\n        <Button variant=\"outline\" onClick={() => showToast(\"default\")}>\n          Default\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"success\")}>\n          Success\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"error\")}>\n          Error\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"warning\")}>\n          Warning\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"info\")}>\n          Info\n        </Button>\n      </div>\n    </div>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -5908,12 +5695,14 @@
       "description": "Gooey toast with different states",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/gooey-toast"
+        "@loveui/toast",
+        "@loveui/button"
       ],
       "files": [
         {
           "path": "registry/default/examples/gooey-toast-states.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { toastManager } from \"@/registry/default/ui/toast\"\n\nexport default function GooeyToastStates() {\n  return (\n    <div className=\"flex flex-wrap gap-2\">\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          toastManager.add({\n            variant: \"gooey\",\n            type: \"success\",\n            title: \"Success!\",\n            description: \"Your changes have been saved.\",\n          })\n        }}\n      >\n        Success\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          toastManager.add({\n            variant: \"gooey\",\n            type: \"error\",\n            title: \"Error\",\n            description: \"Something went wrong. Please try again.\",\n          })\n        }}\n      >\n        Error\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          toastManager.add({\n            variant: \"gooey\",\n            type: \"warning\",\n            title: \"Warning\",\n            description: \"This action cannot be undone.\",\n          })\n        }}\n      >\n        Warning\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          toastManager.add({\n            variant: \"gooey\",\n            type: \"info\",\n            title: \"Did you know?\",\n            description: \"You can customize toast animations.\",\n          })\n        }}\n      >\n        Info\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          toastManager.add({\n            variant: \"gooey\",\n            type: \"action\",\n            title: \"Action Required\",\n            description: \"Please review your settings.\",\n          })\n        }}\n      >\n        Action\n      </Button>\n    </div>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -5926,12 +5715,14 @@
       "description": "Drive gooey toasts from promise states",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/gooey-toast"
+        "@loveui/toast",
+        "@loveui/button"
       ],
       "files": [
         {
           "path": "registry/default/examples/gooey-toast-promise.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { toastManager } from \"@/registry/default/ui/toast\"\n\nexport default function GooeyToastPromise() {\n  const handlePromise = () => {\n    const promise = new Promise<{ name: string }>((resolve) => {\n      setTimeout(() => resolve({ name: \"User\" }), 2000)\n    })\n\n    toastManager.promise(promise, {\n      variant: \"gooey\",\n      loading: { title: \"Loading...\" },\n      success: (data) => ({\n        title: \"Success!\",\n        description: `Welcome back, ${data.name}!`,\n      }),\n      error: {\n        title: \"Error\",\n        description: \"Failed to load data.\",\n      },\n    })\n  }\n\n  return (\n    <Button variant=\"outline\" onClick={handlePromise}>\n      Load Data\n    </Button>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -5944,12 +5735,14 @@
       "description": "Gooey toast with an action button",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/gooey-toast"
+        "@loveui/toast",
+        "@loveui/button"
       ],
       "files": [
         {
           "path": "registry/default/examples/gooey-toast-with-button.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { toastManager } from \"@/registry/default/ui/toast\"\n\nexport default function GooeyToastWithButton() {\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        const id = toastManager.add({\n          variant: \"gooey\",\n          type: \"action\",\n          title: \"File deleted\",\n          description: \"Your file has been moved to trash.\",\n          button: {\n            title: \"Undo\",\n            onClick: () => {\n              toastManager.close(id)\n              toastManager.add({\n                variant: \"gooey\",\n                type: \"success\",\n                title: \"Restored\",\n                description: \"Your file has been restored.\",\n              })\n            },\n          },\n        })\n      }}\n    >\n      Delete File\n    </Button>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -5962,12 +5755,14 @@
       "description": "Control toast position",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/gooey-toast"
+        "@loveui/toast",
+        "@loveui/button"
       ],
       "files": [
         {
           "path": "registry/default/examples/gooey-toast-position.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { toastManager, type ToastPosition } from \"@/registry/default/ui/toast\"\n\nexport default function GooeyToastPosition() {\n  const positions: ToastPosition[] = [\n    \"top-left\",\n    \"top-center\",\n    \"top-right\",\n    \"bottom-left\",\n    \"bottom-center\",\n    \"bottom-right\",\n  ]\n\n  return (\n    <div className=\"flex flex-wrap gap-2\">\n      {positions.map((position) => (\n        <Button\n          key={position}\n          variant=\"outline\"\n          onClick={() => {\n            toastManager.add({\n              variant: \"gooey\",\n              title: position,\n              description: `Toast shown at ${position}`,\n              position,\n            })\n          }}\n        >\n          {position}\n        </Button>\n      ))}\n    </div>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6015,12 +5810,13 @@
       "description": "Toggle group",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupDemo() {\n  return (\n    <ToggleGroup defaultValue={[\"bold\"]}>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6033,12 +5829,13 @@
       "description": "Toggle group with small toggles",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-sm.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupSm() {\n  return (\n    <ToggleGroup size=\"sm\" defaultValue={[\"bold\"]}>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6051,12 +5848,13 @@
       "description": "Toggle group with large toggles",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-lg.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupLg() {\n  return (\n    <ToggleGroup size=\"lg\" defaultValue={[\"bold\"]}>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6069,12 +5867,13 @@
       "description": "Toggle group with outline toggles",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-outline.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupOutline() {\n  return (\n    <ToggleGroup variant=\"outline\" defaultValue={[\"bold\"]}>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6087,12 +5886,13 @@
       "description": "Toggle group with outline toggles and separator",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-outline-with-separator.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport {\n  Toggle,\n  ToggleGroup,\n  ToggleGroupSeparator,\n} from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupOutlineWithSeparator() {\n  return (\n    <ToggleGroup variant=\"outline\" defaultValue={[\"bold\"]}>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <ToggleGroupSeparator />\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <ToggleGroupSeparator />\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6105,12 +5905,13 @@
       "description": "Disabled toggle group",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupDisabled() {\n  return (\n    <ToggleGroup defaultValue={[\"bold\"]} disabled>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6124,12 +5925,13 @@
       "description": "Toggle group with multiple selection",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-multiple.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupMultiple() {\n  return (\n    <ToggleGroup defaultValue={[\"bold\"]} multiple>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6142,12 +5944,13 @@
       "description": "Toggle group with disabled item",
       "type": "registry:example",
       "registryDependencies": [
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-with-disabled-item.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleGroupWithDisabledItem() {\n  return (\n    <ToggleGroup defaultValue={[\"bold\"]}>\n      <Toggle value=\"bold\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle value=\"italic\" aria-label=\"Toggle italic\" disabled>\n        <ItalicIcon />\n      </Toggle>\n      <Toggle value=\"underline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </ToggleGroup>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6248,14 +6051,15 @@
       "registryDependencies": [
         "@loveui/button",
         "@loveui/select",
-        "@loveui/toggle-group",
+        "@loveui/toggle",
         "@loveui/toolbar",
         "@loveui/tooltip"
       ],
       "files": [
         {
           "path": "registry/default/examples/toolbar-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import {\n  AlignCenterIcon,\n  AlignLeftIcon,\n  AlignRightIcon,\n  DollarSignIcon,\n  PercentIcon,\n} from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Select,\n  SelectItem,\n  SelectPopup,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\"\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\nimport {\n  Toolbar,\n  ToolbarButton,\n  ToolbarGroup,\n  ToolbarSeparator,\n} from \"@/registry/default/ui/toolbar\"\nimport {\n  Tooltip,\n  TooltipPopup,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/registry/default/ui/tooltip\"\n\nconst items = [\n  { label: \"Helvetica\", value: \"helvetica\" },\n  { label: \"Arial\", value: \"arial\" },\n  { label: \"Times New Roman\", value: \"times-new-roman\" },\n]\n\nexport default function ToolbarDemo() {\n  return (\n    <TooltipProvider>\n      <Toolbar>\n        <ToggleGroup className=\"border-none p-0\" defaultValue={[\"left\"]}>\n          <Tooltip>\n            <TooltipTrigger\n              render={\n                <ToolbarButton\n                  render={<Toggle value=\"left\" />}\n                  aria-label=\"Align left\"\n                >\n                  <AlignLeftIcon />\n                </ToolbarButton>\n              }\n            />\n            <TooltipPopup sideOffset={8}>Align left</TooltipPopup>\n          </Tooltip>\n          <Tooltip>\n            <TooltipTrigger\n              render={\n                <ToolbarButton\n                  render={\n                    <Toggle value=\"center\" aria-label=\"Toggle center\" />\n                  }\n                  aria-label=\"Align center\"\n                >\n                  <AlignCenterIcon />\n                </ToolbarButton>\n              }\n            />\n            <TooltipPopup sideOffset={8}>Align center</TooltipPopup>\n          </Tooltip>\n          <Tooltip>\n            <TooltipTrigger\n              render={\n                <ToolbarButton\n                  render={\n                    <Toggle value=\"right\" aria-label=\"Toggle right\" />\n                  }\n                  aria-label=\"Align right\"\n                >\n                  <AlignRightIcon />\n                </ToolbarButton>\n              }\n            />\n            <TooltipPopup sideOffset={8}>Align right</TooltipPopup>\n          </Tooltip>\n        </ToggleGroup>\n        <ToolbarSeparator />\n        <ToolbarGroup>\n          <Tooltip>\n            <TooltipTrigger\n              render={\n                <ToolbarButton\n                  render={<Button variant=\"ghost\" size=\"icon\" />}\n                  aria-label=\"Format as currency\"\n                >\n                  <DollarSignIcon />\n                </ToolbarButton>\n              }\n            />\n            <TooltipPopup sideOffset={8}>\n              Format as currency\n            </TooltipPopup>\n          </Tooltip>\n          <Tooltip>\n            <TooltipTrigger\n              render={\n                <ToolbarButton\n                  render={<Button variant=\"ghost\" size=\"icon\" />}\n                  aria-label=\"Format as percent\"\n                >\n                  <PercentIcon />\n                </ToolbarButton>\n              }\n            />\n            <TooltipPopup sideOffset={8}>\n              Format as percent\n            </TooltipPopup>\n          </Tooltip>\n        </ToolbarGroup>\n        <ToolbarSeparator />\n        <ToolbarGroup>\n          <Select items={items} defaultValue=\"helvetica\">\n            <Tooltip>\n              <TooltipTrigger\n                render={\n                  <ToolbarButton\n                    nativeButton={false}\n                    render={\n                      <SelectTrigger>\n                        <SelectValue />\n                      </SelectTrigger>\n                    }\n                  />\n                }\n              />\n              <TooltipPopup sideOffset={8}>\n                Select a different font\n              </TooltipPopup>\n            </Tooltip>\n            <SelectPopup>\n              {items.map(({ label, value }) => (\n                <SelectItem key={value} value={value}>\n                  {label}\n                </SelectItem>\n              ))}\n            </SelectPopup>\n          </Select>\n        </ToolbarGroup>\n        <ToolbarSeparator />\n        <ToolbarGroup>\n          <ToolbarButton render={<Button />}>Save</ToolbarButton>\n        </ToolbarGroup>\n      </Toolbar>\n    </TooltipProvider>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -6291,12 +6095,13 @@
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/tooltip",
-        "@loveui/toggle-group"
+        "@loveui/toggle"
       ],
       "files": [
         {
           "path": "registry/default/examples/tooltip-grouped.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\nimport {\n  Tooltip,\n  TooltipPopup,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/registry/default/ui/tooltip\"\n\nexport default function TooltipDemo() {\n  return (\n    <TooltipProvider>\n      <ToggleGroup defaultValue={[\"bold\"]} multiple>\n        <Tooltip>\n          <TooltipTrigger\n            render={<Toggle value=\"bold\" aria-label=\"Toggle bold\" />}\n          >\n            <BoldIcon />\n          </TooltipTrigger>\n          <TooltipPopup>Bold</TooltipPopup>\n        </Tooltip>\n        <Tooltip>\n          <TooltipTrigger\n            render={\n              <Toggle value=\"italic\" aria-label=\"Toggle italic\" />\n            }\n          >\n            <ItalicIcon />\n          </TooltipTrigger>\n          <TooltipPopup>Italic</TooltipPopup>\n        </Tooltip>\n        <Tooltip>\n          <TooltipTrigger\n            render={\n              <Toggle value=\"underline\" aria-label=\"Toggle underline\" />\n            }\n          >\n            <UnderlineIcon />\n          </TooltipTrigger>\n          <TooltipPopup>Underline</TooltipPopup>\n        </Tooltip>\n      </ToggleGroup>\n    </TooltipProvider>\n  )\n}\n"
         }
       ],
       "categories": [
@@ -7811,7 +7616,6 @@
       "name": "codebase",
       "description": "A codebase explorer block.",
       "type": "registry:example",
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/examples/codebase.tsx",
@@ -7828,7 +7632,6 @@
       "name": "collaborative-canvas",
       "description": "A collaborative canvas block for real-time collaboration.",
       "type": "registry:example",
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/examples/collaborative-canvas.tsx",
@@ -10980,7 +10783,7 @@
       "name": "comp-107",
       "type": "registry:component",
       "registryDependencies": [
-        "https://loveui.dev/building-blocks/r/toggle-group.json"
+        "https://loveui.dev/building-blocks/r/toggle.json"
       ],
       "files": [
         {
@@ -11029,7 +10832,7 @@
       "name": "comp-109",
       "type": "registry:component",
       "registryDependencies": [
-        "https://loveui.dev/building-blocks/r/toggle-group.json"
+        "https://loveui.dev/building-blocks/r/toggle.json"
       ],
       "files": [
         {
@@ -11053,7 +10856,7 @@
       "name": "comp-110",
       "type": "registry:component",
       "registryDependencies": [
-        "https://loveui.dev/building-blocks/r/toggle-group.json"
+        "https://loveui.dev/building-blocks/r/toggle.json"
       ],
       "files": [
         {
@@ -13231,7 +13034,7 @@
       "name": "comp-313",
       "type": "registry:component",
       "registryDependencies": [
-        "https://loveui.dev/building-blocks/r/alert-dialog.json",
+        "https://loveui.dev/building-blocks/r/alert.json",
         "https://loveui.dev/building-blocks/r/button.json"
       ],
       "files": [
@@ -13259,7 +13062,7 @@
       "name": "comp-314",
       "type": "registry:component",
       "registryDependencies": [
-        "https://loveui.dev/building-blocks/r/alert-dialog.json",
+        "https://loveui.dev/building-blocks/r/alert.json",
         "https://loveui.dev/building-blocks/r/button.json"
       ],
       "files": [
@@ -13857,8 +13660,7 @@
           "popover",
           "search",
           "radix",
-          "autocomplete",
-          "radix"
+          "autocomplete"
         ],
         "style": 1
       },
@@ -22361,7 +22163,7 @@
         "@tanstack/react-table"
       ],
       "registryDependencies": [
-        "https://loveui.dev/building-blocks/r/alert-dialog.json",
+        "https://loveui.dev/building-blocks/r/alert.json",
         "https://loveui.dev/building-blocks/r/badge.json",
         "https://loveui.dev/building-blocks/r/button.json",
         "https://loveui.dev/building-blocks/r/checkbox.json",

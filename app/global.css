@@ -18,6 +18,12 @@
 .ProseMirror blockquote { border-left: 3px solid currentColor; padding-left: 1em; opacity: 0.7; }
 
 @layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {
     [data-wrapper] {
       @apply min-[1800px]:border-t;

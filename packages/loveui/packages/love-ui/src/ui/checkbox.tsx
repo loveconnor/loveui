@@ -1,6 +1,7 @@
 "use client"
 
 import { Checkbox as CheckboxPrimitive } from "@base-ui-components/react/checkbox"
+import { CheckboxGroup as CheckboxGroupPrimitive } from "@base-ui-components/react/checkbox-group"
 import type { ComponentPropsWithoutRef } from "react"
 
 import { cn } from "@loveui/ui/lib/utils"
@@ -64,4 +65,14 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
   )
 }
 
-export { Checkbox }
+function CheckboxGroup({ className, ...props }: CheckboxGroupPrimitive.Props) {
+  return (
+    <CheckboxGroupPrimitive
+      data-slot="checkbox-group"
+      className={cn("flex flex-col items-start gap-3", className)}
+      {...props}
+    />
+  )
+}
+
+export { Checkbox, CheckboxGroup }

@@ -4,7 +4,6 @@
   "description": "Minimal contribution graph layout.",
   "registryDependencies": [
     "@loveui/contribution-graph",
-    "@loveui/code-block",
     "@faker-js/faker"
   ],
   "files": [

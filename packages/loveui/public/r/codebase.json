@@ -2,7 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "codebase",
   "description": "A codebase explorer block.",
-  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/examples/codebase.tsx",

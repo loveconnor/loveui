@@ -12,6 +12,9 @@
   "files": [
     "dist",
     "packages",
+    "!packages/code-block",
+    "!packages/code-block/**",
+    "!packages/love-ui/src/components/code-block.tsx",
     "public",
     "*.ts",
     "*.tsx",

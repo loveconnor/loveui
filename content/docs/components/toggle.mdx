@@ -1,6 +1,6 @@
 ---
 title: Toggle
-description: A two-state button that can be on or off.
+description: A two-state button that can stand alone or work inside a group.
 
 links:
   doc: https://base-ui.com/react/components/toggle#api-reference
@@ -10,21 +10,29 @@ links:
 
 ## Overview
 
-Use Toggle for a two-state button that can be pressed or not pressed.
+Use Toggle for a button that can be pressed or not pressed.
 
 Toggle is useful for formatting buttons, favorite buttons, compact filters, view options, and controls where the pressed state matters.
 
+Use Toggle Group when several toggles belong to the same control. A group can behave like one shared choice, or it can allow several toggles to be pressed at the same time.
+
 ## Anatomy
 
-A toggle has a button, label or icon, pressed state, variant, size, and disabled state.
+A single toggle has a button, label or icon, pressed state, variant, size, and disabled state.
+
+A toggle group has a wrapper, toggle items, optional separators, shared variant and size values, and a shared pressed state model.
 
 ## Behavior
 
 Use Toggle when the pressed state is visible and meaningful. Use Switch for settings that read as on or off.
 
+Use a single-selection group when the choices are mutually exclusive. Use a multiple-selection group when each toggle can be changed independently but the controls should still look related.
+
 ## Accessibility
 
 Icon-only toggles need accessible names. Make the pressed state visible through more than color when possible.
+
+Each item in a group also needs a clear accessible name. Tooltips can explain icon-only controls, but the toggle should still have an `aria-label`.
 
 ## Installation
 
@@ -67,16 +75,30 @@ npm install @base-ui-components/react
 ## Usage
 
 ```tsx
-import { Toggle } from "@/components/ui/toggle"
+import { Toggle, ToggleGroup } from "@/components/ui/toggle"
 ```
 
 ```tsx
 <Toggle>Toggle</Toggle>
 ```
 
+```tsx
+<ToggleGroup defaultValue={["bold"]}>
+  <Toggle value="bold" aria-label="Toggle bold">
+    Bold
+  </Toggle>
+  <Toggle value="italic" aria-label="Toggle italic">
+    Italic
+  </Toggle>
+  <Toggle value="underline" aria-label="Toggle underline">
+    Underline
+  </Toggle>
+</ToggleGroup>
+```
+
 ## Examples
 
-The examples show outline style, icon content, sizes, disabled state, and icon grouping.
+The examples show standalone toggles first, then grouped toggles with shared styles and state.
 
 ### Outline
 
@@ -119,3 +141,45 @@ The examples show outline style, icon content, sizes, disabled state, and icon g
   name="toggle-icon-group"
   className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
 />
+
+## Toggle Group
+
+Toggle Group is included in the same component file. Use it when related toggles should sit together and share the same size, variant, and state model.
+
+The group passes its `variant` and `size` values to the toggles inside it, so the grouped control stays visually consistent.
+
+### Basic Group
+
+<ComponentPreview name="toggle-group-demo" />
+
+### Small Toggles
+
+<ComponentPreview name="toggle-group-sm" />
+
+### Large Toggles
+
+<ComponentPreview name="toggle-group-lg" />
+
+### Outline Toggles
+
+<ComponentPreview name="toggle-group-outline" />
+
+### Outline Toggles With Separators
+
+<ComponentPreview name="toggle-group-outline-with-separator" />
+
+### Disabled Group
+
+<ComponentPreview name="toggle-group-disabled" />
+
+### Disabled Item
+
+<ComponentPreview name="toggle-group-with-disabled-item" />
+
+### Multiple Selection
+
+<ComponentPreview name="toggle-group-multiple" />
+
+### With Tooltips
+
+<ComponentPreview name="tooltip-grouped" />

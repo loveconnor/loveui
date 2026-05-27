@@ -4,7 +4,6 @@
   "registryDependencies": [
     "@loveui/accordion",
     "@loveui/alert",
-    "@loveui/alert-dialog",
     "@loveui/autocomplete",
     "@loveui/avatar",
     "@loveui/badge",
@@ -13,7 +12,6 @@
     "@loveui/card",
     "@loveui/chart",
     "@loveui/checkbox",
-    "@loveui/checkbox-group",
     "@loveui/collapsible",
     "@loveui/combobox",
     "@loveui/context-menu",
@@ -49,7 +47,6 @@
     "@loveui/textarea",
     "@loveui/toast",
     "@loveui/toggle",
-    "@loveui/toggle-group",
     "@loveui/toolbar",
     "@loveui/tooltip"
   ],

@@ -1,11 +1,10 @@
 "use client"
 
-import { gooey, type GooeyPosition } from "@loveui/gooey-toast"
-
 import { Button } from "@/registry/default/ui/button"
+import { toastManager, type ToastPosition } from "@/registry/default/ui/toast"
 
 export default function GooeyToastPosition() {
-  const positions: GooeyPosition[] = [
+  const positions: ToastPosition[] = [
     "top-left",
     "top-center",
     "top-right",
@@ -21,7 +20,8 @@ export default function GooeyToastPosition() {
           key={position}
           variant="outline"
           onClick={() => {
-            gooey.show({
+            toastManager.add({
+              variant: "gooey",
               title: position,
               description: `Toast shown at ${position}`,
               position,

@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/default/ui/select"
-import { Toggle, ToggleGroup } from "@/registry/default/ui/toggle-group"
+import { Toggle, ToggleGroup } from "@/registry/default/ui/toggle"
 import {
   Toolbar,
   ToolbarButton,

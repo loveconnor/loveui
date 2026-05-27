@@ -3,7 +3,7 @@
   "name": "comp-107",
   "type": "registry:component",
   "registryDependencies": [
-    "https://loveui.dev/building-blocks/r/toggle-group.json"
+    "https://loveui.dev/building-blocks/r/toggle.json"
   ],
   "files": [
     {

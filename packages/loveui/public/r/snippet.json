@@ -3,8 +3,7 @@
   "name": "snippet",
   "description": "Code snippet display with syntax highlighting.",
   "registryDependencies": [
-    "@loveui/snippet",
-    "@loveui/code-block"
+    "@loveui/snippet"
   ],
   "files": [
     {

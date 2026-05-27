@@ -3,17 +3,18 @@
   "name": "gooey-toast-with-button",
   "description": "Gooey toast with an action button",
   "registryDependencies": [
-    "@loveui/gooey-toast"
+    "@loveui/toast",
+    "@loveui/button"
   ],
   "files": [
     {
       "path": "registry/default/examples/gooey-toast-with-button.tsx",
-      "content": "\"use client\"\n\nimport { gooey } from \"@loveui/gooey-toast\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function GooeyToastWithButton() {\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        const id = gooey.action({\n          title: \"File deleted\",\n          description: \"Your file has been moved to trash.\",\n          button: {\n            title: \"Undo\",\n            onClick: () => {\n              gooey.dismiss(id)\n              gooey.success({\n                title: \"Restored\",\n                description: \"Your file has been restored.\",\n              })\n            },\n          },\n        })\n      }}\n    >\n      Delete File\n    </Button>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { toastManager } from \"@/registry/default/ui/toast\"\n\nexport default function GooeyToastWithButton() {\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        const id = toastManager.add({\n          variant: \"gooey\",\n          type: \"action\",\n          title: \"File deleted\",\n          description: \"Your file has been moved to trash.\",\n          button: {\n            title: \"Undo\",\n            onClick: () => {\n              toastManager.close(id)\n              toastManager.add({\n                variant: \"gooey\",\n                type: \"success\",\n                title: \"Restored\",\n                description: \"Your file has been restored.\",\n              })\n            },\n          },\n        })\n      }}\n    >\n      Delete File\n    </Button>\n  )\n}\n",
       "type": "registry:example"
     }
   ],
   "categories": [
-    "gooey-toast",
+    "toast",
     "button"
   ],
   "type": "registry:example"

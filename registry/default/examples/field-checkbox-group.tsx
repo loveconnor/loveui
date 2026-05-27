@@ -1,7 +1,7 @@
 "use client"
 
 import { Checkbox } from "@/registry/default/ui/checkbox"
-import { CheckboxGroup } from "@/registry/default/ui/checkbox-group"
+import { CheckboxGroup } from "@/registry/default/ui/checkbox"
 import {
   Field,
   FieldDescription,

@@ -53,6 +53,7 @@ function Slider({
           {Array.from({ length: _values.length }, (_, index) => (
             <SliderPrimitive.Thumb
               data-slot="slider-thumb"
+              index={index}
               key={index}
               className="block size-4 shrink-0 rounded-full border border-input bg-white bg-clip-padding shadow-xs transition-shadow outline-none select-none before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/4%)] focus-visible:ring-[3px] focus-visible:ring-ring/24 has-focus-visible:ring-[3px] has-focus-visible:ring-ring/24 data-dragging:ring-[3px] data-dragging:ring-ring/24 dark:border-background dark:bg-clip-border dark:focus-visible:ring-ring/48 dark:data-dragging:ring-ring/48 [&:is(:focus-visible,[data-dragging])]:shadow-none"
             />

@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 
-import { gooey, type GooeyPosition } from "@loveui/gooey-toast"
-
 import { Button } from "@/registry/default/ui/button"
 import {
   Select,
@@ -12,11 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/default/ui/select"
+import { toastManager, type ToastPosition } from "@/registry/default/ui/toast"
 
 export default function GooeyToastDemo() {
-  const [position, setPosition] = useState<GooeyPosition>("top-right")
+  const [position, setPosition] = useState<ToastPosition>("top-right")
 
-  const positions: GooeyPosition[] = [
+  const positions: ToastPosition[] = [
     "top-left",
     "top-center",
     "top-right",
@@ -54,9 +53,9 @@ export default function GooeyToastDemo() {
     const config = toasts[type]
 
     if (type === "default") {
-      gooey.show({ ...config, position })
+      toastManager.add({ ...config, variant: "gooey", position })
     } else {
-      gooey[type]({ ...config, position })
+      toastManager.add({ ...config, variant: "gooey", position, type })
     }
   }
 
@@ -68,7 +67,7 @@ export default function GooeyToastDemo() {
         </label>
         <Select
           value={position}
-          onValueChange={(v) => setPosition(v as GooeyPosition)}
+          onValueChange={(v) => setPosition(v as ToastPosition)}
         >
           <SelectTrigger id="position" className="w-[180px]">
             <SelectValue />

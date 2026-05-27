@@ -7,7 +7,7 @@ import {
   AlertDialogPopup,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/default/ui/alert-dialog"
+} from "@/registry/default/ui/alert"
 import { Button } from "@/registry/default/ui/button"
 
 export default function AlertDialogDemo() {

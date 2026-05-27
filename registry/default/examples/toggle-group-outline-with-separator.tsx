@@ -4,7 +4,7 @@ import {
   Toggle,
   ToggleGroup,
   ToggleGroupSeparator,
-} from "@/registry/default/ui/toggle-group"
+} from "@/registry/default/ui/toggle"
 
 export default function ToggleGroupOutlineWithSeparator() {
   return (

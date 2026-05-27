@@ -2,7 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collaborative-canvas",
   "description": "A collaborative canvas block for real-time collaboration.",
-  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/examples/collaborative-canvas.tsx",

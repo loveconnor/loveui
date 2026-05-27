@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { Button } from "@/registry/default/ui/button"
 import { Checkbox } from "@/registry/default/ui/checkbox"
-import { CheckboxGroup } from "@/registry/default/ui/checkbox-group"
+import { CheckboxGroup } from "@/registry/default/ui/checkbox"
 import { Field, FieldLabel } from "@/registry/default/ui/field"
 import { Fieldset, FieldsetLegend } from "@/registry/default/ui/fieldset"
 import { Form } from "@/registry/default/ui/form"

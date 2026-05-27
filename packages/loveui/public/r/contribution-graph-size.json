@@ -4,7 +4,6 @@
   "description": "Contribution graph showcasing custom sizing.",
   "registryDependencies": [
     "@loveui/contribution-graph",
-    "@loveui/code-block",
     "@faker-js/faker"
   ],
   "files": [

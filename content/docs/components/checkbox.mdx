@@ -1,6 +1,6 @@
 ---
 title: Checkbox
-description: A control allowing the user to toggle between checked and not checked.
+description: A control for checked state, with optional grouped selection.
 
 links:
   doc: https://base-ui.com/react/components/checkbox#api-reference
@@ -14,17 +14,25 @@ Use a checkbox when the user can turn an independent option on or off.
 
 Checkboxes are right for preferences, permissions, optional settings, and multi-select lists. Use a radio group when the user must choose exactly one option from a set.
 
+Use Checkbox Group when several checkboxes belong to the same question or setting. Groups are useful for permissions, filters, notification channels, roles, and feature selections where more than one option can be selected.
+
 ## Anatomy
 
 A checkbox has an input, visual indicator, label, optional description, and state. The label should make sense when read on its own.
+
+A checkbox group provides shared state and contains individual checkbox items. It should have a group label or surrounding Fieldset so users understand what the choices are about.
 
 ## Behavior
 
 A checkbox can be checked, unchecked, disabled, or invalid. Some grouped checkbox patterns also use an indeterminate parent state to show that only some child items are selected.
 
+Use disabled items for options that are visible but unavailable. Use parent checkboxes when a group needs select-all behavior. Use nested parent checkboxes when choices are hierarchical.
+
 ## Accessibility
 
 Always connect the checkbox to a label. Descriptions and errors should be associated through Field when the checkbox appears in a form.
+
+Group related checkboxes with a visible label. Make sure each checkbox has its own label and that parent states are understandable through text, not only the visual indeterminate mark.
 
 ## Installation
 
@@ -67,11 +75,28 @@ npm install @base-ui-components/react
 ## Usage
 
 ```tsx
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox, CheckboxGroup } from "@/components/ui/checkbox"
 ```
 
 ```tsx
 <Checkbox />
+```
+
+```tsx
+<CheckboxGroup defaultValue={["next"]}>
+  <Label>
+    <Checkbox value="next" />
+    Next.js
+  </Label>
+  <Label>
+    <Checkbox value="vite" />
+    Vite
+  </Label>
+  <Label>
+    <Checkbox value="astro" />
+    Astro
+  </Label>
+</CheckboxGroup>
 ```
 
 ## Examples
@@ -97,3 +122,29 @@ For accessible labelling and validation, prefer using the `Field` component to w
 Field provides accessible labelling and validation primitives for form controls. Use it with `Form` to submit values.
 
 <ComponentPreview name="checkbox-form" />
+
+## Checkbox Group
+
+Checkbox Group is included in the same component file. Use it when several checkboxes answer the same question or share one submitted value.
+
+For accessible group labelling and validation, prefer wrapping checkbox groups with `Field` and `Fieldset`. See the related example: [Checkbox group field](/ui/docs/components/field#checkbox-group-field).
+
+### Basic Group
+
+<ComponentPreview name="checkbox-group-demo" />
+
+### With Disabled Item
+
+<ComponentPreview name="checkbox-group-disabled" />
+
+### Parent Checkbox
+
+<ComponentPreview name="checkbox-group-parent" />
+
+### Nested Parent Checkbox
+
+<ComponentPreview name="checkbox-group-nested-parent" />
+
+### Group Form Integration
+
+<ComponentPreview name="checkbox-group-form" />

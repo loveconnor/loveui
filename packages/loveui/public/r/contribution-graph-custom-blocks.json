@@ -4,7 +4,6 @@
   "description": "Contribution graph using custom block rendering.",
   "registryDependencies": [
     "@loveui/contribution-graph",
-    "@loveui/code-block",
     "@faker-js/faker"
   ],
   "files": [

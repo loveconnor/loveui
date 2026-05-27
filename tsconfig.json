@@ -16,6 +16,7 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
+      "@loveui/gooey-toast": ["./packages/loveui/packages/gooey-toast/src"],
       "collections/*": ["./.source/*"]
     },
     "plugins": [

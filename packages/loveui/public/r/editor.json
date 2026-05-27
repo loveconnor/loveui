@@ -3,8 +3,7 @@
   "name": "editor",
   "description": "Rich code editor experience using the editor package.",
   "registryDependencies": [
-    "@loveui/editor",
-    "@loveui/code-block"
+    "@loveui/editor"
   ],
   "files": [
     {

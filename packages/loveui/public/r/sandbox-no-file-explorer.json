@@ -3,8 +3,7 @@
   "name": "sandbox-no-file-explorer",
   "description": "Sandbox without the file explorer for a compact layout.",
   "registryDependencies": [
-    "@loveui/sandbox",
-    "@loveui/code-block"
+    "@loveui/sandbox"
   ],
   "files": [
     {

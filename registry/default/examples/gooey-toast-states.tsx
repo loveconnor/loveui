@@ -1,8 +1,7 @@
 "use client"
 
-import { gooey } from "@loveui/gooey-toast"
-
 import { Button } from "@/registry/default/ui/button"
+import { toastManager } from "@/registry/default/ui/toast"
 
 export default function GooeyToastStates() {
   return (
@@ -10,7 +9,9 @@ export default function GooeyToastStates() {
       <Button
         variant="outline"
         onClick={() => {
-          gooey.success({
+          toastManager.add({
+            variant: "gooey",
+            type: "success",
             title: "Success!",
             description: "Your changes have been saved.",
           })
@@ -21,7 +22,9 @@ export default function GooeyToastStates() {
       <Button
         variant="outline"
         onClick={() => {
-          gooey.error({
+          toastManager.add({
+            variant: "gooey",
+            type: "error",
             title: "Error",
             description: "Something went wrong. Please try again.",
           })
@@ -32,7 +35,9 @@ export default function GooeyToastStates() {
       <Button
         variant="outline"
         onClick={() => {
-          gooey.warning({
+          toastManager.add({
+            variant: "gooey",
+            type: "warning",
             title: "Warning",
             description: "This action cannot be undone.",
           })
@@ -43,7 +48,9 @@ export default function GooeyToastStates() {
       <Button
         variant="outline"
         onClick={() => {
-          gooey.info({
+          toastManager.add({
+            variant: "gooey",
+            type: "info",
             title: "Did you know?",
             description: "You can customize toast animations.",
           })
@@ -54,7 +61,9 @@ export default function GooeyToastStates() {
       <Button
         variant="outline"
         onClick={() => {
-          gooey.action({
+          toastManager.add({
+            variant: "gooey",
+            type: "action",
             title: "Action Required",
             description: "Please review your settings.",
           })

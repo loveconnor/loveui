@@ -3,7 +3,6 @@
   "pages": [
     "accordion",
     "alert",
-    "alert-dialog",
     "autocomplete",
     "avatar",
     "badge",
@@ -11,10 +10,8 @@
     "button",
     "card",
     "checkbox",
-    "checkbox-group",
     "collapsible",
     "combobox",
-    "code-block",
     "dialog",
     "empty",
     "field",
@@ -43,9 +40,7 @@
     "tabs",
     "textarea",
     "toast",
-    "gooey-toast",
     "toggle",
-    "toggle-group",
     "toolbar",
     "tooltip"
   ]

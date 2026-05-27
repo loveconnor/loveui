@@ -4,7 +4,6 @@
   "description": "Contribution graph with custom color themes.",
   "registryDependencies": [
     "@loveui/contribution-graph",
-    "@loveui/code-block",
     "@faker-js/faker"
   ],
   "files": [

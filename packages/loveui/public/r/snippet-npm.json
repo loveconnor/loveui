@@ -3,8 +3,7 @@
   "name": "snippet-npm",
   "description": "Snippet showing install commands for multiple package managers.",
   "registryDependencies": [
-    "@loveui/snippet",
-    "@loveui/code-block"
+    "@loveui/snippet"
   ],
   "files": [
     {

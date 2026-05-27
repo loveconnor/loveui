@@ -3,8 +3,7 @@
   "name": "comparison",
   "description": "Comparison slider overlaying before/after code.",
   "registryDependencies": [
-    "@loveui/comparison",
-    "@loveui/code-block"
+    "@loveui/comparison"
   ],
   "files": [
     {

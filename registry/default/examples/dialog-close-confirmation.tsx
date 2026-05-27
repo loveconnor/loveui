@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogPopup,
   AlertDialogTitle,
-} from "@/registry/default/ui/alert-dialog"
+} from "@/registry/default/ui/alert"
 import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,

@@ -3,8 +3,7 @@
   "name": "comparison-hover",
   "description": "Comparison slider activated on hover.",
   "registryDependencies": [
-    "@loveui/comparison",
-    "@loveui/code-block"
+    "@loveui/comparison"
   ],
   "files": [
     {

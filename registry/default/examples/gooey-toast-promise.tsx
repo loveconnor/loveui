@@ -1,8 +1,7 @@
 "use client"
 
-import { gooey } from "@loveui/gooey-toast"
-
 import { Button } from "@/registry/default/ui/button"
+import { toastManager } from "@/registry/default/ui/toast"
 
 export default function GooeyToastPromise() {
   const handlePromise = () => {
@@ -10,7 +9,8 @@ export default function GooeyToastPromise() {
       setTimeout(() => resolve({ name: "User" }), 2000)
     })
 
-    gooey.promise(promise, {
+    toastManager.promise(promise, {
+      variant: "gooey",
       loading: { title: "Loading..." },
       success: (data) => ({
         title: "Success!",

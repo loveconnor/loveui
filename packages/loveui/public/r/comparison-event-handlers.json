@@ -3,8 +3,7 @@
   "name": "comparison-event-handlers",
   "description": "Comparison slider demonstrating event handlers.",
   "registryDependencies": [
-    "@loveui/comparison",
-    "@loveui/code-block"
+    "@loveui/comparison"
   ],
   "files": [
     {
