@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { appName, gitConfig } from './shared';
+import { appName, docsRoute, gitConfig } from './shared';
 import { ThemeSwitch } from '@/components/theme-switch';
 
 export function baseOptions(): BaseLayoutProps {
@@ -8,6 +8,14 @@ export function baseOptions(): BaseLayoutProps {
       // JSX supported
       title: appName,
     },
+    links: [
+      {
+        text: 'Docs',
+        url: docsRoute,
+        active: 'nested-url',
+        on: 'nav',
+      },
+    ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
     slots: {
       themeSwitch: ThemeSwitch,
