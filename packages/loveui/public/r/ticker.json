@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticker",
+  "description": "Stock ticker row showing price and change values.",
+  "registryDependencies": [
+    "@loveui/ticker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/ticker.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport {\n  Ticker,\n  TickerIcon,\n  TickerPrice,\n  TickerPriceChange,\n  TickerSymbol,\n} from \"../../../../../packages/ticker\"\n\nconst ticker = \"GOOG\"\nconst logoToken = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN\n\nconst Example = () => (\n  <Ticker>\n    {logoToken ? (\n      <TickerIcon asChild>\n        <Image\n          alt={ticker}\n          height={26}\n          src={`https://img.logo.dev/ticker/${ticker}?token=${logoToken}&size=26&retina=true`}\n          width={26}\n        />\n      </TickerIcon>\n    ) : (\n      <TickerIcon symbol={ticker} />\n    )}\n    <TickerSymbol symbol={ticker} />\n    <TickerPrice price={175.41} />\n    <TickerPriceChange change={2.13} />\n  </Ticker>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "finance",
+    "ticker"
+  ],
+  "type": "registry:example"
+}

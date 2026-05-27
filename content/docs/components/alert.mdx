@@ -1,0 +1,145 @@
+---
+title: Alert
+description: A callout for displaying important information.
+---
+
+<ComponentPreview name="alert-demo" />
+
+## Overview
+
+Use an alert to call attention to information that affects the current page or task.
+
+Alerts are best for inline feedback, warnings, success messages, errors, and important context. They should be visible near the content they explain. Use a toast instead when the message is temporary and does not need to stay on the page.
+
+## Anatomy
+
+An alert usually has a container, optional icon, title, description, and optional actions. The title should be short. The description should explain what happened or what the user should do next.
+
+## Variants
+
+Choose the variant by meaning, not by color preference. Use info for neutral guidance, success for completed work, warning for possible risk, error for a failed action, and destructive when the user is dealing with a harmful or irreversible action.
+
+## Accessibility
+
+Do not rely on color alone. Pair state colors with clear text and, when useful, an icon. Keep action buttons keyboard reachable and avoid putting long instructions inside a small alert.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+<TabsPanel value="cli">
+
+```bash
+npx love-ui@latest add alert
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Import the following variables into your CSS file</Step>
+
+```css
+@theme inline {
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+:root {
+  --destructive-foreground: oklch(0.704 0.191 22.216);
+  --info: oklch(0.623 0.214 259.815);
+  --info-foreground: oklch(0.707 0.165 254.624);
+  --success: oklch(0.696 0.17 162.48);
+  --success-foreground: oklch(0.765 0.177 163.223);
+  --warning: oklch(0.769 0.188 70.08);
+  --warning-foreground: oklch(0.828 0.189 84.429);
+}
+
+.dark {
+  --destructive-foreground: oklch(0.704 0.191 22.216);
+  --info: oklch(0.623 0.214 259.815);
+  --info-foreground: oklch(0.707 0.165 254.624);
+  --success: oklch(0.696 0.17 162.48);
+  --success-foreground: oklch(0.765 0.177 163.223);
+  --warning: oklch(0.769 0.188 70.08);
+  --warning-foreground: oklch(0.828 0.189 84.429);
+}
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert" title="components/ui/alert.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+```
+
+```tsx
+<Alert>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+</Alert>
+```
+
+## Examples
+
+The examples show alerts with icons, actions, and common state variants.
+
+### With Icon
+
+Use an icon to make the alert easier to scan, especially in dense forms or settings pages.
+
+<ComponentPreview name="alert-with-icon" />
+
+### With Icon and Action Buttons
+
+Use actions when the alert can be resolved or explored from the same place.
+
+<ComponentPreview name="alert-with-icon-action" />
+
+### Info Alert
+
+Use info for neutral context or guidance.
+
+<ComponentPreview name="alert-info" />
+
+### Success Alert
+
+Use success when an action completed and the result should remain visible.
+
+<ComponentPreview name="alert-success" />
+
+### Warning Alert
+
+Use warning when the user can continue but should understand a risk.
+
+<ComponentPreview name="alert-warning" />
+
+### Error Alert
+
+Use error when something failed and the user needs to correct it.
+
+<ComponentPreview name="alert-error" />

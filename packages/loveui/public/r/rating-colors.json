@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-colors",
+  "description": "Rating component demonstrating color variants.",
+  "registryDependencies": [
+    "@loveui/rating"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/rating-colors.tsx",
+      "content": "\"use client\"\n\nimport { Rating, RatingButton } from \"../../../../../packages/rating\"\n\nconst Example = () => (\n  <Rating defaultValue={3}>\n    {Array.from({ length: 5 }).map((_, index) => (\n      <RatingButton className=\"text-yellow-500\" key={index} />\n    ))}\n  </Rating>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "rating",
+    "colors"
+  ],
+  "type": "registry:example"
+}

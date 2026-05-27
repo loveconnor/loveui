@@ -1,0 +1,49 @@
+{
+  "name": "love-ui",
+  "version": "1.2.14",
+  "private": false,
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "loveui": "dist/index.js",
+    "love-ui": "dist/index.js",
+    "loveui-mcp": "dist/mcp-server.js"
+  },
+  "files": [
+    "dist",
+    "packages",
+    "public",
+    "*.ts",
+    "*.tsx",
+    "*.css",
+    "*.mdx"
+  ],
+  "main": "packages/love-ui/index.ts",
+  "types": "packages/love-ui/index.ts",
+  "exports": {
+    ".": {
+      "import": "./packages/love-ui/index.ts",
+      "require": "./packages/love-ui/index.ts"
+    },
+    "./lib/*": "./packages/love-ui/*",
+    "./components/*": "./packages/love-ui/components/*",
+    "./shadcn-ui/*": "./packages/shadcn-ui/*",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.1",
+    "postcss": "^8.5.6",
+    "postcss-nested": "^7.0.2"
+  },
+  "scripts": {
+    "build": "tsup",
+    "postbuild": "node ./scripts/copy-packages.mjs && node ./scripts/verify-registry.mjs",
+    "verify:registry": "node ./scripts/verify-registry.mjs",
+    "clean": "rimraf dist packages"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0"
+  }
+}

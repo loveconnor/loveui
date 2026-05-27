@@ -1,0 +1,112 @@
+---
+title: Toggle Group
+description: Provides a shared state to a series of toggle buttons.
+---
+
+<ComponentPreview name="toggle-group-demo" />
+
+## Overview
+
+Use Toggle Group when several toggle buttons share one state model.
+
+Toggle groups are useful for text alignment, formatting controls, view modes, filters, and segmented choices.
+
+## Anatomy
+
+A toggle group contains toggle items. It can allow one selected item or multiple selected items.
+
+## Behavior
+
+Use single selection when the choices are mutually exclusive. Use multiple selection when each toggle is independent but visually grouped.
+
+## Accessibility
+
+Each toggle needs an accessible name. Icon-only toggle groups should use labels, tooltips, or accessible text so users know what each item does.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+<TabsPanel value="cli">
+
+```bash
+npx love-ui@latest add toggle-group
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui-components/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toggle-group" title="components/ui/toggle-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Toggle, ToggleGroup } from "@/components/ui/toggle-group"
+```
+
+```tsx
+<ToggleGroup>
+  <Toggle>Bold</Toggle>
+  <Toggle>Italic</Toggle>
+  <Toggle>Underline</Toggle>
+</ToggleGroup>
+```
+
+## Examples
+
+The examples show sizes, outline styles, separators, disabled states, multiple selection, and tooltips.
+
+### Small Toggles
+
+<ComponentPreview name="toggle-group-sm" />
+
+### Large Toggles
+
+<ComponentPreview name="toggle-group-lg" />
+
+### With Outline Toggles
+
+<ComponentPreview name="toggle-group-outline" />
+
+### With Outline and Separator
+
+<ComponentPreview name="toggle-group-outline-with-separator" />
+
+### Disabled
+
+<ComponentPreview name="toggle-group-disabled" />
+
+### With Disabled Toggle
+
+<ComponentPreview name="toggle-group-with-disabled-item" />
+
+### Multiple selection
+
+<ComponentPreview name="toggle-group-multiple" />
+
+### With Tooltips
+
+<ComponentPreview name="tooltip-grouped" />

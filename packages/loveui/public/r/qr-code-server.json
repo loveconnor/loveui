@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "qr-code-server",
+  "description": "Server-rendered QR code usage.",
+  "registryDependencies": [
+    "@loveui/qr-code"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/qr-code-server.tsx",
+      "content": "import { QRCode } from \"../../../../../packages/qr-code/server\"\n\nconst Example = () => (\n  <QRCode\n    background=\"#eee\"\n    data=\"https://www.loveconnor.com/\"\n    foreground=\"#111\"\n  />\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "utility",
+    "qr-code",
+    "server"
+  ],
+  "type": "registry:example"
+}

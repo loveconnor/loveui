@@ -1,0 +1,13 @@
+{
+  "extends": "@loveui/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@loveui/*": ["../*"],
+      "@/components/*": ["../shadcn-ui/components/*"],
+      "@/lib/*": ["../shadcn-ui/lib/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

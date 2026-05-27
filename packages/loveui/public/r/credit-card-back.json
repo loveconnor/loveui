@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "credit-card-back",
+  "description": "Credit card back face focusing on CVV and expiry.",
+  "registryDependencies": [
+    "@loveui/credit-card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/credit-card-back.tsx",
+      "content": "import {\n  CreditCard,\n  CreditCardBack,\n  CreditCardCvv,\n  CreditCardExpiry,\n  CreditCardMagStripe,\n  CreditCardName,\n  CreditCardNumber,\n} from \"../../../../../packages/credit-card\"\n\nconst Example = () => (\n  <CreditCard>\n    <CreditCardBack className=\"bg-[#9EE672] text-black\">\n      <CreditCardMagStripe />\n      <CreditCardNumber className=\"absolute bottom-0 left-0\">\n        0123 4567 8901 2345\n      </CreditCardNumber>\n      <div className=\"absolute bottom-8 flex w-full flex-col gap-4 @xs:bottom-12 @xs:flex-row @xs:justify-between\">\n        <CreditCardName className=\"flex-1\">Connor Love</CreditCardName>\n        <div className=\"flex flex-1 gap-4 @xs:justify-between\">\n          <CreditCardExpiry>01/24</CreditCardExpiry>\n          <CreditCardCvv>123</CreditCardCvv>\n        </div>\n      </div>\n    </CreditCardBack>\n  </CreditCard>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "finance",
+    "credit-card"
+  ],
+  "type": "registry:example"
+}

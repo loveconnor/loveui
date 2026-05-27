@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status",
+  "description": "Status badges for operational state display.",
+  "registryDependencies": [
+    "@loveui/status"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/status.tsx",
+      "content": "\"use client\"\n\nimport {\n  Status,\n  StatusIndicator,\n  StatusLabel,\n} from \"../../../../../packages/status\"\n\nconst Example = () => (\n  <div className=\"flex gap-2\">\n    <Status status=\"online\">\n      <StatusIndicator />\n      <StatusLabel />\n    </Status>\n\n    <Status status=\"offline\">\n      <StatusIndicator />\n      <StatusLabel />\n    </Status>\n\n    <Status status=\"maintenance\">\n      <StatusIndicator />\n      <StatusLabel />\n    </Status>\n\n    <Status status=\"degraded\">\n      <StatusIndicator />\n      <StatusLabel />\n    </Status>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "status",
+    "project management"
+  ],
+  "type": "registry:example"
+}

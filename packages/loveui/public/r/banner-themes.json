@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-themes",
+  "description": "Banner with custom color themes.",
+  "registryDependencies": [
+    "@loveui/banner"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/banner-themes.tsx",
+      "content": "\"use client\"\n\nimport type { CSSProperties } from \"react\"\nimport { CircleAlert } from \"lucide-react\"\n\nimport {\n  Banner,\n  BannerAction,\n  BannerClose,\n  BannerIcon,\n  BannerTitle,\n} from \"../../../../../packages/banner\"\n\nconst Example = () => (\n  <>\n    <div\n      className=\"w-full\"\n      style={\n        {\n          \"--primary\": \"oklch(0.637 0.237 25.331)\",\n          \"--primary-foreground\": \"oklch(0.971 0.013 17.38)\",\n        } as CSSProperties\n      }\n    >\n      <Banner>\n        <BannerIcon icon={CircleAlert} />\n        <BannerTitle>\n          Something's gone <strong>horribly</strong> wrong.\n        </BannerTitle>\n        <BannerAction>Restart</BannerAction>\n        <BannerClose />\n      </Banner>\n    </div>\n    <div\n      className=\"w-full\"\n      style={\n        {\n          \"--primary\": \"oklch(0.705 0.213 47.604)\",\n          \"--primary-foreground\": \"oklch(0.98 0.016 73.684)\",\n        } as CSSProperties\n      }\n    >\n      <Banner>\n        <BannerIcon icon={CircleAlert} />\n        <BannerTitle>You're almost out of disk space.</BannerTitle>\n        <BannerAction>Upgrade</BannerAction>\n        <BannerClose />\n      </Banner>\n    </div>\n    <div\n      className=\"w-full\"\n      style={\n        {\n          \"--primary\": \"oklch(0.723 0.219 149.579)\",\n          \"--primary-foreground\": \"oklch(0.982 0.018 155.826)\",\n        } as CSSProperties\n      }\n    >\n      <Banner>\n        <BannerIcon icon={CircleAlert} />\n        <BannerTitle>\n          You've been selected for a secret mission.\n        </BannerTitle>\n        <BannerAction>Accept</BannerAction>\n        <BannerClose />\n      </Banner>\n    </div>\n  </>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "banner",
+    "theme"
+  ],
+  "type": "registry:example"
+}

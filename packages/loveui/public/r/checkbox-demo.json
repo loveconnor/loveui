@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-demo",
+  "description": "Basic checkbox",
+  "registryDependencies": [
+    "@loveui/checkbox",
+    "@loveui/label"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/checkbox-demo.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function CheckboxDemo() {\n  return (\n    <Label>\n      <Checkbox />\n      Accept terms and conditions\n    </Label>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "label"
+  ],
+  "type": "registry:example"
+}

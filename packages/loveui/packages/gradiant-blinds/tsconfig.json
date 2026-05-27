@@ -1,0 +1,18 @@
+{
+  "extends": "@loveui/typescript-config/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "paths": {
+      "three": [
+        "../../node_modules/.bun/@types+three@0.170.0/node_modules/@types/three"
+      ],
+      "three/*": [
+        "../../node_modules/.bun/@types+three@0.170.0/node_modules/@types/three/*"
+      ]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}

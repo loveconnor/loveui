@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-bu-1",
+  "description": "Back link button with chevron",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/particles/particle-bu-1.tsx",
+      "content": "import { ChevronLeftIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function Particle() {\n  return (\n    <Button variant=\"link\">\n      <ChevronLeftIcon className=\"opacity-72\" aria-hidden=\"true\" />\n      Go back\n    </Button>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:block"
+}

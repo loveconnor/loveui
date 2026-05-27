@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticker-percent",
+  "description": "Stock ticker list with percentage change display.",
+  "registryDependencies": [
+    "@loveui/ticker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/ticker-percent.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport {\n  Ticker,\n  TickerIcon,\n  TickerPrice,\n  TickerPriceChange,\n  TickerSymbol,\n} from \"../../../../../packages/ticker\"\n\nconst logoToken = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN\n\nconst items = [\n  {\n    symbol: \"TSLA\",\n    price: 182.12,\n    change: -3.12,\n  },\n  {\n    symbol: \"MSFT\",\n    price: 409.33,\n    change: 2.18,\n  },\n]\n\nconst Example = () => (\n  <>\n    {items.map((i) => (\n      <Ticker key={i.symbol}>\n        {logoToken ? (\n          <TickerIcon asChild>\n            <Image\n              alt={i.symbol}\n              height={26}\n              src={`https://img.logo.dev/ticker/${i.symbol}?token=${logoToken}&size=26&retina=true`}\n              width={26}\n            />\n          </TickerIcon>\n        ) : (\n          <TickerIcon symbol={i.symbol} />\n        )}\n        <TickerSymbol symbol={i.symbol} />\n        <TickerPrice price={i.price} />\n        <TickerPriceChange change={i.change} isPercent />\n      </Ticker>\n    ))}\n  </>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "finance",
+    "ticker"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "group-demo",
+  "description": "Group example",
+  "registryDependencies": [
+    "@loveui/group",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/group-demo.tsx",
+      "content": "import { EllipsisIcon, FilesIcon, FilmIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Group, GroupItem, GroupSeparator } from \"@/registry/default/ui/group\"\n\nexport default function GroupDemo() {\n  return (\n    <Group>\n      <GroupItem render={<Button variant=\"outline\" />}>\n        <FilesIcon />\n        Files\n      </GroupItem>\n      <GroupSeparator />\n      <GroupItem render={<Button variant=\"outline\" />}>\n        <FilmIcon />\n        Media\n      </GroupItem>\n      <GroupSeparator />\n      <GroupItem\n        render={\n          <Button variant=\"outline\" size=\"icon\" aria-label=\"Menu\" />\n        }\n      >\n        <EllipsisIcon />\n      </GroupItem>\n    </Group>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "group"
+  ],
+  "type": "registry:example"
+}

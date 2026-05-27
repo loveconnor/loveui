@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-range",
+  "description": "Two-thumb range slider",
+  "registryDependencies": [
+    "@loveui/slider"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/slider-range.tsx",
+      "content": "import { Slider } from \"@/registry/default/ui/slider\"\n\nexport default function SliderDemo() {\n  return <Slider defaultValue={[25, 75]} />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "slider",
+    "range slider"
+  ],
+  "type": "registry:example"
+}

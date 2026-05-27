@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-228",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://loveui.dev/building-blocks/r/select.json",
+    "https://loveui.dev/building-blocks/r/label.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/components/comp-228.tsx",
+      "content": "import { useId } from \"react\"\nimport { Label } from \"@/registry/building-blocks/default/ui/label\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/building-blocks/default/ui/select\"\n\nexport default function Component() {\n  const id = useId()\n  return (\n    <div className=\"*:not-first:mt-2\">\n      <Label htmlFor={id}>Options with portrait</Label>\n      <Select defaultValue=\"1\">\n        <SelectTrigger\n          id={id}\n          className=\"h-auto ps-2 text-left [&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_img]:shrink-0\"\n        >\n          <SelectValue placeholder=\"Choose a plan\" />\n        </SelectTrigger>\n        <SelectContent className=\"[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2\">\n          <SelectItem value=\"1\">\n            <span className=\"flex items-center gap-2\">\n              <img\n                className=\"rounded-full\"\n                src={\"https://i.pravatar.cc/160?img=8\"}\n                alt=\"Connor Love\"\n                width={40}\n                height={40}\n              />\n              <span>\n                <span className=\"block font-medium\">Connor Love</span>\n                <span className=\"mt-0.5 block text-xs text-muted-foreground\">\n                  @loveconnor\n                </span>\n              </span>\n            </span>\n          </SelectItem>\n          <SelectItem value=\"2\">\n            <span className=\"flex items-center gap-2\">\n              <img\n                className=\"rounded-full\"\n                src={\"https://i.pravatar.cc/160?img=9\"}\n                alt=\"Thomas Raklovits\"\n                width={40}\n                height={40}\n              />\n              <span>\n                <span className=\"block font-medium\">Thomas Raklovits</span>\n                <span className=\"mt-0.5 block text-xs text-muted-foreground\">\n                  @monster0506\n                </span>\n              </span>\n            </span>\n          </SelectItem>\n          <SelectItem value=\"3\">\n            <span className=\"flex items-center gap-2\">\n              <img\n                className=\"rounded-full\"\n                src={\"https://i.pravatar.cc/160?img=10\"}\n                alt=\"Ian Schroeter\"\n                width={40}\n                height={40}\n              />\n              <span>\n                <span className=\"block font-medium\">Ian Schroeter</span>\n                <span className=\"mt-0.5 block text-xs text-muted-foreground\">\n                  @ischroeter\n                </span>\n              </span>\n            </span>\n          </SelectItem>\n        </SelectContent>\n      </Select>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "label",
+      "select",
+      "user",
+      "avatar",
+      "profile",
+      "radix"
+    ]
+  }
+}

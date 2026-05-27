@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-number-field",
+  "description": "Field with number field",
+  "registryDependencies": [
+    "@loveui/field",
+    "@loveui/number-field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/field-number-field.tsx",
+      "content": "import { Field, FieldDescription } from \"@/registry/default/ui/field\"\nimport {\n  NumberField,\n  NumberFieldDecrement,\n  NumberFieldGroup,\n  NumberFieldIncrement,\n  NumberFieldInput,\n  NumberFieldScrubArea,\n} from \"@/registry/default/ui/number-field\"\n\nexport default function FieldNumberFieldDemo() {\n  return (\n    <Field>\n      <NumberField defaultValue={1} min={1} max={100}>\n        <NumberFieldScrubArea label=\"Quantity\" />\n        <NumberFieldGroup>\n          <NumberFieldDecrement />\n          <NumberFieldInput />\n          <NumberFieldIncrement />\n        </NumberFieldGroup>\n      </NumberField>\n      <FieldDescription>\n        Choose a value between 1 and 100.\n      </FieldDescription>\n    </Field>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "input",
+    "label",
+    "number",
+    "helper",
+    "hint"
+  ],
+  "type": "registry:example"
+}

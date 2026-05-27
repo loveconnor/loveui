@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "description": "Calendar view with monthly navigation and grouped features.",
+  "registryDependencies": [
+    "@loveui/calendar",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/calendar.tsx",
+      "content": "\"use client\"\n\nimport { faker } from \"@faker-js/faker\"\n\nimport {\n  CalendarBody,\n  CalendarDate,\n  CalendarDatePagination,\n  CalendarDatePicker,\n  CalendarHeader,\n  CalendarItem,\n  CalendarMonthPicker,\n  CalendarProvider,\n  CalendarYearPicker,\n} from \"../../../../../packages/calendar\"\n\n// Seed faker to ensure consistent data between server and client\nfaker.seed(123)\n\nconst capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)\n\nconst statuses = [\n  { id: faker.string.uuid(), name: \"Planned\", color: \"#6B7280\" },\n  { id: faker.string.uuid(), name: \"In Progress\", color: \"#F59E0B\" },\n  { id: faker.string.uuid(), name: \"Done\", color: \"#10B981\" },\n]\n\nconst exampleFeatures = Array.from({ length: 20 })\n  .fill(null)\n  .map(() => ({\n    id: faker.string.uuid(),\n    name: capitalize(faker.company.buzzPhrase()),\n    startAt: faker.date.past({ years: 0.5, refDate: new Date() }),\n    endAt: faker.date.future({ years: 0.5, refDate: new Date() }),\n    status: faker.helpers.arrayElement(statuses),\n  }))\n\nconst earliestYear =\n  exampleFeatures\n    .map((feature) => feature.startAt.getFullYear())\n    .sort()\n    .at(0) ?? new Date().getFullYear()\n\nconst latestYear =\n  exampleFeatures\n    .map((feature) => feature.endAt.getFullYear())\n    .sort()\n    .at(-1) ?? new Date().getFullYear()\n\nconst Example = () => (\n  <CalendarProvider>\n    <CalendarDate>\n      <CalendarDatePicker>\n        <CalendarMonthPicker />\n        <CalendarYearPicker end={latestYear} start={earliestYear} />\n      </CalendarDatePicker>\n      <CalendarDatePagination />\n    </CalendarDate>\n    <CalendarHeader />\n    <CalendarBody features={exampleFeatures}>\n      {({ feature }) => <CalendarItem feature={feature} key={feature.id} />}\n    </CalendarBody>\n  </CalendarProvider>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "calendar",
+    "project management"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-focus",
+  "description": "Code block focusing attention on a highlighted snippet.",
+  "registryDependencies": [
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/code-block-focus.tsx",
+      "content": "\"use client\"\n\nimport { CodeBlockShowcase, type CodeSample } from \"./code-block-shared\"\n\nconst code: CodeSample[] = [\n  {\n    language: \"ts\",\n    filename: \"discount.ts\",\n    code: `export function calculateDiscount(price: number, percentage: number) {\n  const discount = price * (percentage / 100);\n  const finalPrice = price - discount; // focus line\n  return Number(finalPrice.toFixed(2));\n}`,\n  },\n  {\n    language: \"js\",\n    filename: \"discount.js\",\n    code: `export function calculateDiscount(price, percentage) {\n  const discount = price * (percentage / 100);\n  const finalPrice = price - discount; // focus line\n  return Number(finalPrice.toFixed(2));\n}`,\n  },\n]\n\nconst Example = () => <CodeBlockShowcase files={code} lineNumbers />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "code-block"
+  ],
+  "type": "registry:example"
+}

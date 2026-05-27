@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "list-simple",
+  "description": "Simplified list view using drag-and-drop ordering.",
+  "registryDependencies": [
+    "@loveui/list",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/list-simple.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { faker } from \"@faker-js/faker\"\n\nimport type { DragEndEvent } from \"../../../../../packages/list\"\nimport {\n  ListGroup,\n  ListHeader,\n  ListItem,\n  ListItems,\n  ListProvider,\n} from \"../../../../../packages/list\"\n\n// Seed faker to ensure consistent data between server and client\nfaker.seed(123)\n\nconst capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)\n\nconst statuses = [\n  { id: faker.string.uuid(), name: \"Planned\", color: \"#6B7280\" },\n  { id: faker.string.uuid(), name: \"In Progress\", color: \"#F59E0B\" },\n  { id: faker.string.uuid(), name: \"Done\", color: \"#10B981\" },\n]\n\nconst users = Array.from({ length: 4 })\n  .fill(null)\n  .map(() => ({\n    id: faker.string.uuid(),\n    name: faker.person.fullName(),\n    image: faker.image.avatar(),\n  }))\n\nconst exampleFeatures = Array.from({ length: 20 })\n  .fill(null)\n  .map(() => ({\n    id: faker.string.uuid(),\n    name: capitalize(faker.company.buzzPhrase()),\n    startAt: faker.date.past({ years: 0.5, refDate: new Date() }),\n    endAt: faker.date.future({ years: 0.5, refDate: new Date() }),\n    status: faker.helpers.arrayElement(statuses),\n    owner: faker.helpers.arrayElement(users),\n  }))\n\nconst Example = () => {\n  const [features, setFeatures] = useState(exampleFeatures)\n\n  const handleDragEnd = (event: DragEndEvent) => {\n    const { active, over } = event\n\n    if (!over) {\n      return\n    }\n\n    const status = statuses.find((status) => status.name === over.id)\n\n    if (!status) {\n      return\n    }\n\n    setFeatures(\n      features.map((feature) => {\n        if (feature.id === active.id) {\n          return { ...feature, status }\n        }\n\n        return feature\n      })\n    )\n  }\n\n  return (\n    <ListProvider onDragEnd={handleDragEnd}>\n      {statuses.map((status) => (\n        <ListGroup id={status.name} key={status.name}>\n          <ListHeader color={status.color} name={status.name} />\n          <ListItems>\n            {features\n              .filter((feature) => feature.status.name === status.name)\n              .map((feature, index) => (\n                <ListItem\n                  id={feature.id}\n                  index={index}\n                  key={feature.id}\n                  name={feature.name}\n                  parent={feature.status.name}\n                />\n              ))}\n          </ListItems>\n        </ListGroup>\n      ))}\n    </ListProvider>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "list",
+    "project management"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-highlight-word",
+  "description": "Code block example highlighting individual tokens.",
+  "registryDependencies": [
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/code-block-highlight-word.tsx",
+      "content": "\"use client\"\n\nimport { CodeBlockShowcase, type CodeSample } from \"./code-block-shared\"\n\nconst code: CodeSample[] = [\n  {\n    language: \"tsx\",\n    filename: \"format-user.tsx\",\n    code: `type User = { firstName: string; lastName: string };\n\nexport function formatUser(user: User) {\n  return \\`\\${user.firstName} \\${user.lastName}\\`;\n}`,\n  },\n  {\n    language: \"ts\",\n    filename: \"format-user.ts\",\n    code: `type User = { firstName: string; lastName: string };\n\nexport function formatUser(user: User) {\n  return [user.firstName, user.lastName].join(\" \");\n}`,\n  },\n]\n\nconst Example = () => <CodeBlockShowcase files={code} lineNumbers />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "code-block",
+    "highlight"
+  ],
+  "type": "registry:example"
+}

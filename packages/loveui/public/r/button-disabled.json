@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-disabled",
+  "description": "Disabled button",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-disabled.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonDisabled() {\n  return <Button disabled>Button</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "disabled"
+  ],
+  "type": "registry:example"
+}

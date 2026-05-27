@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block",
+  "description": "Multi-file code block with language tabs and copy button.",
+  "registryDependencies": [
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/code-block.tsx",
+      "content": "\"use client\"\n\nimport { CodeBlockShowcase, type CodeSample } from \"./code-block-shared\"\n\nconst code: CodeSample[] = [\n  {\n    language: \"js\",\n    filename: \"MyComponent.jsx\",\n    code: `function MyComponent(props) {\n  return (\n    <div>\n      <h1>Hello, {props.name}!</h1>\n      <p>This is an example React component.</p>\n    </div>\n  );\n}`,\n  },\n  {\n    language: \"tsx\",\n    filename: \"MyComponent.tsx\",\n    code: `function MyComponent(props: { name: string }) {\n  return (\n    <div>\n      <h1>Hello, {props.name}!</h1>\n      <p>This is an example React component.</p>\n    </div>\n  );\n}`,\n  },\n]\n\nconst Example = () => <CodeBlockShowcase files={code} />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "code-block"
+  ],
+  "type": "registry:example"
+}

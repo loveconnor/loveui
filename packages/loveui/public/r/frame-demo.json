@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frame-demo",
+  "description": "Frame example",
+  "registryDependencies": [
+    "@loveui/frame"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/frame-demo.tsx",
+      "content": "import {\n  Frame,\n  FrameDescription,\n  FrameHeader,\n  FramePanel,\n  FrameTitle,\n} from \"@/registry/default/ui/frame\"\n\nexport default function FrameDemo() {\n  return (\n    <Frame className=\"w-full\">\n      <FrameHeader>\n        <FrameTitle>Section header</FrameTitle>\n        <FrameDescription>\n          Brief description about the section\n        </FrameDescription>\n      </FrameHeader>\n      <FramePanel>\n        <h2 className=\"text-sm font-semibold\">Section title</h2>\n        <p className=\"text-sm text-muted-foreground\">\n          Section description\n        </p>\n      </FramePanel>\n    </Frame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "frame"
+  ],
+  "type": "registry:example"
+}

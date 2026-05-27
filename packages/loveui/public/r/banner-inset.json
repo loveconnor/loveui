@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-inset",
+  "description": "Inset banner layout for embedded alerts.",
+  "registryDependencies": [
+    "@loveui/banner"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/banner-inset.tsx",
+      "content": "\"use client\"\n\nimport { CircleAlert } from \"lucide-react\"\n\nimport {\n  Banner,\n  BannerAction,\n  BannerClose,\n  BannerIcon,\n  BannerTitle,\n} from \"../../../../../packages/banner\"\n\nconst Example = () => (\n  <Banner inset>\n    <BannerIcon icon={CircleAlert} />\n    <BannerTitle>\n      Your trial ends in 3 days. Add a payment method to stay live.\n    </BannerTitle>\n    <BannerAction>Update billing</BannerAction>\n    <BannerClose />\n  </Banner>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "banner",
+    "layout"
+  ],
+  "type": "registry:example"
+}

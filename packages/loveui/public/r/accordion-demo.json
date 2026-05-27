@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-demo",
+  "description": "Basic accordion",
+  "registryDependencies": [
+    "@loveui/accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/accordion-demo.tsx",
+      "content": "import {\n  Accordion,\n  AccordionItem,\n  AccordionPanel,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\"\n\nconst items = [\n  {\n    id: \"1\",\n    title: \"What is Base UI?\",\n    content:\n      \"Base UI is a library of high-quality unstyled React components for design systems and web apps.\",\n  },\n  {\n    id: \"2\",\n    title: \"How do I get started?\",\n    content:\n      \"Head to the \\\"Quick start\\\" guide in the docs. If you've used unstyled libraries before, you'll feel at home.\",\n  },\n  {\n    id: \"3\",\n    title: \"Can I use it for my project?\",\n    content: \"Of course! Base UI is free and open source.\",\n  },\n]\n\nexport default function AccordionDemo() {\n  return (\n    <Accordion className=\"w-full\" defaultValue={[\"3\"]}>\n      {items.map((item) => (\n        <AccordionItem value={item.id} key={item.id}>\n          <AccordionTrigger>{item.title}</AccordionTrigger>\n          <AccordionPanel>{item.content}</AccordionPanel>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "accordion"
+  ],
+  "type": "registry:example"
+}

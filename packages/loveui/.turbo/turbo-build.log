@@ -1,0 +1,19 @@
+
+[0m[2m[35m$[0m [2m[1mtsup[0m
+[34mCLI[39m Building entry: src/index.ts, src/mcp-server.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.0
+[34mCLI[39m Using tsup config: /Users/connorlove/projects/loveui-docs/packages/loveui/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.js      [22m[32m13.66 KB[39m
+[32mESM[39m [1mdist/mcp-server.js [22m[32m9.97 KB[39m
+[32mESM[39m ⚡️ Build success in 24ms
+DTS Build start
+DTS ⚡️ Build success in 4367ms
+DTS dist/mcp-server.d.ts 20.00 B
+DTS dist/index.d.ts      91.00 B
+[0m[2m[35m$[0m [2m[1mnode ./scripts/copy-packages.mjs && node ./scripts/verify-registry.mjs[0m
+Registry verification warning: duplicate names in index: announcement, avatar-stack, cursor, form, marquee, table, ticker, video-player
+Registry verification passed: 1104 items available in public/r

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-single",
+  "description": "Accordion with one panel open",
+  "registryDependencies": [
+    "@loveui/accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/accordion-single.tsx",
+      "content": "import {\n  Accordion,\n  AccordionItem,\n  AccordionPanel,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\"\n\nexport default function AccordionSingleDemo() {\n  return (\n    <Accordion className=\"w-full\" multiple={false}>\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>What is Base UI?</AccordionTrigger>\n        <AccordionPanel>\n          Base UI is a library of high-quality unstyled React components\n          for design systems and web apps.\n        </AccordionPanel>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\">\n        <AccordionTrigger>How do I get started?</AccordionTrigger>\n        <AccordionPanel>\n          Head to the \"Quick start\" guide in the docs. If you've used\n          unstyled libraries before, you'll feel at home.\n        </AccordionPanel>\n      </AccordionItem>\n      <AccordionItem value=\"item-3\">\n        <AccordionTrigger>\n          Can I use it for my project?\n        </AccordionTrigger>\n        <AccordionPanel>\n          Of course! Base UI is free and open source.\n        </AccordionPanel>\n      </AccordionItem>\n    </Accordion>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "accordion"
+  ],
+  "type": "registry:example"
+}

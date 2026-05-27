@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-fr-1",
+  "description": "Frame with collapsible content and delete button",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@loveui/frame",
+    "@loveui/collapsible",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/particles/particle-fr-1.tsx",
+      "content": "import { ChevronDownIcon, TrashIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Collapsible,\n  CollapsiblePanel,\n  CollapsibleTrigger,\n} from \"@/registry/default/ui/collapsible\"\nimport { Frame, FrameHeader, FramePanel } from \"@/registry/default/ui/frame\"\n\nexport default function Particle() {\n  return (\n    <Frame className=\"w-full\">\n      <Collapsible>\n        <FrameHeader className=\"flex-row items-center justify-between px-2 py-2\">\n          <CollapsibleTrigger\n            render={<Button variant=\"ghost\" />}\n            className=\"data-panel-open:[&_svg]:rotate-180\"\n          >\n            <ChevronDownIcon className=\"size-4\" />\n            Section header\n          </CollapsibleTrigger>\n          <Button variant=\"ghost\" size=\"icon\" aria-label=\"Delete\">\n            <TrashIcon />\n          </Button>\n        </FrameHeader>\n        <CollapsiblePanel>\n          <FramePanel>\n            <h2 className=\"text-sm font-semibold\">Section title</h2>\n            <p className=\"text-sm text-muted-foreground\">Section description</p>\n          </FramePanel>\n        </CollapsiblePanel>\n      </Collapsible>\n    </Frame>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "frame",
+    "collapsible"
+  ],
+  "type": "registry:example"
+}

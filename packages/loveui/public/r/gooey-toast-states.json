@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-toast-states",
+  "description": "Gooey toast with different states",
+  "registryDependencies": [
+    "@loveui/gooey-toast"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/gooey-toast-states.tsx",
+      "content": "\"use client\"\n\nimport { gooey } from \"@loveui/gooey-toast\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function GooeyToastStates() {\n  return (\n    <div className=\"flex flex-wrap gap-2\">\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          gooey.success({\n            title: \"Success!\",\n            description: \"Your changes have been saved.\",\n          })\n        }}\n      >\n        Success\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          gooey.error({\n            title: \"Error\",\n            description: \"Something went wrong. Please try again.\",\n          })\n        }}\n      >\n        Error\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          gooey.warning({\n            title: \"Warning\",\n            description: \"This action cannot be undone.\",\n          })\n        }}\n      >\n        Warning\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          gooey.info({\n            title: \"Did you know?\",\n            description: \"You can customize toast animations.\",\n          })\n        }}\n      >\n        Info\n      </Button>\n      <Button\n        variant=\"outline\"\n        onClick={() => {\n          gooey.action({\n            title: \"Action Required\",\n            description: \"Please review your settings.\",\n          })\n        }}\n      >\n        Action\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "gooey-toast",
+    "button"
+  ],
+  "type": "registry:example"
+}

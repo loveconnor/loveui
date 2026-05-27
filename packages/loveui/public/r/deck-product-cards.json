@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deck-product-cards",
+  "description": "Product card deck with swipe gestures.",
+  "registryDependencies": [
+    "@loveui/deck",
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/deck-product-cards.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\nimport { StarIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport {\n  Deck,\n  DeckCards,\n  DeckEmpty,\n  DeckItem,\n} from \"../../../../../packages/deck\"\nimport { Badge } from \"../../../../../packages/ui/src/ui/badge\"\n\nconst products = [\n  {\n    id: 1,\n    name: \"Wireless Headphones\",\n    price: \"$199\",\n    rating: 4.5,\n    image: \"https://placehold.co/400x300/ff6b6b/fff?text=Headphones\",\n    category: \"Electronics\",\n    description: \"Premium wireless headphones with noise cancellation\",\n  },\n  {\n    id: 2,\n    name: \"Smart Watch\",\n    price: \"$299\",\n    rating: 4.8,\n    image: \"https://placehold.co/400x300/4ecdc4/fff?text=Watch\",\n    category: \"Wearables\",\n    description: \"Feature-rich smartwatch with health tracking\",\n  },\n  {\n    id: 3,\n    name: \"Coffee Maker\",\n    price: \"$149\",\n    rating: 4.3,\n    image: \"https://placehold.co/400x300/45b7d1/fff?text=Coffee\",\n    category: \"Kitchen\",\n    description: \"Programmable coffee maker with built-in grinder\",\n  },\n  {\n    id: 4,\n    name: \"Laptop Stand\",\n    price: \"$79\",\n    rating: 4.6,\n    image: \"https://placehold.co/400x300/96ceb4/fff?text=Stand\",\n    category: \"Accessories\",\n    description:\n      \"Adjustable aluminum laptop stand for better ergonomics\",\n  },\n]\n\nconst Example = () => (\n  <div className=\"mx-auto w-80\">\n    <Deck>\n      <DeckCards className=\"aspect-[4/5]\" onSwipe={console.log}>\n        {products.map((product) => (\n          <DeckItem className=\"flex flex-col p-0\" key={product.id}>\n            <div className=\"relative\">\n              <Image\n                alt={product.name}\n                className=\"h-64 w-full rounded-t-lg object-cover\"\n                draggable={false}\n                height={300}\n                src={product.image}\n                unoptimized\n                width={400}\n              />\n              <Badge className=\"absolute top-3 right-3\">\n                {product.category}\n              </Badge>\n            </div>\n\n            <div className=\"flex flex-1 flex-col p-4\">\n              <div className=\"flex items-start justify-between\">\n                <h3 className=\"text-lg font-semibold\">{product.name}</h3>\n                <span className=\"text-lg font-bold text-primary\">\n                  {product.price}\n                </span>\n              </div>\n\n              <div className=\"mt-1 flex items-center gap-1\">\n                <div className=\"flex\">\n                  {[...new Array(5)].map((_, i) => (\n                    <StarIcon\n                      className={cn(\n                        \"h-4 w-4\",\n                        i < Math.floor(product.rating)\n                          ? \"fill-yellow-400 text-yellow-400\"\n                          : \"text-muted-foreground\"\n                      )}\n                      key={`star-${product.id}-${i}`}\n                    />\n                  ))}\n                </div>\n                <span className=\"text-sm text-muted-foreground\">\n                  ({product.rating})\n                </span>\n              </div>\n\n              <p className=\"mt-2 flex-1 text-sm text-muted-foreground\">\n                {product.description}\n              </p>\n            </div>\n          </DeckItem>\n        ))}\n      </DeckCards>\n      <DeckEmpty />\n    </Deck>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "social",
+    "deck",
+    "commerce"
+  ],
+  "type": "registry:example"
+}

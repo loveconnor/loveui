@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-303",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/default/components/comp-303.tsx",
+      "content": "import { EclipseIcon } from \"lucide-react\"\n\nexport default function Component() {\n  return (\n    <div className=\"rounded-md border border-border/60 bg-muted/80 px-4 py-3 text-foreground shadow-sm\">\n      <p className=\"text-center text-sm\">\n        <EclipseIcon\n          className=\"me-3 -mt-0.5 inline-flex opacity-60\"\n          size={16}\n          aria-hidden=\"true\"\n        />\n        Unlock role-based dashboards with live product analytics{\" \"}\n        <span className=\"text-muted-foreground\">·</span>{\" \"}\n        <a href=\"#\" className=\"font-medium underline hover:no-underline\">\n          Upgrade now\n        </a>\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "banner"
+    ],
+    "colSpan": 3
+  }
+}

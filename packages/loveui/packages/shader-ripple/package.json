@@ -1,0 +1,60 @@
+{
+  "name": "@loveui/shader-ripple",
+  "description": "Animated ripple background with customizable colors and effects powered by Three.js shaders.",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "react",
+    "three",
+    "shader",
+    "ripple",
+    "background",
+    "loveui"
+  ],
+  "files": [
+    "dist",
+    "*.ts",
+    "*.tsx",
+    "*.css",
+    "*.mdx"
+  ],
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0-0",
+    "react-dom": "^18.2.0 || ^19.0.0-0",
+    "three": "^0.181.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "@types/three": "^0.170.0",
+    "@loveui/typescript-config": "^0.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.181.0",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

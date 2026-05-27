@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-with-icon",
+  "description": "Alert with icon",
+  "registryDependencies": [
+    "@loveui/alert"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/alert-with-icon.tsx",
+      "content": "import { InfoIcon } from \"lucide-react\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/default/ui/alert\"\n\nexport default function AlertWithIcon() {\n  return (\n    <Alert>\n      <InfoIcon />\n      <AlertTitle>Heads up!</AlertTitle>\n      <AlertDescription>\n        Describe what can be done about it here.\n      </AlertDescription>\n    </Alert>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "alert"
+  ],
+  "type": "registry:example"
+}

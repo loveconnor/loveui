@@ -1,0 +1,187 @@
+---
+title: Code Block
+description: Composable code-block primitives with copy actions, tabs, package-manager commands, and syntax highlighting.
+icon: Braces
+dependencies:
+  - https://shiki.matsu.io/
+  - https://github.com/huozhi/sugar-high
+  - https://react-symbols.dev/
+installer: code-block
+---
+
+<ComponentPreview name="code-block" />
+
+## Overview
+
+Use a code block to show code, commands, diffs, or copyable snippets.
+
+The code block primitives are designed for documentation, examples, installation commands, API references, and developer-facing product surfaces.
+
+## Anatomy
+
+A code block can include a frame, header, tabs, copy button, package-manager selector, syntax highlighting, line numbers, highlighted lines, highlighted words, and diff markers.
+
+## Highlighting
+
+Use syntax highlighting when it improves scanning. Use no highlighting for plain text, output, or content where color would add noise. Use diff highlighting when explaining changes.
+
+## Accessibility
+
+Keep code selectable, preserve text contrast, and provide copy buttons with clear accessible labels. Do not hide important instructions only inside code comments.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+<TabsPanel value="cli">
+
+```bash
+npx love-ui@latest add code-block
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the package.</Step>
+
+```bash
+pnpm add @loveui/code-blocks
+```
+
+<Step>Import styles into your global stylesheet.</Step>
+
+```css
+@import "@loveui/code-blocks/styles/globals.css";
+@import "@loveui/code-blocks/styles/shiki.css";
+/* Optional alternative highlighter */
+/* @import "@loveui/code-blocks/styles/sugar-high.css"; */
+```
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+### Core primitives
+
+```tsx
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockContent,
+  CodeBlockGroup,
+  CodeBlockIcon,
+  CodeblockShiki,
+  CopyButton,
+} from "@loveui/code-blocks"
+```
+
+```tsx
+const code = `export function sum(a: number, b: number) {
+  return a + b
+}`
+
+<CodeBlock>
+  <CodeBlockHeader>
+    <CodeBlockGroup>
+      <CodeBlockIcon language="ts" />
+      <span>math.ts</span>
+    </CodeBlockGroup>
+    <CopyButton content={code} />
+  </CodeBlockHeader>
+  <CodeBlockContent>
+    <CodeblockShiki code={code} language="ts" lineNumbers />
+  </CodeBlockContent>
+</CodeBlock>
+```
+
+### Highlighting engines
+
+```tsx
+import { CodeblockShiki, CodeBlockSugarHigh } from "@loveui/code-blocks"
+```
+
+### Package manager command blocks
+
+```tsx
+import { CodeBlockSelectPkg, CodeBlockTabsPkg } from "@loveui/code-blocks"
+```
+
+```tsx
+<CodeBlockSelectPkg command="@loveui/code-blocks" title="Install package" type="install" />
+<CodeBlockTabsPkg command="@loveui/code-blocks" type="install" />
+```
+
+### MDX pre wrappers
+
+```tsx
+import { PreShikiComponent, PreSugarHighComponent } from "@loveui/code-blocks"
+```
+
+```tsx
+const mdxComponents = {
+  ...PreShikiComponent,
+}
+```
+
+## Exports
+
+- `CodeBlock`, `CodeBlockHeader`, `CodeBlockContent`, `CodeBlockGroup`, `CodeBlockIcon`
+- `CopyButton`
+- `CodeblockShiki`, `CodeBlockSugarHigh`
+- `InlineCode`, `MultiTabs`
+- `CodeBlockSelectPkg`, `CodeBlockTabsPkg`, `SelectPackageManager`
+- `PreShikiComponent`, `PreSugarHighComponent`
+- `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`
+- `DropdownMenu` primitives
+- `usePackageManager`, `copyToClipboard`, `reactToText`, `highlight`, `sugarHighHighlight`
+
+## Examples
+
+The examples show the main composition options for developer documentation.
+
+### Default
+
+<ComponentPreview name="code-block" />
+
+### Headless
+
+<ComponentPreview name="code-block-headless" />
+
+### Highlighted lines
+
+<ComponentPreview name="code-block-highlight-line" />
+
+### Highlighted words
+
+<ComponentPreview name="code-block-highlight-word" />
+
+### Diff
+
+<ComponentPreview name="code-block-diff" />
+
+### Focus
+
+<ComponentPreview name="code-block-focus" />
+
+### Hidden line numbers
+
+<ComponentPreview name="code-block-numberless" />
+
+### No syntax highlighting
+
+<ComponentPreview name="code-block-no-highlighting" />
+
+### Sugar High theme
+
+<ComponentPreview name="code-block-theme" />

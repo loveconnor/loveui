@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-nav",
+  "description": "Sidebar navigation layout",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/separator"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/sidebar-nav.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Separator } from \"@/registry/default/ui/separator\"\n\nconst navItems = [\n  { label: \"Overview\", active: true },\n  { label: \"Analytics\", active: false },\n  { label: \"Customers\", active: false },\n  { label: \"Billing\", active: false },\n  { label: \"Settings\", active: false },\n]\n\nexport default function SidebarNav() {\n  return (\n    <aside className=\"w-full max-w-64 rounded-lg border bg-card p-2\">\n      <nav className=\"flex flex-col gap-1\">\n        {navItems.map((item) => (\n          <Button\n            key={item.label}\n            className=\"justify-start\"\n            variant={item.active ? \"secondary\" : \"ghost\"}\n          >\n            {item.label}\n          </Button>\n        ))}\n      </nav>\n      <Separator className=\"my-2\" />\n      <Button className=\"w-full\" variant=\"outline\">\n        Invite team\n      </Button>\n    </aside>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "sidebar",
+    "navigation",
+    "dashboard"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-destructive-outline",
+  "description": "Destructive outline button",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-destructive-outline.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonDestructiveOutline() {\n  return <Button variant=\"destructive-outline\">Delete</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "delete"
+  ],
+  "type": "registry:example"
+}

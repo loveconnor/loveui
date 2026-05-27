@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switcher-uncontrolled",
+  "description": "Uncontrolled theme switcher emitting change events.",
+  "registryDependencies": [
+    "@loveui/theme-switcher"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/theme-switcher-uncontrolled.tsx",
+      "content": "\"use client\"\n\nimport { ThemeSwitcher } from \"../../../../../packages/theme-switcher\"\n\nconst Example = () => (\n  <ThemeSwitcher defaultValue=\"system\" onChange={console.log} />\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "styling",
+    "theme",
+    "uncontrolled"
+  ],
+  "type": "registry:example"
+}

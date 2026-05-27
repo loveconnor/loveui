@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stories-avatars",
+  "description": "Stories avatar ring list styled like Instagram.",
+  "registryDependencies": [
+    "@loveui/stories"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/stories-avatars.tsx",
+      "content": "\"use client\"\n\nimport {\n  Stories,\n  StoriesContent,\n  Story,\n  StoryAuthor,\n  StoryAuthorImage,\n} from \"../../../../../packages/stories\"\n\nconst stories = [\n  {\n    id: 1,\n    author: \"Connor Love\",\n    avatar: \"https://github.com/loveconnor.png\",\n    fallback: \"CL\",\n  },\n  {\n    id: 2,\n    author: \"Thomas Raklovits\",\n    avatar: \"https://github.com/monster0506.png\",\n    fallback: \"TR\",\n  },\n  {\n    id: 3,\n    author: \"Charlie Cambell\",\n    avatar: \"https://github.com/loveconnor.png\",\n    fallback: \"CC\",\n  },\n  {\n    id: 4,\n    author: \"Owen Caudy\",\n    avatar: \"https://github.com/loveconnor.png\",\n    fallback: \"OC\",\n  },\n]\n\nconst Example = () => (\n  <div className=\"w-full max-w-4xl\">\n    <Stories>\n      <StoriesContent className=\"justify-center\">\n        {stories.map((story) => (\n          <Story className=\"aspect-square w-12 rounded-full p-0\" key={story.id}>\n            <StoryAuthor className=\"p-0\">\n              <span\n                aria-hidden=\"true\"\n                className=\"inline-flex size-full rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] p-0.5\"\n              >\n                <span className=\"inline-flex size-full rounded-full bg-white p-0.5\">\n                  <StoryAuthorImage\n                    className=\"size-full\"\n                    fallback={story.fallback}\n                    src={story.avatar}\n                  />\n                </span>\n              </span>\n            </StoryAuthor>\n          </Story>\n        ))}\n      </StoriesContent>\n    </Stories>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "social",
+    "stories",
+    "avatar"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "snippet-npm",
+  "description": "Snippet showing install commands for multiple package managers.",
+  "registryDependencies": [
+    "@loveui/snippet",
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/snippet-npm.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Snippet,\n  SnippetCopyButton,\n  SnippetHeader,\n  SnippetTabsContent,\n  SnippetTabsList,\n  SnippetTabsTrigger,\n} from \"../../../../../packages/snippet\"\n\nconst commands = [\n  {\n    label: \"npm\",\n    code: \"npx next-forge@latest init\",\n  },\n  {\n    label: \"yarn\",\n    code: \"yarn dlx next-forge@latest init\",\n  },\n  {\n    label: \"pnpm\",\n    code: \"pnpx next-forge@latest init\",\n  },\n  {\n    label: \"bun\",\n    code: \"bunx next-forge@latest init\",\n  },\n]\n\nconst Example = () => {\n  const [value, setValue] = useState(commands[0].label)\n  const activeCommand = commands.find((command) => command.label === value)\n\n  return (\n    <Snippet onValueChange={setValue} value={value}>\n      <SnippetHeader>\n        <SnippetTabsList>\n          {commands.map((command) => (\n            <SnippetTabsTrigger key={command.label} value={command.label}>\n              {command.label}\n            </SnippetTabsTrigger>\n          ))}\n        </SnippetTabsList>\n        {activeCommand && (\n          <SnippetCopyButton\n            onCopy={() =>\n              console.log(`Copied \"${activeCommand.code}\" to clipboard`)\n            }\n            onError={() =>\n              console.error(\n                `Failed to copy \"${activeCommand.code}\" to clipboard`\n              )\n            }\n            value={activeCommand.code}\n          />\n        )}\n      </SnippetHeader>\n      {commands.map((command) => (\n        <SnippetTabsContent key={command.label} value={command.label}>\n          {command.code}\n        </SnippetTabsContent>\n      ))}\n    </Snippet>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "snippet",
+    "commands"
+  ],
+  "type": "registry:example"
+}

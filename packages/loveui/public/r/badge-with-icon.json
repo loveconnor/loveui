@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-with-icon",
+  "description": "Badge with icon",
+  "registryDependencies": [
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/badge-with-icon.tsx",
+      "content": "import { CheckIcon } from \"lucide-react\"\n\nimport { Badge } from \"@/registry/default/ui/badge\"\n\nexport default function BadgeWithIcon() {\n  return (\n    <Badge variant=\"outline\">\n      <CheckIcon />\n      Verified\n    </Badge>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-headless",
+  "description": "Headless code block rendering custom header and controls.",
+  "registryDependencies": [
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/code-block-headless.tsx",
+      "content": "\"use client\"\n\nimport { CodeBlockShowcase, type CodeSample } from \"./code-block-shared\"\n\nconst code: CodeSample[] = [\n  {\n    language: \"tsx\",\n    filename: \"api-client.ts\",\n    code: `export async function getUser(id: string) {\n  const response = await fetch(\\`/api/users/\\${id}\\`);\n  if (!response.ok) throw new Error(\"Failed to load user\");\n  return response.json();\n}`,\n  },\n]\n\nconst Example = () => <CodeBlockShowcase files={code} hideHeader />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "code-block",
+    "headless"
+  ],
+  "type": "registry:example"
+}

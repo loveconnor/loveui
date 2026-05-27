@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "template-hero-five",
+  "type": "registry:block",
+  "title": "hero/five",
+  "description": "Page template \"hero/five\"",
+  "files": [
+    {
+      "path": "registry/page-templates/default/templates/hero/five/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/page-templates/hero/five/app/page.tsx",
+      "content": "import HeroSection from \"../index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
+    },
+    {
+      "path": "registry/page-templates/default/templates/hero/five/index.tsx",
+      "type": "registry:file",
+      "target": "components/page-templates/hero/five/index.tsx",
+      "content": "import React from \"react\"\nimport Image from \"next/image\"\nimport Link from \"next/link\"\nimport { Button } from \"@/ui/button\"\nimport {\n  AudioLines,\n  ChevronRight,\n  Github,\n  ImageIcon,\n  Lightbulb,\n  Mic2,\n  Paperclip,\n  Plus,\n  ShoppingBag,\n  Telescope,\n} from \"lucide-react\"\n\nexport default function HeroSection() {\n  return (\n    <>\n      <main className=\"overflow-hidden\">\n        <section className=\"bg-background\">\n          <div className=\"relative pt-16 pb-32\">\n            <div className=\"relative z-10 mx-auto w-full max-w-5xl px-6\">\n              <div className=\"pointer-events-none relative mx-auto aspect-3/2 max-w-xl mask-radial-from-35% mask-radial-to-75% opacity-75 mix-blend-darken\">\n                <div className=\"absolute inset-0 bg-background mix-blend-overlay\"></div>\n                <Image\n                  src=\"/page-templates/hero-bg.jpg\"\n                  alt=\"watch in dark\"\n                  className=\"not-dark:invert dark:mix-blend-lighten\"\n                  width={1340}\n                  height={560}\n                />\n              </div>\n              <div className=\"mx-auto mt-6 max-w-md text-center\">\n                <h1 className=\"font-serif text-4xl font-medium text-balance sm:text-5xl\">\n                  Ship faster. Design with LoveUI.\n                </h1>\n                <p className=\"mt-4 text-balance text-muted-foreground\">\n                  LoveUI is your all-in-one kit for shipping polished interfaces\n                  in your app.\n                </p>\n\n                <Button asChild className=\"mt-6 pr-1.5\">\n                  <Link href=\"#link\">\n                    <span className=\"text-nowrap\">Start Building</span>\n                    <ChevronRight className=\"opacity-50\" />\n                  </Link>\n                </Button>\n              </div>\n            </div>\n          </div>\n        </section>\n      </main>\n    </>\n  )\n}\n"
+    }
+  ],
+  "categories": [
+    "page-template",
+    "hero"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "page-template",
+    "templatePath": "hero/five"
+  }
+}

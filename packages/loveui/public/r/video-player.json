@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-player",
+  "description": "Video player with transport, time, and volume controls.",
+  "registryDependencies": [
+    "@loveui/video-player"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/video-player.tsx",
+      "content": "\"use client\"\n\nimport {\n  VideoPlayer,\n  VideoPlayerContent,\n  VideoPlayerControlBar,\n  VideoPlayerMuteButton,\n  VideoPlayerPlayButton,\n  VideoPlayerSeekBackwardButton,\n  VideoPlayerSeekForwardButton,\n  VideoPlayerTimeDisplay,\n  VideoPlayerTimeRange,\n  VideoPlayerVolumeRange,\n} from \"../../../../../packages/video-player\"\n\nconst Example = () => (\n  <VideoPlayer className=\"overflow-hidden rounded-lg border\">\n    <VideoPlayerContent\n      crossOrigin=\"\"\n      muted\n      preload=\"auto\"\n      slot=\"media\"\n      src=\"https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe/high.mp4\"\n    />\n    <VideoPlayerControlBar>\n      <VideoPlayerPlayButton />\n      <VideoPlayerSeekBackwardButton />\n      <VideoPlayerSeekForwardButton />\n      <VideoPlayerTimeRange />\n      <VideoPlayerTimeDisplay showDuration />\n      <VideoPlayerMuteButton />\n      <VideoPlayerVolumeRange />\n    </VideoPlayerControlBar>\n  </VideoPlayer>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "media",
+    "video",
+    "player"
+  ],
+  "type": "registry:example"
+}

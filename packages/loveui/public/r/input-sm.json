@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-sm",
+  "description": "Small input",
+  "registryDependencies": [
+    "@loveui/input"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/input-sm.tsx",
+      "content": "import { Input } from \"@/registry/default/ui/input\"\n\nexport default function InputSm() {\n  return (\n    <Input\n      size=\"sm\"\n      placeholder=\"Enter text\"\n      aria-label=\"Enter text\"\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "input"
+  ],
+  "type": "registry:example"
+}

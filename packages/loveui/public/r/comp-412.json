@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-412",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/default/components/comp-412.tsx",
+      "content": "import { assetPath } from \"@/lib/building-blocks/utils\"\n\nexport default function Component() {\n  return (\n    <div className=\"flex items-center rounded-full border bg-background p-1 shadow-sm\">\n      <div className=\"flex -space-x-1.5\">\n        <img\n          className=\"rounded-full ring-1 ring-background\"\n          src={\"/building-blocks/thumbs/avatar.png\"}\n          width={20}\n          height={20}\n          alt=\"Avatar 01\"\n        />\n        <img\n          className=\"rounded-full ring-1 ring-background\"\n          src={\"/building-blocks/thumbs/avatar-dark.png\"}\n          width={20}\n          height={20}\n          alt=\"Avatar 02\"\n        />\n        <img\n          className=\"rounded-full ring-1 ring-background\"\n          src={\"/building-blocks/thumbs/avatar.png\"}\n          width={20}\n          height={20}\n          alt=\"Avatar 03\"\n        />\n        <img\n          className=\"rounded-full ring-1 ring-background\"\n          src={\"/building-blocks/thumbs/avatar-dark.png\"}\n          width={20}\n          height={20}\n          alt=\"Avatar 04\"\n        />\n      </div>\n      <p className=\"px-2 text-xs text-muted-foreground\">\n        Trusted by <strong className=\"font-medium text-foreground\">60K+</strong>{\" \"}\n        developers.\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "avatar",
+      "avatar group"
+    ],
+    "style": 1
+  }
+}

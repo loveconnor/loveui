@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "snippet",
+  "description": "Code snippet display with syntax highlighting.",
+  "registryDependencies": [
+    "@loveui/snippet",
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/snippet.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { BoxIcon, HeartIcon } from \"lucide-react\"\n\nimport {\n  Snippet,\n  SnippetCopyButton,\n  SnippetHeader,\n  SnippetTabsContent,\n  SnippetTabsList,\n  SnippetTabsTrigger,\n} from \"../../../../../packages/snippet\"\n\nconst commands = [\n  {\n    label: \"loveui\",\n    icon: HeartIcon,\n    code: \"npx love-ui@latest add  snippet\",\n  },\n]\n\nconst Example = () => {\n  const [value, setValue] = useState(commands[0].label)\n  const activeCommand = commands.find((command) => command.label === value)\n\n  return (\n    <Snippet onValueChange={setValue} value={value}>\n      <SnippetHeader>\n        <SnippetTabsList>\n          {commands.map((command) => (\n            <SnippetTabsTrigger key={command.label} value={command.label}>\n              <command.icon size={14} />\n              <span>{command.label}</span>\n            </SnippetTabsTrigger>\n          ))}\n        </SnippetTabsList>\n        {activeCommand && (\n          <SnippetCopyButton\n            onCopy={() =>\n              console.log(`Copied \"${activeCommand.code}\" to clipboard`)\n            }\n            onError={() =>\n              console.error(\n                `Failed to copy \"${activeCommand.code}\" to clipboard`\n              )\n            }\n            value={activeCommand.code}\n          />\n        )}\n      </SnippetHeader>\n      {commands.map((command) => (\n        <SnippetTabsContent key={command.label} value={command.label}>\n          {command.code}\n        </SnippetTabsContent>\n      ))}\n    </Snippet>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "snippet"
+  ],
+  "type": "registry:example"
+}

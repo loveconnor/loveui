@@ -1,0 +1,121 @@
+---
+title: Toggle
+description: A two-state button that can be on or off.
+
+links:
+  doc: https://base-ui.com/react/components/toggle#api-reference
+---
+
+<ComponentPreview name="toggle-demo" />
+
+## Overview
+
+Use Toggle for a two-state button that can be pressed or not pressed.
+
+Toggle is useful for formatting buttons, favorite buttons, compact filters, view options, and controls where the pressed state matters.
+
+## Anatomy
+
+A toggle has a button, label or icon, pressed state, variant, size, and disabled state.
+
+## Behavior
+
+Use Toggle when the pressed state is visible and meaningful. Use Switch for settings that read as on or off.
+
+## Accessibility
+
+Icon-only toggles need accessible names. Make the pressed state visible through more than color when possible.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+<TabsPanel value="cli">
+
+```bash
+npx love-ui@latest add toggle
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui-components/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toggle" title="components/ui/toggle.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Toggle } from "@/components/ui/toggle"
+```
+
+```tsx
+<Toggle>Toggle</Toggle>
+```
+
+## Examples
+
+The examples show outline style, icon content, sizes, disabled state, and icon grouping.
+
+### Outline
+
+<ComponentPreview
+  name="toggle-outline"
+  className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
+/>
+
+### With Icon
+
+<ComponentPreview
+  name="toggle-with-icon"
+  className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
+/>
+
+### Small Size
+
+<ComponentPreview
+  name="toggle-sm"
+  className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
+/>
+
+### Large Size
+
+<ComponentPreview
+  name="toggle-lg"
+  className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
+/>
+
+### Disabled
+
+<ComponentPreview
+  name="toggle-disabled"
+  className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
+/>
+
+### Icon Group
+
+<ComponentPreview
+  name="toggle-icon-group"
+  className="[&_[data-slot=code]_pre]:h-[240px] [&_[data-slot=preview]>*]:h-[240px]"
+/>

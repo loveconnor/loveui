@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reel-images",
+  "description": "Reel presentation cycling through full-screen images.",
+  "registryDependencies": [
+    "@loveui/reel"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/reel-images.tsx",
+      "content": "\"use client\"\n\nimport {\n  Reel,\n  ReelContent,\n  ReelControls,\n  ReelFooter,\n  ReelImage,\n  ReelItem,\n  ReelMuteButton,\n  ReelNavigation,\n  ReelNextButton,\n  ReelPlayButton,\n  ReelPreviousButton,\n  ReelProgress,\n  type ReelItem as ReelItemType,\n} from \"../../../../../packages/reel\"\n\nconst reels: ReelItemType[] = [\n  {\n    id: 1,\n    type: \"image\",\n    src: \"https://images.unsplash.com/photo-1753731683731-1032f9457b02?w=1080&h=1920&fit=crop\",\n    alt: \"Mountain Adventure\",\n    title: \"Mountain Adventure\",\n    description: \"Exploring the peaks\",\n    duration: 5,\n  },\n  {\n    id: 2,\n    type: \"image\",\n    src: \"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1080&h=1920&fit=crop\",\n    alt: \"Ocean Waves\",\n    title: \"Ocean Waves\",\n    description: \"Sunset at the beach\",\n    duration: 5,\n  },\n  {\n    id: 3,\n    type: \"image\",\n    src: \"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1080&h=1920&fit=crop\",\n    alt: \"Forest Trail\",\n    title: \"Forest Trail\",\n    description: \"Into the woods\",\n    duration: 5,\n  },\n]\n\nconst Example = () => (\n  <Reel data={reels}>\n    <ReelProgress />\n    <ReelContent>\n      {(reel) => (\n        <ReelItem>\n          <ReelImage\n            alt={reel.alt ?? \"\"}\n            duration={reel.duration}\n            src={reel.src}\n          />\n          <ReelFooter className=\"pb-16\">\n            <div className=\"text-white\">\n              <h3 className=\"text-lg font-semibold\">{reel.title}</h3>\n              <p className=\"text-sm opacity-90\">{reel.description}</p>\n            </div>\n          </ReelFooter>\n        </ReelItem>\n      )}\n    </ReelContent>\n    <ReelNavigation />\n    <ReelControls>\n      <ReelPreviousButton />\n      <div className=\"flex gap-2\">\n        <ReelPlayButton />\n        <ReelMuteButton />\n      </div>\n      <ReelNextButton />\n    </ReelControls>\n  </Reel>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "social",
+    "reel",
+    "image"
+  ],
+  "type": "registry:example"
+}

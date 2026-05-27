@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-fixed-width",
+  "description": "Combobox with fixed width menu.",
+  "registryDependencies": [
+    "@loveui/combobox"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/combobox-fixed-width.tsx",
+      "content": "\"use client\"\n\nimport {\n  Combobox,\n  ComboboxContent,\n  ComboboxEmpty,\n  ComboboxGroup,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n  ComboboxTrigger,\n} from \"../../../../../packages/combobox\"\n\nconst frameworks = [\n  {\n    value: \"next.js\",\n    label: \"Next.js\",\n  },\n  {\n    value: \"sveltekit\",\n    label: \"SvelteKit\",\n  },\n  {\n    value: \"nuxt.js\",\n    label: \"Nuxt.js\",\n  },\n  {\n    value: \"remix\",\n    label: \"Remix\",\n  },\n  {\n    value: \"astro\",\n    label: \"Astro\",\n  },\n  {\n    value: \"vite\",\n    label: \"Vite\",\n  },\n]\n\nconst Example = () => (\n  <Combobox\n    data={frameworks}\n    onOpenChange={(open) => console.log(\"Combobox is open?\", open)}\n    onValueChange={(newValue) => console.log(\"Combobox value:\", newValue)}\n    type=\"framework\"\n  >\n    <ComboboxTrigger className=\"w-[70%]\" />\n    <ComboboxContent>\n      <ComboboxInput />\n      <ComboboxEmpty />\n      <ComboboxList>\n        <ComboboxGroup>\n          {frameworks.map((framework) => (\n            <ComboboxItem key={framework.value} value={framework.value}>\n              {framework.label}\n            </ComboboxItem>\n          ))}\n        </ComboboxGroup>\n      </ComboboxList>\n    </ComboboxContent>\n  </Combobox>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "combobox"
+  ],
+  "type": "registry:example"
+}

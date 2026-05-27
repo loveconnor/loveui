@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deck",
+  "description": "Swipeable deck of cards with overscroll empty state.",
+  "registryDependencies": [
+    "@loveui/deck"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/deck.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport {\n  Deck,\n  DeckCards,\n  DeckEmpty,\n  DeckItem,\n} from \"../../../../../packages/deck\"\n\nconst images = [\n  {\n    id: 1,\n    src: \"https://placehold.co/400x600/ff6b6b/fff?text=Card+1\",\n    title: \"Card 1\",\n  },\n  {\n    id: 2,\n    src: \"https://placehold.co/400x600/4ecdc4/fff?text=Card+2\",\n    title: \"Card 2\",\n  },\n  {\n    id: 3,\n    src: \"https://placehold.co/400x600/45b7d1/fff?text=Card+3\",\n    title: \"Card 3\",\n  },\n  {\n    id: 4,\n    src: \"https://placehold.co/400x600/96ceb4/fff?text=Card+4\",\n    title: \"Card 4\",\n  },\n  {\n    id: 5,\n    src: \"https://placehold.co/400x600/feca57/fff?text=Card+5\",\n    title: \"Card 5\",\n  },\n]\n\nconst Example = () => (\n  <Deck className=\"size-full\">\n    <DeckCards>\n      {images.map((image) => (\n        <DeckItem className=\"p-0\" key={image.id}>\n          <Image\n            alt={image.title}\n            className=\"h-full w-full rounded-lg object-cover\"\n            draggable={false}\n            height={600}\n            src={image.src}\n            unoptimized\n            width={400}\n          />\n        </DeckItem>\n      ))}\n    </DeckCards>\n    <DeckEmpty />\n  </Deck>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "social",
+    "deck"
+  ],
+  "type": "registry:example"
+}

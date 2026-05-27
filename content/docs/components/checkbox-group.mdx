@@ -1,0 +1,114 @@
+---
+title: Checkbox Group
+description: Provides shared state to a series of checkboxes.
+
+links:
+  doc: https://base-ui.com/react/components/checkbox-group#api-reference
+---
+
+<ComponentPreview name="checkbox-group-demo" />
+
+## Overview
+
+Use a checkbox group when several checkboxes belong to the same question or setting.
+
+Checkbox groups are useful for permissions, filters, notification channels, roles, and feature selections where more than one option can be selected.
+
+## Anatomy
+
+A checkbox group provides shared state and contains individual checkbox items. It should have a group label or surrounding Fieldset so users understand what the choices are about.
+
+## Behavior
+
+Use disabled items for options that are visible but unavailable. Use parent checkboxes when a group needs select-all behavior. Use nested parent checkboxes when choices are hierarchical.
+
+## Accessibility
+
+Group related checkboxes with a visible label. Make sure each checkbox has its own label and that parent states are understandable through text, not only the visual indeterminate mark.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+<TabsPanel value="cli">
+
+```bash
+npx love-ui@latest add checkbox-group
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui-components/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="checkbox-group"
+  title="components/ui/checkbox-group.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+import { CheckboxGroup } from "@/components/ui/checkbox-group"
+```
+
+```tsx
+<CheckboxGroup>
+  <Label>
+    <Checkbox defaultChecked />
+    Next.js
+  </Label>
+  <Label>
+    <Checkbox />
+    Vite
+  </Label>
+  <Label>
+    <Checkbox />
+    Astro
+  </Label>
+</CheckboxGroup>
+```
+
+## Examples
+
+The examples show disabled options, select-all behavior, nested groups, and form submission.
+
+For accessible group labelling and validation, prefer wrapping checkbox groups with `Field` and `Fieldset`. See the related example: [Checkbox group field](/ui/docs/components/field#checkbox-group-field).
+
+### With Disabled Item
+
+<ComponentPreview name="checkbox-group-disabled" />
+
+### Parent Checkbox
+
+<ComponentPreview name="checkbox-group-parent" />
+
+### Nested Parent Checkbox
+
+<ComponentPreview name="checkbox-group-nested-parent" />
+
+### Form Integration
+
+<ComponentPreview name="checkbox-group-form" />

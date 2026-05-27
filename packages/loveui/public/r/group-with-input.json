@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "group-with-input",
+  "description": "Group with input",
+  "registryDependencies": [
+    "@loveui/group",
+    "@loveui/button",
+    "@loveui/input"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/group-with-input.tsx",
+      "content": "import { CopyIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Group, GroupItem, GroupSeparator } from \"@/registry/default/ui/group\"\nimport { Input } from \"@/registry/default/ui/input\"\n\nexport default function GroupWithInput() {\n  return (\n    <Group>\n      <GroupItem\n        render={<Input type=\"text\" defaultValue=\"https://loveui.dev\" />}\n      />\n      <GroupSeparator />\n      <GroupItem\n        render={\n          <Button variant=\"outline\" size=\"icon\" aria-label=\"Copy\" />\n        }\n      >\n        <CopyIcon />\n      </GroupItem>\n    </Group>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "group"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "template-hero-four",
+  "type": "registry:block",
+  "title": "hero/four",
+  "description": "Page template \"hero/four\"",
+  "files": [
+    {
+      "path": "registry/page-templates/default/templates/hero/four/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/page-templates/hero/four/app/page.tsx",
+      "content": "import HeroSection from \"../index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
+    },
+    {
+      "path": "registry/page-templates/default/templates/hero/four/index.tsx",
+      "type": "registry:file",
+      "target": "components/page-templates/hero/four/index.tsx",
+      "content": "import React from \"react\"\nimport Image from \"next/image\"\nimport Link from \"next/link\"\nimport { Button } from \"@/ui/button\"\nimport {\n  AudioLines,\n  ChevronRight,\n  Github,\n  ImageIcon,\n  Lightbulb,\n  Mic2,\n  Paperclip,\n  Plus,\n  ShoppingBag,\n  Telescope,\n} from \"lucide-react\"\n\nexport default function HeroSection() {\n  return (\n    <>\n      <main className=\"overflow-hidden\">\n        <section className=\"bg-background\">\n          <div className=\"relative py-32\">\n            <div className=\"absolute inset-0 aspect-2/3 mask-t-from-50% mask-radial-[75%_100%] mask-radial-from-45% mask-radial-to-75% mask-radial-at-top md:aspect-square lg:aspect-9/4 dark:opacity-5\">\n              <Image\n                src=\"/page-templates/hero-bg.jpg\"\n                alt=\"hero background\"\n                width={2268}\n                height={1740}\n                className=\"h-full w-full object-cover object-top\"\n              />\n            </div>\n            <div className=\"relative z-10 mx-auto w-full max-w-5xl px-6\">\n              <div\n                aria-hidden\n                className=\"mb-6 ml-auto max-w-3xl min-w-2xl scale-90 mask-radial-[75%_100%] mask-radial-from-65% mask-radial-to-90% mask-radial-at-left py-12 pl-6 perspective-near sm:mb-12 md:pl-12 lg:mb-20\"\n              >\n                <div className=\"relative flex h-56 -rotate-12 rotate-x-12 rotate-y-2 rotate-z-10 flex-col rounded-3xl border bg-muted py-4 pl-4\">\n                  <div className=\"absolute bottom-15 left-4 min-w-56 rounded-2xl bg-card p-1 shadow-xl ring-1 shadow-foreground/10 ring-border dark:shadow-black/25\">\n                    <div className=\"flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-muted [&>svg]:size-4 [&>svg]:opacity-65\">\n                      <Paperclip />\n                      <span>Add docs and assets</span>\n                    </div>\n                    <span className=\"mx-3 my-0.5 block h-px bg-[linear-gradient(90deg,var(--color-foreground)_1px,transparent_1px)] bg-size-[6px_1px] bg-bottom bg-repeat-x opacity-30 dark:opacity-15\" />\n                    <div className=\"flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-muted [&>svg]:size-4 [&>svg]:opacity-65\">\n                      <ImageIcon />\n                      <span>Create preview</span>\n                    </div>\n                    <div className=\"flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-muted [&>svg]:size-4 [&>svg]:opacity-65\">\n                      <Lightbulb />\n                      <span>Design ideas</span>\n                    </div>\n                    <div className=\"flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-muted [&>svg]:size-4 [&>svg]:opacity-65\">\n                      <Telescope />\n                      <span>Pattern search</span>\n                    </div>\n                    <div className=\"flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-muted [&>svg]:size-4 [&>svg]:opacity-65\">\n                      <ShoppingBag />\n                      <span>Template packs</span>\n                    </div>\n                    <div className=\"flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-muted [&>svg]:size-4 [&>svg]:opacity-65\">\n                      <Github />\n                      <span>Open source kits</span>\n                    </div>\n                  </div>\n\n                  <div className=\"mt-auto flex h-fit justify-between gap-3 rounded-full bg-card p-2 shadow-xs ring-1 shadow-foreground/6.5 ring-border dark:shadow-black/6.5\">\n                    <div className=\"flex items-center gap-2\">\n                      <div className=\"flex size-9 cursor-pointer rounded-full bg-muted *:m-auto *:size-4\">\n                        <Plus />\n                      </div>\n                      <div className=\"text-sm text-muted-foreground\">\n                        Ask LoveUI...\n                      </div>\n                    </div>\n                    <div className=\"flex items-center gap-0.5\">\n                      <div className=\"flex size-9 cursor-pointer rounded-full *:m-auto *:size-4 hover:bg-muted\">\n                        <Mic2 />\n                      </div>\n                      <div className=\"flex size-9 cursor-pointer rounded-full bg-foreground text-background *:m-auto *:size-4 hover:brightness-110\">\n                        <AudioLines />\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n              <div className=\"mx-auto max-w-md text-center\">\n                <h1 className=\"font-serif text-4xl font-medium text-balance sm:text-5xl\">\n                  Ship faster. Design with LoveUI.\n                </h1>\n                <p className=\"mt-4 text-balance text-muted-foreground\">\n                  LoveUI is your all-in-one kit for shipping polished interfaces\n                  in your app.\n                </p>\n\n                <Button asChild className=\"mt-6 pr-1.5\">\n                  <Link href=\"#link\">\n                    <span className=\"text-nowrap\">Start Building</span>\n                    <ChevronRight className=\"opacity-50\" />\n                  </Link>\n                </Button>\n              </div>\n            </div>\n          </div>\n        </section>\n      </main>\n    </>\n  )\n}\n"
+    }
+  ],
+  "categories": [
+    "page-template",
+    "hero"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "page-template",
+    "templatePath": "hero/four"
+  }
+}

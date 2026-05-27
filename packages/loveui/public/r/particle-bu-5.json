@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-bu-5",
+  "description": "Social login icon buttons",
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/particles/particle-bu-5.tsx",
+      "content": "import {\n  RiFacebookFill,\n  RiGithubFill,\n  RiGoogleFill,\n  RiTwitterXFill,\n} from \"@remixicon/react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function Particle() {\n  return (\n    <div className=\"inline-flex flex-wrap gap-2\">\n      <Button variant=\"outline\" aria-label=\"Login with Google\" size=\"icon\">\n        <RiGoogleFill className=\"opacity-72\" aria-hidden=\"true\" />\n      </Button>\n      <Button variant=\"outline\" aria-label=\"Login with Facebook\" size=\"icon\">\n        <RiFacebookFill className=\"opacity-72\" aria-hidden=\"true\" />\n      </Button>\n      <Button variant=\"outline\" aria-label=\"Login with X\" size=\"icon\">\n        <RiTwitterXFill className=\"opacity-72\" aria-hidden=\"true\" />\n      </Button>\n      <Button variant=\"outline\" aria-label=\"Login with GitHub\" size=\"icon\">\n        <RiGithubFill className=\"opacity-72\" aria-hidden=\"true\" />\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:block"
+}

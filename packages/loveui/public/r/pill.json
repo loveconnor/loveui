@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill",
+  "description": "Basic pill component.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill.tsx",
+      "content": "\"use client\"\n\nimport { CheckCircleIcon, UsersIcon, XIcon } from \"lucide-react\"\n\nimport {\n  Pill,\n  PillAvatar,\n  PillAvatarGroup,\n  PillButton,\n  PillDelta,\n  PillIcon,\n  PillIndicator,\n  PillStatus,\n} from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <div className=\"flex flex-wrap items-center justify-center gap-2\">\n    <Pill>\n      <PillAvatar\n        fallback=\"CL\"\n        src=\"https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg\"\n      />\n      @loveconnor\n    </Pill>\n    <Pill>\n      <PillStatus>\n        <CheckCircleIcon className=\"text-emerald-500\" size={12} />\n        Passed\n      </PillStatus>\n      Approval Status\n    </Pill>\n    <Pill>\n      #loveui\n      <PillButton size=\"icon\" variant=\"ghost\">\n        <XIcon size={12} />\n      </PillButton>\n    </Pill>\n    <Pill>\n      <PillIndicator pulse variant=\"success\" />\n      Active\n    </Pill>\n    <Pill>\n      <PillIndicator variant=\"error\" />\n      Error\n    </Pill>\n    <Pill>\n      <PillDelta delta={10} />\n      Up 10%\n    </Pill>\n    <Pill>\n      <PillDelta delta={-5} />\n      Down 5%\n    </Pill>\n    <Pill>\n      <PillDelta delta={0} />\n      No change\n    </Pill>\n    <Pill>\n      <PillIcon icon={UsersIcon} />\n      17 users\n    </Pill>\n    <Pill>\n      <PillAvatarGroup>\n        <PillAvatar\n          fallback=\"CL\"\n          src=\"https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg\"\n        />\n        <PillAvatar\n          fallback=\"SC\"\n          src=\"https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg\"\n        />\n        <PillAvatar\n          fallback=\"LR\"\n          src=\"https://pbs.twimg.com/profile_images/1862717563311968256/xfgt1L9l_400x400.jpg\"\n        />\n      </PillAvatarGroup>\n      Loved by millions\n    </Pill>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill"
+  ],
+  "type": "registry:example"
+}

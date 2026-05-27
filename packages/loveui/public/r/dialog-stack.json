@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-stack",
+  "description": "Dialog stack showcasing multi-step modals.",
+  "registryDependencies": [
+    "@loveui/dialog-stack",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/dialog-stack.tsx",
+      "content": "\"use client\"\n\nimport {\n  DialogStack,\n  DialogStackBody,\n  DialogStackContent,\n  DialogStackDescription,\n  DialogStackFooter,\n  DialogStackHeader,\n  DialogStackNext,\n  DialogStackOverlay,\n  DialogStackPrevious,\n  DialogStackTitle,\n  DialogStackTrigger,\n} from \"../../../../../packages/dialog-stack\"\nimport { Button } from \"../../../../../packages/ui/src/ui/button\"\n\nconst Example = () => (\n  <DialogStack>\n    <DialogStackTrigger asChild>\n      <Button variant=\"outline\">Show me</Button>\n    </DialogStackTrigger>\n    <DialogStackOverlay />\n\n    <DialogStackBody>\n      <DialogStackContent>\n        <DialogStackHeader>\n          <DialogStackTitle>I'm the first dialog</DialogStackTitle>\n          <DialogStackDescription>\n            With a fancy description\n          </DialogStackDescription>\n        </DialogStackHeader>\n        <DialogStackFooter className=\"justify-end\">\n          <DialogStackNext asChild>\n            <Button variant=\"outline\">Next</Button>\n          </DialogStackNext>\n        </DialogStackFooter>\n      </DialogStackContent>\n\n      <DialogStackContent>\n        <DialogStackHeader>\n          <DialogStackTitle>I'm the second dialog</DialogStackTitle>\n          <DialogStackDescription>\n            With a fancy description\n          </DialogStackDescription>\n        </DialogStackHeader>\n        <DialogStackFooter className=\"justify-between\">\n          <DialogStackPrevious asChild>\n            <Button variant=\"outline\">Previous</Button>\n          </DialogStackPrevious>\n          <DialogStackNext asChild>\n            <Button variant=\"outline\">Next</Button>\n          </DialogStackNext>\n        </DialogStackFooter>\n      </DialogStackContent>\n\n      <DialogStackContent>\n        <DialogStackHeader>\n          <DialogStackTitle>I'm the third dialog</DialogStackTitle>\n          <DialogStackDescription>\n            With a fancy description\n          </DialogStackDescription>\n        </DialogStackHeader>\n        <DialogStackFooter className=\"justify-between\">\n          <DialogStackPrevious asChild>\n            <Button variant=\"outline\">Previous</Button>\n          </DialogStackPrevious>\n        </DialogStackFooter>\n      </DialogStackContent>\n    </DialogStackBody>\n  </DialogStack>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "overlay",
+    "dialog",
+    "stack"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-delta",
+  "description": "Pill displaying delta values.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-delta.tsx",
+      "content": "\"use client\"\n\nimport { Pill, PillDelta } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <>\n    <Pill>\n      <PillDelta delta={10} />\n      Up 10%\n    </Pill>\n    <Pill>\n      <PillDelta delta={-5} />\n      Down 5%\n    </Pill>\n    <Pill>\n      <PillDelta delta={0} />\n      No change\n    </Pill>\n  </>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill",
+    "delta"
+  ],
+  "type": "registry:example"
+}

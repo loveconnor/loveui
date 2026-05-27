@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-group-labels",
+  "description": "Menu items grouped with labels",
+  "registryDependencies": [
+    "@loveui/menu",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/menu-group-labels.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport {\n  Menu,\n  MenuItem,\n  MenuPopup,\n  MenuSeparator,\n  MenuTrigger,\n} from \"@/registry/default/ui/menu\"\n\nexport default function MenuGroupLabelsDemo() {\n  return (\n    <Menu>\n      <MenuTrigger render={<Button variant=\"outline\" />}>\n        Open menu\n      </MenuTrigger>\n      <MenuPopup>\n        <MenuItem disabled>Account</MenuItem>\n        <MenuItem>Profile</MenuItem>\n        <MenuItem>Billing</MenuItem>\n        <MenuSeparator />\n        <MenuItem disabled>Support</MenuItem>\n        <MenuItem>Docs</MenuItem>\n        <MenuItem>Contact</MenuItem>\n      </MenuPopup>\n    </Menu>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "menu",
+    "label"
+  ],
+  "type": "registry:example"
+}

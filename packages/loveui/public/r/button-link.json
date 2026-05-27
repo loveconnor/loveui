@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-link",
+  "description": "Link button",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-link.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonLink() {\n  return <Button variant=\"link\">Link</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

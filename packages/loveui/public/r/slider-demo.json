@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-demo",
+  "description": "Basic slider",
+  "registryDependencies": [
+    "@loveui/slider"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/slider-demo.tsx",
+      "content": "import { Slider } from \"@/registry/default/ui/slider\"\n\nexport default function SliderDemo() {\n  return <Slider defaultValue={50} />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "slider"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contribution-graph-tooltip",
+  "description": "Contribution graph with custom tooltip content.",
+  "registryDependencies": [
+    "@loveui/contribution-graph",
+    "@loveui/code-block",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/contribution-graph-tooltip.tsx",
+      "content": "\"use client\"\n\nimport { eachDayOfInterval, endOfYear, formatISO, startOfYear } from \"date-fns\"\n\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/registry/default/ui/tooltip\"\n\nimport {\n  ContributionGraph,\n  ContributionGraphBlock,\n  ContributionGraphCalendar,\n  ContributionGraphFooter,\n} from \"../../../../../packages/contribution-graph\"\n\nconst maxCount = 20\nconst maxLevel = 4\nconst now = new Date()\nconst days = eachDayOfInterval({\n  start: startOfYear(now),\n  end: endOfYear(now),\n})\n\nconst data = days.map((date) => {\n  const c = Math.round(\n    Math.random() * maxCount - Math.random() * (0.8 * maxCount)\n  )\n  const count = Math.max(0, c)\n  const level = Math.ceil((count / maxCount) * maxLevel)\n\n  return {\n    date: formatISO(date, { representation: \"date\" }),\n    count,\n    level,\n  }\n})\n\nconst Example = () => (\n  <TooltipProvider>\n    <ContributionGraph data={data}>\n      <ContributionGraphCalendar>\n        {({ activity, dayIndex, weekIndex }) => (\n          <Tooltip>\n            <TooltipTrigger\n              render={\n                <ContributionGraphBlock\n                  activity={activity}\n                  className=\"cursor-pointer\"\n                  dayIndex={dayIndex}\n                  weekIndex={weekIndex}\n                />\n              }\n            />\n            <TooltipContent>\n              <p className=\"font-semibold\">{activity.date}</p>\n              <p>{activity.count} contributions</p>\n            </TooltipContent>\n          </Tooltip>\n        )}\n      </ContributionGraphCalendar>\n      <ContributionGraphFooter />\n    </ContributionGraph>\n  </TooltipProvider>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "contribution",
+    "tooltip"
+  ],
+  "type": "registry:example"
+}

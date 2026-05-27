@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reel-minimal",
+  "description": "Minimal reel showing progress and navigation only.",
+  "registryDependencies": [
+    "@loveui/reel"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/reel-minimal.tsx",
+      "content": "\"use client\"\n\nimport {\n  Reel,\n  ReelContent,\n  ReelItem,\n  ReelNavigation,\n  ReelProgress,\n  ReelVideo,\n} from \"../../../../../packages/reel\"\n\nconst reels: ReelItem[] = [\n  {\n    id: 1,\n    type: \"video\",\n    src: \"https://wajxiz6qhqyqkm0o.public.blob.vercel-storage.com/grok-imagine-1.mp4\",\n    duration: 6,\n    title: \"Grok Imagine Demo 1\",\n    description: \"First demo video\",\n  },\n  {\n    id: 2,\n    type: \"video\",\n    src: \"https://wajxiz6qhqyqkm0o.public.blob.vercel-storage.com/grok-imagine-2.mp4\",\n    duration: 6,\n    title: \"Grok Imagine Demo 2\",\n    description: \"Second demo video\",\n  },\n  {\n    id: 3,\n    type: \"video\",\n    src: \"https://wajxiz6qhqyqkm0o.public.blob.vercel-storage.com/grok-imagine-3.mp4\",\n    duration: 6,\n    title: \"Grok Imagine Demo 3\",\n    description: \"Third demo video\",\n  },\n]\n\nconst Example = () => (\n  <Reel data={reels}>\n    <ReelProgress />\n    <ReelContent>\n      {(reel) => (\n        <ReelItem>\n          <ReelVideo src={reel.src} />\n        </ReelItem>\n      )}\n    </ReelContent>\n    <ReelNavigation />\n  </Reel>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "social",
+    "reel"
+  ],
+  "type": "registry:example"
+}

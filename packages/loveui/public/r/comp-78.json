@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-78",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://loveui.dev/building-blocks/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/components/comp-78.tsx",
+      "content": "import { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return <Button>Button</Button>\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "button"
+    ],
+    "style": 2
+  }
+}

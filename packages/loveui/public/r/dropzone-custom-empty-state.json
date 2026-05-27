@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropzone-custom-empty-state",
+  "description": "Dropzone with a custom empty-state design.",
+  "registryDependencies": [
+    "@loveui/dropzone"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/dropzone-custom-empty-state.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { UploadIcon } from \"lucide-react\"\n\nimport {\n  Dropzone,\n  DropzoneContent,\n  DropzoneEmptyState,\n} from \"../../../../../packages/dropzone\"\n\nconst Example = () => {\n  const [files, setFiles] = useState<File[] | undefined>()\n\n  const handleDrop = (files: File[]) => {\n    console.log(files)\n    setFiles(files)\n  }\n\n  return (\n    <Dropzone onDrop={handleDrop} onError={console.error} src={files}>\n      <DropzoneEmptyState>\n        <div className=\"flex w-full items-center gap-4 p-8\">\n          <div className=\"flex size-16 items-center justify-center rounded-lg bg-muted text-muted-foreground\">\n            <UploadIcon size={24} />\n          </div>\n          <div className=\"text-left\">\n            <p className=\"text-sm font-medium\">Upload a file</p>\n            <p className=\"text-xs text-muted-foreground\">\n              Drag and drop or click to upload\n            </p>\n          </div>\n        </div>\n      </DropzoneEmptyState>\n      <DropzoneContent />\n    </Dropzone>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "dropzone",
+    "customization"
+  ],
+  "type": "registry:example"
+}

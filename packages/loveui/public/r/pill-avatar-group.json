@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-avatar-group",
+  "description": "Pill representing an avatar group.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-avatar-group.tsx",
+      "content": "\"use client\"\n\nimport { Pill, PillAvatar, PillAvatarGroup } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    <PillAvatarGroup>\n      <PillAvatar\n        fallback=\"CL\"\n        src=\"https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg\"\n      />\n      <PillAvatar\n        fallback=\"SC\"\n        src=\"https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg\"\n      />\n      <PillAvatar\n        fallback=\"LR\"\n        src=\"https://pbs.twimg.com/profile_images/1862717563311968256/xfgt1L9l_400x400.jpg\"\n      />\n    </PillAvatarGroup>\n    Loved by millions\n  </Pill>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill",
+    "avatar"
+  ],
+  "type": "registry:example"
+}

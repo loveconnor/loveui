@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-size",
+  "description": "Rating component with custom size.",
+  "registryDependencies": [
+    "@loveui/rating"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/rating-size.tsx",
+      "content": "\"use client\"\n\nimport { Rating, RatingButton } from \"../../../../../packages/rating\"\n\nconst Example = () => (\n  <Rating defaultValue={3}>\n    {Array.from({ length: 5 }).map((_, index) => (\n      <RatingButton key={index} size={30} />\n    ))}\n  </Rating>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "rating"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-card",
+  "description": "KPI card for dashboard stats",
+  "registryDependencies": [
+    "@loveui/badge",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/stats-card.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\nimport {\n  Card,\n  CardDescription,\n  CardHeader,\n  CardPanel,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport default function StatsCard() {\n  return (\n    <Card className=\"w-full max-w-sm\">\n      <CardHeader className=\"flex flex-row items-center justify-between gap-4\">\n        <div className=\"space-y-1\">\n          <CardDescription>Monthly recurring revenue</CardDescription>\n          <CardTitle className=\"text-2xl\">$48,230</CardTitle>\n        </div>\n        <Badge variant=\"outline\">+12.4%</Badge>\n      </CardHeader>\n      <CardPanel>\n        <p className=\"text-sm text-muted-foreground\">\n          Growth compared to last month across all active subscriptions.\n        </p>\n      </CardPanel>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "dashboard",
+    "card",
+    "stats"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-indicator",
+  "description": "Pill with a leading indicator dot.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-indicator.tsx",
+      "content": "\"use client\"\n\nimport { Pill, PillIndicator } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <>\n    <Pill>\n      <PillIndicator pulse variant=\"success\" />\n      Active\n    </Pill>\n    <Pill>\n      <PillIndicator variant=\"error\" />\n      Error\n    </Pill>\n  </>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill"
+  ],
+  "type": "registry:example"
+}

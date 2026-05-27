@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "relative-time-controlled",
+  "description": "Controlled relative time component with manual updates.",
+  "registryDependencies": [
+    "@loveui/relative-time"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/relative-time-controlled.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\n\nimport {\n  RelativeTime,\n  RelativeTimeZone,\n  RelativeTimeZoneDate,\n  RelativeTimeZoneDisplay,\n  RelativeTimeZoneLabel,\n} from \"../../../../../packages/relative-time\"\n\nconst timezones = [\n  { label: \"EST\", zone: \"America/New_York\" },\n  { label: \"GMT\", zone: \"Europe/London\" },\n  { label: \"JST\", zone: \"Asia/Tokyo\" },\n]\n\nconst Example = () => {\n  const [time, setTime] = useState(new Date())\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setTime(new Date())\n    }, 1000)\n    return () => clearInterval(interval)\n  }, [])\n\n  return (\n    <div className=\"rounded-md border bg-background p-4\">\n      <RelativeTime onTimeChange={setTime} time={time}>\n        {timezones.map(({ zone, label }) => (\n          <RelativeTimeZone key={zone} zone={zone}>\n            <RelativeTimeZoneLabel>{label}</RelativeTimeZoneLabel>\n            <RelativeTimeZoneDate />\n            <RelativeTimeZoneDisplay />\n          </RelativeTimeZone>\n        ))}\n      </RelativeTime>\n    </div>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "relative-time",
+    "project management",
+    "controlled"
+  ],
+  "type": "registry:example"
+}

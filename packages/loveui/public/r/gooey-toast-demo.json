@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-toast-demo",
+  "description": "Basic gooey toast",
+  "registryDependencies": [
+    "@loveui/gooey-toast",
+    "@loveui/select",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/gooey-toast-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { gooey, type GooeyPosition } from \"@loveui/gooey-toast\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\"\n\nexport default function GooeyToastDemo() {\n  const [position, setPosition] = useState<GooeyPosition>(\"top-right\")\n\n  const positions: GooeyPosition[] = [\n    \"top-left\",\n    \"top-center\",\n    \"top-right\",\n    \"bottom-left\",\n    \"bottom-center\",\n    \"bottom-right\",\n  ]\n\n  const showToast = (\n    type: \"default\" | \"success\" | \"error\" | \"warning\" | \"info\"\n  ) => {\n    const toasts = {\n      default: {\n        title: \"Event has been created\",\n        description: \"Monday, January 3rd at 6:00pm\",\n      },\n      success: {\n        title: \"Success!\",\n        description: \"Your changes have been saved successfully.\",\n      },\n      error: {\n        title: \"Error occurred\",\n        description: \"Failed to save your changes. Please try again.\",\n      },\n      warning: {\n        title: \"Warning\",\n        description: \"Your session will expire in 5 minutes.\",\n      },\n      info: {\n        title: \"New feature available\",\n        description: \"Check out the new gooey toast component!\",\n      },\n    }\n\n    const config = toasts[type]\n\n    if (type === \"default\") {\n      gooey.show({ ...config, position })\n    } else {\n      gooey[type]({ ...config, position })\n    }\n  }\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <div className=\"flex items-center gap-2\">\n        <label htmlFor=\"position\" className=\"text-sm font-medium\">\n          Position:\n        </label>\n        <Select\n          value={position}\n          onValueChange={(v) => setPosition(v as GooeyPosition)}\n        >\n          <SelectTrigger id=\"position\" className=\"w-[180px]\">\n            <SelectValue />\n          </SelectTrigger>\n          <SelectContent>\n            {positions.map((pos) => (\n              <SelectItem key={pos} value={pos}>\n                {pos}\n              </SelectItem>\n            ))}\n          </SelectContent>\n        </Select>\n      </div>\n\n      <div className=\"flex flex-wrap gap-2\">\n        <Button variant=\"outline\" onClick={() => showToast(\"default\")}>\n          Default\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"success\")}>\n          Success\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"error\")}>\n          Error\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"warning\")}>\n          Warning\n        </Button>\n        <Button variant=\"outline\" onClick={() => showToast(\"info\")}>\n          Info\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "gooey-toast",
+    "button",
+    "select"
+  ],
+  "type": "registry:example"
+}

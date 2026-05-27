@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropzone",
+  "description": "Basic file dropzone.",
+  "registryDependencies": [
+    "@loveui/dropzone"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/dropzone.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Dropzone,\n  DropzoneContent,\n  DropzoneEmptyState,\n} from \"../../../../../packages/dropzone\"\n\nconst Example = () => {\n  const [files, setFiles] = useState<File[] | undefined>()\n\n  const handleDrop = (files: File[]) => {\n    console.log(files)\n    setFiles(files)\n  }\n\n  return (\n    <Dropzone\n      accept={{ \"image/*\": [] }}\n      maxFiles={10}\n      maxSize={1024 * 1024 * 10}\n      minSize={1024}\n      onDrop={handleDrop}\n      onError={console.error}\n      src={files}\n    >\n      <DropzoneEmptyState />\n      <DropzoneContent />\n    </Dropzone>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "dropzone",
+    "upload"
+  ],
+  "type": "registry:example"
+}

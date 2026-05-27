@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sandbox-no-file-explorer",
+  "description": "Sandbox without the file explorer for a compact layout.",
+  "registryDependencies": [
+    "@loveui/sandbox",
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/sandbox-no-file-explorer.tsx",
+      "content": "\"use client\"\n\nimport { AppWindowIcon, CodeIcon, TerminalIcon } from \"lucide-react\"\n\nimport {\n  SandboxCodeEditor,\n  SandboxConsole,\n  SandboxLayout,\n  SandboxPreview,\n  SandboxProvider,\n  SandboxTabs,\n  SandboxTabsContent,\n  SandboxTabsList,\n  SandboxTabsTrigger,\n} from \"../../../../../packages/sandbox\"\n\nconst Example = () => (\n  <SandboxProvider>\n    <SandboxLayout>\n      <SandboxTabs defaultValue=\"preview\">\n        <SandboxTabsList>\n          <SandboxTabsTrigger value=\"code\">\n            <CodeIcon size={14} />\n            Code\n          </SandboxTabsTrigger>\n          <SandboxTabsTrigger value=\"preview\">\n            <AppWindowIcon size={14} />\n            Preview\n          </SandboxTabsTrigger>\n          <SandboxTabsTrigger value=\"console\">\n            <TerminalIcon size={14} />\n            Console\n          </SandboxTabsTrigger>\n        </SandboxTabsList>\n        <SandboxTabsContent value=\"code\">\n          <SandboxCodeEditor showTabs />\n        </SandboxTabsContent>\n        <SandboxTabsContent value=\"preview\">\n          <SandboxPreview\n            showOpenInCodeSandbox={false}\n            showRefreshButton={false}\n          />\n        </SandboxTabsContent>\n        <SandboxTabsContent value=\"console\">\n          <SandboxConsole />\n        </SandboxTabsContent>\n      </SandboxTabs>\n    </SandboxLayout>\n  </SandboxProvider>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "sandbox"
+  ],
+  "type": "registry:example"
+}

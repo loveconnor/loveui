@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-status",
+  "description": "Pill indicating status using color accents.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-status.tsx",
+      "content": "\"use client\"\n\nimport { CheckCircleIcon } from \"lucide-react\"\n\nimport { Pill, PillStatus } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    <PillStatus>\n      <CheckCircleIcon className=\"text-emerald-500\" size={12} />\n      Passed\n    </PillStatus>\n    Approval Status\n  </Pill>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill",
+    "status"
+  ],
+  "type": "registry:example"
+}

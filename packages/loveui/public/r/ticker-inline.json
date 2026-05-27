@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticker-inline",
+  "description": "Inline ticker embedded within rich text content.",
+  "registryDependencies": [
+    "@loveui/ticker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/ticker-inline.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport {\n  Ticker,\n  TickerIcon,\n  TickerPrice,\n  TickerPriceChange,\n  TickerSymbol,\n} from \"../../../../../packages/ticker\"\n\nconst ticker = \"GOOG\"\nconst logoToken = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN\n\nconst Example = () => (\n  <p>\n    In other autonomous vehicle news, Alphabet-owned{\" \"}\n    <Ticker className=\"rounded-full bg-muted p-1 pr-2 text-xs\">\n      {logoToken ? (\n        <TickerIcon asChild>\n          <Image\n            alt={ticker}\n            height={20}\n            src={`https://img.logo.dev/ticker/${ticker}?token=${logoToken}&size=20&retina=true`}\n            width={20}\n          />\n        </TickerIcon>\n      ) : (\n        <TickerIcon className=\"size-5\" symbol={ticker} />\n      )}\n      <TickerSymbol symbol={ticker} />\n      <TickerPrice price={175.41} />\n      <TickerPriceChange change={2.13} />\n    </Ticker>{\" \"}\n    Waymo is looking to bring its robotaxi service to New York.\n  </p>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "finance",
+    "ticker"
+  ],
+  "type": "registry:example"
+}

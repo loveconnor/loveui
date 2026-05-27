@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-sm",
+  "description": "Small badge",
+  "registryDependencies": [
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/badge-sm.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\n\nexport default function BadgeSm() {\n  return <Badge size=\"sm\">Badge</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge"
+  ],
+  "type": "registry:example"
+}

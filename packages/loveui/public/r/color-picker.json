@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-picker",
+  "description": "Color picker with hue, alpha, and format controls.",
+  "registryDependencies": [
+    "@loveui/color-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/color-picker.tsx",
+      "content": "\"use client\"\n\nimport {\n  ColorPicker,\n  ColorPickerAlpha,\n  ColorPickerEyeDropper,\n  ColorPickerFormat,\n  ColorPickerHue,\n  ColorPickerOutput,\n  ColorPickerSelection,\n} from \"../../../../../packages/color-picker\"\n\nconst Example = () => (\n  <ColorPicker className=\"max-w-sm rounded-md border bg-background p-4 shadow-sm\">\n    <ColorPickerSelection />\n    <div className=\"flex items-center gap-4\">\n      <ColorPickerEyeDropper />\n      <div className=\"grid w-full gap-1\">\n        <ColorPickerHue />\n        <ColorPickerAlpha />\n      </div>\n    </div>\n    <div className=\"flex items-center gap-2\">\n      <ColorPickerOutput />\n      <ColorPickerFormat />\n    </div>\n  </ColorPicker>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "styling",
+    "color",
+    "picker"
+  ],
+  "type": "registry:example"
+}

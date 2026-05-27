@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-bu-7",
+  "description": "Star button with count badge",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/particles/particle-bu-7.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { StarIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function Particle() {\n  const [isStarred, setIsStarred] = useState(false)\n  const count = isStarred ? 730 : 729\n\n  return (\n    <Button onClick={() => setIsStarred(!isStarred)}>\n      <StarIcon\n        className={`${isStarred ? \"fill-yellow-500 text-yellow-500\" : \"opacity-72\"}`}\n        aria-hidden=\"true\"\n      />\n      <span className=\"flex items-baseline gap-2\">\n        {isStarred ? \"Starred\" : \"Star\"}\n        <span className=\"text-xs text-primary-foreground/60\">{count}</span>\n      </span>\n    </Button>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:block"
+}

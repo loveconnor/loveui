@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-close-on-click",
+  "description": "Close menu when items are clicked",
+  "registryDependencies": [
+    "@loveui/menu",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/menu-close-on-click.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport {\n  Menu,\n  MenuItem,\n  MenuPopup,\n  MenuTrigger,\n} from \"@/registry/default/ui/menu\"\n\nexport default function MenuCloseOnClickDemo() {\n  return (\n    <Menu>\n      <MenuTrigger render={<Button variant=\"outline\" />}>\n        Open menu\n      </MenuTrigger>\n      <MenuPopup>\n        <MenuItem closeOnClick>Profile</MenuItem>\n        <MenuItem closeOnClick>Settings</MenuItem>\n        <MenuItem closeOnClick>Log out</MenuItem>\n      </MenuPopup>\n    </Menu>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "menu"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "qr-code-styling",
+  "description": "QR code with custom styling.",
+  "registryDependencies": [
+    "@loveui/qr-code"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/qr-code-styling.tsx",
+      "content": "\"use client\"\n\nimport { QRCode } from \"../../../../../packages/qr-code\"\n\nconst Example = () => (\n  <QRCode\n    className=\"size-48 rounded border bg-white p-4 shadow-xs\"\n    data=\"https://www.connorlove.com/\"\n  />\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "utility",
+    "qr-code",
+    "styling"
+  ],
+  "type": "registry:example"
+}

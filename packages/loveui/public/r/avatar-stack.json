@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-stack",
+  "description": "Stack avatars with overlapping layout",
+  "registryDependencies": [
+    "@loveui/avatar-stack",
+    "@loveui/avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/avatar-stack.tsx",
+      "content": "\"use client\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\nimport { AvatarStack } from \"../../../../../packages/avatar-stack\"\n\nconst Example = () => (\n  <AvatarStack>\n    <Avatar>\n      <AvatarImage src=\"https://github.com/loveconnor.png\" />\n      <AvatarFallback>CL</AvatarFallback>\n    </Avatar>\n    <Avatar>\n      <AvatarImage src=\"https://avatars.githubusercontent.com/u/91501317?v=4\" />\n      <AvatarFallback>MO</AvatarFallback>\n    </Avatar>\n    <Avatar>\n      <AvatarImage src=\"https://github.com/loveconnor.png\" />\n      <AvatarFallback>CL</AvatarFallback>\n    </Avatar>\n    <Avatar>\n      <AvatarImage src=\"https://avatars.githubusercontent.com/u/91501317?v=4\" />\n      <AvatarFallback>MO</AvatarFallback>\n    </Avatar>\n  </AvatarStack>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar-stack",
+    "avatar"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-lg",
+  "description": "Large textarea",
+  "registryDependencies": [
+    "@loveui/textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/textarea-lg.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaLg() {\n  return <Textarea size=\"lg\" placeholder=\"Type your message here\" />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "textarea"
+  ],
+  "type": "registry:example"
+}

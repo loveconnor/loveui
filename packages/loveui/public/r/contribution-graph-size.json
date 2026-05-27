@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contribution-graph-size",
+  "description": "Contribution graph showcasing custom sizing.",
+  "registryDependencies": [
+    "@loveui/contribution-graph",
+    "@loveui/code-block",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/contribution-graph-size.tsx",
+      "content": "\"use client\"\n\nimport { eachDayOfInterval, endOfYear, formatISO, startOfYear } from \"date-fns\"\n\nimport {\n  ContributionGraph,\n  ContributionGraphBlock,\n  ContributionGraphCalendar,\n  ContributionGraphFooter,\n  ContributionGraphLegend,\n  ContributionGraphTotalCount,\n} from \"../../../../../packages/contribution-graph\"\n\nconst maxCount = 20\nconst maxLevel = 4\nconst now = new Date()\nconst days = eachDayOfInterval({\n  start: startOfYear(now),\n  end: endOfYear(now),\n})\n\nconst data = days.map((date) => {\n  const c = Math.round(\n    Math.random() * maxCount - Math.random() * (0.8 * maxCount)\n  )\n  const count = Math.max(0, c)\n  const level = Math.ceil((count / maxCount) * maxLevel)\n\n  return {\n    date: formatISO(date, { representation: \"date\" }),\n    count,\n    level,\n  }\n})\n\nconst Example = () => (\n  <ContributionGraph blockMargin={2} blockSize={20} data={data} fontSize={16}>\n    <ContributionGraphCalendar>\n      {({ activity, dayIndex, weekIndex }) => (\n        <ContributionGraphBlock\n          activity={activity}\n          dayIndex={dayIndex}\n          weekIndex={weekIndex}\n        />\n      )}\n    </ContributionGraphCalendar>\n    <ContributionGraphFooter>\n      <ContributionGraphTotalCount />\n      <ContributionGraphLegend />\n    </ContributionGraphFooter>\n  </ContributionGraph>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "contribution",
+    "layout"
+  ],
+  "type": "registry:example"
+}

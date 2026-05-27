@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor",
+  "description": "Collaborative cursors with names and messages",
+  "registryDependencies": [
+    "@loveui/cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/cursor.tsx",
+      "content": "\"use client\"\n\nimport {\n  Cursor,\n  CursorBody,\n  CursorMessage,\n  CursorName,\n  CursorPointer,\n} from \"../../../../../packages/cursor\"\n\nconst Example = () => (\n  <>\n    <Cursor className=\"absolute top-24 left-24\">\n      <CursorPointer className=\"text-emerald-500\" />\n      <CursorBody className=\"bg-emerald-50 text-emerald-700\">\n        <CursorName>@loveconnor</CursorName>\n        <CursorMessage>Can we change the color?</CursorMessage>\n      </CursorBody>\n    </Cursor>\n    <Cursor className=\"absolute top-48 right-32\">\n      <CursorPointer className=\"text-rose-500\" />\n      <CursorBody className=\"bg-rose-50 text-rose-700\">\n        <CursorName>@monster0506</CursorName>\n        <CursorMessage>\n          I'm not sure if this is working...\n        </CursorMessage>\n      </CursorBody>\n    </Cursor>\n    <Cursor className=\"absolute bottom-24 left-48\">\n      <CursorPointer className=\"text-sky-500\" />\n      <CursorBody className=\"bg-sky-50 text-sky-700\">\n        <CursorName>@clove</CursorName>\n        <CursorMessage>What is this?</CursorMessage>\n      </CursorBody>\n    </Cursor>\n  </>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "cursor",
+    "collaboration"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-icon-group",
+  "description": "Multiple toggles",
+  "registryDependencies": [
+    "@loveui/toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/toggle-icon-group.tsx",
+      "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleIconGroup() {\n  return (\n    <div className=\"flex items-center gap-1\">\n      <Toggle variant=\"outline\" aria-label=\"Toggle bold\">\n        <BoldIcon />\n      </Toggle>\n      <Toggle variant=\"outline\" aria-label=\"Toggle italic\">\n        <ItalicIcon />\n      </Toggle>\n      <Toggle variant=\"outline\" aria-label=\"Toggle underline\">\n        <UnderlineIcon />\n      </Toggle>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "toggle"
+  ],
+  "type": "registry:example"
+}

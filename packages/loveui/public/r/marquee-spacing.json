@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-spacing",
+  "description": "Marquee with adjustable spacing between items.",
+  "registryDependencies": [
+    "@loveui/marquee"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/marquee-spacing.tsx",
+      "content": "\"use client\"\n\nimport {\n  Marquee,\n  MarqueeContent,\n  MarqueeFade,\n  MarqueeItem,\n} from \"../../../../../packages/marquee\"\n\nconst Example = () => (\n  <div className=\"flex size-full items-center justify-center bg-background\">\n    <Marquee>\n      <MarqueeFade side=\"left\" />\n      <MarqueeFade side=\"right\" />\n      <MarqueeContent>\n        {new Array(10).fill(null).map((_, index) => (\n          <MarqueeItem className=\"-mx-2 h-16 w-16\" key={index}>\n            <img\n              alt={`Placeholder ${index}`}\n              className=\"overflow-hidden rounded-full ring-2 ring-background\"\n              src={`https://placehold.co/64x64?random=${index}`}\n            />\n          </MarqueeItem>\n        ))}\n      </MarqueeContent>\n    </Marquee>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "marquee",
+    "spacing"
+  ],
+  "type": "registry:example"
+}

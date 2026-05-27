@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field-lg",
+  "description": "Large number field",
+  "registryDependencies": [
+    "@loveui/number-field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/number-field-lg.tsx",
+      "content": "import {\n  NumberField,\n  NumberFieldDecrement,\n  NumberFieldGroup,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/registry/default/ui/number-field\"\n\nexport default function NumberFieldLg() {\n  return (\n    <NumberField size=\"lg\" defaultValue={0}>\n      <NumberFieldGroup>\n        <NumberFieldDecrement />\n        <NumberFieldInput />\n        <NumberFieldIncrement />\n      </NumberFieldGroup>\n    </NumberField>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "number field"
+  ],
+  "type": "registry:example"
+}

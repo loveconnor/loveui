@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tags",
+  "description": "Tags input with selected label chips.",
+  "registryDependencies": [
+    "@loveui/tags"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/tags.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { CheckIcon } from \"lucide-react\"\n\nimport {\n  Tags,\n  TagsContent,\n  TagsEmpty,\n  TagsGroup,\n  TagsInput,\n  TagsItem,\n  TagsList,\n  TagsTrigger,\n  TagsValue,\n} from \"../../../../../packages/tags\"\n\nconst tags = [\n  { id: \"react\", label: \"React\" },\n  { id: \"typescript\", label: \"TypeScript\" },\n  { id: \"javascript\", label: \"JavaScript\" },\n  { id: \"nextjs\", label: \"Next.js\" },\n  { id: \"vuejs\", label: \"Vue.js\" },\n  { id: \"angular\", label: \"Angular\" },\n  { id: \"svelte\", label: \"Svelte\" },\n  { id: \"nodejs\", label: \"Node.js\" },\n  { id: \"python\", label: \"Python\" },\n  { id: \"ruby\", label: \"Ruby\" },\n  { id: \"java\", label: \"Java\" },\n  { id: \"csharp\", label: \"C#\" },\n  { id: \"php\", label: \"PHP\" },\n  { id: \"go\", label: \"Go\" },\n]\n\nconst Example = () => {\n  const [selected, setSelected] = useState<string[]>([])\n\n  const handleRemove = (value: string) => {\n    if (!selected.includes(value)) {\n      return\n    }\n\n    console.log(`removed: ${value}`)\n    setSelected((prev) => prev.filter((v) => v !== value))\n  }\n\n  const handleSelect = (value: string) => {\n    if (selected.includes(value)) {\n      handleRemove(value)\n      return\n    }\n\n    console.log(`selected: ${value}`)\n    setSelected((prev) => [...prev, value])\n  }\n\n  return (\n    <Tags className=\"max-w-[300px]\">\n      <TagsTrigger>\n        {selected.map((tag) => (\n          <TagsValue key={tag} onRemove={() => handleRemove(tag)}>\n            {tags.find((t) => t.id === tag)?.label}\n          </TagsValue>\n        ))}\n      </TagsTrigger>\n      <TagsContent>\n        <TagsInput placeholder=\"Search tag...\" />\n        <TagsList>\n          <TagsEmpty />\n          <TagsGroup>\n            {tags.map((tag) => (\n              <TagsItem key={tag.id} onSelect={handleSelect} value={tag.id}>\n                {tag.label}\n                {selected.includes(tag.id) && (\n                  <CheckIcon className=\"text-muted-foreground\" size={14} />\n                )}\n              </TagsItem>\n            ))}\n          </TagsGroup>\n        </TagsList>\n      </TagsContent>\n    </Tags>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "tags"
+  ],
+  "type": "registry:example"
+}

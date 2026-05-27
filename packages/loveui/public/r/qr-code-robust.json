@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "qr-code-robust",
+  "description": "QR code with enhanced error correction.",
+  "registryDependencies": [
+    "@loveui/qr-code"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/qr-code-robust.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\n\nimport { QRCode } from \"../../../../../packages/qr-code\"\n\nconst robustnessOptions: ComponentProps<typeof QRCode>[\"robustness\"][] = [\n  \"L\",\n  \"M\",\n  \"Q\",\n  \"H\",\n]\n\nconst Example = () => (\n  <div className=\"grid grid-cols-4 gap-4\">\n    {robustnessOptions.map((robustness) => (\n      <div className=\"flex flex-col items-center gap-2\" key={robustness}>\n        <QRCode data=\"https://www.loveconnor.com/\" robustness={robustness} />\n        <p className=\"text-sm font-medium text-muted-foreground\">\n          {robustness}\n        </p>\n      </div>\n    ))}\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "utility",
+    "qr-code",
+    "robust"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-595",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://loveui.dev/building-blocks/r/avatar.json",
+    "https://loveui.dev/building-blocks/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/components/comp-595.tsx",
+      "content": "import { assetPath } from \"@/lib/building-blocks/utils\"\nimport {\n  ChevronLeftIcon,\n  HistoryIcon,\n  MessageSquareText,\n  UserRoundPlus,\n} from \"lucide-react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/building-blocks/default/ui/avatar\"\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return (\n    <header className=\"border-b px-4 md:px-6\">\n      <div className=\"flex h-16 items-center justify-between gap-4\">\n        {/* Left side */}\n        <div className=\"flex items-center gap-2\">\n          <Button\n            className=\"size-8\"\n            variant=\"ghost\"\n            size=\"icon\"\n            aria-label=\"Go back\"\n            asChild\n          >\n            <a href=\"#\">\n              <ChevronLeftIcon />\n            </a>\n          </Button>\n          <h1 className=\"text-sm font-medium\">LoveUI</h1>\n        </div>\n        {/* Right side */}\n        <div className=\"flex items-center gap-2\">\n          {/* History button */}\n          <Button\n            size=\"icon\"\n            variant=\"ghost\"\n            className=\"size-8 rounded-full text-muted-foreground shadow-none\"\n            aria-label=\"History\"\n          >\n            <HistoryIcon size={16} aria-hidden=\"true\" />\n          </Button>\n          {/* Comments button */}\n          <Button\n            size=\"icon\"\n            variant=\"ghost\"\n            className=\"size-8 rounded-full text-muted-foreground shadow-none\"\n            aria-label=\"Save\"\n          >\n            <MessageSquareText size={16} aria-hidden=\"true\" />\n          </Button>\n          {/* Add user */}\n          <Button\n            size=\"icon\"\n            variant=\"ghost\"\n            className=\"size-8 rounded-full text-muted-foreground shadow-none\"\n            aria-label=\"Add user\"\n          >\n            <UserRoundPlus size={16} aria-hidden=\"true\" />\n          </Button>\n          {/* Online users */}\n          <div className=\"ml-2 flex items-center gap-2\">\n            <div className=\"relative\">\n              <Avatar>\n                <AvatarImage src={\"https://i.pravatar.cc/160?img=20\"} alt=\"Kelly King\" />\n                <AvatarFallback>CL</AvatarFallback>\n              </Avatar>\n              <span className=\"absolute -end-0.5 -bottom-0.5 size-3 rounded-full border-2 border-background bg-emerald-500\">\n                <span className=\"sr-only\">Online</span>\n              </span>\n            </div>\n            <div className=\"relative\">\n              <Avatar>\n                <AvatarImage\n                  src={\"https://i.pravatar.cc/160?img=19\"}\n                  alt=\"Martha Johnson\"\n                />\n                <AvatarFallback>CL</AvatarFallback>\n              </Avatar>\n              <span className=\"absolute -end-0.5 -bottom-0.5 size-3 rounded-full border-2 border-background bg-muted-foreground\">\n                <span className=\"sr-only\">Online</span>\n              </span>\n            </div>\n            <div className=\"relative\">\n              <Avatar>\n                <AvatarImage src={\"https://i.pravatar.cc/160?img=18\"} alt=\"Linda Green\" />\n                <AvatarFallback>CL</AvatarFallback>\n              </Avatar>\n              <span className=\"absolute -end-0.5 -bottom-0.5 size-3 rounded-full border-2 border-background bg-muted-foreground\">\n                <span className=\"sr-only\">Online</span>\n              </span>\n            </div>\n            <Button\n              variant=\"secondary\"\n              className=\"flex size-8 items-center justify-center rounded-full bg-secondary text-xs text-muted-foreground ring-background hover:bg-secondary hover:text-foreground\"\n              size=\"icon\"\n            >\n              +3\n            </Button>\n          </div>\n        </div>\n      </div>\n    </header>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "navbar, navigation"
+    ],
+    "colSpan": 3
+  }
+}

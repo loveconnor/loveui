@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-button",
+  "description": "Pill behaving as a button.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-button.tsx",
+      "content": "\"use client\"\n\nimport { XIcon } from \"lucide-react\"\n\nimport { Pill, PillButton } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    #loveui\n    <PillButton size=\"icon\" variant=\"ghost\">\n      <XIcon size={12} />\n    </PillButton>\n  </Pill>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill"
+  ],
+  "type": "registry:example"
+}

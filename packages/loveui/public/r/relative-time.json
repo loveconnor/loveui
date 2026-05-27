@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "relative-time",
+  "description": "Relative time component comparing multiple timezones.",
+  "registryDependencies": [
+    "@loveui/relative-time"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/relative-time.tsx",
+      "content": "\"use client\"\n\nimport {\n  RelativeTime,\n  RelativeTimeZone,\n  RelativeTimeZoneDate,\n  RelativeTimeZoneDisplay,\n  RelativeTimeZoneLabel,\n} from \"../../../../../packages/relative-time\"\n\nconst timezones = [\n  { label: \"EST\", zone: \"America/New_York\" },\n  { label: \"GMT\", zone: \"Europe/London\" },\n  { label: \"JST\", zone: \"Asia/Tokyo\" },\n]\n\nconst Example = () => (\n  <div className=\"rounded-md border bg-background p-4\">\n    <RelativeTime>\n      {timezones.map(({ zone, label }) => (\n        <RelativeTimeZone key={zone} zone={zone}>\n          <RelativeTimeZoneLabel>{label}</RelativeTimeZoneLabel>\n          <RelativeTimeZoneDate />\n          <RelativeTimeZoneDisplay />\n        </RelativeTimeZone>\n      ))}\n    </RelativeTime>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "relative-time",
+    "project management"
+  ],
+  "type": "registry:example"
+}

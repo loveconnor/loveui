@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-295",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://loveui.dev/building-blocks/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/components/comp-295.tsx",
+      "content": "import { XIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return (\n    // To make the notification fixed, add classes like `fixed bottom-4 right-4` to the container element.\n    <div className=\"z-50 max-w-[400px] rounded-md border bg-background p-4 shadow-lg\">\n      <div className=\"flex gap-3\">\n        <img\n          className=\"size-9 rounded-full\"\n          src=\"https://i.pravatar.cc/160?img=7\"\n          width={32}\n          height={32}\n          alt=\"Connor Love\"\n        />\n        <div className=\"flex grow flex-col gap-3\">\n          <div className=\"space-y-1\">\n            <p className=\"text-sm text-muted-foreground\">\n              <a\n                className=\"font-medium text-foreground hover:underline\"\n                href=\"#\"\n              >\n                Connor Love\n              </a>{\" \"}\n              shared a file in{\" \"}\n              <a\n                className=\"font-medium text-foreground hover:underline\"\n                href=\"#\"\n              >\n                brand-refresh\n              </a>\n              .\n            </p>\n            <p className=\"text-xs text-muted-foreground\">3 min ago</p>\n          </div>\n          <div className=\"flex gap-2\">\n            <Button size=\"sm\">View file</Button>\n            <Button size=\"sm\" variant=\"outline\">\n              Mark as read\n            </Button>\n          </div>\n        </div>\n        <Button\n          variant=\"ghost\"\n          className=\"group -my-1.5 -me-2 size-8 shrink-0 p-0 hover:bg-transparent\"\n          aria-label=\"Close notification\"\n        >\n          <XIcon\n            size={16}\n            className=\"opacity-60 transition-opacity group-hover:opacity-100\"\n            aria-hidden=\"true\"\n          />\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "notification",
+      "button"
+    ],
+    "colSpan": 2,
+    "style": 1
+  }
+}

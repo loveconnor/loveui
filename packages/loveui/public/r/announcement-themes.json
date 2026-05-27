@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement-themes",
+  "description": "Announcement component styled with themed surfaces.",
+  "registryDependencies": [
+    "@loveui/announcement"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/announcement-themes.tsx",
+      "content": "\"use client\"\n\nimport { ArrowUpRightIcon } from \"lucide-react\"\n\nimport {\n  Announcement,\n  AnnouncementTag,\n  AnnouncementTitle,\n} from \"../../../../../packages/announcement\"\n\nconst Example = () => (\n  <>\n    <Announcement\n      className=\"bg-rose-100 text-rose-700 dark:bg-rose-700 dark:text-rose-100\"\n      themed\n    >\n      <AnnouncementTag>Error</AnnouncementTag>\n      <AnnouncementTitle>\n        Something went wrong\n        <ArrowUpRightIcon className=\"shrink-0 opacity-70\" size={16} />\n      </AnnouncementTitle>\n    </Announcement>\n\n    <Announcement\n      className=\"bg-emerald-100 text-emerald-700 dark:bg-emerald-700 dark:text-emerald-100\"\n      themed\n    >\n      <AnnouncementTag>Success</AnnouncementTag>\n      <AnnouncementTitle>\n        New feature added\n        <ArrowUpRightIcon className=\"shrink-0 opacity-70\" size={16} />\n      </AnnouncementTitle>\n    </Announcement>\n\n    <Announcement\n      className=\"bg-orange-100 text-orange-700 dark:bg-orange-700 dark:text-orange-100\"\n      themed\n    >\n      <AnnouncementTag>Warning</AnnouncementTag>\n      <AnnouncementTitle>\n        Approaching your limit\n        <ArrowUpRightIcon className=\"shrink-0 opacity-70\" size={16} />\n      </AnnouncementTitle>\n    </Announcement>\n\n    <Announcement\n      className=\"bg-sky-100 text-sky-700 dark:bg-sky-700 dark:text-sky-100\"\n      themed\n    >\n      <AnnouncementTag>Info</AnnouncementTag>\n      <AnnouncementTitle>\n        Welcome to the platform\n        <ArrowUpRightIcon className=\"shrink-0 opacity-70\" size={16} />\n      </AnnouncementTitle>\n    </Announcement>\n  </>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "announcement",
+    "theme"
+  ],
+  "type": "registry:example"
+}

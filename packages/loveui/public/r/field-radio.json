@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-radio",
+  "description": "Field with radio group",
+  "registryDependencies": [
+    "@loveui/field",
+    "@loveui/radio-group",
+    "@loveui/fieldset"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/field-radio.tsx",
+      "content": "\"use client\"\n\nimport {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\"\nimport { Fieldset, FieldsetLegend } from \"@/registry/default/ui/fieldset\"\nimport { Radio, RadioGroup } from \"@/registry/default/ui/radio-group\"\n\nexport default function FieldRadioDemo() {\n  return (\n    <Field\n      name=\"plan\"\n      className=\"gap-4\"\n      render={(props) => <Fieldset {...props} />}\n    >\n      <FieldsetLegend className=\"text-sm font-medium\">\n        Choose Plan\n      </FieldsetLegend>\n      <RadioGroup defaultValue=\"free\">\n        <FieldLabel>\n          <Radio value=\"free\" /> Free\n        </FieldLabel>\n        <FieldLabel>\n          <Radio value=\"pro\" /> Pro\n        </FieldLabel>\n        <FieldLabel>\n          <Radio value=\"enterprise\" /> Enterprise\n        </FieldLabel>\n      </RadioGroup>\n      <FieldDescription>\n        Select the plan that fits your needs.\n      </FieldDescription>\n    </Field>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "radio",
+    "label",
+    "fieldset",
+    "helper",
+    "hint"
+  ],
+  "type": "registry:example"
+}

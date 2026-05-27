@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-warning",
+  "description": "Warning badge",
+  "registryDependencies": [
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/badge-warning.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\n\nexport default function BadgeWarning() {\n  return <Badge variant=\"warning\">Badge</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge",
+    "warning"
+  ],
+  "type": "registry:example"
+}

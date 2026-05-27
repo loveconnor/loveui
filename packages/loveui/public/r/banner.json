@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner",
+  "description": "Banner with icon, action, and dismiss control.",
+  "registryDependencies": [
+    "@loveui/banner"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/banner.tsx",
+      "content": "\"use client\"\n\nimport { CircleAlert } from \"lucide-react\"\n\nimport {\n  Banner,\n  BannerAction,\n  BannerClose,\n  BannerIcon,\n  BannerTitle,\n} from \"../../../../../packages/banner\"\n\nconst Example = () => (\n  <Banner>\n    <BannerIcon icon={CircleAlert} />\n    <BannerTitle>\n      Scheduled maintenance tonight from 1-3 AM Pacific.\n    </BannerTitle>\n    <BannerAction>View status page</BannerAction>\n    <BannerClose />\n  </Banner>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "banner"
+  ],
+  "type": "registry:example"
+}

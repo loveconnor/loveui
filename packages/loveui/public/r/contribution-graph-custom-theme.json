@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contribution-graph-custom-theme",
+  "description": "Contribution graph with custom color themes.",
+  "registryDependencies": [
+    "@loveui/contribution-graph",
+    "@loveui/code-block",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/contribution-graph-custom-theme.tsx",
+      "content": "\"use client\"\n\nimport { eachDayOfInterval, endOfYear, formatISO, startOfYear } from \"date-fns\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport {\n  ContributionGraph,\n  ContributionGraphBlock,\n  ContributionGraphCalendar,\n  ContributionGraphFooter,\n} from \"../../../../../packages/contribution-graph\"\n\nconst maxCount = 20\nconst maxLevel = 4\nconst now = new Date()\nconst days = eachDayOfInterval({\n  start: startOfYear(now),\n  end: endOfYear(now),\n})\n\nconst data = days.map((date) => {\n  const c = Math.round(\n    Math.random() * maxCount - Math.random() * (0.8 * maxCount)\n  )\n  const count = Math.max(0, c)\n  const level = Math.ceil((count / maxCount) * maxLevel)\n\n  return {\n    date: formatISO(date, { representation: \"date\" }),\n    count,\n    level,\n  }\n})\n\nconst Example = () => (\n  <ContributionGraph data={data}>\n    <ContributionGraphCalendar>\n      {({ activity, dayIndex, weekIndex }) => (\n        <ContributionGraphBlock\n          activity={activity}\n          className={cn(\n            'data-[level=\"0\"]:fill-[#ebedf0] dark:data-[level=\"0\"]:fill-[#161b22]',\n            'data-[level=\"1\"]:fill-[#9be9a8] dark:data-[level=\"1\"]:fill-[#0e4429]',\n            'data-[level=\"2\"]:fill-[#40c463] dark:data-[level=\"2\"]:fill-[#006d32]',\n            'data-[level=\"3\"]:fill-[#30a14e] dark:data-[level=\"3\"]:fill-[#26a641]',\n            'data-[level=\"4\"]:fill-[#216e39] dark:data-[level=\"4\"]:fill-[#39d353]'\n          )}\n          dayIndex={dayIndex}\n          weekIndex={weekIndex}\n        />\n      )}\n    </ContributionGraphCalendar>\n    <ContributionGraphFooter />\n  </ContributionGraph>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "contribution",
+    "theme"
+  ],
+  "type": "registry:example"
+}

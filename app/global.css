@@ -1,0 +1,145 @@
+@import "../packages/loveui/packages/love-ui/src/styles/globals.css";
+@import "katex/dist/katex.min.css";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@source "@loveui/code-block/src/**/*.{ts,tsx}";
+@source "@loveui/packages/**/*.{ts,tsx}";
+
+/* Editor (ProseMirror) heading styles — Tailwind's preflight resets h1–h6 */
+.ProseMirror h1 { font-size: 2em; font-weight: 700; margin-top: 0.67em; margin-bottom: 0.67em; }
+.ProseMirror h2 { font-size: 1.5em; font-weight: 700; margin-top: 0.83em; margin-bottom: 0.83em; }
+.ProseMirror h3 { font-size: 1.25em; font-weight: 600; margin-top: 1em; margin-bottom: 1em; }
+.ProseMirror h4 { font-size: 1em; font-weight: 600; margin-top: 1.33em; margin-bottom: 1.33em; }
+.ProseMirror h5 { font-size: 0.875em; font-weight: 600; margin-top: 1.67em; margin-bottom: 1.67em; }
+.ProseMirror h6 { font-size: 0.85em; font-weight: 600; margin-top: 2.33em; margin-bottom: 2.33em; }
+.ProseMirror p { margin-top: 0.5em; margin-bottom: 0.5em; }
+.ProseMirror ul { list-style-type: disc; padding-left: 1.5em; }
+.ProseMirror ol { list-style-type: decimal; padding-left: 1.5em; }
+.ProseMirror blockquote { border-left: 3px solid currentColor; padding-left: 1em; opacity: 0.7; }
+
+@layer base {
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    [data-wrapper] {
+      @apply min-[1800px]:border-t;
+    }
+  }
+
+  a:active,
+  button:active {
+    @apply opacity-72 md:opacity-100;
+  }
+}
+
+@layer components {
+  [data-rehype-pretty-code-figure] {
+    border: 0 !important;
+    border-radius: var(--radius-xl) !important;
+    background: var(--color-code) !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  [data-rehype-pretty-code-figure] > div,
+  [data-rehype-pretty-code-figure] code,
+  [data-rehype-pretty-code-figure] pre {
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: var(--color-code) !important;
+  }
+
+  [data-rehype-pretty-code-figure] .shiki {
+    background: var(--color-code) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  [data-rehype-pretty-code-figure] pre {
+    width: 100%;
+    padding-right: 4rem !important;
+  }
+
+  [data-rehype-pretty-code-figure] [data-slot="copy-button"] {
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    transform: none;
+    background: transparent !important;
+  }
+
+  [data-tab="code"] [data-rehype-pretty-code-figure] {
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    background: var(--color-code) !important;
+    box-shadow: none !important;
+  }
+
+  [data-tab="code"] [data-rehype-pretty-code-figure] > div,
+  [data-tab="code"] [data-rehype-pretty-code-figure] code,
+  [data-tab="code"] [data-rehype-pretty-code-figure] pre {
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    box-shadow: none !important;
+    background: var(--color-code) !important;
+  }
+
+  [data-tab="code"] [data-rehype-pretty-code-figure] pre {
+    min-height: 100%;
+  }
+
+  #nd-sidebar [data-radix-scroll-area-viewport] > div {
+    gap: 0.25rem !important;
+  }
+
+  #nd-sidebar p.inline-flex {
+    margin-block: 0.75rem 0;
+    color: rgb(82 82 82);
+    font-weight: 500;
+  }
+
+  #nd-sidebar a[data-active],
+  #nd-sidebar a[data-active="false"] {
+    width: fit-content;
+    color: rgb(64 64 64);
+    background: transparent;
+    border-radius: 0.625rem;
+    font-weight: 500;
+  }
+
+  #nd-sidebar a[data-active="true"] {
+    background: rgb(229 229 229);
+    color: rgb(23 23 23);
+  }
+
+  #nd-sidebar a[data-active="true"]:hover,
+  #nd-sidebar a[data-active="false"]:hover {
+    color: rgb(23 23 23);
+    background: rgb(229 229 229);
+  }
+
+  .dark #nd-sidebar p.inline-flex {
+    color: rgb(163 163 163);
+  }
+
+  .dark #nd-sidebar a[data-active],
+  .dark #nd-sidebar a[data-active="false"] {
+    color: rgb(245 245 245);
+  }
+
+  .dark #nd-sidebar a[data-active="true"] {
+    background: rgb(64 64 64);
+    color: rgb(255 255 255);
+  }
+
+  .dark #nd-sidebar a[data-active="true"]:hover,
+  .dark #nd-sidebar a[data-active="false"]:hover {
+    color: rgb(255 255 255);
+    background: rgb(64 64 64);
+  }
+}

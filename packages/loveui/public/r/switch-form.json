@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-form",
+  "description": "Switch in a form",
+  "registryDependencies": [
+    "@loveui/switch",
+    "@loveui/field",
+    "@loveui/form",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/switch-form.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Field, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Form } from \"@/registry/default/ui/form\"\nimport { Switch } from \"@/registry/default/ui/switch\"\n\nexport default function SwitchFormDemo() {\n  const [loading, setLoading] = React.useState(false)\n\n  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    const formData = new FormData(e.currentTarget)\n    setLoading(true)\n    await new Promise((r) => setTimeout(r, 800))\n    setLoading(false)\n    console.log(formData.get(\"marketing\"))\n\n    const enabled = formData.get(\"marketing\")\n    alert(`Marketing emails: ${enabled}`)\n  }\n\n  return (\n    <Form onSubmit={onSubmit} className=\"w-auto\">\n      <Field name=\"marketing\">\n        <FieldLabel>\n          <Switch name=\"marketing\" defaultChecked disabled={loading} />\n          Enable marketing emails\n        </FieldLabel>\n      </Field>\n      <Button type=\"submit\" disabled={loading}>\n        Submit\n      </Button>\n    </Form>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "switch",
+    "form",
+    "field",
+    "button"
+  ],
+  "type": "registry:example"
+}

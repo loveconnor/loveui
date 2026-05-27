@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mini-calendar-controlled",
+  "description": "Controlled mini calendar showing the selected date.",
+  "registryDependencies": [
+    "@loveui/mini-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/mini-calendar-controlled.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  MiniCalendar,\n  MiniCalendarDay,\n  MiniCalendarDays,\n  MiniCalendarNavigation,\n} from \"../../../../../packages/mini-calendar\"\n\nconst Example = () => {\n  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)\n\n  return (\n    <div className=\"space-y-4\">\n      <MiniCalendar onValueChange={setSelectedDate} value={selectedDate}>\n        <MiniCalendarNavigation direction=\"prev\" />\n        <MiniCalendarDays>\n          {(date) => <MiniCalendarDay date={date} key={date.toISOString()} />}\n        </MiniCalendarDays>\n        <MiniCalendarNavigation direction=\"next\" />\n      </MiniCalendar>\n\n      {selectedDate && (\n        <p className=\"text-sm text-muted-foreground\">\n          Selected:{\" \"}\n          {selectedDate.toLocaleDateString(\"en-US\", {\n            weekday: \"long\",\n            year: \"numeric\",\n            month: \"long\",\n            day: \"numeric\",\n          })}\n        </p>\n      )}\n    </div>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "mini-calendar",
+    "project management",
+    "controlled"
+  ],
+  "type": "registry:example"
+}

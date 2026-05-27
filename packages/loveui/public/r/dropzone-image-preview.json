@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropzone-image-preview",
+  "description": "Dropzone showing image previews for uploads.",
+  "registryDependencies": [
+    "@loveui/dropzone"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/dropzone-image-preview.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Dropzone,\n  DropzoneContent,\n  DropzoneEmptyState,\n} from \"../../../../../packages/dropzone\"\n\nconst Example = () => {\n  const [files, setFiles] = useState<File[] | undefined>()\n  const [filePreview, setFilePreview] = useState<string | undefined>()\n\n  const handleDrop = (files: File[]) => {\n    console.log(files)\n    setFiles(files)\n\n    if (files.length > 0) {\n      const reader = new FileReader()\n      reader.onload = (e) => {\n        if (typeof e.target?.result === \"string\") {\n          setFilePreview(e.target?.result)\n        }\n      }\n      reader.readAsDataURL(files[0])\n    }\n  }\n\n  return (\n    <Dropzone\n      accept={{ \"image/*\": [\".png\", \".jpg\", \".jpeg\"] }}\n      onDrop={handleDrop}\n      onError={console.error}\n      src={files}\n    >\n      <DropzoneEmptyState />\n      <DropzoneContent>\n        {filePreview && (\n          <div className=\"h-[102px] w-full\">\n            <img\n              alt=\"Preview\"\n              className=\"absolute top-0 left-0 h-full w-full object-cover\"\n              src={filePreview}\n            />\n          </div>\n        )}\n      </DropzoneContent>\n    </Dropzone>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "dropzone",
+    "preview"
+  ],
+  "type": "registry:example"
+}

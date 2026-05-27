@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-info",
+  "description": "Info badge",
+  "registryDependencies": [
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/badge-info.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\n\nexport default function BadgeInfo() {\n  return <Badge variant=\"info\">Badge</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge",
+    "info"
+  ],
+  "type": "registry:example"
+}

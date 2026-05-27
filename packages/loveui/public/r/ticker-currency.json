@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticker-currency",
+  "description": "Ticker supporting custom locales and currencies.",
+  "registryDependencies": [
+    "@loveui/ticker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/ticker-currency.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport {\n  Ticker,\n  TickerIcon,\n  TickerPrice,\n  TickerPriceChange,\n  TickerSymbol,\n} from \"../../../../../packages/ticker\"\n\nconst logoToken = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN\n\nconst items = [\n  {\n    symbol: \"DUOL\",\n    logoSymbol: \"DUOL\",\n    price: 478.03,\n    change: 5.2,\n  },\n  {\n    symbol: \"DBD\",\n    logoSymbol: \"DBD\",\n    price: 102.33,\n    change: 1.05,\n    currency: \"EUR\",\n    locale: \"de-DE\",\n  },\n  {\n    symbol: \"7203.T\",\n    logoSymbol: \"TM\",\n    price: 2460,\n    change: -120,\n    currency: \"JPY\",\n    locale: \"ja-JP\",\n  },\n]\n\nconst Example = () =>\n  items.map((i) => (\n    <Ticker currency={i.currency} key={i.symbol} locale={i.locale}>\n      {logoToken ? (\n        <TickerIcon asChild>\n          <Image\n            alt={i.symbol}\n            height={26}\n            src={`https://img.logo.dev/ticker/${i.logoSymbol}?token=${logoToken}&size=26&retina=true`}\n            width={26}\n          />\n        </TickerIcon>\n      ) : (\n        <TickerIcon symbol={i.symbol} />\n      )}\n      <TickerSymbol symbol={i.symbol} />\n      <TickerPrice price={i.price} />\n      <TickerPriceChange change={i.change} />\n    </Ticker>\n  ))\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "finance",
+    "ticker"
+  ],
+  "type": "registry:example"
+}

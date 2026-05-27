@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deck-controlled",
+  "description": "Programmatically controlled deck with navigation buttons.",
+  "registryDependencies": [
+    "@loveui/deck",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/deck-controlled.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Deck,\n  DeckCards,\n  DeckEmpty,\n  DeckItem,\n} from \"../../../../../packages/deck\"\nimport { Button } from \"../../../../../packages/ui/src/ui/button\"\n\nconst cards = [\n  { id: 1, title: \"Card 1\", color: \"bg-red-500\" },\n  { id: 2, title: \"Card 2\", color: \"bg-blue-500\" },\n  { id: 3, title: \"Card 3\", color: \"bg-green-500\" },\n  { id: 4, title: \"Card 4\", color: \"bg-yellow-500\" },\n  { id: 5, title: \"Card 5\", color: \"bg-purple-500\" },\n]\n\nconst Example = () => {\n  const [currentIndex, setCurrentIndex] = useState(0)\n  const [animationDirection, setAnimationDirection] = useState<\n    \"left\" | \"right\"\n  >(\"left\")\n\n  const nextCardLeft = () => {\n    if (currentIndex < cards.length) {\n      setAnimationDirection(\"left\")\n      // Small delay to ensure direction is set before index changes\n      setTimeout(() => {\n        setCurrentIndex((prev) => prev + 1)\n      }, 0)\n    }\n  }\n\n  const nextCardRight = () => {\n    if (currentIndex < cards.length) {\n      setAnimationDirection(\"right\")\n      // Small delay to ensure direction is set before index changes\n      setTimeout(() => {\n        setCurrentIndex((prev) => prev + 1)\n      }, 0)\n    }\n  }\n\n  return (\n    <div className=\"space-y-4\">\n      <div className=\"text-center\">\n        <p className=\"mb-2 text-sm text-muted-foreground\">\n          Current Index: {currentIndex} | Next Direction:{\" \"}\n          {animationDirection}\n        </p>\n        <div className=\"flex justify-center gap-2\">\n          <Button\n            disabled={currentIndex >= cards.length}\n            onClick={nextCardLeft}\n            size=\"sm\"\n            variant=\"outline\"\n          >\n            Next (Left Animation)\n          </Button>\n          <Button\n            disabled={currentIndex >= cards.length}\n            onClick={nextCardRight}\n            size=\"sm\"\n            variant=\"outline\"\n          >\n            Next (Right Animation)\n          </Button>\n        </div>\n      </div>\n\n      <Deck className=\"mx-auto aspect-square w-40\">\n        <DeckCards\n          animateOnIndexChange={true}\n          className=\"aspect-[2/3]\"\n          currentIndex={currentIndex}\n          indexChangeDirection={animationDirection}\n          onCurrentIndexChange={setCurrentIndex}\n          onSwipe={(_index, _direction) => {\n            // Handle swipe action\n          }}\n        >\n          {cards.map((card) => (\n            <DeckItem\n              className={`${card.color} flex-col text-center text-white`}\n              key={card.id}\n            >\n              <h3 className=\"text-2xl font-bold\">{card.title}</h3>\n              <p className=\"text-sm opacity-90\">Swipe or use buttons</p>\n            </DeckItem>\n          ))}\n        </DeckCards>\n        <DeckEmpty />\n      </Deck>\n    </div>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "social",
+    "deck",
+    "controlled"
+  ],
+  "type": "registry:example"
+}

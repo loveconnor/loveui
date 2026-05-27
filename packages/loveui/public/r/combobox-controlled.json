@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-controlled",
+  "description": "Combobox with controlled open and value state.",
+  "registryDependencies": [
+    "@loveui/combobox"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/combobox-controlled.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Combobox,\n  ComboboxContent,\n  ComboboxEmpty,\n  ComboboxGroup,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n  ComboboxTrigger,\n} from \"../../../../../packages/combobox\"\n\nconst plants = [\n  {\n    value: \"monstera-deliciosa\",\n    label: \"Monstera Deliciosa (Swiss Cheese Plant)\",\n  },\n  {\n    value: \"ficus-lyrata\",\n    label: \"Ficus Lyrata (Fiddle Leaf Fig)\",\n  },\n  {\n    value: \"sansevieria-trifasciata\",\n    label: \"Sansevieria Trifasciata (Snake Plant)\",\n  },\n  {\n    value: \"spathiphyllum-wallisii\",\n    label: \"Spathiphyllum Wallisii (Peace Lily)\",\n  },\n  {\n    value: \"epipremnum-aureum\",\n    label: \"Epipremnum Aureum (Golden Pothos)\",\n  },\n  {\n    value: \"calathea-orbifolia\",\n    label: \"Calathea Orbifolia (Prayer Plant)\",\n  },\n]\n\nconst Example = () => {\n  const [open, setOpen] = useState(false)\n  const [value, setValue] = useState(plants[0].value)\n\n  return (\n    <Combobox\n      data={plants}\n      onOpenChange={setOpen}\n      onValueChange={setValue}\n      open={open}\n      type=\"plant\"\n      value={value}\n    >\n      <ComboboxTrigger />\n      <ComboboxContent>\n        <ComboboxInput />\n        <ComboboxEmpty />\n        <ComboboxList>\n          <ComboboxGroup>\n            {plants.map((plant) => (\n              <ComboboxItem key={plant.value} value={plant.value}>\n                {plant.label}\n              </ComboboxItem>\n            ))}\n          </ComboboxGroup>\n        </ComboboxList>\n      </ComboboxContent>\n    </Combobox>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "combobox",
+    "controlled"
+  ],
+  "type": "registry:example"
+}

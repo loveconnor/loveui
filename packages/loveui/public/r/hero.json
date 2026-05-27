@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero",
+  "description": "A hero section with announcement, headline, and video player.",
+  "registryDependencies": [
+    "@loveui/announcement",
+    "@loveui/marquee",
+    "@loveui/video-player",
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/hero.tsx",
+      "content": "\"use client\"\n\nimport Link from \"next/link\"\nimport {\n  SiApple,\n  SiFacebook,\n  SiGithub,\n  SiGoogle,\n  SiInstagram,\n  SiX,\n  SiYoutube,\n} from \"@icons-pack/react-simple-icons\"\n\nimport {\n  Announcement,\n  AnnouncementTag,\n  AnnouncementTitle,\n} from \"../../../../../packages/announcement\"\nimport {\n  Marquee,\n  MarqueeContent,\n  MarqueeFade,\n  MarqueeItem,\n} from \"../../../../../packages/marquee\"\nimport { Button } from \"../../../../../packages/ui/src/ui/button\"\nimport {\n  VideoPlayer,\n  VideoPlayerContent,\n  VideoPlayerControlBar,\n  VideoPlayerMuteButton,\n  VideoPlayerPlayButton,\n  VideoPlayerSeekBackwardButton,\n  VideoPlayerSeekForwardButton,\n  VideoPlayerTimeDisplay,\n  VideoPlayerTimeRange,\n  VideoPlayerVolumeRange,\n} from \"../../../../../packages/video-player\"\n\nconst logos = [\n  {\n    name: \"GitHub\",\n    icon: SiGithub,\n    url: \"https://github.com\",\n  },\n  {\n    name: \"Facebook\",\n    icon: SiFacebook,\n    url: \"https://facebook.com\",\n  },\n  {\n    name: \"Google\",\n    icon: SiGoogle,\n    url: \"https://google.com\",\n  },\n  {\n    name: \"X\",\n    icon: SiX,\n    url: \"https://x.com\",\n  },\n  {\n    name: \"Apple\",\n    icon: SiApple,\n    url: \"https://apple.com\",\n  },\n  {\n    name: \"Instagram\",\n    icon: SiInstagram,\n    url: \"https://instagram.com\",\n  },\n  {\n    name: \"YouTube\",\n    icon: SiYoutube,\n    url: \"https://youtube.com\",\n  },\n]\n\nconst Example = () => (\n  <div className=\"flex flex-col gap-16 px-8 py-24 text-center\">\n    <div className=\"flex flex-col items-center justify-center gap-8\">\n      <Link href=\"#\">\n        <Announcement>\n          <AnnouncementTag>Latest</AnnouncementTag>\n          <AnnouncementTitle>\n            Introducing blocks by LoveUI\n          </AnnouncementTitle>\n        </Announcement>\n      </Link>\n      <h1 className=\"mb-0 text-6xl font-medium text-balance md:text-7xl xl:text-[5.25rem]\">\n        The best way to build your website\n      </h1>\n      <p className=\"mt-0 mb-0 text-lg text-balance text-muted-foreground\">\n        LoveUI blocks are a new way to build your website. They are a\n        collection of pre-built components that you can use to build your\n        website.\n      </p>\n      <div className=\"flex items-center gap-2\">\n        <Button render={<Link href=\"#\" />}>Get started</Button>\n        <Button render={<Link href=\"#\" />} variant=\"outline\">\n          Learn more\n        </Button>\n      </div>\n    </div>\n    <section className=\"flex flex-col items-center justify-center gap-8 rounded-xl bg-secondary py-8 pb-18\">\n      <p className=\"mb-0 font-medium text-balance text-muted-foreground\">\n        Trusted by developers from leading companies\n      </p>\n      <div className=\"flex size-full items-center justify-center\">\n        <Marquee>\n          <MarqueeFade className=\"from-secondary\" side=\"left\" />\n          <MarqueeFade className=\"from-secondary\" side=\"right\" />\n          <MarqueeContent pauseOnHover={false}>\n            {logos.map((logo) => (\n              <MarqueeItem className=\"mx-16 size-12\" key={logo.name}>\n                <Link href={logo.url}>\n                  <logo.icon className=\"size-full\" />\n                </Link>\n              </MarqueeItem>\n            ))}\n          </MarqueeContent>\n        </Marquee>\n      </div>\n    </section>\n    <VideoPlayer className=\"overflow-hidden rounded-lg border\">\n      <VideoPlayerContent\n        crossOrigin=\"\"\n        muted\n        preload=\"auto\"\n        slot=\"media\"\n        src=\"https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe/high.mp4\"\n      />\n      <VideoPlayerControlBar>\n        <VideoPlayerPlayButton />\n        <VideoPlayerSeekBackwardButton />\n        <VideoPlayerSeekForwardButton />\n        <VideoPlayerTimeRange />\n        <VideoPlayerTimeDisplay showDuration />\n        <VideoPlayerMuteButton />\n        <VideoPlayerVolumeRange />\n      </VideoPlayerControlBar>\n    </VideoPlayer>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "hero",
+    "marketing"
+  ],
+  "type": "registry:example"
+}

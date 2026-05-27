@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kanban-simple",
+  "description": "Simplified Kanban board highlighting drag-and-drop.",
+  "registryDependencies": [
+    "@loveui/kanban",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/kanban-simple.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { faker } from \"@faker-js/faker\"\n\nimport type { DragEndEvent } from \"../../../../../packages/kanban\"\nimport {\n  KanbanBoard,\n  KanbanCard,\n  KanbanCards,\n  KanbanHeader,\n  KanbanProvider,\n} from \"../../../../../packages/kanban\"\n\n// Seed faker to ensure consistent data between server and client\nfaker.seed(123)\n\nconst capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)\n\nconst columns = [\n  { id: faker.string.uuid(), name: \"Planned\", color: \"#6B7280\" },\n  { id: faker.string.uuid(), name: \"In Progress\", color: \"#F59E0B\" },\n  { id: faker.string.uuid(), name: \"Done\", color: \"#10B981\" },\n]\n\nconst users = Array.from({ length: 4 })\n  .fill(null)\n  .map(() => ({\n    id: faker.string.uuid(),\n    name: faker.person.fullName(),\n    image: faker.image.avatar(),\n  }))\n\nconst exampleFeatures = Array.from({ length: 20 })\n  .fill(null)\n  .map(() => ({\n    id: faker.string.uuid(),\n    name: capitalize(faker.company.buzzPhrase()),\n    startAt: faker.date.past({ years: 0.5, refDate: new Date() }),\n    endAt: faker.date.future({ years: 0.5, refDate: new Date() }),\n    column: faker.helpers.arrayElement(columns).id,\n    owner: faker.helpers.arrayElement(users),\n  }))\n\nconst Example = () => {\n  const [features, setFeatures] = useState(exampleFeatures)\n\n  const handleDragEnd = (event: DragEndEvent) => {\n    const { active, over } = event\n\n    if (!over) {\n      return\n    }\n\n    const status = columns.find(({ id }) => id === over.id)\n\n    if (!status) {\n      return\n    }\n\n    setFeatures(\n      features.map((feature) => {\n        if (feature.id === active.id) {\n          return { ...feature, column: status.id }\n        }\n\n        return feature\n      })\n    )\n  }\n\n  return (\n    <KanbanProvider columns={columns} data={features} onDragEnd={handleDragEnd}>\n      {(column) => (\n        <KanbanBoard id={column.id} key={column.id}>\n          <KanbanHeader>{column.name}</KanbanHeader>\n          <KanbanCards id={column.id}>\n            {(feature) => (\n              <KanbanCard\n                column={column.name}\n                id={feature.id}\n                key={feature.id}\n                name={feature.name}\n              />\n            )}\n          </KanbanCards>\n        </KanbanBoard>\n      )}\n    </KanbanProvider>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "kanban",
+    "project management"
+  ],
+  "type": "registry:example"
+}

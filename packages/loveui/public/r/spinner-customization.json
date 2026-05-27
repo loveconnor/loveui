@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-customization",
+  "description": "Spinner customized with size and color.",
+  "registryDependencies": [
+    "@loveui/spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/spinner-customization.tsx",
+      "content": "\"use client\"\n\nimport { Spinner } from \"../../../../../packages/spinner\"\n\nconst Example = () => <Spinner className=\"text-blue-500\" size={64} />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "feedback",
+    "spinner",
+    "customization"
+  ],
+  "type": "registry:example"
+}

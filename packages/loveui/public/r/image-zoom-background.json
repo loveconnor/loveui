@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-zoom-background",
+  "description": "Image zoom with custom modal backdrop styling.",
+  "registryDependencies": [
+    "@loveui/image-zoom"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/image-zoom-background.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { ImageZoom } from \"../../../../../packages/image-zoom\"\n\nconst Example = () => (\n  <ImageZoom\n    backdropClassName={cn(\n      '[&_[data-rmiz-modal-overlay=\"visible\"]]:bg-black/80'\n    )}\n  >\n    <Image\n      alt=\"Placeholder image\"\n      className=\"h-auto w-96\"\n      height={800}\n      src=\"https://placehold.co/1200x800\"\n      unoptimized\n      width={1200}\n    />\n  </ImageZoom>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "media",
+    "image",
+    "zoom",
+    "customization"
+  ],
+  "type": "registry:example"
+}

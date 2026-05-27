@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-controlled",
+  "description": "Controlled rating component example.",
+  "registryDependencies": [
+    "@loveui/rating"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/rating-controlled.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { Rating, RatingButton } from \"../../../../../packages/rating\"\nimport { Input } from \"../../../../../packages/ui/src/ui/input\"\n\nconst Example = () => {\n  const [value, setValue] = useState(3)\n\n  return (\n    <>\n      <Rating onValueChange={setValue} value={value}>\n        {Array.from({ length: 5 }).map((_, index) => (\n          <RatingButton key={index} />\n        ))}\n      </Rating>\n      <Input\n        className=\"w-32 bg-background\"\n        max={5}\n        min={0}\n        onChange={(e) => setValue(Number(e.target.value))}\n        type=\"number\"\n        value={value}\n      />\n    </>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "rating",
+    "controlled"
+  ],
+  "type": "registry:example"
+}

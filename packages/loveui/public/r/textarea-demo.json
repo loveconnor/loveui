@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-demo",
+  "description": "Basic textarea",
+  "registryDependencies": [
+    "@loveui/textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/textarea-demo.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here\" />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "textarea"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contribution-graph-custom-footer",
+  "description": "Contribution graph with custom footer summary.",
+  "registryDependencies": [
+    "@loveui/contribution-graph",
+    "@loveui/code-block",
+    "@faker-js/faker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/contribution-graph-custom-footer.tsx",
+      "content": "\"use client\"\n\nimport { eachDayOfInterval, endOfYear, formatISO, startOfYear } from \"date-fns\"\n\nimport { Badge } from \"@/registry/default/ui/badge\"\n\nimport {\n  ContributionGraph,\n  ContributionGraphBlock,\n  ContributionGraphCalendar,\n  ContributionGraphFooter,\n  ContributionGraphLegend,\n  ContributionGraphTotalCount,\n} from \"../../../../../packages/contribution-graph\"\n\nconst maxCount = 20\nconst maxLevel = 4\nconst now = new Date()\nconst days = eachDayOfInterval({\n  start: startOfYear(now),\n  end: endOfYear(now),\n})\n\nconst data = days.map((date) => {\n  const c = Math.round(\n    Math.random() * maxCount - Math.random() * (0.8 * maxCount)\n  )\n  const count = Math.max(0, c)\n  const level = Math.ceil((count / maxCount) * maxLevel)\n\n  return {\n    date: formatISO(date, { representation: \"date\" }),\n    count,\n    level,\n  }\n})\n\nconst Example = () => (\n  <ContributionGraph data={data}>\n    <ContributionGraphCalendar>\n      {({ activity, dayIndex, weekIndex }) => (\n        <ContributionGraphBlock\n          activity={activity}\n          dayIndex={dayIndex}\n          weekIndex={weekIndex}\n        />\n      )}\n    </ContributionGraphCalendar>\n    <ContributionGraphFooter>\n      <ContributionGraphTotalCount>\n        {({ totalCount, year }) => (\n          <div className=\"flex items-center gap-2\">\n            <span className=\"text-sm text-muted-foreground\">\n              Year {year}:\n            </span>\n            <Badge variant=\"secondary\">\n              {totalCount.toLocaleString()} contributions\n            </Badge>\n          </div>\n        )}\n      </ContributionGraphTotalCount>\n      <ContributionGraphLegend>\n        {({ level }) => (\n          <div\n            className=\"group relative flex h-3 w-3 items-center justify-center\"\n            data-level={level}\n          >\n            <div\n              className={`h-full w-full rounded-sm border border-border ${level === 0 ? \"bg-muted\" : \"\"} ${level === 1 ? \"bg-emerald-200 dark:bg-emerald-900\" : \"\"} ${level === 2 ? \"bg-emerald-400 dark:bg-emerald-700\" : \"\"} ${level === 3 ? \"bg-emerald-600 dark:bg-emerald-500\" : \"\"} ${level === 4 ? \"bg-emerald-800 dark:bg-emerald-300\" : \"\"} `}\n            />\n            <span className=\"absolute -top-8 hidden rounded bg-popover px-2 py-1 text-xs text-popover-foreground shadow-md group-hover:block\">\n              Level {level}\n            </span>\n          </div>\n        )}\n      </ContributionGraphLegend>\n    </ContributionGraphFooter>\n  </ContributionGraph>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "contribution",
+    "customization"
+  ],
+  "type": "registry:example"
+}

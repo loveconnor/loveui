@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement-tagless",
+  "description": "Announcement without a leading tag.",
+  "registryDependencies": [
+    "@loveui/announcement"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/announcement-tagless.tsx",
+      "content": "\"use client\"\n\nimport { ArrowUpRightIcon } from \"lucide-react\"\n\nimport {\n  Announcement,\n  AnnouncementTitle,\n} from \"../../../../../packages/announcement\"\n\nconst Example = () => (\n  <Announcement>\n    <AnnouncementTitle>\n      New feature added\n      <ArrowUpRightIcon className=\"shrink-0 text-muted-foreground\" size={16} />\n    </AnnouncementTitle>\n  </Announcement>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "announcement",
+    "minimal"
+  ],
+  "type": "registry:example"
+}

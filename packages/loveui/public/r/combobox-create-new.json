@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-create-new",
+  "description": "Combobox that allows creating new items.",
+  "registryDependencies": [
+    "@loveui/combobox"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/combobox-create-new.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Combobox,\n  ComboboxContent,\n  ComboboxCreateNew,\n  ComboboxEmpty,\n  ComboboxGroup,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n  ComboboxTrigger,\n} from \"../../../../../packages/combobox\"\n\nconst initialFrameworks = [\n  {\n    value: \"next.js\",\n    label: \"Next.js\",\n  },\n  {\n    value: \"sveltekit\",\n    label: \"SvelteKit\",\n  },\n  {\n    value: \"nuxt.js\",\n    label: \"Nuxt.js\",\n  },\n  {\n    value: \"remix\",\n    label: \"Remix\",\n  },\n  {\n    value: \"astro\",\n    label: \"Astro\",\n  },\n  {\n    value: \"vite\",\n    label: \"Vite\",\n  },\n]\n\nconst Example = () => {\n  const [frameworks, setFrameworks] = useState(initialFrameworks)\n  const [value, setValue] = useState(\"\")\n\n  const handleCreateNew = (newValue: string) => {\n    console.log(\"Creating new framework:\", newValue)\n\n    // Add the new framework to the list\n    const newFramework = {\n      value: newValue.toLowerCase().replace(/\\s+/g, \"-\"),\n      label: newValue,\n    }\n\n    setFrameworks((prev) => [...prev, newFramework])\n    setValue(newFramework.value)\n  }\n\n  return (\n    <Combobox\n      data={frameworks}\n      onValueChange={setValue}\n      type=\"framework\"\n      value={value}\n    >\n      <ComboboxTrigger className=\"w-[300px]\" />\n      <ComboboxContent>\n        <ComboboxInput />\n        <ComboboxEmpty>\n          <ComboboxCreateNew onCreateNew={handleCreateNew} />\n        </ComboboxEmpty>\n        <ComboboxList>\n          <ComboboxGroup>\n            {frameworks.map((framework) => (\n              <ComboboxItem key={framework.value} value={framework.value}>\n                {framework.label}\n              </ComboboxItem>\n            ))}\n          </ComboboxGroup>\n        </ComboboxList>\n      </ComboboxContent>\n    </Combobox>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "combobox",
+    "create"
+  ],
+  "type": "registry:example"
+}

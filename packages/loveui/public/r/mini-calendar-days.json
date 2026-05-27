@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mini-calendar-days",
+  "description": "Mini calendar rendering weekday headings and focus states.",
+  "registryDependencies": [
+    "@loveui/mini-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/mini-calendar-days.tsx",
+      "content": "\"use client\"\n\nimport {\n  MiniCalendar,\n  MiniCalendarDay,\n  MiniCalendarDays,\n  MiniCalendarNavigation,\n} from \"../../../../../packages/mini-calendar\"\n\nconst Example = () => (\n  <MiniCalendar days={7}>\n    <MiniCalendarNavigation direction=\"prev\" />\n    <MiniCalendarDays>\n      {(date) => <MiniCalendarDay date={date} key={date.toISOString()} />}\n    </MiniCalendarDays>\n    <MiniCalendarNavigation direction=\"next\" />\n  </MiniCalendar>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "mini-calendar",
+    "project management"
+  ],
+  "type": "registry:example"
+}

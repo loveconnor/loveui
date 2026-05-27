@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-error",
+  "description": "Error badge",
+  "registryDependencies": [
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/badge-error.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\n\nexport default function BadgeError() {\n  return <Badge variant=\"error\">Badge</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge",
+    "error"
+  ],
+  "type": "registry:example"
+}

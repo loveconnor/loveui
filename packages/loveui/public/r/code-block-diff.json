@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-diff",
+  "description": "Code block showing diff highlighting between revisions.",
+  "registryDependencies": [
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/code-block-diff.tsx",
+      "content": "\"use client\"\n\nimport { CodeBlockShowcase, type CodeSample } from \"./code-block-shared\"\n\nconst code: CodeSample[] = [\n  {\n    language: \"ts\",\n    filename: \"utils.ts\",\n    code: `function calculateTotal(items: Array<{ price: number; quantity: number }>) {\n- let total = 0;\n+ let subtotal = 0;\n\n  for (const item of items) {\n-   total += item.price * item.quantity;\n+   subtotal += item.price * item.quantity;\n  }\n\n- return total;\n+ return subtotal;\n}`,\n  },\n  {\n    language: \"js\",\n    filename: \"utils.js\",\n    code: `function calculateTotal(items) {\n- let total = 0;\n+ let subtotal = 0;\n\n  for (const item of items) {\n-   total += item.price * item.quantity;\n+   subtotal += item.price * item.quantity;\n  }\n\n- return total;\n+ return subtotal;\n}`,\n  },\n]\n\nconst Example = () => <CodeBlockShowcase files={code} lineNumbers />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "code-block",
+    "diff"
+  ],
+  "type": "registry:example"
+}

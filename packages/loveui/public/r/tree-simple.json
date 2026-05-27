@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-simple",
+  "description": "Simple tree view with minimal configuration.",
+  "registryDependencies": [
+    "@loveui/tree"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/tree-simple.tsx",
+      "content": "\"use client\"\n\nimport {\n  TreeExpander,\n  TreeIcon,\n  TreeLabel,\n  TreeNode,\n  TreeNodeContent,\n  TreeNodeTrigger,\n  TreeProvider,\n  TreeView,\n} from \"../../../../../packages/tree\"\n\nexport default function TreeSimpleExample() {\n  return (\n    <TreeProvider>\n      <TreeView>\n        <TreeNode nodeId=\"documents\">\n          <TreeNodeTrigger>\n            <TreeExpander hasChildren />\n            <TreeIcon hasChildren />\n            <TreeLabel>Documents</TreeLabel>\n          </TreeNodeTrigger>\n          <TreeNodeContent hasChildren>\n            <TreeNode level={1} nodeId=\"work\">\n              <TreeNodeTrigger>\n                <TreeExpander hasChildren />\n                <TreeIcon hasChildren />\n                <TreeLabel>Work</TreeLabel>\n              </TreeNodeTrigger>\n              <TreeNodeContent hasChildren>\n                <TreeNode level={2} nodeId=\"project-a\">\n                  <TreeNodeTrigger>\n                    <TreeExpander />\n                    <TreeIcon />\n                    <TreeLabel>Project A.pdf</TreeLabel>\n                  </TreeNodeTrigger>\n                </TreeNode>\n                <TreeNode isLast level={2} nodeId=\"project-b\">\n                  <TreeNodeTrigger>\n                    <TreeExpander />\n                    <TreeIcon />\n                    <TreeLabel>Project B.pdf</TreeLabel>\n                  </TreeNodeTrigger>\n                </TreeNode>\n              </TreeNodeContent>\n            </TreeNode>\n            <TreeNode isLast level={1} nodeId=\"personal\">\n              <TreeNodeTrigger>\n                <TreeExpander hasChildren />\n                <TreeIcon hasChildren />\n                <TreeLabel>Personal</TreeLabel>\n              </TreeNodeTrigger>\n              <TreeNodeContent hasChildren>\n                <TreeNode level={2} nodeId=\"resume\">\n                  <TreeNodeTrigger>\n                    <TreeExpander />\n                    <TreeIcon />\n                    <TreeLabel>Resume.docx</TreeLabel>\n                  </TreeNodeTrigger>\n                </TreeNode>\n                <TreeNode isLast level={2} nodeId=\"cover-letter\">\n                  <TreeNodeTrigger>\n                    <TreeExpander />\n                    <TreeIcon />\n                    <TreeLabel>Cover Letter.docx</TreeLabel>\n                  </TreeNodeTrigger>\n                </TreeNode>\n              </TreeNodeContent>\n            </TreeNode>\n          </TreeNodeContent>\n        </TreeNode>\n        <TreeNode isLast nodeId=\"downloads\">\n          <TreeNodeTrigger>\n            <TreeExpander hasChildren />\n            <TreeIcon hasChildren />\n            <TreeLabel>Downloads</TreeLabel>\n          </TreeNodeTrigger>\n          <TreeNodeContent hasChildren>\n            <TreeNode level={1} nodeId=\"installer\">\n              <TreeNodeTrigger>\n                <TreeExpander />\n                <TreeIcon />\n                <TreeLabel>installer.exe</TreeLabel>\n              </TreeNodeTrigger>\n            </TreeNode>\n            <TreeNode isLast level={1} nodeId=\"update\">\n              <TreeNodeTrigger>\n                <TreeExpander />\n                <TreeIcon />\n                <TreeLabel>update.zip</TreeLabel>\n              </TreeNodeTrigger>\n            </TreeNode>\n          </TreeNodeContent>\n        </TreeNode>\n      </TreeView>\n    </TreeProvider>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tree",
+    "project management"
+  ],
+  "type": "registry:example"
+}

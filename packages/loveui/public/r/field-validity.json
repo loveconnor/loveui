@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-validity",
+  "description": "Show field validity state",
+  "registryDependencies": [
+    "@loveui/field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/field-validity.tsx",
+      "content": "\"use client\"\n\nimport {\n  Field,\n  FieldControl,\n  FieldLabel,\n  FieldValidity,\n} from \"@/registry/default/ui/field\"\n\nexport default function FieldWithValidityDemo() {\n  return (\n    <Field>\n      <FieldLabel>Email</FieldLabel>\n      <FieldControl\n        type=\"email\"\n        placeholder=\"Enter your email\"\n        required\n      />\n      <FieldValidity>\n        {(validity) => (\n          <div className=\"flex w-full flex-col gap-2\">\n            {validity.error && (\n              <p className=\"text-xs text-destructive-foreground\">\n                {validity.error}\n              </p>\n            )}\n            <div className=\"w-full rounded-md bg-muted p-2\">\n              <pre className=\"no-scrollbar max-h-60 overflow-y-auto font-mono text-xs\">\n                {JSON.stringify(validity, null, 2)}\n              </pre>\n            </div>\n          </div>\n        )}\n      </FieldValidity>\n    </Field>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field"
+  ],
+  "type": "registry:example"
+}

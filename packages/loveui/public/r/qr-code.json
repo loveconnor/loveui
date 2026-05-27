@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "qr-code",
+  "description": "Basic QR code rendering.",
+  "registryDependencies": [
+    "@loveui/qr-code"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/qr-code.tsx",
+      "content": "\"use client\"\n\nimport { QRCode } from \"../../../../../packages/qr-code\"\n\nconst Example = () => <QRCode data=\"https://www.connorlove.com/\" />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "utility",
+    "qr-code"
+  ],
+  "type": "registry:example"
+}

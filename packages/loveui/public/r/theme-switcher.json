@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switcher",
+  "description": "Theme switcher controlling light, dark, and system modes.",
+  "registryDependencies": [
+    "@loveui/theme-switcher"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/theme-switcher.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { ThemeSwitcher } from \"../../../../../packages/theme-switcher\"\n\nconst Example = () => {\n  const [theme, setTheme] = useState<\"light\" | \"dark\" | \"system\">(\"system\")\n\n  return (\n    <ThemeSwitcher defaultValue=\"system\" onChange={setTheme} value={theme} />\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "styling",
+    "theme",
+    "controlled"
+  ],
+  "type": "registry:example"
+}

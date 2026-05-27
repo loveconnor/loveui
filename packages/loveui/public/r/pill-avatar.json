@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-avatar",
+  "description": "Pill with an avatar.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-avatar.tsx",
+      "content": "\"use client\"\n\nimport { Pill, PillAvatar } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    <PillAvatar\n      fallback=\"CL\"\n      src=\"https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg\"\n    />\n    @loveconnor\n  </Pill>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill",
+    "avatar"
+  ],
+  "type": "registry:example"
+}

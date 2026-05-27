@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-variants",
+  "description": "Gallery of spinner variants.",
+  "registryDependencies": [
+    "@loveui/spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/spinner-variants.tsx",
+      "content": "\"use client\"\n\nimport { Spinner, type SpinnerProps } from \"../../../../../packages/spinner\"\n\nconst variants: SpinnerProps[\"variant\"][] = [\n  \"default\",\n  \"throbber\",\n  \"pinwheel\",\n  \"circle-filled\",\n  \"ellipsis\",\n  \"ring\",\n  \"bars\",\n  \"infinite\",\n]\n\nconst Example = () => (\n  <div className=\"grid h-screen w-full grid-cols-4 items-center justify-center gap-8\">\n    {variants.map((variant) => (\n      <div\n        className=\"flex flex-col items-center justify-center gap-4\"\n        key={variant}\n      >\n        <Spinner key={variant} variant={variant} />\n        <span className=\"font-mono text-xs text-muted-foreground\">\n          {variant}\n        </span>\n      </div>\n    ))}\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "feedback",
+    "spinner",
+    "variants"
+  ],
+  "type": "registry:example"
+}

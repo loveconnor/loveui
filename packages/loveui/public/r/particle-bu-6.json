@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-bu-6",
+  "description": "Expandable show more/less toggle button",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/particles/particle-bu-6.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { ChevronDownIcon, ChevronUpIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function Particle() {\n  const [isExpanded, setIsExpanded] = useState<boolean>(false)\n\n  const toggleExpand = () => {\n    setIsExpanded((prevState) => !prevState)\n  }\n\n  return (\n    <Button\n      className=\"gap-1\"\n      variant=\"ghost\"\n      onClick={toggleExpand}\n      aria-expanded={isExpanded}\n      aria-controls=\"expandable-content\" // Use this ID on the element that this button controls\n    >\n      {isExpanded ? \"Show less\" : \"Show more\"}\n      {isExpanded ? (\n        <ChevronUpIcon className=\"-me-1\" aria-hidden=\"true\" />\n      ) : (\n        <ChevronDownIcon className=\"-me-1\" aria-hidden=\"true\" />\n      )}\n    </Button>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:block"
+}

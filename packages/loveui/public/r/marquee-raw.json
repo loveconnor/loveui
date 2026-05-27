@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-raw",
+  "description": "Marquee rendering raw children.",
+  "registryDependencies": [
+    "@loveui/marquee"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/marquee-raw.tsx",
+      "content": "\"use client\"\n\nimport {\n  Marquee,\n  MarqueeContent,\n  MarqueeFade,\n  MarqueeItem,\n} from \"../../../../../packages/marquee\"\n\nconst Example = () => (\n  <div className=\"flex size-full items-center justify-center bg-background\">\n    <Marquee>\n      <MarqueeFade side=\"left\" />\n      <MarqueeFade side=\"right\" />\n      <MarqueeContent autoFill={false} loop={1} pauseOnHover={false}>\n        {new Array(10).fill(null).map((_, index) => (\n          <MarqueeItem className=\"h-16 w-16\" key={index}>\n            <img\n              alt={`Placeholder ${index}`}\n              className=\"overflow-hidden rounded-full\"\n              src={`https://placehold.co/64x64?random=${index}`}\n            />\n          </MarqueeItem>\n        ))}\n      </MarqueeContent>\n    </Marquee>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "marketing",
+    "marquee",
+    "customization"
+  ],
+  "type": "registry:example"
+}

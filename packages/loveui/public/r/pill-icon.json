@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pill-icon",
+  "description": "Pill with icon support.",
+  "registryDependencies": [
+    "@loveui/pill"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pill-icon.tsx",
+      "content": "\"use client\"\n\nimport { UsersIcon } from \"lucide-react\"\n\nimport { Pill, PillIcon } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    <PillIcon icon={UsersIcon} />\n    17 users\n  </Pill>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "pill",
+    "icon"
+  ],
+  "type": "registry:example"
+}

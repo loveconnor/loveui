@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-custom",
+  "description": "Custom styled status badge with outline variant.",
+  "registryDependencies": [
+    "@loveui/status"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/status-custom.tsx",
+      "content": "\"use client\"\n\nimport {\n  Status,\n  StatusIndicator,\n  StatusLabel,\n} from \"../../../../../packages/status\"\n\nconst Example = () => (\n  <Status\n    className=\"gap-4 rounded-full px-6 py-2 text-sm\"\n    status=\"online\"\n    variant=\"outline\"\n  >\n    <StatusIndicator />\n    <StatusLabel className=\"font-mono\">Fully operational</StatusLabel>\n  </Status>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "status",
+    "project management",
+    "customization"
+  ],
+  "type": "registry:example"
+}

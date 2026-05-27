@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comparison-event-handlers",
+  "description": "Comparison slider demonstrating event handlers.",
+  "registryDependencies": [
+    "@loveui/comparison",
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/comparison-event-handlers.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport {\n  Comparison,\n  ComparisonHandle,\n  ComparisonItem,\n} from \"../../../../../packages/comparison\"\n\nconst Example = () => (\n  <Comparison\n    className=\"aspect-video\"\n    onDragEnd={() => console.log(\"drag end\")}\n    onDragStart={() => console.log(\"drag start\")}\n  >\n    <ComparisonItem className=\"bg-red-500\" position=\"left\">\n      <Image\n        alt=\"Placeholder 1\"\n        className=\"opacity-50\"\n        height={1080}\n        src=\"https://placehold.co/1920x1080?random=1\"\n        unoptimized\n        width={1920}\n      />\n    </ComparisonItem>\n    <ComparisonItem className=\"bg-blue-500\" position=\"right\">\n      <Image\n        alt=\"Placeholder 2\"\n        className=\"opacity-50\"\n        height={1440}\n        src=\"https://placehold.co/2560x1440?random=2\"\n        unoptimized\n        width={2560}\n      />\n    </ComparisonItem>\n    <ComparisonHandle />\n  </Comparison>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "comparison",
+    "events"
+  ],
+  "type": "registry:example"
+}

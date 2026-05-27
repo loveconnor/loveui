@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-lg",
+  "description": "Large button",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-lg.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonLg() {\n  return <Button size=\"lg\">Button</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

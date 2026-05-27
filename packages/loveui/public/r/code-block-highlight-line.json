@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-highlight-line",
+  "description": "Code block example highlighting specific lines.",
+  "registryDependencies": [
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/code-block-highlight-line.tsx",
+      "content": "\"use client\"\n\nimport { CodeBlockShowcase, type CodeSample } from \"./code-block-shared\"\n\nconst code: CodeSample[] = [\n  {\n    language: \"tsx\",\n    filename: \"pricing.ts\",\n    code: `export function getDiscountedPrice(price: number, percent: number) {\n  const discount = price * (percent / 100); // highlighted line\n  const total = price - discount;\n  return Math.max(total, 0);\n}`,\n  },\n  {\n    language: \"js\",\n    filename: \"pricing.js\",\n    code: `export function getDiscountedPrice(price, percent) {\n  const discount = price * (percent / 100); // highlighted line\n  const total = price - discount;\n  return Math.max(total, 0);\n}`,\n  },\n]\n\nconst Example = () => <CodeBlockShowcase files={code} lineNumbers />\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "code-block",
+    "highlight"
+  ],
+  "type": "registry:example"
+}

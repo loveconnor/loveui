@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-toast-position",
+  "description": "Control toast position",
+  "registryDependencies": [
+    "@loveui/gooey-toast"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/gooey-toast-position.tsx",
+      "content": "\"use client\"\n\nimport { gooey, type GooeyPosition } from \"@loveui/gooey-toast\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function GooeyToastPosition() {\n  const positions: GooeyPosition[] = [\n    \"top-left\",\n    \"top-center\",\n    \"top-right\",\n    \"bottom-left\",\n    \"bottom-center\",\n    \"bottom-right\",\n  ]\n\n  return (\n    <div className=\"flex flex-wrap gap-2\">\n      {positions.map((position) => (\n        <Button\n          key={position}\n          variant=\"outline\"\n          onClick={() => {\n            gooey.show({\n              title: position,\n              description: `Toast shown at ${position}`,\n              position,\n            })\n          }}\n        >\n          {position}\n        </Button>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "gooey-toast",
+    "button"
+  ],
+  "type": "registry:example"
+}

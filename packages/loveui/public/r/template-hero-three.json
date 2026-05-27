@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "template-hero-three",
+  "type": "registry:block",
+  "title": "hero/three",
+  "description": "Page template \"hero/three\"",
+  "files": [
+    {
+      "path": "registry/page-templates/default/templates/hero/three/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/page-templates/hero/three/app/page.tsx",
+      "content": "import HeroSection from \"../index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
+    },
+    {
+      "path": "registry/page-templates/default/templates/hero/three/index.tsx",
+      "type": "registry:file",
+      "target": "components/page-templates/hero/three/index.tsx",
+      "content": "import React from \"react\"\nimport Image from \"next/image\"\nimport Link from \"next/link\"\nimport { Button } from \"@/ui/button\"\nimport {\n  AudioLines,\n  ChevronRight,\n  MessageCircle,\n  Mic2,\n  Plus,\n} from \"lucide-react\"\n\nexport default function HeroSection() {\n  return (\n    <>\n      <main className=\"overflow-hidden\">\n        <section className=\"bg-background\">\n          <div className=\"relative py-40\">\n            <div className=\"absolute inset-0 aspect-2/3 mask-radial-[75%_100%] mask-radial-from-45% mask-radial-to-75% mask-radial-at-top opacity-75 blur-xl md:aspect-square lg:aspect-video dark:opacity-5\">\n              <Image\n                src=\"/page-templates/hero-bg.jpg\"\n                alt=\"hero background\"\n                width={2198}\n                height={1685}\n                className=\"h-full w-full object-cover object-top\"\n              />\n            </div>\n            <div className=\"relative z-10 mx-auto w-full max-w-5xl sm:pl-6\">\n              <div className=\"flex items-center justify-between max-md:flex-col\">\n                <div className=\"max-w-md max-sm:px-6\">\n                  <h1 className=\"font-serif text-4xl font-medium text-balance sm:text-5xl\">\n                    Ship faster. Design with LoveUI.\n                  </h1>\n                  <p className=\"mt-4 text-balance text-muted-foreground\">\n                    LoveUI is your all-in-one kit for shipping polished\n                    interfaces in your app.\n                  </p>\n\n                  <Button asChild className=\"mt-6 pr-1.5\">\n                    <Link href=\"#link\">\n                      <span className=\"text-nowrap\">Start Building</span>\n                      <ChevronRight className=\"opacity-50\" />\n                    </Link>\n                  </Button>\n                </div>\n                <div\n                  aria-hidden\n                  className=\"relative mask-y-from-50% max-md:mx-auto max-md:*:scale-90\"\n                >\n                  {[\n                    \"How do I build auth screens with LoveUI?\",\n                    \"Set up a reusable dashboard with LoveUI\",\n                    \"Connect a design system to product pages\",\n                    \"Implement polished form flows with variants\",\n                    \"Add a component docs page with examples\",\n                    \"Set up theme tokens and dark mode support\",\n                    \"Deploy a LoveUI app with env-safe defaults\",\n                    \"Configure account settings UI patterns\",\n                    \"Build a searchable component command menu\",\n                    \"Create launch-ready pricing page sections\",\n                    \"Set up responsive nav for every breakpoint\",\n                    \"Implement accessible dialogs and toasts\",\n                  ].map((prompt, index) => (\n                    <div\n                      key={index}\n                      className=\"flex items-center gap-2 px-14 py-2 text-sm text-muted-foreground\"\n                    >\n                      <MessageCircle className=\"size-3.5 opacity-50\" />\n                      <span className=\"text-nowrap\">{prompt}</span>\n                    </div>\n                  ))}\n                  <div className=\"absolute inset-0 m-auto mt-auto flex h-fit min-w-sm justify-between gap-3 rounded-full bg-card p-2 shadow-xl ring-1 shadow-foreground/6.5 ring-border sm:inset-2 dark:shadow-black/6.5\">\n                    <div className=\"flex items-center gap-2\">\n                      <div className=\"flex size-9 cursor-pointer rounded-full *:m-auto *:size-4 hover:bg-muted\">\n                        <Plus />\n                      </div>\n                      <div className=\"text-sm text-muted-foreground\">\n                        Ask LoveUI...\n                      </div>\n                    </div>\n                    <div className=\"flex items-center gap-0.5\">\n                      <div className=\"flex size-9 cursor-pointer rounded-full *:m-auto *:size-4 hover:bg-muted\">\n                        <Mic2 />\n                      </div>\n                      <div className=\"flex size-9 cursor-pointer rounded-full bg-foreground text-background *:m-auto *:size-4 hover:brightness-110\">\n                        <AudioLines />\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </section>\n      </main>\n    </>\n  )\n}\n"
+    }
+  ],
+  "categories": [
+    "page-template",
+    "hero"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "page-template",
+    "templatePath": "hero/three"
+  }
+}

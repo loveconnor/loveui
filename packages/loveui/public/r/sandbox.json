@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sandbox",
+  "description": "Sandbox with file explorer and code preview.",
+  "registryDependencies": [
+    "@loveui/sandbox",
+    "@loveui/code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/sandbox.tsx",
+      "content": "\"use client\"\n\nimport { AppWindowIcon, CodeIcon, TerminalIcon } from \"lucide-react\"\n\nimport {\n  SandboxCodeEditor,\n  SandboxConsole,\n  SandboxFileExplorer,\n  SandboxLayout,\n  SandboxPreview,\n  SandboxProvider,\n  SandboxTabs,\n  SandboxTabsContent,\n  SandboxTabsList,\n  SandboxTabsTrigger,\n} from \"../../../../../packages/sandbox\"\nimport {\n  ResizableHandle,\n  ResizablePanel,\n  ResizablePanelGroup,\n} from \"../../../../../packages/shadcn-ui/components/ui/resizable\"\n\nconst Example = () => (\n  <SandboxProvider>\n    <SandboxLayout>\n      <SandboxTabs defaultValue=\"preview\">\n        <SandboxTabsList>\n          <SandboxTabsTrigger value=\"code\">\n            <CodeIcon size={14} />\n            Code\n          </SandboxTabsTrigger>\n          <SandboxTabsTrigger value=\"preview\">\n            <AppWindowIcon size={14} />\n            Preview\n          </SandboxTabsTrigger>\n          <SandboxTabsTrigger value=\"console\">\n            <TerminalIcon size={14} />\n            Console\n          </SandboxTabsTrigger>\n        </SandboxTabsList>\n        <SandboxTabsContent className=\"overflow-hidden\" value=\"code\">\n          <ResizablePanelGroup direction=\"horizontal\">\n            <ResizablePanel\n              className=\"overflow-y-auto\"\n              defaultSize={25}\n              maxSize={40}\n              minSize={20}\n            >\n              <SandboxFileExplorer />\n            </ResizablePanel>\n            <ResizableHandle withHandle />\n            <ResizablePanel className=\"overflow-y-auto\">\n              <SandboxCodeEditor />\n            </ResizablePanel>\n          </ResizablePanelGroup>\n        </SandboxTabsContent>\n        <SandboxTabsContent value=\"preview\">\n          <SandboxPreview\n            showOpenInCodeSandbox={false}\n            showRefreshButton={false}\n          />\n        </SandboxTabsContent>\n        <SandboxTabsContent value=\"console\">\n          <SandboxConsole />\n        </SandboxTabsContent>\n      </SandboxTabs>\n    </SandboxLayout>\n  </SandboxProvider>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "code",
+    "sandbox"
+  ],
+  "type": "registry:example"
+}

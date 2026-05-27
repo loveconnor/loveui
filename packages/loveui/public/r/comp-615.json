@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comp-615",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://loveui.dev/building-blocks/r/command.json",
+    "https://loveui.dev/building-blocks/r/kbd.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/components/comp-615.tsx",
+      "content": "\"use client\";\n\nimport {\n  IconBell,\n  IconBolt,\n  IconCalendar,\n  IconChartBar,\n  IconChartPie,\n  IconClock,\n  IconFileText,\n  IconHelp,\n  IconKeyboard,\n  IconLayoutDashboard,\n  IconLayoutKanban,\n  IconLogout,\n  IconMessage,\n  IconPalette,\n  IconSettings,\n  IconSquareCheck,\n  IconTarget,\n  IconTrendingUp,\n  IconUsers,\n} from \"@tabler/icons-react\";\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/registry/building-blocks/default/ui/command\";\nimport { Kbd } from \"@/registry/building-blocks/default/ui/kbd\";\n\nconst workspaceItems = [\n  { icon: IconLayoutDashboard, label: \"Dashboard\" },\n  { icon: IconLayoutKanban, label: \"Projects\" },\n  { icon: IconSquareCheck, label: \"Tasks\" },\n  { icon: IconCalendar, label: \"Calendar\" },\n  { icon: IconUsers, label: \"Team members\" },\n  { icon: IconMessage, label: \"Messages\" },\n  { icon: IconFileText, label: \"Documents\" },\n  { icon: IconBell, label: \"Notifications\" },\n  { icon: IconClock, label: \"Time tracking\" },\n  { icon: IconTarget, label: \"Goals\" },\n];\n\nconst analyticsItems = [\n  { icon: IconChartBar, label: \"Overview\" },\n  { icon: IconTrendingUp, label: \"Performance\" },\n  { icon: IconChartPie, label: \"Reports\" },\n  { icon: IconBolt, label: \"Insights\" },\n];\n\nconst settingsItems = [\n  { icon: IconSettings, label: \"Preferences\" },\n  { icon: IconPalette, label: \"Appearance\" },\n  { icon: IconKeyboard, label: \"Keyboard shortcuts\" },\n  { icon: IconHelp, label: \"Help & support\" },\n  { icon: IconLogout, label: \"Sign out\" },\n];\n\nexport default function CommandMenu01() {\n  return (\n    <div className=\"w-full max-w-lg overflow-hidden rounded-xl border border-border/50 bg-popover shadow-lg\">\n      <Command className=\"rounded-none border-0 bg-transparent [&_[cmdk-item]_svg]:size-4\">\n        <CommandInput\n          className=\"h-12\"\n          placeholder=\"Type a command or search...\"\n        />\n        <CommandList className=\"h-[320px] max-h-[320px]\">\n          <CommandEmpty>No results found.</CommandEmpty>\n          <CommandGroup heading=\"Workspace\">\n            {workspaceItems.map((item) => (\n              <CommandItem key={item.label}>\n                <item.icon className=\"mr-2 h-4 w-4\" />\n                <span>{item.label}</span>\n              </CommandItem>\n            ))}\n          </CommandGroup>\n          <CommandGroup heading=\"Analytics\">\n            {analyticsItems.map((item) => (\n              <CommandItem key={item.label}>\n                <item.icon className=\"mr-2 h-4 w-4\" />\n                <span>{item.label}</span>\n              </CommandItem>\n            ))}\n          </CommandGroup>\n          <CommandGroup heading=\"Settings\">\n            {settingsItems.map((item) => (\n              <CommandItem key={item.label}>\n                <item.icon className=\"mr-2 h-4 w-4\" />\n                <span>{item.label}</span>\n              </CommandItem>\n            ))}\n          </CommandGroup>\n        </CommandList>\n      </Command>\n      <div className=\"flex h-12 items-center justify-end border-t px-3\">\n        <span className=\"flex items-center gap-1 text-muted-foreground text-sm\">\n          <span>Close</span>\n          <Kbd className=\"ml-1\">Esc</Kbd>\n        </span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "command",
+      "menu",
+      "search",
+      "kbd",
+      "radix"
+    ],
+    "style": 1
+  }
+}

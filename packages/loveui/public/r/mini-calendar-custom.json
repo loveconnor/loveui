@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mini-calendar-custom",
+  "description": "Mini calendar with custom day rendering.",
+  "registryDependencies": [
+    "@loveui/mini-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/mini-calendar-custom.tsx",
+      "content": "\"use client\"\n\nimport { ArrowLeftIcon, ArrowRightIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nimport {\n  MiniCalendar,\n  MiniCalendarDay,\n  MiniCalendarDays,\n  MiniCalendarNavigation,\n} from \"../../../../../packages/mini-calendar\"\n\nconst Example = () => (\n  <MiniCalendar className=\"bg-card p-4 shadow-lg\">\n    <div className=\"flex items-center gap-4\">\n      <MiniCalendarNavigation asChild direction=\"prev\">\n        <Button size=\"icon\" variant=\"outline\">\n          <ArrowLeftIcon className=\"size-4\" />\n        </Button>\n      </MiniCalendarNavigation>\n\n      <MiniCalendarDays className=\"gap-2\">\n        {(date) => <MiniCalendarDay date={date} key={date.toISOString()} />}\n      </MiniCalendarDays>\n\n      <MiniCalendarNavigation asChild direction=\"next\">\n        <Button size=\"icon\" variant=\"outline\">\n          <ArrowRightIcon className=\"size-4\" />\n        </Button>\n      </MiniCalendarNavigation>\n    </div>\n  </MiniCalendar>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "mini-calendar",
+    "project management",
+    "customization"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glimpse",
+  "description": "Link preview tooltip displaying fetched metadata.",
+  "registryDependencies": [
+    "@loveui/glimpse"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/glimpse.tsx",
+      "content": "import {\n  Glimpse,\n  GlimpseContent,\n  GlimpseDescription,\n  GlimpseImage,\n  GlimpseTitle,\n  GlimpseTrigger,\n} from \"../../../../../packages/glimpse\"\nimport { glimpse } from \"../../../../../packages/glimpse/server\"\n\nconst Example = async () => {\n  const data = await glimpse(\"https://github.com/loveconnor/loveui\")\n\n  return (\n    <div>\n      Check out{\" \"}\n      <Glimpse closeDelay={0} openDelay={0}>\n        <GlimpseTrigger asChild>\n          <a\n            className=\"font-medium text-primary underline\"\n            href=\"https://github.com/loveconnor/loveui\"\n          >\n            LoveUI\n          </a>\n        </GlimpseTrigger>\n        <GlimpseContent className=\"w-80\">\n          <GlimpseImage src={data.image ?? \"\"} />\n          <GlimpseTitle>{data.title}</GlimpseTitle>\n          <GlimpseDescription>{data.description}</GlimpseDescription>\n        </GlimpseContent>\n      </Glimpse>{\" \"}\n      on GitHub\n    </div>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "media",
+    "preview"
+  ],
+  "type": "registry:example"
+}

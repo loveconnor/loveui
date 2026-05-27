@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-zoom-margin",
+  "description": "Image zoom with adjusted viewport margin.",
+  "registryDependencies": [
+    "@loveui/image-zoom"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/image-zoom-margin.tsx",
+      "content": "\"use client\"\n\nimport Image from \"next/image\"\n\nimport { ImageZoom } from \"../../../../../packages/image-zoom\"\n\nconst Example = () => (\n  <ImageZoom zoomMargin={100}>\n    <Image\n      alt=\"Placeholder image\"\n      className=\"h-auto w-96\"\n      height={800}\n      src=\"https://placehold.co/1200x800\"\n      unoptimized\n      width={1200}\n    />\n  </ImageZoom>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "media",
+    "image",
+    "zoom"
+  ],
+  "type": "registry:example"
+}

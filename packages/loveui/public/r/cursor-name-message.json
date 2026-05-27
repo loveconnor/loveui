@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-name-message",
+  "description": "Cursor with name and message",
+  "registryDependencies": [
+    "@loveui/cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/cursor-name-message.tsx",
+      "content": "\"use client\"\n\nimport {\n  Cursor,\n  CursorBody,\n  CursorMessage,\n  CursorName,\n  CursorPointer,\n} from \"../../../../../packages/cursor\"\n\nconst Example = () => (\n  <Cursor color=\"#000000\">\n    <CursorPointer />\n    <CursorBody>\n      <CursorName>Connor</CursorName>\n      <CursorMessage>That looks great!</CursorMessage>\n    </CursorBody>\n  </Cursor>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "cursor",
+    "label",
+    "message"
+  ],
+  "type": "registry:example"
+}

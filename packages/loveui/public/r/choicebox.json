@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "choicebox",
+  "description": "Choicebox input with selectable options.",
+  "registryDependencies": [
+    "@loveui/choicebox"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/choicebox.tsx",
+      "content": "import {\n  Choicebox,\n  ChoiceboxIndicator,\n  ChoiceboxItem,\n  ChoiceboxItemDescription,\n  ChoiceboxItemHeader,\n  ChoiceboxItemSubtitle,\n  ChoiceboxItemTitle,\n} from \"../../../../../packages/choicebox\"\n\nconst options = [\n  {\n    id: \"1\",\n    label: \"Option 1\",\n    subtitle: \"(the first option)\",\n    description: \"This is the first option\",\n  },\n  {\n    id: \"2\",\n    label: \"Option 2\",\n    subtitle: \"(the second option)\",\n    description: \"This is the second option\",\n  },\n]\n\nconst Example = () => (\n  <Choicebox defaultValue=\"1\">\n    {options.map((option) => (\n      <ChoiceboxItem key={option.id} value={option.id}>\n        <ChoiceboxItemHeader>\n          <ChoiceboxItemTitle>\n            {option.label}\n            <ChoiceboxItemSubtitle>{option.subtitle}</ChoiceboxItemSubtitle>\n          </ChoiceboxItemTitle>\n          <ChoiceboxItemDescription>\n            {option.description}\n          </ChoiceboxItemDescription>\n        </ChoiceboxItemHeader>\n        <ChoiceboxIndicator />\n      </ChoiceboxItem>\n    ))}\n  </Choicebox>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "forms",
+    "choicebox"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-with-link",
+  "description": "Link rendered as button",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-with-link.tsx",
+      "content": "import Link from \"next/link\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonWithLink() {\n  return <Button render={<Link href=\"/\" />}>Link</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

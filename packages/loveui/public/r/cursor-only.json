@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-only",
+  "description": "Cursor pointer without body",
+  "registryDependencies": [
+    "@loveui/cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/cursor-only.tsx",
+      "content": "\"use client\"\n\nimport { Cursor, CursorPointer } from \"../../../../../packages/cursor\"\n\nconst Example = () => (\n  <Cursor>\n    <CursorPointer />\n  </Cursor>\n)\n\nexport default Example\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "cursor"
+  ],
+  "type": "registry:example"
+}
