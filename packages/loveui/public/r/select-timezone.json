@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-timezone",
+  "description": "Select Timezone example",
+  "registryDependencies": [
+    "@loveui/select"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/select-timezone.tsx",
+      "content": "import { Select, SelectItem, SelectPopup, SelectTrigger, SelectValue } from \"@/registry/default/ui/select\"\n\nconst timezones = [\n  { label: \"Pacific\", value: \"pt\" },\n  { label: \"Central\", value: \"ct\" },\n  { label: \"Eastern\", value: \"et\" },\n]\n\nexport default function SelectTimezone() {\n  return (\n    <Select items={timezones} defaultValue=\"pt\">\n      <SelectTrigger className=\"w-52\"><SelectValue /></SelectTrigger>\n      <SelectPopup>{timezones.map((item) => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}</SelectPopup>\n    </Select>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "select"
+  ],
+  "type": "registry:example"
+}

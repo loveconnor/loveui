@@ -24,7 +24,7 @@ export default function TextareaForm() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="max-w-64">
+    <Form onSubmit={onSubmit} className="grid max-w-64 gap-4">
       <Field>
         <FieldLabel>Message</FieldLabel>
         <FieldControl

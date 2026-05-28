@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "group-filter-actions",
+  "description": "Group Filter Actions example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/group"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/group-filter-actions.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Group, GroupItem, GroupSeparator } from \"@/registry/default/ui/group\"\n\nexport default function GroupFilterActions() {\n  return (\n    <Group>\n      <GroupItem render={<Button variant=\"outline\" />}>Open</GroupItem>\n      <GroupSeparator />\n      <GroupItem render={<Button variant=\"outline\" />}>Closed</GroupItem>\n      <GroupSeparator />\n      <GroupItem render={<Button variant=\"outline\" />}>Archived</GroupItem>\n    </Group>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "group"
+  ],
+  "type": "registry:example"
+}

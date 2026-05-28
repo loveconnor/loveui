@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-card-profile",
+  "description": "Preview Card Profile example",
+  "registryDependencies": [
+    "@loveui/avatar",
+    "@loveui/button",
+    "@loveui/preview-card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/preview-card-profile.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/registry/default/ui/avatar\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { PreviewCard, PreviewCardPopup, PreviewCardTrigger } from \"@/registry/default/ui/preview-card\"\n\nexport default function PreviewCardProfile() {\n  return (\n    <PreviewCard>\n      <PreviewCardTrigger render={<Button variant=\"ghost\" />}>Morgan Chen</PreviewCardTrigger>\n      <PreviewCardPopup>\n        <div className=\"flex gap-3\">\n          <Avatar><AvatarImage src=\"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&fit=crop\" alt=\"Morgan\" /><AvatarFallback>MC</AvatarFallback></Avatar>\n          <div><div className=\"font-medium\">Morgan Chen</div><p className=\"text-sm text-muted-foreground\">Design systems engineer</p></div>\n        </div>\n      </PreviewCardPopup>\n    </PreviewCard>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar",
+    "button",
+    "preview-card"
+  ],
+  "type": "registry:example"
+}

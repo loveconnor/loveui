@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter-storage-quota",
+  "description": "Meter Storage Quota example",
+  "registryDependencies": [
+    "@loveui/meter"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/meter-storage-quota.tsx",
+      "content": "import { Meter, MeterIndicator, MeterTrack, MeterValue } from \"@/registry/default/ui/meter\"\n\nexport default function MeterStorageQuota() {\n  return (\n    <Meter value={72} className=\"w-full max-w-xs\">\n      <div className=\"flex justify-between text-sm font-medium\">\n        <span>Storage used</span>\n        <MeterValue />\n      </div>\n      <MeterTrack className=\"rounded-full\"><MeterIndicator /></MeterTrack>\n    </Meter>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "meter"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-project-actions",
+  "description": "Menu Project Actions example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/menu"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/menu-project-actions.tsx",
+      "content": "import { MoreHorizontalIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Menu, MenuItem, MenuPopup, MenuTrigger } from \"@/registry/default/ui/menu\"\n\nexport default function MenuProjectActions() {\n  return (\n    <Menu>\n      <MenuTrigger render={<Button variant=\"outline\" size=\"icon\" />} aria-label=\"Project actions\"><MoreHorizontalIcon /></MenuTrigger>\n      <MenuPopup>\n        <MenuItem>Rename</MenuItem>\n        <MenuItem>Duplicate</MenuItem>\n        <MenuItem>Archive</MenuItem>\n      </MenuPopup>\n    </Menu>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "menu"
+  ],
+  "type": "registry:example"
+}

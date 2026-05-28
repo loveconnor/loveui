@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-search-inline",
+  "description": "Input Search Inline example",
+  "registryDependencies": [
+    "@loveui/input"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/input-search-inline.tsx",
+      "content": "import { SearchIcon } from \"lucide-react\"\n\nimport { Input } from \"@/registry/default/ui/input\"\n\nexport default function InputSearchInline() {\n  return (\n    <div className=\"relative w-full max-w-xs\">\n      <SearchIcon className=\"pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground\" />\n      <Input className=\"ps-9\" placeholder=\"Search projects\" type=\"search\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "input"
+  ],
+  "type": "registry:example"
+}

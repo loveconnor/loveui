@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-sync-complete",
+  "description": "Toast Sync Complete example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/toast"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/toast-sync-complete.tsx",
+      "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { toastManager } from \"@/registry/default/ui/toast\"\n\nexport default function ToastSyncComplete() {\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => toastManager.add({ title: \"Synced\", description: \"All local changes are backed up.\" })}\n    >\n      Show sync toast\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "toast"
+  ],
+  "type": "registry:example"
+}

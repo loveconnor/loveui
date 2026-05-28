@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-onboarding",
+  "description": "Progress Onboarding example",
+  "registryDependencies": [
+    "@loveui/progress"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/progress-onboarding.tsx",
+      "content": "import { Progress, ProgressIndicator, ProgressTrack, ProgressValue } from \"@/registry/default/ui/progress\"\n\nexport default function ProgressOnboarding() {\n  return (\n    <Progress value={66} className=\"w-full max-w-xs\">\n      <div className=\"flex justify-between text-sm font-medium\"><span>Onboarding</span><ProgressValue /></div>\n      <ProgressTrack><ProgressIndicator /></ProgressTrack>\n    </Progress>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "progress"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-settings",
+  "description": "Tabs Settings example",
+  "registryDependencies": [
+    "@loveui/tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/tabs-settings.tsx",
+      "content": "import { Tabs, TabsList, TabsPanel, TabsTab } from \"@/registry/default/ui/tabs\"\n\nexport default function TabsSettings() {\n  return (\n    <Tabs defaultValue=\"profile\" className=\"w-full max-w-sm\">\n      <TabsList><TabsTab value=\"profile\">Profile</TabsTab><TabsTab value=\"security\">Security</TabsTab></TabsList>\n      <TabsPanel value=\"profile\" className=\"rounded-xl border p-4 text-sm text-muted-foreground\">Update your public workspace profile.</TabsPanel>\n      <TabsPanel value=\"security\" className=\"rounded-xl border p-4 text-sm text-muted-foreground\">Manage sessions and two-factor settings.</TabsPanel>\n    </Tabs>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}

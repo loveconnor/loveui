@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover-color-swatch",
+  "description": "Popover Color Swatch example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/popover"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/popover-color-swatch.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Popover, PopoverPopup, PopoverTitle, PopoverTrigger } from \"@/registry/default/ui/popover\"\n\nconst colors = [\"bg-blue-500\", \"bg-emerald-500\", \"bg-amber-500\", \"bg-rose-500\"]\n\nexport default function PopoverColorSwatch() {\n  return (\n    <Popover>\n      <PopoverTrigger render={<Button variant=\"outline\" />}>Pick color</PopoverTrigger>\n      <PopoverPopup className=\"w-56\">\n        <PopoverTitle className=\"mb-3 text-base\">Label color</PopoverTitle>\n        <div className=\"flex gap-2\">\n          {colors.map((color) => <button key={color} className={\n            \"size-8 rounded-full border \" + color\n          } aria-label={color} />)}\n        </div>\n      </PopoverPopup>\n    </Popover>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "popover"
+  ],
+  "type": "registry:example"
+}

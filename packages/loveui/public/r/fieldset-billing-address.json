@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset-billing-address",
+  "description": "Fieldset Billing Address example",
+  "registryDependencies": [
+    "@loveui/field",
+    "@loveui/fieldset"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/fieldset-billing-address.tsx",
+      "content": "import { Field, FieldControl, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Fieldset, FieldsetLegend } from \"@/registry/default/ui/fieldset\"\n\nexport default function FieldsetBillingAddress() {\n  return (\n    <Fieldset className=\"max-w-sm rounded-xl border p-4\">\n      <FieldsetLegend>Billing address</FieldsetLegend>\n      <Field><FieldLabel>Company</FieldLabel><FieldControl defaultValue=\"Acme Inc.\" /></Field>\n      <Field><FieldLabel>ZIP code</FieldLabel><FieldControl defaultValue=\"94107\" /></Field>\n    </Fieldset>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "fieldset"
+  ],
+  "type": "registry:example"
+}

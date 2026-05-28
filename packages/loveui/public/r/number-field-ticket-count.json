@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field-ticket-count",
+  "description": "Number Field Ticket Count example",
+  "registryDependencies": [
+    "@loveui/number-field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/number-field-ticket-count.tsx",
+      "content": "import {\n  NumberField,\n  NumberFieldDecrement,\n  NumberFieldGroup,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/registry/default/ui/number-field\"\n\nexport default function NumberFieldTicketCount() {\n  return (\n    <NumberField defaultValue={3} min={1} max={10} className=\"w-40\">\n      <NumberFieldGroup>\n        <NumberFieldDecrement />\n        <NumberFieldInput aria-label=\"Ticket count\" />\n        <NumberFieldIncrement />\n      </NumberFieldGroup>\n    </NumberField>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "number-field"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-card-product",
+  "description": "Preview Card Product example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/badge",
+    "@loveui/preview-card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/preview-card-product.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Badge } from \"@/registry/default/ui/badge\"\nimport { PreviewCard, PreviewCardPopup, PreviewCardTrigger } from \"@/registry/default/ui/preview-card\"\n\nexport default function PreviewCardProduct() {\n  return (\n    <PreviewCard>\n      <PreviewCardTrigger render={<Button variant=\"outline\" />}>View plan</PreviewCardTrigger>\n      <PreviewCardPopup>\n        <div className=\"grid gap-2\">\n          <Badge className=\"w-fit\">Pro</Badge>\n          <div className=\"font-medium\">Automation plan</div>\n          <p className=\"text-sm text-muted-foreground\">Unlimited workflows with 30-day history.</p>\n        </div>\n      </PreviewCardPopup>\n    </PreviewCard>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "badge",
+    "preview-card"
+  ],
+  "type": "registry:example"
+}

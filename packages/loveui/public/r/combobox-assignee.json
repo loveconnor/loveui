@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-assignee",
+  "description": "Combobox Assignee example",
+  "registryDependencies": [
+    "@loveui/combobox"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/combobox-assignee.tsx",
+      "content": "import {\n  Combobox,\n  ComboboxEmpty,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n  ComboboxPopup,\n} from \"@/registry/default/ui/combobox\"\n\nconst assignees = [\n  { label: \"Ari Kim\", value: \"ari\" },\n  { label: \"Blake Yu\", value: \"blake\" },\n  { label: \"Casey Fox\", value: \"casey\" },\n]\n\nexport default function ComboboxAssignee() {\n  return (\n    <div className=\"w-full max-w-xs\">\n      <Combobox items={assignees} defaultValue=\"ari\">\n        <ComboboxInput showClear placeholder=\"Assign issue\" />\n        <ComboboxPopup>\n          <ComboboxEmpty>No assignees found.</ComboboxEmpty>\n          <ComboboxList>\n            {(assignee) => (\n              <ComboboxItem key={assignee.value} value={assignee}>\n                {assignee.label}\n              </ComboboxItem>\n            )}\n          </ComboboxList>\n        </ComboboxPopup>\n      </Combobox>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "combobox"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-notification-row",
+  "description": "Checkbox Notification Row example",
+  "registryDependencies": [
+    "@loveui/checkbox",
+    "@loveui/label"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/checkbox-notification-row.tsx",
+      "content": "import { BellIcon } from \"lucide-react\"\n\nimport { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function CheckboxNotificationRow() {\n  return (\n    <Label className=\"flex max-w-sm items-start gap-3 rounded-lg border p-4\">\n      <Checkbox defaultChecked className=\"mt-0.5\" />\n      <BellIcon className=\"mt-0.5 size-4 text-muted-foreground\" />\n      <span className=\"grid gap-1\">\n        <span className=\"font-medium\">Product updates</span>\n        <span className=\"text-sm text-muted-foreground\">Send me release notes and migration tips.</span>\n      </span>\n    </Label>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "label"
+  ],
+  "type": "registry:example"
+}

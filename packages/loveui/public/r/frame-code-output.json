@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frame-code-output",
+  "description": "Frame Code Output example",
+  "registryDependencies": [
+    "@loveui/frame"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/frame-code-output.tsx",
+      "content": "import { Frame, FrameFooter, FrameHeader, FramePanel, FrameTitle } from \"@/registry/default/ui/frame\"\n\nexport default function FrameCodeOutput() {\n  return (\n    <Frame className=\"w-full max-w-sm\">\n      <FrameHeader><FrameTitle>Build output</FrameTitle></FrameHeader>\n      <FramePanel className=\"font-mono text-xs text-muted-foreground\">Compiled in 824ms</FramePanel>\n      <FrameFooter className=\"text-xs text-muted-foreground\">Last run just now</FrameFooter>\n    </Frame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "frame"
+  ],
+  "type": "registry:example"
+}

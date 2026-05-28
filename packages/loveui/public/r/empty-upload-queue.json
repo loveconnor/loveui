@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-upload-queue",
+  "description": "Empty Upload Queue example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/empty"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/empty-upload-queue.tsx",
+      "content": "import { UploadCloudIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\"\n\nexport default function EmptyUploadQueue() {\n  return (\n    <Empty className=\"border-dashed border\">\n      <EmptyHeader>\n        <EmptyMedia variant=\"icon\"><UploadCloudIcon /></EmptyMedia>\n        <EmptyTitle>No files queued</EmptyTitle>\n        <EmptyDescription>Drop assets here or browse from your computer.</EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent><Button size=\"sm\">Upload files</Button></EmptyContent>\n    </Empty>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "empty"
+  ],
+  "type": "registry:example"
+}

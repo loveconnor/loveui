@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-invite-member",
+  "description": "Dialog Invite Member example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/dialog",
+    "@loveui/field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/dialog-invite-member.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport {\n  Dialog,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPopup,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/default/ui/dialog\"\nimport { Field, FieldControl, FieldLabel } from \"@/registry/default/ui/field\"\n\nexport default function DialogInviteMember() {\n  return (\n    <Dialog>\n      <DialogTrigger render={<Button variant=\"outline\" />}>Invite member</DialogTrigger>\n      <DialogPopup className=\"sm:max-w-sm\">\n        <DialogHeader>\n          <DialogTitle>Invite teammate</DialogTitle>\n          <DialogDescription>Send an invitation to collaborate in this workspace.</DialogDescription>\n        </DialogHeader>\n        <Field>\n          <FieldLabel>Email</FieldLabel>\n          <FieldControl type=\"email\" placeholder=\"name@company.com\" />\n        </Field>\n        <DialogFooter>\n          <DialogClose render={<Button variant=\"ghost\" />}>Cancel</DialogClose>\n          <Button>Send invite</Button>\n        </DialogFooter>\n      </DialogPopup>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "dialog",
+    "field"
+  ],
+  "type": "registry:example"
+}

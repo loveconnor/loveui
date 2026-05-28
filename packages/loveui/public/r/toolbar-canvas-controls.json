@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-canvas-controls",
+  "description": "Toolbar Canvas Controls example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/toolbar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/toolbar-canvas-controls.tsx",
+      "content": "import { MousePointer2Icon, MoveIcon, PenLineIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator } from \"@/registry/default/ui/toolbar\"\n\nexport default function ToolbarCanvasControls() {\n  return (\n    <Toolbar>\n      <ToolbarGroup>\n        <ToolbarButton render={<Button variant=\"ghost\" size=\"icon\" />} aria-label=\"Select\"><MousePointer2Icon /></ToolbarButton>\n        <ToolbarButton render={<Button variant=\"ghost\" size=\"icon\" />} aria-label=\"Move\"><MoveIcon /></ToolbarButton>\n      </ToolbarGroup>\n      <ToolbarSeparator />\n      <ToolbarButton render={<Button variant=\"ghost\" size=\"icon\" />} aria-label=\"Draw\"><PenLineIcon /></ToolbarButton>\n    </Toolbar>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "toolbar"
+  ],
+  "type": "registry:example"
+}

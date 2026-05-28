@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-timeline",
+  "description": "Separator Timeline example",
+  "registryDependencies": [
+    "@loveui/separator"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/separator-timeline.tsx",
+      "content": "import { Separator } from \"@/registry/default/ui/separator\"\n\nexport default function SeparatorTimeline() {\n  return (\n    <div className=\"flex h-24 items-center gap-4 text-sm\">\n      <div>Draft</div>\n      <Separator orientation=\"vertical\" />\n      <div>Review</div>\n      <Separator orientation=\"vertical\" />\n      <div>Publish</div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "separator"
+  ],
+  "type": "registry:example"
+}

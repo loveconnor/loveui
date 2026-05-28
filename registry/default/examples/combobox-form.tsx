@@ -42,7 +42,7 @@ export default function ComboboxForm() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="max-w-64">
+    <Form onSubmit={onSubmit} className="grid max-w-64 gap-4">
       <Field>
         <FieldLabel>Favorite item</FieldLabel>
         <Combobox items={items} name="item" disabled={loading} required>

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "autocomplete-members",
+  "description": "Autocomplete Members example",
+  "registryDependencies": [
+    "@loveui/autocomplete"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/autocomplete-members.tsx",
+      "content": "import {\n  Autocomplete,\n  AutocompleteEmpty,\n  AutocompleteInput,\n  AutocompleteItem,\n  AutocompleteList,\n  AutocompletePopup,\n} from \"@/registry/default/ui/autocomplete\"\n\nconst members = [\n  { label: \"Avery Stone\", value: \"avery\" },\n  { label: \"Jordan Lee\", value: \"jordan\" },\n  { label: \"Morgan Chen\", value: \"morgan\" },\n]\n\nexport default function AutocompleteMembers() {\n  return (\n    <div className=\"w-full max-w-xs\">\n      <Autocomplete items={members}>\n        <AutocompleteInput\n          showClear\n          showTrigger\n          placeholder=\"Find a teammate\"\n        />\n        <AutocompletePopup>\n          <AutocompleteEmpty>No members found.</AutocompleteEmpty>\n          <AutocompleteList>\n            {(member) => (\n              <AutocompleteItem key={member.value} value={member}>\n                {member.label}\n              </AutocompleteItem>\n            )}\n          </AutocompleteList>\n        </AutocompletePopup>\n      </Autocomplete>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "autocomplete"
+  ],
+  "type": "registry:example"
+}

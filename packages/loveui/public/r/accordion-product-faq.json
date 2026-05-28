@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-product-faq",
+  "description": "Accordion Product Faq example",
+  "registryDependencies": [
+    "@loveui/accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/accordion-product-faq.tsx",
+      "content": "import {\n  Accordion,\n  AccordionItem,\n  AccordionPanel,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\"\n\nconst questions = [\n  [\"Plan limits\", \"Seats, projects, and storage can be adjusted from billing settings.\"],\n  [\"Exports\", \"Workspace admins can export reports as CSV at any time.\"],\n  [\"Support\", \"Priority support is included on every team plan.\"],\n]\n\nexport default function AccordionProductFaq() {\n  return (\n    <Accordion className=\"w-full max-w-md\" defaultValue={[\"exports\"]}>\n      {questions.map(([title, content]) => (\n        <AccordionItem key={title} value={title.toLowerCase().replaceAll(\" \", \"-\")}>\n          <AccordionTrigger>{title}</AccordionTrigger>\n          <AccordionPanel>{content}</AccordionPanel>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "accordion"
+  ],
+  "type": "registry:example"
+}

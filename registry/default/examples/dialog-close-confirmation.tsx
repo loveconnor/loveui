@@ -53,6 +53,7 @@ export default function DialogCloseConfirmationDemo() {
           </DialogDescription>
         </DialogHeader>
         <Form
+          className="grid gap-4"
           onSubmit={(event) => {
             event.preventDefault()
             // Close the dialog when submitting

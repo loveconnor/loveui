@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-feedback",
+  "description": "Textarea Feedback example",
+  "registryDependencies": [
+    "@loveui/textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/textarea-feedback.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaFeedback() {\n  return <Textarea className=\"w-full max-w-sm\" placeholder=\"Share feedback with the team\" />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "textarea"
+  ],
+  "type": "registry:example"
+}

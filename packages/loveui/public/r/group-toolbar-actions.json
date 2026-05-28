@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "group-toolbar-actions",
+  "description": "Group Toolbar Actions example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/group"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/group-toolbar-actions.tsx",
+      "content": "import { DownloadIcon, ShareIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Group, GroupItem, GroupSeparator } from \"@/registry/default/ui/group\"\n\nexport default function GroupToolbarActions() {\n  return (\n    <Group>\n      <GroupItem render={<Button variant=\"outline\" size=\"icon\" />} aria-label=\"Share\"><ShareIcon /></GroupItem>\n      <GroupSeparator />\n      <GroupItem render={<Button variant=\"outline\" size=\"icon\" />} aria-label=\"Download\"><DownloadIcon /></GroupItem>\n    </Group>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "group"
+  ],
+  "type": "registry:example"
+}

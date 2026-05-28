@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frame-device-preview",
+  "description": "Frame Device Preview example",
+  "registryDependencies": [
+    "@loveui/frame"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/frame-device-preview.tsx",
+      "content": "import { Frame, FrameHeader, FramePanel, FrameTitle } from \"@/registry/default/ui/frame\"\n\nexport default function FrameDevicePreview() {\n  return (\n    <Frame className=\"w-64\">\n      <FrameHeader><FrameTitle>Mobile preview</FrameTitle></FrameHeader>\n      <FramePanel>\n        <div className=\"mx-auto h-40 w-24 rounded-2xl border bg-muted p-2\">\n          <div className=\"h-full rounded-xl bg-background\" />\n        </div>\n      </FramePanel>\n    </Frame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "frame"
+  ],
+  "type": "registry:example"
+}

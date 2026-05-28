@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-compact-path",
+  "description": "Breadcrumb Compact Path example",
+  "registryDependencies": [
+    "@loveui/breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/breadcrumb-compact-path.tsx",
+      "content": "import {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/registry/default/ui/breadcrumb\"\n\nexport default function BreadcrumbCompactPath() {\n  return (\n    <Breadcrumb>\n      <BreadcrumbList className=\"text-xs\">\n        <BreadcrumbItem><BreadcrumbLink href=\"#\">Docs</BreadcrumbLink></BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem><BreadcrumbLink href=\"#\">Components</BreadcrumbLink></BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "breadcrumb"
+  ],
+  "type": "registry:example"
+}

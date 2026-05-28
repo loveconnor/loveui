@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-icon-row",
+  "description": "Tooltip Icon Row example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/tooltip-icon-row.tsx",
+      "content": "import { InfoIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Tooltip, TooltipPopup, TooltipTrigger } from \"@/registry/default/ui/tooltip\"\n\nexport default function TooltipIconRow() {\n  return (\n    <Tooltip>\n      <TooltipTrigger render={<Button variant=\"outline\" size=\"icon\" />} aria-label=\"Info\"><InfoIcon /></TooltipTrigger>\n      <TooltipPopup>Includes keyboard and screen reader support.</TooltipPopup>\n    </Tooltip>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "tooltip"
+  ],
+  "type": "registry:example"
+}

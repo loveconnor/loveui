@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-metric-summary",
+  "description": "Card Metric Summary example",
+  "registryDependencies": [
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-metric-summary.tsx",
+      "content": "import { TrendingUpIcon } from \"lucide-react\"\n\nimport {\n  Card,\n  CardDescription,\n  CardHeader,\n  CardPanel,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport default function CardMetricSummary() {\n  return (\n    <Card className=\"w-full max-w-xs\">\n      <CardHeader>\n        <CardTitle>Revenue</CardTitle>\n        <CardDescription>Last 30 days</CardDescription>\n      </CardHeader>\n      <CardPanel>\n        <div className=\"flex items-end justify-between gap-6\">\n          <div className=\"text-3xl font-semibold tracking-tight\">$48.2k</div>\n          <div className=\"flex items-center gap-1 text-sm text-success\">\n            <TrendingUpIcon className=\"size-4\" />\n            12.4%\n          </div>\n        </div>\n      </CardPanel>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

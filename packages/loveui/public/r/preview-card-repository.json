@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-card-repository",
+  "description": "Preview Card Repository example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/preview-card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/preview-card-repository.tsx",
+      "content": "import { StarIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { PreviewCard, PreviewCardPopup, PreviewCardTrigger } from \"@/registry/default/ui/preview-card\"\n\nexport default function PreviewCardRepository() {\n  return (\n    <PreviewCard>\n      <PreviewCardTrigger render={<Button variant=\"link\" />}>openai/codex</PreviewCardTrigger>\n      <PreviewCardPopup>\n        <div className=\"grid gap-2\">\n          <div className=\"font-medium\">openai/codex</div>\n          <p className=\"text-sm text-muted-foreground\">A coding agent that works in your terminal.</p>\n          <div className=\"flex items-center gap-1 text-xs text-muted-foreground\"><StarIcon className=\"size-3\" /> 42k stars</div>\n        </div>\n      </PreviewCardPopup>\n    </PreviewCard>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "preview-card"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-team-member",
+  "description": "Card Team Member example",
+  "registryDependencies": [
+    "@loveui/avatar",
+    "@loveui/badge",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-team-member.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\nimport { Badge } from \"@/registry/default/ui/badge\"\nimport {\n  Card,\n  CardHeader,\n  CardPanel,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport default function CardTeamMember() {\n  return (\n    <Card className=\"w-full max-w-xs\" variant=\"mixed\">\n      <CardHeader>\n        <div className=\"flex items-center gap-3\">\n          <Avatar>\n            <AvatarImage src=\"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=96&h=96&fit=crop\" alt=\"Riley\" />\n            <AvatarFallback>RS</AvatarFallback>\n          </Avatar>\n          <div>\n            <CardTitle>Riley Scott</CardTitle>\n            <p className=\"text-sm text-muted-foreground\">Product lead</p>\n          </div>\n        </div>\n      </CardHeader>\n      <CardPanel>\n        <Badge variant=\"success\">Available</Badge>\n      </CardPanel>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar",
+    "badge",
+    "card"
+  ],
+  "type": "registry:example"
+}

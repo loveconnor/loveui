@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-opacity",
+  "description": "Slider Opacity example",
+  "registryDependencies": [
+    "@loveui/slider"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/slider-opacity.tsx",
+      "content": "import { Slider, SliderValue } from \"@/registry/default/ui/slider\"\n\nexport default function SliderOpacity() {\n  return (\n    <Slider className=\"max-w-xs\" defaultValue={72}>\n      <div className=\"mb-2 flex justify-between text-sm font-medium\">\n        <span>Opacity</span>\n        <SliderValue />\n      </div>\n    </Slider>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "slider"
+  ],
+  "type": "registry:example"
+}

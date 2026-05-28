@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset-notification-settings",
+  "description": "Fieldset Notification Settings example",
+  "registryDependencies": [
+    "@loveui/checkbox",
+    "@loveui/field",
+    "@loveui/fieldset"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/fieldset-notification-settings.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { Field, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Fieldset, FieldsetLegend } from \"@/registry/default/ui/fieldset\"\n\nexport default function FieldsetNotificationSettings() {\n  return (\n    <Fieldset className=\"max-w-sm rounded-xl border p-4\">\n      <FieldsetLegend>Notifications</FieldsetLegend>\n      <Field><FieldLabel><Checkbox defaultChecked /> Product updates</FieldLabel></Field>\n      <Field><FieldLabel><Checkbox /> Weekly digest</FieldLabel></Field>\n      <Field><FieldLabel><Checkbox defaultChecked /> Security alerts</FieldLabel></Field>\n    </Fieldset>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "field",
+    "fieldset"
+  ],
+  "type": "registry:example"
+}

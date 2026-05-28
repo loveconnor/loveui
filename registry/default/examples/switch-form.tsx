@@ -23,7 +23,7 @@ export default function SwitchFormDemo() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="w-auto">
+    <Form onSubmit={onSubmit} className="grid w-auto gap-4">
       <Field name="marketing">
         <FieldLabel>
           <Switch name="marketing" defaultChecked disabled={loading} />

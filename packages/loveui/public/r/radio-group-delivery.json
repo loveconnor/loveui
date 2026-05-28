@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-delivery",
+  "description": "Radio Group Delivery example",
+  "registryDependencies": [
+    "@loveui/radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/radio-group-delivery.tsx",
+      "content": "import { Radio, RadioGroup } from \"@/registry/default/ui/radio-group\"\n\nconst options = [\"Standard\", \"Express\", \"Overnight\"]\n\nexport default function RadioGroupDelivery() {\n  return (\n    <RadioGroup defaultValue=\"Express\" className=\"rounded-xl border p-4\">\n      {options.map((option) => (\n        <label key={option} className=\"flex items-center gap-2 text-sm font-medium\">\n          <Radio value={option} />\n          {option}\n        </label>\n      ))}\n    </RadioGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "radio-group"
+  ],
+  "type": "registry:example"
+}

@@ -33,7 +33,7 @@ export default function CardDemo() {
           Deploy your new project in one-click.
         </CardDescription>
       </CardHeader>
-      <Form>
+      <Form className="grid gap-6">
         <CardPanel>
           <div className="flex flex-col gap-4">
             <Field>

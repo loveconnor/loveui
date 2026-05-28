@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-density-controls",
+  "description": "Toolbar Density Controls example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/toolbar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/toolbar-density-controls.tsx",
+      "content": "import { Rows3Icon, Rows4Icon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator } from \"@/registry/default/ui/toolbar\"\n\nexport default function ToolbarDensityControls() {\n  return (\n    <Toolbar>\n      <ToolbarGroup>\n        <ToolbarButton render={<Button variant=\"ghost\" size=\"icon\" />} aria-label=\"Comfortable\"><Rows4Icon /></ToolbarButton>\n        <ToolbarButton render={<Button variant=\"ghost\" size=\"icon\" />} aria-label=\"Compact\"><Rows3Icon /></ToolbarButton>\n      </ToolbarGroup>\n      <ToolbarSeparator />\n      <ToolbarButton render={<Button variant=\"ghost\" />}>Reset</ToolbarButton>\n    </Toolbar>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "toolbar"
+  ],
+  "type": "registry:example"
+}

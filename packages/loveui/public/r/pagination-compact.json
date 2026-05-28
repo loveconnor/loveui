@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination-compact",
+  "description": "Pagination Compact example",
+  "registryDependencies": [
+    "@loveui/pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pagination-compact.tsx",
+      "content": "import { Pagination, PaginationContent, PaginationItem, PaginationLink } from \"@/registry/default/ui/pagination\"\n\nexport default function PaginationCompact() {\n  return (\n    <Pagination>\n      <PaginationContent>\n        {[1, 2, 3, 4].map((page) => (\n          <PaginationItem key={page}><PaginationLink href=\"#\" isActive={page === 3}>{page}</PaginationLink></PaginationItem>\n        ))}\n      </PaginationContent>\n    </Pagination>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "pagination"
+  ],
+  "type": "registry:example"
+}

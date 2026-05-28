@@ -47,7 +47,7 @@ export default function ComboboxMultipleForm() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="max-w-64">
+    <Form onSubmit={onSubmit} className="grid max-w-64 gap-4">
       <Field>
         <FieldLabel>Favorite items</FieldLabel>
         <Combobox

@@ -21,7 +21,7 @@ export default function RadioGroupFormDemo() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="max-w-[160px]">
+    <Form onSubmit={onSubmit} className="grid max-w-[160px] gap-4">
       <Field
         name="frameworks"
         className="gap-4"

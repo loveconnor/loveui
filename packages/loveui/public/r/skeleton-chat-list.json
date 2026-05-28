@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-chat-list",
+  "description": "Skeleton Chat List example",
+  "registryDependencies": [
+    "@loveui/skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/skeleton-chat-list.tsx",
+      "content": "import { Skeleton } from \"@/registry/default/ui/skeleton\"\n\nexport default function SkeletonChatList() {\n  return (\n    <div className=\"grid w-full max-w-xs gap-4\">\n      {[1, 2, 3].map((item) => (\n        <div key={item} className=\"flex items-center gap-3\">\n          <Skeleton className=\"size-10 rounded-full\" />\n          <div className=\"flex-1 space-y-2\"><Skeleton className=\"h-3 w-full\" /><Skeleton className=\"h-3 w-2/3\" /></div>\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "skeleton"
+  ],
+  "type": "registry:example"
+}

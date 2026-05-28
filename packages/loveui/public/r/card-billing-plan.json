@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-billing-plan",
+  "description": "Card Billing Plan example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-billing-plan.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport {\n  Card,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardPanel,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport default function CardBillingPlan() {\n  return (\n    <Card className=\"w-full max-w-xs\" variant=\"outline\">\n      <CardHeader>\n        <CardTitle>Team plan</CardTitle>\n        <CardDescription>For growing product teams.</CardDescription>\n      </CardHeader>\n      <CardPanel>\n        <div className=\"text-3xl font-semibold\">$29<span className=\"text-sm font-normal text-muted-foreground\">/seat</span></div>\n      </CardPanel>\n      <CardFooter>\n        <Button className=\"w-full\">Upgrade</Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "card"
+  ],
+  "type": "registry:example"
+}

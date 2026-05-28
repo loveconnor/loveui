@@ -61,7 +61,7 @@ export default function FormZodDemo() {
 
   return (
     <Form
-      className="max-w-64"
+      className="grid max-w-64 gap-4"
       errors={errors}
       onClearErrors={handleClearErrors}
       onSubmit={onSubmit}

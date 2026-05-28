@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "group-segmented-filters",
+  "description": "Group Segmented Filters example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/group"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/group-segmented-filters.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Group, GroupItem } from \"@/registry/default/ui/group\"\n\nexport default function GroupSegmentedFilters() {\n  return (\n    <Group>\n      <GroupItem render={<Button variant=\"outline\" />}>Day</GroupItem>\n      <GroupItem render={<Button variant=\"outline\" />}>Week</GroupItem>\n      <GroupItem render={<Button variant=\"outline\" />}>Month</GroupItem>\n    </Group>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "group"
+  ],
+  "type": "registry:example"
+}

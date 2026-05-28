@@ -26,7 +26,7 @@ function Slider({
 
   return (
     <SliderPrimitive.Root
-      thumbAlignment="edge"
+      thumbAlignment="edge-client-only"
       className="data-[orientation=horizontal]:w-full"
       defaultValue={defaultValue}
       value={value}

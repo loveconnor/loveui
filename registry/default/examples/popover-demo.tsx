@@ -25,7 +25,7 @@ export default function PopoverDemo() {
             Let us know how we can improve.
           </PopoverDescription>
         </div>
-        <Form>
+        <Form className="grid gap-4">
           <Field>
             <Textarea
               id="feedback"

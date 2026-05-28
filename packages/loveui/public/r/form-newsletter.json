@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-newsletter",
+  "description": "Form Newsletter example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/field",
+    "@loveui/form"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/form-newsletter.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Field, FieldControl, FieldDescription, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Form } from \"@/registry/default/ui/form\"\n\nexport default function FormNewsletter() {\n  return (\n    <Form className=\"grid w-full max-w-sm gap-4 rounded-xl border p-4\">\n      <Field>\n        <FieldLabel>Newsletter</FieldLabel>\n        <FieldControl type=\"email\" placeholder=\"you@example.com\" />\n        <FieldDescription>One concise product email each Friday.</FieldDescription>\n      </Field>\n      <Button type=\"submit\">Subscribe</Button>\n    </Form>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "field",
+    "form"
+  ],
+  "type": "registry:example"
+}

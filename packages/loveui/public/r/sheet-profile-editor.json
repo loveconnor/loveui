@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet-profile-editor",
+  "description": "Sheet Profile Editor example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/field",
+    "@loveui/sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/sheet-profile-editor.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Field, FieldControl, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Sheet, SheetFooter, SheetHeader, SheetPopup, SheetTitle, SheetTrigger } from \"@/registry/default/ui/sheet\"\n\nexport default function SheetProfileEditor() {\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\" />}>Edit profile</SheetTrigger>\n      <SheetPopup>\n        <SheetHeader><SheetTitle>Profile</SheetTitle></SheetHeader>\n        <div className=\"grid gap-4 px-4\">\n          <Field><FieldLabel>Name</FieldLabel><FieldControl defaultValue=\"Alex Morgan\" /></Field>\n          <Field><FieldLabel>Role</FieldLabel><FieldControl defaultValue=\"Designer\" /></Field>\n        </div>\n        <SheetFooter><Button>Save changes</Button></SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "field",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-user-roles",
+  "description": "Table User Roles example",
+  "registryDependencies": [
+    "@loveui/table"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/table-user-roles.tsx",
+      "content": "import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from \"@/registry/default/ui/table\"\n\nconst users = [[\"Nora\", \"Admin\"], [\"Leo\", \"Editor\"], [\"Mia\", \"Viewer\"]]\n\nexport default function TableUserRoles() {\n  return (\n    <Table className=\"w-full max-w-sm text-sm\">\n      <TableHeader><TableRow><TableHead>User</TableHead><TableHead>Role</TableHead></TableRow></TableHeader>\n      <TableBody>{users.map(([user, role]) => <TableRow key={user}><TableCell>{user}</TableCell><TableCell>{role}</TableCell></TableRow>)}</TableBody>\n    </Table>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "table"
+  ],
+  "type": "registry:example"
+}

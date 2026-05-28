@@ -41,7 +41,7 @@ export default function FieldCompleteFormDemo() {
     )
   }
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} className="grid gap-4">
       <Field>
         <FieldLabel>
           Full Name <span className="text-destructive">*</span>

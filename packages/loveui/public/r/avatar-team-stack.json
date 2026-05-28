@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-team-stack",
+  "description": "Avatar Team Stack example",
+  "registryDependencies": [
+    "@loveui/avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/avatar-team-stack.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\nconst people = [\n  [\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop\", \"AK\"],\n  [\"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop\", \"JL\"],\n  [\"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop\", \"MC\"],\n]\n\nexport default function AvatarTeamStack() {\n  return (\n    <div className=\"flex items-center -space-x-2\">\n      {people.map(([src, fallback]) => (\n        <Avatar key={fallback} className=\"ring-2 ring-background\">\n          <AvatarImage src={src} alt=\"Team member\" />\n          <AvatarFallback>{fallback}</AvatarFallback>\n        </Avatar>\n      ))}\n      <div className=\"flex size-10 items-center justify-center rounded-full border bg-muted text-sm font-medium ring-2 ring-background\">\n        +4\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

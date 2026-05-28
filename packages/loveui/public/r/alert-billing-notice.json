@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-billing-notice",
+  "description": "Alert Billing Notice example",
+  "registryDependencies": [
+    "@loveui/alert"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/alert-billing-notice.tsx",
+      "content": "import { CreditCardIcon } from \"lucide-react\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/default/ui/alert\"\n\nexport default function AlertBillingNotice() {\n  return (\n    <Alert variant=\"warning\" className=\"max-w-md\">\n      <CreditCardIcon />\n      <AlertTitle>Payment method expires soon</AlertTitle>\n      <AlertDescription>\n        Update the card on file before June 14 to keep automations running.\n      </AlertDescription>\n    </Alert>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "alert"
+  ],
+  "type": "registry:example"
+}

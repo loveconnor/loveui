@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-checklist",
+  "description": "Collapsible Checklist example",
+  "registryDependencies": [
+    "@loveui/collapsible",
+    "@loveui/checkbox"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/collapsible-checklist.tsx",
+      "content": "import {\n  Collapsible,\n  CollapsiblePanel,\n  CollapsibleTrigger,\n} from \"@/registry/default/ui/collapsible\"\nimport { Checkbox } from \"@/registry/default/ui/checkbox\"\n\nconst tasks = [\"Invite teammates\", \"Create first project\", \"Connect billing\"]\n\nexport default function CollapsibleChecklist() {\n  return (\n    <Collapsible className=\"w-full max-w-sm rounded-xl border p-4\" defaultOpen>\n      <CollapsibleTrigger className=\"font-medium\">Setup checklist</CollapsibleTrigger>\n      <CollapsiblePanel className=\"pt-3\">\n        <div className=\"grid gap-2\">\n          {tasks.map((task, index) => (\n            <label key={task} className=\"flex items-center gap-2 text-sm\">\n              <Checkbox defaultChecked={index === 0} />\n              {task}\n            </label>\n          ))}\n        </div>\n      </CollapsiblePanel>\n    </Collapsible>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "collapsible",
+    "checkbox"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet-checkout-summary",
+  "description": "Sheet Checkout Summary example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/sheet-checkout-summary.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Sheet, SheetFooter, SheetHeader, SheetPopup, SheetTitle, SheetTrigger } from \"@/registry/default/ui/sheet\"\n\nexport default function SheetCheckoutSummary() {\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\" />}>Order summary</SheetTrigger>\n      <SheetPopup>\n        <SheetHeader><SheetTitle>Checkout</SheetTitle></SheetHeader>\n        <div className=\"grid gap-3 px-4 text-sm\">\n          <div className=\"flex justify-between\"><span>Pro plan</span><span>$29</span></div>\n          <div className=\"flex justify-between\"><span>Tax</span><span>$2.32</span></div>\n          <div className=\"flex justify-between font-medium\"><span>Total</span><span>$31.32</span></div>\n        </div>\n        <SheetFooter><Button>Pay now</Button></SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

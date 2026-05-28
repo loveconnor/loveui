@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset-danger-zone",
+  "description": "Fieldset Danger Zone example",
+  "registryDependencies": [
+    "@loveui/switch",
+    "@loveui/field",
+    "@loveui/fieldset"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/fieldset-danger-zone.tsx",
+      "content": "import { Switch } from \"@/registry/default/ui/switch\"\nimport { Field, FieldDescription, FieldLabel } from \"@/registry/default/ui/field\"\nimport { Fieldset, FieldsetLegend } from \"@/registry/default/ui/fieldset\"\n\nexport default function FieldsetDangerZone() {\n  return (\n    <Fieldset className=\"max-w-sm rounded-xl border border-destructive/30 p-4\">\n      <FieldsetLegend>Danger zone</FieldsetLegend>\n      <Field>\n        <FieldLabel className=\"justify-between w-full\">Require delete confirmation <Switch /></FieldLabel>\n        <FieldDescription>Ask for a typed confirmation before destructive actions.</FieldDescription>\n      </Field>\n    </Fieldset>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "switch",
+    "field",
+    "fieldset"
+  ],
+  "type": "registry:example"
+}

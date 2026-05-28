@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover-account-summary",
+  "description": "Popover Account Summary example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/popover"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/popover-account-summary.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Popover, PopoverDescription, PopoverPopup, PopoverTitle, PopoverTrigger } from \"@/registry/default/ui/popover\"\n\nexport default function PopoverAccountSummary() {\n  return (\n    <Popover>\n      <PopoverTrigger render={<Button variant=\"outline\" />}>Account</PopoverTrigger>\n      <PopoverPopup className=\"w-72\">\n        <PopoverTitle>Acme workspace</PopoverTitle>\n        <PopoverDescription>12 members, 4 active projects, and 84% storage used.</PopoverDescription>\n      </PopoverPopup>\n    </Popover>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "popover"
+  ],
+  "type": "registry:example"
+}

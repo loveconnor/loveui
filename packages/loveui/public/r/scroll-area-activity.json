@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-activity",
+  "description": "Scroll Area Activity example",
+  "registryDependencies": [
+    "@loveui/scroll-area"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/scroll-area-activity.tsx",
+      "content": "import { ScrollArea } from \"@/registry/default/ui/scroll-area\"\n\nconst events = [\"Build passed\", \"Comment added\", \"Deploy started\", \"Review requested\", \"Issue linked\", \"Branch merged\"]\n\nexport default function ScrollAreaActivity() {\n  return (\n    <ScrollArea className=\"h-40 w-72 rounded-xl border p-3\">\n      <div className=\"grid gap-2\">\n        {events.map((event) => <div key={event} className=\"rounded-lg bg-muted px-3 py-2 text-sm\">{event}</div>)}\n      </div>\n    </ScrollArea>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "scroll-area"
+  ],
+  "type": "registry:example"
+}

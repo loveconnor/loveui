@@ -19,7 +19,7 @@ export default function CheckboxFormDemo() {
     alert(`Terms: ${accepted}`)
   }
   return (
-    <Form onSubmit={onSubmit} className="w-auto">
+    <Form onSubmit={onSubmit} className="grid w-auto gap-4">
       <Field name="terms">
         <FieldLabel>
           <Checkbox

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-inbox-zero",
+  "description": "Empty Inbox Zero example",
+  "registryDependencies": [
+    "@loveui/empty"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/empty-inbox-zero.tsx",
+      "content": "import { InboxIcon } from \"lucide-react\"\n\nimport {\n  Empty,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\"\n\nexport default function EmptyInboxZero() {\n  return (\n    <Empty className=\"border\">\n      <EmptyHeader>\n        <EmptyMedia variant=\"icon\"><InboxIcon /></EmptyMedia>\n        <EmptyTitle>Inbox zero</EmptyTitle>\n        <EmptyDescription>No unread notifications are waiting for you.</EmptyDescription>\n      </EmptyHeader>\n    </Empty>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "empty"
+  ],
+  "type": "registry:example"
+}

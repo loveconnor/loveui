@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frame-analytics-panel",
+  "description": "Frame Analytics Panel example",
+  "registryDependencies": [
+    "@loveui/frame"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/frame-analytics-panel.tsx",
+      "content": "import { Frame, FrameHeader, FramePanel, FrameTitle } from \"@/registry/default/ui/frame\"\n\nexport default function FrameAnalyticsPanel() {\n  return (\n    <Frame className=\"w-full max-w-sm\">\n      <FrameHeader><FrameTitle>Traffic overview</FrameTitle></FrameHeader>\n      <FramePanel>\n        <div className=\"grid grid-cols-3 gap-2 text-center text-sm\">\n          <div><div className=\"font-semibold\">42k</div><div className=\"text-muted-foreground\">Visits</div></div>\n          <div><div className=\"font-semibold\">8.2%</div><div className=\"text-muted-foreground\">CVR</div></div>\n          <div><div className=\"font-semibold\">312</div><div className=\"text-muted-foreground\">Trials</div></div>\n        </div>\n      </FramePanel>\n    </Frame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "frame"
+  ],
+  "type": "registry:example"
+}

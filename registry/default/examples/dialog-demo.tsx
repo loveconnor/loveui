@@ -19,7 +19,7 @@ export default function DialogDemo() {
         Open Dialog
       </DialogTrigger>
       <DialogPopup className="sm:max-w-sm">
-        <Form>
+        <Form className="grid gap-4">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>

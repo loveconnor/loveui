@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-release-notes",
+  "description": "Collapsible Release Notes example",
+  "registryDependencies": [
+    "@loveui/collapsible"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/collapsible-release-notes.tsx",
+      "content": "import { ChevronDownIcon } from \"lucide-react\"\n\nimport {\n  Collapsible,\n  CollapsiblePanel,\n  CollapsibleTrigger,\n} from \"@/registry/default/ui/collapsible\"\n\nexport default function CollapsibleReleaseNotes() {\n  return (\n    <Collapsible className=\"w-full max-w-md rounded-xl border p-4\" defaultOpen>\n      <CollapsibleTrigger className=\"flex w-full items-center justify-between font-medium\">\n        Release notes\n        <ChevronDownIcon className=\"size-4\" />\n      </CollapsibleTrigger>\n      <CollapsiblePanel className=\"pt-3 text-sm text-muted-foreground\">\n        Version 2.4 adds command shortcuts, denser tables, and improved focus rings.\n      </CollapsiblePanel>\n    </Collapsible>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "collapsible"
+  ],
+  "type": "registry:example"
+}

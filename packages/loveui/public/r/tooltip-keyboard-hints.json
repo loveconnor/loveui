@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-keyboard-hints",
+  "description": "Tooltip Keyboard Hints example",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/tooltip-keyboard-hints.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Tooltip, TooltipPopup, TooltipTrigger } from \"@/registry/default/ui/tooltip\"\n\nexport default function TooltipKeyboardHints() {\n  return (\n    <Tooltip>\n      <TooltipTrigger render={<Button variant=\"outline\" />}>Save</TooltipTrigger>\n      <TooltipPopup>Press Ctrl S to save changes.</TooltipPopup>\n    </Tooltip>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "tooltip"
+  ],
+  "type": "registry:example"
+}

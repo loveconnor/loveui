@@ -223,7 +223,148 @@ import toolbar_demo from "./default/examples/toolbar-demo"
 import tooltip_demo from "./default/examples/tooltip-demo"
 import tooltip_grouped from "./default/examples/tooltip-grouped"
 
+import accordion_product_faq from "./default/examples/accordion-product-faq"
+import alert_billing_notice from "./default/examples/alert-billing-notice"
+import autocomplete_members from "./default/examples/autocomplete-members"
+import avatar_team_stack from "./default/examples/avatar-team-stack"
+import badge_release_status from "./default/examples/badge-release-status"
+import breadcrumb_workspace_path from "./default/examples/breadcrumb-workspace-path"
+import breadcrumb_compact_path from "./default/examples/breadcrumb-compact-path"
+import breadcrumb_with_ellipsis from "./default/examples/breadcrumb-with-ellipsis"
+import button_command_bar from "./default/examples/button-command-bar"
+import card_metric_summary from "./default/examples/card-metric-summary"
+import card_billing_plan from "./default/examples/card-billing-plan"
+import card_team_member from "./default/examples/card-team-member"
+import checkbox_notification_row from "./default/examples/checkbox-notification-row"
+import collapsible_release_notes from "./default/examples/collapsible-release-notes"
+import collapsible_checklist from "./default/examples/collapsible-checklist"
+import collapsible_command_help from "./default/examples/collapsible-command-help"
+import combobox_assignee from "./default/examples/combobox-assignee"
+import dialog_invite_member from "./default/examples/dialog-invite-member"
+import empty_inbox_zero from "./default/examples/empty-inbox-zero"
+import empty_filtered_results from "./default/examples/empty-filtered-results"
+import empty_upload_queue from "./default/examples/empty-upload-queue"
+import field_password from "./default/examples/field-password"
+import fieldset_notification_settings from "./default/examples/fieldset-notification-settings"
+import fieldset_billing_address from "./default/examples/fieldset-billing-address"
+import fieldset_danger_zone from "./default/examples/fieldset-danger-zone"
+import form_profile_card from "./default/examples/form-profile-card"
+import form_newsletter from "./default/examples/form-newsletter"
+import frame_analytics_panel from "./default/examples/frame-analytics-panel"
+import frame_device_preview from "./default/examples/frame-device-preview"
+import frame_code_output from "./default/examples/frame-code-output"
+import group_filter_actions from "./default/examples/group-filter-actions"
+import group_segmented_filters from "./default/examples/group-segmented-filters"
+import group_toolbar_actions from "./default/examples/group-toolbar-actions"
+import input_search_inline from "./default/examples/input-search-inline"
+import label_password_field from "./default/examples/label-password-field"
+import menu_project_actions from "./default/examples/menu-project-actions"
+import meter_storage_quota from "./default/examples/meter-storage-quota"
+import number_field_ticket_count from "./default/examples/number-field-ticket-count"
+import pagination_compact from "./default/examples/pagination-compact"
+import pagination_mini from "./default/examples/pagination-mini"
+import pagination_results from "./default/examples/pagination-results"
+import popover_account_summary from "./default/examples/popover-account-summary"
+import popover_color_swatch from "./default/examples/popover-color-swatch"
+import preview_card_repository from "./default/examples/preview-card-repository"
+import preview_card_product from "./default/examples/preview-card-product"
+import preview_card_profile from "./default/examples/preview-card-profile"
+import progress_onboarding from "./default/examples/progress-onboarding"
+import radio_group_delivery from "./default/examples/radio-group-delivery"
+import scroll_area_activity from "./default/examples/scroll-area-activity"
+import select_timezone from "./default/examples/select-timezone"
+import separator_section_label from "./default/examples/separator-section-label"
+import separator_timeline from "./default/examples/separator-timeline"
+import separator_vertical_stack from "./default/examples/separator-vertical-stack"
+import sheet_checkout_summary from "./default/examples/sheet-checkout-summary"
+import sheet_profile_editor from "./default/examples/sheet-profile-editor"
+import skeleton_dashboard_card from "./default/examples/skeleton-dashboard-card"
+import skeleton_chat_list from "./default/examples/skeleton-chat-list"
+import slider_opacity from "./default/examples/slider-opacity"
+import switch_privacy_mode from "./default/examples/switch-privacy-mode"
+import table_invoice_list from "./default/examples/table-invoice-list"
+import table_user_roles from "./default/examples/table-user-roles"
+import tabs_settings from "./default/examples/tabs-settings"
+import textarea_feedback from "./default/examples/textarea-feedback"
+import toast_sync_complete from "./default/examples/toast-sync-complete"
+import toggle_view_mode from "./default/examples/toggle-view-mode"
+import toolbar_canvas_controls from "./default/examples/toolbar-canvas-controls"
+import toolbar_media_controls from "./default/examples/toolbar-media-controls"
+import toolbar_density_controls from "./default/examples/toolbar-density-controls"
+import tooltip_icon_row from "./default/examples/tooltip-icon-row"
+import tooltip_keyboard_hints from "./default/examples/tooltip-keyboard-hints"
+
 export const Index: Record<string, { component: ComponentType }> = {
+  "accordion-product-faq": { component: accordion_product_faq },
+  "alert-billing-notice": { component: alert_billing_notice },
+  "autocomplete-members": { component: autocomplete_members },
+  "avatar-team-stack": { component: avatar_team_stack },
+  "badge-release-status": { component: badge_release_status },
+  "breadcrumb-workspace-path": { component: breadcrumb_workspace_path },
+  "breadcrumb-compact-path": { component: breadcrumb_compact_path },
+  "breadcrumb-with-ellipsis": { component: breadcrumb_with_ellipsis },
+  "button-command-bar": { component: button_command_bar },
+  "card-metric-summary": { component: card_metric_summary },
+  "card-billing-plan": { component: card_billing_plan },
+  "card-team-member": { component: card_team_member },
+  "checkbox-notification-row": { component: checkbox_notification_row },
+  "collapsible-release-notes": { component: collapsible_release_notes },
+  "collapsible-checklist": { component: collapsible_checklist },
+  "collapsible-command-help": { component: collapsible_command_help },
+  "combobox-assignee": { component: combobox_assignee },
+  "dialog-invite-member": { component: dialog_invite_member },
+  "empty-inbox-zero": { component: empty_inbox_zero },
+  "empty-filtered-results": { component: empty_filtered_results },
+  "empty-upload-queue": { component: empty_upload_queue },
+  "field-password": { component: field_password },
+  "fieldset-notification-settings": { component: fieldset_notification_settings },
+  "fieldset-billing-address": { component: fieldset_billing_address },
+  "fieldset-danger-zone": { component: fieldset_danger_zone },
+  "form-profile-card": { component: form_profile_card },
+  "form-newsletter": { component: form_newsletter },
+  "frame-analytics-panel": { component: frame_analytics_panel },
+  "frame-device-preview": { component: frame_device_preview },
+  "frame-code-output": { component: frame_code_output },
+  "group-filter-actions": { component: group_filter_actions },
+  "group-segmented-filters": { component: group_segmented_filters },
+  "group-toolbar-actions": { component: group_toolbar_actions },
+  "input-search-inline": { component: input_search_inline },
+  "label-password-field": { component: label_password_field },
+  "menu-project-actions": { component: menu_project_actions },
+  "meter-storage-quota": { component: meter_storage_quota },
+  "number-field-ticket-count": { component: number_field_ticket_count },
+  "pagination-compact": { component: pagination_compact },
+  "pagination-mini": { component: pagination_mini },
+  "pagination-results": { component: pagination_results },
+  "popover-account-summary": { component: popover_account_summary },
+  "popover-color-swatch": { component: popover_color_swatch },
+  "preview-card-repository": { component: preview_card_repository },
+  "preview-card-product": { component: preview_card_product },
+  "preview-card-profile": { component: preview_card_profile },
+  "progress-onboarding": { component: progress_onboarding },
+  "radio-group-delivery": { component: radio_group_delivery },
+  "scroll-area-activity": { component: scroll_area_activity },
+  "select-timezone": { component: select_timezone },
+  "separator-section-label": { component: separator_section_label },
+  "separator-timeline": { component: separator_timeline },
+  "separator-vertical-stack": { component: separator_vertical_stack },
+  "sheet-checkout-summary": { component: sheet_checkout_summary },
+  "sheet-profile-editor": { component: sheet_profile_editor },
+  "skeleton-dashboard-card": { component: skeleton_dashboard_card },
+  "skeleton-chat-list": { component: skeleton_chat_list },
+  "slider-opacity": { component: slider_opacity },
+  "switch-privacy-mode": { component: switch_privacy_mode },
+  "table-invoice-list": { component: table_invoice_list },
+  "table-user-roles": { component: table_user_roles },
+  "tabs-settings": { component: tabs_settings },
+  "textarea-feedback": { component: textarea_feedback },
+  "toast-sync-complete": { component: toast_sync_complete },
+  "toggle-view-mode": { component: toggle_view_mode },
+  "toolbar-canvas-controls": { component: toolbar_canvas_controls },
+  "toolbar-media-controls": { component: toolbar_media_controls },
+  "toolbar-density-controls": { component: toolbar_density_controls },
+  "tooltip-icon-row": { component: tooltip_icon_row },
+  "tooltip-keyboard-hints": { component: tooltip_keyboard_hints },
   "accordion-controlled": { component: accordion_controlled },
   "accordion-demo": { component: accordion_demo },
   "accordion-multiple": { component: accordion_multiple },

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-section-label",
+  "description": "Separator Section Label example",
+  "registryDependencies": [
+    "@loveui/separator"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/separator-section-label.tsx",
+      "content": "import { Separator } from \"@/registry/default/ui/separator\"\n\nexport default function SeparatorSectionLabel() {\n  return (\n    <div className=\"w-full max-w-sm space-y-3\">\n      <div className=\"text-sm font-medium\">Account</div>\n      <Separator />\n      <p className=\"text-sm text-muted-foreground\">Profile, security, and billing settings.</p>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "separator"
+  ],
+  "type": "registry:example"
+}

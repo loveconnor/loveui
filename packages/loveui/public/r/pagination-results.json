@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination-results",
+  "description": "Pagination Results example",
+  "registryDependencies": [
+    "@loveui/pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/pagination-results.tsx",
+      "content": "import {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationLink,\n} from \"@/registry/default/ui/pagination\"\n\nexport default function PaginationResults() {\n  return (\n    <div className=\"grid gap-3 text-center\">\n      <p className=\"text-sm text-muted-foreground\">Showing 21-30 of 128</p>\n      <Pagination>\n        <PaginationContent>\n          <PaginationItem><PaginationLink href=\"#\">2</PaginationLink></PaginationItem>\n          <PaginationItem><PaginationLink href=\"#\" isActive>3</PaginationLink></PaginationItem>\n          <PaginationItem><PaginationEllipsis /></PaginationItem>\n        </PaginationContent>\n      </Pagination>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "pagination"
+  ],
+  "type": "registry:example"
+}

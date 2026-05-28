@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-view-mode",
+  "description": "Toggle View Mode example",
+  "registryDependencies": [
+    "@loveui/toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/toggle-view-mode.tsx",
+      "content": "import { Grid2X2Icon, ListIcon } from \"lucide-react\"\n\nimport { Toggle, ToggleGroup } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleViewMode() {\n  return (\n    <ToggleGroup defaultValue={[\"grid\"]} variant=\"outline\">\n      <Toggle value=\"grid\" aria-label=\"Grid view\"><Grid2X2Icon /></Toggle>\n      <Toggle value=\"list\" aria-label=\"List view\"><ListIcon /></Toggle>\n    </ToggleGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "toggle"
+  ],
+  "type": "registry:example"
+}

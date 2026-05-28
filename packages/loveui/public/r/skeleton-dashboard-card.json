@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-dashboard-card",
+  "description": "Skeleton Dashboard Card example",
+  "registryDependencies": [
+    "@loveui/skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/skeleton-dashboard-card.tsx",
+      "content": "import { Skeleton } from \"@/registry/default/ui/skeleton\"\n\nexport default function SkeletonDashboardCard() {\n  return (\n    <div className=\"w-full max-w-sm rounded-xl border p-4\">\n      <Skeleton className=\"h-4 w-28\" />\n      <Skeleton className=\"mt-4 h-10 w-40\" />\n      <div className=\"mt-6 grid grid-cols-3 gap-2\">\n        <Skeleton className=\"h-16\" />\n        <Skeleton className=\"h-16\" />\n        <Skeleton className=\"h-16\" />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "skeleton"
+  ],
+  "type": "registry:example"
+}

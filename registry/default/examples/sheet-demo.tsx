@@ -25,7 +25,7 @@ export default function DialogDemo() {
         )}
       />
       <SheetPopup>
-        <Form>
+        <Form className="grid gap-4">
           <SheetHeader>
             <SheetTitle>Edit profile</SheetTitle>
             <SheetDescription>

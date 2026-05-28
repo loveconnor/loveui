@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-vertical-stack",
+  "description": "Separator Vertical Stack example",
+  "registryDependencies": [
+    "@loveui/separator"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/separator-vertical-stack.tsx",
+      "content": "import { Separator } from \"@/registry/default/ui/separator\"\n\nexport default function SeparatorVerticalStack() {\n  return (\n    <div className=\"flex h-24 items-center rounded-xl border p-4 text-sm\">\n      <span>12 files</span>\n      <Separator orientation=\"vertical\" className=\"mx-4\" />\n      <span>4.8 MB</span>\n      <Separator orientation=\"vertical\" className=\"mx-4\" />\n      <span>Synced</span>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "separator"
+  ],
+  "type": "registry:example"
+}
