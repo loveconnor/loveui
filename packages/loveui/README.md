@@ -1,16 +1,16 @@
 # love-ui
 
-Command line utility and component registry bundles for LoveUI.
+Command line utility and component registry source for LoveUI.
 
 ## Usage
 
-Install the CLI globally or run it with `npx`:
+Install a component with `npx`:
 
 ```bash
-npx love-ui add button
+npx love-ui@latest add alert
 ```
 
-The CLI resolves component definitions from the LoveUI registry, shadcn-style, and pipes them straight into `shadcn add`. Source packages are shipped alongside the CLI under the `packages/` directory so you can inspect or copy the raw files if you prefer to scaffold manually.
+The package ships the CLI and the repository-level `registry/` tree used by the CLI.
 
 ## Development
 
@@ -19,4 +19,4 @@ bun install
 bun run build
 ```
 
-The build script bundles the CLI into `dist/` and copies the component packages into `packages/`. Running `npm publish --access public` afterwards pushes both the CLI binary and the template sources to npm.
+The build script bundles the CLI into `dist/` and copies the repository-level `registry/` directory into this package before npm creates the release tarball.

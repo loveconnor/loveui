@@ -14,10 +14,10 @@ import {
   CodeBlockIcon,
   CodeBlockGroup,
   CodeBlockContent,
-} from "@/packages/loveui/packages/code-block/src/components/code-block/code-block";
-import { CopyButton } from "@/packages/loveui/packages/code-block/src/components/code-block/copy-button";
-import { CodeblockShiki } from "@/packages/loveui/packages/code-block/src/components/code-block/client/shiki";
-import type { Languages as ShikiLanguage } from "@/packages/loveui/packages/code-block/src/utils/shiki/highlight";
+  CopyButton,
+  CodeblockShiki,
+  type Languages as ShikiLanguage,
+} from "@/components/code-block";
 
 export type MarkdownProps = {
   children?: string;

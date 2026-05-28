@@ -16,7 +16,6 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
-      "@loveui/gooey-toast": ["./packages/loveui/packages/gooey-toast/src"],
       "collections/*": ["./.source/*"]
     },
     "plugins": [
@@ -32,5 +31,17 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "components/ui/code-block/src/components/code-block/blocks/**",
+    "components/ui/code-block/src/components/code-block/client/**",
+    "components/ui/code-block/src/components/code-block/mdx/**",
+    "components/ui/code-block/src/components/ui/**",
+    "components/ui/code-block/src/stores/**",
+    "components/ui/code-block/src/utils/sugar-high/**",
+    "registry/default/examples/**",
+    "packages/loveui/dist",
+    "packages/loveui/packages",
+    "packages/loveui/registry"
+  ]
 }

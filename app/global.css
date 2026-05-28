@@ -1,9 +1,9 @@
-@import "../packages/loveui/packages/love-ui/src/styles/globals.css";
+@import "./loveui-globals.css";
 @import "katex/dist/katex.min.css";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
-@source "@loveui/code-block/src/**/*.{ts,tsx}";
-@source "@loveui/packages/**/*.{ts,tsx}";
+@source "../registry/**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
 
 @layer base {
   :root {

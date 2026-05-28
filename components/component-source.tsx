@@ -4,8 +4,8 @@ import * as React from "react"
 
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/cn"
+import { CodeBlock } from "@/components/code-block"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { CodeBlock } from "../packages/loveui/packages/love-ui/src/components/code-block"
 
 export async function ComponentSource({
   name,

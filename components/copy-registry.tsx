@@ -1,19 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Tick02Icon } from "@hugeicons/core-free-icons"
+import { Database02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { Icons } from "../packages/loveui/packages/love-ui/src/components/icons"
-import { useCopyToClipboard } from "../packages/loveui/packages/love-ui/src/hooks/use-copy-to-clipboard"
-
+import { useCopyToClipboard } from "@/components/use-copy-to-clipboard"
 import { cn } from "@/lib/utils"
-import { Button } from "../packages/loveui/packages/love-ui/src/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Tooltip,
   TooltipPopup,
   TooltipTrigger,
-} from "../packages/loveui/packages/love-ui/src/ui/tooltip"
+} from "@/registry/default/ui/tooltip"
 
 export function copyToClipboard(value: string) {
   navigator.clipboard.writeText(value)
@@ -50,7 +48,11 @@ export function CopyRegistry({
                 className="size-3.5"
               />
             ) : (
-              <Icons.mcp className="size-3.5" />
+              <HugeiconsIcon
+                icon={Database02Icon}
+                strokeWidth={2}
+                className="size-3.5"
+              />
             )}
           </Button>
         }

@@ -34,6 +34,7 @@ type ComponentsConfig = {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CLI_ROOT = path.resolve(__dirname, "..");
 const BUNDLED_PACKAGES_ROOT = path.join(CLI_ROOT, "packages");
+const BUNDLED_REGISTRY_ROOT = path.join(CLI_ROOT, "registry");
 
 const TEXT_EXTENSIONS = new Set([
   ".ts",
@@ -117,6 +118,106 @@ import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+`;
+
+const LOVE_UI_GLOBALS_MARKER = "love-ui globals";
+const LOVE_UI_GLOBALS_TEMPLATE = `/* love-ui globals */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.006 285.885);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.006 285.885);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.006 285.885);
+  --primary: oklch(0.274 0.006 286.033);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0 0 0 / 4%);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0 0 0 / 4%);
+  --muted-foreground: oklch(0.442 0.017 285.786);
+  --accent: oklch(0 0 0 / 4%);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.637 0.237 25.331);
+  --destructive-foreground: oklch(0.505 0.213 27.518);
+  --info: oklch(0.623 0.214 259.815);
+  --info-foreground: oklch(0.488 0.243 264.376);
+  --success: oklch(0.696 0.17 162.48);
+  --success-foreground: oklch(0.508 0.118 165.612);
+  --warning: oklch(0.769 0.188 70.08);
+  --warning-foreground: oklch(0.555 0.163 48.998);
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 10%);
+  --ring: oklch(0.705 0.015 286.067);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.967 0.001 286.375);
+  --card: color-mix(in srgb, oklch(0.21 0.006 285.885) 80%, oklch(0.141 0.005 285.823));
+  --card-foreground: oklch(0.967 0.001 286.375);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.967 0.001 286.375);
+  --primary: oklch(0.967 0.001 286.375);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(1 0 0 / 6%);
+  --secondary-foreground: oklch(0.967 0.001 286.375);
+  --muted: oklch(1 0 0 / 6%);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(1 0 0 / 6%);
+  --accent-foreground: oklch(0.967 0.001 286.375);
+  --destructive: oklch(0.637 0.237 25.331);
+  --destructive-foreground: oklch(0.704 0.191 22.216);
+  --info: oklch(0.623 0.214 259.815);
+  --info-foreground: oklch(0.707 0.165 254.624);
+  --success: oklch(0.696 0.17 162.48);
+  --success-foreground: oklch(0.765 0.177 163.223);
+  --warning: oklch(0.769 0.188 70.08);
+  --warning-foreground: oklch(0.828 0.189 84.429);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.552 0.016 285.938);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
 }
 `;
 
@@ -555,6 +656,93 @@ async function ensureUtilsFile(root: string, utilsFilePath: string): Promise<boo
   return true;
 }
 
+async function ensureGlobalsFile(root: string): Promise<{ path: string; created: boolean; updated: boolean; imported: boolean }> {
+  const candidates = [
+    "app/globals.css",
+    "app/global.css",
+    "src/app/globals.css",
+    "src/app/global.css",
+    "styles/globals.css",
+    "src/styles/globals.css",
+    "globals.css",
+    "global.css"
+  ];
+
+  let globalsPath = candidates.find((candidate) => existsSync(path.join(root, candidate)));
+
+  if (!globalsPath) {
+    if (existsSync(path.join(root, "src", "app"))) {
+      globalsPath = "src/app/globals.css";
+    } else if (existsSync(path.join(root, "app"))) {
+      globalsPath = "app/globals.css";
+    } else if (existsSync(path.join(root, "src"))) {
+      globalsPath = "src/styles/globals.css";
+    } else {
+      globalsPath = "globals.css";
+    }
+  }
+
+  const absolutePath = path.join(root, globalsPath);
+  const existed = existsSync(absolutePath);
+  let content = existed ? await readFile(absolutePath, "utf8") : "";
+  let updated = false;
+
+  if (!/@import\s+["']tailwindcss["']/.test(content)) {
+    content = `@import "tailwindcss";\n${content ? `\n${content}` : ""}`;
+    updated = true;
+  }
+
+  if (!content.includes(LOVE_UI_GLOBALS_MARKER)) {
+    content = `${content.trimEnd()}\n\n${LOVE_UI_GLOBALS_TEMPLATE}`;
+    updated = true;
+  }
+
+  if (!existed || updated) {
+    await ensureDirectory(globalsPath, root);
+    await writeFile(absolutePath, content, "utf8");
+  }
+
+  const imported = await ensureGlobalsImport(root, globalsPath);
+
+  return {
+    path: globalsPath,
+    created: !existed,
+    updated,
+    imported
+  };
+}
+
+async function ensureGlobalsImport(root: string, globalsPath: string): Promise<boolean> {
+  const layoutCandidates = [
+    "app/layout.tsx",
+    "app/layout.jsx",
+    "src/app/layout.tsx",
+    "src/app/layout.jsx"
+  ];
+  const layoutPath = layoutCandidates.find((candidate) => existsSync(path.join(root, candidate)));
+  if (!layoutPath) return false;
+
+  const absoluteLayoutPath = path.join(root, layoutPath);
+  const layout = await readFile(absoluteLayoutPath, "utf8");
+  const importPath = toRelativeImport(path.dirname(layoutPath), globalsPath);
+
+  if (layout.includes(`"${importPath}"`) || layout.includes(`'${importPath}'`)) {
+    return false;
+  }
+
+  const nextLayout = `import "${importPath}";\n${layout}`;
+  await writeFile(absoluteLayoutPath, nextLayout, "utf8");
+  return true;
+}
+
+function toRelativeImport(fromDir: string, targetPath: string): string {
+  let relativePath = path.posix.relative(fromDir || ".", targetPath);
+  if (!relativePath.startsWith(".")) {
+    relativePath = `./${relativePath}`;
+  }
+  return relativePath;
+}
+
 async function ensureDirectory(filePath: string, root: string) {
   const dir = path.dirname(path.join(root, filePath));
   await mkdir(dir, { recursive: true });
@@ -614,6 +802,55 @@ async function getLoveUiComponent(
   componentName: string,
   utilsImportPath: string
 ): Promise<RegistryFile[] | null> {
+  const registryComponentFile = path.join(
+    BUNDLED_REGISTRY_ROOT,
+    "default",
+    "ui",
+    `${componentName}.tsx`
+  );
+
+  if (existsSync(registryComponentFile)) {
+    try {
+      const content = normalizeComponentContent(
+        await readFile(registryComponentFile, "utf8"),
+        utilsImportPath
+      );
+
+      const files: RegistryFile[] = [
+        {
+          path: `default/ui/${componentName}.tsx`,
+          target: `components/ui/${componentName}.tsx`,
+          content
+        }
+      ];
+
+      if (componentName === "toast") {
+        const helperFiles = [
+          "toast-gooey.tsx",
+          "toast-gooey-renderer.tsx",
+          "toast-gooey-icons.tsx",
+          "toast-gooey-types.ts",
+          "toast-gooey.css"
+        ];
+
+        for (const helperFile of helperFiles) {
+          const helperPath = path.join(BUNDLED_REGISTRY_ROOT, "default", "ui", helperFile);
+          if (!existsSync(helperPath)) continue;
+
+          files.push({
+            path: `default/ui/${helperFile}`,
+            target: `components/ui/${helperFile}`,
+            content: await readFile(helperPath, "utf8")
+          });
+        }
+      }
+
+      return files;
+    } catch (error) {
+      console.warn(`Warning: unable to read ${componentName} from bundled registry`, error);
+    }
+  }
+
   // Love-ui components use Base UI
   const loveUiDir = path.join(BUNDLED_PACKAGES_ROOT, "love-ui");
   const componentFile = path.join(loveUiDir, "src", "ui", `${componentName}.tsx`);
@@ -662,6 +899,43 @@ async function getBundledRegistryFiles(
   // Check if it's a love-ui component (Base UI)
   if (LOVE_UI_COMPONENTS.has(packageName)) {
     return await getLoveUiComponent(packageName, utilsImportPath);
+  }
+
+  const registryExampleFile = path.join(
+    BUNDLED_REGISTRY_ROOT,
+    "default",
+    "examples",
+    `${packageName}.tsx`
+  );
+
+  if (existsSync(registryExampleFile)) {
+    try {
+      const rawContent = await readFile(registryExampleFile, "utf8");
+      const files: RegistryFile[] = [];
+      const uiDependencies = Array.from(
+        new Set(
+          [...rawContent.matchAll(/@\/registry\/default\/ui\/([^"']+)/g)]
+            .map((match) => match[1])
+            .filter(Boolean)
+        )
+      );
+
+      for (const dependency of uiDependencies) {
+        const dependencyFiles = await getLoveUiComponent(dependency, utilsImportPath);
+        if (dependencyFiles) files.push(...dependencyFiles);
+      }
+
+      files.push({
+        path: `default/examples/${packageName}.tsx`,
+        target: `components/${packageName}.tsx`,
+        content: normalizeComponentContent(rawContent, utilsImportPath)
+      });
+
+      return files;
+    } catch (error) {
+      console.warn(`Warning: unable to read ${packageName} from bundled registry examples`, error);
+      return null;
+    }
   }
 
   const directory = normalizePackageDirectory(packageName);
@@ -723,12 +997,16 @@ const LOVE_UI_CORE_DEPS: Record<string, string> = {
   "@base-ui-components/react": "1.0.0-beta.4",
   "class-variance-authority": "^0.7.1",
   "clsx": "^2.1.1",
+  "lucide-react": "^1.16.0",
   "tailwind-merge": "^3.3.1"
 };
 
 async function extractDependencies(packageName: string): Promise<Record<string, string>> {
   // For love-ui components, return core dependencies
-  if (LOVE_UI_COMPONENTS.has(packageName)) {
+  if (
+    LOVE_UI_COMPONENTS.has(packageName) ||
+    existsSync(path.join(BUNDLED_REGISTRY_ROOT, "default", "examples", `${packageName}.tsx`))
+  ) {
     return { ...LOVE_UI_CORE_DEPS };
   }
 
@@ -832,6 +1110,7 @@ export async function run(argv: string[] = process.argv.slice(2)) {
 
   let projectDirectoriesPrepared = false;
   let installedAnyProjectPackage = false;
+  let globalsPrepared = false;
 
   const allDependencies: Record<string, string> = {};
 
@@ -858,6 +1137,18 @@ export async function run(argv: string[] = process.argv.slice(2)) {
       await mkdir(path.join(projectRoot, componentsDir), { recursive: true });
       await mkdir(path.join(projectRoot, componentsUiDir), { recursive: true });
       projectDirectoriesPrepared = true;
+    }
+    if (!globalsPrepared) {
+      const globalsResult = await ensureGlobalsFile(projectRoot);
+      if (globalsResult.created) {
+        console.log(`✓ Created ${globalsResult.path}`);
+      } else if (globalsResult.updated) {
+        console.log(`✓ Updated ${globalsResult.path}`);
+      }
+      if (globalsResult.imported) {
+        console.log(`✓ Imported ${globalsResult.path} from app layout`);
+      }
+      globalsPrepared = true;
     }
     installedAnyProjectPackage = true;
 

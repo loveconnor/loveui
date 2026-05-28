@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/cn"
-import { Tabs, TabsList, TabsTab } from "../packages/loveui/packages/love-ui/src/ui/tabs"
+import { Tabs, TabsList, TabsTab } from "@/registry/default/ui/tabs"
 
 export function ComponentPreviewTabs({
   className,
@@ -39,31 +39,23 @@ export function ComponentPreviewTabs({
           )}
         </div>
       </Tabs>
-      <div
-        data-tab={tab}
-        className="relative rounded-xl border data-[tab=code]:bg-code"
-      >
-        <div
-          data-slot="preview"
-          data-active={tab === "preview"}
-          className="invisible data-[active=true]:visible"
-        >
-          <div
-            data-align={align}
-            className={cn(
-              "preview flex h-[450px] w-full justify-center overflow-y-auto p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start max-sm:px-6"
-            )}
-          >
-            {component}
+      <div>
+        {tab === "preview" ? (
+          <div className="relative rounded-xl border">
+            <div
+              data-align={align}
+              className={cn(
+                "preview flex h-[450px] w-full justify-center overflow-y-auto p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start max-sm:px-6"
+              )}
+            >
+              {component}
+            </div>
           </div>
-        </div>
-        <div
-          data-slot="code"
-          data-active={tab === "code"}
-          className="absolute inset-0 hidden overflow-hidden data-[active=true]:block **:[figure]:!m-0 **:[pre]:h-[450px]"
-        >
-          {source}
-        </div>
+        ) : (
+          <div className="**:[figure]:!my-0 **:[pre]:max-h-[680px]">
+            {source}
+          </div>
+        )}
       </div>
     </div>
   )

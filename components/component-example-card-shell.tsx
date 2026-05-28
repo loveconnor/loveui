@@ -5,7 +5,7 @@ import { Bun, NPM, PNPM, Yarn } from "@react-symbols/icons"
 import { CheckIcon, CopyIcon, TerminalIcon } from "lucide-react"
 
 import { cn } from "@/lib/cn"
-import { Button } from "../packages/loveui/packages/love-ui/src/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Sheet,
   SheetDescription,
@@ -13,12 +13,12 @@ import {
   SheetPopup,
   SheetTitle,
   SheetTrigger,
-} from "../packages/loveui/packages/love-ui/src/ui/sheet"
+} from "@/registry/default/ui/sheet"
 import {
   Tooltip,
   TooltipPopup,
   TooltipTrigger,
-} from "../packages/loveui/packages/love-ui/src/ui/tooltip"
+} from "@/registry/default/ui/tooltip"
 
 export function ComponentExampleCardShell({
   description,

@@ -8,14 +8,14 @@ import {
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { useCopyToClipboard } from "../packages/loveui/packages/love-ui/src/hooks/use-copy-to-clipboard"
-import { Button } from "../packages/loveui/packages/love-ui/src/ui/button"
-import { Tabs, TabsList, TabsPanel, TabsTab } from "../packages/loveui/packages/love-ui/src/ui/tabs"
+import { useCopyToClipboard } from "@/components/use-copy-to-clipboard"
+import { Button } from "@/registry/default/ui/button"
+import { Tabs, TabsList, TabsPanel, TabsTab } from "@/registry/default/ui/tabs"
 import {
   Tooltip,
   TooltipPopup,
   TooltipTrigger,
-} from "../packages/loveui/packages/love-ui/src/ui/tooltip"
+} from "@/registry/default/ui/tooltip"
 
 export function CodeBlockCommand({
   __npm__,

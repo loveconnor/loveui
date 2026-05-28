@@ -1,6 +1,6 @@
 {
   "name": "love-ui",
-  "version": "1.2.14",
+  "version": "1.2.16",
   "private": false,
   "license": "MIT",
   "type": "module",
@@ -11,38 +11,29 @@
   },
   "files": [
     "dist",
-    "packages",
-    "!packages/code-block",
-    "!packages/code-block/**",
-    "!packages/love-ui/src/components/code-block.tsx",
-    "public",
-    "*.ts",
-    "*.tsx",
-    "*.css",
-    "*.mdx"
+    "registry"
   ],
-  "main": "packages/love-ui/index.ts",
-  "types": "packages/love-ui/index.ts",
+  "main": "dist/index.js",
   "exports": {
     ".": {
-      "import": "./packages/love-ui/index.ts",
-      "require": "./packages/love-ui/index.ts"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
-    "./lib/*": "./packages/love-ui/*",
-    "./components/*": "./packages/love-ui/components/*",
-    "./shadcn-ui/*": "./packages/shadcn-ui/*",
+    "./registry/*": "./registry/*",
     "./package.json": "./package.json"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.1",
+    "menu": "link:@base-ui/react/menu",
     "postcss": "^8.5.6",
     "postcss-nested": "^7.0.2"
   },
   "scripts": {
     "build": "tsup",
-    "postbuild": "node ./scripts/copy-packages.mjs && node ./scripts/verify-registry.mjs",
-    "verify:registry": "node ./scripts/verify-registry.mjs",
-    "clean": "rimraf dist packages"
+    "postbuild": "node ./scripts/copy-registry.mjs",
+    "prepack": "npm run build",
+    "verify:registry": "node ./scripts/copy-registry.mjs",
+    "clean": "rimraf dist registry"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",

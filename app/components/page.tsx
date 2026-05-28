@@ -681,9 +681,9 @@ export default function ComponentsPage() {
             <Card
               key={component.slug}
               url={`/components/${component.slug}`}
-              className="gap-0 overflow-hidden rounded-[16px] border-border bg-card p-1.5 text-card-foreground shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.32)]"
+              className="gap-0 overflow-hidden rounded-[16px] border-neutral-200 bg-white p-1.5 text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_1px_3px_rgba(0,0,0,0.32)]"
             >
-              <div className="flex h-[184px] items-center justify-center overflow-hidden rounded-[14px] border border-border bg-background shadow-[0_1px_3px_rgba(0,0,0,0.06)] dark:bg-card dark:shadow-[0_1px_3px_rgba(0,0,0,0.24)]">
+              <div className="flex h-[184px] items-center justify-center overflow-hidden rounded-[14px] border border-neutral-200 bg-neutral-50 shadow-[0_1px_3px_rgba(0,0,0,0.06)] dark:border-neutral-800 dark:bg-neutral-950 dark:shadow-[0_1px_3px_rgba(0,0,0,0.24)]">
                 <ComponentPreview slug={component.slug} name={component.name} />
               </div>
               <div className="flex h-14 items-center justify-between gap-4 px-3 pt-1.5">

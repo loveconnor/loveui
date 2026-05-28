@@ -7,9 +7,9 @@ import {
   Collapsible,
   CollapsiblePanel,
   CollapsibleTrigger,
-} from "../packages/loveui/packages/love-ui/src/ui/collapsible"
-import { Button } from "../packages/loveui/packages/love-ui/src/ui/button"
-import { Separator } from "../packages/loveui/packages/love-ui/src/ui/separator"
+} from "@/registry/default/ui/collapsible"
+import { Button } from "@/registry/default/ui/button"
+import { Separator } from "@/registry/default/ui/separator"
 
 export function CodeCollapsibleWrapper({
   className,

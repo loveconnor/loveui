@@ -8,8 +8,8 @@ import {
   type ReactNode,
   isValidElement,
 } from 'react';
-import { CodeBlock } from '../packages/loveui/packages/love-ui/src/components/code-block';
-import { Tabs, TabsList, TabsPanel, TabsTab } from '../packages/loveui/packages/love-ui/src/ui/tabs';
+import { CodeBlock } from '@/components/code-block';
+import { Tabs, TabsList, TabsPanel, TabsTab } from '@/registry/default/ui/tabs';
 import { ComponentPreview } from './component-preview';
 import { ComponentSource } from './component-source';
 
