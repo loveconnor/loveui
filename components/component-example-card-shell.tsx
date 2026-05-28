@@ -40,12 +40,12 @@ export function ComponentExampleCardShell({
   return (
     <div
       className={cn(
-        "not-prose flex h-full flex-col rounded-[18px] border bg-card p-1.5 text-card-foreground shadow-[0_2px_10px_rgb(0_0_0/8%)] dark:shadow-[0_2px_14px_rgb(0_0_0/28%)]",
+        "not-prose flex h-full flex-col rounded-[18px] border border-neutral-200 bg-white p-1.5 text-neutral-950 shadow-[0_2px_10px_rgb(0_0_0/8%)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_2px_14px_rgb(0_0_0/28%)]",
         className
       )}
     >
       <div
-        className="relative flex-1 overflow-hidden rounded-[14px] border bg-background shadow-[inset_0_1px_0_rgb(255_255_255/60%)] dark:bg-card dark:shadow-[inset_0_1px_0_rgb(255_255_255/8%)]"
+        className="relative flex-1 overflow-hidden rounded-[14px] border border-neutral-200 bg-neutral-50 shadow-[inset_0_1px_0_rgb(255_255_255/60%)] dark:border-neutral-800 dark:bg-neutral-950 dark:shadow-[inset_0_1px_0_rgb(255_255_255/8%)]"
       >
         <div
           data-align={align}
