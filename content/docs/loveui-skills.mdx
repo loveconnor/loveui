@@ -1,0 +1,269 @@
+---
+title: LoveUI Skills
+description: How to use the LoveUI skill pack with an AI coding agent.
+---
+
+LoveUI Skills is a skill pack for AI coding agents.
+
+It tells the agent how to build, review, and improve LoveUI interfaces. The pack does not add React components to your app. Instead, it gives the agent design rules, workflow steps, quality checks, and specialist skills it can follow while editing your code.
+
+Use it when you want an agent to build a page, polish a screen, audit a design, improve copy, fix responsive behavior, or make a LoveUI project feel more complete.
+
+## What the skill pack does
+
+The pack starts with a main `SKILL.md` file.
+
+That file gives the agent a repeatable workflow:
+
+1. Understand the product, audience, framework, and existing design system.
+2. Read the right reference files for the task.
+3. Use the LoveUI registry as the source of truth for components and examples.
+4. Choose one clear visual direction.
+5. Pick a layout blueprint.
+6. Build the UI with reusable structure.
+7. Check the result before calling it done.
+
+The goal is to make the agent slower in the right places. It should inspect the project, make deliberate design choices, and verify the result instead of dropping in generic UI.
+
+## What is included
+
+The pack has three main parts:
+
+- **Root skill:** the main instructions in `SKILL.md`.
+- **Reference files:** detailed guidance for visual design, interaction behavior, accessibility, forms, content, navigation, architecture, motion, and testing.
+- **Specialist skills:** focused skills for common design tasks like auditing, polishing, adapting, simplifying, and improving copy.
+
+The root skill routes the agent to the right supporting material based on the request.
+
+## Reference files
+
+Reference files are included with the installed skill pack.
+
+They explain the standards the agent should apply while working:
+
+- `visual-primitives.md` sets the base visual rules: clear type, disciplined spacing, restrained color, subtle borders, and no unnecessary decoration.
+- `interaction-heuristics.md` covers hover, focus, disabled, loading, empty, error, and success states.
+- `structural-cleanliness.md` covers semantic HTML, component boundaries, responsive layout, and reusable structure.
+- `accessibility-baseline.md` covers contrast, keyboard access, focus order, labels, ARIA use, and touch targets.
+- `content-ux-writing.md` covers labels, helper text, empty states, errors, confirmations, and destructive action copy.
+- `forms-and-validation.md` covers form structure, validation timing, async validation, and submit behavior.
+- `motion-and-feedback.md` covers transitions, feedback, skeletons, toasts, and reduced motion.
+- `navigation-and-information-architecture.md` covers navigation hierarchy, wayfinding, breadcrumbs, and URL state.
+- `component-api-and-naming.md` covers component names, prop names, variants, composition, and API quality.
+- `frontend-architecture.md` covers state boundaries, data flow, side effects, and feature structure.
+- `testing-and-quality-strategy.md` covers what to test based on risk.
+- `mcp-catalog-workflow.md` tells the agent how to inspect the LoveUI registry before choosing components.
+- `page-blueprints.md` gives starting layouts for dashboards, docs, settings pages, agent workspaces, diff review, and history views.
+- `design-directions.md` helps the agent choose one visual direction before coding.
+- `screenshot-translation-protocol.md` helps the agent translate screenshots or mockups into implementation decisions.
+- `quality-gates.md` is the final checklist before the work is finished.
+
+The agent does not need every file for every task. For example, a form task should use the forms reference. A navigation task should use the navigation reference. A broad redesign should use more of the set.
+
+## Specialist skills
+
+Specialist skills are included with the installed skill pack.
+
+Each one handles a narrower kind of work:
+
+- `frontend-design` builds distinctive, production-grade frontend interfaces.
+- `audit` reviews interface quality and returns prioritized issues.
+- `critique` gives design feedback on hierarchy, flow, and overall effectiveness.
+- `polish` fixes spacing, alignment, consistency, and small visual details.
+- `adapt` improves a design across mobile, tablet, desktop, or another context.
+- `harden` improves resilience for errors, long text, i18n, and edge cases.
+- `optimize` improves loading speed, rendering, animation, images, and bundle size.
+- `clarify` improves labels, instructions, errors, and other UX copy.
+- `onboard` improves onboarding flows, empty states, and first-time user experience.
+- `extract` turns repeated patterns into reusable components, tokens, or design-system pieces.
+- `normalize` adjusts a feature so it matches the existing design system.
+- `distill` removes unnecessary complexity and makes the UI simpler.
+- `bolder` adds more visual impact when a design is too plain.
+- `quieter` tones down a design that is too loud or distracting.
+- `colorize` adds strategic color to a design that is too gray or flat.
+- `animate` adds useful motion and micro-interactions.
+- `delight` adds small moments of personality and polish.
+- `teach-loveui` gathers project design context once and saves it for future sessions.
+
+When the pack is installed, the agent should scan these skills and choose the most specific one for the job. For example, "make this form easier to understand" should route to `clarify`, while "make this dashboard production ready" may use `audit` first and `polish` after fixes.
+
+## How it changes agent behavior
+
+Without the skill pack, an agent may jump straight into code.
+
+With LoveUI Skills, the agent is expected to:
+
+- Read the existing code before editing.
+- Preserve the product's current design system.
+- Choose one visual direction instead of mixing styles.
+- Use LoveUI components and registry items intentionally.
+- Design desktop and mobile together.
+- Include important UI states, not just the happy path.
+- Keep interactions accessible with keyboard and focus support.
+- Use simple, specific product copy.
+- Run quality checks before finishing.
+
+This makes the agent act more like a careful product engineer and less like a code generator.
+
+## Agent workflow
+
+A good LoveUI Skills run usually follows this path:
+
+1. **Scope the work.** The agent identifies the screen, users, core actions, and constraints.
+2. **Read references.** The agent opens the files that match the task.
+3. **Inspect LoveUI options.** If the LoveUI MCP server is available, the agent checks the live registry before choosing components.
+4. **Pick a direction.** The agent chooses one visual direction, such as Technical Console for developer tools or Modern SaaS Crisp for guided product flows.
+5. **Pick a blueprint.** The agent starts from a page pattern, such as docs, dashboard, settings, workspace, or agent workflow.
+6. **Implement carefully.** The agent builds reusable structure, keeps semantics correct, and handles key states.
+7. **Verify.** The agent runs checks, reviews the UI, and fixes issues before reporting back.
+
+## Agent UI requirements
+
+The skill pack has extra rules for agent-powered interfaces.
+
+If the UI lets an agent suggest changes, generate work, or apply edits, it should include:
+
+- **Plan:** a short explanation of what will change, why, and what will not change.
+- **Preview:** diffs, screenshots, or a structured change summary before applying risky work.
+- **Apply:** visible progress, completion status, and a final summary.
+- **Undo:** a recovery option for reversible actions.
+- **History:** restore points for high-impact changes.
+- **Why this?:** a place to explain why a suggestion was made.
+- **Provenance:** clear source labels, such as "From LoveUI registry".
+
+These rules help users trust the agent before it changes real code or data.
+
+## How to use it
+
+LoveUI Skills ships with the `love-ui` npm package.
+
+Add it from your project root with the LoveUI CLI:
+
+```bash
+npx love-ui@latest add loveui-skills
+```
+
+The CLI asks which tool you want to target. Choose `codex`, `claude`, `cursor`, `github`, or `all`.
+
+For scripts, CI, or any place where you do not want an interactive prompt, pass the target directly:
+
+```bash
+npx love-ui@latest add loveui-skills codex
+```
+
+```bash
+npx love-ui@latest add loveui-skills claude
+```
+
+```bash
+npx love-ui@latest add loveui-skills cursor
+```
+
+```bash
+npx love-ui@latest add loveui-skills github
+```
+
+To install every supported target at once:
+
+```bash
+npx love-ui@latest add loveui-skills all
+```
+
+You can also use the long option form:
+
+```bash
+npx love-ui@latest add loveui-skills --agent codex
+```
+
+## What the CLI writes
+
+Different tools read instructions from different places.
+
+The CLI installs the same LoveUI skill pack, but places it where each tool expects to find it:
+
+- **Codex:** copies the skill pack to `~/.codex/skills/loveui-skills`.
+- **Claude:** copies the skill pack to `~/.claude/skills/loveui-skills`.
+- **Cursor:** copies the skill pack to `.cursor/loveui-skills` and adds `.cursor/rules/loveui-skills.mdc`.
+- **GitHub Copilot:** copies the skill pack to `.github/loveui-skills` and adds `.github/instructions/loveui-skills.instructions.md`.
+- **All:** runs every target above.
+
+For Codex and Claude, restart or reload the tool after installing so it can find the new skill.
+
+For Cursor and GitHub Copilot, commit the generated project files if you want the instructions to travel with the repo.
+
+The installed skill pack keeps this shape:
+
+```text
+loveui-skills/
+  SKILL.md
+  references/
+  skills/
+```
+
+After installation, ask your agent to use `loveui-skills` for LoveUI work.
+
+Example prompts:
+
+```text
+Use loveui-skills to redesign this settings page.
+```
+
+```text
+Use loveui-skills audit on the dashboard and list the issues by severity.
+```
+
+```text
+Use loveui-skills polish to fix spacing, alignment, and responsive behavior.
+```
+
+```text
+Use loveui-skills clarify to improve the form labels and validation messages.
+```
+
+```text
+Use loveui-skills teach-loveui to learn this project's design rules.
+```
+
+## When to use it
+
+Use LoveUI Skills for:
+
+- New app screens.
+- Docs pages and marketing pages.
+- Dashboards and admin tools.
+- Settings, onboarding, forms, and empty states.
+- Design polish before shipping.
+- Accessibility and responsive reviews.
+- Agent workflows that need plan, preview, apply, undo, and history.
+
+It is especially useful when the work is visual, interactive, or user-facing.
+
+## When not to use it
+
+You usually do not need the skill pack for:
+
+- Pure backend changes.
+- Small dependency updates.
+- Simple typo fixes.
+- One-line code edits with no UI impact.
+- Tasks where the user has already provided exact implementation instructions.
+
+For those tasks, the agent can work normally.
+
+## Best practices
+
+For the best results:
+
+- Give the agent the user goal, not only the component name.
+- Mention the page or route that should change.
+- Say whether the work should be bold, quiet, dense, playful, or conservative.
+- Ask for an audit before a large redesign if you are unsure what is wrong.
+- Ask for polish after implementation so the agent checks the details.
+- Ask the agent to verify mobile and desktop behavior.
+
+Clear prompts help the agent choose the right specialist skill and references.
+
+## Related docs
+
+- LoveUI setup: [Get Started](/docs/get-started)
+- Component usage: [Component Guide](/docs/component-guide)

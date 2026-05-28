@@ -83,6 +83,7 @@ export function CodeBlock({
 }) {
   const packageManager = typeof code === "string" ? getPackageManagerMeta(code) : null
   const PackageManagerIcon = packageManager?.icon
+  const isSingleLine = typeof code === "string" && !code.trim().includes("\n")
 
   if (typeof code !== "string") {
     return (
@@ -122,7 +123,10 @@ export function CodeBlock({
       {!title && !PackageManagerIcon && copyButton && (
         <CopyButton
           content={code}
-          className="absolute top-3 right-3 z-10 rounded-md p-1.5 opacity-72 hover:bg-neutral-200/70 hover:opacity-100 dark:hover:bg-neutral-800"
+          className={cn(
+            "absolute right-3 z-10 inline-flex size-7 items-center justify-center rounded-md opacity-72 hover:bg-neutral-200/70 hover:opacity-100 dark:hover:bg-neutral-800",
+            isSingleLine ? "top-1/2 -translate-y-1/2" : "top-3"
+          )}
         />
       )}
       <CodeBlockContent>

@@ -10,6 +10,14 @@ Install a component with `npx`:
 npx love-ui@latest add alert
 ```
 
+Install LoveUI Skills for an AI coding tool:
+
+```bash
+npx love-ui@latest add loveui-skills
+```
+
+The CLI will ask which target to install. You can also pass a target directly: `codex`, `claude`, `cursor`, `github`, or `all`.
+
 The package ships the CLI and the repository-level `registry/` tree used by the CLI.
 
 ## Development

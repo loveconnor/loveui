@@ -5,6 +5,7 @@ import { existsSync } from "node:fs";
 import { cp, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import { createInterface } from "node:readline/promises";
 import { pathToFileURL, fileURLToPath } from "node:url";
 
 type RegistryFile = {
@@ -35,6 +36,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CLI_ROOT = path.resolve(__dirname, "..");
 const BUNDLED_PACKAGES_ROOT = path.join(CLI_ROOT, "packages");
 const BUNDLED_REGISTRY_ROOT = path.join(CLI_ROOT, "registry");
+const BUNDLED_SKILLS_ROOT = path.join(CLI_ROOT, "skills");
 
 const TEXT_EXTENSIONS = new Set([
   ".ts",
@@ -951,12 +953,17 @@ async function getBundledRegistryFiles(
 }
 
 async function getBundledSkillSourceDir(packageName: string): Promise<string | null> {
-  const directory = normalizePackageDirectory(packageName);
-  const sourceDir = path.join(BUNDLED_PACKAGES_ROOT, directory);
+  const sourceDir = path.join(BUNDLED_SKILLS_ROOT, getPackageSlug(packageName));
   if (!existsSync(sourceDir)) return null;
   if (!existsSync(path.join(sourceDir, "SKILL.md"))) return null;
   return sourceDir;
 }
+
+type SkillTarget = "codex" | "claude" | "cursor" | "github";
+type SkillInstallStatus = "installed" | "exists";
+
+const SKILL_TARGET_OPTIONS: SkillTarget[] = ["codex", "claude", "cursor", "github"];
+const SKILL_TARGETS = new Set<SkillTarget>(SKILL_TARGET_OPTIONS);
 
 function resolveCodexHome(): string {
   const codexHome = process.env.CODEX_HOME?.trim();
@@ -964,16 +971,22 @@ function resolveCodexHome(): string {
   return path.join(os.homedir(), ".codex");
 }
 
-async function installBundledSkill(packageName: string): Promise<"installed" | "exists" | "missing"> {
+function resolveClaudeHome(): string {
+  const claudeHome = process.env.CLAUDE_HOME?.trim();
+  if (claudeHome) return claudeHome;
+  return path.join(os.homedir(), ".claude");
+}
+
+async function copyBundledSkillToDirectory(
+  packageName: string,
+  destinationDir: string
+): Promise<SkillInstallStatus> {
   const sourceDir = await getBundledSkillSourceDir(packageName);
-  if (!sourceDir) return "missing";
+  if (!sourceDir) {
+    throw new Error(`Bundled skill "${packageName}" was not found in this love-ui package.`);
+  }
 
-  const codexHome = resolveCodexHome();
-  const skillsRoot = path.join(codexHome, "skills");
-  const skillName = getPackageSlug(packageName);
-  const destinationDir = path.join(skillsRoot, skillName);
-
-  await mkdir(skillsRoot, { recursive: true });
+  await mkdir(path.dirname(destinationDir), { recursive: true });
 
   if (existsSync(destinationDir)) {
     return "exists";
@@ -990,6 +1003,228 @@ async function installBundledSkill(packageName: string): Promise<"installed" | "
   });
 
   return "installed";
+}
+
+async function writeFileIfMissing(filePath: string, content: string): Promise<SkillInstallStatus> {
+  await mkdir(path.dirname(filePath), { recursive: true });
+
+  if (existsSync(filePath)) {
+    return "exists";
+  }
+
+  await writeFile(filePath, content, "utf8");
+  return "installed";
+}
+
+function cursorRuleContent(packageName: string): string {
+  return `---
+description: Use LoveUI Skills when building, reviewing, or polishing LoveUI interfaces.
+globs: "**/*.{ts,tsx,js,jsx,css,md,mdx}"
+alwaysApply: false
+---
+
+Use the LoveUI skill pack in \`.cursor/loveui-skills\` for LoveUI UI work.
+
+Start with \`.cursor/loveui-skills/SKILL.md\`, then read the matching files in \`.cursor/loveui-skills/references\` and \`.cursor/loveui-skills/skills\`.
+
+For component installs, use \`npx love-ui add <component>\`. Do not install internal \`@loveui/*\`, \`@love-ui/*\`, or \`@repo/*\` packages directly.
+
+Installed skill pack: ${packageName}
+`;
+}
+
+function githubInstructionContent(packageName: string): string {
+  return `---
+applyTo: "**/*.{ts,tsx,js,jsx,css,md,mdx}"
+---
+
+# LoveUI Skills
+
+Use the LoveUI skill pack in \`.github/loveui-skills\` when building, reviewing, or polishing LoveUI interfaces.
+
+Start with \`.github/loveui-skills/SKILL.md\`, then read the matching files in \`.github/loveui-skills/references\` and \`.github/loveui-skills/skills\`.
+
+For component installs, use \`npx love-ui add <component>\`. Do not install internal \`@loveui/*\`, \`@love-ui/*\`, or \`@repo/*\` packages directly.
+
+Installed skill pack: ${packageName}
+`;
+}
+
+async function installBundledSkillForTarget(
+  packageName: string,
+  target: SkillTarget,
+  projectRoot: string
+): Promise<Array<{ label: string; path: string; status: SkillInstallStatus }>> {
+  const skillName = getPackageSlug(packageName);
+
+  if (target === "codex") {
+    const destinationDir = path.join(resolveCodexHome(), "skills", skillName);
+    return [{
+      label: "Codex skill",
+      path: destinationDir,
+      status: await copyBundledSkillToDirectory(packageName, destinationDir)
+    }];
+  }
+
+  if (target === "claude") {
+    const destinationDir = path.join(resolveClaudeHome(), "skills", skillName);
+    return [{
+      label: "Claude skill",
+      path: destinationDir,
+      status: await copyBundledSkillToDirectory(packageName, destinationDir)
+    }];
+  }
+
+  if (target === "cursor") {
+    const destinationDir = path.join(projectRoot, ".cursor", "loveui-skills");
+    const rulePath = path.join(projectRoot, ".cursor", "rules", "loveui-skills.mdc");
+
+    return [
+      {
+        label: "Cursor skill files",
+        path: destinationDir,
+        status: await copyBundledSkillToDirectory(packageName, destinationDir)
+      },
+      {
+        label: "Cursor rule",
+        path: rulePath,
+        status: await writeFileIfMissing(rulePath, cursorRuleContent(packageName))
+      }
+    ];
+  }
+
+  const destinationDir = path.join(projectRoot, ".github", "loveui-skills");
+  const instructionPath = path.join(projectRoot, ".github", "instructions", "loveui-skills.instructions.md");
+
+  return [
+    {
+      label: "GitHub skill files",
+      path: destinationDir,
+      status: await copyBundledSkillToDirectory(packageName, destinationDir)
+    },
+    {
+      label: "GitHub Copilot instructions",
+      path: instructionPath,
+      status: await writeFileIfMissing(instructionPath, githubInstructionContent(packageName))
+    }
+  ];
+}
+
+function parseSkillTargets(args: string[]): SkillTarget[] {
+  const targets = new Set<SkillTarget>();
+
+  for (let index = 0; index < args.length; index++) {
+    const arg = args[index];
+    if (!arg) continue;
+
+    if (arg === "--target" || arg === "--agent" || arg === "-t") {
+      const value = args[index + 1];
+      index++;
+      if (!value) {
+        throw new Error(`Missing value for ${arg}. Use one of: codex, claude, cursor, github, all.`);
+      }
+      addSkillTargetValue(value, targets);
+      continue;
+    }
+
+    if (arg.startsWith("--target=")) {
+      addSkillTargetValue(arg.slice("--target=".length), targets);
+      continue;
+    }
+
+    if (arg.startsWith("--agent=")) {
+      addSkillTargetValue(arg.slice("--agent=".length), targets);
+      continue;
+    }
+
+    addSkillTargetValue(arg, targets);
+  }
+
+  return [...targets];
+}
+
+function addSkillTargetValue(value: string, targets: Set<SkillTarget>) {
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized === "all") {
+    for (const target of SKILL_TARGETS) targets.add(target);
+    return;
+  }
+
+  if (!SKILL_TARGETS.has(normalized as SkillTarget)) {
+    throw new Error(`Unknown skill target "${value}". Use one of: codex, claude, cursor, github, all.`);
+  }
+
+  targets.add(normalized as SkillTarget);
+}
+
+async function promptForSkillTargets(): Promise<SkillTarget[]> {
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    throw new Error(
+      "Missing skill target. Use one of: codex, claude, cursor, github, all."
+    );
+  }
+
+  const choices = [
+    ...SKILL_TARGET_OPTIONS.map((target, index) => ({
+      label: target,
+      number: String(index + 1),
+      targets: [target]
+    })),
+    {
+      label: "all",
+      number: String(SKILL_TARGET_OPTIONS.length + 1),
+      targets: [...SKILL_TARGET_OPTIONS]
+    }
+  ];
+
+  console.log("\nWhich AI tool should LoveUI Skills target?\n");
+  for (const choice of choices) {
+    console.log(`  ${choice.number}. ${choice.label}`);
+  }
+
+  const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  try {
+    while (true) {
+      const answer = (await rl.question("\nSelect a target: ")).trim().toLowerCase();
+      const choice = choices.find(
+        (option) => option.number === answer || option.label === answer
+      );
+
+      if (choice) return choice.targets;
+
+      console.log("Please choose codex, claude, cursor, github, all, or a number from the list.");
+    }
+  } finally {
+    rl.close();
+  }
+}
+
+async function installLoveUiSkills(args: string[], projectRoot: string) {
+  const packageName = "loveui-skills";
+  const parsedTargets = parseSkillTargets(args);
+  const targets = parsedTargets.length > 0 ? parsedTargets : await promptForSkillTargets();
+
+  if (!await getBundledSkillSourceDir(packageName)) {
+    throw new Error("The loveui-skills pack is missing from this love-ui package. Try updating to the latest version.");
+  }
+
+  console.log(`\nAdding ${packageName} for ${targets.join(", ")}...`);
+
+  for (const target of targets) {
+    const results = await installBundledSkillForTarget(packageName, target, projectRoot);
+
+    for (const result of results) {
+      const verb = result.status === "installed" ? "Installed" : "Already exists";
+      console.log(`✓ ${verb}: ${result.label} at ${result.path}`);
+    }
+  }
+
+  console.log("\n✓ Done! Restart or reload your AI tool so it can pick up the new instructions.");
 }
 
 // Core dependencies that all love-ui components need
@@ -1080,8 +1315,15 @@ export async function run(argv: string[] = process.argv.slice(2)) {
 
   if (argv.length < 2 || argv[0] !== "add") {
     console.log("Usage: npx love-ui add [...packages]");
+    console.log("       npx love-ui add loveui-skills [codex|claude|cursor|github|all]");
+    console.log("       npx love-ui add loveui-skills --agent codex");
     console.log("       npx love-ui --version");
     process.exit(1);
+  }
+
+  if (getPackageSlug(argv[1] ?? "") === "loveui-skills") {
+    await installLoveUiSkills(argv.slice(2), process.cwd());
+    return;
   }
 
   const packageNames = argv.slice(1);
@@ -1120,18 +1362,6 @@ export async function run(argv: string[] = process.argv.slice(2)) {
     }
 
     console.log(`\nAdding ${packageName}...`);
-
-    const skillInstallResult = await installBundledSkill(packageName);
-    if (skillInstallResult === "installed") {
-      console.log(`✓ Installed skill "${packageName}" to ${path.join(resolveCodexHome(), "skills", getPackageSlug(packageName))}`);
-      console.log("Restart Codex to pick up new skills.");
-      continue;
-    }
-    if (skillInstallResult === "exists") {
-      console.log(`✓ Skill "${packageName}" is already installed.`);
-      console.log("Restart Codex if you do not see it yet.");
-      continue;
-    }
 
     if (!projectDirectoriesPrepared) {
       await mkdir(path.join(projectRoot, componentsDir), { recursive: true });
