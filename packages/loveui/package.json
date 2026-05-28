@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.1",
-    "menu": "link:@base-ui/react/menu",
     "postcss": "^8.5.6",
     "postcss-nested": "^7.0.2"
   },

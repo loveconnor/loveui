@@ -42,6 +42,7 @@
     "registry/default/examples/**",
     "packages/loveui/dist",
     "packages/loveui/packages",
+    "packages/loveui/src",
     "packages/loveui/registry"
   ]
 }
