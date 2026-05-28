@@ -13,6 +13,7 @@ import {
   componentLinks,
   getComponentFooterItems,
 } from "@/lib/components-page-tree"
+import { componentJsonLd, seo, siteKeywords } from "@/lib/seo"
 
 type ComponentPageProps = {
   params: Promise<{
@@ -33,9 +34,20 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   }
 
   const exampleCount = getComponentExampleCount(slug)
+  const pageDescription = `Explore ${exampleCount} interactive ${component.name.toLowerCase()} ${exampleCount === 1 ? "example" : "examples"} for React and Tailwind CSS. ${component.description}`
+  const jsonLd = componentJsonLd({
+    name: component.name,
+    description: pageDescription,
+    url: `/components/${component.slug}`,
+    exampleCount,
+  })
 
   return (
     <main className="[grid-area:main] min-w-0 bg-fd-background px-5 py-10 md:px-9 lg:px-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto w-full max-w-[1280px]">
         <Link
           href="/components"
@@ -79,9 +91,34 @@ export async function generateMetadata({
   }
 
   const exampleCount = getComponentExampleNames(slug).length
+  const title = `${component.name} Examples`
+  const description = `${exampleCount} interactive examples for the ${component.name} React component, covering common layouts, states, sizes, and product interface patterns.`
 
   return {
-    title: `${component.name} Examples`,
-    description: `${exampleCount} interactive examples for the ${component.name} component.`,
+    title,
+    description,
+    keywords: [
+      ...siteKeywords,
+      `${component.name} component`,
+      `${component.name} React component`,
+      `${component.name} Tailwind component`,
+    ],
+    alternates: {
+      canonical: `/components/${component.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      siteName: seo.name,
+      title,
+      description,
+      url: `/components/${component.slug}`,
+      images: ["/logo.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/logo.png"],
+    },
   }
 }

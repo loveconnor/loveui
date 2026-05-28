@@ -105,6 +105,7 @@ export function AISearchInputActions() {
 
 const StorageKeyInput = '__ai_search_input';
 export function AISearchInput(props: ComponentProps<'form'>) {
+  const { open } = useAISearchContext();
   const { status, sendMessage, stop } = useChatContext();
   const [input, setInput] = useState(() => localStorage.getItem(StorageKeyInput) ?? '');
   const isLoading = status === 'streaming' || status === 'submitted';
@@ -133,15 +134,16 @@ export function AISearchInput(props: ComponentProps<'form'>) {
   };
 
   useEffect(() => {
-    if (isLoading) document.getElementById('nd-ai-input')?.focus();
-  }, [isLoading]);
+    if (!open && !isLoading) return;
+
+    document.getElementById('nd-ai-input')?.focus({ preventScroll: true });
+  }, [isLoading, open]);
 
   return (
     <form {...props} className={cn('flex items-start pe-2', props.className)} onSubmit={onStart}>
       <Input
         value={input}
         placeholder={isLoading ? 'AI is answering...' : 'Ask a question'}
-        autoFocus
         className="p-3"
         disabled={status === 'streaming' || status === 'submitted'}
         onChange={(e) => {
@@ -384,7 +386,7 @@ export function AISearchPanel() {
           className={cn(
             'overflow-hidden z-30 bg-fd-card text-fd-card-foreground [--ai-chat-width:400px] 2xl:[--ai-chat-width:460px]',
             'max-lg:fixed max-lg:inset-x-2 max-lg:inset-y-4 max-lg:border max-lg:rounded-2xl max-lg:shadow-xl',
-            'lg:sticky lg:top-0 lg:h-dvh lg:border-s lg:ms-auto lg:in-[#nd-docs-layout]:[grid-area:toc] lg:in-[#nd-notebook-layout]:row-span-full lg:in-[#nd-notebook-layout]:col-start-5',
+            'lg:fixed lg:inset-y-0 lg:inset-e-0 lg:h-dvh lg:w-(--ai-chat-width) lg:border-s',
             open
               ? 'animate-fd-dialog-in lg:animate-[ask-ai-open_200ms]'
               : 'animate-fd-dialog-out lg:animate-[ask-ai-close_200ms]',

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import {
   BellIcon,
@@ -12,6 +13,7 @@ import {
 import { Card } from '@/components/card';
 import { getComponentExampleCount } from '@/lib/component-examples';
 import { componentLinks } from '@/lib/components-page-tree';
+import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 import {
   Accordion,
   AccordionItem,
@@ -144,6 +146,37 @@ import {
 } from '@/registry/default/ui/tooltip';
 
 const featured = new Set(['accordion', 'alert', 'avatar']);
+
+const componentsDescription =
+  'Browse reusable LoveUI React components, examples, and product interface patterns for Tailwind CSS applications.';
+
+export const metadata: Metadata = {
+  title: 'Components',
+  description: componentsDescription,
+  keywords: [
+    ...siteKeywords,
+    'React component examples',
+    'UI component catalog',
+    'Tailwind component examples',
+  ],
+  alternates: {
+    canonical: '/components',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: seo.name,
+    title: 'LoveUI Components',
+    description: componentsDescription,
+    url: '/components',
+    images: ['/logo.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LoveUI Components',
+    description: componentsDescription,
+    images: ['/logo.png'],
+  },
+};
 
 function PreviewFrame({ children }: { children: ReactNode }) {
   return (
@@ -656,6 +689,11 @@ function ComponentPreview({ slug, name }: { slug: string; name: string }) {
 }
 
 export default function ComponentsPage() {
+  const jsonLd = collectionPageJsonLd({
+    name: 'LoveUI Components',
+    description: componentsDescription,
+    url: '/components',
+  });
   const cards = [
     ...componentLinks.filter((component) => featured.has(component.slug)),
     ...componentLinks.filter((component) => !featured.has(component.slug)),
@@ -663,6 +701,10 @@ export default function ComponentsPage() {
 
   return (
     <main className="[grid-area:main] min-w-0 bg-fd-background px-5 py-10 md:px-9 lg:px-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto w-full max-w-[1080px]">
         <div className="max-w-[820px]">
           <h1 className="text-4xl font-semibold leading-tight tracking-normal text-foreground">

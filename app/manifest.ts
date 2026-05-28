@@ -1,10 +1,16 @@
 import type { MetadataRoute } from 'next';
 import { appName } from '@/lib/shared';
+import { seo } from '@/lib/seo';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: appName,
     short_name: appName,
+    description: seo.description,
+    id: '/',
+    start_url: '/docs',
+    scope: '/',
+    categories: ['developer tools', 'productivity', 'design'],
     icons: [
       {
         src: '/logo.png',
