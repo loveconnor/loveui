@@ -43,6 +43,7 @@
     "packages/loveui/dist",
     "packages/loveui/packages",
     "packages/loveui/src",
+    "packages/loveui/tsup.config.ts",
     "packages/loveui/registry"
   ]
 }
