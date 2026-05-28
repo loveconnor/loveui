@@ -909,6 +909,97 @@
       ]
     },
     {
+      "name": "accordion-disabled",
+      "description": "Disabled accordion item",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "accordion"
+      ]
+    },
+    {
+      "name": "accordion-with-icons",
+      "description": "Accordion with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/accordion",
+        "@loveui/badge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-with-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "accordion"
+      ]
+    },
+    {
+      "name": "accordion-in-card",
+      "description": "Subscription billing FAQ card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/accordion",
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-in-card.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "accordion"
+      ]
+    },
+    {
+      "name": "accordion-leading-icon",
+      "description": "Leading indicator accordion",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-leading-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "accordion"
+      ]
+    },
+    {
+      "name": "accordion-user-roles",
+      "description": "User role accordion",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/accordion",
+        "@loveui/avatar",
+        "@loveui/badge",
+        "@loveui/frame"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-user-roles.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "accordion"
+      ]
+    },
+    {
       "name": "accordion-multiple",
       "description": "Accordion allowing multiple panels open",
       "type": "registry:example",
@@ -1343,6 +1434,145 @@
       ]
     },
     {
+      "name": "avatar-status",
+      "description": "Avatar status badges",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-status.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-badge-icons",
+      "description": "Avatar badges with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-badge-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-badge-position",
+      "description": "Avatar badge positions",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-badge-position.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-profile-badge",
+      "description": "Profile with badge",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar",
+        "@loveui/badge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-profile-badge.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-group-trust",
+      "description": "Trusted users group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-group-trust.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-loading",
+      "description": "Loading avatar",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-loading.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-empty-collaborators",
+      "description": "Empty collaborator group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-empty-collaborators.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "avatar-menu",
+      "description": "Avatar account menu",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar",
+        "@loveui/button",
+        "@loveui/menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-menu.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "avatar"
+      ]
+    },
+    {
       "name": "avatar-fallback",
       "description": "Fallback-only avatar",
       "type": "registry:example",
@@ -1680,6 +1910,59 @@
       ]
     },
     {
+      "name": "breadcrumb-card",
+      "description": "Breadcrumb in card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/breadcrumb",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-card.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "breadcrumb"
+      ]
+    },
+    {
+      "name": "breadcrumb-buttons",
+      "description": "Button breadcrumb",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/breadcrumb",
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-buttons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "breadcrumb"
+      ]
+    },
+    {
+      "name": "breadcrumb-bullet-separator",
+      "description": "Bullet separator breadcrumb",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-bullet-separator.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "breadcrumb"
+      ]
+    },
+    {
       "name": "breadcrumb-custom-separator",
       "description": "Breadcrumb with custom separator",
       "type": "registry:example",
@@ -1697,8 +1980,25 @@
       ]
     },
     {
-      "name": "button-demo",
+      "name": "button-default",
       "description": "Default button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-default.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-demo",
+      "description": "Button action group",
       "type": "registry:example",
       "registryDependencies": [
         "@loveui/button"
@@ -1887,6 +2187,125 @@
       ]
     },
     {
+      "name": "button-default-icons",
+      "description": "Default buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-default-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-outline-icons",
+      "description": "Outline buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-outline-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-secondary-icons",
+      "description": "Secondary buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-secondary-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-destructive-icons",
+      "description": "Destructive buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-destructive-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-destructive-outline-icons",
+      "description": "Destructive outline buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-destructive-outline-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-ghost-icons",
+      "description": "Ghost buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-ghost-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-link-icons",
+      "description": "Link buttons with icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-link-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
       "name": "button-disabled",
       "description": "Disabled button",
       "type": "registry:example",
@@ -1948,6 +2367,23 @@
       "files": [
         {
           "path": "registry/default/examples/button-icon-lg.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "button"
+      ]
+    },
+    {
+      "name": "button-theme-toggle",
+      "description": "Theme toggle button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/button-theme-toggle.tsx",
           "type": "registry:example"
         }
       ],
@@ -27857,6 +28293,232 @@
         "source": "page-template",
         "templatePath": "logo-cloud/two"
       }
+    },
+    {
+      "name": "card-default-size",
+      "description": "Default card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-default-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-with-borders",
+      "description": "Card with bordered sections",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-with-borders.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-help-link",
+      "description": "Help link card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-help-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-help-menu",
+      "description": "Help card with menu",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar",
+        "@loveui/button",
+        "@loveui/card",
+        "@loveui/menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-help-menu.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-image-feature",
+      "description": "Image feature card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/badge",
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-image-feature.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-image-centered",
+      "description": "Centered image card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/badge",
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-image-centered.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-author-profile",
+      "description": "Author profile card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar",
+        "@loveui/badge",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-author-profile.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-depth",
+      "description": "Stacked depth card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-depth.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-team-member",
+      "description": "Team member card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar",
+        "@loveui/badge",
+        "@loveui/button",
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-team-member.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-usage-expandable",
+      "description": "Expandable usage card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/button",
+        "@loveui/card",
+        "@loveui/progress"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-usage-expandable.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-metric-actions",
+      "description": "Metric card with actions",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/badge",
+        "@loveui/button",
+        "@loveui/card",
+        "@loveui/menu",
+        "@loveui/separator"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-metric-actions.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
+    },
+    {
+      "name": "card-resource-link",
+      "description": "Resource link card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/card-resource-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": [
+        "card"
+      ]
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-metric-actions",
+  "description": "Metric card with actions",
+  "registryDependencies": [
+    "@loveui/badge",
+    "@loveui/button",
+    "@loveui/card",
+    "@loveui/menu",
+    "@loveui/separator"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-metric-actions.tsx",
+      "content": "import {\n  ArrowDownIcon,\n  ArrowUpIcon,\n  MoreHorizontalIcon,\n  PinIcon,\n  SettingsIcon,\n  Share2Icon,\n  TrashIcon,\n  TriangleAlertIcon,\n} from \"lucide-react\"\n\nimport { Badge } from \"@/registry/default/ui/badge\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Card, CardContent } from \"@/registry/default/ui/card\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from \"@/registry/default/ui/menu\"\nimport { Separator } from \"@/registry/default/ui/separator\"\n\nexport default function CardMetricActions() {\n  const title = \"Revenue\"\n  const value = \"$12.4k\"\n  const delta = 12.5\n  const positive = true\n  const lastMonth = \"$11.0k\"\n\n  return (\n    <Card className=\"w-full max-w-xs\">\n      <CardContent className=\"flex flex-col gap-5\">\n        <div className=\"flex items-center justify-between gap-3\">\n          <h3 className=\"text-sm font-medium text-muted-foreground\">{title}</h3>\n          <DropdownMenu>\n            <DropdownMenuTrigger\n              render={\n                <Button\n                  variant=\"ghost\"\n                  size=\"icon\"\n                  className=\"-me-1.5\"\n                  aria-label=\"More options\"\n                />\n              }\n            >\n              <MoreHorizontalIcon aria-hidden=\"true\" />\n            </DropdownMenuTrigger>\n            <DropdownMenuContent align=\"end\" className=\"w-48\">\n              <DropdownMenuGroup>\n                <DropdownMenuItem>\n                  <SettingsIcon aria-hidden=\"true\" />\n                  Settings\n                </DropdownMenuItem>\n                <DropdownMenuItem>\n                  <TriangleAlertIcon aria-hidden=\"true\" />\n                  Add Alert\n                </DropdownMenuItem>\n                <DropdownMenuItem>\n                  <PinIcon aria-hidden=\"true\" />\n                  Pin to Dashboard\n                </DropdownMenuItem>\n                <DropdownMenuItem>\n                  <Share2Icon aria-hidden=\"true\" />\n                  Share\n                </DropdownMenuItem>\n                <DropdownMenuSeparator />\n                <DropdownMenuItem variant=\"destructive\">\n                  <TrashIcon aria-hidden=\"true\" />\n                  Remove\n                </DropdownMenuItem>\n              </DropdownMenuGroup>\n            </DropdownMenuContent>\n          </DropdownMenu>\n        </div>\n        <div className=\"space-y-2.5\">\n          <div className=\"flex items-center gap-2.5\">\n            <span className=\"text-2xl font-medium tracking-tight tabular-nums text-foreground\">\n              {value}\n            </span>\n            <Badge variant={positive ? \"success\" : \"error\"}>\n              {positive ? (\n                <ArrowUpIcon aria-hidden=\"true\" />\n              ) : (\n                <ArrowDownIcon aria-hidden=\"true\" />\n              )}\n              {delta}%\n            </Badge>\n          </div>\n          <Separator />\n          <div className=\"text-xs text-muted-foreground\">\n            Vs last month:{\" \"}\n            <span className=\"font-medium tabular-nums text-foreground\">\n              {lastMonth}\n            </span>\n          </div>\n        </div>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

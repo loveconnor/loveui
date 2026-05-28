@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-theme-toggle",
+  "description": "Theme toggle button",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-theme-toggle.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { MoonIcon, SunIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonThemeToggle() {\n  const [theme, setTheme] = useState<\"light\" | \"dark\">(\"light\")\n\n  return (\n    <Button\n      variant=\"outline\"\n      size=\"icon\"\n      onClick={() => setTheme(theme === \"light\" ? \"dark\" : \"light\")}\n      aria-label={`Switch to ${theme === \"dark\" ? \"light\" : \"dark\"} mode`}\n    >\n      <SunIcon\n        className={cn(\n          \"size-4 transition-all duration-300\",\n          theme === \"dark\"\n            ? \"scale-0 -rotate-90 opacity-0\"\n            : \"scale-100 rotate-0 opacity-100\"\n        )}\n      />\n      <MoonIcon\n        className={cn(\n          \"absolute size-4 transition-all duration-300\",\n          theme === \"dark\"\n            ? \"scale-100 rotate-0 opacity-100\"\n            : \"scale-0 rotate-90 opacity-0\"\n        )}\n      />\n      <span className=\"sr-only\">Toggle theme</span>\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

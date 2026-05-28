@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-image-centered",
+  "description": "Centered image card",
+  "registryDependencies": [
+    "@loveui/badge",
+    "@loveui/button",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-image-centered.tsx",
+      "content": "import { ArrowRightIcon, BellIcon } from \"lucide-react\"\n\nimport { Badge } from \"@/registry/default/ui/badge\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Card, CardContent } from \"@/registry/default/ui/card\"\n\nexport default function CardImageCentered() {\n  return (\n    <Card className=\"w-full max-w-xs p-0\">\n      <CardContent className=\"flex flex-col gap-5 p-0\">\n        <div className=\"relative h-48 w-full overflow-hidden\">\n          <img\n            src=\"https://picsum.photos/1000/800?grayscale&random=52\"\n            alt=\"Abstract grayscale interface\"\n            className=\"absolute inset-0 size-full object-cover\"\n          />\n        </div>\n\n        <div className=\"flex flex-col items-center gap-4 p-6 pt-0\">\n          <Badge variant=\"outline\">\n            <BellIcon aria-hidden=\"true\" />\n            Trending\n          </Badge>\n\n          <p className=\"text-center text-sm text-foreground\">\n            Making your design process faster and easier. Design tools for your\n            team.\n          </p>\n\n          <Button className=\"w-fit\">\n            Get Started\n            <ArrowRightIcon aria-hidden=\"true\" />\n          </Button>\n        </div>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

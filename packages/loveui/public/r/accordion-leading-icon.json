@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-leading-icon",
+  "description": "Leading indicator accordion",
+  "registryDependencies": [
+    "@loveui/accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/accordion-leading-icon.tsx",
+      "content": "import { ChevronRightIcon } from \"lucide-react\"\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\"\n\nconst items = [\n  {\n    value: \"item-1\",\n    trigger: \"Can I use this for my project?\",\n    content:\n      \"Yes, you can use LoveUI for any of your personal or commercial projects. The library is distributed under the MIT license.\",\n  },\n  {\n    value: \"item-2\",\n    trigger: \"Is there a Figma file available?\",\n    content:\n      \"We are currently working on a comprehensive Figma design system that will be released soon to all LoveUI users.\",\n  },\n  {\n    value: \"item-3\",\n    trigger: \"How do I contribute to LoveUI?\",\n    content:\n      \"You can contribute by reporting bugs, suggesting features, or submitting pull requests on our GitHub repository.\",\n  },\n]\n\nexport default function AccordionLeadingIcon() {\n  return (\n    <div className=\"mx-auto mb-auto w-full max-w-lg\">\n      <Accordion multiple={false} defaultValue={[\"item-1\"]}>\n        {items.map((item) => (\n          <AccordionItem key={item.value} value={item.value}>\n            <AccordionTrigger className=\"flex-row-reverse items-center justify-end gap-3 py-3 hover:no-underline data-[panel-open]:[&>svg:first-of-type]:rotate-90 [&>svg:last-child]:hidden\">\n              <span className=\"font-medium text-foreground/90\">\n                {item.trigger}\n              </span>\n              <ChevronRightIcon className=\"size-4 shrink-0 text-muted-foreground transition-transform duration-200\" />\n            </AccordionTrigger>\n            <AccordionContent className=\"ps-7 leading-relaxed text-muted-foreground\">\n              {item.content}\n            </AccordionContent>\n          </AccordionItem>\n        ))}\n      </Accordion>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "accordion"
+  ],
+  "type": "registry:example"
+}

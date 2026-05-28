@@ -1,14 +1,14 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-demo",
-  "description": "Default button",
+  "description": "Button action group",
   "registryDependencies": [
     "@loveui/button"
   ],
   "files": [
     {
       "path": "registry/default/examples/button-demo.tsx",
-      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonDemo() {\n  return <Button>Button</Button>\n}\n",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport { Check } from \"lucide-react\"\n\nexport default function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-3\">\n      <Button variant=\"destructive\">Delete project</Button>\n      <Button variant=\"secondary\">Stage for publish</Button>\n      <Button>\n        <Check data-icon />\n        Publish now\n      </Button>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

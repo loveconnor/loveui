@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-help-link",
+  "description": "Help link card",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-help-link.tsx",
+      "content": "import { ExternalLinkIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport default function CardHelpLink() {\n  return (\n    <Card className=\"w-full max-w-xs gap-2 pt-5\">\n      <CardHeader>\n        <CardTitle>Need help with a claim?</CardTitle>\n      </CardHeader>\n      <CardContent className=\"mb-2\">\n        <p>\n          Go to this step by step guideline process on how to certify for your\n          weekly benefits.\n        </p>\n      </CardContent>\n      <CardFooter className=\"py-2\">\n        <Button variant=\"link\" className=\"px-0\">\n          See our guideline\n          <ExternalLinkIcon aria-hidden=\"true\" />\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

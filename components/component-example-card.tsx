@@ -29,7 +29,8 @@ export async function ComponentExampleCard({
         <ComponentSource
           name={name}
           collapsible={false}
-          className="**:[figure]:!m-0 **:[pre]:max-h-none **:[pre]:min-h-[520px]"
+          unframed
+          className="**:[pre]:max-h-none **:[pre]:min-h-[520px]"
         />
       }
     />

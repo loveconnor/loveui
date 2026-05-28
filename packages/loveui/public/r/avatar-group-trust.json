@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group-trust",
+  "description": "Trusted users group",
+  "registryDependencies": [
+    "@loveui/avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/avatar-group-trust.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarGroup,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\nconst people = [\n  {\n    src: \"https://images.unsplash.com/photo-1542595913-85d69b0edbaf?w=96&h=96&dpr=2&q=80\",\n    alt: \"Liam Thompson\",\n    fallback: \"LT\",\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1485206412256-701ccc5b93ca?w=96&h=96&dpr=2&q=80\",\n    alt: \"Nick Johnson\",\n    fallback: \"NJ\",\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1620075225255-8c2051b6c015?w=96&h=96&dpr=2&q=80\",\n    alt: \"Maria Garcia\",\n    fallback: \"MG\",\n  },\n  {\n    src: \"https://github.com/leerob.png\",\n    alt: \"@leerob\",\n    fallback: \"CH\",\n  },\n]\n\nexport default function AvatarGroupTrust() {\n  return (\n    <div className=\"flex items-center gap-1.5 rounded-full border border-border p-1 shadow-sm shadow-black/5\">\n      <AvatarGroup>\n        {people.map((person) => (\n          <Avatar key={person.alt} className=\"size-7\">\n            <AvatarImage src={person.src} alt={person.alt} />\n            <AvatarFallback>{person.fallback}</AvatarFallback>\n          </Avatar>\n        ))}\n      </AvatarGroup>\n\n      <p className=\"me-1.5 text-xs text-muted-foreground\">\n        Trusted by <span className=\"font-semibold text-foreground\">100K+</span>{\" \"}\n        users.\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

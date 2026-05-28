@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-loading",
+  "description": "Loading avatar",
+  "registryDependencies": [
+    "@loveui/avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/avatar-loading.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { LoaderCircleIcon } from \"lucide-react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\nexport default function AvatarLoading() {\n  const [loading, setLoading] = useState(true)\n\n  useEffect(() => {\n    const interval = setInterval(() => setLoading((prev) => !prev), 2000)\n    return () => clearInterval(interval)\n  }, [])\n\n  return (\n    <div className=\"relative\">\n      <Avatar>\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      {loading && (\n        <div className=\"absolute inset-0 flex items-center justify-center rounded-full bg-background/60\">\n          <LoaderCircleIcon className=\"size-4 animate-spin text-primary\" />\n        </div>\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

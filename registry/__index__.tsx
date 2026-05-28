@@ -2,8 +2,13 @@ import type { ComponentType } from "react"
 
 import accordion_controlled from "./default/examples/accordion-controlled"
 import accordion_demo from "./default/examples/accordion-demo"
+import accordion_disabled from "./default/examples/accordion-disabled"
+import accordion_card from "./default/examples/accordion-in-card"
+import accordion_leading_icon from "./default/examples/accordion-leading-icon"
 import accordion_multiple from "./default/examples/accordion-multiple"
 import accordion_single from "./default/examples/accordion-single"
+import accordion_user_roles from "./default/examples/accordion-user-roles"
+import accordion_with_icons from "./default/examples/accordion-with-icons"
 import alert_demo from "./default/examples/alert-demo"
 import alert_dialog_demo from "./default/examples/alert-dialog-demo"
 import alert_error from "./default/examples/alert-error"
@@ -26,10 +31,18 @@ import autocomplete_with_clear from "./default/examples/autocomplete-with-clear"
 import autocomplete_with_label from "./default/examples/autocomplete-with-label"
 import autocomplete_with_trigger_clear from "./default/examples/autocomplete-with-trigger-clear"
 import avatar_demo from "./default/examples/avatar-demo"
+import avatar_badge_icons from "./default/examples/avatar-badge-icons"
+import avatar_badge_position from "./default/examples/avatar-badge-position"
+import avatar_empty_collaborators from "./default/examples/avatar-empty-collaborators"
 import avatar_fallback from "./default/examples/avatar-fallback"
 import avatar_group from "./default/examples/avatar-group"
+import avatar_group_trust from "./default/examples/avatar-group-trust"
+import avatar_loading from "./default/examples/avatar-loading"
+import avatar_menu from "./default/examples/avatar-menu"
+import avatar_profile_badge from "./default/examples/avatar-profile-badge"
 import avatar_radius from "./default/examples/avatar-radius"
 import avatar_size from "./default/examples/avatar-size"
+import avatar_status from "./default/examples/avatar-status"
 import badge_demo from "./default/examples/badge-demo"
 import badge_destructive from "./default/examples/badge-destructive"
 import badge_error from "./default/examples/badge-error"
@@ -42,22 +55,34 @@ import badge_success from "./default/examples/badge-success"
 import badge_warning from "./default/examples/badge-warning"
 import badge_with_icon from "./default/examples/badge-with-icon"
 import badge_with_link from "./default/examples/badge-with-link"
+import breadcrumb_bullet_separator from "./default/examples/breadcrumb-bullet-separator"
+import breadcrumb_buttons from "./default/examples/breadcrumb-buttons"
+import breadcrumb_card from "./default/examples/breadcrumb-card"
 import breadcrumb_custom_separator from "./default/examples/breadcrumb-custom-separator"
 import breadcrumb_demo from "./default/examples/breadcrumb-demo"
+import button_default from "./default/examples/button-default"
+import button_default_icons from "./default/examples/button-default-icons"
 import button_demo from "./default/examples/button-demo"
 import button_destructive from "./default/examples/button-destructive"
+import button_destructive_icons from "./default/examples/button-destructive-icons"
 import button_destructive_outline from "./default/examples/button-destructive-outline"
+import button_destructive_outline_icons from "./default/examples/button-destructive-outline-icons"
 import button_disabled from "./default/examples/button-disabled"
 import button_ghost from "./default/examples/button-ghost"
+import button_ghost_icons from "./default/examples/button-ghost-icons"
 import button_icon from "./default/examples/button-icon"
 import button_icon_lg from "./default/examples/button-icon-lg"
 import button_icon_sm from "./default/examples/button-icon-sm"
 import button_lg from "./default/examples/button-lg"
 import button_link from "./default/examples/button-link"
+import button_link_icons from "./default/examples/button-link-icons"
 import button_loading from "./default/examples/button-loading"
 import button_outline from "./default/examples/button-outline"
+import button_outline_icons from "./default/examples/button-outline-icons"
 import button_secondary from "./default/examples/button-secondary"
+import button_secondary_icons from "./default/examples/button-secondary-icons"
 import button_sm from "./default/examples/button-sm"
+import button_theme_toggle from "./default/examples/button-theme-toggle"
 import button_with_icon from "./default/examples/button-with-icon"
 import button_with_link from "./default/examples/button-with-link"
 import button_xl from "./default/examples/button-xl"
@@ -232,9 +257,20 @@ import breadcrumb_workspace_path from "./default/examples/breadcrumb-workspace-p
 import breadcrumb_compact_path from "./default/examples/breadcrumb-compact-path"
 import breadcrumb_with_ellipsis from "./default/examples/breadcrumb-with-ellipsis"
 import button_command_bar from "./default/examples/button-command-bar"
+import card_author_profile from "./default/examples/card-author-profile"
 import card_metric_summary from "./default/examples/card-metric-summary"
 import card_billing_plan from "./default/examples/card-billing-plan"
+import card_default_size from "./default/examples/card-default-size"
+import card_depth from "./default/examples/card-depth"
+import card_help_link from "./default/examples/card-help-link"
+import card_help_menu from "./default/examples/card-help-menu"
+import card_image_centered from "./default/examples/card-image-centered"
+import card_image_feature from "./default/examples/card-image-feature"
+import card_metric_actions from "./default/examples/card-metric-actions"
+import card_resource_link from "./default/examples/card-resource-link"
 import card_team_member from "./default/examples/card-team-member"
+import card_usage_expandable from "./default/examples/card-usage-expandable"
+import card_with_borders from "./default/examples/card-with-borders"
 import checkbox_notification_row from "./default/examples/checkbox-notification-row"
 import collapsible_release_notes from "./default/examples/collapsible-release-notes"
 import collapsible_checklist from "./default/examples/collapsible-checklist"
@@ -296,6 +332,7 @@ import tooltip_keyboard_hints from "./default/examples/tooltip-keyboard-hints"
 
 export const Index: Record<string, { component: ComponentType }> = {
   "accordion-product-faq": { component: accordion_product_faq },
+  "accordion-card": { component: accordion_card },
   "alert-billing-notice": { component: alert_billing_notice },
   "autocomplete-members": { component: autocomplete_members },
   "avatar-team-stack": { component: avatar_team_stack },
@@ -304,9 +341,20 @@ export const Index: Record<string, { component: ComponentType }> = {
   "breadcrumb-compact-path": { component: breadcrumb_compact_path },
   "breadcrumb-with-ellipsis": { component: breadcrumb_with_ellipsis },
   "button-command-bar": { component: button_command_bar },
+  "card-author-profile": { component: card_author_profile },
   "card-metric-summary": { component: card_metric_summary },
   "card-billing-plan": { component: card_billing_plan },
+  "card-default-size": { component: card_default_size },
+  "card-depth": { component: card_depth },
+  "card-help-link": { component: card_help_link },
+  "card-help-menu": { component: card_help_menu },
+  "card-image-centered": { component: card_image_centered },
+  "card-image-feature": { component: card_image_feature },
+  "card-metric-actions": { component: card_metric_actions },
+  "card-resource-link": { component: card_resource_link },
   "card-team-member": { component: card_team_member },
+  "card-usage-expandable": { component: card_usage_expandable },
+  "card-with-borders": { component: card_with_borders },
   "checkbox-notification-row": { component: checkbox_notification_row },
   "collapsible-release-notes": { component: collapsible_release_notes },
   "collapsible-checklist": { component: collapsible_checklist },
@@ -367,8 +415,13 @@ export const Index: Record<string, { component: ComponentType }> = {
   "tooltip-keyboard-hints": { component: tooltip_keyboard_hints },
   "accordion-controlled": { component: accordion_controlled },
   "accordion-demo": { component: accordion_demo },
+  "accordion-disabled": { component: accordion_disabled },
+  "accordion-in-card": { component: accordion_card },
+  "accordion-leading-icon": { component: accordion_leading_icon },
   "accordion-multiple": { component: accordion_multiple },
   "accordion-single": { component: accordion_single },
+  "accordion-user-roles": { component: accordion_user_roles },
+  "accordion-with-icons": { component: accordion_with_icons },
   "alert-demo": { component: alert_demo },
   "alert-dialog-demo": { component: alert_dialog_demo },
   "alert-error": { component: alert_error },
@@ -390,11 +443,19 @@ export const Index: Record<string, { component: ComponentType }> = {
   "autocomplete-with-clear": { component: autocomplete_with_clear },
   "autocomplete-with-label": { component: autocomplete_with_label },
   "autocomplete-with-trigger-clear": { component: autocomplete_with_trigger_clear },
+  "avatar-badge-icons": { component: avatar_badge_icons },
+  "avatar-badge-position": { component: avatar_badge_position },
   "avatar-demo": { component: avatar_demo },
+  "avatar-empty-collaborators": { component: avatar_empty_collaborators },
   "avatar-fallback": { component: avatar_fallback },
   "avatar-group": { component: avatar_group },
+  "avatar-group-trust": { component: avatar_group_trust },
+  "avatar-loading": { component: avatar_loading },
+  "avatar-menu": { component: avatar_menu },
+  "avatar-profile-badge": { component: avatar_profile_badge },
   "avatar-radius": { component: avatar_radius },
   "avatar-size": { component: avatar_size },
+  "avatar-status": { component: avatar_status },
   "badge-demo": { component: badge_demo },
   "badge-destructive": { component: badge_destructive },
   "badge-error": { component: badge_error },
@@ -407,22 +468,34 @@ export const Index: Record<string, { component: ComponentType }> = {
   "badge-warning": { component: badge_warning },
   "badge-with-icon": { component: badge_with_icon },
   "badge-with-link": { component: badge_with_link },
+  "breadcrumb-bullet-separator": { component: breadcrumb_bullet_separator },
+  "breadcrumb-buttons": { component: breadcrumb_buttons },
+  "breadcrumb-card": { component: breadcrumb_card },
   "breadcrumb-custom-separator": { component: breadcrumb_custom_separator },
   "breadcrumb-demo": { component: breadcrumb_demo },
+  "button-default": { component: button_default },
+  "button-default-icons": { component: button_default_icons },
   "button-demo": { component: button_demo },
   "button-destructive": { component: button_destructive },
+  "button-destructive-icons": { component: button_destructive_icons },
   "button-destructive-outline": { component: button_destructive_outline },
+  "button-destructive-outline-icons": { component: button_destructive_outline_icons },
   "button-disabled": { component: button_disabled },
   "button-ghost": { component: button_ghost },
+  "button-ghost-icons": { component: button_ghost_icons },
   "button-icon": { component: button_icon },
   "button-icon-lg": { component: button_icon_lg },
   "button-icon-sm": { component: button_icon_sm },
   "button-lg": { component: button_lg },
   "button-link": { component: button_link },
+  "button-link-icons": { component: button_link_icons },
   "button-loading": { component: button_loading },
   "button-outline": { component: button_outline },
+  "button-outline-icons": { component: button_outline_icons },
   "button-secondary": { component: button_secondary },
+  "button-secondary-icons": { component: button_secondary_icons },
   "button-sm": { component: button_sm },
+  "button-theme-toggle": { component: button_theme_toggle },
   "button-with-icon": { component: button_with_icon },
   "button-with-link": { component: button_with_link },
   "button-xl": { component: button_xl },

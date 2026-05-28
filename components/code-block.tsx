@@ -72,6 +72,7 @@ export function CodeBlock({
   title,
   copyButton = true,
   showLineNumbers = true,
+  contentClassName,
   className,
   children,
 }: React.ComponentProps<"figure"> & {
@@ -80,6 +81,7 @@ export function CodeBlock({
   title?: string
   copyButton?: boolean
   showLineNumbers?: boolean
+  contentClassName?: string
 }) {
   const packageManager = typeof code === "string" ? getPackageManagerMeta(code) : null
   const PackageManagerIcon = packageManager?.icon
@@ -129,7 +131,7 @@ export function CodeBlock({
           )}
         />
       )}
-      <CodeBlockContent>
+      <CodeBlockContent className={contentClassName}>
         <ShikiCodeBlock
           code={code}
           language={toShikiLanguage(language)}

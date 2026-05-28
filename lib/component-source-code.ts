@@ -2,6 +2,7 @@ import fs from "node:fs/promises"
 import path from "node:path"
 
 import { getRegistryItem } from "@/lib/registry"
+import { formatDisplaySourceCode } from "@/lib/display-source-code"
 
 export async function getComponentSourceCode({
   name,
@@ -19,11 +20,11 @@ export async function getComponentSourceCode({
     const registryCode = item?.files?.[0]?.content
 
     if (registryCode) {
-      return registryCode
+      return formatDisplaySourceCode(registryCode)
     }
 
     try {
-      return await fs.readFile(
+      const code = await fs.readFile(
         path.join(
           /* turbopackIgnore: true */ process.cwd(),
           "registry/default/examples",
@@ -31,15 +32,19 @@ export async function getComponentSourceCode({
         ),
         "utf-8"
       )
+
+      return formatDisplaySourceCode(code)
     } catch {
       return undefined
     }
   }
 
   if (src) {
-    return fs.readFile(
+    const code = await fs.readFile(
       path.join(/* turbopackIgnore: true */ process.cwd(), src),
       "utf-8"
     )
+
+    return formatDisplaySourceCode(code)
   }
 }

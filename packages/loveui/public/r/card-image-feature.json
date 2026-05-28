@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-image-feature",
+  "description": "Image feature card",
+  "registryDependencies": [
+    "@loveui/badge",
+    "@loveui/button",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-image-feature.tsx",
+      "content": "import { ArrowRightIcon, BellIcon, SparklesIcon } from \"lucide-react\"\n\nimport { Badge } from \"@/registry/default/ui/badge\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Card, CardContent } from \"@/registry/default/ui/card\"\n\nexport default function CardImageFeature() {\n  return (\n    <Card className=\"w-full max-w-xs\">\n      <CardContent className=\"flex flex-col gap-4\">\n        <div className=\"relative h-48 w-full overflow-hidden rounded-lg\">\n          <img\n            src=\"https://picsum.photos/1000/800?grayscale&random=18\"\n            alt=\"Abstract grayscale workspace\"\n            className=\"absolute inset-0 size-full object-cover\"\n          />\n        </div>\n\n        <div className=\"flex items-center justify-between gap-5\">\n          <Badge variant=\"outline\">\n            <BellIcon aria-hidden=\"true\" />\n            Trending\n          </Badge>\n          <div className=\"flex items-center gap-1\">\n            <SparklesIcon aria-hidden=\"true\" />\n            <span className=\"text-xs font-medium text-secondary-foreground\">\n              Featured\n            </span>\n          </div>\n        </div>\n\n        <p className=\"text-sm text-foreground\">\n          Simplifying your workflow from day one. Manage your tasks, projects,\n          and team in one place.\n        </p>\n\n        <Button>\n          Get Started\n          <ArrowRightIcon aria-hidden=\"true\" />\n        </Button>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

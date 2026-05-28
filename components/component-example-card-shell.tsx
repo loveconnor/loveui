@@ -224,7 +224,10 @@ function ExampleCopyButton({
             type="button"
             size="icon"
             variant={variant}
-            className="size-9 rounded-[10px] shadow-sm"
+            className={cn(
+              "size-9 rounded-[10px]",
+              variant === "outline" && "shadow-sm"
+            )}
             aria-label={isCopied ? "Copied code" : "Copy code"}
             onClick={copyCode}
           >

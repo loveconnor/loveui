@@ -3,6 +3,7 @@ import path from "node:path"
 import * as React from "react"
 
 import { getRegistryItem } from "@/lib/registry"
+import { formatDisplaySourceCode } from "@/lib/display-source-code"
 import { cn } from "@/lib/cn"
 import { CodeBlock } from "@/components/code-block"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
@@ -13,6 +14,7 @@ export async function ComponentSource({
   title,
   language,
   collapsible = true,
+  unframed = false,
   className,
 }: React.ComponentProps<"div"> & {
   name?: string
@@ -20,6 +22,7 @@ export async function ComponentSource({
   title?: string
   language?: string
   collapsible?: boolean
+  unframed?: boolean
 }) {
   if (!name && !src) {
     return null
@@ -44,12 +47,24 @@ export async function ComponentSource({
     return null
   }
 
+  code = formatDisplaySourceCode(code)
+
   const lang = language ?? title?.split(".").pop() ?? "tsx"
 
   if (!collapsible) {
     return (
       <div className={cn("relative", className)}>
-        <CodeBlock code={code} language={lang} title={title} />
+        <CodeBlock
+          code={code}
+          language={lang}
+          title={title}
+          className={
+            unframed
+              ? "!my-0 rounded-none border-0 bg-transparent shadow-none"
+              : undefined
+          }
+          contentClassName={unframed ? "rounded-none bg-transparent" : undefined}
+        />
       </div>
     )
   }

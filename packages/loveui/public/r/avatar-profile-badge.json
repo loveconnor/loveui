@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-profile-badge",
+  "description": "Profile with badge",
+  "registryDependencies": [
+    "@loveui/avatar",
+    "@loveui/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/avatar-profile-badge.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\nexport default function AvatarProfileBadge() {\n  return (\n    <div className=\"flex items-center gap-1.5\">\n      <Avatar>\n        <AvatarImage\n          src=\"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=96&h=96&dpr=2&q=80\"\n          alt=\"Alex Johnson\"\n        />\n        <AvatarFallback>AJ</AvatarFallback>\n      </Avatar>\n\n      <div className=\"flex flex-col\">\n        <div className=\"flex items-center gap-1.5\">\n          <span className=\"text-sm font-semibold\">Alex Johnson</span>\n          <Badge variant=\"default\" size=\"sm\">\n            Pro\n          </Badge>\n        </div>\n        <span className=\"text-xs text-muted-foreground\">Founder & CEO</span>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

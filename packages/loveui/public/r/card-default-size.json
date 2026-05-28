@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-default-size",
+  "description": "Default card",
+  "registryDependencies": [
+    "@loveui/button",
+    "@loveui/card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/card-default-size.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport default function CardDefaultSize() {\n  return (\n    <Card className=\"w-full max-w-xs\">\n      <CardHeader>\n        <CardTitle>Default Card</CardTitle>\n        <CardDescription>\n          This card uses the default size variant.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <p>\n          The card component supports standard spacing for common content,\n          actions, and section layout.\n        </p>\n      </CardContent>\n      <CardFooter>\n        <Button variant=\"outline\" className=\"w-full\">\n          Action\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

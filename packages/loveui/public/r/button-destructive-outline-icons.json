@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-destructive-outline-icons",
+  "description": "Destructive outline buttons with icons",
+  "registryDependencies": [
+    "@loveui/button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/button-destructive-outline-icons.tsx",
+      "content": "import { ArrowRightIcon, TrashIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonDestructiveOutlineIcons() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-3\">\n      <Button variant=\"destructive-outline\">\n        <TrashIcon />\n        Delete\n      </Button>\n      <Button variant=\"destructive-outline\">\n        Delete\n        <ArrowRightIcon />\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}
