@@ -49,7 +49,8 @@ const TEXT_EXTENSIONS = new Set([
   ".scss",
   ".sass",
   ".mdx",
-  ".md"
+  ".md",
+  ".svg"
 ]);
 
 const EXCLUDED_DIRS = new Set([
@@ -360,6 +361,44 @@ const BUNDLED_BLOCKS = new Map([
       dependencies: {
         "class-variance-authority": "^0.7.1",
       },
+    },
+  ],
+  [
+    "integrations-one",
+    {
+      sourceDir: "integrations1",
+      targetBase: "components/blocks/integrations/one",
+    },
+  ],
+  [
+    "integrations-two",
+    {
+      sourceDir: "integrations2",
+      targetBase: "components/blocks/integrations/two",
+      dependencies: {
+        "class-variance-authority": "^0.7.1",
+      },
+    },
+  ],
+  [
+    "integrations-three",
+    {
+      sourceDir: "integrations3",
+      targetBase: "components/blocks/integrations/three",
+    },
+  ],
+  [
+    "integrations-four",
+    {
+      sourceDir: "integrations4",
+      targetBase: "components/blocks/integrations/four",
+    },
+  ],
+  [
+    "integrations-five",
+    {
+      sourceDir: "integrations5",
+      targetBase: "components/blocks/integrations/five",
     },
   ],
   [

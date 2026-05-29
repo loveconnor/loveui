@@ -30887,6 +30887,394 @@
         "source": "block",
         "blockPath": "contact/five"
       }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "integrations-one",
+      "type": "registry:block",
+      "title": "integrations/one",
+      "description": "Compact integration card grid with local logo assets and action link.",
+      "files": [
+        {
+          "path": "registry/default/blocks/integrations1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/integrations/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/integrations.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/one/components/integrations.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/adobe.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/adobe.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/canva.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/canva.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/cursor.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/cursor.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/gmail.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/gmail.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/notion.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/notion.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/planetscale.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/planetscale.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/polar.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/polar.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/supabase.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/supabase.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations1/components/logos/vercel.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/one/components/logos/vercel.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "integrations"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "integrations/one"
+      },
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "integrations-two",
+      "type": "registry:block",
+      "title": "integrations/two",
+      "description": "Bordered integration matrix with corner accents and local tool logos.",
+      "files": [
+        {
+          "path": "registry/default/blocks/integrations2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/integrations/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/integrations.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/two/components/integrations.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/two/components/decor-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/adobe.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/adobe.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/canva.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/canva.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/cursor.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/cursor.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/gmail.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/gmail.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/notion.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/notion.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/planetscale.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/planetscale.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/polar.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/polar.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/supabase.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/supabase.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations2/components/logos/vercel.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/two/components/logos/vercel.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "integrations"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "integrations/two"
+      },
+      "dependencies": [
+        "class-variance-authority"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "integrations-three",
+      "type": "registry:block",
+      "title": "integrations/three",
+      "description": "Split integration section with copy, CTA, and scattered logo grid.",
+      "files": [
+        {
+          "path": "registry/default/blocks/integrations3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/integrations/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/integrations.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/three/components/integrations.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/full-width-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/three/components/full-width-divider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/adobe.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/adobe.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/canva.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/canva.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/cursor.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/cursor.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/gmail.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/gmail.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/notion.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/notion.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/planetscale.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/planetscale.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/polar.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/polar.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/supabase.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/supabase.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations3/components/logos/vercel.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/three/components/logos/vercel.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "integrations"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "integrations/three"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "integrations-four",
+      "type": "registry:block",
+      "title": "integrations/four",
+      "description": "Large integration hero with masked logo tiles and product-stack copy.",
+      "files": [
+        {
+          "path": "registry/default/blocks/integrations4/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/integrations/four/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/integrations.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/four/components/integrations.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/adobe.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/adobe.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/canva.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/canva.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/cursor.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/cursor.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/gmail.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/gmail.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/notion.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/notion.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/planetscale.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/planetscale.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/polar.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/polar.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/supabase.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/supabase.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations4/components/logos/vercel.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/four/components/logos/vercel.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "integrations"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "integrations/four"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "integrations-five",
+      "type": "registry:block",
+      "title": "integrations/five",
+      "description": "Rounded logo cluster with overlap layout and integrations CTA.",
+      "files": [
+        {
+          "path": "registry/default/blocks/integrations5/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/integrations/five/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/integrations.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/integrations/five/components/integrations.tsx"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/adobe.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/adobe.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/canva.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/canva.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/cursor.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/cursor.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/gmail.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/gmail.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/notion.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/notion.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/planetscale.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/planetscale.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/polar.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/polar.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/supabase.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/supabase.svg"
+        },
+        {
+          "path": "registry/default/blocks/integrations5/components/logos/vercel.svg",
+          "type": "registry:file",
+          "target": "components/blocks/integrations/five/components/logos/vercel.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "integrations"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "integrations/five"
+      },
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ]
     }
   ]
 }
