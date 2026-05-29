@@ -726,6 +726,374 @@
       }
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logo-cloud-one",
+      "type": "registry:block",
+      "title": "logo-cloud/one",
+      "description": "Bordered partner logo grid with a compact section heading.",
+      "files": [
+        {
+          "path": "registry/default/blocks/logo-cloud-1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/logo-cloud/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/one/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-1/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/one/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "logo-cloud"
+      ],
+      "dependencies": [],
+      "meta": {
+        "source": "block",
+        "blockPath": "logo-cloud/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logo-cloud-two",
+      "type": "registry:block",
+      "title": "logo-cloud/two",
+      "description": "Alternating logo grid with decorative border accents.",
+      "files": [
+        {
+          "path": "registry/default/blocks/logo-cloud-2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/logo-cloud/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/two/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/two/components/decor-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-2/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/two/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "logo-cloud"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "logo-cloud/two"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logo-cloud-three",
+      "type": "registry:block",
+      "title": "logo-cloud/three",
+      "description": "Animated scrolling logo row with masked edges.",
+      "files": [
+        {
+          "path": "registry/default/blocks/logo-cloud-3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/logo-cloud/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/three/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/infinite-slider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/three/components/infinite-slider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-3/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/three/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "logo-cloud"
+      ],
+      "dependencies": [
+        "motion",
+        "react-use-measure"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "logo-cloud/three"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logo-cloud-four",
+      "type": "registry:block",
+      "title": "logo-cloud/four",
+      "description": "Animated logo marquee with progressive blur fades.",
+      "files": [
+        {
+          "path": "registry/default/blocks/logo-cloud-4/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/logo-cloud/four/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/four/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/infinite-slider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/four/components/infinite-slider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/progressive-blur.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/four/components/progressive-blur.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-4/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/four/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "logo-cloud"
+      ],
+      "dependencies": [
+        "motion",
+        "react-use-measure"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "logo-cloud/four"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logo-cloud-five",
+      "type": "registry:block",
+      "title": "logo-cloud/five",
+      "description": "Flexible wrap logo cloud for dense brand lists.",
+      "files": [
+        {
+          "path": "registry/default/blocks/logo-cloud-5/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/logo-cloud/five/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/logo-cloud/five/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/logo-cloud-5/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/logo-cloud/five/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "logo-cloud"
+      ],
+      "dependencies": [],
+      "meta": {
+        "source": "block",
+        "blockPath": "logo-cloud/five"
+      }
+    },
+    {
       "name": "ui",
       "type": "registry:ui",
       "registryDependencies": [
