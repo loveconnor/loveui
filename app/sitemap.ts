@@ -35,6 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     sitemapEntry('/', { changeFrequency: 'monthly', priority: 0.6 }),
     sitemapEntry('/components', { changeFrequency: 'weekly', priority: 0.95 }),
+    sitemapEntry('/blocks', { changeFrequency: 'weekly', priority: 0.9 }),
+    sitemapEntry('/blocks/auth', { changeFrequency: 'weekly', priority: 0.85 }),
     sitemapEntry('/llms.txt', { changeFrequency: 'weekly', priority: 0.5 }),
     sitemapEntry('/llms-full.txt', { changeFrequency: 'weekly', priority: 0.5 }),
     ...docsPages,

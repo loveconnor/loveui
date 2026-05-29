@@ -1,6 +1,7 @@
 export const appName = 'LoveUI';
 export const docsRoute = '/docs';
 export const componentsRoute = '/components';
+export const blocksRoute = '/blocks';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';
 

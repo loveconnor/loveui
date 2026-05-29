@@ -3,6 +3,174 @@
   "homepage": "https://ui.shadcn.com",
   "items": [
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-one",
+      "type": "registry:block",
+      "title": "auth/one",
+      "description": "Authentication block with social sign-in and an interactive particle field.",
+      "files": [
+        {
+          "path": "registry/default/blocks/auth1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/auth/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth1/components/auth-page.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/one/components/auth-page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth1/components/particles.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/one/components/particles.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth1/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/one/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth1/components/icons/google-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/one/components/icons/google-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth1/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/one/components/icons/github-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "auth"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "auth/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-three",
+      "type": "registry:block",
+      "title": "auth/three",
+      "description": "Minimal centered sign-up with logo, email, and social options.",
+      "files": [
+        {
+          "path": "registry/default/blocks/auth3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/auth/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth3/components/auth-page.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/three/components/auth-page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth3/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/three/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth3/components/ui/auth-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/three/components/ui/auth-divider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth3/components/ui/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/three/components/ui/decor-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth3/components/icons/google-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/three/components/icons/google-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth3/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/three/components/icons/github-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "auth"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json",
+        "https://www.loveui.dev/r/input-group.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "auth/three"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-two",
+      "type": "registry:block",
+      "title": "auth/two",
+      "description": "Centered sign-in with email, divider, and social options.",
+      "files": [
+        {
+          "path": "registry/default/blocks/auth2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/auth/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth2/components/auth.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/two/components/auth.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth2/components/ui/auth-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/two/components/ui/auth-divider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth2/components/ui/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/two/components/ui/decor-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth2/components/icons/google-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/two/components/icons/google-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/auth2/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/auth/two/components/icons/github-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "auth"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json",
+        "https://www.loveui.dev/r/input-group.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "auth/two"
+      }
+    },
+    {
       "name": "ui",
       "type": "registry:ui",
       "registryDependencies": [

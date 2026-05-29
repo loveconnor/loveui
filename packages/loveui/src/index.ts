@@ -85,6 +85,7 @@ const LOVE_UI_COMPONENTS = new Set([
   "frame",
   "group",
   "input",
+  "input-group",
   "label",
   "menu",
   "meter",
@@ -110,6 +111,30 @@ const LOVE_UI_COMPONENTS = new Set([
   "toolbar",
   "tooltip"
 ]);
+
+const BUNDLED_BLOCKS = new Map([
+  [
+    "auth-one",
+    {
+      sourceDir: "auth1",
+      targetBase: "components/blocks/auth/one",
+    },
+  ],
+  [
+    "auth-two",
+    {
+      sourceDir: "auth2",
+      targetBase: "components/blocks/auth/two",
+    },
+  ],
+  [
+    "auth-three",
+    {
+      sourceDir: "auth3",
+      targetBase: "components/blocks/auth/three",
+    },
+  ],
+] as const);
 
 const SCRIPT_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"] as const;
 const UTILS_TARGET_PATTERN = /(^|\/)lib\/utils(?:\.[a-z]+)?$/i;
@@ -800,6 +825,67 @@ async function collectBundledFiles(packageDir: string, packageName: string): Pro
   return files;
 }
 
+async function collectBundledBlockFiles(
+  packageName: string,
+  utilsImportPath: string
+): Promise<RegistryFile[] | null> {
+  const block = BUNDLED_BLOCKS.get(packageName);
+  if (!block) return null;
+
+  const blockDir = path.join(BUNDLED_REGISTRY_ROOT, "default", "blocks", block.sourceDir);
+  if (!existsSync(blockDir)) return null;
+
+  try {
+    const files: RegistryFile[] = [];
+    const blockFiles: RegistryFile[] = [];
+    const uiDependencies = new Set<string>();
+
+    async function walk(current: string) {
+      const entries = await readdir(current, { withFileTypes: true });
+
+      for (const entry of entries) {
+        if (EXCLUDED_DIRS.has(entry.name)) continue;
+
+        const fullPath = path.join(current, entry.name);
+        if (entry.isDirectory()) {
+          await walk(fullPath);
+          continue;
+        }
+
+        const ext = path.extname(entry.name);
+        if (!TEXT_EXTENSIONS.has(ext)) continue;
+
+        const relativePath = path.relative(blockDir, fullPath).split(path.sep).join("/");
+        const content = await readFile(fullPath, "utf8");
+
+        for (const match of content.matchAll(/@\/registry\/default\/ui\/([^"']+)/g)) {
+          const dependency = match[1];
+          if (dependency) uiDependencies.add(dependency);
+        }
+
+        blockFiles.push({
+          path: `default/blocks/${block.sourceDir}/${relativePath}`,
+          target: `${block.targetBase}/${relativePath}`,
+          content,
+        });
+      }
+    }
+
+    await walk(blockDir);
+
+    for (const dependency of Array.from(uiDependencies).sort((a, b) => a.localeCompare(b))) {
+      const dependencyFiles = await getLoveUiComponent(dependency, utilsImportPath);
+      if (dependencyFiles) files.push(...dependencyFiles);
+    }
+
+    files.push(...blockFiles);
+    return files;
+  } catch (error) {
+    console.warn(`Warning: unable to read ${packageName} from bundled blocks`, error);
+    return null;
+  }
+}
+
 async function getLoveUiComponent(
   componentName: string,
   utilsImportPath: string
@@ -939,6 +1025,9 @@ async function getBundledRegistryFiles(
       return null;
     }
   }
+
+  const bundledBlockFiles = await collectBundledBlockFiles(packageName, utilsImportPath);
+  if (bundledBlockFiles) return bundledBlockFiles;
 
   const directory = normalizePackageDirectory(packageName);
   const sourceDir = path.join(BUNDLED_PACKAGES_ROOT, directory);
@@ -1240,7 +1329,8 @@ async function extractDependencies(packageName: string): Promise<Record<string, 
   // For love-ui components, return core dependencies
   if (
     LOVE_UI_COMPONENTS.has(packageName) ||
-    existsSync(path.join(BUNDLED_REGISTRY_ROOT, "default", "examples", `${packageName}.tsx`))
+    existsSync(path.join(BUNDLED_REGISTRY_ROOT, "default", "examples", `${packageName}.tsx`)) ||
+    BUNDLED_BLOCKS.has(packageName)
   ) {
     return { ...LOVE_UI_CORE_DEPS };
   }

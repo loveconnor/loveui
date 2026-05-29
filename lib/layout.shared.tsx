@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { appName, componentsRoute, docsRoute, gitConfig } from './shared';
+import { appName, blocksRoute, componentsRoute, docsRoute, gitConfig } from './shared';
 import { ThemeSwitch } from '@/components/theme-switch';
 
 export function baseOptions(): BaseLayoutProps {
@@ -18,6 +18,12 @@ export function baseOptions(): BaseLayoutProps {
       {
         text: 'Components',
         url: componentsRoute,
+        active: 'nested-url',
+        on: 'nav',
+      },
+      {
+        text: 'Blocks',
+        url: blocksRoute,
         active: 'nested-url',
         on: 'nav',
       },
