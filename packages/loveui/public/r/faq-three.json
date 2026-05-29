@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-three",
+  "type": "registry:block",
+  "title": "faq/three",
+  "description": "Split FAQ section with guide rail accents and decorated accordion items.",
+  "files": [
+    {
+      "path": "registry/default/blocks/faq-3/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/faq/three/app/page.tsx",
+      "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/faq-3/components/faq.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/faq/three/components/faq.tsx",
+      "content": "import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\nimport { DecorIcon } from \"./decor-icon\";\n\nexport function FaqsSection() {\n\treturn (\n\t\t<section className=\"mx-auto grid min-h-screen w-full max-w-5xl grid-cols-1 md:grid-cols-2 lg:border-x\">\n\t\t\t<div className=\"px-4 pt-12 pb-6\">\n\t\t\t\t<div className=\"space-y-5\">\n\t\t\t\t\t<h2 className=\"text-balance font-bold text-4xl md:text-6xl lg:font-black\">\n\t\t\t\t\t\tFrequently Asked Questions\n\t\t\t\t\t</h2>\n\t\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\t\tQuick answers to common questions about LoveUI. Open any question to\n\t\t\t\t\t\tlearn more.\n\t\t\t\t\t</p>\n\t\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\t\t{\"Can't find what you're looking for? \"}\n\t\t\t\t\t\t<a className=\"text-primary hover:underline\" href=\"#\">\n\t\t\t\t\t\t\tContact Us\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div className=\"relative place-content-center\">\n\t\t\t\t{/* vertical guide line */}\n\t\t\t\t<div\n\t\t\t\t\taria-hidden=\"true\"\n\t\t\t\t\tclassName=\"pointer-events-none absolute inset-y-0 left-3 h-full w-px bg-border\"\n\t\t\t\t/>\n\n\t\t\t\t<Accordion\n\t\t\t\t\tclassName=\"rounded-none border-x-0 border-y\"\n\t\t\t\t\tcollapsible\n\t\t\t\t\ttype=\"single\"\n\t\t\t\t>\n\t\t\t\t\t{faqs.map((item) => (\n\t\t\t\t\t\t<AccordionItem\n\t\t\t\t\t\t\tclassName=\"group relative pl-5\"\n\t\t\t\t\t\t\tkey={item.id}\n\t\t\t\t\t\t\tvalue={item.id}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<DecorIcon\n\t\t\t\t\t\t\t\tclassName=\"left-[13px] size-3 group-last:hidden\"\n\t\t\t\t\t\t\t\tposition=\"bottom-left\"\n\t\t\t\t\t\t\t/>\n\n\t\t\t\t\t\t\t<AccordionTrigger className=\"px-4 py-4 hover:no-underline focus-visible:underline focus-visible:ring-0\">\n\t\t\t\t\t\t\t\t{item.title}\n\t\t\t\t\t\t\t</AccordionTrigger>\n\n\t\t\t\t\t\t\t<AccordionContent className=\"px-4 pb-4 text-muted-foreground\">\n\t\t\t\t\t\t\t\t{item.content}\n\t\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t\t</AccordionItem>\n\t\t\t\t\t))}\n\t\t\t\t</Accordion>\n\t\t\t</div>\n\t\t</section>\n\t);\n}\n\nconst faqs = [\n\t{\n\t\tid: \"item-1\",\n\t\ttitle: \"What is LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is an open-source collection of React components, examples, blocks, and patterns for building polished interfaces with Tailwind CSS.\",\n\t},\n\t{\n\t\tid: \"item-2\",\n\t\ttitle: \"Who can benefit from LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is built for founders, product teams, agencies, and developers who want editable UI source instead of a black-box component package.\",\n\t},\n\t{\n\t\tid: \"item-3\",\n\t\ttitle: \"What does LoveUI include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes reusable UI components, production-ready examples, full-page blocks, documentation, and an optional skill pack for AI coding agents.\",\n\t},\n\t{\n\t\tid: \"item-4\",\n\t\ttitle: \"Can I customize LoveUI components?\",\n\t\tcontent:\n\t\t\t\"Yes. The CLI copies component source into your project, so you can inspect the code, change the styles, and keep only the pieces you need.\",\n\t},\n\t{\n\t\tid: \"item-5\",\n\t\ttitle: \"Does LoveUI work with my existing app?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI works well in React projects using Tailwind CSS. You can add individual components and adjust import paths to match your app.\",\n\t},\n\t{\n\t\tid: \"item-6\",\n\t\ttitle: \"Where can I get help with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Start with the docs and registry examples. If something looks wrong, open an issue or inspect the copied source directly in your project.\",\n\t},\n\t{\n\t\tid: \"item-7\",\n\t\ttitle: \"How do I get started with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add components or blocks as your interface needs them.\",\n\t},\n];\n"
+    },
+    {
+      "path": "registry/default/blocks/faq-3/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/faq/three/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "faq"
+  ],
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/accordion.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "faq/three"
+  }
+}

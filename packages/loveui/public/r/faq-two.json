@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-two",
+  "type": "registry:block",
+  "title": "faq/two",
+  "description": "Two-column FAQ layout with a fixed intro panel and footer contact row.",
+  "files": [
+    {
+      "path": "registry/default/blocks/faq-2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/faq/two/app/page.tsx",
+      "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/faq-2/components/faq.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/faq/two/components/faq.tsx",
+      "content": "import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\n\nexport function FaqsSection() {\n\treturn (\n\t\t<div className=\"mx-auto min-h-screen w-full max-w-5xl lg:border-x\">\n\t\t\t<div className=\"mx-4 grid h-[calc(100vh-3.5rem)] grid-cols-1 border-x md:mx-0 md:grid-cols-2 md:border-x-0\">\n\t\t\t\t<div className=\"space-y-4 px-4 pt-12 pb-4 md:border-r\">\n\t\t\t\t\t<h2 className=\"font-black text-3xl md:text-4xl\">FAQs</h2>\n\t\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\t\tHere are some common questions and answers that you might encounter\n\t\t\t\t\t\twhen using LoveUI.\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div className=\"place-content-center\">\n\t\t\t\t\t<Accordion\n\t\t\t\t\t\tclassName=\"rounded-none border-x-0 border-y\"\n\t\t\t\t\t\tcollapsible\n\t\t\t\t\t\ttype=\"single\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{questions.map((item) => (\n\t\t\t\t\t\t\t<AccordionItem className=\"px-4\" key={item.id} value={item.id}>\n\t\t\t\t\t\t\t\t<AccordionTrigger className=\"py-4 hover:no-underline focus-visible:underline focus-visible:ring-0\">\n\t\t\t\t\t\t\t\t\t{item.title}\n\t\t\t\t\t\t\t\t</AccordionTrigger>\n\t\t\t\t\t\t\t\t<AccordionContent className=\"pb-4 text-muted-foreground\">\n\t\t\t\t\t\t\t\t\t{item.content}\n\t\t\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t\t\t</AccordionItem>\n\t\t\t\t\t\t))}\n\t\t\t\t\t</Accordion>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div className=\"flex h-14 items-center justify-center border-t\">\n\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\tCan't find what you're looking for?{\" \"}\n\t\t\t\t\t<a className=\"text-primary hover:underline\" href=\"#\">\n\t\t\t\t\t\tContact Us\n\t\t\t\t\t</a>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nconst questions = [\n\t{\n\t\tid: \"item-1\",\n\t\ttitle: \"What is LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is an open-source collection of React components, examples, blocks, and patterns for building polished interfaces with Tailwind CSS.\",\n\t},\n\t{\n\t\tid: \"item-2\",\n\t\ttitle: \"Who can benefit from LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is built for founders, product teams, agencies, and developers who want editable UI source instead of a black-box component package.\",\n\t},\n\t{\n\t\tid: \"item-3\",\n\t\ttitle: \"What does LoveUI include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes reusable UI components, production-ready examples, full-page blocks, documentation, and an optional skill pack for AI coding agents.\",\n\t},\n\t{\n\t\tid: \"item-4\",\n\t\ttitle: \"Can I customize LoveUI components?\",\n\t\tcontent:\n\t\t\t\"Yes. The CLI copies component source into your project, so you can inspect the code, change the styles, and keep only the pieces you need.\",\n\t},\n\t{\n\t\tid: \"item-5\",\n\t\ttitle: \"Does LoveUI work with my existing app?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI works well in React projects using Tailwind CSS. You can add individual components and adjust import paths to match your app.\",\n\t},\n\t{\n\t\tid: \"item-6\",\n\t\ttitle: \"Where can I get help with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Start with the docs and registry examples. If something looks wrong, open an issue or inspect the copied source directly in your project.\",\n\t},\n\t{\n\t\tid: \"item-7\",\n\t\ttitle: \"How do I get started with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add components or blocks as your interface needs them.\",\n\t},\n];\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "faq"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/accordion.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "faq/two"
+  }
+}

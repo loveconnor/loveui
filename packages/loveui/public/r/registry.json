@@ -30412,6 +30412,191 @@
         "source": "block",
         "blockPath": "cta/five"
       }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "faq-one",
+      "type": "registry:block",
+      "title": "faq/one",
+      "description": "Centered FAQ section with intro copy, bordered accordion, and support link.",
+      "files": [
+        {
+          "path": "registry/default/blocks/faq-1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/faq/one/app/page.tsx",
+          "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-1/components/faq.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/one/components/faq.tsx",
+          "content": "import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\n\nexport function FaqsSection() {\n\treturn (\n\t\t<div className=\"mx-auto w-full max-w-2xl space-y-7 px-4\">\n\t\t\t<div className=\"space-y-2\">\n\t\t\t\t<h2 className=\"font-semibold text-3xl md:text-4xl\">\n\t\t\t\t\tFrequently Asked Questions\n\t\t\t\t</h2>\n\t\t\t\t<p className=\"max-w-2xl text-muted-foreground\">\n\t\t\t\t\tHere are some common questions and answers that you might encounter\n\t\t\t\t\twhen using LoveUI. If you don't find the answer you're looking for,\n\t\t\t\t\tfeel free to reach out.\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t<Accordion className=\"rounded-lg border\" collapsible type=\"single\">\n\t\t\t\t{questions.map((item) => (\n\t\t\t\t\t<AccordionItem className=\"px-4\" key={item.id} value={item.id}>\n\t\t\t\t\t\t<AccordionTrigger className=\"py-4 hover:no-underline focus-visible:underline focus-visible:ring-0\">\n\t\t\t\t\t\t\t{item.title}\n\t\t\t\t\t\t</AccordionTrigger>\n\t\t\t\t\t\t<AccordionContent className=\"pb-4! text-muted-foreground\">\n\t\t\t\t\t\t\t{item.content}\n\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t</AccordionItem>\n\t\t\t\t))}\n\t\t\t</Accordion>\n\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\tCan't find what you're looking for? Contact our{\" \"}\n\t\t\t\t<a className=\"text-primary hover:underline\" href=\"#\">\n\t\t\t\t\tcustomer support team\n\t\t\t\t</a>\n\t\t\t</p>\n\t\t</div>\n\t);\n}\n\nconst questions = [\n\t{\n\t\tid: \"item-1\",\n\t\ttitle: \"What is LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is an open-source collection of React components, examples, blocks, and patterns for building polished interfaces with Tailwind CSS.\",\n\t},\n\t{\n\t\tid: \"item-2\",\n\t\ttitle: \"Who can benefit from LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is built for founders, product teams, agencies, and developers who want editable UI source instead of a black-box component package.\",\n\t},\n\t{\n\t\tid: \"item-3\",\n\t\ttitle: \"What does LoveUI include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes reusable UI components, production-ready examples, full-page blocks, documentation, and an optional skill pack for AI coding agents.\",\n\t},\n\t{\n\t\tid: \"item-4\",\n\t\ttitle: \"Can I customize LoveUI components?\",\n\t\tcontent:\n\t\t\t\"Yes. The CLI copies component source into your project, so you can inspect the code, change the styles, and keep only the pieces you need.\",\n\t},\n\t{\n\t\tid: \"item-5\",\n\t\ttitle: \"Does LoveUI work with my existing app?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI works well in React projects using Tailwind CSS. You can add individual components and adjust import paths to match your app.\",\n\t},\n\t{\n\t\tid: \"item-6\",\n\t\ttitle: \"Where can I get help with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Start with the docs and registry examples. If something looks wrong, open an issue or inspect the copied source directly in your project.\",\n\t},\n\t{\n\t\tid: \"item-7\",\n\t\ttitle: \"How do I get started with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add components or blocks as your interface needs them.\",\n\t},\n];\n"
+        }
+      ],
+      "categories": [
+        "block",
+        "faq"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/accordion.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "faq/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "faq-two",
+      "type": "registry:block",
+      "title": "faq/two",
+      "description": "Two-column FAQ layout with a fixed intro panel and footer contact row.",
+      "files": [
+        {
+          "path": "registry/default/blocks/faq-2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/faq/two/app/page.tsx",
+          "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-2/components/faq.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/two/components/faq.tsx",
+          "content": "import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\n\nexport function FaqsSection() {\n\treturn (\n\t\t<div className=\"mx-auto min-h-screen w-full max-w-5xl lg:border-x\">\n\t\t\t<div className=\"mx-4 grid h-[calc(100vh-3.5rem)] grid-cols-1 border-x md:mx-0 md:grid-cols-2 md:border-x-0\">\n\t\t\t\t<div className=\"space-y-4 px-4 pt-12 pb-4 md:border-r\">\n\t\t\t\t\t<h2 className=\"font-black text-3xl md:text-4xl\">FAQs</h2>\n\t\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\t\tHere are some common questions and answers that you might encounter\n\t\t\t\t\t\twhen using LoveUI.\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div className=\"place-content-center\">\n\t\t\t\t\t<Accordion\n\t\t\t\t\t\tclassName=\"rounded-none border-x-0 border-y\"\n\t\t\t\t\t\tcollapsible\n\t\t\t\t\t\ttype=\"single\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{questions.map((item) => (\n\t\t\t\t\t\t\t<AccordionItem className=\"px-4\" key={item.id} value={item.id}>\n\t\t\t\t\t\t\t\t<AccordionTrigger className=\"py-4 hover:no-underline focus-visible:underline focus-visible:ring-0\">\n\t\t\t\t\t\t\t\t\t{item.title}\n\t\t\t\t\t\t\t\t</AccordionTrigger>\n\t\t\t\t\t\t\t\t<AccordionContent className=\"pb-4 text-muted-foreground\">\n\t\t\t\t\t\t\t\t\t{item.content}\n\t\t\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t\t\t</AccordionItem>\n\t\t\t\t\t\t))}\n\t\t\t\t\t</Accordion>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div className=\"flex h-14 items-center justify-center border-t\">\n\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\tCan't find what you're looking for?{\" \"}\n\t\t\t\t\t<a className=\"text-primary hover:underline\" href=\"#\">\n\t\t\t\t\t\tContact Us\n\t\t\t\t\t</a>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nconst questions = [\n\t{\n\t\tid: \"item-1\",\n\t\ttitle: \"What is LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is an open-source collection of React components, examples, blocks, and patterns for building polished interfaces with Tailwind CSS.\",\n\t},\n\t{\n\t\tid: \"item-2\",\n\t\ttitle: \"Who can benefit from LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is built for founders, product teams, agencies, and developers who want editable UI source instead of a black-box component package.\",\n\t},\n\t{\n\t\tid: \"item-3\",\n\t\ttitle: \"What does LoveUI include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes reusable UI components, production-ready examples, full-page blocks, documentation, and an optional skill pack for AI coding agents.\",\n\t},\n\t{\n\t\tid: \"item-4\",\n\t\ttitle: \"Can I customize LoveUI components?\",\n\t\tcontent:\n\t\t\t\"Yes. The CLI copies component source into your project, so you can inspect the code, change the styles, and keep only the pieces you need.\",\n\t},\n\t{\n\t\tid: \"item-5\",\n\t\ttitle: \"Does LoveUI work with my existing app?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI works well in React projects using Tailwind CSS. You can add individual components and adjust import paths to match your app.\",\n\t},\n\t{\n\t\tid: \"item-6\",\n\t\ttitle: \"Where can I get help with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Start with the docs and registry examples. If something looks wrong, open an issue or inspect the copied source directly in your project.\",\n\t},\n\t{\n\t\tid: \"item-7\",\n\t\ttitle: \"How do I get started with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add components or blocks as your interface needs them.\",\n\t},\n];\n"
+        }
+      ],
+      "categories": [
+        "block",
+        "faq"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/accordion.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "faq/two"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "faq-three",
+      "type": "registry:block",
+      "title": "faq/three",
+      "description": "Split FAQ section with guide rail accents and decorated accordion items.",
+      "files": [
+        {
+          "path": "registry/default/blocks/faq-3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/faq/three/app/page.tsx",
+          "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-3/components/faq.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/three/components/faq.tsx",
+          "content": "import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\nimport { DecorIcon } from \"./decor-icon\";\n\nexport function FaqsSection() {\n\treturn (\n\t\t<section className=\"mx-auto grid min-h-screen w-full max-w-5xl grid-cols-1 md:grid-cols-2 lg:border-x\">\n\t\t\t<div className=\"px-4 pt-12 pb-6\">\n\t\t\t\t<div className=\"space-y-5\">\n\t\t\t\t\t<h2 className=\"text-balance font-bold text-4xl md:text-6xl lg:font-black\">\n\t\t\t\t\t\tFrequently Asked Questions\n\t\t\t\t\t</h2>\n\t\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\t\tQuick answers to common questions about LoveUI. Open any question to\n\t\t\t\t\t\tlearn more.\n\t\t\t\t\t</p>\n\t\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\t\t{\"Can't find what you're looking for? \"}\n\t\t\t\t\t\t<a className=\"text-primary hover:underline\" href=\"#\">\n\t\t\t\t\t\t\tContact Us\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div className=\"relative place-content-center\">\n\t\t\t\t{/* vertical guide line */}\n\t\t\t\t<div\n\t\t\t\t\taria-hidden=\"true\"\n\t\t\t\t\tclassName=\"pointer-events-none absolute inset-y-0 left-3 h-full w-px bg-border\"\n\t\t\t\t/>\n\n\t\t\t\t<Accordion\n\t\t\t\t\tclassName=\"rounded-none border-x-0 border-y\"\n\t\t\t\t\tcollapsible\n\t\t\t\t\ttype=\"single\"\n\t\t\t\t>\n\t\t\t\t\t{faqs.map((item) => (\n\t\t\t\t\t\t<AccordionItem\n\t\t\t\t\t\t\tclassName=\"group relative pl-5\"\n\t\t\t\t\t\t\tkey={item.id}\n\t\t\t\t\t\t\tvalue={item.id}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<DecorIcon\n\t\t\t\t\t\t\t\tclassName=\"left-[13px] size-3 group-last:hidden\"\n\t\t\t\t\t\t\t\tposition=\"bottom-left\"\n\t\t\t\t\t\t\t/>\n\n\t\t\t\t\t\t\t<AccordionTrigger className=\"px-4 py-4 hover:no-underline focus-visible:underline focus-visible:ring-0\">\n\t\t\t\t\t\t\t\t{item.title}\n\t\t\t\t\t\t\t</AccordionTrigger>\n\n\t\t\t\t\t\t\t<AccordionContent className=\"px-4 pb-4 text-muted-foreground\">\n\t\t\t\t\t\t\t\t{item.content}\n\t\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t\t</AccordionItem>\n\t\t\t\t\t))}\n\t\t\t\t</Accordion>\n\t\t\t</div>\n\t\t</section>\n\t);\n}\n\nconst faqs = [\n\t{\n\t\tid: \"item-1\",\n\t\ttitle: \"What is LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is an open-source collection of React components, examples, blocks, and patterns for building polished interfaces with Tailwind CSS.\",\n\t},\n\t{\n\t\tid: \"item-2\",\n\t\ttitle: \"Who can benefit from LoveUI?\",\n\t\tcontent:\n\t\t\t\"LoveUI is built for founders, product teams, agencies, and developers who want editable UI source instead of a black-box component package.\",\n\t},\n\t{\n\t\tid: \"item-3\",\n\t\ttitle: \"What does LoveUI include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes reusable UI components, production-ready examples, full-page blocks, documentation, and an optional skill pack for AI coding agents.\",\n\t},\n\t{\n\t\tid: \"item-4\",\n\t\ttitle: \"Can I customize LoveUI components?\",\n\t\tcontent:\n\t\t\t\"Yes. The CLI copies component source into your project, so you can inspect the code, change the styles, and keep only the pieces you need.\",\n\t},\n\t{\n\t\tid: \"item-5\",\n\t\ttitle: \"Does LoveUI work with my existing app?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI works well in React projects using Tailwind CSS. You can add individual components and adjust import paths to match your app.\",\n\t},\n\t{\n\t\tid: \"item-6\",\n\t\ttitle: \"Where can I get help with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Start with the docs and registry examples. If something looks wrong, open an issue or inspect the copied source directly in your project.\",\n\t},\n\t{\n\t\tid: \"item-7\",\n\t\ttitle: \"How do I get started with LoveUI?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add components or blocks as your interface needs them.\",\n\t},\n];\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-3/components/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/three/components/decor-icon.tsx",
+          "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+        }
+      ],
+      "categories": [
+        "block",
+        "faq"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/accordion.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "faq/three"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "faq-four",
+      "type": "registry:block",
+      "title": "faq/four",
+      "description": "Categorized FAQ browser with topic filters and compact answer cards.",
+      "files": [
+        {
+          "path": "registry/default/blocks/faq-4/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/faq/four/app/page.tsx",
+          "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-4/components/faq.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/four/components/faq.tsx",
+          "content": "\"use client\";\nimport React from \"react\";\nimport {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { LayoutGridIcon, PowerIcon, FeatherIcon, CreditCardIcon, LifeBuoyIcon } from \"lucide-react\";\n\nconst categories = [\n\t{\n\t\ticon: (\n\t\t\t<LayoutGridIcon className=\"size-4\" />\n\t\t),\n\t\tid: \"all\",\n\t\tlabel: \"All Topics\",\n\t},\n\t{\n\t\ticon: (\n\t\t\t<PowerIcon className=\"size-4\" />\n\t\t),\n\t\tid: \"getting-started\",\n\t\tlabel: \"Getting Started\",\n\t},\n\t{\n\t\ticon: (\n\t\t\t<FeatherIcon className=\"size-4\" />\n\t\t),\n\t\tid: \"features\",\n\t\tlabel: \"Features\",\n\t},\n\t{\n\t\ticon: (\n\t\t\t<CreditCardIcon className=\"size-4\" />\n\t\t),\n\t\tid: \"license\",\n\t\tlabel: \"License\",\n\t},\n\t{\n\t\ticon: (\n\t\t\t<LifeBuoyIcon className=\"size-4\" />\n\t\t),\n\t\tid: \"support\",\n\t\tlabel: \"Support\",\n\t},\n];\n\nexport function FaqsSection() {\n\tconst [activeCategory, setActiveCategory] = React.useState(\"all\");\n\n\tconst filtered = faqs.filter((faq) => {\n\t\tconst matchesCategory =\n\t\t\tactiveCategory === \"all\" || faq.category === activeCategory;\n\t\treturn matchesCategory;\n\t});\n\n\tconst currentCategory = React.useMemo(\n\t\t() => categories.find((cat) => cat.id === activeCategory),\n\t\t[activeCategory]\n\t);\n\n\treturn (\n\t\t<section className=\"mx-auto min-h-screen w-full max-w-5xl\">\n\t\t\t<div className=\"flex flex-col items-center justify-center gap-4 px-4 py-16\">\n\t\t\t\t<h2 className=\"text-balance font-black font-mono text-4xl md:text-5xl lg:font-black\">\n\t\t\t\t\tFAQs\n\t\t\t\t</h2>\n\t\t\t\t<p className=\"text-muted-foreground\">Answers about using LoveUI.</p>\n\t\t\t</div>\n\t\t\t<div className=\"relative grid min-h-full grid-cols-1 py-12 md:grid-cols-3\">\n\t\t\t\t<div className=\"flex h-full items-start justify-center border-b pb-2 md:border-b-0\">\n\t\t\t\t\t<div className=\"flex w-max flex-wrap items-start justify-start gap-2 md:flex-col md:justify-center\">\n\t\t\t\t\t\t{categories.map((cat) => (\n\t\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\t\tkey={cat.id}\n\t\t\t\t\t\t\t\tonClick={() => setActiveCategory(cat.id)}\n\t\t\t\t\t\t\t\tvariant={activeCategory === cat.id ? \"outline\" : \"ghost\"}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{cat.icon}\n\t\t\t\t\t\t\t\t{cat.label}\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t))}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div className=\"col-span-2 space-y-5 px-4 py-5\">\n\t\t\t\t\t{currentCategory && (\n\t\t\t\t\t\t<div className=\"flex items-center gap-2\">\n\t\t\t\t\t\t\t{currentCategory.icon}\n\t\t\t\t\t\t\t<span className=\"font-medium\">{currentCategory.label}</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t)}\n\t\t\t\t\t<Accordion className=\"space-y-2\" collapsible type=\"single\">\n\t\t\t\t\t\t{filtered.map((item) => (\n\t\t\t\t\t\t\t<AccordionItem\n\t\t\t\t\t\t\t\tclassName=\"border-b-0\"\n\t\t\t\t\t\t\t\tkey={item.id}\n\t\t\t\t\t\t\t\tvalue={item.id.toString()}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<AccordionTrigger className=\"bg-muted px-4 hover:no-underline dark:bg-muted/50\">\n\t\t\t\t\t\t\t\t\t{item.title}\n\t\t\t\t\t\t\t\t</AccordionTrigger>\n\n\t\t\t\t\t\t\t\t<AccordionContent className=\"p-4\">\n\t\t\t\t\t\t\t\t\t{item.content}\n\t\t\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t\t\t</AccordionItem>\n\t\t\t\t\t\t))}\n\t\t\t\t\t</Accordion>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</section>\n\t);\n}\n\nconst faqs = [\n\t{\n\t\tid: 1,\n\t\tcategory: \"getting-started\",\n\t\ttitle: \"How do I add my first component?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add a component such as npx love-ui@latest add button.\",\n\t},\n\t{\n\t\tid: 2,\n\t\tcategory: \"getting-started\",\n\t\ttitle: \"What are the system requirements?\",\n\t\tcontent:\n\t\t\t\"LoveUI is designed for React projects that use Tailwind CSS. If your project uses a different import alias, update the copied imports after installation.\",\n\t},\n\t{\n\t\tid: 3,\n\t\tcategory: \"features\",\n\t\ttitle: \"Can I use LoveUI with a product team?\",\n\t\tcontent:\n\t\t\t\"Yes. Because LoveUI components live in your codebase, teams can review, edit, and version them like any other application source.\",\n\t},\n\t{\n\t\tid: 4,\n\t\tcategory: \"features\",\n\t\ttitle: \"What does the component library include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes primitives, examples, and full-page blocks for common product interfaces, from forms and dialogs to auth screens and FAQ sections.\",\n\t},\n\t{\n\t\tid: 5,\n\t\tcategory: \"features\",\n\t\ttitle: \"Does LoveUI include AI agent guidance?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI Skills gives AI coding agents design rules, workflow steps, and quality checks for building better interfaces with LoveUI.\",\n\t},\n\t{\n\t\tid: 6,\n\t\tcategory: \"license\",\n\t\ttitle: \"Is LoveUI free to use?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI is open source under the MIT license, so you can use it in personal, internal, and commercial projects.\",\n\t},\n\t{\n\t\tid: 7,\n\t\tcategory: \"license\",\n\t\ttitle: \"Do I have to keep the generated files unchanged?\",\n\t\tcontent:\n\t\t\t\"No. The source is copied into your app specifically so you can rename, restyle, and reshape it for your product.\",\n\t},\n\t{\n\t\tid: 8,\n\t\tcategory: \"support\",\n\t\ttitle: \"How do I report a bug?\",\n\t\tcontent:\n\t\t\t\"Open a GitHub issue with a small reproduction, the component name, and the behavior you expected to see.\",\n\t},\n\t{\n\t\tid: 9,\n\t\tcategory: \"support\",\n\t\ttitle: \"Where should I look for examples?\",\n\t\tcontent:\n\t\t\t\"Start with the component docs and block gallery. Each item shows the install command and source files you can copy or customize.\",\n\t},\n];\n"
+        }
+      ],
+      "categories": [
+        "block",
+        "faq"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/accordion.json",
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "faq/four"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "faq-five",
+      "type": "registry:block",
+      "title": "faq/five",
+      "description": "Searchable FAQ center with category tabs, empty state, and contact link.",
+      "files": [
+        {
+          "path": "registry/default/blocks/faq-5/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/faq/five/app/page.tsx",
+          "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-5/components/faq.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/five/components/faq.tsx",
+          "content": "\"use client\";\nimport { cn } from \"@/lib/utils\";\n\nimport React from \"react\";\nimport {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n\tEmpty,\n\tEmptyContent,\n\tEmptyHeader,\n\tEmptyMedia,\n\tEmptyTitle,\n} from \"@/registry/default/ui/empty\";\nimport {\n\tInputGroup,\n\tInputGroupAddon,\n\tInputGroupInput,\n} from \"@/registry/default/ui/input-group\";\nimport { FullWidthDivider } from \"./full-width-divider\";\nimport { SearchIcon, SearchSlashIcon } from \"lucide-react\";\n\nexport function FaqsSection() {\n\tconst [searchTerm, setSearchTerm] = React.useState(\"\");\n\tconst [activeCategory, setActiveCategory] = React.useState(\"all\");\n\n\tconst categories = [\n\t\t{ id: \"all\", label: \"All\" },\n\t\t{ id: \"getting-started\", label: \"Getting Started\" },\n\t\t{ id: \"features\", label: \"Features\" },\n\t\t{ id: \"license\", label: \"License\" },\n\t\t{ id: \"support\", label: \"Support\" },\n\t];\n\n\tconst filtered = faqs.filter((faq) => {\n\t\tconst matchesCategory =\n\t\t\tactiveCategory === \"all\" || faq.category === activeCategory;\n\t\tconst matchesSearch =\n\t\t\tfaq.title.toLowerCase().includes(searchTerm.toLowerCase()) ||\n\t\t\tfaq.content.toLowerCase().includes(searchTerm.toLowerCase());\n\t\treturn matchesCategory && matchesSearch;\n\t});\n\n\treturn (\n\t\t<div className=\"mx-auto min-h-screen w-full max-w-3xl md:border-x\">\n\t\t\t<div className=\"px-4 py-16 lg:px-6\">\n\t\t\t\t<h1 className=\"mb-4 font-semibold text-3xl md:text-4xl\">\n\t\t\t\t\tFrequently Asked Questions\n\t\t\t\t</h1>\n\t\t\t\t<p className=\"mb-8 max-w-2xl text-muted-foreground\">\n\t\t\t\t\tFind answers to common questions about LoveUI. Can't find what you're\n\t\t\t\t\tlooking for? Our support team is here to help.\n\t\t\t\t</p>\n\n\t\t\t\t<InputGroup className=\"max-w-sm\">\n\t\t\t\t\t<InputGroupInput\n\t\t\t\t\t\tonChange={(e) => setSearchTerm(e.target.value)}\n\t\t\t\t\t\tplaceholder=\"Search FAQs...\"\n\t\t\t\t\t\tvalue={searchTerm}\n\t\t\t\t\t/>\n\t\t\t\t\t<InputGroupAddon>\n\t\t\t\t\t\t<SearchIcon data-icon=\"inline-start\" />\n\t\t\t\t\t</InputGroupAddon>\n\t\t\t\t</InputGroup>\n\t\t\t</div>\n\n\t\t\t<FullWidthDivider contained />\n\n\t\t\t<div className=\"flex flex-wrap gap-1 border-b px-4 md:gap-3\">\n\t\t\t\t{categories.map((cat) => (\n\t\t\t\t\t<button\n\t\t\t\t\t\tclassName=\"flex flex-col\"\n\t\t\t\t\t\tkey={cat.id}\n\t\t\t\t\t\tonClick={() => setActiveCategory(cat.id)}\n\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<span\n\t\t\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\t\t\"p-1 text-muted-foreground text-sm hover:text-primary md:p-2 md:text-base\",\n\t\t\t\t\t\t\t\tactiveCategory === cat.id && \"text-primary\"\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{cat.label}\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t{activeCategory === cat.id && (\n\t\t\t\t\t\t\t<span className=\"h-0.5 w-full rounded-full bg-primary\" />\n\t\t\t\t\t\t)}\n\t\t\t\t\t</button>\n\t\t\t\t))}\n\t\t\t</div>\n\n\t\t\t<Accordion\n\t\t\t\tclassName=\"space-y-2 border-0! px-4 py-12 lg:px-6\"\n\t\t\t\tcollapsible\n\t\t\t\ttype=\"single\"\n\t\t\t>\n\t\t\t\t{filtered.map((faq) => (\n\t\t\t\t\t<AccordionItem\n\t\t\t\t\t\tclassName=\"rounded-lg border px-4 shadow-xs\"\n\t\t\t\t\t\tkey={faq.id}\n\t\t\t\t\t\tvalue={faq.id.toString()}\n\t\t\t\t\t>\n\t\t\t\t\t\t<AccordionTrigger className=\"hover:no-underline\">\n\t\t\t\t\t\t\t{faq.title}\n\t\t\t\t\t\t</AccordionTrigger>\n\t\t\t\t\t\t<AccordionContent className=\"pt-2 pb-4 text-muted-foreground\">\n\t\t\t\t\t\t\t{faq.content}\n\t\t\t\t\t\t</AccordionContent>\n\t\t\t\t\t</AccordionItem>\n\t\t\t\t))}\n\t\t\t</Accordion>\n\n\t\t\t{filtered.length === 0 && (\n\t\t\t\t<Empty>\n\t\t\t\t\t<EmptyHeader>\n\t\t\t\t\t\t<EmptyMedia variant=\"icon\">\n\t\t\t\t\t\t\t<SearchIcon\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</EmptyMedia>\n\t\t\t\t\t\t<EmptyTitle>No FAQs found matching your search.</EmptyTitle>\n\t\t\t\t\t</EmptyHeader>\n\t\t\t\t\t<EmptyContent>\n\t\t\t\t\t\t<Button onClick={() => setSearchTerm(\"\")} variant=\"outline\">\n\t\t\t\t\t\t\t<SearchSlashIcon data-icon=\"inline-start\" />\n\t\t\t\t\t\t\tClear search\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</EmptyContent>\n\t\t\t\t</Empty>\n\t\t\t)}\n\n\t\t\t<div className=\"flex items-center px-4 py-6 lg:px-6\">\n\t\t\t\t<p className=\"text-muted-foreground\">\n\t\t\t\t\tCan't find what you're looking for?{\" \"}\n\t\t\t\t\t<a className=\"text-primary hover:underline\" href=\"#\">\n\t\t\t\t\t\tContact Us\n\t\t\t\t\t</a>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nconst faqs = [\n\t{\n\t\tid: 1,\n\t\tcategory: \"getting-started\",\n\t\ttitle: \"How do I add my first component?\",\n\t\tcontent:\n\t\t\t\"Run npx love-ui@latest add loveui to install the shared setup, then add a component such as npx love-ui@latest add button.\",\n\t},\n\t{\n\t\tid: 2,\n\t\tcategory: \"getting-started\",\n\t\ttitle: \"What are the system requirements?\",\n\t\tcontent:\n\t\t\t\"LoveUI is designed for React projects that use Tailwind CSS. If your project uses a different import alias, update the copied imports after installation.\",\n\t},\n\t{\n\t\tid: 3,\n\t\tcategory: \"features\",\n\t\ttitle: \"Can I use LoveUI with a product team?\",\n\t\tcontent:\n\t\t\t\"Yes. Because LoveUI components live in your codebase, teams can review, edit, and version them like any other application source.\",\n\t},\n\t{\n\t\tid: 4,\n\t\tcategory: \"features\",\n\t\ttitle: \"What does the component library include?\",\n\t\tcontent:\n\t\t\t\"LoveUI includes primitives, examples, and full-page blocks for common product interfaces, from forms and dialogs to auth screens and FAQ sections.\",\n\t},\n\t{\n\t\tid: 5,\n\t\tcategory: \"features\",\n\t\ttitle: \"Does LoveUI include AI agent guidance?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI Skills gives AI coding agents design rules, workflow steps, and quality checks for building better interfaces with LoveUI.\",\n\t},\n\t{\n\t\tid: 6,\n\t\tcategory: \"license\",\n\t\ttitle: \"Is LoveUI free to use?\",\n\t\tcontent:\n\t\t\t\"Yes. LoveUI is open source under the MIT license, so you can use it in personal, internal, and commercial projects.\",\n\t},\n\t{\n\t\tid: 7,\n\t\tcategory: \"license\",\n\t\ttitle: \"Do I have to keep the generated files unchanged?\",\n\t\tcontent:\n\t\t\t\"No. The source is copied into your app specifically so you can rename, restyle, and reshape it for your product.\",\n\t},\n\t{\n\t\tid: 8,\n\t\tcategory: \"support\",\n\t\ttitle: \"How do I report a bug?\",\n\t\tcontent:\n\t\t\t\"Open a GitHub issue with a small reproduction, the component name, and the behavior you expected to see.\",\n\t},\n\t{\n\t\tid: 9,\n\t\tcategory: \"support\",\n\t\ttitle: \"Where should I look for examples?\",\n\t\tcontent:\n\t\t\t\"Start with the component docs and block gallery. Each item shows the install command and source files you can copy or customize.\",\n\t},\n];\n"
+        },
+        {
+          "path": "registry/default/blocks/faq-5/components/full-width-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/faq/five/components/full-width-divider.tsx",
+          "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+        }
+      ],
+      "categories": [
+        "block",
+        "faq"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/accordion.json",
+        "https://www.loveui.dev/r/button.json",
+        "https://www.loveui.dev/r/empty.json",
+        "https://www.loveui.dev/r/input-group.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "faq/five"
+      }
     }
   ]
 }

@@ -5,8 +5,88 @@ import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-function Accordion(props: AccordionPrimitive.Root.Props) {
-  return <AccordionPrimitive.Root data-slot="accordion" {...props} />
+type AccordionValue = NonNullable<AccordionPrimitive.Root.Props["value"]>
+type AccordionChangeDetails = AccordionPrimitive.Root.ChangeEventDetails
+
+type AccordionNativeProps = AccordionPrimitive.Root.Props & {
+  collapsible?: boolean
+  type?: undefined
+}
+
+type AccordionSingleProps = Omit<
+  AccordionPrimitive.Root.Props,
+  "defaultValue" | "multiple" | "onValueChange" | "value"
+> & {
+  type: "single"
+  collapsible?: boolean
+  defaultValue?: string
+  multiple?: false
+  onValueChange?: (value: string, eventDetails: AccordionChangeDetails) => void
+  value?: string
+}
+
+type AccordionMultipleProps = Omit<
+  AccordionPrimitive.Root.Props,
+  "defaultValue" | "multiple" | "onValueChange" | "value"
+> & {
+  type: "multiple"
+  collapsible?: boolean
+  defaultValue?: AccordionValue
+  multiple?: true
+  onValueChange?: AccordionPrimitive.Root.Props["onValueChange"]
+  value?: AccordionValue
+}
+
+type AccordionProps =
+  | AccordionNativeProps
+  | AccordionSingleProps
+  | AccordionMultipleProps
+
+function Accordion({
+  collapsible,
+  defaultValue,
+  multiple,
+  onValueChange,
+  type,
+  value,
+  ...props
+}: AccordionProps) {
+  const isSingle = type === "single"
+  const resolvedMultiple = type ? type === "multiple" : multiple
+  const normalizedDefaultValue: AccordionValue | undefined =
+    isSingle && typeof defaultValue === "string"
+      ? [defaultValue]
+      : Array.isArray(defaultValue)
+        ? defaultValue
+        : undefined
+  const normalizedValue: AccordionValue | undefined =
+    isSingle && typeof value === "string"
+      ? [value]
+      : Array.isArray(value)
+        ? value
+        : undefined
+
+  return (
+    <AccordionPrimitive.Root
+      data-slot="accordion"
+      defaultValue={normalizedDefaultValue}
+      multiple={resolvedMultiple}
+      onValueChange={(nextValue, eventDetails) => {
+        if (isSingle) {
+          if (!collapsible && nextValue.length === 0) {
+            eventDetails.cancel()
+            return
+          }
+
+          onValueChange?.(nextValue[0] ?? "", eventDetails)
+        } else {
+          onValueChange?.(nextValue, eventDetails)
+        }
+      }}
+      value={normalizedValue}
+      {...props}
+    />
+  )
 }
 
 function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Card } from '@/components/card';
 import { AuthPage as AuthPreviewBlock } from '@/registry/default/blocks/auth2/components/auth';
 import { CallToAction as CtaPreviewBlock } from '@/registry/default/blocks/cta-2/components/cta';
+import { FaqsSection as FaqPreviewBlock } from '@/registry/default/blocks/faq-1/components/faq';
 import { FeatureSection as FeaturesPreviewBlock } from '@/registry/default/blocks/features4/components/feature-section';
 import { HeroSection as HeroPreviewBlock } from '@/registry/default/blocks/hero1/components/hero';
 import { Header as HeaderPreviewBlock } from '@/registry/default/blocks/header3/components/header';
@@ -78,6 +79,16 @@ function CtaCategoryPreview() {
     <div className="relative h-full w-full overflow-hidden bg-background">
       <div className="pointer-events-none absolute left-1/2 top-1/2 w-[760px] -translate-x-1/2 -translate-y-1/2 scale-[0.46]">
         <CtaPreviewBlock />
+      </div>
+    </div>
+  );
+}
+
+function FaqCategoryPreview() {
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-background">
+      <div className="pointer-events-none absolute left-1/2 top-3 w-[720px] origin-top -translate-x-1/2 scale-[0.34]">
+        <FaqPreviewBlock />
       </div>
     </div>
   );
@@ -222,10 +233,31 @@ export default function BlocksPage() {
             <div className="flex h-16 items-center justify-between gap-4 px-3 pt-1.5">
               <div className="min-w-0">
                 <h2 className="truncate text-base font-semibold text-card-foreground">
-                  CTA
+                  Call to Action
                 </h2>
                 <p className="mt-1 truncate text-sm font-medium text-muted-foreground">
                   Conversion sections with focused actions.
+                </p>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-muted-foreground">
+                5 Blocks
+              </span>
+            </div>
+          </Card>
+          <Card
+            className="gap-0 overflow-hidden rounded-[16px] border-neutral-200 bg-white p-1.5 text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_1px_3px_rgba(0,0,0,0.32)]"
+            url="/blocks/faq"
+          >
+            <div className="h-[184px] overflow-hidden rounded-[14px] border border-neutral-200 bg-neutral-50 shadow-[0_1px_3px_rgba(0,0,0,0.06)] dark:border-neutral-800 dark:bg-neutral-950 dark:shadow-[0_1px_3px_rgba(0,0,0,0.24)]">
+              <FaqCategoryPreview />
+            </div>
+            <div className="flex h-16 items-center justify-between gap-4 px-3 pt-1.5">
+              <div className="min-w-0">
+                <h2 className="truncate text-base font-semibold text-card-foreground">
+                  Frequently Asked Questions
+                </h2>
+                <p className="mt-1 truncate text-sm font-medium text-muted-foreground">
+                  Support sections with expandable answers.
                 </p>
               </div>
               <span className="shrink-0 text-sm font-medium text-muted-foreground">

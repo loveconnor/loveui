@@ -322,6 +322,41 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "faq-one",
+    {
+      sourceDir: "faq-1",
+      targetBase: "components/blocks/faq/one",
+    },
+  ],
+  [
+    "faq-two",
+    {
+      sourceDir: "faq-2",
+      targetBase: "components/blocks/faq/two",
+    },
+  ],
+  [
+    "faq-three",
+    {
+      sourceDir: "faq-3",
+      targetBase: "components/blocks/faq/three",
+    },
+  ],
+  [
+    "faq-four",
+    {
+      sourceDir: "faq-4",
+      targetBase: "components/blocks/faq/four",
+    },
+  ],
+  [
+    "faq-five",
+    {
+      sourceDir: "faq-5",
+      targetBase: "components/blocks/faq/five",
+    },
+  ],
+  [
     "features-one",
     {
       sourceDir: "features1",
