@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonials-four",
+  "type": "registry:block",
+  "title": "testimonials/four",
+  "description": "Editorial quote grid with full-width divider rails and split layout.",
+  "files": [
+    {
+      "path": "registry/default/blocks/testimonials4/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/testimonials/four/app/page.tsx",
+      "content": "import { TestimonialsSection } from \"../components/testimonials\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen place-content-center overflow-hidden p-4\">\n\t\t\t<TestimonialsSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials4/components/testimonials.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/four/components/testimonials.tsx",
+      "content": "import { FullWidthDivider } from \"./full-width-divider\";\nimport { QuoteIcon } from \"lucide-react\";\n\ntype Testimonial = {\n\tquote: string;\n\tname: string;\n\trole: string;\n\tcompany?: string;\n};\n\nconst testimonials: Testimonial[] = [\n\t{\n\t\tquote:\n\t\t\t\"LoveUI is built around the idea that great components should land in your codebase, not hide behind a package boundary.\",\n\t\tname: \"Connor Love\",\n\t\trole: \"Creator\",\n\t\tcompany: \"LoveUI\",\n\t},\n\t{\n\t\tquote:\n\t\t\t\"I want every LoveUI block to feel ready on day one and still be simple enough to customize on day two.\",\n\t\tname: \"Connor Love\",\n\t\trole: \"Founder\",\n\t\tcompany: \"LoveUI\",\n\t},\n\n\t{\n\t\tquote:\n\t\t\t\"The best UI library is the one your team can read, edit, and keep. That is the standard behind LoveUI.\",\n\t\tname: \"Connor Love\",\n\t\trole: \"Maintainer\",\n\t\tcompany: \"LoveUI\",\n\t},\n];\n\nexport function TestimonialsSection() {\n\treturn (\n\t\t<section className=\"relative mx-auto min-h-screen w-full max-w-4xl place-content-center border-x\">\n\t\t\t<FullWidthDivider />\n\t\t\t<div className=\"grid md:grid-cols-[2fr_1px_1fr]\">\n\t\t\t\t<div className=\"divide-y\">\n\t\t\t\t\t{testimonials.slice(0, 2).map((testimonial, index) => (\n\t\t\t\t\t\t<TestimonialCard\n\t\t\t\t\t\t\tkey={`${testimonial.name}-${index}`}\n\t\t\t\t\t\t\ttestimonial={testimonial}\n\t\t\t\t\t\t/>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t\t<div className=\"h-px bg-border md:h-auto\" />\n\t\t\t\t<div className=\"flex items-center\">\n\t\t\t\t\t<TestimonialCard testimonial={testimonials[2] as Testimonial} />\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<FullWidthDivider />\n\t\t</section>\n\t);\n}\n\nfunction TestimonialCard({ testimonial }: { testimonial: Testimonial }) {\n\tconst { quote, name, role, company } = testimonial;\n\n\treturn (\n\t\t<figure className=\"p-6 md:p-8\">\n\t\t\t<QuoteIcon aria-hidden=\"true\" className=\"mb-4 size-12 stroke-1 text-muted-foreground\" />\n\n\t\t\t<blockquote className=\"mb-6 font-normal text-base text-foreground md:text-lg\">\n\t\t\t\t&quot;{quote}&quot;\n\t\t\t</blockquote>\n\n\t\t\t<figcaption className=\"flex flex-col gap-0.5\">\n\t\t\t\t<cite className=\"font-medium text-foreground text-lg not-italic\">\n\t\t\t\t\t{name}\n\t\t\t\t</cite>\n\t\t\t\t<p className=\"text-muted-foreground text-sm\">\n\t\t\t\t\t{role}\n\t\t\t\t\t{company && `, ${company}`}\n\t\t\t\t</p>\n\t\t\t</figcaption>\n\t\t</figure>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials4/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/four/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "testimonials"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "meta": {
+    "source": "block",
+    "blockPath": "testimonials/four"
+  }
+}

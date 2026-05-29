@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonials-two",
+  "type": "registry:block",
+  "title": "testimonials/two",
+  "description": "Compact profile quote with masked avatar and decorative rail lines.",
+  "files": [
+    {
+      "path": "registry/default/blocks/testimonials2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/testimonials/two/app/page.tsx",
+      "content": "import { TestimonialsSection } from \"../components/testimonials\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen place-content-center overflow-hidden p-4\">\n\t\t\t<TestimonialsSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials2/components/testimonials.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/two/components/testimonials.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport {\n\tAvatar,\n\tAvatarFallback,\n\tAvatarImage,\n} from \"@/registry/default/ui/avatar\";\n\nexport function TestimonialsSection() {\n\treturn (\n\t\t<figure className=\"mx-auto flex w-full max-w-lg flex-col items-center justify-center md:grid md:grid-cols-[auto_1fr]\">\n\t\t\t<div className=\"relative\">\n\t\t\t\t{/* Vertical lines */}\n\t\t\t\t<MaskLine className=\"left-0\" orientation=\"vertical\" />\n\t\t\t\t<MaskLine className=\"right-0\" orientation=\"vertical\" />\n\t\t\t\t{/*  Horizontal lines */}\n\t\t\t\t<MaskLine className=\"top-0 md:w-xl\" orientation=\"horizontal\" />\n\t\t\t\t<MaskLine className=\"bottom-0 md:w-xl\" orientation=\"horizontal\" />\n\n\t\t\t\t<Avatar className=\"mask-[radial-gradient(circle,black_60%,transparent)] size-24 rounded-none *:rounded-none md:size-32\">\n\t\t\t\t\t<AvatarImage\n\t\t\t\t\t\talt=\"Connor Love's profile picture\"\n\t\t\t\t\t\tsrc=\"https://github.com/loveconnor.png\"\n\t\t\t\t\t/>\n\t\t\t\t\t<AvatarFallback>CL</AvatarFallback>\n\t\t\t\t</Avatar>\n\t\t\t</div>\n\t\t\t<figcaption className=\"space-y-4 p-8 text-center md:p-6 md:text-left\">\n\t\t\t\t<blockquote className=\"text-lg text-muted-foreground leading-tight tracking-tight\">\n\t\t\t\t\t&quot;<span className=\"font-medium text-foreground\">LoveUI</span> lets\n\t\t\t\t\tme ship refined interfaces with source I can inspect, edit, and own.&quot;\n\t\t\t\t</blockquote>\n\n\t\t\t\t<div>\n\t\t\t\t\t<cite className=\"font-medium text-foreground text-xs not-italic\">\n\t\t\t\t\t\tConnor Love\n\t\t\t\t\t</cite>\n\t\t\t\t\t<div className=\"text-[10px] text-muted-foreground\">\n\t\t\t\t\t\tCreator, LoveUI\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</figcaption>\n\t\t</figure>\n\t);\n}\n\nexport function MaskLine({\n\tclassName,\n\torientation,\n\t...props\n}: React.ComponentProps<\"div\"> & { orientation?: \"horizontal\" | \"vertical\" }) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"absolute bg-foreground/20\",\n\t\t\t\torientation === \"vertical\" &&\n\t\t\t\t\t\"mask-t-from-80% mask-b-from-80% -inset-y-1/2 w-px\",\n\t\t\t\torientation === \"horizontal\" &&\n\t\t\t\t\t\"mask-l-from-80% mask-r-from-80% -inset-x-1/2 h-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "testimonials"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/avatar.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "testimonials/two"
+  }
+}

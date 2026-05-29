@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonials-three",
+  "type": "registry:block",
+  "title": "testimonials/three",
+  "description": "Three-card testimonial row with quote icons, avatars, and corner accents.",
+  "files": [
+    {
+      "path": "registry/default/blocks/testimonials3/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/testimonials/three/app/page.tsx",
+      "content": "import { TestimonialsSection } from \"../components/testimonials\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen place-content-center overflow-hidden p-4\">\n\t\t\t<TestimonialsSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials3/components/testimonials.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/three/components/testimonials.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport {\n\tAvatar,\n\tAvatarFallback,\n\tAvatarImage,\n} from \"@/registry/default/ui/avatar\";\nimport { DecorIcon } from \"./decor-icon\";\nimport { QuoteIcon } from \"lucide-react\";\n\ntype Testimonial = {\n\tquote: string;\n\tname: string;\n\trole: string;\n\tcompany: string;\n\timage: string;\n};\n\nconst testimonials: Testimonial[] = [\n\t{\n\t\tquote:\n\t\t\t\"LoveUI keeps the interface layer practical: polished defaults, source files I can change, and blocks that are ready to adapt.\",\n\t\timage: \"https://github.com/loveconnor.png\",\n\t\tname: \"Connor Love\",\n\t\trole: \"Creator\",\n\t\tcompany: \"LoveUI\",\n\t},\n\t{\n\t\tquote:\n\t\t\t\"I built LoveUI for teams that want beautiful React components without treating the design system like a black box.\",\n\t\timage: \"https://github.com/loveconnor.png\",\n\t\tname: \"Connor Love\",\n\t\trole: \"Founder\",\n\t\tcompany: \"LoveUI\",\n\t},\n\t{\n\t\tquote:\n\t\t\t\"Every LoveUI block is meant to be copied, understood, and reshaped around the product you are actually building.\",\n\t\timage: \"https://github.com/loveconnor.png\",\n\t\tname: \"Connor Love\",\n\t\trole: \"Maintainer\",\n\t\tcompany: \"LoveUI\",\n\t},\n];\n\nexport function TestimonialsSection() {\n\treturn (\n\t\t<div className=\"mx-auto -mt-10 grid w-full max-w-5xl gap-8 md:grid-cols-3 md:gap-6\">\n\t\t\t{testimonials.map((testimonial, index) => (\n\t\t\t\t<TestimonialCard\n\t\t\t\t\tindex={index}\n\t\t\t\t\tkey={`${testimonial.name}-${index}`}\n\t\t\t\t\ttestimonial={testimonial}\n\t\t\t\t/>\n\t\t\t))}\n\t\t</div>\n\t);\n}\n\nfunction TestimonialCard({\n\ttestimonial,\n\tindex,\n\tclassName,\n\t...props\n}: React.ComponentProps<\"figure\"> & {\n\ttestimonial: Testimonial;\n\tindex: number;\n}) {\n\tconst { quote, name, role, company, image } = testimonial;\n\n\treturn (\n\t\t<figure\n\t\t\tclassName={cn(\n\t\t\t\t\"relative flex flex-col justify-between gap-6 px-8 pt-8 pb-6 shadow-xs md:translate-y-[calc(3rem*var(--t-card-index))]\",\n\t\t\t\t\"dark:bg-[radial-gradient(50%_80%_at_25%_0%,--theme(--color-foreground/.1),transparent)]\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tstyle={\n\t\t\t\t{\n\t\t\t\t\t\"--t-card-index\": index,\n\t\t\t\t} as React.CSSProperties\n\t\t\t}\n\t\t\t{...props}\n\t\t>\n\t\t\t<div className=\"absolute -inset-y-4 -left-px w-px bg-border\" />\n\t\t\t<div className=\"absolute -inset-y-4 -right-px w-px bg-border\" />\n\t\t\t<div className=\"absolute -inset-x-4 -top-px h-px bg-border\" />\n\t\t\t<div className=\"absolute -right-4 -bottom-px -left-4 h-px bg-border\" />\n\t\t\t<DecorIcon className=\"size-3.5\" position=\"top-left\" />\n\n\t\t\t<blockquote className=\"flex gap-4\">\n\t\t\t\t<QuoteIcon aria-hidden=\"true\" className=\"size-6 shrink-0 stroke-1\" />\n\n\t\t\t\t<p className=\"flex-1 font-normal text-base text-muted-foreground leading-relaxed\">\n\t\t\t\t\t{quote}\n\t\t\t\t</p>\n\t\t\t</blockquote>\n\n\t\t\t<figcaption className=\"flex items-center gap-3\">\n\t\t\t\t<Avatar className=\"size-10 rounded-full ring-2 ring-border ring-offset-2 ring-offset-background transition-shadow group-hover:ring-foreground/20\">\n\t\t\t\t\t<AvatarImage alt={`${name}'s profile picture`} src={image} />\n\t\t\t\t\t<AvatarFallback>{name.charAt(0)}</AvatarFallback>\n\t\t\t\t</Avatar>\n\t\t\t\t<div className=\"flex flex-col\">\n\t\t\t\t\t<cite className=\"font-medium text-foreground text-sm not-italic\">\n\t\t\t\t\t\t{name}\n\t\t\t\t\t</cite>\n\t\t\t\t\t<p className=\"text-muted-foreground text-xs\">\n\t\t\t\t\t\t{role}, <span className=\"text-foreground/80\">{company}</span>\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</figcaption>\n\t\t</figure>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials3/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/three/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "testimonials"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "class-variance-authority": "^0.7.1"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/avatar.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "testimonials/three"
+  }
+}

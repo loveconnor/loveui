@@ -389,6 +389,55 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "testimonials-one",
+    {
+      sourceDir: "testimonials1",
+      targetBase: "components/blocks/testimonials/one",
+    },
+  ],
+  [
+    "testimonials-two",
+    {
+      sourceDir: "testimonials2",
+      targetBase: "components/blocks/testimonials/two",
+    },
+  ],
+  [
+    "testimonials-three",
+    {
+      sourceDir: "testimonials3",
+      targetBase: "components/blocks/testimonials/three",
+      dependencies: {
+        "class-variance-authority": "^0.7.1",
+      },
+    },
+  ],
+  [
+    "testimonials-four",
+    {
+      sourceDir: "testimonials4",
+      targetBase: "components/blocks/testimonials/four",
+    },
+  ],
+  [
+    "testimonials-five",
+    {
+      sourceDir: "testimonials5",
+      targetBase: "components/blocks/testimonials/five",
+    },
+  ],
+  [
+    "testimonials-six",
+    {
+      sourceDir: "testimonials6",
+      targetBase: "components/blocks/testimonials/six",
+      dependencies: {
+        motion: "^12.40.0",
+        "react-use-measure": "^2.1.7",
+      },
+    },
+  ],
+  [
     "features-one",
     {
       sourceDir: "features1",

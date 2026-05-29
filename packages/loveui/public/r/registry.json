@@ -30589,6 +30589,116 @@
         "source": "block",
         "blockPath": "pricing/four"
       }
+    },
+    {
+      "name": "testimonials-one",
+      "type": "registry:block",
+      "title": "testimonials/one",
+      "description": "Centered brand quote with avatar, citation, and divider accent.",
+      "categories": [
+        "block",
+        "testimonials"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/avatar.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "testimonials/one"
+      }
+    },
+    {
+      "name": "testimonials-two",
+      "type": "registry:block",
+      "title": "testimonials/two",
+      "description": "Compact profile quote with masked avatar and decorative rail lines.",
+      "categories": [
+        "block",
+        "testimonials"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/avatar.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "testimonials/two"
+      }
+    },
+    {
+      "name": "testimonials-three",
+      "type": "registry:block",
+      "title": "testimonials/three",
+      "description": "Three-card testimonial row with quote icons, avatars, and corner accents.",
+      "categories": [
+        "block",
+        "testimonials"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0",
+        "class-variance-authority": "^0.7.1"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/avatar.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "testimonials/three"
+      }
+    },
+    {
+      "name": "testimonials-four",
+      "type": "registry:block",
+      "title": "testimonials/four",
+      "description": "Editorial quote grid with full-width divider rails and split layout.",
+      "categories": [
+        "block",
+        "testimonials"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0"
+      },
+      "meta": {
+        "source": "block",
+        "blockPath": "testimonials/four"
+      }
+    },
+    {
+      "name": "testimonials-five",
+      "type": "registry:block",
+      "title": "testimonials/five",
+      "description": "Large testimonial wall with grid pattern accents and filler cells.",
+      "categories": [
+        "block",
+        "testimonials"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/avatar.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "testimonials/five"
+      }
+    },
+    {
+      "name": "testimonials-six",
+      "type": "registry:block",
+      "title": "testimonials/six",
+      "description": "Animated vertical testimonial columns with hover speed controls.",
+      "categories": [
+        "block",
+        "testimonials"
+      ],
+      "dependencies": {
+        "motion": "^12.40.0",
+        "react-use-measure": "^2.1.7"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/avatar.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "testimonials/six"
+      }
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonials-one",
+  "type": "registry:block",
+  "title": "testimonials/one",
+  "description": "Centered brand quote with avatar, citation, and divider accent.",
+  "files": [
+    {
+      "path": "registry/default/blocks/testimonials1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/testimonials/one/app/page.tsx",
+      "content": "import { TestimonialsSection } from \"../components/testimonials\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen place-content-center overflow-hidden p-4\">\n\t\t\t<TestimonialsSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials1/components/testimonials.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/one/components/testimonials.tsx",
+      "content": "import {\n\tAvatar,\n\tAvatarFallback,\n\tAvatarImage,\n} from \"@/registry/default/ui/avatar\";\nimport { Logo } from \"./logo\";\n\nexport function TestimonialsSection() {\n\treturn (\n\t\t<figure className=\"mx-auto flex w-full max-w-lg flex-col items-center justify-center\">\n\t\t\t<div className=\"mb-8 flex justify-center\">\n\t\t\t\t<Logo aria-label=\"LoveUI\" className=\"h-12 w-auto\" />\n\t\t\t</div>\n\n\t\t\t<blockquote className=\"text-center text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl\">\n\t\t\t\t&quot;<span className=\"font-medium\">LoveUI</span> is the source-first UI\n\t\t\t\tsystem I reach for when I want polished blocks without giving up\n\t\t\t\tcontrol of the code.&quot;\n\t\t\t</blockquote>\n\n\t\t\t<div className=\"mask-[linear-gradient(to_right,transparent,black,transparent)] mx-auto my-5 h-px w-full max-w-sm bg-border\" />\n\n\t\t\t<figcaption className=\"flex flex-col items-center gap-5\">\n\t\t\t\t<div className=\"space-y-0.5 text-center\">\n\t\t\t\t\t<cite className=\"font-medium text-foreground text-xl not-italic\">\n\t\t\t\t\t\tConnor Love\n\t\t\t\t\t</cite>\n\t\t\t\t\t<div className=\"text-lg text-muted-foreground\">Creator, LoveUI</div>\n\t\t\t\t</div>\n\n\t\t\t\t<Avatar className=\"size-12 rounded-full border object-cover\">\n\t\t\t\t\t<AvatarImage\n\t\t\t\t\t\talt=\"Connor Love's profile picture\"\n\t\t\t\t\t\tsrc=\"https://github.com/loveconnor.png\"\n\t\t\t\t\t/>\n\t\t\t\t\t<AvatarFallback>CL</AvatarFallback>\n\t\t\t\t</Avatar>\n\t\t\t</figcaption>\n\t\t</figure>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/testimonials1/components/logo.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/testimonials/one/components/logo.tsx",
+      "content": "export const Logo = (props: React.ComponentProps<\"svg\">) => (\n\t<svg\n\t\tfill=\"none\"\n\t\theight=\"48\"\n\t\tviewBox=\"0 0 140 48\"\n\t\twidth=\"140\"\n\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t{...props}\n\t>\n\t\t<defs>\n\t\t\t<linearGradient id=\"loveui-blue\" x1=\"0\" x2=\"48\" y1=\"0\" y2=\"48\">\n\t\t\t\t<stop stopColor=\"#38A3FF\" />\n\t\t\t\t<stop offset=\"0.55\" stopColor=\"#1266F1\" />\n\t\t\t\t<stop offset=\"1\" stopColor=\"#0B3FD8\" />\n\t\t\t</linearGradient>\n\n\t\t\t<linearGradient id=\"loveui-shine\" x1=\"0\" x2=\"1\" y1=\"0\" y2=\"1\">\n\t\t\t\t<stop stopColor=\"#FFFFFF\" stopOpacity=\"0.9\" />\n\t\t\t\t<stop offset=\"1\" stopColor=\"#BBD8FF\" stopOpacity=\"0.4\" />\n\t\t\t</linearGradient>\n\t\t</defs>\n\n\t\t<g transform=\"translate(0 0)\">\n\t\t\t<rect fill=\"url(#loveui-blue)\" height=\"48\" rx=\"12\" width=\"48\" x=\"0\" y=\"0\" />\n\n\t\t\t<path\n\t\t\t\td=\"\n        M12 10\n        C12 8.3 13.3 7 15 7\n        H18\n        C19.7 7 21 8.3 21 10\n        V25\n        C21 27.2 22.8 29 25 29\n        H35\n        C36.7 29 38 30.3 38 32\n        V34\n        C38 35.7 36.7 37 35 37\n        H15\n        C13.3 37 12 35.7 12 34\n        Z\"\n\t\t\t\tfill=\"white\"\n\t\t\t/>\n\n\t\t\t<rect fill=\"white\" height=\"9\" rx=\"3\" width=\"9\" x=\"28\" y=\"14\" />\n\n\t\t\t<path\n\t\t\t\td=\"\n        M21 25\n        C21 27.2 22.8 29 25 29\n        H27\n        V34\n        C27 35.7 25.7 37 24 37\n        H15\n        C13.3 37 12 35.7 12 34\n        V29\n        H18\n        C19.7 29 21 27.7 21 25\n        Z\"\n\t\t\t\tfill=\"url(#loveui-shine)\"\n\t\t\t\topacity=\"0.5\"\n\t\t\t/>\n\t\t</g>\n\t\t<text\n\t\t\tfill=\"currentColor\"\n\t\t\tfontFamily=\"Inter, Geist, sans-serif\"\n\t\t\tfontSize=\"22\"\n\t\t\tfontWeight=\"700\"\n\t\t\tx=\"58\"\n\t\t\ty=\"30\"\n\t\t>\n\t\t\tLoveUI\n\t\t</text>\n\t</svg>\n);\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "testimonials"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/avatar.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "testimonials/one"
+  }
+}
