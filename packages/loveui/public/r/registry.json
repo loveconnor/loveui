@@ -1291,6 +1291,46 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "image-gallery-one",
+      "type": "registry:block",
+      "title": "image-gallery/one",
+      "description": "Responsive masonry-style image grid with lazy image loading.",
+      "files": [
+        {
+          "path": "registry/default/blocks/image-gallery-1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/image-gallery/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/image-gallery-1/components/image-gallery.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/image-gallery/one/components/image-gallery.tsx"
+        },
+        {
+          "path": "registry/default/blocks/image-gallery-1/components/lazy-image.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/image-gallery/one/components/lazy-image.tsx"
+        },
+        {
+          "path": "registry/default/blocks/image-gallery-1/components/aspect-ratio.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/image-gallery/one/components/aspect-ratio.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "image-gallery"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "image-gallery/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "logo-cloud-one",
       "type": "registry:block",
       "title": "logo-cloud/one",

@@ -337,6 +337,16 @@ const BUNDLED_BLOCKS = new Map([
       },
     },
   ],
+  [
+    "image-gallery-one",
+    {
+      sourceDir: "image-gallery-1",
+      targetBase: "components/blocks/image-gallery/one",
+      dependencies: {
+        motion: "^12.40.0",
+      },
+    },
+  ],
 ] as const);
 
 const SCRIPT_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"] as const;

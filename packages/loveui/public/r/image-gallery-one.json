@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-gallery-one",
+  "type": "registry:block",
+  "title": "image-gallery/one",
+  "description": "Responsive masonry-style image grid with lazy image loading.",
+  "files": [
+    {
+      "path": "registry/default/blocks/image-gallery-1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/image-gallery/one/app/page.tsx",
+      "content": "import { ImageGallery } from \"../components/image-gallery\";\n\nexport default function DemoPage() {\n\treturn <ImageGallery />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/image-gallery-1/components/image-gallery.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/image-gallery/one/components/image-gallery.tsx",
+      "content": "import { LazyImage } from \"./lazy-image\";\n\nexport function ImageGallery() {\n\treturn (\n\t\t<div className=\"relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-10\">\n\t\t\t<div className=\"mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6\">\n\t\t\t\t{columns.map((column, col) => (\n\t\t\t\t\t<div className=\"grid gap-4\" key={col}>\n\t\t\t\t\t\t{column.map((image) => (\n\t\t\t\t\t\t\t<LazyImage\n\t\t\t\t\t\t\t\talt={image.alt}\n\t\t\t\t\t\t\t\tcontainerClassName=\"rounded-lg\"\n\t\t\t\t\t\t\t\tfallback={image.fallback}\n\t\t\t\t\t\t\t\tinView={true}\n\t\t\t\t\t\t\t\tkey={image.src}\n\t\t\t\t\t\t\t\tratio={image.ratio}\n\t\t\t\t\t\t\t\tsrc={image.src}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t))}\n\t\t\t\t\t</div>\n\t\t\t\t))}\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\ntype GalleryImage = {\n\talt: string;\n\tsrc: string;\n\tfallback: string;\n\tratio: number;\n};\n\nconst wikimediaImage = (fileName: string, width = 900) =>\n\t`https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(\n\t\tfileName\n\t)}?width=${width}`;\n\nconst images: GalleryImage[] = [\n\t{\n\t\talt: \"University Hall on The Ohio State University campus\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"University Hall, The Ohio State University (Columbus, Ohio).jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x600?text=University+Hall\",\n\t\tratio: 3 / 2,\n\t},\n\t{\n\t\talt: \"Ohio Stadium viewed from above\",\n\t\tsrc: wikimediaImage(\"View of Ohio Stadium.jpg\"),\n\t\tfallback: \"https://placehold.co/900x600?text=Ohio+Stadium\",\n\t\tratio: 3 / 2,\n\t},\n\t{\n\t\talt: \"Mirror Lake at The Ohio State University\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"Mirror Lake at The Ohio State University - DPLA - f1276865f9c52083353de2c6b0068290.jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x600?text=Mirror+Lake\",\n\t\tratio: 3 / 2,\n\t},\n\t{\n\t\talt: \"Thompson Library at The Ohio State University\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"Thompson Library at The Ohio State University - DPLA - d4a313f4ce0cca7538bf0ea6508722ae.jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/600x900?text=Thompson+Library\",\n\t\tratio: 2 / 3,\n\t},\n\t{\n\t\talt: \"Ohio Stadium rotunda\",\n\t\tsrc: wikimediaImage(\"Ohio State University-Ohio Stadium-Rotunda.jpg\"),\n\t\tfallback: \"https://placehold.co/900x600?text=Stadium+Rotunda\",\n\t\tratio: 3 / 2,\n\t},\n\t{\n\t\talt: \"The spring and Mirror Lake at Ohio State University\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"The Spring and Mirror Lake at Ohio State University - DPLA - 238a754a6579c3fd1788745a85caaf4c (page 1).jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x600?text=Mirror+Lake\",\n\t\tratio: 3 / 2,\n\t},\n\t{\n\t\talt: \"Ohio Stadium at The Ohio State University\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"Ohio Stadium at The Ohio State University - DPLA - fa20937cd54b73c1c34c09ac5d4d3e6d.jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x600?text=Ohio+Stadium\",\n\t\tratio: 16 / 10,\n\t},\n\t{\n\t\talt: \"Thompson Library from the first floor\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"Ohio State University - Thompson Library from First Floor.jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x675?text=Thompson+Library\",\n\t\tratio: 4 / 3,\n\t},\n\t{\n\t\talt: \"Ohio Stadium exterior\",\n\t\tsrc: wikimediaImage(\"OSU Ohio Stadium.JPG\"),\n\t\tfallback: \"https://placehold.co/900x675?text=Ohio+Stadium\",\n\t\tratio: 4 / 3,\n\t},\n\t{\n\t\talt: \"Panoramic view of Ohio Stadium\",\n\t\tsrc: wikimediaImage(\"Ohio Stadium (37516165921).jpg\", 1200),\n\t\tfallback: \"https://placehold.co/1200x460?text=Ohio+Stadium\",\n\t\tratio: 21 / 9,\n\t},\n\t{\n\t\talt: \"Historic Ohio State University campus view\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"Ohio State University campus - DPLA - 74170bd1ea1086f74720703e80e0dc4c.jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x600?text=Ohio+State+Campus\",\n\t\tratio: 3 / 2,\n\t},\n\t{\n\t\talt: \"Ohio State University campus aerial view\",\n\t\tsrc: wikimediaImage(\n\t\t\t\"Ohio State University campus aerial view looking west - DPLA - cb1a04591333ede0f6ac506328c1c460.jpg\"\n\t\t),\n\t\tfallback: \"https://placehold.co/900x600?text=Campus+Aerial\",\n\t\tratio: 3 / 2,\n\t},\n];\n\nconst columns = [\n\t[images[0], images[3], images[6]],\n\t[images[1], images[4], images[8]],\n\t[images[2], images[5], images[9]],\n\t[images[7], images[10], images[11]],\n];\n"
+    },
+    {
+      "path": "registry/default/blocks/image-gallery-1/components/lazy-image.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/image-gallery/one/components/lazy-image.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { useInView } from \"motion/react\";\nimport React from \"react\";\nimport { AspectRatio } from \"./aspect-ratio\";\n\ntype LazyImageProps = {\n\talt: string;\n\tsrc: string;\n\tclassName?: string;\n\tcontainerClassName?: string;\n\t/** URL of the fallback image. default: undefined */\n\tfallback?: string;\n\t/** The ratio of the image. */\n\tratio: number;\n\t/** Whether the image should only load when it is in view. default: false */\n\tinView?: boolean;\n};\n\nexport function LazyImage({\n\talt,\n\tsrc,\n\tratio,\n\tfallback,\n\tinView = false,\n\tclassName,\n\tcontainerClassName,\n}: LazyImageProps) {\n\tconst ref = React.useRef<HTMLDivElement | null>(null);\n\tconst imgRef = React.useRef<HTMLImageElement | null>(null);\n\tconst isInView = useInView(ref, { once: true });\n\n\tconst [imgSrc, setImgSrc] = React.useState<string | undefined>(\n\t\tinView ? undefined : src\n\t);\n\tconst [isLoading, setIsLoading] = React.useState(true);\n\n\tconst handleError = () => {\n\t\tif (fallback) {\n\t\t\tsetImgSrc(fallback);\n\t\t}\n\t\tsetIsLoading(false);\n\t};\n\n\tconst handleLoad = React.useCallback(() => {\n\t\tsetIsLoading(false);\n\t}, []);\n\n\t// Load image only when inView\n\tReact.useEffect(() => {\n\t\tif (inView && isInView && !imgSrc) {\n\t\t\tsetImgSrc(src);\n\t\t}\n\t}, [inView, isInView, src, imgSrc]);\n\n\t// Handle cached images instantly\n\tReact.useEffect(() => {\n\t\tif (imgRef.current?.complete) {\n\t\t\thandleLoad();\n\t\t}\n\t}, [handleLoad]);\n\n\treturn (\n\t\t<AspectRatio\n\t\t\tclassName={cn(\n\t\t\t\t\"relative size-full overflow-hidden border bg-accent/30\",\n\t\t\t\tcontainerClassName\n\t\t\t)}\n\t\t\tratio={ratio}\n\t\t\tref={ref}\n\t\t>\n\t\t\t{imgSrc && (\n\t\t\t\t// biome-ignore lint/correctness/useImageSize: dynamic image size\n\t\t\t\t<img\n\t\t\t\t\talt={alt}\n\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\"size-full object-cover transition-opacity duration-500\",\n\t\t\t\t\t\tisLoading ? \"opacity-0\" : \"opacity-100\",\n\t\t\t\t\t\tclassName\n\t\t\t\t\t)}\n\t\t\t\t\tdecoding=\"async\"\n\t\t\t\t\tfetchPriority={inView ? \"high\" : \"low\"}\n\t\t\t\t\tloading=\"lazy\"\n\t\t\t\t\tonError={handleError}\n\t\t\t\t\tonLoad={handleLoad}\n\t\t\t\t\tref={imgRef}\n\t\t\t\t\trole=\"presentation\" // Changed from \"img\" to \"presentation\" since it's decorative\n\t\t\t\t\tsrc={imgSrc}\n\t\t\t\t/>\n\t\t\t)}\n\t\t</AspectRatio>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/image-gallery-1/components/aspect-ratio.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/image-gallery/one/components/aspect-ratio.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nfunction AspectRatio({\n  ratio,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio: number }) {\n  return (\n    <div\n      data-slot=\"aspect-ratio\"\n      style={\n        {\n          \"--ratio\": ratio,\n        } as React.CSSProperties\n      }\n      className={cn(\"relative aspect-(--ratio)\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { AspectRatio }\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "image-gallery"
+  ],
+  "dependencies": [
+    "motion"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "image-gallery/one"
+  }
+}

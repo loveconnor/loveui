@@ -44,6 +44,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     }),
     sitemapEntry('/blocks/hero', { changeFrequency: 'weekly', priority: 0.85 }),
+    sitemapEntry('/blocks/image-gallery', {
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    }),
     sitemapEntry('/blocks/logo-cloud', {
       changeFrequency: 'weekly',
       priority: 0.85,
