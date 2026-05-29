@@ -301,6 +301,30 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "blog-one",
+    {
+      sourceDir: "blogs1",
+      targetBase: "components/blocks/blog/one",
+    },
+  ],
+  [
+    "blog-two",
+    {
+      sourceDir: "blogs2",
+      targetBase: "components/blocks/blog/two",
+    },
+  ],
+  [
+    "blog-three",
+    {
+      sourceDir: "blogs3",
+      targetBase: "components/blocks/blog/three",
+      dependencies: {
+        motion: "^12.40.0",
+      },
+    },
+  ],
+  [
     "cta-one",
     {
       sourceDir: "cta-1",

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blog-one",
+  "type": "registry:block",
+  "title": "blog/one",
+  "description": "Compact blog index with dashed date rails and divider accents.",
+  "files": [
+    {
+      "path": "registry/default/blocks/blogs1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/blog/one/app/page.tsx",
+      "content": "import { BlogsSection } from \"../components/blogs\";\n\nexport default function DemoPage() {\n\treturn <BlogsSection />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/blogs1/components/blogs.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/blog/one/components/blogs.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { FullWidthDivider } from \"./full-width-divider\";\n\nconst blogs = [\n\t{\n\t\ttitle: \"Why LoveUI Ships Source\",\n\t\tdate: \"May 20 2026\",\n\t\tdescription:\n\t\t\t\"How editable components give teams more control than a black-box UI package.\",\n\t\thref: \"#\",\n\t},\n\t{\n\t\ttitle: \"Blocks That Feel Finished\",\n\t\tdate: \"May 14 2026\",\n\t\tdescription: \"Design notes from building polished sections on top of primitives.\",\n\t\thref: \"#\",\n\t},\n\t{\n\t\ttitle: \"A Better Registry Workflow\",\n\t\tdate: \"Apr 19 2026\",\n\t\tdescription: \"Install only the files you need, then shape them around your product.\",\n\t\thref: \"#\",\n\t},\n\t{\n\t\ttitle: \"Designing for AI Agents\",\n\t\tdate: \"Apr 12 2026\",\n\t\tdescription: \"Why LoveUI pairs components with guidance for better interface work.\",\n\t\thref: \"#\",\n\t},\n\t{\n\t\ttitle: \"Composing Product Screens\",\n\t\tdate: \"Mar 23 2026\",\n\t\tdescription: \"How examples, blocks, and primitives work together in LoveUI.\",\n\t\thref: \"#\",\n\t},\n];\n\nexport function BlogsSection() {\n\treturn (\n\t\t<div className=\"mx-auto flex min-h-screen w-full max-w-3xl flex-col justify-start md:border-x\">\n\t\t\t<div className=\"space-y-2 px-4 py-8 md:py-12\">\n\t\t\t\t<h1 className=\"font-semibold text-2xl tracking-wide md:text-4xl\">\n\t\t\t\t\tLatest LoveUI Notes\n\t\t\t\t</h1>\n\t\t\t\t<p className=\"text-muted-foreground text-sm\">\n\t\t\t\t\tUpdates on editable UI source, production blocks, and design system\n\t\t\t\t\tworkflows.\n\t\t\t\t</p>\n\t\t\t</div>\n\n\t\t\t<div className=\"relative\">\n\t\t\t\t<FullWidthDivider />\n\t\t\t\t<div className=\"divide-y\">\n\t\t\t\t\t{blogs.map((blog) => (\n\t\t\t\t\t\t<BlogCard {...blog} key={blog.title} />\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t\t<FullWidthDivider />\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nfunction BlogCard({\n\ttitle,\n\tdate,\n\tdescription,\n\tclassName,\n\t...props\n}: React.ComponentProps<\"a\"> & {\n\ttitle: string;\n\tdate: string;\n\tdescription: string;\n}) {\n\treturn (\n\t\t<a\n\t\t\tclassName={cn(\n\t\t\t\t\"group flex h-24 w-full flex-col justify-center gap-y-1 p-4 hover:cursor-pointer hover:bg-accent/30 active:bg-accent dark:active:bg-accent/50\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<div className=\"relative flex items-end justify-center gap-2\">\n\t\t\t\t<h3 className=\"whitespace-nowrap font-medium text-foreground text-lg md:text-xl\">\n\t\t\t\t\t{title}\n\t\t\t\t</h3>\n\t\t\t\t<span className=\"mb-[6px] w-full border-b-2 border-dashed\" />\n\t\t\t\t<span className=\"whitespace-nowrap font-mono text-muted-foreground text-xs uppercase group-hover:text-foreground md:text-sm\">\n\t\t\t\t\t{date}\n\t\t\t\t</span>\n\t\t\t</div>\n\t\t\t<div className=\"max-w-sm text-muted-foreground text-sm group-hover:text-foreground md:max-w-full md:text-base\">\n\t\t\t\t{description}\n\t\t\t</div>\n\t\t</a>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/blogs1/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/blog/one/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "blog"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "blog/one"
+  }
+}

@@ -30741,6 +30741,51 @@
         "source": "block",
         "blockPath": "404/two"
       }
+    },
+    {
+      "name": "blog-one",
+      "type": "registry:block",
+      "title": "blog/one",
+      "description": "Compact blog index with dashed date rails and divider accents.",
+      "categories": [
+        "block",
+        "blog"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "blog/one"
+      }
+    },
+    {
+      "name": "blog-two",
+      "type": "registry:block",
+      "title": "blog/two",
+      "description": "Dense editorial card grid with categories, authors, and filler cells.",
+      "categories": [
+        "block",
+        "blog"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "blog/two"
+      }
+    },
+    {
+      "name": "blog-three",
+      "type": "registry:block",
+      "title": "blog/three",
+      "description": "Image-led blog grid with lazy-loaded thumbnails and article metadata.",
+      "categories": [
+        "block",
+        "blog"
+      ],
+      "dependencies": {
+        "motion": "^12.40.0"
+      },
+      "meta": {
+        "source": "block",
+        "blockPath": "blog/three"
+      }
     }
   ]
 }
