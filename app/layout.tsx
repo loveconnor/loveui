@@ -3,6 +3,7 @@ import './global.css';
 import localFont from 'next/font/local';
 import type { Metadata } from 'next';
 import { ToastProvider } from '@/registry/default/ui/toast';
+import { FumadocsCommandSearch } from '@/components/fumadocs-command-search';
 import { appName } from '@/lib/shared';
 import {
   seo,
@@ -153,7 +154,12 @@ export default function Layout({ children }: LayoutProps<'/'>) {
       </head>
       <body className="flex flex-col min-h-screen">
         <ToastProvider>
-          <RootProvider theme={{ enabled: false }}>{children}</RootProvider>
+          <RootProvider
+            search={{ SearchDialog: FumadocsCommandSearch }}
+            theme={{ enabled: false }}
+          >
+            {children}
+          </RootProvider>
         </ToastProvider>
       </body>
     </html>

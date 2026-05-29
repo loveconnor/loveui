@@ -1,6 +1,10 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { appName, blocksRoute, componentsRoute, docsRoute, gitConfig } from './shared';
 import { ThemeSwitch } from '@/components/theme-switch';
+import {
+  SearchCommandFull,
+  SearchCommandSmall,
+} from '@/components/search-command';
 
 export function baseOptions(): BaseLayoutProps {
   return {
@@ -30,6 +34,10 @@ export function baseOptions(): BaseLayoutProps {
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
     slots: {
+      searchTrigger: {
+        full: SearchCommandFull,
+        sm: SearchCommandSmall,
+      },
       themeSwitch: ThemeSwitch,
     },
   };
