@@ -39,6 +39,7 @@
     "react-dom": "^19.2.6",
     "react-markdown": "^10.1.0",
     "react-use-measure": "^2.1.7",
+    "recharts": "^3.8.1",
     "rehype-katex": "^7.0.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",

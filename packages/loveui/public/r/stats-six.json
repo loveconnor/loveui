@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-six",
+  "type": "registry:block",
+  "title": "stats/six",
+  "description": "Status-driven metric cards with goals and contextual icons.",
+  "files": [
+    {
+      "path": "registry/default/blocks/stats6/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/stats/six/app/page.tsx",
+      "content": "import Stats06 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats06 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/stats6/components/stats.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/stats/six/components/stats.tsx",
+      "content": "\"use client\";\n\nimport { Card, CardContent } from \"@/registry/default/ui/card\";\nimport { cn } from \"@/lib/utils\";\nimport { AlertTriangle, Check, ChevronRight, Eye } from \"lucide-react\";\nimport Link from \"next/link\";\n\nconst data = [\n  {\n    name: \"Components\",\n    stat: \"48\",\n    goalsAchieved: 3,\n    status: \"observe\",\n    href: \"#\",\n  },\n  {\n    name: \"Blocks\",\n    stat: \"119\",\n    goalsAchieved: 5,\n    status: \"within\",\n    href: \"#\",\n  },\n  {\n    name: \"Docs\",\n    stat: \"54\",\n    goalsAchieved: 1,\n    status: \"critical\",\n    href: \"#\",\n  },\n];\n\nexport default function Stats06() {\n  return (\n    <div className=\"flex items-center justify-center p-10 w-full\">\n      <dl className=\"grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3\">\n        {data.map((item) => (\n          <Card key={item.name} className=\"p-6 relative shadow-2xs\">\n            <CardContent className=\"p-0\">\n              <dt className=\"truncate text-sm font-medium text-muted-foreground\">{item.name}</dt>\n              <dd className=\"tabular-nums text-3xl font-semibold text-foreground\">{item.stat}</dd>\n              <div className=\"group relative mt-6 flex items-center space-x-4 rounded-md bg-muted/60 p-2 hover:bg-muted\">\n                <div className=\"flex min-w-0 w-full items-center justify-between gap-3\">\n                  <div className=\"flex min-w-0 items-center space-x-3\">\n                    <span\n                      className={cn(\n                        \"flex h-9 w-9 shrink-0 items-center justify-center rounded\",\n                        item.status === \"within\"\n                          ? \"bg-emerald-500 text-white\"\n                          : item.status === \"observe\"\n                            ? \"bg-yellow-500 text-white\"\n                            : \"bg-red-500 text-white\",\n                      )}\n                    >\n                      {item.status === \"within\" ? (\n                        <Check className=\"size-4 shrink-0\" aria-hidden={true} />\n                      ) : item.status === \"observe\" ? (\n                        <Eye className=\"size-4 shrink-0\" aria-hidden={true} />\n                      ) : (\n                        <AlertTriangle className=\"size-4 shrink-0\" aria-hidden={true} />\n                      )}\n                    </span>\n                    <dd className=\"min-w-0\">\n                      <p className=\"text-pretty text-sm text-muted-foreground\">\n                        <Link href={item.href} className=\"focus:outline-none\">\n                          {/* Extend link to entire card */}\n                          <span className=\"absolute inset-0\" aria-hidden={true} />\n                          {item.goalsAchieved}/5 goals\n                        </Link>\n                      </p>\n                      <p\n                        className={cn(\n                          \"text-sm font-medium\",\n                          item.status === \"within\"\n                            ? \"text-emerald-800 dark:text-emerald-500\"\n                            : item.status === \"observe\"\n                              ? \"text-yellow-800 dark:text-yellow-500\"\n                              : \"text-red-800 dark:text-red-500\",\n                        )}\n                      >\n                        {item.status}\n                      </p>\n                    </dd>\n                  </div>\n                  <ChevronRight\n                    className=\"size-5 shrink-0 text-muted-foreground/60 group-hover:text-muted-foreground\"\n                    aria-hidden={true}\n                  />\n                </div>\n              </div>\n            </CardContent>\n          </Card>\n        ))}\n      </dl>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "stats"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "stats/six"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/card.json"
+  ]
+}

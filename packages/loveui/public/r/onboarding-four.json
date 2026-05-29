@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "onboarding-four",
+  "type": "registry:block",
+  "title": "onboarding/four",
+  "description": "Accordion onboarding flow with gated steps and action panels.",
+  "files": [
+    {
+      "path": "registry/default/blocks/onboarding4/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/onboarding/four/app/page.tsx",
+      "content": "import { Onboarding04 } from \"../components/onboarding\";\n\nexport default function Page() {\n\treturn <Onboarding04 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/onboarding4/components/onboarding.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/onboarding/four/components/onboarding.tsx",
+      "content": "'use client';\n\nimport {\n  ChartBarIcon,\n  CircleCheckIcon,\n  Code2Icon,\n  DatabaseIcon,\n  SlidersHorizontalIcon,\n} from 'lucide-react';\nimport { useState } from 'react';\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from '@/registry/default/ui/accordion';\nimport { Button } from '@/registry/default/ui/button';\nimport { cn } from '@/lib/utils';\n\nconst steps = [\n  {\n    title: 'Choose the section',\n    subtitle: 'Block selected',\n    icon: SlidersHorizontalIcon,\n    description:\n      'Start from a LoveUI block that already has layout, spacing, and responsive states handled.',\n    buttonText: 'Browse blocks',\n  },\n  {\n    title: 'Connect your data',\n    subtitle: 'Add content',\n    icon: DatabaseIcon,\n    description:\n      'Replace example content with your product copy, records, and calls to action.',\n    buttonText: 'Add content',\n  },\n  {\n    title: 'Adapt the code',\n    subtitle: 'Source owned',\n    icon: Code2Icon,\n    description: 'Keep the copied component local and adjust it to your app conventions.',\n    buttonText: 'Open files',\n  },\n  {\n    title: 'Review the screen',\n    subtitle: 'Ready to ship',\n    icon: ChartBarIcon,\n    description:\n      'Check accessibility, mobile layout, and final product polish before release.',\n    buttonText: 'Review UI',\n  },\n];\n\nexport function Onboarding04() {\n  const [activeStep, setActiveStep] = useState(1);\n\n  const [openItem, setOpenItem] = useState(\n    activeStep < steps.length ? steps[activeStep].title : ''\n  );\n\n  const handleComplete = () => {\n    const next = activeStep + 1;\n    setActiveStep(next);\n    setOpenItem(next < steps.length ? steps[next].title : '');\n  };\n\n  return (\n    <div className=\"flex min-h-dvh items-center justify-center bg-background p-4\">\n      <div className=\"mx-auto w-full min-w-0 max-w-sm sm:min-w-sm\">\n        <h3 className=\"font-semibold text-foreground text-lg\">LoveUI quick start</h3>\n        <p className=\"mt-1 text-muted-foreground text-sm\">\n          Turn a copied block into a production interface in four steps.\n        </p>\n        <Accordion\n          className=\"mt-6 space-y-2\"\n          collapsible\n          onValueChange={setOpenItem}\n          type=\"single\"\n          value={openItem}\n        >\n          {steps.map((step, index) => {\n            let status: 'complete' | 'current' | 'upcoming' = 'upcoming';\n            if (index < activeStep) {\n              status = 'complete';\n            } else if (index === activeStep) {\n              status = 'current';\n            }\n\n            return (\n              <AccordionItem\n                className=\"!border-b rounded-lg border shadow-xs\"\n                key={step.title}\n                value={step.title}\n              >\n                <AccordionTrigger className=\"px-4 hover:no-underline\">\n                  <div className=\"flex items-center space-x-2\">\n                    {status === 'complete' ? (\n                      <span\n                        aria-hidden\n                        className=\"flex size-5 items-center justify-center\"\n                      >\n                        <CircleCheckIcon\n                          aria-hidden\n                          className=\"size-6 shrink-0 fill-foreground text-foreground\"\n                        />\n                      </span>\n                    ) : (\n                      <span\n                        aria-hidden\n                        className=\"size-5 shrink-0 rounded-full border border-border\"\n                      />\n                    )}\n                    <p\n                      className={cn(\n                        'font-medium text-sm',\n                        status === 'upcoming'\n                          ? 'text-muted-foreground/60'\n                          : 'text-foreground'\n                      )}\n                    >\n                      {step.title}\n                    </p>\n                  </div>\n                </AccordionTrigger>\n                <AccordionContent className=\"px-4\">\n                  <div className=\"flex items-center justify-center rounded-md bg-muted px-4 py-5 ring-1 ring-ring ring-inset\">\n                    <div className=\"max-w-xs text-center\">\n                      <step.icon\n                        aria-hidden\n                        className=\"mx-auto size-7 shrink-0 text-muted-foreground\"\n                      />\n                      <p className=\"mt-4 font-semibold text-muted-foreground text-sm\">\n                        {step.subtitle}\n                      </p>\n                      <p className=\"mt-1 text-muted-foreground text-sm\">\n                        {step.description}\n                      </p>\n                      {status === 'complete' ? (\n                        <Button className=\"mt-6\" size=\"sm\" variant=\"outline\">\n                          {step.buttonText}\n                        </Button>\n                      ) : (\n                        <Button\n                          className=\"mt-6\"\n                          disabled={status === 'upcoming'}\n                          onClick={() => {\n                            if (status === 'current') {\n                              handleComplete();\n                            }\n                          }}\n                          size=\"sm\"\n                        >\n                          {step.buttonText}\n                        </Button>\n                      )}\n                    </div>\n                  </div>\n                </AccordionContent>\n              </AccordionItem>\n            );\n          })}\n        </Accordion>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "onboarding"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "onboarding/four"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/accordion.json",
+    "https://www.loveui.dev/r/button.json"
+  ]
+}

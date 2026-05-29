@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-eight",
+  "type": "registry:block",
+  "title": "stats/eight",
+  "description": "Radial progress cards with category coverage and footer links.",
+  "files": [
+    {
+      "path": "registry/default/blocks/stats8/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/stats/eight/app/page.tsx",
+      "content": "import Stats08 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats08 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/stats8/components/stats.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/stats/eight/components/stats.tsx",
+      "content": "\"use client\";\n\nimport { Card, CardContent, CardFooter } from \"@/registry/default/ui/card\";\nimport { type ChartConfig, ChartContainer } from \"@/registry/default/ui/chart\";\nimport { PolarAngleAxis, RadialBar, RadialBarChart } from \"recharts\";\n\nconst data = [\n  {\n    name: \"Auth\",\n    progress: 25,\n    budget: \"12\",\n    current: \"3\",\n    href: \"#\",\n    fill: \"var(--chart-1)\",\n  },\n  {\n    name: \"Marketing\",\n    progress: 55,\n    budget: \"40\",\n    current: \"22\",\n    href: \"#\",\n    fill: \"var(--chart-2)\",\n  },\n  {\n    name: \"Application\",\n    progress: 85,\n    budget: \"28\",\n    current: \"24\",\n    href: \"#\",\n    fill: \"var(--chart-3)\",\n  },\n  {\n    name: \"Docs\",\n    progress: 70,\n    budget: \"60\",\n    current: \"42\",\n    href: \"#\",\n    fill: \"var(--chart-4)\",\n  },\n];\n\nconst chartConfig = {\n  progress: {\n    label: \"Progress\",\n    color: \"var(--primary)\",\n  },\n} satisfies ChartConfig;\n\nexport default function Stats08() {\n  return (\n    <div className=\"flex items-center justify-center p-10 w-full\">\n      <dl className=\"grid w-full max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4\">\n        {data.map((item) => (\n          <Card key={item.name} className=\"p-0 gap-0 shadow-2xs\">\n            <CardContent className=\"p-4\">\n              <div className=\"flex min-w-0 items-center gap-3\">\n                <div className=\"relative flex size-24 shrink-0 items-center justify-center\">\n                  <ChartContainer config={chartConfig} className=\"size-24\">\n                    <RadialBarChart\n                      data={[item]}\n                      innerRadius={32}\n                      outerRadius={42}\n                      barSize={6}\n                      startAngle={90}\n                      endAngle={-270}\n                    >\n                      <PolarAngleAxis\n                        type=\"number\"\n                        domain={[0, 100]}\n                        angleAxisId={0}\n                        tick={false}\n                        axisLine={false}\n                      />\n                      <RadialBar\n                        dataKey=\"progress\"\n                        background\n                        cornerRadius={10}\n                        fill={item.fill}\n                        angleAxisId={0}\n                      />\n                    </RadialBarChart>\n                  </ChartContainer>\n                  <div className=\"pointer-events-none absolute inset-0 flex items-center justify-center\">\n                    <span className=\"text-base font-medium text-foreground\">{item.progress}%</span>\n                  </div>\n                </div>\n                <div className=\"min-w-0\">\n                  <dd className=\"text-base font-medium text-foreground\">\n                    {item.current} / {item.budget}\n                  </dd>\n                  <dt className=\"text-sm text-muted-foreground\">{item.name} coverage</dt>\n                </div>\n              </div>\n            </CardContent>\n            <CardFooter className=\"flex items-center justify-end border-t border-border p-0!\">\n              <a\n                href={item.href}\n                className=\"text-sm font-medium text-primary px-6 py-3 hover:text-primary/90\"\n              >\n                View more &#8594;\n              </a>\n            </CardFooter>\n          </Card>\n        ))}\n      </dl>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "stats"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "stats/eight"
+  },
+  "dependencies": {
+    "recharts": "^2.15.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/card.json",
+    "https://www.loveui.dev/r/chart.json"
+  ]
+}

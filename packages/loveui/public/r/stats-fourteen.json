@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-fourteen",
+  "type": "registry:block",
+  "title": "stats/fourteen",
+  "description": "Compact usage card with breakdown bar and category legend.",
+  "files": [
+    {
+      "path": "registry/default/blocks/stats14/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/stats/fourteen/app/page.tsx",
+      "content": "import { Stats14 } from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats14 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/stats14/components/stats.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/stats/fourteen/components/stats.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\";\nimport { Card, CardContent } from \"@/registry/default/ui/card\";\n\ninterface UsageItem {\n  label: string;\n  amount: number;\n  percentage: number;\n  color: \"emerald\" | \"amber\" | \"rose\";\n}\n\nconst data: UsageItem[] = [\n  { label: \"Blocks\", amount: 450, percentage: 52.3, color: \"emerald\" },\n  { label: \"Components\", amount: 285, percentage: 33.1, color: \"amber\" },\n  { label: \"Docs\", amount: 125, percentage: 14.6, color: \"rose\" },\n];\n\nconst colorClasses = {\n  emerald: \"bg-emerald-500 dark:bg-emerald-400\",\n  amber: \"bg-amber-500 dark:bg-amber-400\",\n  rose: \"bg-rose-500 dark:bg-rose-400\",\n};\n\nexport function Stats14() {\n  return (\n    <div className=\"flex w-full items-center justify-center p-10\">\n      <Card className=\"w-full max-w-sm shadow-none\">\n        <CardContent className=\"flex flex-col justify-between pt-0\">\n          <div>\n            <div className=\"flex items-center gap-2\">\n              <h3 className=\"text-balance text-sm font-bold text-foreground\">LoveUI usage</h3>\n              <Badge\n                variant=\"secondary\"\n                className=\"bg-amber-50 text-amber-700 ring-1 ring-amber-500/30 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/20\"\n              >\n                +12.5%\n              </Badge>\n            </div>\n\n            <p className=\"text-pretty mt-2 flex items-baseline gap-2\">\n              <span className=\"text-xl text-foreground\">860</span>\n              <span className=\"text-sm text-muted-foreground\">installs this month</span>\n            </p>\n\n            <div className=\"mt-4\">\n              <p className=\"text-pretty text-sm font-medium text-foreground\">\n                Resource breakdown\n              </p>\n              <div className=\"mt-2 flex items-center gap-0.5\">\n                {data.map((item, index) => (\n                  <div\n                    key={index}\n                    className={`${colorClasses[item.color]} h-1.5 rounded-xs`}\n                    style={{ width: `${item.percentage}%` }}\n                  />\n                ))}\n              </div>\n            </div>\n\n            <ul role=\"list\" className=\"mt-5 space-y-2\">\n              {data.map((item, index) => (\n                <li key={index} className=\"flex items-center gap-2 text-xs\">\n                  <span\n                    className={`${colorClasses[item.color]} size-2.5 rounded-xs`}\n                    aria-hidden=\"true\"\n                  />\n                  <span className=\"text-foreground\">{item.label}</span>\n                  <span className=\"text-muted-foreground\">\n                    ({item.amount} / {item.percentage}%)\n                  </span>\n                </li>\n              ))}\n            </ul>\n          </div>\n\n          <p className=\"text-pretty mt-6 text-xs text-muted-foreground\">\n            Configure limits in{\" \"}\n            <a\n              href=\"#\"\n              className=\"text-emerald-600 hover:underline dark:text-emerald-400\"\n            >\n              registry settings.\n            </a>\n          </p>\n        </CardContent>\n      </Card>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "stats"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "stats/fourteen"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/badge.json",
+    "https://www.loveui.dev/r/card.json"
+  ]
+}

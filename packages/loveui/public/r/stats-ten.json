@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-ten",
+  "type": "registry:block",
+  "title": "stats/ten",
+  "description": "Sparkline metric cards with positive and negative trend charts.",
+  "files": [
+    {
+      "path": "registry/default/blocks/stats10/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/stats/ten/app/page.tsx",
+      "content": "import Stats10 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats10 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/stats10/components/stats.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/stats/ten/components/stats.tsx",
+      "content": "\"use client\";\n\nimport { Card, CardContent } from \"@/registry/default/ui/card\";\nimport { ChartContainer } from \"@/registry/default/ui/chart\";\nimport { cn } from \"@/lib/utils\";\nimport { Area, AreaChart, XAxis } from \"recharts\";\n\nconst data = [\n  {\n    date: \"Nov 24, 2023\",\n    \"Blocks\": 142.87,\n    \"Components\": 65.32,\n    \"Docs\": 83.25,\n  },\n  {\n    date: \"Nov 25, 2023\",\n    \"Blocks\": 151.43,\n    \"Components\": 59.78,\n    \"Docs\": 79.64,\n  },\n  {\n    date: \"Nov 26, 2023\",\n    \"Blocks\": 157.28,\n    \"Components\": 64.21,\n    \"Docs\": 76.19,\n  },\n  {\n    date: \"Nov 27, 2023\",\n    \"Blocks\": 162.94,\n    \"Components\": 57.46,\n    \"Docs\": 72.84,\n  },\n  {\n    date: \"Nov 28, 2023\",\n    \"Blocks\": 148.37,\n    \"Components\": 49.82,\n    \"Docs\": 81.56,\n  },\n  {\n    date: \"Nov 29, 2023\",\n    \"Blocks\": 139.56,\n    \"Components\": 55.63,\n    \"Docs\": 92.38,\n  },\n  {\n    date: \"Nov 30, 2023\",\n    \"Blocks\": 145.83,\n    \"Components\": 61.27,\n    \"Docs\": 88.75,\n  },\n  {\n    date: \"Dec 01, 2023\",\n    \"Blocks\": 138.29,\n    \"Components\": 68.94,\n    \"Docs\": 93.42,\n  },\n  {\n    date: \"Dec 02, 2023\",\n    \"Blocks\": 129.64,\n    \"Components\": 74.56,\n    \"Docs\": 97.18,\n  },\n  {\n    date: \"Dec 03, 2023\",\n    \"Blocks\": 119.82,\n    \"Components\": 71.38,\n    \"Docs\": 89.43,\n  },\n  {\n    date: \"Dec 04, 2023\",\n    \"Blocks\": 128.54,\n    \"Components\": 63.95,\n    \"Docs\": 92.76,\n  },\n  {\n    date: \"Dec 05, 2023\",\n    \"Blocks\": 137.21,\n    \"Components\": 58.47,\n    \"Docs\": 84.29,\n  },\n  {\n    date: \"Dec 06, 2023\",\n    \"Blocks\": 134.68,\n    \"Components\": 69.12,\n    \"Docs\": 79.38,\n  },\n  {\n    date: \"Dec 07, 2023\",\n    \"Blocks\": 152.73,\n    \"Components\": 73.89,\n    \"Docs\": 81.42,\n  },\n  {\n    date: \"Dec 08, 2023\",\n    \"Blocks\": 168.59,\n    \"Components\": 78.54,\n    \"Docs\": 75.68,\n  },\n];\n\nconst summary = [\n  {\n    name: \"Blocks\",\n    tickerSymbol: \"BLK\",\n    value: \"168.59K\",\n    change: \"+15.86\",\n    percentageChange: \"+10.4%\",\n    changeType: \"positive\",\n  },\n  {\n    name: \"Components\",\n    tickerSymbol: \"CMP\",\n    value: \"78.54K\",\n    change: \"+4.65\",\n    percentageChange: \"+6.3%\",\n    changeType: \"positive\",\n  },\n  {\n    name: \"Docs\",\n    tickerSymbol: \"DOC\",\n    value: \"75.68K\",\n    change: \"-5.74\",\n    percentageChange: \"-7.1%\",\n    changeType: \"negative\",\n  },\n];\n\nconst sanitizeName = (name: string) => {\n  return name\n    .replace(/\\\\s+/g, \"-\")\n    .replace(/[^a-zA-Z0-9-]/g, \"_\")\n    .toLowerCase();\n};\n\nexport default function Stats10() {\n  return (\n    <div className=\"flex items-center justify-center p-10 w-full\">\n      <dl className=\"grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full\">\n        {summary.map((item) => {\n          const sanitizedName = sanitizeName(item.name);\n          const gradientId = `gradient-${sanitizedName}`;\n\n          const color =\n            item.changeType === \"positive\" ? \"hsl(142.1 76.2% 36.3%)\" : \"hsl(0 72.2% 50.6%)\";\n\n          return (\n            <Card key={item.name} className=\"p-0 shadow-2xs\">\n              <CardContent className=\"p-4 pb-0\">\n                <div>\n                  <dt className=\"text-sm font-medium text-foreground\">\n                    {item.name}{\" \"}\n                    <span className=\"font-normal text-muted-foreground\">({item.tickerSymbol})</span>\n                  </dt>\n                  <div className=\"flex items-baseline justify-between\">\n                    <dd\n                      className={cn(\n                        item.changeType === \"positive\"\n                          ? \"text-green-600 dark:text-green-500\"\n                          : \"text-red-600 dark:text-red-500\",\n                        \"text-lg font-semibold\",\n                      )}\n                    >\n                      {item.value}\n                    </dd>\n                    <dd className=\"flex items-center space-x-1 text-sm\">\n                      <span className=\"font-medium text-foreground\">{item.change}</span>\n                      <span\n                        className={cn(\n                          item.changeType === \"positive\"\n                            ? \"text-green-600 dark:text-green-500\"\n                            : \"text-red-600 dark:text-red-500\",\n                        )}\n                      >\n                        ({item.percentageChange})\n                      </span>\n                    </dd>\n                  </div>\n                </div>\n\n                <div className=\"mt-2 h-16 overflow-hidden\">\n                  <ChartContainer\n                    className=\"w-full h-full\"\n                    config={{\n                      [item.name]: {\n                        label: item.name,\n                        color: color,\n                      },\n                    }}\n                  >\n                    <AreaChart data={data}>\n                      <defs>\n                        <linearGradient id={gradientId} x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                          <stop offset=\"5%\" stopColor={color} stopOpacity={0.3} />\n                          <stop offset=\"95%\" stopColor={color} stopOpacity={0} />\n                        </linearGradient>\n                      </defs>\n                      <XAxis dataKey=\"date\" hide={true} />\n                      <Area\n                        dataKey={item.name}\n                        stroke={color}\n                        fill={`url(#${gradientId})`}\n                        fillOpacity={0.4}\n                        strokeWidth={1.5}\n                        type=\"monotone\"\n                      />\n                    </AreaChart>\n                  </ChartContainer>\n                </div>\n              </CardContent>\n            </Card>\n          );\n        })}\n      </dl>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "stats"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "stats/ten"
+  },
+  "dependencies": {
+    "recharts": "^2.15.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/card.json",
+    "https://www.loveui.dev/r/chart.json"
+  ]
+}

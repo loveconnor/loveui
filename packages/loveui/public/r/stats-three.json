@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-three",
+  "type": "registry:block",
+  "title": "stats/three",
+  "description": "Responsive metric cards with compact change indicators.",
+  "files": [
+    {
+      "path": "registry/default/blocks/stats3/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/stats/three/app/page.tsx",
+      "content": "import Stats03 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats03 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/stats3/components/stats.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/stats/three/components/stats.tsx",
+      "content": "\"use client\";\n\nimport { Card, CardContent } from \"@/registry/default/ui/card\";\nimport { cn } from \"@/lib/utils\";\n\nconst data = [\n  {\n    name: \"Docs visitors\",\n    stat: \"10,450\",\n    change: \"-12.5%\",\n    changeType: \"negative\",\n  },\n  {\n    name: \"Block previews\",\n    stat: \"56.1%\",\n    change: \"+1.8%\",\n    changeType: \"positive\",\n  },\n  {\n    name: \"Copy duration\",\n    stat: \"5.2min\",\n    change: \"+19.7%\",\n    changeType: \"positive\",\n  },\n  {\n    name: \"Install success\",\n    stat: \"3.2%\",\n    change: \"-2.4%\",\n    changeType: \"negative\",\n  },\n];\n\nexport default function Stats03() {\n  return (\n    <div className=\"flex items-center justify-center p-10 w-full\">\n      <dl className=\"grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4\">\n        {data.map((item) => (\n          <Card key={item.name} className=\"p-6 py-4 shadow-2xs\">\n            <CardContent className=\"p-0\">\n              <dt className=\"truncate text-sm font-medium text-muted-foreground\">{item.name}</dt>\n              <dd className=\"mt-2 flex flex-wrap items-baseline gap-x-2.5 gap-y-1\">\n                <span className=\"tabular-nums text-3xl font-semibold text-foreground\">\n                  {item.stat}\n                </span>\n                <span\n                  className={cn(\n                    item.changeType === \"positive\"\n                      ? \"text-green-800 dark:text-green-400\"\n                      : \"text-red-800 dark:text-red-400\",\n                    \"text-sm font-medium\",\n                  )}\n                >\n                  {item.change}\n                </span>\n              </dd>\n            </CardContent>\n          </Card>\n        ))}\n      </dl>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "stats"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "stats/three"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/card.json"
+  ]
+}

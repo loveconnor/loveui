@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats-four",
+  "type": "registry:block",
+  "title": "stats/four",
+  "description": "Three-card metric row with badge trends and large values.",
+  "files": [
+    {
+      "path": "registry/default/blocks/stats4/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/stats/four/app/page.tsx",
+      "content": "import Stats04 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats04 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/stats4/components/stats.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/stats/four/components/stats.tsx",
+      "content": "\"use client\";\n\nimport { Badge } from \"@/registry/default/ui/badge\";\nimport { Card, CardContent } from \"@/registry/default/ui/card\";\nimport { cn } from \"@/lib/utils\";\nimport { TrendingDown, TrendingUp } from \"lucide-react\";\n\nconst data = [\n  {\n    name: \"Daily installs\",\n    stat: \"3,450\",\n    change: \"+12.1%\",\n    changeType: \"positive\",\n  },\n  {\n    name: \"Weekly previews\",\n    stat: \"1,342\",\n    change: \"-9.8%\",\n    changeType: \"negative\",\n  },\n  {\n    name: \"Time to copy\",\n    stat: \"5.2min\",\n    change: \"+7.7%\",\n    changeType: \"positive\",\n  },\n];\n\nexport default function Stats04() {\n  return (\n    <div className=\"flex items-center justify-center p-10 w-full\">\n      <dl className=\"grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3\">\n        {data.map((item) => (\n          <Card key={item.name} className=\"p-6 py-4 w-full shadow-2xs\">\n            <CardContent className=\"p-0\">\n              <div className=\"flex min-w-0 items-center justify-between gap-3\">\n                <dt className=\"min-w-0 truncate text-sm font-medium text-muted-foreground\">{item.name}</dt>\n                <Badge\n                  variant=\"outline\"\n                  className={cn(\n                    \"inline-flex shrink-0 items-center px-1.5 ps-2.5 py-0.5 text-xs font-medium\",\n                    item.changeType === \"positive\"\n                      ? \"bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400\"\n                      : \"bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400\",\n                  )}\n                >\n                  {item.changeType === \"positive\" ? (\n                    <TrendingUp className=\"mr-0.5 -ml-1 h-5 w-5 shrink-0 self-center text-green-500\" />\n                  ) : (\n                    <TrendingDown className=\"mr-0.5 -ml-1 h-5 w-5 shrink-0 self-center text-red-500\" />\n                  )}\n                  <span className=\"sr-only\">\n                    {\" \"}\n                    {item.changeType === \"positive\" ? \"Increased\" : \"Decreased\"} by{\" \"}\n                  </span>\n                  {item.change}\n                </Badge>\n              </div>\n              <dd className=\"tabular-nums text-3xl font-semibold text-foreground mt-2\">\n                {item.stat}\n              </dd>\n            </CardContent>\n          </Card>\n        ))}\n      </dl>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "stats"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "stats/four"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/badge.json",
+    "https://www.loveui.dev/r/card.json"
+  ]
+}

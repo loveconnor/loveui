@@ -73,6 +73,7 @@ const LOVE_UI_COMPONENTS = new Set([
   "breadcrumb",
   "button",
   "card",
+  "chart",
   "checkbox",
   "checkbox-group",
   "collapsible",
@@ -399,6 +400,172 @@ const BUNDLED_BLOCKS = new Map([
     {
       sourceDir: "integrations5",
       targetBase: "components/blocks/integrations/five",
+    },
+  ],
+  [
+    "onboarding-one",
+    {
+      sourceDir: "onboarding1",
+      targetBase: "components/blocks/onboarding/one",
+    },
+  ],
+  [
+    "onboarding-two",
+    {
+      sourceDir: "onboarding2",
+      targetBase: "components/blocks/onboarding/two",
+    },
+  ],
+  [
+    "onboarding-three",
+    {
+      sourceDir: "onboarding3",
+      targetBase: "components/blocks/onboarding/three",
+    },
+  ],
+  [
+    "onboarding-four",
+    {
+      sourceDir: "onboarding4",
+      targetBase: "components/blocks/onboarding/four",
+    },
+  ],
+  [
+    "onboarding-five",
+    {
+      sourceDir: "onboarding5",
+      targetBase: "components/blocks/onboarding/five",
+    },
+  ],
+  [
+    "onboarding-six",
+    {
+      sourceDir: "onboarding6",
+      targetBase: "components/blocks/onboarding/six",
+    },
+  ],
+  [
+    "onboarding-seven",
+    {
+      sourceDir: "onboarding7",
+      targetBase: "components/blocks/onboarding/seven",
+    },
+  ],
+  [
+    "stats-one",
+    {
+      sourceDir: "stats1",
+      targetBase: "components/blocks/stats/one",
+    },
+  ],
+  [
+    "stats-two",
+    {
+      sourceDir: "stats2",
+      targetBase: "components/blocks/stats/two",
+    },
+  ],
+  [
+    "stats-three",
+    {
+      sourceDir: "stats3",
+      targetBase: "components/blocks/stats/three",
+    },
+  ],
+  [
+    "stats-four",
+    {
+      sourceDir: "stats4",
+      targetBase: "components/blocks/stats/four",
+    },
+  ],
+  [
+    "stats-five",
+    {
+      sourceDir: "stats5",
+      targetBase: "components/blocks/stats/five",
+    },
+  ],
+  [
+    "stats-six",
+    {
+      sourceDir: "stats6",
+      targetBase: "components/blocks/stats/six",
+    },
+  ],
+  [
+    "stats-seven",
+    {
+      sourceDir: "stats7",
+      targetBase: "components/blocks/stats/seven",
+      dependencies: {
+        recharts: "^2.15.0",
+      },
+    },
+  ],
+  [
+    "stats-eight",
+    {
+      sourceDir: "stats8",
+      targetBase: "components/blocks/stats/eight",
+      dependencies: {
+        recharts: "^2.15.0",
+      },
+    },
+  ],
+  [
+    "stats-nine",
+    {
+      sourceDir: "stats9",
+      targetBase: "components/blocks/stats/nine",
+    },
+  ],
+  [
+    "stats-ten",
+    {
+      sourceDir: "stats10",
+      targetBase: "components/blocks/stats/ten",
+      dependencies: {
+        recharts: "^2.15.0",
+      },
+    },
+  ],
+  [
+    "stats-eleven",
+    {
+      sourceDir: "stats11",
+      targetBase: "components/blocks/stats/eleven",
+    },
+  ],
+  [
+    "stats-twelve",
+    {
+      sourceDir: "stats12",
+      targetBase: "components/blocks/stats/twelve",
+      dependencies: {
+        recharts: "^2.15.0",
+      },
+    },
+  ],
+  [
+    "stats-thirteen",
+    {
+      sourceDir: "stats13",
+      targetBase: "components/blocks/stats/thirteen",
+    },
+  ],
+  [
+    "stats-fourteen",
+    {
+      sourceDir: "stats14",
+      targetBase: "components/blocks/stats/fourteen",
+    },
+  ],
+  [
+    "stats-fifteen",
+    {
+      sourceDir: "stats15",
+      targetBase: "components/blocks/stats/fifteen",
     },
   ],
   [

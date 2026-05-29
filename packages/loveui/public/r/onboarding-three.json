@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "onboarding-three",
+  "type": "registry:block",
+  "title": "onboarding/three",
+  "description": "Selectable setup checklist with helper copy and compact progress.",
+  "files": [
+    {
+      "path": "registry/default/blocks/onboarding3/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/onboarding/three/app/page.tsx",
+      "content": "import { Onboarding03 } from \"../components/onboarding\";\n\nexport default function Page() {\n\treturn <Onboarding03 />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/onboarding3/components/onboarding.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/onboarding/three/components/onboarding.tsx",
+      "content": "'use client';\n\nimport { CircleCheckIcon } from 'lucide-react';\nimport { useState } from 'react';\nimport { Progress } from '@/registry/default/ui/progress';\nimport { cn } from '@/lib/utils';\n\nconst steps = [\n  {\n    id: '1.',\n    title: 'Pick a block',\n    description:\n      'Choose the LoveUI section that best fits the screen you are building.',\n  },\n  {\n    id: '2.',\n    title: 'Copy the source',\n    description:\n      'Install the block from the registry and keep every file editable in your app.',\n  },\n  {\n    id: '3.',\n    title: 'Adapt the details',\n    description:\n      'Update copy, data, actions, and styling while preserving the layout quality.',\n  },\n  {\n    id: '4.',\n    title: 'Ship the interface',\n    description: 'Review responsive behavior, accessibility, and final polish before launch.',\n  },\n];\n\nexport function Onboarding03() {\n  const [activeStep, setActiveStep] = useState(0);\n\n  return (\n    <div className=\"flex min-h-dvh items-center justify-center bg-background p-4\">\n      <div className=\"sm:mx-auto sm:max-w-lg\">\n        <h3 className=\"font-semibold text-foreground text-lg\">LoveUI setup</h3>\n        <p className=\"mt-1 text-muted-foreground text-sm leading-6\">\n          Complete each step to ship a polished screen from source-first blocks.\n        </p>\n        <div className=\"mt-4 flex items-center justify-end space-x-4\">\n          <span className=\"text-muted-foreground text-sm\">\n            Step {activeStep + 1}/{steps.length}\n          </span>\n          <Progress\n            className=\"w-32\"\n            value={(activeStep / steps.length) * 100}\n          />\n        </div>\n        <ul className=\"mt-4 space-y-4\">\n          {steps.map((step, index) => (\n            <li key={step.id}>\n              <button\n                className={cn(\n                  'relative w-full cursor-pointer rounded-lg border bg-card p-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',\n                  index === activeStep\n                    ? 'border-foreground/20'\n                    : 'border-border'\n                )}\n                onClick={() => setActiveStep(index)}\n                type=\"button\"\n              >\n                <div className=\"flex items-start space-x-3\">\n                  {index < activeStep ? (\n                    <CircleCheckIcon\n                      aria-hidden={true}\n                      className=\"size-6 shrink-0 fill-foreground text-foreground\"\n                    />\n                  ) : (\n                    <span\n                      aria-hidden={true}\n                      className=\"flex size-6 items-center justify-center font-medium text-muted-foreground\"\n                    >\n                      {step.id}\n                    </span>\n                  )}\n                  <div>\n                    <h3\n                      className={cn(\n                        'font-medium',\n                        index < activeStep\n                          ? 'text-muted-foreground line-through'\n                          : 'text-foreground'\n                      )}\n                    >\n                      {step.title}\n                    </h3>\n                    <p className=\"mt-1 text-muted-foreground text-sm leading-6\">\n                      {step.description}\n                    </p>\n                  </div>\n                </div>\n              </button>\n            </li>\n          ))}\n        </ul>\n        <div className=\"mt-6 rounded-lg bg-muted p-4\">\n          <h4 className=\"font-medium text-foreground text-sm\">Need help?</h4>\n          <p className=\"mt-1 text-muted-foreground text-sm\">\n            Connect with Connor Love at{' '}\n            <a\n              className=\"font-medium text-primary\"\n              href=\"mailto:hello@loveui.dev\"\n            >\n              hello@loveui.dev\n            </a>\n            .\n          </p>\n        </div>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "onboarding"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "onboarding/three"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/progress.json"
+  ]
+}
