@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-three",
+  "type": "registry:block",
+  "title": "features/three",
+  "description": "Full-width bordered feature grid with section dividers.",
+  "files": [
+    {
+      "path": "registry/default/blocks/features3/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/features/three/app/page.tsx",
+      "content": "import { FeatureSection } from \"../components/feature-section\";\n\nexport default function Page() {\n\treturn (\n\t\t<section className=\"min-h-screen place-content-center overflow-hidden px-4\">\n\t\t\t<FeatureSection />\n\t\t</section>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/features3/components/feature-section.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/three/components/feature-section.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport type React from \"react\";\nimport { FullWidthDivider } from \"./full-width-divider\";\nimport { ZapIcon, ShieldCheckIcon, ActivityIcon, GlobeIcon } from \"lucide-react\";\n\ntype FeatureType = {\n\ttitle: string;\n\ticon: React.ReactNode;\n\tdescription: string;\n};\n\nexport function FeatureSection() {\n\treturn (\n\t\t<div className=\"mx-auto min-h-screen w-full max-w-5xl place-content-center space-y-12 border-x py-4\">\n\t\t\t<div className=\"relative grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4\">\n\t\t\t\t<FullWidthDivider position=\"top\" />\n\t\t\t\t{features.map((feature) => (\n\t\t\t\t\t<FeatureCard feature={feature} key={feature.title} />\n\t\t\t\t))}\n\t\t\t\t<FullWidthDivider position=\"bottom\" />\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nexport function FeatureCard({\n\tfeature,\n\tclassName,\n\t...props\n}: React.ComponentProps<\"div\"> & {\n\tfeature: FeatureType;\n}) {\n\treturn (\n\t\t<div\n\t\t\tclassName={cn(\n\t\t\t\t\"relative flex flex-col justify-between overflow-hidden bg-background p-4 md:p-6\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<div\n\t\t\t\tclassName={cn(\n\t\t\t\t\t\"relative z-10 flex items-center pt-4 pb-6\",\n\t\t\t\t\t\"[&_svg]:size-5 [&_svg]:text-primary\"\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t{feature.icon}\n\t\t\t</div>\n\n\t\t\t<div className=\"relative z-10 space-y-2\">\n\t\t\t\t<h3 className=\"font-medium text-foreground text-lg\">{feature.title}</h3>\n\t\t\t\t<p className=\"text-muted-foreground text-xs leading-relaxed\">\n\t\t\t\t\t{feature.description}\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nconst features: FeatureType[] = [\n\t{\n\t\ttitle: \"Lightning Fast\",\n\t\ticon: (\n\t\t\t<ZapIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Blazing fast performance with edge network optimizations.\",\n\t},\n\t{\n\t\ttitle: \"Secure by Design\",\n\t\ticon: (\n\t\t\t<ShieldCheckIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Enterprise-grade security, zero configuration required.\",\n\t},\n\t{\n\t\ttitle: \"Real-time Sync\",\n\t\ticon: (\n\t\t\t<ActivityIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Real-time data sync across all devices efficiently.\",\n\t},\n\t{\n\t\ttitle: \"Global Scale\",\n\t\ticon: (\n\t\t\t<GlobeIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Instant global deployment to 35+ regions worldwide.\",\n\t},\n];\n"
+    },
+    {
+      "path": "registry/default/blocks/features3/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/three/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport function FullWidthDivider({\n\tclassName,\n\tposition = \"bottom\",\n\t...props\n}: React.ComponentProps<\"div\"> & {\n\tposition?: \"top\" | \"bottom\";\n}) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute right-1/2 left-1/2 h-px w-screen -translate-x-1/2 bg-border\",\n\t\t\t\tposition === \"top\" ? \"top-0\" : \"bottom-0\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "features"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "features/three"
+  }
+}

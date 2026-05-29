@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-four",
+  "type": "registry:block",
+  "title": "features/four",
+  "description": "Product feature cards with extended borders and icon badges.",
+  "files": [
+    {
+      "path": "registry/default/blocks/features4/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/features/four/app/page.tsx",
+      "content": "import { FeatureSection } from \"../components/feature-section\";\n\nexport default function Page() {\n\treturn (\n\t\t<section className=\"min-h-screen place-content-center p-4\">\n\t\t\t<FeatureSection />\n\t\t</section>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/features4/components/feature-section.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/four/components/feature-section.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport type React from \"react\";\nimport { DecorIcon } from \"./decor-icon\";\nimport { LayoutDashboardIcon, TerminalIcon, ShieldCheckIcon, FileTextIcon } from \"lucide-react\";\n\ntype FeatureType = {\n\ttitle: string;\n\ticon: React.ReactNode;\n\tdescription: string;\n};\n\nexport function FeatureSection() {\n\treturn (\n\t\t<div className=\"mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center gap-12 px-4 py-12 md:px-8\">\n\t\t\t<div className=\"mx-auto max-w-2xl space-y-2 text-center\">\n\t\t\t\t<h2 className=\"font-medium text-3xl tracking-tight md:text-5xl\">\n\t\t\t\t\tBuild apps faster\n\t\t\t\t</h2>\n\t\t\t\t<p className=\"text-muted-foreground text-sm leading-relaxed md:text-base\">\n\t\t\t\t\tThe complete platform for secure, scalable apps. You code, we handle\n\t\t\t\t\tthe rest.\n\t\t\t\t</p>\n\t\t\t</div>\n\n\t\t\t<div className=\"grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4\">\n\t\t\t\t{features.map((feature) => (\n\t\t\t\t\t<FeatureCard feature={feature} key={feature.title} />\n\t\t\t\t))}\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nfunction FeatureCard({\n\tfeature,\n\tclassName,\n\t...props\n}: React.ComponentProps<\"div\"> & {\n\tfeature: FeatureType;\n}) {\n\treturn (\n\t\t<div\n\t\t\tclassName={cn(\n\t\t\t\t\"relative flex flex-col justify-between gap-6 bg-background px-6 pt-8 pb-6 shadow-xs\",\n\t\t\t\t// Gradient inspired by testimonials\n\t\t\t\t\"dark:bg-[radial-gradient(50%_80%_at_25%_0%,--theme(--color-foreground/.1),transparent)]\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t{/* Extended Borders */}\n\t\t\t<div className=\"absolute -inset-y-4 -left-px w-px bg-border\" />\n\t\t\t<div className=\"absolute -inset-y-4 -right-px w-px bg-border\" />\n\t\t\t<div className=\"absolute -inset-x-4 -top-px h-px bg-border\" />\n\t\t\t<div className=\"absolute -right-4 -bottom-px -left-4 h-px bg-border\" />\n\n\t\t\t{/* Corner Decor */}\n\t\t\t<DecorIcon className=\"size-3.5\" position=\"top-left\" />\n\n\t\t\t<div\n\t\t\t\tclassName={cn(\n\t\t\t\t\t\"relative z-10 flex w-fit items-center justify-center rounded-lg border bg-muted/20 p-3\",\n\t\t\t\t\t\"[&_svg]:size-5 [&_svg]:stroke-[1.5] [&_svg]:text-foreground\"\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t{feature.icon}\n\t\t\t</div>\n\n\t\t\t<div className=\"relative z-10 space-y-2\">\n\t\t\t\t<h3 className=\"font-medium text-base text-foreground\">\n\t\t\t\t\t{feature.title}\n\t\t\t\t</h3>\n\t\t\t\t<p className=\"text-muted-foreground text-xs leading-relaxed\">\n\t\t\t\t\t{feature.description}\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nconst features: FeatureType[] = [\n\t{\n\t\ttitle: \"Interactive Dashboard\",\n\t\ticon: (\n\t\t\t<LayoutDashboardIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Visualize your data with drag-and-drop widgets.\",\n\t},\n\t{\n\t\ttitle: \"Instant API\",\n\t\ticon: (\n\t\t\t<TerminalIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Auto-generate REST and GraphQL APIs instantly.\",\n\t},\n\t{\n\t\ttitle: \"Role-Based Access\",\n\t\ticon: (\n\t\t\t<ShieldCheckIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Secure resources with granular permission controls.\",\n\t},\n\t{\n\t\ttitle: \"Audit Trails\",\n\t\ticon: (\n\t\t\t<FileTextIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Track every change with comprehensive logs.\",\n\t},\n];\n"
+    },
+    {
+      "path": "registry/default/blocks/features4/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/four/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "features"
+  ],
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "features/four"
+  }
+}

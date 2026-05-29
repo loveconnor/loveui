@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-two",
+  "type": "registry:block",
+  "title": "features/two",
+  "description": "Three-card feature section with dashed borders and corner accents.",
+  "files": [
+    {
+      "path": "registry/default/blocks/features2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/features/two/app/page.tsx",
+      "content": "import { FeatureSection } from \"../components/feature-section\";\n\nexport default function Page() {\n\treturn (\n\t\t<section className=\"min-h-screen place-content-center p-4\">\n\t\t\t<FeatureSection />\n\t\t</section>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/features2/components/feature-section.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/two/components/feature-section.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport type React from \"react\";\nimport { DecorIcon } from \"./decor-icon\";\nimport { HistoryIcon, SquareDashedIcon, CommandIcon } from \"lucide-react\";\n\ntype FeatureType = {\n\ttitle: string;\n\ticon: React.ReactNode;\n\tdescription: string;\n};\n\nexport function FeatureSection() {\n\treturn (\n\t\t<div className=\"mx-auto max-w-5xl\">\n\t\t\t<h2 className=\"mb-5 text-center font-medium text-2xl md:text-3xl\">\n\t\t\t\tEnsuring your speedy workflow\n\t\t\t</h2>\n\n\t\t\t<div className=\"relative\">\n\t\t\t\t{/* Corner Icons */}\n\t\t\t\t<DecorIcon\n\t\t\t\t\tclassName=\"size-6 stroke-2 stroke-border\"\n\t\t\t\t\tposition=\"top-left\"\n\t\t\t\t/>\n\t\t\t\t<DecorIcon\n\t\t\t\t\tclassName=\"size-6 stroke-2 stroke-border\"\n\t\t\t\t\tposition=\"top-right\"\n\t\t\t\t/>\n\t\t\t\t<DecorIcon\n\t\t\t\t\tclassName=\"size-6 stroke-2 stroke-border\"\n\t\t\t\t\tposition=\"bottom-left\"\n\t\t\t\t/>\n\t\t\t\t<DecorIcon\n\t\t\t\t\tclassName=\"size-6 stroke-2 stroke-border\"\n\t\t\t\t\tposition=\"bottom-right\"\n\t\t\t\t/>\n\n\t\t\t\t<DashedLine className=\"-top-[1.5px] right-3 left-3\" />\n\t\t\t\t<DashedLine className=\"top-3 -right-[1.5px] bottom-3\" />\n\t\t\t\t<DashedLine className=\"top-3 bottom-3 -left-[1.5px]\" />\n\t\t\t\t<DashedLine className=\"right-3 -bottom-[1.5px] left-3\" />\n\n\t\t\t\t<div className=\"grid grid-cols-1 md:grid-cols-3\">\n\t\t\t\t\t{features.map((feature) => (\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\tclassName=\"group [&_svg]:mask-b-from-0% relative p-8 [&_svg]:size-7 [&_svg]:text-muted-foreground\"\n\t\t\t\t\t\t\tkey={feature.title}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{feature.icon}\n\t\t\t\t\t\t\t<h3 className=\"font-medium text-lg\">{feature.title}</h3>\n\t\t\t\t\t\t\t<p className=\"text-muted-foreground text-sm leading-relaxed\">\n\t\t\t\t\t\t\t\t{feature.description}\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<DashedLine className=\"right-5 bottom-0 left-5 group-last:hidden md:top-5 md:right-0 md:bottom-5 md:left-full\" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nfunction DashedLine({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tclassName={cn(\"absolute border-collapse border border-dashed\", className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nconst features: FeatureType[] = [\n\t{\n\t\ttitle: \"Auto-Save Everything\",\n\t\ticon: (\n\t\t\t<HistoryIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Write without worry, every time.\",\n\t},\n\t{\n\t\ttitle: \"Drag-and-Drop Blocks\",\n\t\ticon: (\n\t\t\t<SquareDashedIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Rearrange sections with the block editor.\",\n\t},\n\t{\n\t\ttitle: \"Keyboard Shortcuts\",\n\t\ticon: (\n\t\t\t<CommandIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Speed up your workflow with quick keys.\",\n\t},\n];\n"
+    },
+    {
+      "path": "registry/default/blocks/features2/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/two/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "features"
+  ],
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "features/two"
+  }
+}

@@ -286,6 +286,57 @@ const BUNDLED_BLOCKS = new Map([
       },
     },
   ],
+  [
+    "features-one",
+    {
+      sourceDir: "features1",
+      targetBase: "components/blocks/features/one",
+    },
+  ],
+  [
+    "features-two",
+    {
+      sourceDir: "features2",
+      targetBase: "components/blocks/features/two",
+      dependencies: {
+        "class-variance-authority": "^0.7.1",
+      },
+    },
+  ],
+  [
+    "features-three",
+    {
+      sourceDir: "features3",
+      targetBase: "components/blocks/features/three",
+    },
+  ],
+  [
+    "features-four",
+    {
+      sourceDir: "features4",
+      targetBase: "components/blocks/features/four",
+      dependencies: {
+        "class-variance-authority": "^0.7.1",
+      },
+    },
+  ],
+  [
+    "features-five",
+    {
+      sourceDir: "features5",
+      targetBase: "components/blocks/features/five",
+    },
+  ],
+  [
+    "features-six",
+    {
+      sourceDir: "features6",
+      targetBase: "components/blocks/features/six",
+      dependencies: {
+        cobe: "^2.0.1",
+      },
+    },
+  ],
 ] as const);
 
 const SCRIPT_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"] as const;

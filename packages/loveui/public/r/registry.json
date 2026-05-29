@@ -172,6 +172,214 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "features-one",
+      "type": "registry:block",
+      "title": "features/one",
+      "description": "Compact four-column feature strip with icon dividers.",
+      "files": [
+        {
+          "path": "registry/default/blocks/features1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/features/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features1/components/feature-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/one/components/feature-section.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "features"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "features/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "features-two",
+      "type": "registry:block",
+      "title": "features/two",
+      "description": "Three-card feature section with dashed borders and corner accents.",
+      "files": [
+        {
+          "path": "registry/default/blocks/features2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/features/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features2/components/feature-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/two/components/feature-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features2/components/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/two/components/decor-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "features"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "features/two"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "features-three",
+      "type": "registry:block",
+      "title": "features/three",
+      "description": "Full-width bordered feature grid with section dividers.",
+      "files": [
+        {
+          "path": "registry/default/blocks/features3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/features/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features3/components/feature-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/three/components/feature-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features3/components/full-width-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/three/components/full-width-divider.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "features"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "features/three"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "features-four",
+      "type": "registry:block",
+      "title": "features/four",
+      "description": "Product feature cards with extended borders and icon badges.",
+      "files": [
+        {
+          "path": "registry/default/blocks/features4/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/features/four/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features4/components/feature-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/four/components/feature-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features4/components/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/four/components/decor-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "features"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "features/four"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "features-five",
+      "type": "registry:block",
+      "title": "features/five",
+      "description": "Six-card feature grid with subtle grid-pattern backgrounds.",
+      "files": [
+        {
+          "path": "registry/default/blocks/features5/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/features/five/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features5/components/feature-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/five/components/feature-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features5/components/grid-pattern.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/five/components/grid-pattern.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "features"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "features/five"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "features-six",
+      "type": "registry:block",
+      "title": "features/six",
+      "description": "Large feature grid with custom visuals, analytics, and globe card.",
+      "files": [
+        {
+          "path": "registry/default/blocks/features6/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/features/six/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features6/components/feature-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/six/components/feature-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/features6/components/cobe-globe.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/features/six/components/cobe-globe.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "features"
+      ],
+      "dependencies": [
+        "cobe",
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "features/six"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "footer-one",
       "type": "registry:block",
       "title": "footer/one",

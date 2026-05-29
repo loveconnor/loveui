@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-one",
+  "type": "registry:block",
+  "title": "features/one",
+  "description": "Compact four-column feature strip with icon dividers.",
+  "files": [
+    {
+      "path": "registry/default/blocks/features1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/features/one/app/page.tsx",
+      "content": "import { FeatureSection } from \"../components/feature-section\";\n\nexport default function Page() {\n\treturn (\n\t\t<section className=\"min-h-screen place-content-center px-4\">\n\t\t\t<FeatureSection />\n\t\t</section>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/features1/components/feature-section.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/features/one/components/feature-section.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport type React from \"react\";\nimport { ZapIcon, ShieldCheckIcon, ActivityIcon, GlobeIcon } from \"lucide-react\";\n\ntype FeatureType = {\n\ttitle: string;\n\ticon: React.ReactNode;\n\tdescription: string;\n};\n\nexport function FeatureSection() {\n\treturn (\n\t\t<div className=\"mx-auto grid max-w-5xl grid-cols-2 gap-4 py-4 md:grid-cols-4\">\n\t\t\t{features.map((feature, index) => (\n\t\t\t\t<div\n\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\"relative flex flex-col items-center justify-center p-2\",\n\t\t\t\t\t\t\"after:absolute after:inset-y-0 after:right-0 after:h-full after:w-px after:bg-linear-to-b after:from-foreground/6 after:via-foreground/25 after:to-foreground/6\",\n\t\t\t\t\t\t\"[&_svg]:size-6 [&_svg]:text-muted-foreground\",\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"after:hidden\": index === features.length - 1,\n\t\t\t\t\t\t\t\"after:hidden after:md:block\": index === 1,\n\t\t\t\t\t\t}\n\t\t\t\t\t)}\n\t\t\t\t\tkey={feature.title}\n\t\t\t\t>\n\t\t\t\t\t{feature.icon}\n\t\t\t\t\t<h3 className=\"mt-4 text-center font-medium text-xs md:text-sm lg:text-base\">\n\t\t\t\t\t\t{feature.title}\n\t\t\t\t\t</h3>\n\t\t\t\t\t<p className=\"mt-1 text-center text-[10px] text-muted-foreground md:text-xs\">\n\t\t\t\t\t\t{feature.description}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t))}\n\t\t</div>\n\t);\n}\n\nconst features: FeatureType[] = [\n\t{\n\t\ttitle: \"Lightning Fast\",\n\t\ticon: (\n\t\t\t<ZapIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Blazing fast edge performance.\",\n\t},\n\t{\n\t\ttitle: \"Secure by Design\",\n\t\ticon: (\n\t\t\t<ShieldCheckIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Security by design, zero config.\",\n\t},\n\t{\n\t\ttitle: \"Real-time Sync\",\n\t\ticon: (\n\t\t\t<ActivityIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Real-time sync across devices.\",\n\t},\n\t{\n\t\ttitle: \"Global Scale\",\n\t\ticon: (\n\t\t\t<GlobeIcon\n\t\t\t/>\n\t\t),\n\t\tdescription: \"Instant global deployment.\",\n\t},\n];\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "features"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "features/one"
+  }
+}
