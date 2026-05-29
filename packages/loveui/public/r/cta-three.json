@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-three",
+  "type": "registry:block",
+  "title": "cta/three",
+  "description": "Bordered CTA panel with corner accents and centered actions.",
+  "files": [
+    {
+      "path": "registry/default/blocks/cta-3/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/cta/three/app/page.tsx",
+      "content": "import { CallToAction } from \"../components/cta\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"flex min-h-screen items-center justify-center p-4\">\n\t\t\t<CallToAction />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-3/components/cta.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/three/components/cta.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { DecorIcon } from \"./decor-icon\";\nimport { ArrowRightIcon } from \"lucide-react\";\n\nexport function CallToAction() {\n\treturn (\n\t\t<div className=\"relative mx-auto flex w-full max-w-3xl flex-col justify-between gap-y-4 border-y px-4 py-8 dark:bg-[radial-gradient(35%_80%_at_25%_0%,--theme(--color-foreground/.08),transparent)]\">\n\t\t\t<DecorIcon className=\"size-4\" position=\"top-left\" />\n\t\t\t<DecorIcon className=\"size-4\" position=\"top-right\" />\n\t\t\t<DecorIcon className=\"size-4\" position=\"bottom-left\" />\n\t\t\t<DecorIcon className=\"size-4\" position=\"bottom-right\" />\n\n\t\t\t<div className=\"pointer-events-none absolute -inset-y-6 -left-px w-px border-l\" />\n\t\t\t<div className=\"pointer-events-none absolute -inset-y-6 -right-px w-px border-r\" />\n\n\t\t\t<div className=\"absolute top-0 left-1/2 -z-10 h-full border-l border-dashed\" />\n\n\t\t\t<h2 className=\"text-center font-semibold text-xl md:text-3xl\">\n\t\t\t\tGive your team the context they keep asking for.\n\t\t\t</h2>\n\t\t\t<p className=\"text-balance text-center font-medium text-muted-foreground text-sm md:text-base\">\n\t\t\t\tPublish a shared source of truth for roadmap notes, customer feedback,\n\t\t\t\tand launch decisions.\n\t\t\t</p>\n\n\t\t\t<div className=\"flex items-center justify-center gap-2\">\n\t\t\t\t<Button variant=\"outline\">View Examples</Button>\n\t\t\t\t<Button>\n\t\t\t\t\tOpen a Board{\" \"}\n\t\t\t\t\t<ArrowRightIcon data-icon=\"inline-end\" />\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-3/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/three/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "cta"
+  ],
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "cta/three"
+  }
+}

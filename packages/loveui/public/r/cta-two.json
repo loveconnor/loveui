@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-two",
+  "type": "registry:block",
+  "title": "cta/two",
+  "description": "Stacked CTA section with supporting copy and a tinted action row.",
+  "files": [
+    {
+      "path": "registry/default/blocks/cta-2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/cta/two/app/page.tsx",
+      "content": "import { CallToAction } from \"../components/cta\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"flex min-h-screen items-center justify-center p-4\">\n\t\t\t<CallToAction />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-2/components/cta.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/two/components/cta.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { FullWidthDivider } from \"./full-width-divider\";\nimport { ArrowRightIcon } from \"lucide-react\";\n\nexport function CallToAction() {\n\treturn (\n\t\t<div className=\"relative mx-auto flex w-full max-w-3xl flex-col justify-between border-x\">\n\t\t\t<FullWidthDivider className=\"-top-px\" />\n\t\t\t<div className=\"border-b px-2 py-8\">\n\t\t\t\t<h2 className=\"text-center font-semibold text-lg md:text-2xl\">\n\t\t\t\t\tTurn scattered work into one clear launch plan.\n\t\t\t\t</h2>\n\t\t\t\t<p className=\"text-balance text-center text-muted-foreground text-sm md:text-base\">\n\t\t\t\t\tBring tasks, owners, and decisions together before the next sprint.\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t<div className=\"flex items-center justify-center gap-2 bg-secondary/80 p-4 dark:bg-secondary/40\">\n\t\t\t\t<Button variant=\"outline\">See Plans</Button>\n\t\t\t\t<Button>\n\t\t\t\t\tCreate Workspace{\" \"}\n\t\t\t\t\t<ArrowRightIcon data-icon=\"inline-end\" />\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t\t<FullWidthDivider className=\"-bottom-px\" />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-2/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/two/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "cta"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "cta/two"
+  }
+}

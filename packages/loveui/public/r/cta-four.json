@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-four",
+  "type": "registry:block",
+  "title": "cta/four",
+  "description": "Rounded card CTA with trial messaging and button pair.",
+  "files": [
+    {
+      "path": "registry/default/blocks/cta-4/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/cta/four/app/page.tsx",
+      "content": "import { CallToAction } from \"../components/cta\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"flex min-h-screen items-center justify-center p-4\">\n\t\t\t<CallToAction />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-4/components/cta.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/four/components/cta.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { CreditCardIcon, ArrowRightIcon } from \"lucide-react\";\n\nexport function CallToAction() {\n\treturn (\n\t\t<div className=\"relative mx-auto flex w-full max-w-3xl flex-col justify-between gap-y-6 rounded-4xl border bg-card px-4 py-8 shadow-sm md:py-10 dark:bg-card/50\">\n\t\t\t<div className=\"space-y-2\">\n\t\t\t\t<h2 className=\"text-center font-semibold text-lg tracking-tight md:text-2xl\">\n\t\t\t\t\tA faster approval loop starts here.\n\t\t\t\t</h2>\n\t\t\t\t<p className=\"text-balance text-center text-muted-foreground text-sm md:text-base\">\n\t\t\t\t\tInvite reviewers, collect notes, and approve changes. No credit card{\" \"}\n\t\t\t\t\t<CreditCardIcon className=\"inline-block size-4\" />{\" \"}\n\t\t\t\t\trequired.\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t<div className=\"flex items-center justify-center gap-2\">\n\t\t\t\t<Button className=\"shadow\" variant=\"secondary\">\n\t\t\t\t\tPreview Flow\n\t\t\t\t</Button>\n\t\t\t\t<Button className=\"shadow\">\n\t\t\t\t\tStart Review{\" \"}\n\t\t\t\t\t<ArrowRightIcon data-icon=\"inline-end\" />\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "cta"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "cta/four"
+  }
+}

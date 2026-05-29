@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-one",
+  "type": "registry:block",
+  "title": "cta/one",
+  "description": "Split call-to-action bar with compact copy and paired buttons.",
+  "files": [
+    {
+      "path": "registry/default/blocks/cta-1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/cta/one/app/page.tsx",
+      "content": "import { CallToAction } from \"../components/cta\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"flex min-h-screen items-center justify-center p-4\">\n\t\t\t<CallToAction />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-1/components/cta.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/one/components/cta.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { FullWidthDivider } from \"./full-width-divider\";\n\nexport function CallToAction() {\n\treturn (\n\t\t<div className=\"relative mx-auto flex w-full max-w-3xl flex-col justify-between border-x md:flex-row\">\n\t\t\t<FullWidthDivider className=\"-top-px\" />\n\t\t\t<div className=\"border-b p-4 md:border-b-0\">\n\t\t\t\t<h2 className=\"text-center font-bold text-lg md:text-left md:text-2xl\">\n\t\t\t\t\tShip cleaner dashboards this week.\n\t\t\t\t</h2>\n\t\t\t</div>\n\t\t\t<div className=\"flex items-center justify-center gap-2 p-4 md:border-l\">\n\t\t\t\t<Button variant=\"secondary\">Book a Demo</Button>\n\t\t\t\t<Button>Start Building</Button>\n\t\t\t</div>\n\t\t\t<FullWidthDivider className=\"-bottom-px\" />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/cta-1/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/cta/one/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "cta"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "cta/one"
+  }
+}

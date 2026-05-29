@@ -287,6 +287,41 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "cta-one",
+    {
+      sourceDir: "cta-1",
+      targetBase: "components/blocks/cta/one",
+    },
+  ],
+  [
+    "cta-two",
+    {
+      sourceDir: "cta-2",
+      targetBase: "components/blocks/cta/two",
+    },
+  ],
+  [
+    "cta-three",
+    {
+      sourceDir: "cta-3",
+      targetBase: "components/blocks/cta/three",
+    },
+  ],
+  [
+    "cta-four",
+    {
+      sourceDir: "cta-4",
+      targetBase: "components/blocks/cta/four",
+    },
+  ],
+  [
+    "cta-five",
+    {
+      sourceDir: "cta-5",
+      targetBase: "components/blocks/cta/five",
+    },
+  ],
+  [
     "features-one",
     {
       sourceDir: "features1",
