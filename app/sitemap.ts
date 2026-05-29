@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     sitemapEntry('/blocks/auth', { changeFrequency: 'weekly', priority: 0.85 }),
     sitemapEntry('/blocks/header', { changeFrequency: 'weekly', priority: 0.85 }),
     sitemapEntry('/blocks/footer', { changeFrequency: 'weekly', priority: 0.85 }),
+    sitemapEntry('/blocks/hero', { changeFrequency: 'weekly', priority: 0.85 }),
     sitemapEntry('/blocks/logo-cloud', {
       changeFrequency: 'weekly',
       priority: 0.85,

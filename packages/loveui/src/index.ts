@@ -252,6 +252,40 @@ const BUNDLED_BLOCKS = new Map([
       targetBase: "components/blocks/logo-cloud/five",
     },
   ],
+  [
+    "hero-one",
+    {
+      sourceDir: "hero1",
+      targetBase: "components/blocks/hero/one",
+      dependencies: {
+        motion: "^12.40.0",
+        "react-use-measure": "^2.1.7",
+      },
+    },
+  ],
+  [
+    "hero-two",
+    {
+      sourceDir: "hero2",
+      targetBase: "components/blocks/hero/two",
+      dependencies: {
+        "class-variance-authority": "^0.7.1",
+        motion: "^12.40.0",
+        "react-use-measure": "^2.1.7",
+      },
+    },
+  ],
+  [
+    "hero-three",
+    {
+      sourceDir: "hero3",
+      targetBase: "components/blocks/hero/three",
+      dependencies: {
+        motion: "^12.40.0",
+        "react-use-measure": "^2.1.7",
+      },
+    },
+  ],
 ] as const);
 
 const SCRIPT_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"] as const;

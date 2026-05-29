@@ -727,6 +727,362 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hero-one",
+      "type": "registry:block",
+      "title": "hero/one",
+      "description": "Centered hero with sticky header, pill announcement, and logo marquee.",
+      "files": [
+        {
+          "path": "registry/default/blocks/hero1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/hero/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/header.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/hero.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/hero.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/infinite-slider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/infinite-slider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/logos-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/mobile-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/ui/portal.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/one/components/ui/portal.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero1/hooks/use-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/blocks/hero/one/hooks/use-scroll.ts"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero1/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/one/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "hero"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "hero/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hero-two",
+      "type": "registry:block",
+      "title": "hero/two",
+      "description": "Bordered agency hero with dashboard preview and partner logos.",
+      "files": [
+        {
+          "path": "registry/default/blocks/hero2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/hero/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/decor-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/decor-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/full-width-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/full-width-divider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/header.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/hero.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/hero.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/infinite-slider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/infinite-slider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/logos-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/mobile-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/ui/portal.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/two/components/ui/portal.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero2/hooks/use-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/blocks/hero/two/hooks/use-scroll.ts"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero2/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/two/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "hero"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "hero/two"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hero-three",
+      "type": "registry:block",
+      "title": "hero/three",
+      "description": "Left-aligned hero with product preview, sticky header, and logo row.",
+      "files": [
+        {
+          "path": "registry/default/blocks/hero3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/hero/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/header.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/hero.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/hero.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/infinite-slider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/infinite-slider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logo-cloud.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/logo-cloud.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos-section.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/logos-section.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/mobile-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/ui/portal.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/hero/three/components/ui/portal.tsx"
+        },
+        {
+          "path": "registry/default/blocks/hero3/hooks/use-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/blocks/hero/three/hooks/use-scroll.ts"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/claude-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/claude-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/clerk-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/clerk-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/github-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/github-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/nvidia-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/nvidia-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/openai-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/openai-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/supabase-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/supabase-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/turso-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/turso-wordmark.svg"
+        },
+        {
+          "path": "registry/default/blocks/hero3/components/logos/vercel-wordmark.svg",
+          "type": "registry:file",
+          "target": "components/blocks/hero/three/components/logos/vercel-wordmark.svg"
+        }
+      ],
+      "categories": [
+        "block",
+        "hero"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "hero/three"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "logo-cloud-one",
       "type": "registry:block",
       "title": "logo-cloud/one",
