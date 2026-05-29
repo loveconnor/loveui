@@ -287,6 +287,20 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "404-one",
+    {
+      sourceDir: "404-1",
+      targetBase: "components/blocks/404/one",
+    },
+  ],
+  [
+    "404-two",
+    {
+      sourceDir: "404-2",
+      targetBase: "components/blocks/404/two",
+    },
+  ],
+  [
     "cta-one",
     {
       sourceDir: "cta-1",

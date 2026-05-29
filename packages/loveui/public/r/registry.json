@@ -30699,6 +30699,48 @@
         "source": "block",
         "blockPath": "testimonials/six"
       }
+    },
+    {
+      "name": "404-one",
+      "type": "registry:block",
+      "title": "404/one",
+      "description": "Bordered 404 empty state with divider rails and paired recovery actions.",
+      "categories": [
+        "block",
+        "404"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json",
+        "https://www.loveui.dev/r/empty.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "404/one"
+      }
+    },
+    {
+      "name": "404-two",
+      "type": "registry:block",
+      "title": "404/two",
+      "description": "Minimal centered 404 empty state with oversized masked title and action pair.",
+      "categories": [
+        "block",
+        "404"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json",
+        "https://www.loveui.dev/r/empty.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "404/two"
+      }
     }
   ]
 }

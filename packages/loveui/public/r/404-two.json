@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "404-two",
+  "type": "registry:block",
+  "title": "404/two",
+  "description": "Minimal centered 404 empty state with oversized masked title and action pair.",
+  "files": [
+    {
+      "path": "registry/default/blocks/404-2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/404/two/app/page.tsx",
+      "content": "import { NotFoundPage } from \"../components/not-found\";\n\nexport default function DemoPage() {\n\treturn <NotFoundPage />;\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/404-2/components/not-found.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/404/two/components/not-found.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n\tEmpty,\n\tEmptyContent,\n\tEmptyDescription,\n\tEmptyHeader,\n\tEmptyTitle,\n} from \"@/registry/default/ui/empty\";\nimport { HomeIcon, CompassIcon } from \"lucide-react\";\n\nexport function NotFoundPage() {\n\treturn (\n\t\t<div className=\"relative flex min-h-screen w-full items-center justify-center overflow-hidden\">\n\t\t\t<Empty>\n\t\t\t\t<EmptyHeader>\n\t\t\t\t\t<EmptyTitle className=\"mask-b-from-20% mask-b-to-80% font-extrabold text-9xl\">\n\t\t\t\t\t\t404\n\t\t\t\t\t</EmptyTitle>\n\t\t\t\t\t<EmptyDescription className=\"-mt-8 text-nowrap text-foreground/80\">\n\t\t\t\t\t\tThe page you're looking for might have been <br />\n\t\t\t\t\t\tmoved or doesn't exist.\n\t\t\t\t\t</EmptyDescription>\n\t\t\t\t</EmptyHeader>\n\t\t\t\t<EmptyContent>\n\t\t\t\t\t<div className=\"flex gap-2\">\n\t\t\t\t\t\t<Button asChild>\n\t\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t\t<HomeIcon data-icon=\"inline-start\" />\n\t\t\t\t\t\t\t\tGo Home\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</Button>\n\n\t\t\t\t\t\t<Button asChild variant=\"outline\">\n\t\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t\t<CompassIcon data-icon=\"inline-start\" />{\" \"}\n\t\t\t\t\t\t\t\tExplore\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</div>\n\t\t\t\t</EmptyContent>\n\t\t\t</Empty>\n\t\t</div>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "404"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json",
+    "https://www.loveui.dev/r/empty.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "404/two"
+  }
+}
