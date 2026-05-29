@@ -1,0 +1,47 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-two",
+  "type": "registry:block",
+  "title": "contact/two",
+  "description": "Three-card contact grid with email, social, and community actions.",
+  "files": [
+    {
+      "path": "registry/default/blocks/contact2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/contact/two/app/page.tsx",
+      "content": "import { Contact } from \"../components/contact\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center overflow-hidden px-4\">\n\t\t\t<Contact />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact2/components/contact.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/two/components/contact.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { XIcon } from \"./icons/x-icon\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Mail, Users } from \"lucide-react\";\n\nconst APP_EMAIL = \"hello@loveui.dev\";\n\nconst data = [\n\t{\n\t\ttitle: \"Email LoveUI\",\n\t\tdescription: \"Ask about components, blocks, registry setup, or implementation details.\",\n\t\ticon: (\n\t\t\t<Mail\n\t\t\t/>\n\t\t),\n\t\thref: `mailto:${APP_EMAIL}`,\n\t\tlabel: APP_EMAIL,\n\t},\n\t{\n\t\ttitle: \"Send a DM\",\n\t\tdescription: \"Reach out on X with LoveUI questions, ideas, or bug reports.\",\n\t\ticon: <XIcon />,\n\t\thref: \"#\",\n\t\tlabel: \"@connorlove\",\n\t},\n\t{\n\t\ttitle: \"Join the community\",\n\t\tdescription: \"Connect with builders using LoveUI in real product interfaces.\",\n\t\ticon: (\n\t\t\t<Users\n\t\t\t/>\n\t\t),\n\t\thref: \"#\",\n\t\tlabel: \"Join Discord\",\n\t},\n];\n\nexport function Contact() {\n\treturn (\n\t\t<div className=\"mx-auto max-w-4xl\">\n\t\t\t<div className=\"mb-12 flex max-w-md flex-col justify-center gap-2\">\n\t\t\t\t<h1 className=\"font-bold text-2xl md:text-3xl\">Contact Us</h1>\n\t\t\t\t<p className=\"text-base text-muted-foreground\">\n\t\t\t\t\tGet help with LoveUI components, blocks, registry installs, and\n\t\t\t\t\tsource-first UI workflows.\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t<div className=\"grid gap-0.5 overflow-hidden rounded-lg bg-muted p-0.5 md:grid-cols-3 dark:bg-muted/50\">\n\t\t\t\t{data.map((item) => (\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName=\"flex flex-col gap-3 rounded-lg bg-background px-6 py-6 shadow-xs\"\n\t\t\t\t\t\tkey={item.title}\n\t\t\t\t\t>\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\t\t\"flex items-center gap-x-2\",\n\t\t\t\t\t\t\t\t\"[&_svg]:size-4 [&_svg]:text-muted-foreground\"\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{item.icon}\n\t\t\t\t\t\t\t<h2 className=\"text-sm\">{item.title}</h2>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p className=\"text-muted-foreground text-sm\">{item.description}</p>\n\t\t\t\t\t\t<div className=\"mt-1 flex items-center gap-x-2\">\n\t\t\t\t\t\t\t<Button asChild variant=\"link\">\n\t\t\t\t\t\t\t\t<a href={item.href}>{item.label}</a>\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t))}\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact2/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/two/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact2/components/icons/x-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/two/components/icons/x-icon.tsx",
+      "content": "export function XIcon(props: React.ComponentProps<\"svg\">) {\n\treturn (\n\t\t<svg\n\t\t\tfill=\"currentColor\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"m18.9,1.153h3.682l-8.042,9.189,9.46,12.506h-7.405l-5.804-7.583-6.634,7.583H.469l8.6-9.831L0,1.153h7.593l5.241,6.931,6.065-6.931Zm-1.293,19.494h2.039L6.482,3.239h-2.19l13.314,17.408Z\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "contact"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "contact/two"
+  }
+}

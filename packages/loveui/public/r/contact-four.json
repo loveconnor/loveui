@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-four",
+  "type": "registry:block",
+  "title": "contact/four",
+  "description": "Split contact form with contact details, inputs, textarea, and primary action.",
+  "files": [
+    {
+      "path": "registry/default/blocks/contact4/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/contact/four/app/page.tsx",
+      "content": "import { ContactSection } from \"../components/contact\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center overflow-hidden px-4\">\n\t\t\t<ContactSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact4/components/contact.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/four/components/contact.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Field, FieldGroup, FieldLabel } from \"@/registry/default/ui/field\";\nimport { Input } from \"@/registry/default/ui/input\";\nimport { Textarea } from \"@/registry/default/ui/textarea\";\nimport { MailIcon, PhoneIcon } from \"lucide-react\";\n\nconst contactInfo = [\n\t{\n\t\ticon: (\n\t\t\t<MailIcon\n\t\t\t/>\n\t\t),\n\t\tlabel: \"Email\",\n\t\tvalue: \"hello@loveui.dev\",\n\t},\n\t{\n\t\ticon: (\n\t\t\t<PhoneIcon\n\t\t\t/>\n\t\t),\n\t\tlabel: \"Phone\",\n\t\tvalue: \"+1 555 014 2026\",\n\t},\n];\n\nexport function ContactSection() {\n\treturn (\n\t\t<div className=\"relative mx-auto grid h-full w-full max-w-4xl rounded-2xl border md:grid-cols-[1fr_0.70fr]\">\n\t\t\t<div className=\"col-span-1 flex flex-col space-y-4 p-8 lg:p-10\">\n\t\t\t\t<h1 className=\"font-medium text-2xl tracking-wide md:text-3xl\">\n\t\t\t\t\tContact LoveUI\n\t\t\t\t</h1>\n\t\t\t\t<p className=\"max-w-md text-muted-foreground text-sm leading-relaxed md:text-base\">\n\t\t\t\t\tHave a question about components, blocks, registry setup, or using\n\t\t\t\t\tLoveUI in your product? Send a note here.\n\t\t\t\t</p>\n\t\t\t\t<p className=\"max-w-md text-muted-foreground text-xs leading-relaxed md:text-sm\">\n\t\t\t\t\tConnor Love reviews product UI questions and implementation feedback.\n\t\t\t\t</p>\n\t\t\t\t<div className=\"grid gap-4\">\n\t\t\t\t\t{contactInfo?.map((info) => (\n\t\t\t\t\t\t<ContactInfo key={info.label} {...info} />\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div className=\"col-span-1 flex items-center border-t p-8 md:border-t-0 md:border-l\">\n\t\t\t\t<ContactForm />\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n\nfunction ContactForm() {\n\treturn (\n\t\t<form className=\"w-full\">\n\t\t\t<FieldGroup>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"full-name\">Full name</FieldLabel>\n\t\t\t\t\t<Input autoComplete=\"off\" id=\"full-name\" placeholder=\"Connor Love\" />\n\t\t\t\t</Field>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"email\">Email</FieldLabel>\n\t\t\t\t\t<Input\n\t\t\t\t\t\tautoComplete=\"off\"\n\t\t\t\t\t\tid=\"email\"\n\t\t\t\t\t\tplaceholder=\"you@example.com\"\n\t\t\t\t\t\ttype=\"email\"\n\t\t\t\t\t/>\n\t\t\t\t</Field>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"phone\">Phone</FieldLabel>\n\t\t\t\t\t<Input\n\t\t\t\t\t\tautoComplete=\"off\"\n\t\t\t\t\t\tid=\"phone\"\n\t\t\t\t\t\tplaceholder=\"+1 (555) 123-4567\"\n\t\t\t\t\t\ttype=\"tel\"\n\t\t\t\t\t/>\n\t\t\t\t</Field>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"message\">Message</FieldLabel>\n\t\t\t\t\t<Textarea\n\t\t\t\t\t\tautoComplete=\"off\"\n\t\t\t\t\t\tid=\"message\"\n\t\t\t\t\t\tplaceholder=\"Tell us what you are building with LoveUI\"\n\t\t\t\t\t/>\n\t\t\t\t</Field>\n\t\t\t</FieldGroup>\n\t\t\t<Button className=\"mt-8 w-full\" type=\"button\">\n\t\t\t\tSubmit\n\t\t\t</Button>\n\t\t</form>\n\t);\n}\n\ntype ContactInfoProps = React.ComponentProps<\"div\"> & {\n\ticon: React.ReactNode;\n\tlabel: string;\n\tvalue: string;\n};\n\nfunction ContactInfo({\n\ticon,\n\tlabel,\n\tvalue,\n\tclassName,\n\t...props\n}: ContactInfoProps) {\n\treturn (\n\t\t<div className={cn(\"flex items-center gap-3 py-3\", className)} {...props}>\n\t\t\t<div className=\"rounded-lg border bg-card p-3 shadow-xs [&_svg]:size-5\">\n\t\t\t\t{icon}\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t<p className=\"font-medium\">{label}</p>\n\t\t\t\t<p className=\"text-muted-foreground text-xs\">{value}</p>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "contact"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json",
+    "https://www.loveui.dev/r/field.json",
+    "https://www.loveui.dev/r/input.json",
+    "https://www.loveui.dev/r/textarea.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "contact/four"
+  }
+}

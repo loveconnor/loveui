@@ -1,0 +1,45 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-five",
+  "type": "registry:block",
+  "title": "contact/five",
+  "description": "Bordered contact form with corner accents, contact methods, and stacked fields.",
+  "files": [
+    {
+      "path": "registry/default/blocks/contact5/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/contact/five/app/page.tsx",
+      "content": "import { ContactSection } from \"../components/contact\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center overflow-hidden px-4\">\n\t\t\t<ContactSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact5/components/contact.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/five/components/contact.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Field, FieldGroup, FieldLabel } from \"@/registry/default/ui/field\";\nimport { Input } from \"@/registry/default/ui/input\";\nimport { Textarea } from \"@/registry/default/ui/textarea\";\nimport { DecorIcon } from \"./decor-icon\";\nimport { Phone, Mail } from \"lucide-react\";\n\nconst data = [\n\t{\n\t\ttitle: \"Talk LoveUI\",\n\t\tvalue: \"+1 (555) 014-2026\",\n\t\ticon: (\n\t\t\t<Phone\n\t\t\t/>\n\t\t),\n\t},\n\t{\n\t\ttitle: \"Email the team\",\n\t\tvalue: \"hello@loveui.dev\",\n\t\ticon: (\n\t\t\t<Mail\n\t\t\t/>\n\t\t),\n\t},\n];\n\nexport function ContactSection() {\n\treturn (\n\t\t<div className=\"relative mx-auto w-full max-w-lg border\">\n\t\t\t<div className=\"border-b px-6 py-8\">\n\t\t\t\t<div className=\"mb-8 flex flex-col gap-2\">\n\t\t\t\t\t<h1 className=\"font-semibold text-xl md:text-2xl\">Get in touch</h1>{\" \"}\n\t\t\t\t\t<p className=\"text-muted-foreground text-sm\">\n\t\t\t\t\t\tHave a LoveUI question, block request, or implementation idea?{\" \"}\n\t\t\t\t\t\t<br /> Send Connor Love a note.\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\n\t\t\t\t<div className=\"grid gap-2 md:grid-cols-2\">\n\t\t\t\t\t{data.map((item) => (\n\t\t\t\t\t\t<div className=\"flex items-center gap-4 p-2\" key={item.title}>\n\t\t\t\t\t\t\t<div className=\"[&_svg]:size-5 [&_svg]:text-muted-foreground\">\n\t\t\t\t\t\t\t\t{item.icon}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div className={cn(\"flex flex-col gap-y-0.5\")}>\n\t\t\t\t\t\t\t\t<h2 className=\"text-sm\">{item.title}</h2>\n\t\t\t\t\t\t\t\t<p className=\"text-muted-foreground text-xs\">{item.value}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<div className=\"px-6 py-8\">\n\t\t\t\t<div className=\"mb-8 flex flex-col gap-1.5\">\n\t\t\t\t\t<h2 className=\"font-medium text-xl\">Send a message</h2>{\" \"}\n\t\t\t\t\t<p className=\"text-muted-foreground text-sm\">\n\t\t\t\t\t\tTell us how you are using LoveUI and what would make the registry\n\t\t\t\t\t\tbetter.\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<ContactForm />\n\t\t\t</div>\n\t\t\t<DecorIcon position=\"top-left\" />\n\t\t\t<DecorIcon position=\"top-right\" />\n\t\t\t<DecorIcon position=\"bottom-left\" />\n\t\t\t<DecorIcon position=\"bottom-right\" />\n\t\t</div>\n\t);\n}\n\nfunction ContactForm() {\n\treturn (\n\t\t<form className=\"w-full\">\n\t\t\t<FieldGroup>\n\t\t\t\t<div className=\"grid grid-cols-2 gap-4\">\n\t\t\t\t\t<Field>\n\t\t\t\t\t\t<FieldLabel htmlFor=\"first-name\">First name</FieldLabel>\n\t\t\t\t\t\t<Input autoComplete=\"off\" id=\"first-name\" placeholder=\"Connor\" />\n\t\t\t\t\t</Field>\n\t\t\t\t\t<Field>\n\t\t\t\t\t\t<FieldLabel htmlFor=\"last-name\">Last name</FieldLabel>\n\t\t\t\t\t\t<Input autoComplete=\"off\" id=\"last-name\" placeholder=\"Love\" />\n\t\t\t\t\t</Field>\n\t\t\t\t</div>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"email\">Email</FieldLabel>\n\t\t\t\t\t<Input\n\t\t\t\t\t\tautoComplete=\"off\"\n\t\t\t\t\t\tid=\"email\"\n\t\t\t\t\t\tplaceholder=\"you@example.com\"\n\t\t\t\t\t\ttype=\"email\"\n\t\t\t\t\t/>\n\t\t\t\t</Field>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"phone\">Phone</FieldLabel>\n\t\t\t\t\t<Input\n\t\t\t\t\t\tautoComplete=\"off\"\n\t\t\t\t\t\tid=\"phone\"\n\t\t\t\t\t\tplaceholder=\"+1 (555) 123-4567\"\n\t\t\t\t\t\ttype=\"tel\"\n\t\t\t\t\t/>\n\t\t\t\t</Field>\n\t\t\t\t<Field>\n\t\t\t\t\t<FieldLabel htmlFor=\"message\">Message</FieldLabel>\n\t\t\t\t\t<Textarea\n\t\t\t\t\t\tautoComplete=\"off\"\n\t\t\t\t\t\tid=\"message\"\n\t\t\t\t\t\tplaceholder=\"Tell us what you are building with LoveUI\"\n\t\t\t\t\t/>\n\t\t\t\t</Field>\n\t\t\t</FieldGroup>\n\t\t\t<Button className=\"mt-8 w-full\" type=\"button\">\n\t\t\t\tSubmit\n\t\t\t</Button>\n\t\t</form>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact5/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/five/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "contact"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "class-variance-authority": "^0.7.1"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json",
+    "https://www.loveui.dev/r/field.json",
+    "https://www.loveui.dev/r/input.json",
+    "https://www.loveui.dev/r/textarea.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "contact/five"
+  }
+}

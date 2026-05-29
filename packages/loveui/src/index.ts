@@ -325,6 +325,44 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "contact-one",
+    {
+      sourceDir: "contact1",
+      targetBase: "components/blocks/contact/one",
+    },
+  ],
+  [
+    "contact-two",
+    {
+      sourceDir: "contact2",
+      targetBase: "components/blocks/contact/two",
+    },
+  ],
+  [
+    "contact-three",
+    {
+      sourceDir: "contact3",
+      targetBase: "components/blocks/contact/three",
+    },
+  ],
+  [
+    "contact-four",
+    {
+      sourceDir: "contact4",
+      targetBase: "components/blocks/contact/four",
+    },
+  ],
+  [
+    "contact-five",
+    {
+      sourceDir: "contact5",
+      targetBase: "components/blocks/contact/five",
+      dependencies: {
+        "class-variance-authority": "^0.7.1",
+      },
+    },
+  ],
+  [
     "cta-one",
     {
       sourceDir: "cta-1",

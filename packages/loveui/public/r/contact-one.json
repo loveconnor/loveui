@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-one",
+  "type": "registry:block",
+  "title": "contact/one",
+  "description": "Compact contact method row with icon cards and divider rails.",
+  "files": [
+    {
+      "path": "registry/default/blocks/contact1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/contact/one/app/page.tsx",
+      "content": "import { Contact } from \"../components/contact\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center overflow-hidden px-4\">\n\t\t\t<Contact />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact1/components/contact.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/one/components/contact.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { FullWidthDivider } from \"./full-width-divider\";\nimport { Phone, Mail, MapPin } from \"lucide-react\";\n\nconst data = [\n\t{\n\t\ttitle: \"Ask about LoveUI\",\n\t\tvalue: \"+1 (555) 014-2026\",\n\t\ticon: (\n\t\t\t<Phone\n\t\t\t/>\n\t\t),\n\t},\n\t{\n\t\ttitle: \"Email the team\",\n\t\tvalue: \"hello@loveui.dev\",\n\t\ticon: (\n\t\t\t<Mail\n\t\t\t/>\n\t\t),\n\t},\n\t{\n\t\ttitle: \"Product studio\",\n\t\tvalue: \"Built by Connor Love\",\n\t\ticon: (\n\t\t\t<MapPin\n\t\t\t/>\n\t\t),\n\t},\n];\n\nexport function Contact() {\n\treturn (\n\t\t<div className=\"mx-auto max-w-4xl\">\n\t\t\t<h2 className=\"mb-6 font-medium text-lg md:text-2xl\">\n\t\t\t\tNeed help building with LoveUI?\n\t\t\t</h2>\n\t\t\t<div className=\"relative\">\n\t\t\t\t<FullWidthDivider position=\"top\" />\n\t\t\t\t<div className=\"grid gap-px overflow-hidden bg-border px-px md:grid-cols-3\">\n\t\t\t\t\t{data.map((item) => (\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\tclassName=\"flex items-center gap-3 bg-background p-2 shadow-xs\"\n\t\t\t\t\t\t\tkey={item.title}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\t\t\t\"flex size-12 shrink-0 items-center justify-center rounded-lg bg-muted/50\",\n\t\t\t\t\t\t\t\t\t\"[&_svg]:size-4 [&_svg]:text-muted-foreground\"\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{item.icon}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div className={cn(\"flex flex-col gap-y-0.5\")}>\n\t\t\t\t\t\t\t\t<h2 className=\"text-sm\">{item.title}</h2>\n\t\t\t\t\t\t\t\t<p className=\"text-muted-foreground text-xs\">{item.value}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t\t<FullWidthDivider position=\"bottom\" />\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/contact1/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/contact/one/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "contact"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "meta": {
+    "source": "block",
+    "blockPath": "contact/one"
+  }
+}
