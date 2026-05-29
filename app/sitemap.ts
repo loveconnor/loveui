@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { blockLinks } from '@/lib/blocks-page-tree';
 import { componentLinks } from '@/lib/components-page-tree';
 import { source } from '@/lib/source';
 import { absoluteUrl, siteUrl } from '@/lib/seo';
@@ -32,30 +33,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const blockPages = blockLinks.map((block) =>
+    sitemapEntry(`/blocks/${block.slug}`, {
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    }),
+  );
+
   return [
     sitemapEntry('/', { changeFrequency: 'monthly', priority: 0.6 }),
     sitemapEntry('/components', { changeFrequency: 'weekly', priority: 0.95 }),
     sitemapEntry('/blocks', { changeFrequency: 'weekly', priority: 0.9 }),
-    sitemapEntry('/blocks/auth', { changeFrequency: 'weekly', priority: 0.85 }),
-    sitemapEntry('/blocks/header', { changeFrequency: 'weekly', priority: 0.85 }),
-    sitemapEntry('/blocks/footer', { changeFrequency: 'weekly', priority: 0.85 }),
-    sitemapEntry('/blocks/features', {
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    }),
-    sitemapEntry('/blocks/hero', { changeFrequency: 'weekly', priority: 0.85 }),
-    sitemapEntry('/blocks/image-gallery', {
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    }),
-    sitemapEntry('/blocks/logo-cloud', {
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    }),
     sitemapEntry('/llms.txt', { changeFrequency: 'weekly', priority: 0.5 }),
     sitemapEntry('/llms-full.txt', { changeFrequency: 'weekly', priority: 0.5 }),
     ...docsPages,
     ...componentPages,
+    ...blockPages,
   ].filter((entry, index, entries) => {
     const firstIndex = entries.findIndex((item) => item.url === entry.url);
     return firstIndex === index && entry.url.startsWith(siteUrl);

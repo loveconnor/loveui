@@ -1,4 +1,12 @@
-import { appName, componentsRoute, docsRoute, gitConfig } from '@/lib/shared';
+import { blockLinks } from '@/lib/blocks-page-tree';
+import { componentLinks } from '@/lib/components-page-tree';
+import {
+  appName,
+  blocksRoute,
+  componentsRoute,
+  docsRoute,
+  gitConfig,
+} from '@/lib/shared';
 
 export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.loveui.dev'
@@ -31,6 +39,9 @@ export const seo = {
   githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
   docsUrl: `${siteUrl}${docsRoute}`,
   componentsUrl: `${siteUrl}${componentsRoute}`,
+  blocksUrl: `${siteUrl}${blocksRoute}`,
+  llmsTxtUrl: `${siteUrl}/llms.txt`,
+  llmsFullTxtUrl: `${siteUrl}/llms-full.txt`,
   ogImage: `${siteUrl}/logo.png`,
 };
 
@@ -81,17 +92,82 @@ export function collectionPageJsonLd({
   description: string;
   url: string;
 }) {
+  const mainEntity = collectionMainEntity(url);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name,
     description,
     url: absoluteUrl(url),
+    ...(mainEntity ? { mainEntity } : {}),
     isPartOf: {
       '@type': 'WebSite',
       name: appName,
       url: siteUrl,
     },
+  };
+}
+
+function collectionMainEntity(url: string) {
+  if (url === componentsRoute) {
+    return itemList(
+      'LoveUI component pages',
+      componentLinks.map((component) => ({
+        name: `${component.name} React component`,
+        description: component.description,
+        url: `${componentsRoute}/${component.slug}`,
+      })),
+    );
+  }
+
+  if (url === blocksRoute) {
+    return itemList(
+      'LoveUI block pages',
+      blockLinks.map((block) => ({
+        name: `${block.name} blocks`,
+        description: block.description,
+        url: `${blocksRoute}/${block.slug}`,
+      })),
+    );
+  }
+
+  const block = blockLinks.find((item) => url === `${blocksRoute}/${item.slug}`);
+
+  if (block) {
+    return {
+      '@type': 'ItemList',
+      name: `LoveUI ${block.name} block examples`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: `${block.name} blocks`,
+          description: block.description,
+          url: absoluteUrl(`${blocksRoute}/${block.slug}`),
+        },
+      ],
+    };
+  }
+
+  return undefined;
+}
+
+function itemList(
+  name: string,
+  items: Array<{ name: string; description: string; url: string }>,
+) {
+  return {
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      description: item.description,
+      url: absoluteUrl(item.url),
+    })),
   };
 }
 

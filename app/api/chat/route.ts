@@ -1,10 +1,16 @@
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { convertToModelMessages, stepCountIs, streamText, tool, type UIMessage } from 'ai';
 import { z } from 'zod';
-import { source } from '@/lib/source';
 import { Document, type DocumentData } from 'flexsearch';
+import {
+  getSearchDocuments,
+  type SearchDocument,
+  type SearchDocumentType,
+} from '@/lib/search-corpus';
 
 interface CustomDocument extends DocumentData {
+  id: string;
+  type: SearchDocumentType;
   url: string;
   title: string;
   description: string;
@@ -25,39 +31,23 @@ const searchServer = createSearchServer();
 async function createSearchServer() {
   const search = new Document<CustomDocument>({
     document: {
-      id: 'url',
-      index: ['title', 'description', 'content'],
+      id: 'id',
+      index: ['title', 'description', 'content', 'type', 'url'],
       store: true,
     },
   });
 
-  const docs = await chunkedAll(
-    source.getPages().map(async (page) => {
-      if (!('getText' in page.data)) return null;
-
-      return {
-        title: page.data.title,
-        description: page.data.description,
-        url: page.url,
-        content: await page.data.getText('processed'),
-      } as CustomDocument;
-    }),
-  );
+  const docs = await getSearchDocuments();
 
   for (const doc of docs) {
-    if (doc) search.add(doc);
+    search.add(toCustomDocument(doc));
   }
 
   return search;
 }
 
-async function chunkedAll<O>(promises: Promise<O>[]): Promise<O[]> {
-  const SIZE = 50;
-  const out: O[] = [];
-  for (let i = 0; i < promises.length; i += SIZE) {
-    out.push(...(await Promise.all(promises.slice(i, i + SIZE))));
-  }
-  return out;
+function toCustomDocument(doc: SearchDocument): CustomDocument {
+  return doc;
 }
 
 const openrouter = createOpenRouter({
@@ -97,9 +87,11 @@ function getChatErrorMessage(error: unknown) {
 
 /** System prompt, you can update it to provide more specific information */
 const systemPrompt = [
-  'You are an AI assistant for a documentation site.',
-  'Use the `search` tool to retrieve relevant docs context before answering when needed.',
-  'The `search` tool returns raw JSON results from documentation. Use those results to ground your answer and cite sources as markdown links using the document `url` field when available.',
+  'You are an AI assistant for the LoveUI app and documentation site.',
+  'Use the `search` tool to retrieve relevant app context before answering when needed.',
+  'The search corpus includes docs, component pages, component examples, block pages, block examples, install names, and app routes.',
+  'The `search` tool returns raw JSON results from the app search corpus. Use those results to ground your answer and cite sources as markdown links using the document `url` field when available.',
+  'When a user asks what components or blocks exist, answer from search results with names, short descriptions, and links.',
   'If you cannot find the answer in search results, say you do not know and suggest a better search query.',
 ].join('\n');
 
@@ -146,7 +138,8 @@ export async function POST(req: Request, ctx: RouteContext<"/api/chat">) {
 export type SearchTool = typeof searchTool;
 
 const searchTool = tool({
-  description: 'Search the docs content and return raw JSON results.',
+  description:
+    'Search all LoveUI app content, including docs, component pages, examples, block pages, and block examples. Returns raw JSON results.',
   inputSchema: z.object({
     query: z.string(),
     limit: z.number().int().min(1).max(100).default(10),

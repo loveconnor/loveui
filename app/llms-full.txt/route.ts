@@ -3,6 +3,7 @@ import {
   getComponentExampleCount,
   getComponentExampleNames,
 } from '@/lib/component-examples';
+import { blockLinks } from '@/lib/blocks-page-tree';
 import { componentLinks } from '@/lib/components-page-tree';
 import { seo } from '@/lib/seo';
 
@@ -23,6 +24,13 @@ ${component.description}
 - Example registry names: ${examples.join(', ')}`;
     })
     .join('\n\n');
+  const blocks = blockLinks
+    .map(
+      (block) => `## ${block.name} Blocks (${seo.url}/blocks/${block.slug})
+
+${block.description}`,
+    )
+    .join('\n\n');
 
   const intro = `# ${seo.name} full LLM context
 
@@ -34,11 +42,16 @@ Primary URLs:
 
 - Documentation: ${seo.docsUrl}
 - Components: ${seo.componentsUrl}
+- Blocks: ${seo.blocksUrl}
 - GitHub: ${seo.githubUrl}
 
 # Component catalog
 
 ${components}
+
+# Block catalog
+
+${blocks}
 
 # Documentation content
 `;

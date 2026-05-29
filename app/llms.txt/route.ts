@@ -1,5 +1,6 @@
 import { source } from '@/lib/source';
 import { llms } from 'fumadocs-core/source';
+import { blockLinks } from '@/lib/blocks-page-tree';
 import { componentLinks } from '@/lib/components-page-tree';
 import { seo } from '@/lib/seo';
 
@@ -10,6 +11,12 @@ export function GET() {
     .map(
       (component) =>
         `- [${component.name}](${seo.url}/components/${component.slug}): ${component.description}`,
+    )
+    .join('\n');
+  const blockIndex = blockLinks
+    .map(
+      (block) =>
+        `- [${block.name} Blocks](${seo.url}/blocks/${block.slug}): ${block.description}`,
     )
     .join('\n');
 
@@ -23,12 +30,17 @@ LoveUI is an open-source React and Tailwind CSS component system. The docs are o
 
 - [Documentation](${seo.docsUrl})
 - [Components](${seo.componentsUrl})
+- [Blocks](${seo.blocksUrl})
 - [Full LLM context](${seo.url}/llms-full.txt)
 - [GitHub repository](${seo.githubUrl})
 
 ## Component catalog
 
 ${componentIndex}
+
+## Block catalog
+
+${blockIndex}
 
 ## Documentation index
 
