@@ -134,6 +134,30 @@ const BUNDLED_BLOCKS = new Map([
       targetBase: "components/blocks/auth/three",
     },
   ],
+  [
+    "header-one",
+    {
+      sourceDir: "header1",
+      targetBase: "components/blocks/header/one",
+    },
+  ],
+  [
+    "header-two",
+    {
+      sourceDir: "header2",
+      targetBase: "components/blocks/header/two",
+    },
+  ],
+  [
+    "header-three",
+    {
+      sourceDir: "header3",
+      targetBase: "components/blocks/header/three",
+      dependencies: {
+        "@base-ui/react": "^1.5.0",
+      },
+    },
+  ],
 ] as const);
 
 const SCRIPT_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"] as const;
@@ -1329,10 +1353,17 @@ async function extractDependencies(packageName: string): Promise<Record<string, 
   // For love-ui components, return core dependencies
   if (
     LOVE_UI_COMPONENTS.has(packageName) ||
-    existsSync(path.join(BUNDLED_REGISTRY_ROOT, "default", "examples", `${packageName}.tsx`)) ||
-    BUNDLED_BLOCKS.has(packageName)
+    existsSync(path.join(BUNDLED_REGISTRY_ROOT, "default", "examples", `${packageName}.tsx`))
   ) {
     return { ...LOVE_UI_CORE_DEPS };
+  }
+
+  const bundledBlock = BUNDLED_BLOCKS.get(packageName);
+  if (bundledBlock) {
+    return {
+      ...LOVE_UI_CORE_DEPS,
+      ...("dependencies" in bundledBlock ? bundledBlock.dependencies : {}),
+    };
   }
 
   // For other packages, use their package.json

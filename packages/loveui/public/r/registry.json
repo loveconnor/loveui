@@ -171,6 +171,202 @@
       }
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "header-one",
+      "type": "registry:block",
+      "title": "header/one",
+      "description": "Responsive sticky header with a blurred scroll state.",
+      "files": [
+        {
+          "path": "registry/default/blocks/header1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/header/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header1/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/one/components/header.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header1/components/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/one/components/mobile-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header1/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/one/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header1/components/demo-layout.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/one/components/demo-layout.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header1/components/ui/portal.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/one/components/ui/portal.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header1/hooks/use-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/blocks/header/one/hooks/use-scroll.ts"
+        }
+      ],
+      "categories": [
+        "block",
+        "header"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "header/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "header-two",
+      "type": "registry:block",
+      "title": "header/two",
+      "description": "Centered header that compresses into a floating bar on scroll.",
+      "files": [
+        {
+          "path": "registry/default/blocks/header2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/header/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header2/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/two/components/header.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header2/components/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/two/components/mobile-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header2/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/two/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header2/components/demo-layout.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/two/components/demo-layout.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header2/components/ui/portal.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/two/components/ui/portal.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header2/hooks/use-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/blocks/header/two/hooks/use-scroll.ts"
+        }
+      ],
+      "categories": [
+        "block",
+        "header"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "header/two"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "header-three",
+      "type": "registry:block",
+      "title": "header/three",
+      "description": "Responsive header with dropdown navigation menus.",
+      "files": [
+        {
+          "path": "registry/default/blocks/header3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/header/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/header.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/desktop-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/desktop-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/mobile-nav.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/nav-links.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/nav-links.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/sheard.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/sheard.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/demo-layout.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/demo-layout.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/ui/navigation-menu.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/ui/navigation-menu.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/components/ui/portal.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/header/three/components/ui/portal.tsx"
+        },
+        {
+          "path": "registry/default/blocks/header3/hooks/use-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/blocks/header/three/hooks/use-scroll.ts"
+        }
+      ],
+      "categories": [
+        "block",
+        "header"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "header/three"
+      }
+    },
+    {
       "name": "ui",
       "type": "registry:ui",
       "registryDependencies": [

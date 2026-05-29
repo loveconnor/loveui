@@ -1,0 +1,65 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-one",
+  "type": "registry:block",
+  "title": "header/one",
+  "description": "Responsive sticky header with a blurred scroll state.",
+  "files": [
+    {
+      "path": "registry/default/blocks/header1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/header/one/app/page.tsx",
+      "content": "\"use client\";\nimport { DemoLayout } from \"../components/demo-layout\";\nimport { Header } from \"../components/header\";\n\nexport default function page() {\n\treturn (\n\t\t<>\n\t\t\t<Header />\n\t\t\t<DemoLayout />\n\t\t</>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/header1/components/header.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/header/one/components/header.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Logo } from \"./logo\";\nimport { useScroll } from \"../hooks/use-scroll\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { MobileNav } from \"./mobile-nav\";\n\nexport const navLinks = [\n\t{\n\t\tlabel: \"Features\",\n\t\thref: \"#\",\n\t},\n\t{\n\t\tlabel: \"Pricing\",\n\t\thref: \"#\",\n\t},\n\t{\n\t\tlabel: \"About\",\n\t\thref: \"#\",\n\t},\n];\n\nexport function Header() {\n\tconst headerRef = React.useRef<HTMLElement>(null);\n\tconst scrolled = useScroll(10, undefined, headerRef);\n\n\treturn (\n\t\t<header\n\t\t\tref={headerRef}\n\t\t\tclassName={cn(\"sticky top-0 z-20 w-full border-transparent border-b\", {\n\t\t\t\t\"border-border bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/50\":\n\t\t\t\t\tscrolled,\n\t\t\t})}\n\t\t>\n\t\t\t<nav className=\"mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4\">\n\t\t\t\t<a\n\t\t\t\t\tclassName=\"rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50\"\n\t\t\t\t\thref=\"#\"\n\t\t\t\t>\n\t\t\t\t\t<Logo className=\"h-8 w-auto\" />\n\t\t\t\t</a>\n\t\t\t\t<div className=\"hidden items-center gap-2 md:flex\">\n\t\t\t\t\t{navLinks.map((link) => (\n\t\t\t\t\t\t<Button asChild key={link.label} size=\"sm\" variant=\"ghost\">\n\t\t\t\t\t\t\t<a href={link.href}>{link.label}</a>\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t))}\n\t\t\t\t\t<Button size=\"sm\" variant=\"outline\">\n\t\t\t\t\t\tSign In\n\t\t\t\t\t</Button>\n\t\t\t\t\t<Button size=\"sm\">Get Started</Button>\n\t\t\t\t</div>\n\t\t\t\t<MobileNav />\n\t\t\t</nav>\n\t\t</header>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/header1/components/mobile-nav.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/header/one/components/mobile-nav.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport React from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Portal, PortalBackdrop } from \"./ui/portal\";\nimport { navLinks } from \"./header\";\nimport { XIcon, MenuIcon } from \"lucide-react\";\n\nexport function MobileNav() {\n\tconst [open, setOpen] = React.useState(false);\n\n\treturn (\n\t\t<div className=\"md:hidden\">\n\t\t\t<Button\n\t\t\t\taria-controls=\"mobile-menu\"\n\t\t\t\taria-expanded={open}\n\t\t\t\taria-label=\"Toggle menu\"\n\t\t\t\tclassName=\"md:hidden\"\n\t\t\t\tonClick={() => setOpen(!open)}\n\t\t\t\tsize=\"icon\"\n\t\t\t\tvariant=\"outline\"\n\t\t\t>\n\t\t\t\t{open ? (\n\t\t\t\t\t<XIcon className=\"size-4.5\" />\n\t\t\t\t) : (\n\t\t\t\t\t<MenuIcon className=\"size-4.5\" />\n\t\t\t\t)}\n\t\t\t</Button>\n\t\t\t{open && (\n\t\t\t\t<Portal className=\"top-14\" id=\"mobile-menu\">\n\t\t\t\t\t<PortalBackdrop />\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\t\"data-[slot=open]:zoom-in-97 ease-out data-[slot=open]:animate-in\",\n\t\t\t\t\t\t\t\"size-full p-4\"\n\t\t\t\t\t\t)}\n\t\t\t\t\t\tdata-slot={open ? \"open\" : \"closed\"}\n\t\t\t\t\t>\n\t\t\t\t\t\t<div className=\"grid gap-y-2\">\n\t\t\t\t\t\t\t{navLinks.map((link) => (\n\t\t\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\t\t\tasChild\n\t\t\t\t\t\t\t\t\tclassName=\"justify-start\"\n\t\t\t\t\t\t\t\t\tkey={link.label}\n\t\t\t\t\t\t\t\t\tvariant=\"ghost\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<a href={link.href}>{link.label}</a>\n\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className=\"mt-12 flex flex-col gap-2\">\n\t\t\t\t\t\t\t<Button className=\"w-full\" variant=\"outline\">\n\t\t\t\t\t\t\t\tSign In\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t<Button className=\"w-full\">Get Started</Button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</Portal>\n\t\t\t)}\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/header1/components/logo.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/header/one/components/logo.tsx",
+      "content": "export const Logo = (props: React.ComponentProps<\"svg\">) => (\n  <svg\n  width=\"140\"\n  height=\"48\"\n  viewBox=\"0 0 140 48\"\n  fill=\"none\"\n  xmlns=\"http://www.w3.org/2000/svg\"\n  {...props}\n>\n  <defs>\n    <linearGradient id=\"loveui-blue\" x1=\"0\" y1=\"0\" x2=\"48\" y2=\"48\">\n      <stop stopColor=\"#38A3FF\" />\n      <stop offset=\"0.55\" stopColor=\"#1266F1\" />\n      <stop offset=\"1\" stopColor=\"#0B3FD8\" />\n    </linearGradient>\n\n    <linearGradient id=\"loveui-shine\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop stopColor=\"#FFFFFF\" stopOpacity=\"0.9\" />\n      <stop offset=\"1\" stopColor=\"#BBD8FF\" stopOpacity=\"0.4\" />\n    </linearGradient>\n  </defs>\n\n  <g transform=\"translate(0 0)\">\n    <rect\n      x=\"0\"\n      y=\"0\"\n      width=\"48\"\n      height=\"48\"\n      rx=\"12\"\n      fill=\"url(#loveui-blue)\"\n    />\n\n    <path\n      d=\"\n        M12 10\n        C12 8.3 13.3 7 15 7\n        H18\n        C19.7 7 21 8.3 21 10\n        V25\n        C21 27.2 22.8 29 25 29\n        H35\n        C36.7 29 38 30.3 38 32\n        V34\n        C38 35.7 36.7 37 35 37\n        H15\n        C13.3 37 12 35.7 12 34\n        Z\"\n      fill=\"white\"\n    />\n\n    <rect\n      x=\"28\"\n      y=\"14\"\n      width=\"9\"\n      height=\"9\"\n      rx=\"3\"\n      fill=\"white\"\n    />\n\n    <path\n      d=\"\n        M21 25\n        C21 27.2 22.8 29 25 29\n        H27\n        V34\n        C27 35.7 25.7 37 24 37\n        H15\n        C13.3 37 12 35.7 12 34\n        V29\n        H18\n        C19.7 29 21 27.7 21 25\n        Z\"\n      fill=\"url(#loveui-shine)\"\n      opacity=\"0.5\"\n    />\n  </g>\n  <text\n    x=\"58\"\n    y=\"30\"\n    fontFamily=\"Inter, Geist, sans-serif\"\n    fontSize=\"22\"\n    fontWeight=\"700\"\n    fill=\"currentColor\"\n  >\n    LoveUI\n  </text>\n</svg>\n);\n"
+    },
+    {
+      "path": "registry/default/blocks/header1/components/demo-layout.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/header/one/components/demo-layout.tsx",
+      "content": "export function DemoLayout() {\n\treturn (\n\t\t<main className=\"mx-auto w-full max-w-5xl px-4 py-10\">\n\t\t\t<section className=\"grid gap-4\">\n\t\t\t\t<div className=\"h-8 w-48 rounded-lg bg-muted\" />\n\t\t\t\t<div className=\"h-4 w-full max-w-2xl rounded bg-muted\" />\n\t\t\t\t<div className=\"h-4 w-full max-w-xl rounded bg-muted\" />\n\t\t\t</section>\n\t\t\t<section className=\"mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n\t\t\t\t{Array.from({ length: 9 }).map((_, index) => (\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName=\"rounded-xl border bg-card p-4 shadow-xs\"\n\t\t\t\t\t\tkey={index}\n\t\t\t\t\t>\n\t\t\t\t\t\t<div className=\"h-32 rounded-lg bg-muted\" />\n\t\t\t\t\t\t<div className=\"mt-4 h-4 w-2/3 rounded bg-muted\" />\n\t\t\t\t\t\t<div className=\"mt-3 h-3 w-full rounded bg-muted\" />\n\t\t\t\t\t\t<div className=\"mt-2 h-3 w-4/5 rounded bg-muted\" />\n\t\t\t\t\t</div>\n\t\t\t\t))}\n\t\t\t</section>\n\t\t\t<section className=\"mt-10 grid gap-4\">\n\t\t\t\t{Array.from({ length: 8 }).map((_, index) => (\n\t\t\t\t\t<div className=\"rounded-xl border bg-card p-5\" key={index}>\n\t\t\t\t\t\t<div className=\"h-4 w-40 rounded bg-muted\" />\n\t\t\t\t\t\t<div className=\"mt-4 h-3 w-full rounded bg-muted\" />\n\t\t\t\t\t\t<div className=\"mt-2 h-3 w-11/12 rounded bg-muted\" />\n\t\t\t\t\t</div>\n\t\t\t\t))}\n\t\t\t</section>\n\t\t</main>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/header1/components/ui/portal.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/header/one/components/ui/portal.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nfunction Portal({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tclassName={cn(\n\t\t\t\t\"absolute inset-x-0 z-40 flex h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] flex-col overflow-hidden\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction PortalBackdrop({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tclassName={cn(\n\t\t\t\t\"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 absolute inset-0 -z-1 bg-background/95 backdrop-blur-sm duration-500 data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-background/60\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Portal, PortalBackdrop };\n"
+    },
+    {
+      "path": "registry/default/blocks/header1/hooks/use-scroll.ts",
+      "type": "registry:hook",
+      "target": "components/blocks/header/one/hooks/use-scroll.ts",
+      "content": "\"use client\";\nimport { useEffect, useState, type RefObject } from \"react\";\n\nexport function useScroll(\n\tdownThreshold: number,\n\tupThreshold?: number,\n\ttargetRef?: RefObject<HTMLElement | null>\n) {\n\tconst [scrolled, setScrolled] = useState(false);\n\tconst scrollUpThreshold = upThreshold ?? downThreshold / 2;\n\n\tuseEffect(() => {\n\t\tconst scrollContainer = getScrollContainer(targetRef?.current);\n\n\t\tconst handleScroll = () => {\n\t\t\tconst y =\n\t\t\t\tscrollContainer instanceof Window\n\t\t\t\t\t? window.scrollY\n\t\t\t\t\t: scrollContainer.scrollTop;\n\t\t\t// Hysteresis: different thresholds for up/down to prevent flickering\n\t\t\tsetScrolled((prev) => {\n\t\t\t\tif (prev) {\n\t\t\t\t\t// Currently scrolled - only unscroll when below lower threshold\n\t\t\t\t\treturn y > scrollUpThreshold;\n\t\t\t\t}\n\t\t\t\t// Currently not scrolled - only scroll when above higher threshold\n\t\t\t\treturn y > downThreshold;\n\t\t\t});\n\t\t};\n\n\t\tscrollContainer.addEventListener(\"scroll\", handleScroll, { passive: true });\n\t\thandleScroll();\n\t\treturn () => scrollContainer.removeEventListener(\"scroll\", handleScroll);\n\t}, [downThreshold, scrollUpThreshold, targetRef]);\n\n\treturn scrolled;\n}\n\nfunction getScrollContainer(element?: HTMLElement | null) {\n\tlet parent = element?.parentElement ?? null;\n\n\twhile (parent) {\n\t\tconst { overflowY } = window.getComputedStyle(parent);\n\t\tconst canScroll = parent.scrollHeight > parent.clientHeight;\n\n\t\tif (canScroll && (overflowY === \"auto\" || overflowY === \"scroll\")) {\n\t\t\treturn parent;\n\t\t}\n\n\t\tparent = parent.parentElement;\n\t}\n\n\treturn window;\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "header"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "header/one"
+  }
+}
