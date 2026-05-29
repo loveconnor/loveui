@@ -158,6 +158,54 @@ const BUNDLED_BLOCKS = new Map([
       },
     },
   ],
+  [
+    "footer-one",
+    {
+      sourceDir: "footer1",
+      targetBase: "components/blocks/footer/one",
+    },
+  ],
+  [
+    "footer-two",
+    {
+      sourceDir: "footer2",
+      targetBase: "components/blocks/footer/two",
+    },
+  ],
+  [
+    "footer-three",
+    {
+      sourceDir: "footer3",
+      targetBase: "components/blocks/footer/three",
+      dependencies: {
+        motion: "^12.40.0",
+      },
+    },
+  ],
+  [
+    "footer-four",
+    {
+      sourceDir: "footer4",
+      targetBase: "components/blocks/footer/four",
+    },
+  ],
+  [
+    "footer-five",
+    {
+      sourceDir: "footer5",
+      targetBase: "components/blocks/footer/five",
+    },
+  ],
+  [
+    "footer-six",
+    {
+      sourceDir: "footer6",
+      targetBase: "components/blocks/footer/six",
+      dependencies: {
+        motion: "^12.40.0",
+      },
+    },
+  ],
 ] as const);
 
 const SCRIPT_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"] as const;

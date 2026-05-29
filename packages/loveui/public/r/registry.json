@@ -172,6 +172,365 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "footer-one",
+      "type": "registry:block",
+      "title": "footer/one",
+      "description": "Compact footer with brand, navigation links, and social actions.",
+      "files": [
+        {
+          "path": "registry/default/blocks/footer1/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/footer/one/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer1/components/footer.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/one/components/footer.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer1/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/one/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer1/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/one/components/icons/github-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer1/components/icons/x-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/one/components/icons/x-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "footer"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "footer/one"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "footer-two",
+      "type": "registry:block",
+      "title": "footer/two",
+      "description": "Bordered footer with resource columns and social links.",
+      "files": [
+        {
+          "path": "registry/default/blocks/footer2/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/footer/two/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer2/components/footer.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/two/components/footer.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer2/components/full-width-divider.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/two/components/full-width-divider.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer2/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/two/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer2/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/two/components/icons/github-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer2/components/icons/instagram-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/two/components/icons/instagram-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer2/components/icons/x-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/two/components/icons/x-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "footer"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "footer/two"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "footer-three",
+      "type": "registry:block",
+      "title": "footer/three",
+      "description": "Animated rounded footer with grouped links and social icons.",
+      "files": [
+        {
+          "path": "registry/default/blocks/footer3/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/footer/three/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer3/components/footer.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/three/components/footer.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer3/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/three/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer3/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/three/components/icons/github-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer3/components/icons/instagram-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/three/components/icons/instagram-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer3/components/icons/linkedin-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/three/components/icons/linkedin-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer3/components/icons/x-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/three/components/icons/x-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "footer"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "footer/three"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "footer-four",
+      "type": "registry:block",
+      "title": "footer/four",
+      "description": "Column footer with social cards and divided link groups.",
+      "files": [
+        {
+          "path": "registry/default/blocks/footer4/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/footer/four/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer4/components/footer.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/four/components/footer.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer4/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/four/components/icons/github-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer4/components/icons/instagram-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/four/components/icons/instagram-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer4/components/icons/linkedin-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/four/components/icons/linkedin-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer4/components/icons/x-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/four/components/icons/x-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer4/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/four/components/logo.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "footer"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "footer/four"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "footer-five",
+      "type": "registry:block",
+      "title": "footer/five",
+      "description": "App-focused footer with dense links, social buttons, and store badges.",
+      "files": [
+        {
+          "path": "registry/default/blocks/footer5/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/footer/five/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/footer.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/footer.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/icons/apple-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/icons/apple-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/icons/facebook-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/icons/facebook-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/icons/google-play-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/icons/google-play-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/icons/instagram-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/icons/instagram-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/icons/linkedin-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/icons/linkedin-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer5/components/icons/x-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/five/components/icons/x-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "footer"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "footer/five"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "footer-six",
+      "type": "registry:block",
+      "title": "footer/six",
+      "description": "Sticky reveal footer with animated link groups and social actions.",
+      "files": [
+        {
+          "path": "registry/default/blocks/footer6/app/page.tsx",
+          "type": "registry:page",
+          "target": "components/blocks/footer/six/app/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/footer.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/footer.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/logo.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/logo.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/apple-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/apple-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/facebook-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/facebook-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/github-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/github-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/google-play-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/google-play-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/instagram-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/instagram-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/linkedin-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/linkedin-icon.tsx"
+        },
+        {
+          "path": "registry/default/blocks/footer6/components/icons/x-icon.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/footer/six/components/icons/x-icon.tsx"
+        }
+      ],
+      "categories": [
+        "block",
+        "footer"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "footer/six"
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "header-one",
       "type": "registry:block",
       "title": "header/one",
