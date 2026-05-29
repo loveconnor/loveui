@@ -2052,15 +2052,20 @@
     },
     {
       "name": "form",
-      "type": "registry:ui",
-      "dependencies": [
-        "@base-ui-components/react"
+      "description": "A complete form block with multiple input types.",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/form"
       ],
       "files": [
         {
-          "path": "registry/default/ui/form.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/form.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "blocks",
+        "form"
       ]
     },
     {
@@ -2364,15 +2369,21 @@
     },
     {
       "name": "table",
-      "type": "registry:ui",
-      "dependencies": [
-        "@base-ui-components/react"
+      "description": "Project table with owner avatars and status indicators.",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/table",
+        "@faker-js/faker"
       ],
       "files": [
         {
-          "path": "registry/default/ui/table.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/table.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "table",
+        "project management"
       ]
     },
     {
@@ -2504,68 +2515,112 @@
     },
     {
       "name": "ticker",
-      "type": "registry:ui",
+      "description": "Stock ticker row showing price and change values.",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/ticker"
+      ],
       "files": [
         {
-          "path": "registry/default/ui/ticker.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/ticker.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "finance",
+        "ticker"
       ]
     },
     {
       "name": "marquee",
-      "type": "registry:ui",
-      "dependencies": [
-        "react-fast-marquee"
+      "description": "Continuous marquee loop for showcasing logos.",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/marquee"
       ],
       "files": [
         {
-          "path": "registry/default/ui/marquee.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/marquee.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "marketing",
+        "marquee"
       ]
     },
     {
       "name": "video-player",
-      "type": "registry:ui",
-      "dependencies": [
-        "media-chrome"
+      "description": "Video player with transport, time, and volume controls.",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/video-player"
       ],
       "files": [
         {
-          "path": "registry/default/ui/video-player.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/video-player.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "media",
+        "video",
+        "player"
       ]
     },
     {
       "name": "announcement",
-      "type": "registry:ui",
+      "description": "Inline announcement highlighting latest updates.",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/announcement"
+      ],
       "files": [
         {
-          "path": "registry/default/ui/announcement.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/announcement.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "marketing",
+        "announcement"
       ]
     },
     {
       "name": "avatar-stack",
-      "type": "registry:ui",
+      "description": "Stack avatars with overlapping layout",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/avatar-stack",
+        "@loveui/avatar"
+      ],
       "files": [
         {
-          "path": "registry/default/ui/avatar-stack.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/avatar-stack.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "avatar-stack",
+        "avatar"
       ]
     },
     {
       "name": "cursor",
-      "type": "registry:ui",
+      "description": "Collaborative cursors with names and messages",
+      "type": "registry:example",
+      "registryDependencies": [
+        "@loveui/cursor"
+      ],
       "files": [
         {
-          "path": "registry/default/ui/cursor.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/examples/cursor.tsx",
+          "type": "registry:example"
         }
+      ],
+      "categories": [
+        "cursor",
+        "collaboration"
       ]
     },
     {
@@ -3333,25 +3388,6 @@
         }
       ],
       "categories": [
-        "avatar"
-      ]
-    },
-    {
-      "name": "avatar-stack",
-      "description": "Stack avatars with overlapping layout",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/avatar-stack",
-        "@loveui/avatar"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/avatar-stack.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "avatar-stack",
         "avatar"
       ]
     },
@@ -4679,24 +4715,6 @@
       ]
     },
     {
-      "name": "cursor",
-      "description": "Collaborative cursors with names and messages",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/cursor"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/cursor.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "cursor",
-        "collaboration"
-      ]
-    },
-    {
       "name": "cursor-only",
       "description": "Cursor pointer without body",
       "type": "registry:example",
@@ -5338,25 +5356,6 @@
       ],
       "categories": [
         "list",
-        "project management"
-      ]
-    },
-    {
-      "name": "table",
-      "description": "Project table with owner avatars and status indicators.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/table",
-        "@faker-js/faker"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/table.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "table",
         "project management"
       ]
     },
@@ -8901,24 +8900,6 @@
       ]
     },
     {
-      "name": "ticker",
-      "description": "Stock ticker row showing price and change values.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/ticker"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/ticker.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "finance",
-        "ticker"
-      ]
-    },
-    {
       "name": "ticker-percent",
       "description": "Stock ticker list with percentage change display.",
       "type": "registry:example",
@@ -9164,25 +9145,6 @@
       ]
     },
     {
-      "name": "video-player",
-      "description": "Video player with transport, time, and volume controls.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/video-player"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/video-player.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "media",
-        "video",
-        "player"
-      ]
-    },
-    {
       "name": "theme-switcher",
       "description": "Theme switcher controlling light, dark, and system modes.",
       "type": "registry:example",
@@ -9312,24 +9274,6 @@
         "feedback",
         "spinner",
         "customization"
-      ]
-    },
-    {
-      "name": "announcement",
-      "description": "Inline announcement highlighting latest updates.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/announcement"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/announcement.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "marketing",
-        "announcement"
       ]
     },
     {
@@ -9504,24 +9448,6 @@
         "overlay",
         "dialog",
         "navigation"
-      ]
-    },
-    {
-      "name": "marquee",
-      "description": "Continuous marquee loop for showcasing logos.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/marquee"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/marquee.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "marketing",
-        "marquee"
       ]
     },
     {
@@ -9723,24 +9649,6 @@
         "blocks",
         "roadmap",
         "project"
-      ]
-    },
-    {
-      "name": "form",
-      "description": "A complete form block with multiple input types.",
-      "type": "registry:example",
-      "registryDependencies": [
-        "@loveui/form"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/form.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": [
-        "blocks",
-        "form"
       ]
     },
     {
@@ -30596,6 +30504,90 @@
       "meta": {
         "source": "block",
         "blockPath": "faq/five"
+      }
+    },
+    {
+      "name": "pricing-one",
+      "type": "registry:block",
+      "title": "pricing/one",
+      "description": "Compact monthly and yearly pricing panel with discount badges and a trust note.",
+      "categories": [
+        "block",
+        "pricing"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0",
+        "class-variance-authority": "^0.7.1"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/badge.json",
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "pricing/one"
+      }
+    },
+    {
+      "name": "pricing-two",
+      "type": "registry:block",
+      "title": "pricing/two",
+      "description": "Bordered two-plan pricing grid with feature checklists and full-width dividers.",
+      "categories": [
+        "block",
+        "pricing"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "pricing/two"
+      }
+    },
+    {
+      "name": "pricing-three",
+      "type": "registry:block",
+      "title": "pricing/three",
+      "description": "Three-tier pricing cards with icons, badges, original prices, and feature lists.",
+      "categories": [
+        "block",
+        "pricing"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "pricing/three"
+      }
+    },
+    {
+      "name": "pricing-four",
+      "type": "registry:block",
+      "title": "pricing/four",
+      "description": "Animated pricing table with monthly/yearly toggle, discounts, and highlighted plan.",
+      "categories": [
+        "block",
+        "pricing"
+      ],
+      "dependencies": {
+        "lucide-react": "^0.468.0",
+        "@number-flow/react": "^0.6.0",
+        "motion": "^12.40.0"
+      },
+      "registryDependencies": [
+        "https://www.loveui.dev/r/button.json"
+      ],
+      "meta": {
+        "source": "block",
+        "blockPath": "pricing/four"
       }
     }
   ]

@@ -357,6 +357,38 @@ const BUNDLED_BLOCKS = new Map([
     },
   ],
   [
+    "pricing-one",
+    {
+      sourceDir: "pricing1",
+      targetBase: "components/blocks/pricing/one",
+    },
+  ],
+  [
+    "pricing-two",
+    {
+      sourceDir: "pricing2",
+      targetBase: "components/blocks/pricing/two",
+    },
+  ],
+  [
+    "pricing-three",
+    {
+      sourceDir: "pricing3",
+      targetBase: "components/blocks/pricing/three",
+    },
+  ],
+  [
+    "pricing-four",
+    {
+      sourceDir: "pricing4",
+      targetBase: "components/blocks/pricing/four",
+      dependencies: {
+        "@number-flow/react": "^0.6.0",
+        motion: "^12.40.0",
+      },
+    },
+  ],
+  [
     "features-one",
     {
       sourceDir: "features1",

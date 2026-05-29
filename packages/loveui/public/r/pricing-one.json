@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-one",
+  "type": "registry:block",
+  "title": "pricing/one",
+  "description": "Compact monthly and yearly pricing panel with discount badges and a trust note.",
+  "files": [
+    {
+      "path": "registry/default/blocks/pricing1/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/pricing/one/app/page.tsx",
+      "content": "import { PricingSection } from \"../components/pricing\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"relative min-h-screen place-content-center p-4\">\n\t\t\t<PricingSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/pricing1/components/pricing.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/pricing/one/components/pricing.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { DecorIcon } from \"./decor-icon\";\nimport { ShieldCheckIcon } from \"lucide-react\";\n\nexport function PricingSection() {\n\treturn (\n\t\t<section className=\"w-full space-y-5\">\n\t\t\t<div className=\"mx-auto max-w-lg\">\n\t\t\t\t<div className=\"flex justify-center\">\n\t\t\t\t\t<div className=\"rounded-md border px-4 py-1 text-sm\">Pricing</div>\n\t\t\t\t</div>\n\t\t\t\t<h2 className=\"mt-4 text-center font-bold text-2xl tracking-tight md:text-3xl\">\n\t\t\t\t\tPricing for Building with LoveUI\n\t\t\t\t</h2>\n\t\t\t\t<p className=\"mt-2 text-center text-muted-foreground text-sm md:text-base\">\n\t\t\t\t\tStart with the open registry, then upgrade when your team needs more\n\t\t\t\t\tblocks, examples, and agent-ready workflows.\n\t\t\t\t</p>\n\t\t\t</div>\n\n\t\t\t<div className=\"mx-auto w-full max-w-2xl space-y-2\">\n\t\t\t\t<div className=\"relative grid border bg-background p-4 shadow-xs md:grid-cols-2\">\n\t\t\t\t\t<DecorIcon className=\"size-3\" position=\"top-left\" />\n\t\t\t\t\t<DecorIcon className=\"size-3\" position=\"top-right\" />\n\t\t\t\t\t<DecorIcon className=\"size-3\" position=\"bottom-left\" />\n\t\t\t\t\t<DecorIcon className=\"size-3\" position=\"bottom-right\" />\n\n\t\t\t\t\t<div className=\"w-full px-4 pt-5 pb-4\">\n\t\t\t\t\t\t<div className=\"space-y-1\">\n\t\t\t\t\t\t\t<div className=\"flex items-center justify-between\">\n\t\t\t\t\t\t\t\t<h3 className=\"font-semibold leading-none\">Monthly</h3>\n\t\t\t\t\t\t\t\t<div className=\"flex items-center gap-x-1\">\n\t\t\t\t\t\t\t\t\t<span className=\"text-muted-foreground text-sm line-through\">\n\t\t\t\t\t\t\t\t\t\t$8.99\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t<Badge variant=\"secondary\">11% off</Badge>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<p className=\"text-muted-foreground text-sm\">\n\t\t\t\t\t\t\t\tBest for exploring components and shipping a first screen.\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className=\"mt-10 space-y-4\">\n\t\t\t\t\t\t\t<div className=\"flex items-end gap-0.5 text-muted-foreground text-xl\">\n\t\t\t\t\t\t\t\t<span>$</span>\n\t\t\t\t\t\t\t\t<span className=\"-mb-0.5 font-extrabold text-4xl text-foreground tracking-tighter md:text-4xl\">\n\t\t\t\t\t\t\t\t\t7.99\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<span>/month</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<Button asChild className=\"w-full\" variant=\"outline\">\n\t\t\t\t\t\t\t\t<a href=\"#\">Browse Registry</a>\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div className=\"relative w-full rounded-md border bg-card p-4 shadow dark:bg-card/80\">\n\t\t\t\t\t\t<div className=\"space-y-1\">\n\t\t\t\t\t\t\t<div className=\"flex items-center justify-between\">\n\t\t\t\t\t\t\t\t<h3 className=\"font-semibold leading-none\">Yearly</h3>\n\t\t\t\t\t\t\t\t<div className=\"flex items-center gap-x-1\">\n\t\t\t\t\t\t\t\t\t<span className=\"text-muted-foreground text-sm line-through\">\n\t\t\t\t\t\t\t\t\t\t$8.99\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t<Badge>22% off</Badge>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<p className=\"text-muted-foreground text-sm\">\n\t\t\t\t\t\t\t\tBest for teams standardizing product UI with LoveUI.\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className=\"mt-10 space-y-4\">\n\t\t\t\t\t\t\t<div className=\"flex items-end text-muted-foreground text-xl\">\n\t\t\t\t\t\t\t\t<span>$</span>\n\t\t\t\t\t\t\t\t<span className=\"-mb-0.5 font-extrabold text-4xl text-foreground tracking-tighter md:text-4xl\">\n\t\t\t\t\t\t\t\t\t6.99\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<span>/month</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<Button asChild className=\"w-full\">\n\t\t\t\t\t\t\t\t<a href=\"#\">Upgrade Workspace</a>\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div className=\"flex items-center justify-center gap-x-2 text-muted-foreground text-sm\">\n\t\t\t\t\t<ShieldCheckIcon className=\"size-4\" />\n\t\t\t\t\t<span>Editable source, reusable blocks, and no black-box UI package</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</section>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/pricing1/components/decor-icon.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/pricing/one/components/decor-icon.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst DecorIconVariants = cva(\n\t\"pointer-events-none absolute z-1 size-5 shrink-0 stroke-1 stroke-muted-foreground\",\n\t{\n\t\tvariants: {\n\t\t\tposition: {\n\t\t\t\t\"top-left\":\n\t\t\t\t\t\"top-0 left-0 -translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"top-right\":\n\t\t\t\t\t\"top-0 right-0 translate-x-[calc(50%+0.5px)] -translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-right\":\n\t\t\t\t\t\"right-0 bottom-0 translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t\t\"bottom-left\":\n\t\t\t\t\t\"bottom-0 left-0 -translate-x-[calc(50%+0.5px)] translate-y-[calc(50%+0.5px)]\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tposition: \"top-left\",\n\t\t},\n\t}\n);\n\ntype DecorIconProps = React.ComponentProps<\"svg\"> &\n\tVariantProps<typeof DecorIconVariants>;\n\nexport function DecorIcon({ position, className, ...props }: DecorIconProps) {\n\treturn (\n\t\t<svg\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(DecorIconVariants({ position, className }))}\n\t\t\tfill=\"none\"\n\t\t\tstroke=\"currentColor\"\n\t\t\tstrokeLinecap=\"round\"\n\t\t\tstrokeLinejoin=\"round\"\n\t\t\tviewBox=\"0 0 24 24\"\n\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t{...props}\n\t\t>\n\t\t\t<path d=\"M5 12h14\" />\n\t\t\t<path d=\"M12 5v14\" />\n\t\t</svg>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "pricing"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "class-variance-authority": "^0.7.1"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/badge.json",
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "pricing/one"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-two",
+  "type": "registry:block",
+  "title": "pricing/two",
+  "description": "Bordered two-plan pricing grid with feature checklists and full-width dividers.",
+  "files": [
+    {
+      "path": "registry/default/blocks/pricing2/app/page.tsx",
+      "type": "registry:page",
+      "target": "components/blocks/pricing/two/app/page.tsx",
+      "content": "import { PricingSection } from \"../components/pricing\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"relative min-h-screen place-content-center p-4\">\n\t\t\t<PricingSection />\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/pricing2/components/pricing.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/pricing/two/components/pricing.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { FullWidthDivider } from \"./full-width-divider\";\nimport { CheckIcon } from \"lucide-react\";\n\ntype PricingPlan = {\n\tname: string;\n\tprice: string;\n\tperiod?: string;\n\tdescription: string;\n\thref?: string;\n\tfeaturesTitle: string;\n\tfeatures: string[];\n\tisPopular?: boolean;\n};\n\nconst pricingPlans: PricingPlan[] = [\n\t{\n\t\tname: \"STARTER\",\n\t\tprice: \"Free\",\n\t\tdescription: \"For solo builders\",\n\t\tfeaturesTitle: \"FREE, FOREVER:\",\n\t\tfeatures: [\n\t\t\t\"Open component registry\",\n\t\t\t\"Copy-paste UI primitives\",\n\t\t\t\"Example blocks and pages\",\n\t\t\t\"Tailwind CSS source\",\n\t\t],\n\t\thref: \"#\",\n\t},\n\t{\n\t\tname: \"SCALE\",\n\t\tisPopular: true,\n\t\thref: \"#\",\n\t\tprice: \"$8\",\n\t\tperiod: \"month\",\n\t\tdescription: \"For product teams\",\n\t\tfeaturesTitle: \"EVERYTHING IN STARTER, PLUS:\",\n\t\tfeatures: [\n\t\t\t\"Expanded block library\",\n\t\t\t\"AI coding agent skills\",\n\t\t\t\"Team-ready examples\",\n\t\t\t\"Priority component updates\",\n\t\t\t\"Design system patterns\",\n\t\t],\n\t},\n];\n\nexport function PricingSection() {\n\treturn (\n\t\t<section className=\"mx-auto min-h-screen max-w-5xl place-content-center border-x py-4\">\n\t\t\t<div className=\"relative\">\n\t\t\t\t<FullWidthDivider position=\"top\" />\n\t\t\t\t<FullWidthDivider position=\"bottom\" />\n\n\t\t\t\t<div className=\"grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4\">\n\t\t\t\t\t<div className=\"flex flex-col bg-background p-8 md:col-span-2\">\n\t\t\t\t\t\t<p className=\"mb-6 text-muted-foreground text-sm uppercase tracking-wider\">\n\t\t\t\t\t\t\tPRICING\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<h1 className=\"font-bold text-3xl leading-tight md:text-5xl\">\n\t\t\t\t\t\t\tPricing for teams building faster with LoveUI\n\t\t\t\t\t\t</h1>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t{pricingPlans.map((plan) => (\n\t\t\t\t\t\t<PricingCard key={plan.name} plan={plan} />\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</section>\n\t);\n}\n\nfunction PricingCard({ plan }: { plan: PricingPlan }) {\n\treturn (\n\t\t<div className=\"flex flex-col bg-background *:px-4 *:py-6\">\n\t\t\t<div className=\"border-b\">\n\t\t\t\t<p className=\"mb-6 text-muted-foreground text-sm uppercase tracking-wider\">\n\t\t\t\t\t{plan.name}\n\t\t\t\t</p>\n\t\t\t\t<div className=\"mb-2 flex items-baseline gap-2\">\n\t\t\t\t\t<h2 className=\"font-bold text-4xl\">{plan.price}</h2>\n\t\t\t\t\t{plan.period && (\n\t\t\t\t\t\t<span className=\"text-muted-foreground text-xs\">\n\t\t\t\t\t\t\t/ {plan.period}\n\t\t\t\t\t\t</span>\n\t\t\t\t\t)}\n\t\t\t\t</div>\n\t\t\t\t<p className=\"mb-8 line-clamp-1 text-muted-foreground\">\n\t\t\t\t\t{plan.description}\n\t\t\t\t</p>\n\n\t\t\t\t<Button\n\t\t\t\t\tasChild\n\t\t\t\t\tclassName=\"w-full\"\n\t\t\t\t\tvariant={plan.isPopular ? \"default\" : \"outline\"}\n\t\t\t\t>\n\t\t\t\t\t<a href={plan.href}>Start with LoveUI</a>\n\t\t\t\t</Button>\n\t\t\t</div>\n\n\t\t\t<div className=\"space-y-3 text-muted-foreground text-sm\">\n\t\t\t\t<p className=\"mb-6 text-xs uppercase\">{plan.featuresTitle}</p>\n\n\t\t\t\t{plan.features.map((feature) => (\n\t\t\t\t\t<p\n\t\t\t\t\t\tclassName=\"flex items-center gap-2 text-foreground/80\"\n\t\t\t\t\t\tkey={feature}\n\t\t\t\t\t>\n\t\t\t\t\t\t<CheckIcon className=\"size-4\" />\n\t\t\t\t\t\t{feature}\n\t\t\t\t\t</p>\n\t\t\t\t))}\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+    },
+    {
+      "path": "registry/default/blocks/pricing2/components/full-width-divider.tsx",
+      "type": "registry:component",
+      "target": "components/blocks/pricing/two/components/full-width-divider.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ntype FullWidthDividerProps = React.ComponentProps<\"div\"> & {\n\tcontained?: boolean;\n\tposition?: \"top\" | \"bottom\";\n};\n\nexport function FullWidthDivider({\n\tclassName,\n\tcontained = false,\n\tposition,\n\t...props\n}: FullWidthDividerProps) {\n\treturn (\n\t\t<div\n\t\t\taria-hidden=\"true\"\n\t\t\tclassName={cn(\n\t\t\t\t\"pointer-events-none absolute h-px bg-border\",\n\t\t\t\t// full-bleed (default)\n\t\t\t\t\"data-[contained=false]:left-1/2 data-[contained=false]:w-screen data-[contained=false]:-translate-x-1/2\",\n\t\t\t\t// contained\n\t\t\t\t\"data-[contained=true]:inset-x-0 data-[contained=true]:w-full\",\n\t\t\t\t// position\n\t\t\t\tposition &&\n\t\t\t\t\t\"data-[position=top]:-top-px data-[position=bottom]:-bottom-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tdata-contained={contained}\n\t\t\tdata-position={position}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n"
+    }
+  ],
+  "categories": [
+    "block",
+    "pricing"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "registryDependencies": [
+    "https://www.loveui.dev/r/button.json"
+  ],
+  "meta": {
+    "source": "block",
+    "blockPath": "pricing/two"
+  }
+}
