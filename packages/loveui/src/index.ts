@@ -37,6 +37,13 @@ const CLI_ROOT = path.resolve(__dirname, "..");
 const BUNDLED_PACKAGES_ROOT = path.join(CLI_ROOT, "packages");
 const BUNDLED_REGISTRY_ROOT = path.join(CLI_ROOT, "registry");
 const BUNDLED_SKILLS_ROOT = path.join(CLI_ROOT, "skills");
+const DEFAULT_REGISTRY_BASE_URL = "https://www.loveui.dev/";
+const CLI_CONFIG_PATH = path.join(os.homedir(), ".loveui", "config.json");
+
+type LoveUiCliConfig = {
+  proToken?: string;
+  registryBaseUrl?: string;
+};
 
 const TEXT_EXTENSIONS = new Set([
   ".ts",
@@ -61,6 +68,152 @@ const EXCLUDED_DIRS = new Set([
   "build",
   ".cache"
 ]);
+
+function getRegistryBaseUrl() {
+  return process.env.LOVEUI_REGISTRY_BASE_URL?.trim() || DEFAULT_REGISTRY_BASE_URL;
+}
+
+async function loadCliConfig(): Promise<LoveUiCliConfig> {
+  try {
+    return JSON.parse(await readFile(CLI_CONFIG_PATH, "utf8")) as LoveUiCliConfig;
+  } catch {
+    return {};
+  }
+}
+
+async function saveCliConfig(config: LoveUiCliConfig) {
+  await mkdir(path.dirname(CLI_CONFIG_PATH), { recursive: true });
+  await writeFile(CLI_CONFIG_PATH, `${JSON.stringify(config, null, 2)}\n`, {
+    encoding: "utf8",
+    mode: 0o600,
+  });
+}
+
+async function getProRegistryToken() {
+  const envToken =
+    process.env.LOVEUI_PRO_TOKEN?.trim() ||
+    process.env.LOVEUI_API_KEY?.trim() ||
+    process.env.LOVEUI_TOKEN?.trim();
+
+  if (envToken) return envToken;
+
+  const config = await loadCliConfig();
+  return config.proToken?.trim() || null;
+}
+
+function isProRegistryUrl(value: string | URL) {
+  const pathname = value instanceof URL ? value.pathname : new URL(value).pathname;
+  return pathname.startsWith("/pro/r/");
+}
+
+async function fetchRegistryPayload(
+  url: string | URL,
+  options: { pro?: boolean } = {}
+): Promise<{ payload: RegistryPayload | null; status: number | null }> {
+  const token = options.pro ? await getProRegistryToken() : null;
+
+  const response = await fetch(url, {
+    headers: token
+      ? {
+          authorization: `Bearer ${token}`,
+        }
+      : undefined,
+  });
+
+  if (!response.ok) {
+    return { payload: null, status: response.status };
+  }
+
+  return {
+    payload: (await response.json()) as RegistryPayload,
+    status: response.status,
+  };
+}
+
+function normalizeRequestedPackage(packageName: string) {
+  if (packageName.startsWith("pro/")) {
+    return {
+      packageName: packageName.slice("pro/".length),
+      pro: true,
+    };
+  }
+
+  if (packageName.startsWith("pro:")) {
+    return {
+      packageName: packageName.slice("pro:".length),
+      pro: true,
+    };
+  }
+
+  return {
+    packageName,
+    pro: false,
+  };
+}
+
+async function loginWithToken(args: string[]) {
+  let token = "";
+
+  for (let index = 0; index < args.length; index++) {
+    const arg = args[index];
+
+    if (arg === "--token" || arg === "--api-key") {
+      token = args[index + 1]?.trim() ?? "";
+      index++;
+      continue;
+    }
+
+    if (arg?.startsWith("--token=")) {
+      token = arg.slice("--token=".length).trim();
+      continue;
+    }
+
+    if (arg?.startsWith("--api-key=")) {
+      token = arg.slice("--api-key=".length).trim();
+      continue;
+    }
+  }
+
+  if (!token) {
+    if (!process.stdin.isTTY || !process.stdout.isTTY) {
+      throw new Error("Missing token. Use `npx love-ui login --token <token>`.");
+    }
+
+    const rl = createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    try {
+      token = (await rl.question("Paste your LoveUI Pro API key or access token: ")).trim();
+    } finally {
+      rl.close();
+    }
+  }
+
+  if (!token) {
+    throw new Error("Missing token. Use `npx love-ui login --token <token>`.");
+  }
+
+  const config = await loadCliConfig();
+  await saveCliConfig({
+    ...config,
+    proToken: token,
+    registryBaseUrl: config.registryBaseUrl || getRegistryBaseUrl(),
+  });
+
+  console.log(`✓ Saved LoveUI Pro credentials to ${CLI_CONFIG_PATH}`);
+}
+
+async function printCheckoutInstructions() {
+  const checkoutUrl =
+    process.env.LOVEUI_CHECKOUT_URL?.trim() ||
+    new URL("pro/checkout?cli=1", getRegistryBaseUrl()).toString();
+
+  console.log("Complete checkout in your browser, then run:");
+  console.log("  npx love-ui login --token <token>");
+  console.log(`\nCheckout URL: ${checkoutUrl}`);
+}
 
 // Love-ui components (Base UI) that should be extracted individually
 const LOVE_UI_COMPONENTS = new Set([
@@ -2056,8 +2209,21 @@ export async function run(argv: string[] = process.argv.slice(2)) {
     process.exit(0);
   }
 
+  if (argv[0] === "login") {
+    await loginWithToken(argv.slice(1));
+    return;
+  }
+
+  if (argv[0] === "checkout") {
+    await printCheckoutInstructions();
+    return;
+  }
+
   if (argv.length < 2 || argv[0] !== "add") {
     console.log("Usage: npx love-ui add [...packages]");
+    console.log("       npx love-ui add pro/<package>");
+    console.log("       npx love-ui checkout");
+    console.log("       npx love-ui login --token <token>");
     console.log("       npx love-ui add loveui-skills [codex|claude|cursor|github|all]");
     console.log("       npx love-ui add loveui-skills --agent codex");
     console.log("       npx love-ui --version");
@@ -2099,12 +2265,18 @@ export async function run(argv: string[] = process.argv.slice(2)) {
 
   const allDependencies: Record<string, string> = {};
 
-  for (const packageName of packageNames) {
+  for (const requestedPackageName of packageNames) {
+    if (!requestedPackageName.trim()) {
+      continue;
+    }
+
+    const { packageName, pro: isProPackage } = normalizeRequestedPackage(requestedPackageName);
+
     if (!packageName.trim()) {
       continue;
     }
 
-    console.log(`\nAdding ${packageName}...`);
+    console.log(`\nAdding ${requestedPackageName}...`);
 
     if (!projectDirectoriesPrepared) {
       await mkdir(path.join(projectRoot, componentsDir), { recursive: true });
@@ -2141,29 +2313,42 @@ export async function run(argv: string[] = process.argv.slice(2)) {
 
       // Fetch from the provided URL
       try {
-        const response = await fetch(correctedUrl);
-        if (response.ok) {
-          payload = (await response.json()) as RegistryPayload;
-        } else {
-          console.warn(`Failed to fetch ${correctedUrl}: HTTP ${response.status}`);
+        const result = await fetchRegistryPayload(correctedUrl, {
+          pro: isProRegistryUrl(correctedUrl),
+        });
+        payload = result.payload;
+
+        if (!payload) {
+          console.warn(`Failed to fetch ${correctedUrl}: HTTP ${result.status ?? "unknown"}`);
+          if (result.status === 401 || result.status === 403) {
+            console.warn("Run `npx love-ui checkout`, then `npx love-ui login --token <token>`.");
+          }
         }
       } catch (error) {
         console.warn(`Failed to fetch from ${correctedUrl}:`, error);
       }
     } else {
       // Try to fetch from registry first
-      const url = new URL(`r/${packageName}.json`, "https://www.loveui.dev/");
+      const url = new URL(
+        isProPackage ? `pro/r/${packageName}.json` : `r/${packageName}.json`,
+        getRegistryBaseUrl()
+      );
       try {
-        const response = await fetch(url);
-        if (response.ok) {
-          payload = (await response.json()) as RegistryPayload;
+        const result = await fetchRegistryPayload(url, { pro: isProPackage });
+        payload = result.payload;
+
+        if (!payload && isProPackage && (result.status === 401 || result.status === 403)) {
+          console.warn("LoveUI Pro access is required for this package.");
+          console.warn("Run `npx love-ui checkout`, then `npx love-ui login --token <token>`.");
         }
       } catch {
         // Silently fall back to bundled files
       }
 
       // Use bundled files as primary source for named components
-      bundledFiles = await getBundledRegistryFiles(packageName, utilsImportPath);
+      if (!isProPackage) {
+        bundledFiles = await getBundledRegistryFiles(packageName, utilsImportPath);
+      }
     }
 
     // Get files and normalize them (building blocks use 'path' instead of 'target')
@@ -2294,9 +2479,11 @@ export async function run(argv: string[] = process.argv.slice(2)) {
         }
 
         try {
-          const response = await fetch(fixedUrl);
-          if (response.ok) {
-            const depPayload = (await response.json()) as RegistryPayload;
+          const result = await fetchRegistryPayload(fixedUrl, {
+            pro: isProRegistryUrl(fixedUrl),
+          });
+          if (result.payload) {
+            const depPayload = result.payload;
             const depFiles: RegistryFile[] = depPayload?.files ?? [];
 
             // Normalize and fix paths for dependency files
@@ -2360,7 +2547,7 @@ export async function run(argv: string[] = process.argv.slice(2)) {
               }
             }
           } else {
-            console.warn(`  ✗ Failed to fetch ${fixedUrl}: HTTP ${response.status}`);
+            console.warn(`  ✗ Failed to fetch ${fixedUrl}: HTTP ${result.status ?? "unknown"}`);
           }
         } catch (error) {
           console.warn(`  ✗ Failed to install ${fixedUrl}:`, (error as Error).message);

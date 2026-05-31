@@ -146,7 +146,7 @@ function NotFoundCategoryPreview() {
 function OnboardingCategoryPreview() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-background">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 w-[640px] -translate-x-1/2 -translate-y-1/2 scale-[0.46]">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 w-[640px] -translate-x-1/2 -translate-y-1/2 scale-[0.46] [&>div]:!min-h-[360px]">
         <OnboardingPreviewBlock />
       </div>
     </div>
@@ -166,7 +166,7 @@ function PricingCategoryPreview() {
 function StatsCategoryPreview() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-background">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 w-[420px] -translate-x-1/2 -translate-y-1/2 scale-[0.74]">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 w-[540px] -translate-x-1/2 -translate-y-1/2 scale-[0.52]">
         <StatsPreviewBlock />
       </div>
     </div>
