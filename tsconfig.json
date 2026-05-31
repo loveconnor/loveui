@@ -40,6 +40,7 @@
     "components/ui/code-block/src/stores/**",
     "components/ui/code-block/src/utils/sugar-high/**",
     "registry/default/examples/**",
+    "packages/*-pro",
     "packages/loveui/dist",
     "packages/loveui/packages",
     "packages/loveui/src",

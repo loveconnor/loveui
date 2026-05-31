@@ -110,6 +110,21 @@
     gap: 0.25rem !important;
   }
 
+  #nd-sidebar [data-pro-nav-actions],
+  #nd-sidebar-mobile [data-pro-nav-actions] {
+    display: none !important;
+  }
+
+  #nd-nav [data-pro-nav-actions] {
+    order: 3;
+    margin-left: 0.375rem;
+  }
+
+  #nd-nav nav > div.flex-1 {
+    order: 2;
+    margin-left: auto;
+  }
+
   #nd-sidebar p.inline-flex {
     margin-block: 0.75rem 0;
     color: rgb(82 82 82);

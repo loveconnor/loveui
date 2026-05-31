@@ -4,6 +4,12 @@ node_modules/
 # generated content
 .source
 
+# private overlay repo
+packages/loveui-pro/
+app/pro/
+content/docs/pro/
+lib/pro-registry-auth.ts
+
 # test & build
 /coverage
 /.next/
