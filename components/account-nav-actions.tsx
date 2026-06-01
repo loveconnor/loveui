@@ -28,7 +28,6 @@ export function AccountNavActions() {
 
     setIsOpen(false)
     authClient.$store.notify("$sessionSignal")
-    router.replace("/login")
     router.refresh()
   }
 
