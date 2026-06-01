@@ -6,16 +6,6 @@ node_modules/
 
 # private overlay repo
 packages/loveui-pro/
-app/api/auth
-app/api/auth/
-app/api/stripe
-app/api/stripe/
-app/charts
-app/charts/
-app/login
-app/login/
-app/pro
-app/pro/
 components/auth/*
 !components/auth/
 !components/auth/login-form.tsx
