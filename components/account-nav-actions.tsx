@@ -10,8 +10,27 @@ export function AccountNavActions() {
   const router = useRouter()
   const { data: session, isPending } = authClient.useSession()
   const [isOpen, setIsOpen] = React.useState(false)
-  const [isSigningOut, startSignOut] = React.useTransition()
+  const [isSigningOut, setIsSigningOut] = React.useState(false)
+  const [signOutError, setSignOutError] = React.useState<string | null>(null)
   const menuRef = React.useRef<HTMLDivElement>(null)
+
+  async function handleSignOut() {
+    setIsSigningOut(true)
+    setSignOutError(null)
+
+    const { error } = await authClient.signOut()
+
+    if (error) {
+      setSignOutError(error.message || "Unable to log out. Please try again.")
+      setIsSigningOut(false)
+      return
+    }
+
+    setIsOpen(false)
+    authClient.$store.notify("$sessionSignal")
+    router.replace("/login")
+    router.refresh()
+  }
 
   React.useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
@@ -70,17 +89,16 @@ export function AccountNavActions() {
             type="button"
             className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-sm font-medium transition-colors hover:bg-fd-accent disabled:opacity-64"
             disabled={isSigningOut}
-            onClick={() => {
-              startSignOut(async () => {
-                await authClient.signOut()
-                setIsOpen(false)
-                router.refresh()
-              })
-            }}
+            onClick={handleSignOut}
           >
             <LogOutIcon className="size-4" />
             {isSigningOut ? "Logging out..." : "Log out"}
           </button>
+          {signOutError ? (
+            <p className="px-2 py-1.5 text-xs text-red-600 dark:text-red-400">
+              {signOutError}
+            </p>
+          ) : null}
         </div>
       )}
     </div>
