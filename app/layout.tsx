@@ -145,7 +145,12 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   const jsonLd = [webSiteJsonLd(), softwareSourceCodeJsonLd()];
 
   return (
-    <html lang="en" className={loveSans.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={loveSans.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="application/ld+json"

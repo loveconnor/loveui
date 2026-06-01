@@ -6,9 +6,38 @@ node_modules/
 
 # private overlay repo
 packages/loveui-pro/
+app/api/auth
+app/api/auth/
+app/api/stripe
+app/api/stripe/
+app/charts
+app/charts/
+app/login
+app/login/
+app/pro
 app/pro/
+components/auth/
+components/auth
+components/blocks/
+components/blocks
+components/blocks/analytics-charts/
+components/ui/chart.tsx
+components/ui/recharts-chart.tsx
 content/docs/pro/
+lib/auth.ts
+lib/auth-client.ts
+lib/auth-next.ts
+lib/chart-blocks.tsx
+lib/charts-page-tree.ts
+lib/db.ts
+lib/pro-access.ts
 lib/pro-registry-auth.ts
+lib/stripe-pro.ts
+registry/default/blocks/stats7/
+registry/default/blocks/stats8/
+registry/default/blocks/stats10/
+registry/default/blocks/stats12/
+registry/default/ui/chart.tsx
 
 # test & build
 /coverage

@@ -8,12 +8,8 @@ import StatsThree from '@/registry/default/blocks/stats3/components/stats';
 import StatsFour from '@/registry/default/blocks/stats4/components/stats';
 import StatsFive from '@/registry/default/blocks/stats5/components/stats';
 import StatsSix from '@/registry/default/blocks/stats6/components/stats';
-import StatsSeven from '@/registry/default/blocks/stats7/components/stats';
-import StatsEight from '@/registry/default/blocks/stats8/components/stats';
 import StatsNine from '@/registry/default/blocks/stats9/components/stats';
-import StatsTen from '@/registry/default/blocks/stats10/components/stats';
 import StatsEleven from '@/registry/default/blocks/stats11/components/stats';
-import StatsTwelve from '@/registry/default/blocks/stats12/components/stats';
 import StatsThirteen from '@/registry/default/blocks/stats13/components/stats';
 import { Stats14 as StatsFourteen } from '@/registry/default/blocks/stats14/components/stats';
 import { Stats15 as StatsFifteen } from '@/registry/default/blocks/stats15/components/stats';
@@ -67,20 +63,6 @@ const statsBlocks = [
     component: <StatsSix />,
   },
   {
-    id: 'stats7',
-    installName: 'stats-seven',
-    title: 'Stats 7',
-    description: 'Plan overview cards with radial capacity charts.',
-    component: <StatsSeven />,
-  },
-  {
-    id: 'stats8',
-    installName: 'stats-eight',
-    title: 'Stats 8',
-    description: 'Radial progress cards with category coverage and footer links.',
-    component: <StatsEight />,
-  },
-  {
     id: 'stats9',
     installName: 'stats-nine',
     title: 'Stats 9',
@@ -88,25 +70,11 @@ const statsBlocks = [
     component: <StatsNine />,
   },
   {
-    id: 'stats10',
-    installName: 'stats-ten',
-    title: 'Stats 10',
-    description: 'Sparkline metric cards with positive and negative trend charts.',
-    component: <StatsTen />,
-  },
-  {
     id: 'stats11',
     installName: 'stats-eleven',
     title: 'Stats 11',
     description: 'Usage guardrail cards with progress, actions, and edit dialog.',
     component: <StatsEleven />,
-  },
-  {
-    id: 'stats12',
-    installName: 'stats-twelve',
-    title: 'Stats 12',
-    description: 'Compact usage list with donut progress indicators.',
-    component: <StatsTwelve />,
   },
   {
     id: 'stats13',

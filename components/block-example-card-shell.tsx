@@ -10,6 +10,7 @@ import {
   FileIcon,
   FolderIcon,
   FolderOpenIcon,
+  LockIcon,
   TerminalIcon,
 } from "lucide-react"
 
@@ -38,6 +39,8 @@ export function BlockExampleCardShell({
   sourceFiles,
   children,
   className,
+  isCodeLocked = false,
+  packageName = "love-ui",
 }: {
   title: string
   description: string
@@ -46,6 +49,8 @@ export function BlockExampleCardShell({
   sourceFiles: SourceFile[]
   children: React.ReactNode
   className?: string
+  isCodeLocked?: boolean
+  packageName?: string
 }) {
   return (
     <div
@@ -67,12 +72,14 @@ export function BlockExampleCardShell({
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          <BlockCopyButton value={sourceCode} />
+          <BlockCopyButton value={sourceCode} disabled={isCodeLocked} />
           <BlockCodeSheet
             title={title}
             installName={installName}
+            packageName={packageName}
             sourceCode={sourceCode}
             sourceFiles={sourceFiles}
+            isCodeLocked={isCodeLocked}
           />
         </div>
       </div>
@@ -96,13 +103,17 @@ type FileTreeNode = {
 function BlockCodeSheet({
   title,
   installName,
+  packageName,
   sourceCode,
   sourceFiles,
+  isCodeLocked,
 }: {
   title: string
   installName: string
+  packageName: string
   sourceCode: string
   sourceFiles: SourceFile[]
+  isCodeLocked: boolean
 }) {
   const fileTree = React.useMemo(() => buildFileTree(sourceFiles), [sourceFiles])
   const folderIds = React.useMemo(() => getFolderIds(fileTree), [fileTree])
@@ -122,6 +133,27 @@ function BlockCodeSheet({
   React.useEffect(() => {
     setSelectedPath(sourceFiles[0]?.path ?? "")
   }, [sourceFiles])
+
+  if (isCodeLocked) {
+    return (
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              type="button"
+              variant="outline"
+              disabled
+              className="h-9 rounded-[10px] px-4 text-[15px] font-semibold shadow-sm"
+            >
+              <LockIcon className="size-4" />
+              View code
+            </Button>
+          }
+        />
+        <TooltipPopup>Code is unavailable</TooltipPopup>
+      </Tooltip>
+    )
+  }
 
   return (
     <Sheet>
@@ -148,7 +180,7 @@ function BlockCodeSheet({
             <h3 className="text-lg font-semibold tracking-normal">
               Installation
             </h3>
-            <BlockInstallCommand installName={installName} />
+            <BlockInstallCommand installName={installName} packageName={packageName} />
           </section>
           <div className="grid min-h-0 flex-1 grid-cols-1 overflow-hidden md:grid-cols-[280px_minmax(0,1fr)]">
             <aside className="border-b bg-muted/24 p-3 md:border-b-0 md:border-r">
@@ -204,36 +236,42 @@ const packageManagers = [
     id: "pnpm",
     label: "pnpm",
     icon: PNPM,
-    getCommand: (slug: string) => `pnpm dlx love-ui@latest add ${slug}`,
+    getCommand: (slug: string, packageName: string) => `pnpm dlx ${packageName}@latest add ${slug}`,
   },
   {
     id: "npm",
     label: "npm",
     icon: NPM,
-    getCommand: (slug: string) => `npx love-ui@latest add ${slug}`,
+    getCommand: (slug: string, packageName: string) => `npx ${packageName}@latest add ${slug}`,
   },
   {
     id: "yarn",
     label: "yarn",
     icon: Yarn,
-    getCommand: (slug: string) => `yarn dlx love-ui@latest add ${slug}`,
+    getCommand: (slug: string, packageName: string) => `yarn dlx ${packageName}@latest add ${slug}`,
   },
   {
     id: "bun",
     label: "bun",
     icon: Bun,
-    getCommand: (slug: string) => `bunx love-ui@latest add ${slug}`,
+    getCommand: (slug: string, packageName: string) => `bunx ${packageName}@latest add ${slug}`,
   },
 ] as const
 
-function BlockInstallCommand({ installName }: { installName: string }) {
+function BlockInstallCommand({
+  installName,
+  packageName,
+}: {
+  installName: string
+  packageName: string
+}) {
   const [selectedManager, setSelectedManager] =
     React.useState<(typeof packageManagers)[number]["id"]>("pnpm")
 
   const activeManager =
     packageManagers.find((manager) => manager.id === selectedManager) ??
     packageManagers[0]
-  const command = activeManager.getCommand(installName)
+  const command = activeManager.getCommand(installName, packageName)
 
   return (
     <div className="overflow-hidden rounded-lg border bg-background">
@@ -405,9 +443,11 @@ function getLanguageFromPath(path?: string) {
 function BlockCopyButton({
   value,
   variant = "outline",
+  disabled = false,
 }: {
   value: string
   variant?: "outline" | "ghost"
+  disabled?: boolean
 }) {
   const [isCopied, setIsCopied] = React.useState(false)
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -421,6 +461,8 @@ function BlockCopyButton({
   }, [])
 
   async function copyCode() {
+    if (disabled) return
+
     await navigator.clipboard.writeText(value)
     setIsCopied(true)
 
@@ -445,14 +487,17 @@ function BlockCopyButton({
               "size-9 rounded-[10px]",
               variant === "outline" && "shadow-sm"
             )}
-            aria-label={isCopied ? "Copied code" : "Copy code"}
+            aria-label={disabled ? "Copy code unavailable" : isCopied ? "Copied code" : "Copy code"}
+            disabled={disabled}
             onClick={copyCode}
           >
             {isCopied ? <CheckIcon /> : <CopyIcon />}
           </Button>
         }
       />
-      <TooltipPopup>{isCopied ? "Copied" : "Copy code"}</TooltipPopup>
+      <TooltipPopup>
+        {disabled ? "Code is unavailable" : isCopied ? "Copied" : "Copy code"}
+      </TooltipPopup>
     </Tooltip>
   )
 }

@@ -20,7 +20,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
         style: {
           gridTemplate: `"sidebar sidebar header header header"
 "sidebar sidebar toc-popover toc-popover ."
-"sidebar sidebar main toc toc" 1fr / minmax(min-content, 1fr) var(--fd-sidebar-col) minmax(0, calc(var(--fd-layout-width,97rem) - var(--fd-sidebar-width) - var(--fd-toc-width))) var(--fd-toc-width) minmax(min-content, 1fr)`,
+"sidebar sidebar main toc ." 1fr / minmax(0, 1fr) var(--fd-sidebar-col) minmax(0, min(980px, calc(100vw - var(--fd-sidebar-width) - var(--fd-toc-width) - 3rem))) var(--fd-toc-width) minmax(0, 1fr)`,
         },
       }}
       slots={{ ...layoutOptions.slots, header: DocsHeader }}

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { cn } from '@/lib/cn';
-import { Button } from '@/registry/default/ui/button';
-import { GithubIcon } from '@/registry/default/blocks/auth2/components/icons/github-icon';
-import { GoogleIcon } from '@/registry/default/blocks/auth2/components/icons/google-icon';
 import { DecorIcon } from '@/registry/default/blocks/auth2/components/ui/decor-icon';
+import { LoginForm } from '@/components/auth/login-form';
+import { auth } from '@/lib/auth';
 
 export const metadata: Metadata = {
   title: 'Log in',
@@ -14,7 +15,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (session) {
+    redirect('/');
+  }
+
   return (
     <main className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background px-6 md:px-8">
       <div
@@ -37,16 +46,7 @@ export default function LoginPage() {
               Continue to your LoveUI account.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            <Button className="h-11 w-full" type="button" variant="outline">
-              <GoogleIcon data-icon="inline-start" />
-              Google
-            </Button>
-            <Button className="h-11 w-full" type="button" variant="outline">
-              <GithubIcon data-icon="inline-start" />
-              GitHub
-            </Button>
-          </div>
+          <LoginForm />
         </div>
       </div>
     </main>

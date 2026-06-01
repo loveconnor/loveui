@@ -12,6 +12,7 @@ import { useDocsLayout } from 'fumadocs-ui/layouts/docs';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { SidebarCollapseTrigger } from 'fumadocs-ui/components/sidebar/base';
 import { cn } from '@/lib/cn';
+import { AccountNavActions } from '@/components/account-nav-actions';
 
 function DocsHeaderLink({ item }: { item: LinkItemType }) {
   const pathname = usePathname();
@@ -106,7 +107,7 @@ export function DocsHeader({ className, ...props }: ComponentProps<'header'>) {
         </nav>
       </div>
       <div className="flex items-center gap-1">
-        {nav?.children}
+        <AccountNavActions />
         {navItems
           .filter((item) => item.type === 'icon')
           .map((item, index) => (
