@@ -5,7 +5,9 @@
 @source "../registry/**/*.{ts,tsx}";
 @source "../components/**/*.{ts,tsx}";
 @source "../app/**/*.{ts,tsx}";
-@source "../packages/loveui-pro/**/*.{ts,tsx}";
+@source "../packages/loveui-pro/app/**/*.{ts,tsx}";
+@source "../packages/loveui-pro/components/**/*.{ts,tsx}";
+@source "../packages/loveui-pro/registry/**/*.{ts,tsx}";
 
 @layer base {
   :root {
