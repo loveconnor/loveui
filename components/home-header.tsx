@@ -40,7 +40,7 @@ function HeaderLink({ item }: { item: LinkItemType }) {
               size: 'icon-sm',
               className: 'text-fd-muted-foreground',
             })
-          : 'inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:text-fd-foreground data-[active=true]:bg-fd-accent data-[active=true]:text-fd-foreground',
+          : 'inline-flex h-9 shrink-0 items-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:text-fd-foreground data-[active=true]:bg-fd-accent data-[active=true]:text-fd-foreground',
       )}
     >
       {item.type === 'icon' ? item.icon : item.text}
@@ -76,22 +76,22 @@ export function HomeHeader({ className, ...props }: ComponentProps<'header'>) {
       {...props}
     >
       <nav className="mx-auto flex h-full w-full max-w-(--fd-layout-width) items-center gap-4 px-4">
-        <div className="flex min-w-0 flex-1 items-center gap-4">
+        <div className="order-1 flex min-w-0 grow items-center gap-4">
           {slots.navTitle ? (
             <slots.navTitle className="inline-flex shrink-0 items-center gap-2.5 font-semibold" />
           ) : null}
-          <div className="flex min-w-0 items-center gap-1 overflow-x-auto max-md:hidden">
+          <div className="flex min-w-0 grow items-center gap-1 overflow-x-auto">
             {textItems.map((item, index) => (
               <HeaderLink key={index} item={item} />
             ))}
           </div>
         </div>
 
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5">
+        <div className="order-2 ms-auto flex min-w-0 shrink-0 items-center justify-end gap-1.5">
           {slots.searchTrigger ? (
             <slots.searchTrigger.full
               hideIfDisabled
-              className="w-full max-w-[280px] rounded-full ps-2.5 max-lg:hidden"
+              className="hidden w-64 shrink-0 rounded-full ps-2.5 xl:inline-flex"
             />
           ) : null}
           {slots.themeSwitch ? <slots.themeSwitch /> : null}

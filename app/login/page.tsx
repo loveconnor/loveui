@@ -5,6 +5,7 @@ import { cn } from '@/lib/cn';
 import { DecorIcon } from '@/registry/default/blocks/auth2/components/ui/decor-icon';
 import { LoginForm } from '@/components/auth/login-form';
 import { auth } from '@/lib/auth';
+import { getSafeCallbackUrl } from '@/lib/auth-redirect';
 
 export const metadata: Metadata = {
   title: 'Log in',
@@ -15,13 +16,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function LoginPage() {
+type LoginPageProps = {
+  searchParams: Promise<{
+    callbackUrl?: string | string[];
+  }>;
+};
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const callbackUrl = getSafeCallbackUrl(
+    Array.isArray(params.callbackUrl) ? params.callbackUrl[0] : params.callbackUrl,
+  );
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
   if (session) {
-    redirect('/');
+    redirect(callbackUrl);
   }
 
   return (

@@ -17,90 +17,90 @@ import { grantProAccessFromCheckoutSession } from '@/lib/stripe-pro';
 export const metadata: Metadata = {
   title: 'LoveUI Pro',
   description:
-    'Upgrade to LoveUI Pro for premium blocks, full-page systems, and private registry access.',
+    'Get LoveUI Pro for production-ready blocks, application systems, templates, and private registry access.',
 };
 
 const features = [
   {
-    title: 'Premium blocks',
+    title: 'Production-ready systems',
     description:
-      'Unlock advanced marketing sections, product pages, pricing flows, dashboards, and conversion-focused layouts.',
+      'Ship polished dashboards, SaaS screens, marketing sections, and product workflows without rebuilding the same patterns from scratch.',
     icon: <BlocksIcon />,
   },
   {
-    title: 'Full-page systems',
+    title: 'Complete templates',
     description:
-      'Start from complete screens instead of stitching together isolated examples.',
+      'Start with full pages and multi-section flows that already include responsive structure, realistic states, and clean composition.',
     icon: <ComponentIcon />,
   },
   {
-    title: 'Agent-ready workflows',
+    title: 'Codex-ready guidance',
     description:
-      'Use stronger LoveUI guidance for Codex and keep generated work aligned with the registry.',
+      'Use LoveUI Pro patterns with Codex to generate work that stays aligned with the registry and your codebase.',
     icon: <SparklesIcon />,
   },
   {
-    title: 'Private source access',
+    title: 'Code you own',
     description:
-      'Copy, edit, and ship the Pro source directly inside your application codebase.',
+      'Install the source, inspect every file, customize the implementation, and ship it inside your own product.',
     icon: <Code2Icon />,
   },
   {
-    title: 'Faster production passes',
+    title: 'Real product states',
     description:
-      'Use polished sections with responsive rhythm, empty states, and interaction details already handled.',
+      'Work from components that account for loading states, empty states, error states, dark mode, and mobile behavior.',
     icon: <GaugeIcon />,
   },
   {
     title: 'Commercial usage',
     description:
-      'Use Pro blocks across client and internal projects without waiting on public registry releases.',
+      'Use Pro blocks across client projects, internal tools, SaaS products, and production applications.',
     icon: <LockKeyholeIcon />,
   },
 ];
 
 const included = [
-  'Premium marketing page sections',
-  'Conversion-focused pricing and checkout pages',
-  'Advanced product and SaaS landing pages',
-  'Private Pro registry access',
-  'Full-page app and dashboard examples',
-  'Priority updates as new Pro blocks ship',
+  'Production-ready application blocks',
+  'Dashboard, data table, and navigation systems',
+  'Advanced forms, auth screens, and workspace UI',
+  'Premium marketing and SaaS page sections',
+  'Private registry access with installable source',
+  'Future Pro releases and template updates',
 ];
 
 const faqs = [
   {
     question: 'What happens after checkout?',
     answer:
-      'Stripe redirects you back to LoveUI. The account email from checkout is used to grant Pro access.',
+      'After checkout, LoveUI grants Pro access to the email used at purchase so you can sign in and access the private Pro registry.',
   },
   {
-    question: 'Do I need an account first?',
+    question: 'What does LoveUI Pro include?',
     answer:
-      'You can start from this page. Stripe collects the customer email, and LoveUI can connect access to that email.',
+      'Pro focuses on the larger pieces teams rebuild repeatedly: dashboards, data tables, app shells, forms, auth flows, workspaces, landing sections, and complete templates.',
   },
   {
     question: 'Can I use Pro on client projects?',
     answer:
-      'Yes. Pro is designed for teams building production product surfaces and client-facing applications.',
+      'Yes. LoveUI Pro is designed for production products, internal tools, SaaS applications, and client-facing work.',
   },
 ];
 
 const previewPanels = [
   {
-    title: 'Marketing systems',
-    eyebrow: 'Launch pages',
-    items: ['Hero, proof, pricing, FAQ', 'Campaign-ready page sections'],
+    title: 'Application systems',
+    eyebrow: 'Dashboards and workflows',
+    items: ['App shells and navigation', 'Tables, charts, settings, teams'],
   },
   {
     title: 'Private registry',
-    eyebrow: 'Pro source',
-    items: ['Installable premium blocks', 'Copy-paste code you own'],
+    eyebrow: 'Installable source',
+    items: ['CLI-ready Pro blocks', 'Editable code you own'],
   },
   {
-    title: 'Agent workflows',
-    eyebrow: 'Codex-ready',
-    items: ['Prompted implementation paths', 'Reviewable product surfaces'],
+    title: 'Templates',
+    eyebrow: 'Complete product surfaces',
+    items: ['Marketing and SaaS pages', 'Full-page app examples'],
   },
 ];
 
@@ -122,8 +122,8 @@ export default async function ProPage({ searchParams }: ProPageProps) {
     <main className="relative overflow-hidden bg-background">
       {checkoutResult?.granted && (
         <div className="border-b bg-primary/8 px-4 py-3 text-center text-sm">
-          Pro access is active for {checkoutResult.email}. You can now log in
-          with code 123456 in development.
+          Pro access is active for {checkoutResult.email}. Sign in with that
+          email to access LoveUI Pro.
         </div>
       )}
       <ProHero />
@@ -153,7 +153,7 @@ function ProHero() {
           <span className="rounded-full bg-primary px-2 py-0.5 font-medium text-primary-foreground text-xs">
             Pro
           </span>
-          <span className="text-xs">premium blocks and private access</span>
+          <span className="text-xs">production-ready systems and templates</span>
           <span className="block h-5 border-l" />
           <ArrowRightIcon className="size-3 duration-150 ease-out group-hover:translate-x-1" />
         </a>
@@ -168,8 +168,8 @@ function ProHero() {
         </h1>
 
         <p className="fade-in slide-in-from-bottom-10 max-w-2xl animate-in fill-mode-backwards text-balance text-base text-muted-foreground delay-200 duration-500 ease-out md:text-xl">
-          Premium marketing sections, full-page product systems, and private
-          registry access for teams shipping polished interfaces faster.
+          Production-ready components, application blocks, and complete
+          templates for teams shipping polished products faster.
         </p>
 
         <div className="fade-in slide-in-from-bottom-10 flex animate-in flex-wrap items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
@@ -220,8 +220,9 @@ function ProFeatures() {
             More than a component pack.
           </h2>
           <p className="mt-4 text-balance text-muted-foreground text-sm md:text-base">
-            Pro focuses on complete product surfaces: launches, SaaS pages,
-            dashboards, and workflows that need to feel production-ready.
+            LoveUI Pro gives you the larger interface systems teams rebuild
+            again and again: dashboards, tables, navigation, forms, workspaces,
+            landing sections, and full-page templates.
           </p>
         </div>
 
@@ -253,25 +254,25 @@ function ProFeatures() {
 function ProPricing() {
   return (
     <section className="px-4 py-20 md:py-28" id="pricing">
-      <div className="mx-auto grid w-full max-w-5xl gap-8 md:grid-cols-[1fr_24rem] md:items-start">
-        <div>
+      <div className="mx-auto w-full max-w-5xl space-y-8 text-center">
+        <div className="mx-auto max-w-3xl">
           <p className="font-medium text-muted-foreground text-sm">Pricing</p>
-          <h2 className="mt-3 max-w-2xl text-balance font-medium text-3xl md:text-5xl">
-            Buy access once and start shipping Pro blocks.
+          <h2 className="mx-auto mt-3 max-w-2xl text-balance font-medium text-3xl md:text-5xl">
+            Buy once. Build with every LoveUI Pro release.
           </h2>
-          <p className="mt-4 max-w-xl text-muted-foreground">
-            The checkout button creates a Stripe Checkout session. Configure
-            your Stripe price in environment variables and the flow will send
-            users directly to Stripe.
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Get private registry access to production-ready blocks, app
+            systems, and templates you can copy into your product, customize,
+            and ship.
           </p>
         </div>
 
-        <div className="rounded-lg border bg-card p-6 shadow-sm">
+        <div className="mx-auto max-w-md rounded-lg border bg-card p-6 text-left shadow-sm">
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-medium">LoveUI Pro</p>
               <p className="mt-1 text-muted-foreground text-sm">
-                Private block library access
+                Private registry access
               </p>
             </div>
             <span className="rounded-full bg-primary/10 px-2 py-1 font-medium text-primary text-xs">
@@ -337,7 +338,8 @@ function ProCta() {
           Ready to unlock LoveUI Pro?
         </h2>
         <p className="max-w-xl text-muted-foreground">
-          Start checkout through Stripe and use the same email for Pro access.
+          Get production-ready systems, complete templates, and private source
+          access for the products you are building next.
         </p>
         <form action="/api/stripe/checkout" method="post">
           <Button className="rounded-full" size="lg" type="submit">

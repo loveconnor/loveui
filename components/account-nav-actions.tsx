@@ -12,6 +12,7 @@ export function AccountNavActions() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [isSigningOut, setIsSigningOut] = React.useState(false)
   const [signOutError, setSignOutError] = React.useState<string | null>(null)
+  const [loginHref, setLoginHref] = React.useState("/login")
   const menuRef = React.useRef<HTMLDivElement>(null)
 
   async function handleSignOut() {
@@ -42,22 +43,27 @@ export function AccountNavActions() {
     return () => document.removeEventListener("pointerdown", handlePointerDown)
   }, [])
 
+  React.useEffect(() => {
+    const callbackUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`
+    setLoginHref(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`)
+  }, [])
+
   if (isPending) {
     return null
   }
 
   if (!session) {
     return (
-      <div className="flex items-center gap-1.5 max-sm:hidden">
+      <div className="flex shrink-0 items-center gap-1.5 max-sm:hidden">
         <Link
-          href="/login"
-          className="inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground"
+          href={loginHref}
+          className="inline-flex h-8 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground"
         >
           Log in
         </Link>
         <Link
           href="/pro"
-          className="inline-flex h-8 items-center justify-center rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground shadow-sm transition-colors hover:bg-fd-primary/90"
+          className="inline-flex h-8 shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground shadow-sm transition-colors hover:bg-fd-primary/90"
         >
           Get Access
         </Link>

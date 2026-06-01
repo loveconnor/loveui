@@ -41,7 +41,7 @@ function BlocksHeaderLink({ item }: { item: LinkItemType }) {
               size: 'icon-sm',
               className: 'text-fd-muted-foreground',
             })
-          : 'inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:text-fd-foreground data-[active=true]:bg-fd-accent data-[active=true]:text-fd-foreground',
+          : 'inline-flex h-9 shrink-0 items-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:text-fd-foreground data-[active=true]:bg-fd-accent data-[active=true]:text-fd-foreground',
       )}
     >
       {item.type === 'icon' ? item.icon : item.text}
@@ -83,7 +83,7 @@ export function BlocksHeader({ className, ...props }: ComponentProps<'header'>) 
               {appName}
             </Link>
           )}
-          <nav className="flex min-w-0 items-center gap-1 overflow-x-auto">
+          <nav className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto">
             {textItems.map((item, index) => (
               <BlocksHeaderLink key={index} item={item} />
             ))}

@@ -42,7 +42,7 @@ function DocsHeaderLink({ item }: { item: LinkItemType }) {
               size: 'icon-sm',
               className: 'text-fd-muted-foreground',
             })
-          : 'inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:text-fd-foreground data-[active=true]:bg-fd-accent data-[active=true]:text-fd-foreground',
+          : 'inline-flex h-9 shrink-0 items-center rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:text-fd-foreground data-[active=true]:bg-fd-accent data-[active=true]:text-fd-foreground',
       )}
     >
       {item.type === 'icon' ? item.icon : item.text}
@@ -98,7 +98,7 @@ export function DocsHeader({ className, ...props }: ComponentProps<'header'>) {
         {slots.navTitle ? (
           <slots.navTitle className="inline-flex shrink-0 items-center gap-2.5 font-semibold md:hidden" />
         ) : null}
-        <nav className="flex min-w-0 items-center gap-1">
+        <nav className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto">
           {navItems
             .filter((item) => item.type !== 'icon')
             .map((item, index) => (
@@ -106,7 +106,7 @@ export function DocsHeader({ className, ...props }: ComponentProps<'header'>) {
             ))}
         </nav>
       </div>
-      <div className="flex items-center gap-1">
+      <div className="flex shrink-0 items-center gap-1">
         <AccountNavActions />
         {navItems
           .filter((item) => item.type === 'icon')
