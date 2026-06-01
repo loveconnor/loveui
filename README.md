@@ -7,7 +7,7 @@ This repo contains the LoveUI website, docs, component examples, and copy-paste
 blocks. It is for developers who want ready-to-use React and Tailwind CSS
 components without installing a large design system package.
 
-## What is included
+## What is included?
 
 - Docs for using and customizing LoveUI
 - Reusable UI components
