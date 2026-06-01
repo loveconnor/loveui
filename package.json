@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build --webpack",
+    "db:init": "node scripts/init-db.mjs",
     "dev": "next dev",
     "preinstall": "node scripts/install-loveui-pro.mjs",
     "start": "next start",
