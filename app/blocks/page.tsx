@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { FileSearchIcon, SettingsIcon, UserIcon } from 'lucide-react';
 import { Card } from '@/components/card';
 import { AuthPage as AuthPreviewBlock } from '@/registry/default/blocks/auth2/components/auth';
 import { BlogsSection as BlogPreviewBlock } from '@/registry/default/blocks/blogs3/components/blogs';
@@ -153,6 +154,43 @@ function OnboardingCategoryPreview() {
   );
 }
 
+function CommandPaletteCategoryPreview() {
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-background">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 w-[620px] -translate-x-1/2 -translate-y-1/2 scale-[0.48]">
+        <div className="overflow-hidden rounded-xl border border-border/50 bg-popover shadow-lg">
+          <div className="flex h-12 items-center gap-2 border-b px-4 text-sm text-muted-foreground">
+            <FileSearchIcon className="size-4" />
+            <span>What do you need?</span>
+            <span className="ml-auto rounded border bg-muted px-1.5 py-0.5 text-[11px]">
+              Esc
+            </span>
+          </div>
+          <div className="space-y-3 p-2">
+            <div className="px-2 text-xs font-medium text-muted-foreground">
+              Workspace
+            </div>
+            <div className="flex items-center gap-2 rounded-md bg-muted px-3 py-2 text-sm font-medium">
+              <SettingsIcon className="size-4 text-muted-foreground" />
+              Account Settings...
+              <span className="ml-auto text-xs text-muted-foreground">
+                Action
+              </span>
+            </div>
+            <div className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium">
+              <UserIcon className="size-4 text-muted-foreground" />
+              Switch Workspace...
+              <span className="ml-auto text-xs text-muted-foreground">
+                Action
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PricingCategoryPreview() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-background">
@@ -230,6 +268,7 @@ type BlockCategory = {
   count: string;
   url: string;
   preview: ReactNode;
+  isPro?: boolean;
 };
 
 const marketingBlockCategories: BlockCategory[] = [
@@ -342,6 +381,14 @@ const applicationBlockCategories: BlockCategory[] = [
     preview: <OnboardingCategoryPreview />,
   },
   {
+    title: 'Command Palette',
+    description: 'Keyboard-first search and quick actions.',
+    count: '5 Blocks',
+    url: '/blocks/command-palette',
+    preview: <CommandPaletteCategoryPreview />,
+    isPro: true,
+  },
+  {
     title: 'Stats',
     description: 'Metric cards and usage summaries.',
     count: '15 Blocks',
@@ -359,30 +406,36 @@ const applicationBlockCategories: BlockCategory[] = [
 
 function BlockCategoryCard({ category }: { category: BlockCategory }) {
   return (
-    <Card
-      className="gap-0 overflow-hidden rounded-[16px] border-neutral-200 bg-white p-1.5 text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_1px_3px_rgba(0,0,0,0.32)]"
-      url={category.url}
-    >
-      <div className="h-[184px] overflow-hidden rounded-[14px] border border-neutral-200 bg-neutral-50 shadow-[0_1px_3px_rgba(0,0,0,0.06)] dark:border-neutral-800 dark:bg-neutral-950 dark:shadow-[0_1px_3px_rgba(0,0,0,0.24)]">
-        {category.preview}
-      </div>
-      <div className="flex h-16 items-center justify-between gap-4 px-3 pt-1.5">
-        <div className="min-w-0">
-          <h2 className="truncate text-base font-semibold text-card-foreground">
-            {category.title}
-          </h2>
-          <p className="mt-1 truncate text-sm font-medium text-muted-foreground">
-            {category.description}
-          </p>
-        </div>
-        <span className="shrink-0 text-sm font-medium text-muted-foreground">
-          {category.count}
+    <div className="relative">
+      {category.isPro ? (
+        <span className="pointer-events-none absolute -right-2 -top-2 z-20 rounded-[4px] bg-[#0d74fd] px-2.5 py-1.5 text-xs font-semibold uppercase leading-none text-white shadow-[0_2px_6px_rgba(13,116,253,0.28)]">
+          pro
         </span>
-      </div>
-    </Card>
+      ) : null}
+      <Card
+        className="gap-0 overflow-hidden rounded-[16px] border-neutral-200 bg-white p-1.5 text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_1px_3px_rgba(0,0,0,0.32)]"
+        url={category.url}
+      >
+        <div className="relative h-[184px] overflow-hidden rounded-[14px] border border-neutral-200 bg-neutral-50 shadow-[0_1px_3px_rgba(0,0,0,0.06)] dark:border-neutral-800 dark:bg-neutral-950 dark:shadow-[0_1px_3px_rgba(0,0,0,0.24)]">
+          {category.preview}
+        </div>
+        <div className="flex h-16 items-center justify-between gap-4 px-3 pt-1.5">
+          <div className="min-w-0">
+            <h2 className="truncate text-base font-semibold text-card-foreground">
+              {category.title}
+            </h2>
+            <p className="mt-1 truncate text-sm font-medium text-muted-foreground">
+              {category.description}
+            </p>
+          </div>
+          <span className="shrink-0 text-sm font-medium text-muted-foreground">
+            {category.count}
+          </span>
+        </div>
+      </Card>
+    </div>
   );
 }
-
 function BlockCategorySection({
   title,
   description,
