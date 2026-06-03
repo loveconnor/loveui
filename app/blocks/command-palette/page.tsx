@@ -4,8 +4,6 @@ import { headers } from "next/headers";
 import { ArrowLeftIcon } from "lucide-react";
 import { BlockExampleCardShell } from "@/components/block-example-card-shell";
 import { Button } from "@/registry/default/ui/button";
-import { auth } from "@/lib/auth";
-import { hasProAccess } from "@/lib/pro-access";
 import { collectionPageJsonLd, seo, siteKeywords } from "@/lib/seo";
 import { CommandPaletteOne } from "@/packages/loveui-pro/components/blocks/command-palette/command-palette-1";
 import { CommandPaletteTwo } from "@/packages/loveui-pro/components/blocks/command-palette/command-palette-2";
@@ -143,10 +141,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function CommandPaletteBlocksPage() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  const canViewProCode = await hasProAccess(session?.user.email);
+  const canViewProCode = await getCanViewProCode();
   const jsonLd = collectionPageJsonLd({
     name: "LoveUI Command Palette Blocks",
     description: commandPaletteBlocksDescription,
@@ -162,7 +157,16 @@ export default async function CommandPaletteBlocksPage() {
         };
       }
 
-      const sourceFiles = await getCommandPaletteBlockSourceFiles(block.files);
+      let sourceFiles: Array<{ path: string; content: string }> = [];
+
+      try {
+        sourceFiles = await getCommandPaletteBlockSourceFiles(block.files);
+      } catch (error) {
+        console.error("Unable to load command palette source files.", {
+          blockId: block.id,
+          error,
+        });
+      }
 
       return {
         ...block,
@@ -212,7 +216,7 @@ export default async function CommandPaletteBlocksPage() {
               packageName="loveui-pro"
               sourceCode={block.sourceCode}
               sourceFiles={block.sourceFiles}
-              isCodeLocked={!canViewProCode}
+              isCodeLocked={!canViewProCode || !block.sourceFiles.length}
             >
               {block.component}
             </BlockExampleCardShell>
@@ -221,6 +225,26 @@ export default async function CommandPaletteBlocksPage() {
       </div>
     </main>
   );
+}
+
+async function getCanViewProCode() {
+  try {
+    const [{ auth }, { hasProAccess }] = await Promise.all([
+      import("@/lib/auth"),
+      import("@/lib/pro-access"),
+    ]);
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    return hasProAccess(session?.user.email);
+  } catch (error) {
+    console.error("Unable to check LoveUI Pro access for command palette.", {
+      error,
+    });
+
+    return false;
+  }
 }
 
 async function getCommandPaletteBlockSourceFiles(
