@@ -18,6 +18,12 @@ export const blockLinks = [
       'Blog blocks for editorial sections, article indexes, and content marketing layouts.',
   },
   {
+    name: 'Command Palette',
+    slug: 'command-palette',
+    description:
+      'Command palette blocks for keyboard-first search, quick actions, and application navigation.',
+  },
+  {
     name: 'Contact',
     slug: 'contact',
     description:
