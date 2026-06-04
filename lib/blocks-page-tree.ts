@@ -36,6 +36,12 @@ export const blockLinks = [
       'CTA blocks for product conversion, newsletter capture, and trial signup sections.',
   },
   {
+    name: 'Download',
+    slug: 'download',
+    description:
+      'Download blocks for software installers, product downloads, plugin marketplaces, and release pages.',
+  },
+  {
     name: 'FAQ',
     slug: 'faq',
     description:

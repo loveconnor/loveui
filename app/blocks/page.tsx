@@ -20,6 +20,7 @@ import { Onboarding06 as OnboardingPreviewBlock } from '@/registry/default/block
 import { PricingSection as PricingPreviewBlock } from '@/registry/default/blocks/pricing1/components/pricing';
 import { Stats14 as StatsPreviewBlock } from '@/registry/default/blocks/stats14/components/stats';
 import { TestimonialsSection as TestimonialsPreviewBlock } from '@/registry/default/blocks/testimonials1/components/testimonials';
+import DownloadPreviewBlock from '@/packages/loveui-pro/registry/default/blocks/download-02/download';
 import SidebarPreviewBlock from '@/packages/loveui-pro/registry/default/blocks/sidebar-03';
 import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 
@@ -100,6 +101,16 @@ function CtaCategoryPreview() {
     <div className="relative h-full w-full overflow-hidden bg-background">
       <div className="pointer-events-none absolute left-1/2 top-1/2 w-[760px] -translate-x-1/2 -translate-y-1/2 scale-[0.46]">
         <CtaPreviewBlock />
+      </div>
+    </div>
+  );
+}
+
+function DownloadCategoryPreview() {
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-background">
+      <div className="pointer-events-none absolute left-1/2 top-0 w-[1040px] origin-top -translate-x-1/2 scale-[0.24]">
+        <DownloadPreviewBlock />
       </div>
     </div>
   );
@@ -286,7 +297,7 @@ const marketingBlockCategories: BlockCategory[] = [
   {
     title: 'Header',
     description: 'Navigation headers with scroll states.',
-    count: '3 Blocks',
+    count: '8 Blocks',
     url: '/blocks/header',
     preview: <HeaderCategoryPreview />,
   },
@@ -310,6 +321,14 @@ const marketingBlockCategories: BlockCategory[] = [
     count: '5 Blocks',
     url: '/blocks/cta',
     preview: <CtaCategoryPreview />,
+  },
+  {
+    title: 'Download',
+    description: 'Installer and product download sections.',
+    count: '2 Blocks',
+    url: '/blocks/download',
+    preview: <DownloadCategoryPreview />,
+    isPro: true,
   },
   {
     title: 'Pricing',
