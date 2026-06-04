@@ -27,3 +27,4 @@ export const buttonVariants = cva(
 );
 
 export type ButtonProps = VariantProps<typeof buttonVariants>;
+export { Button } from '@/registry/default/ui/button';

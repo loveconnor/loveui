@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { FileSearchIcon, SettingsIcon, UserIcon } from 'lucide-react';
 import { Card } from '@/components/card';
+import { cn } from '@/lib/utils';
 import { AuthPage as AuthPreviewBlock } from '@/registry/default/blocks/auth2/components/auth';
 import { BlogsSection as BlogPreviewBlock } from '@/registry/default/blocks/blogs3/components/blogs';
 import { CallToAction as CtaPreviewBlock } from '@/registry/default/blocks/cta-2/components/cta';
@@ -185,6 +186,48 @@ function CommandPaletteCategoryPreview() {
               </span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SidebarCategoryPreview() {
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-background">
+      <div className="absolute inset-y-0 left-0 flex w-[76px] flex-col gap-2 border-r bg-sidebar p-3">
+        <div className="mb-2 size-8 rounded-lg bg-foreground" />
+        {Array.from({ length: 7 }).map((_, index) => (
+          <div
+            className={cn(
+              'h-8 rounded-md',
+              index === 1 ? 'bg-sidebar-accent' : 'bg-muted/70',
+            )}
+            key={index}
+          />
+        ))}
+        <div className="mt-auto size-8 rounded-full bg-muted" />
+      </div>
+      <div className="absolute inset-y-0 left-[76px] w-[220px] border-r bg-sidebar p-4">
+        <div className="h-9 rounded-md bg-muted" />
+        <div className="mt-5 space-y-2">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div
+              className={cn(
+                'h-8 rounded-md',
+                index === 0 ? 'bg-sidebar-accent' : 'bg-muted/60',
+              )}
+              key={index}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="absolute inset-y-0 left-[296px] right-0 bg-muted/30 p-5">
+        <div className="h-8 w-32 rounded-md bg-muted" />
+        <div className="mt-5 grid grid-cols-2 gap-3">
+          <div className="h-20 rounded-lg border bg-background" />
+          <div className="h-20 rounded-lg border bg-background" />
+          <div className="col-span-2 h-28 rounded-lg border bg-background" />
         </div>
       </div>
     </div>
@@ -386,6 +429,14 @@ const applicationBlockCategories: BlockCategory[] = [
     count: '5 Blocks',
     url: '/blocks/command-palette',
     preview: <CommandPaletteCategoryPreview />,
+    isPro: true,
+  },
+  {
+    title: 'Sidebar',
+    description: 'Application navigation and nested menus.',
+    count: '6 Blocks',
+    url: '/blocks/sidebar',
+    preview: <SidebarCategoryPreview />,
     isPro: true,
   },
   {

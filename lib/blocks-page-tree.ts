@@ -90,6 +90,12 @@ export const blockLinks = [
       'Pricing blocks for subscription tiers, plan comparisons, and checkout conversion sections.',
   },
   {
+    name: 'Sidebar',
+    slug: 'sidebar',
+    description:
+      'Sidebar blocks for application navigation, nested menus, workspaces, and multi-panel product layouts.',
+  },
+  {
     name: 'Testimonials',
     slug: 'testimonials',
     description:
