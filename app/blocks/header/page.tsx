@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
+import { headers } from 'next/headers';
 import { ArrowLeftIcon } from 'lucide-react';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { Header as HeaderOne } from '@/registry/default/blocks/header1/components/header';
@@ -8,6 +9,7 @@ import { Header as HeaderTwo } from '@/registry/default/blocks/header2/component
 import { DemoLayout as DemoLayoutTwo } from '@/registry/default/blocks/header2/components/demo-layout';
 import { Header as HeaderThree } from '@/registry/default/blocks/header3/components/header';
 import { DemoLayout as DemoLayoutThree } from '@/registry/default/blocks/header3/components/demo-layout';
+import Header01 from '@/packages/loveui-pro/registry/default/blocks/header-01/page';
 import { Button } from '@/registry/default/ui/button';
 import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 
@@ -82,6 +84,23 @@ const headerBlocks = [
       'hooks/use-scroll.ts',
     ],
   },
+  {
+    id: 'header-01',
+    installName: 'header-01',
+    title: 'Header 4',
+    description: 'Floating navigation header with resource menus and theme toggle.',
+    component: <Header01 />,
+    files: [
+      'page.tsx',
+      'components/header.tsx',
+      'components/demo-layout.tsx',
+      'components/logo.tsx',
+      'components/search.tsx',
+      'components/theme-switch.tsx',
+    ],
+    isPro: true,
+    packageName: 'loveui-pro',
+  },
 ];
 
 export const metadata: Metadata = {
@@ -113,7 +132,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function HeaderBlocksPage() {
+  const canViewProCode = await getCanViewProCode();
   const jsonLd = collectionPageJsonLd({
     name: 'LoveUI Header Blocks',
     description: headerBlocksDescription,
@@ -121,7 +143,28 @@ export default async function HeaderBlocksPage() {
   });
   const blocks = await Promise.all(
     headerBlocks.map(async (block) => {
-      const sourceFiles = await getHeaderBlockSourceFiles(block.id, block.files);
+      if (block.isPro && !canViewProCode) {
+        return {
+          ...block,
+          sourceFiles: [],
+          sourceCode: '',
+        };
+      }
+
+      let sourceFiles: Array<{ path: string; content: string }> = [];
+
+      try {
+        sourceFiles = await getHeaderBlockSourceFiles(
+          block.id,
+          block.files,
+          Boolean(block.isPro),
+        );
+      } catch (error) {
+        console.error('Unable to load header source files.', {
+          blockId: block.id,
+          error,
+        });
+      }
 
       return {
         ...block,
@@ -164,10 +207,20 @@ export default async function HeaderBlocksPage() {
               title={block.title}
               description={block.description}
               installName={block.installName}
+              packageName={block.packageName}
               sourceCode={block.sourceCode}
               sourceFiles={block.sourceFiles}
+              isCodeLocked={Boolean(block.isPro) && (!canViewProCode || !block.sourceFiles.length)}
+              isPro={block.isPro}
             >
-              <div className="relative isolate h-[640px] overflow-y-auto bg-background">
+              <div
+                className={[
+                  'relative isolate h-[640px] overflow-y-auto bg-background',
+                  block.isPro ? '[&_.fixed]:!absolute' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+              >
                 <div className="min-h-[1120px]">{block.component}</div>
               </div>
             </BlockExampleCardShell>
@@ -178,11 +231,39 @@ export default async function HeaderBlocksPage() {
   );
 }
 
-async function getHeaderBlockSourceFiles(blockId: string, blockFiles: string[]) {
+async function getCanViewProCode() {
+  try {
+    const [{ auth }, { hasProAccess }] = await Promise.all([
+      import('@/lib/auth'),
+      import('@/lib/pro-access'),
+    ]);
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    return hasProAccess(session?.user.email);
+  } catch (error) {
+    console.error('Unable to check LoveUI Pro access for headers.', {
+      error,
+    });
+
+    return false;
+  }
+}
+
+async function getHeaderBlockSourceFiles(
+  blockId: string,
+  blockFiles: string[],
+  isPro: boolean,
+) {
+  const registryBase = isPro
+    ? 'packages/loveui-pro/registry/default/blocks'
+    : 'registry/default/blocks';
+
   return Promise.all(
     blockFiles.map(async (file) => {
       const content = await readFile(
-        `${process.cwd()}/registry/default/blocks/${blockId}/${file}`,
+        `${process.cwd()}/${registryBase}/${blockId}/${file}`,
         'utf8',
       );
 

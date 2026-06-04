@@ -40,6 +40,7 @@ export function BlockExampleCardShell({
   children,
   className,
   isCodeLocked = false,
+  isPro = false,
   packageName = "love-ui",
 }: {
   title: string
@@ -50,6 +51,7 @@ export function BlockExampleCardShell({
   children: React.ReactNode
   className?: string
   isCodeLocked?: boolean
+  isPro?: boolean
   packageName?: string
 }) {
   return (
@@ -64,8 +66,13 @@ export function BlockExampleCardShell({
       </div>
       <div className="flex min-h-16 items-center justify-between gap-3 px-3 py-2">
         <div className="min-w-0">
-          <h2 className="truncate text-base font-semibold text-card-foreground">
-            {title}
+          <h2 className="flex min-w-0 items-center gap-2 text-base font-semibold text-card-foreground">
+            <span className="truncate">{title}</span>
+            {isPro ? (
+              <span className="shrink-0 rounded-[3px] bg-[#0d74fd] px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none text-white">
+                pro
+              </span>
+            ) : null}
           </h2>
           <p className="mt-1 truncate text-[15px] leading-6 text-muted-foreground">
             {description}

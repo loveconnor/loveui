@@ -150,6 +150,18 @@ function CommandSeparator(props: React.ComponentProps<typeof Separator>) {
   return <Separator {...props} />;
 }
 
+function CommandShortcut({ className, ...props }: React.ComponentProps<'kbd'>) {
+  return (
+    <kbd
+      className={cn(
+        'ml-auto inline-flex h-5 max-h-full items-center rounded border bg-background px-1 font-[inherit] text-[0.625rem] font-medium text-muted-foreground/70',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
 function getCommandItemText(children: React.ReactNode): string {
   return React.Children.toArray(children)
     .map((child) => {
@@ -174,4 +186,5 @@ export {
   CommandGroup,
   CommandItem,
   CommandSeparator,
+  CommandShortcut,
 };
