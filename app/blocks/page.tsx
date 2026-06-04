@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { FileSearchIcon, SettingsIcon, UserIcon } from 'lucide-react';
 import { Card } from '@/components/card';
-import { cn } from '@/lib/utils';
 import { AuthPage as AuthPreviewBlock } from '@/registry/default/blocks/auth2/components/auth';
 import { BlogsSection as BlogPreviewBlock } from '@/registry/default/blocks/blogs3/components/blogs';
 import { CallToAction as CtaPreviewBlock } from '@/registry/default/blocks/cta-2/components/cta';
@@ -21,6 +20,7 @@ import { Onboarding06 as OnboardingPreviewBlock } from '@/registry/default/block
 import { PricingSection as PricingPreviewBlock } from '@/registry/default/blocks/pricing1/components/pricing';
 import { Stats14 as StatsPreviewBlock } from '@/registry/default/blocks/stats14/components/stats';
 import { TestimonialsSection as TestimonialsPreviewBlock } from '@/registry/default/blocks/testimonials1/components/testimonials';
+import SidebarPreviewBlock from '@/packages/loveui-pro/registry/default/blocks/sidebar-03';
 import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 
 const blocksDescription =
@@ -195,40 +195,8 @@ function CommandPaletteCategoryPreview() {
 function SidebarCategoryPreview() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-background">
-      <div className="absolute inset-y-0 left-0 flex w-[76px] flex-col gap-2 border-r bg-sidebar p-3">
-        <div className="mb-2 size-8 rounded-lg bg-foreground" />
-        {Array.from({ length: 7 }).map((_, index) => (
-          <div
-            className={cn(
-              'h-8 rounded-md',
-              index === 1 ? 'bg-sidebar-accent' : 'bg-muted/70',
-            )}
-            key={index}
-          />
-        ))}
-        <div className="mt-auto size-8 rounded-full bg-muted" />
-      </div>
-      <div className="absolute inset-y-0 left-[76px] w-[220px] border-r bg-sidebar p-4">
-        <div className="h-9 rounded-md bg-muted" />
-        <div className="mt-5 space-y-2">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <div
-              className={cn(
-                'h-8 rounded-md',
-                index === 0 ? 'bg-sidebar-accent' : 'bg-muted/60',
-              )}
-              key={index}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="absolute inset-y-0 left-[296px] right-0 bg-muted/30 p-5">
-        <div className="h-8 w-32 rounded-md bg-muted" />
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="h-20 rounded-lg border bg-background" />
-          <div className="h-20 rounded-lg border bg-background" />
-          <div className="col-span-2 h-28 rounded-lg border bg-background" />
-        </div>
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[920px] origin-top -translate-x-1/2 scale-[0.36] overflow-hidden [&>*]:!h-full [&_.h-dvh]:!h-full [&_[data-slot=sidebar-wrapper]]:!h-full [&_[data-slot=sidebar-wrapper]]:!min-h-full [&_[data-slot=sidebar][data-variant=floating]]:!h-[calc(100%-1rem)] [&_[data-slot=sidebar-inner]]:!h-full">
+        <SidebarPreviewBlock />
       </div>
     </div>
   );
