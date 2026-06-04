@@ -10,6 +10,10 @@ import { DemoLayout as DemoLayoutTwo } from '@/registry/default/blocks/header2/c
 import { Header as HeaderThree } from '@/registry/default/blocks/header3/components/header';
 import { DemoLayout as DemoLayoutThree } from '@/registry/default/blocks/header3/components/demo-layout';
 import Header01 from '@/packages/loveui-pro/registry/default/blocks/header-01/page';
+import Header02 from '@/packages/loveui-pro/registry/default/blocks/header-02/page';
+import Header03 from '@/packages/loveui-pro/registry/default/blocks/header-03/page';
+import Header04 from '@/packages/loveui-pro/registry/default/blocks/header-04/page';
+import Header05 from '@/packages/loveui-pro/registry/default/blocks/header-05/page';
 import { Button } from '@/registry/default/ui/button';
 import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 
@@ -97,6 +101,70 @@ const headerBlocks = [
       'components/logo.tsx',
       'components/search.tsx',
       'components/theme-switch.tsx',
+    ],
+    isPro: true,
+    packageName: 'loveui-pro',
+  },
+  {
+    id: 'header-02',
+    installName: 'header-02',
+    title: 'Header 5',
+    description: 'Floating service header with dropdown navigation and mobile sheet.',
+    component: <Header02 />,
+    files: [
+      'page.tsx',
+      'components/header.tsx',
+      'components/demo-layout.tsx',
+      'components/theme-switch.tsx',
+    ],
+    isPro: true,
+    packageName: 'loveui-pro',
+  },
+  {
+    id: 'header-03',
+    installName: 'header-03',
+    title: 'Header 6',
+    description: 'Responsive application header with search and scroll-aware navigation.',
+    component: <Header03 />,
+    files: [
+      'page.tsx',
+      'components/header.tsx',
+      'components/demo-layout.tsx',
+      'components/search.tsx',
+      'components/theme-switch.tsx',
+    ],
+    isPro: true,
+    packageName: 'loveui-pro',
+  },
+  {
+    id: 'header-04',
+    installName: 'header-04',
+    title: 'Header 7',
+    description: 'Compact commerce header with menus, search, cart, and mobile navigation.',
+    component: <Header04 />,
+    files: [
+      'page.tsx',
+      'components/header.tsx',
+      'components/demo-layout.tsx',
+      'components/menus.tsx',
+      'components/navigation.tsx',
+      'components/phone-menus.tsx',
+      'components/search.tsx',
+    ],
+    isPro: true,
+    packageName: 'loveui-pro',
+  },
+  {
+    id: 'header-05',
+    installName: 'header-05',
+    title: 'Header 8',
+    description: 'Enterprise platform header with rich menus, account actions, and theme controls.',
+    component: <Header05 />,
+    files: [
+      'page.tsx',
+      'components/header.tsx',
+      'components/demo-layout.tsx',
+      'components/theme.tsx',
     ],
     isPro: true,
     packageName: 'loveui-pro',

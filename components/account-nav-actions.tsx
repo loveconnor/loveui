@@ -9,6 +9,7 @@ import { authClient } from "@/lib/auth-client"
 export function AccountNavActions() {
   const router = useRouter()
   const { data: session, isPending } = authClient.useSession()
+  const [isMounted, setIsMounted] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
   const [isSigningOut, setIsSigningOut] = React.useState(false)
   const [signOutError, setSignOutError] = React.useState<string | null>(null)
@@ -33,6 +34,10 @@ export function AccountNavActions() {
   }
 
   React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  React.useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
       if (!menuRef.current?.contains(event.target as Node)) {
         setIsOpen(false)
@@ -48,8 +53,13 @@ export function AccountNavActions() {
     setLoginHref(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`)
   }, [])
 
-  if (isPending) {
-    return null
+  if (!isMounted || isPending) {
+    return (
+      <div
+        aria-hidden="true"
+        className="h-8 w-[148px] shrink-0 max-sm:hidden"
+      />
+    )
   }
 
   if (!session) {
