@@ -18,6 +18,14 @@ const STYLES_INDEX = [
   { name: "base-rhea", label: "Rhea" },
 ];
 
+const BASE_INDEX_ITEM = {
+  $schema: "https://www.loveui.dev/schema/registry-item.json",
+  name: "index",
+  type: "registry:style",
+  dependencies: ["class-variance-authority"],
+  registryDependencies: ["utils"],
+};
+
 type RouteContext = {
   params: Promise<{ path?: string[] }>;
 };
@@ -28,6 +36,14 @@ export async function GET(_request: Request, context: RouteContext) {
 
   if (registryPath === "styles/index.json") {
     return Response.json(STYLES_INDEX, {
+      headers: {
+        "cache-control": CACHE_CONTROL,
+      },
+    });
+  }
+
+  if (registryPath === "index.json") {
+    return Response.json(BASE_INDEX_ITEM, {
       headers: {
         "cache-control": CACHE_CONTROL,
       },

@@ -2,7 +2,8 @@
   "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "button",
   "dependencies": [
-    "@base-ui-components/react"
+    "@base-ui-components/react",
+    "class-variance-authority"
   ],
   "files": [
     {

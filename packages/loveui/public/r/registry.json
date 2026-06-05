@@ -1327,7 +1327,8 @@
       "name": "accordion",
       "type": "registry:ui",
       "dependencies": [
-        "@base-ui-components/react"
+        "@base-ui-components/react",
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -1450,7 +1451,8 @@
       "name": "button",
       "type": "registry:ui",
       "dependencies": [
-        "@base-ui-components/react"
+        "@base-ui-components/react",
+        "class-variance-authority"
       ],
       "files": [
         {

@@ -55,7 +55,6 @@ export function GET(request: NextRequest) {
     $schema: "https://www.loveui.dev/schema/registry-item.json",
     name: `init-base-${style}`,
     type: "registry:base",
-    extends: "none",
     config: {
       style: `base-${style}`,
       tailwind: {
