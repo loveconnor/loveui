@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "skeleton-demo",
   "description": "Skeleton demo",
   "registryDependencies": [
-    "@loveui/avatar",
-    "@loveui/button",
-    "@loveui/skeleton"
+    "@love-ui/avatar",
+    "@love-ui/button",
+    "@love-ui/skeleton"
   ],
   "files": [
     {

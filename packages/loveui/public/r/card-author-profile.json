@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-author-profile",
   "description": "Author profile card",
   "registryDependencies": [
-    "@loveui/avatar",
-    "@loveui/badge",
-    "@loveui/card"
+    "@love-ui/avatar",
+    "@love-ui/badge",
+    "@love-ui/card"
   ],
   "files": [
     {

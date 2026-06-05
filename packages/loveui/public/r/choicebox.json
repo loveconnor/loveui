@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "choicebox",
   "description": "Choicebox input with selectable options.",
   "registryDependencies": [
-    "@loveui/choicebox"
+    "@love-ui/choicebox"
   ],
   "files": [
     {

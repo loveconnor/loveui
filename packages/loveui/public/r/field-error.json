@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-error",
   "description": "Field showing validation error",
   "registryDependencies": [
-    "@loveui/field"
+    "@love-ui/field"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "announcement-themes",
   "description": "Announcement component styled with themed surfaces.",
   "registryDependencies": [
-    "@loveui/announcement"
+    "@love-ui/announcement"
   ],
   "files": [
     {

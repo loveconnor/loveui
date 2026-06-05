@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "reel-custom",
   "description": "Reel with custom header, footer, and action buttons.",
   "registryDependencies": [
-    "@loveui/reel",
-    "@loveui/button"
+    "@love-ui/reel",
+    "@love-ui/button"
   ],
   "files": [
     {

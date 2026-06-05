@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "contribution-graph-tooltip",
   "description": "Contribution graph with custom tooltip content.",
   "registryDependencies": [
-    "@loveui/contribution-graph",
+    "@love-ui/contribution-graph",
     "@faker-js/faker"
   ],
   "files": [

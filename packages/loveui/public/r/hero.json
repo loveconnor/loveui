@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "hero",
   "description": "A hero section with announcement, headline, and video player.",
   "registryDependencies": [
-    "@loveui/announcement",
-    "@loveui/marquee",
-    "@loveui/video-player",
-    "@loveui/button"
+    "@love-ui/announcement",
+    "@love-ui/marquee",
+    "@love-ui/video-player",
+    "@love-ui/button"
   ],
   "files": [
     {

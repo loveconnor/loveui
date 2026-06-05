@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "stories-avatars",
   "description": "Stories avatar ring list styled like Instagram.",
   "registryDependencies": [
-    "@loveui/stories"
+    "@love-ui/stories"
   ],
   "files": [
     {

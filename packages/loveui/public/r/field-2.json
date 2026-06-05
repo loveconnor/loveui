@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-2",
   "dependencies": [
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "@loveui/label",
-    "@loveui/separator"
+    "@love-ui/label",
+    "@love-ui/separator"
   ],
   "files": [
     {

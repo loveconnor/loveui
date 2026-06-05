@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "relative-time-format-time",
   "description": "Relative time formatter that outputs clock time.",
   "registryDependencies": [
-    "@loveui/relative-time"
+    "@love-ui/relative-time"
   ],
   "files": [
     {

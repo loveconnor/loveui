@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "progress-onboarding",
   "description": "Progress Onboarding example",
   "registryDependencies": [
-    "@loveui/progress"
+    "@love-ui/progress"
   ],
   "files": [
     {

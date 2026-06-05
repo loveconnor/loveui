@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "stories",
   "description": "Stories carousel with looping video content.",
   "registryDependencies": [
-    "@loveui/stories"
+    "@love-ui/stories"
   ],
   "files": [
     {

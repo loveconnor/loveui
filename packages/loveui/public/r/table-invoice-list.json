@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "table-invoice-list",
   "description": "Table Invoice List example",
   "registryDependencies": [
-    "@loveui/badge",
-    "@loveui/table"
+    "@love-ui/badge",
+    "@love-ui/table"
   ],
   "files": [
     {

@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tooltip-grouped",
   "description": "Toggle group with grouped tooltips",
   "registryDependencies": [
-    "@loveui/tooltip",
-    "@loveui/toggle"
+    "@love-ui/tooltip",
+    "@love-ui/toggle"
   ],
   "files": [
     {

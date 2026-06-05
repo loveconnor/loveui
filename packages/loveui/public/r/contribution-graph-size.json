@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "contribution-graph-size",
   "description": "Contribution graph showcasing custom sizing.",
   "registryDependencies": [
-    "@loveui/contribution-graph",
+    "@love-ui/contribution-graph",
     "@faker-js/faker"
   ],
   "files": [

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "number-field-with-label",
   "description": "A number field with an external label",
   "dependencies": [
     "@radix-ui/react-label"
   ],
   "registryDependencies": [
-    "@loveui/number-field",
-    "@loveui/label"
+    "@love-ui/number-field",
+    "@love-ui/label"
   ],
   "files": [
     {

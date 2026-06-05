@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "image-crop-circular",
   "description": "Circular avatar cropper using the image crop component.",
   "registryDependencies": [
-    "@loveui/image-crop",
-    "@loveui/button",
-    "@loveui/input"
+    "@love-ui/image-crop",
+    "@love-ui/button",
+    "@love-ui/input"
   ],
   "files": [
     {

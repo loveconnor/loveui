@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-demo",
   "description": "Field with description",
   "registryDependencies": [
-    "@loveui/field"
+    "@love-ui/field"
   ],
   "files": [
     {

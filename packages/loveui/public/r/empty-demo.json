@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "empty-demo",
   "description": "Basic empty state with icon",
   "registryDependencies": [
-    "@loveui/empty",
-    "@loveui/button"
+    "@love-ui/empty",
+    "@love-ui/button"
   ],
   "files": [
     {

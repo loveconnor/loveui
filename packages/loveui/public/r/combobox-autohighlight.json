@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "combobox-autohighlight",
   "description": "Combobox auto highlighting the first option",
   "registryDependencies": [
-    "@loveui/combobox"
+    "@love-ui/combobox"
   ],
   "files": [
     {

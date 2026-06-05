@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "choicebox-inline",
   "description": "Inline choicebox layout for compact forms.",
   "registryDependencies": [
-    "@loveui/choicebox"
+    "@love-ui/choicebox"
   ],
   "files": [
     {

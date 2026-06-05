@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toggle-group-lg",
   "description": "Toggle group with large toggles",
   "registryDependencies": [
-    "@loveui/toggle"
+    "@love-ui/toggle"
   ],
   "files": [
     {

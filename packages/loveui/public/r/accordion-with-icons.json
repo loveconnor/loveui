@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "accordion-with-icons",
   "description": "Accordion with icons",
   "registryDependencies": [
-    "@loveui/accordion",
-    "@loveui/badge"
+    "@love-ui/accordion",
+    "@love-ui/badge"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toggle-sm",
   "description": "Small toggle",
   "registryDependencies": [
-    "@loveui/toggle"
+    "@love-ui/toggle"
   ],
   "files": [
     {

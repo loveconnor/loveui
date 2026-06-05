@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dropzone-multiple",
   "description": "Dropzone allowing multiple file uploads.",
   "registryDependencies": [
-    "@loveui/dropzone"
+    "@love-ui/dropzone"
   ],
   "files": [
     {

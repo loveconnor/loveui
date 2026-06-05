@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-metric-summary",
   "description": "Card Metric Summary example",
   "registryDependencies": [
-    "@loveui/card"
+    "@love-ui/card"
   ],
   "files": [
     {

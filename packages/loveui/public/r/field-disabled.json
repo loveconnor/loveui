@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-disabled",
   "description": "Field in disabled state",
   "registryDependencies": [
-    "@loveui/field"
+    "@love-ui/field"
   ],
   "files": [
     {

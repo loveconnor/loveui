@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "theme-switcher",
   "description": "Theme switcher controlling light, dark, and system modes.",
   "registryDependencies": [
-    "@loveui/theme-switcher"
+    "@love-ui/theme-switcher"
   ],
   "files": [
     {

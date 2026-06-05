@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "fieldset-danger-zone",
   "description": "Fieldset Danger Zone example",
   "registryDependencies": [
-    "@loveui/switch",
-    "@loveui/field",
-    "@loveui/fieldset"
+    "@love-ui/switch",
+    "@love-ui/field",
+    "@love-ui/fieldset"
   ],
   "files": [
     {

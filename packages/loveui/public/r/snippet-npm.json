@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "snippet-npm",
   "description": "Snippet showing install commands for multiple package managers.",
   "registryDependencies": [
-    "@loveui/snippet"
+    "@love-ui/snippet"
   ],
   "files": [
     {

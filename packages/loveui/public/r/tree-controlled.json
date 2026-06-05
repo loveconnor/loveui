@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tree-controlled",
   "description": "Controlled tree view with explicit expanded nodes.",
   "registryDependencies": [
-    "@loveui/tree"
+    "@love-ui/tree"
   ],
   "files": [
     {

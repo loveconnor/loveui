@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "mini-calendar-days",
   "description": "Mini calendar rendering weekday headings and focus states.",
   "registryDependencies": [
-    "@loveui/mini-calendar"
+    "@love-ui/mini-calendar"
   ],
   "files": [
     {

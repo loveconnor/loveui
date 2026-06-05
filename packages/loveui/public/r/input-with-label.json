@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "input-with-label",
   "description": "Input with label",
   "registryDependencies": [
-    "@loveui/input",
-    "@loveui/label"
+    "@love-ui/input",
+    "@love-ui/label"
   ],
   "files": [
     {

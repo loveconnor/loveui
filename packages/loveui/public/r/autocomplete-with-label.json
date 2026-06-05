@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "autocomplete-with-label",
   "description": "Autocomplete with label",
   "registryDependencies": [
-    "@loveui/autocomplete",
-    "@loveui/label"
+    "@love-ui/autocomplete",
+    "@love-ui/label"
   ],
   "files": [
     {

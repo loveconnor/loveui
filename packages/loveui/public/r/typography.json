@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "typography",
   "description": "Typography stylesheet demonstrating rich content styling.",
   "registryDependencies": [
-    "@loveui/typography"
+    "@love-ui/typography"
   ],
   "files": [
     {

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "particle-bu-5",
   "description": "Social login icon buttons",
   "dependencies": [
     "@remixicon/react"
   ],
   "registryDependencies": [
-    "@loveui/button"
+    "@love-ui/button"
   ],
   "files": [
     {

@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-stack-six",
   "description": "Six-layer dialog stack demonstration.",
   "registryDependencies": [
-    "@loveui/dialog-stack",
-    "@loveui/button"
+    "@love-ui/dialog-stack",
+    "@love-ui/button"
   ],
   "files": [
     {

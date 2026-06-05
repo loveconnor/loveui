@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toolbar-demo",
   "description": "Toolbar",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/select",
-    "@loveui/toggle",
-    "@loveui/toolbar",
-    "@loveui/tooltip"
+    "@love-ui/button",
+    "@love-ui/select",
+    "@love-ui/toggle",
+    "@love-ui/toolbar",
+    "@love-ui/tooltip"
   ],
   "files": [
     {

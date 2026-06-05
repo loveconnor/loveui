@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "calendar",
   "description": "Calendar view with monthly navigation and grouped features.",
   "registryDependencies": [
-    "@loveui/calendar",
+    "@love-ui/calendar",
     "@faker-js/faker"
   ],
   "files": [

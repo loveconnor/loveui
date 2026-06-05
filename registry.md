@@ -19,7 +19,7 @@ Internal reference for the LoveUI component and block registry. This file descri
 
 Registry entries are source-first. The canonical editable files live in `registry/default`, while the generated install artifacts live in `packages/loveui/public/r`.
 
-Most UI components are low-level React components styled with Tailwind classes and exported from a single file. Many wrap Base UI or Radix primitives, then expose LoveUI names and aliases for shadcn-style compatibility.
+Most UI components are low-level React components styled with Tailwind classes and exported from a single file. Many wrap Base UI or Radix primitives, then expose LoveUI names and aliases for loveui-style compatibility.
 
 Examples are named by component prefix, such as `button-demo`, `button-outline`, or `combobox-grouped`. `lib/component-examples.ts` maps component slugs to example prefixes and preferred first demos.
 

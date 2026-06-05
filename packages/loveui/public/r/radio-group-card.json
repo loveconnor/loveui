@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "radio-group-card",
   "description": "Card-style radio options",
   "registryDependencies": [
-    "@loveui/radio-group",
-    "@loveui/label"
+    "@love-ui/radio-group",
+    "@love-ui/label"
   ],
   "files": [
     {

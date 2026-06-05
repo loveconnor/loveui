@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "table-framed",
   "description": "Framed table",
   "registryDependencies": [
-    "@loveui/table",
-    "@loveui/badge",
-    "@loveui/frame"
+    "@love-ui/table",
+    "@love-ui/badge",
+    "@love-ui/frame"
   ],
   "files": [
     {

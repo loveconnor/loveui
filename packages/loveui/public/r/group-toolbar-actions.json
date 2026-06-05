@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "group-toolbar-actions",
   "description": "Group Toolbar Actions example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/group"
+    "@love-ui/button",
+    "@love-ui/group"
   ],
   "files": [
     {

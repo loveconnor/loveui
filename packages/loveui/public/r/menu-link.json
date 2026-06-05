@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "menu-link",
   "description": "Menu items as links",
   "registryDependencies": [
-    "@loveui/menu",
-    "@loveui/button"
+    "@love-ui/menu",
+    "@love-ui/button"
   ],
   "files": [
     {

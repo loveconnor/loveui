@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "autocomplete-members",
   "description": "Autocomplete Members example",
   "registryDependencies": [
-    "@loveui/autocomplete"
+    "@love-ui/autocomplete"
   ],
   "files": [
     {

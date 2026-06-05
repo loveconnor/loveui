@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "autocomplete-form",
   "description": "Autocomplete form",
   "registryDependencies": [
-    "@loveui/autocomplete",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/autocomplete",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "textarea-with-label",
   "description": "Textarea labelled with Field",
   "registryDependencies": [
-    "@loveui/textarea",
-    "@loveui/label"
+    "@love-ui/textarea",
+    "@love-ui/label"
   ],
   "files": [
     {

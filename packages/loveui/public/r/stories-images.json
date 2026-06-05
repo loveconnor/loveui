@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "stories-images",
   "description": "Stories carousel rendering image slides with overlays.",
   "registryDependencies": [
-    "@loveui/stories"
+    "@love-ui/stories"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "marquee",
   "description": "Continuous marquee loop for showcasing logos.",
   "registryDependencies": [
-    "@loveui/marquee"
+    "@love-ui/marquee"
   ],
   "files": [
     {

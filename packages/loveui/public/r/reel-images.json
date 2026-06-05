@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "reel-images",
   "description": "Reel presentation cycling through full-screen images.",
   "registryDependencies": [
-    "@loveui/reel"
+    "@love-ui/reel"
   ],
   "files": [
     {

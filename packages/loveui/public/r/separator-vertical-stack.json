@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "separator-vertical-stack",
   "description": "Separator Vertical Stack example",
   "registryDependencies": [
-    "@loveui/separator"
+    "@love-ui/separator"
   ],
   "files": [
     {

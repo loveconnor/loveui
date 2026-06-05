@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "spinner-customization",
   "description": "Spinner customized with size and color.",
   "registryDependencies": [
-    "@loveui/spinner"
+    "@love-ui/spinner"
   ],
   "files": [
     {

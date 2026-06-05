@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-usage-expandable",
   "description": "Expandable usage card",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/card",
-    "@loveui/progress"
+    "@love-ui/button",
+    "@love-ui/card",
+    "@love-ui/progress"
   ],
   "files": [
     {

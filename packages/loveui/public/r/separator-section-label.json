@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "separator-section-label",
   "description": "Separator Section Label example",
   "registryDependencies": [
-    "@loveui/separator"
+    "@love-ui/separator"
   ],
   "files": [
     {

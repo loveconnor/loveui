@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "particle-pa-1",
   "description": "Pagination with previous and next buttons only",
   "registryDependencies": [
-    "@loveui/pagination"
+    "@love-ui/pagination"
   ],
   "files": [
     {

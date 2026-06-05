@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "mini-calendar-controlled",
   "description": "Controlled mini calendar showing the selected date.",
   "registryDependencies": [
-    "@loveui/mini-calendar"
+    "@love-ui/mini-calendar"
   ],
   "files": [
     {

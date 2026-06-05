@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-demo",
   "description": "Basic dialog",
   "registryDependencies": [
-    "@loveui/dialog",
-    "@loveui/button",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/dialog",
+    "@love-ui/button",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

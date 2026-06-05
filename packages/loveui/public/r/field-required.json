@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-required",
   "description": "Field with required indicator",
   "registryDependencies": [
-    "@loveui/field"
+    "@love-ui/field"
   ],
   "files": [
     {

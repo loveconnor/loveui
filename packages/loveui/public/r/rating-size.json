@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "rating-size",
   "description": "Rating component with custom size.",
   "registryDependencies": [
-    "@loveui/rating"
+    "@love-ui/rating"
   ],
   "files": [
     {

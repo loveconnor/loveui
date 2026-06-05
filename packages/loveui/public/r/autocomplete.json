@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "autocomplete",
   "dependencies": [
     "@base-ui-components/react"
   ],
   "registryDependencies": [
-    "@loveui/input",
-    "@loveui/scroll-area"
+    "@love-ui/input",
+    "@love-ui/scroll-area"
   ],
   "files": [
     {

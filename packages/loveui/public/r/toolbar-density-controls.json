@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toolbar-density-controls",
   "description": "Toolbar Density Controls example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/toolbar"
+    "@love-ui/button",
+    "@love-ui/toolbar"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "radio-group-delivery",
   "description": "Radio Group Delivery example",
   "registryDependencies": [
-    "@loveui/radio-group"
+    "@love-ui/radio-group"
   ],
   "files": [
     {

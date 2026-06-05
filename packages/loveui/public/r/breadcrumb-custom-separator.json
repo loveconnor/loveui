@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "breadcrumb-custom-separator",
   "description": "Breadcrumb with custom separator",
   "registryDependencies": [
-    "@loveui/breadcrumb"
+    "@love-ui/breadcrumb"
   ],
   "files": [
     {

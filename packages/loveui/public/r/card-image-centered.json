@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-image-centered",
   "description": "Centered image card",
   "registryDependencies": [
-    "@loveui/badge",
-    "@loveui/button",
-    "@loveui/card"
+    "@love-ui/badge",
+    "@love-ui/button",
+    "@love-ui/card"
   ],
   "files": [
     {

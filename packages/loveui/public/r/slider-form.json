@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "slider-form",
   "description": "Slider in a form",
   "registryDependencies": [
-    "@loveui/slider",
-    "@loveui/form",
-    "@loveui/field",
-    "@loveui/button"
+    "@love-ui/slider",
+    "@love-ui/form",
+    "@love-ui/field",
+    "@love-ui/button"
   ],
   "files": [
     {

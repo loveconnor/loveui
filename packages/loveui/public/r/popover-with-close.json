@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "popover-with-close",
   "description": "Popover with close button",
   "registryDependencies": [
-    "@loveui/popover",
-    "@loveui/button"
+    "@love-ui/popover",
+    "@love-ui/button"
   ],
   "files": [
     {

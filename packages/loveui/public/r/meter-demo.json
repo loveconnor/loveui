@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "meter-demo",
   "description": "Basic meter",
   "registryDependencies": [
-    "@loveui/meter"
+    "@love-ui/meter"
   ],
   "files": [
     {

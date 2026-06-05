@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-checkbox-group",
   "description": "Field with checkbox group",
   "registryDependencies": [
-    "@loveui/field",
-    "@loveui/checkbox",
-    "@loveui/fieldset"
+    "@love-ui/field",
+    "@love-ui/checkbox",
+    "@love-ui/fieldset"
   ],
   "files": [
     {

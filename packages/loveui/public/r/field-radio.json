@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-radio",
   "description": "Field with radio group",
   "registryDependencies": [
-    "@loveui/field",
-    "@loveui/radio-group",
-    "@loveui/fieldset"
+    "@love-ui/field",
+    "@love-ui/radio-group",
+    "@love-ui/fieldset"
   ],
   "files": [
     {

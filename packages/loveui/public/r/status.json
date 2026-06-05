@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "status",
   "description": "Status badges for operational state display.",
   "registryDependencies": [
-    "@loveui/status"
+    "@love-ui/status"
   ],
   "files": [
     {

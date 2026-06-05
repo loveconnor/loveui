@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "accordion-in-card",
   "description": "Subscription billing FAQ card",
   "registryDependencies": [
-    "@loveui/accordion",
-    "@loveui/button",
-    "@loveui/card"
+    "@love-ui/accordion",
+    "@love-ui/button",
+    "@love-ui/card"
   ],
   "files": [
     {

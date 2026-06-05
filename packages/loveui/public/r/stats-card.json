@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "stats-card",
   "description": "KPI card for dashboard stats",
   "registryDependencies": [
-    "@loveui/badge",
-    "@loveui/card"
+    "@love-ui/badge",
+    "@love-ui/card"
   ],
   "files": [
     {

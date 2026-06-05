@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "collapsible-checklist",
   "description": "Collapsible Checklist example",
   "registryDependencies": [
-    "@loveui/collapsible",
-    "@loveui/checkbox"
+    "@love-ui/collapsible",
+    "@love-ui/checkbox"
   ],
   "files": [
     {

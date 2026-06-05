@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "popover-account-summary",
   "description": "Popover Account Summary example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/popover"
+    "@love-ui/button",
+    "@love-ui/popover"
   ],
   "files": [
     {

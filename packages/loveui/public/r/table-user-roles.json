@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "table-user-roles",
   "description": "Table User Roles example",
   "registryDependencies": [
-    "@loveui/table"
+    "@love-ui/table"
   ],
   "files": [
     {

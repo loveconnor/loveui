@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "image-zoom",
   "description": "Modal zoom interaction for high-resolution media.",
   "registryDependencies": [
-    "@loveui/image-zoom"
+    "@love-ui/image-zoom"
   ],
   "files": [
     {

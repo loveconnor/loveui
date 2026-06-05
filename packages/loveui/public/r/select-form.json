@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "select-form",
   "description": "Select in a form",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/select",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/button",
+    "@love-ui/select",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

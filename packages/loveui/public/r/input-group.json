@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "input-group",
   "dependencies": [
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/input",
-    "@loveui/textarea"
+    "@love-ui/button",
+    "@love-ui/input",
+    "@love-ui/textarea"
   ],
   "files": [
     {

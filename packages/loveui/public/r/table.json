@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "table",
   "description": "Project table with owner avatars and status indicators.",
   "registryDependencies": [
-    "@loveui/table",
+    "@love-ui/table",
     "@faker-js/faker"
   ],
   "files": [

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "popover-demo",
   "description": "Popover with a form",
   "registryDependencies": [
-    "@loveui/popover",
-    "@loveui/button",
-    "@loveui/textarea",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/popover",
+    "@love-ui/button",
+    "@love-ui/textarea",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

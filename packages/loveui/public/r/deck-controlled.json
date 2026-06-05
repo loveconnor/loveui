@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "deck-controlled",
   "description": "Programmatically controlled deck with navigation buttons.",
   "registryDependencies": [
-    "@loveui/deck",
-    "@loveui/button"
+    "@love-ui/deck",
+    "@love-ui/button"
   ],
   "files": [
     {

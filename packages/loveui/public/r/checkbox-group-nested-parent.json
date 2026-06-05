@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "checkbox-group-nested-parent",
   "description": "Checkbox group parent with nested children controls",
   "registryDependencies": [
-    "@loveui/checkbox",
-    "@loveui/label"
+    "@love-ui/checkbox",
+    "@love-ui/label"
   ],
   "files": [
     {

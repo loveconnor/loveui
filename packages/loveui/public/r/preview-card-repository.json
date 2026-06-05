@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "preview-card-repository",
   "description": "Preview Card Repository example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/preview-card"
+    "@love-ui/button",
+    "@love-ui/preview-card"
   ],
   "files": [
     {

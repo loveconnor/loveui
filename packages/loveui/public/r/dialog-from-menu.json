@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-from-menu",
   "description": "Open dialog from a menu item",
   "registryDependencies": [
-    "@loveui/dialog",
-    "@loveui/menu",
-    "@loveui/button"
+    "@love-ui/dialog",
+    "@love-ui/menu",
+    "@love-ui/button"
   ],
   "files": [
     {

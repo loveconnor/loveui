@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "credit-card-apple",
   "description": "Apple Card inspired credit card layout.",
   "registryDependencies": [
-    "@loveui/credit-card"
+    "@love-ui/credit-card"
   ],
   "files": [
     {

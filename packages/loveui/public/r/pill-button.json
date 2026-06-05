@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "pill-button",
   "description": "Pill behaving as a button.",
   "registryDependencies": [
-    "@loveui/pill"
+    "@love-ui/pill"
   ],
   "files": [
     {

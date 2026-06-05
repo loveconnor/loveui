@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "accordion-disabled",
   "description": "Disabled accordion item",
   "registryDependencies": [
-    "@loveui/accordion"
+    "@love-ui/accordion"
   ],
   "files": [
     {

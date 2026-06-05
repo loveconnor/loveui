@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "calendar-headless",
   "description": "Headless calendar using custom header and body rendering.",
   "registryDependencies": [
-    "@loveui/calendar",
+    "@love-ui/calendar",
     "@faker-js/faker"
   ],
   "files": [

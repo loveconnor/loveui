@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-select",
   "description": "Field with select",
   "registryDependencies": [
-    "@loveui/field",
-    "@loveui/select"
+    "@love-ui/field",
+    "@love-ui/select"
   ],
   "files": [
     {

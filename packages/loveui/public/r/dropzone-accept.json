@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dropzone-accept",
   "description": "Dropzone restricting accepted file types.",
   "registryDependencies": [
-    "@loveui/dropzone"
+    "@love-ui/dropzone"
   ],
   "files": [
     {

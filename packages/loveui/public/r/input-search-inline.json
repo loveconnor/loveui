@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "input-search-inline",
   "description": "Input Search Inline example",
   "registryDependencies": [
-    "@loveui/input"
+    "@love-ui/input"
   ],
   "files": [
     {

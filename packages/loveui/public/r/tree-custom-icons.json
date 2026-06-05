@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tree-custom-icons",
   "description": "Tree view using custom icons for file types.",
   "registryDependencies": [
-    "@loveui/tree"
+    "@love-ui/tree"
   ],
   "files": [
     {

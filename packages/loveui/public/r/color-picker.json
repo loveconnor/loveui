@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "color-picker",
   "description": "Color picker with hue, alpha, and format controls.",
   "registryDependencies": [
-    "@loveui/color-picker"
+    "@love-ui/color-picker"
   ],
   "files": [
     {

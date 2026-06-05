@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "progress-with-formatted-value",
   "description": "Progress with a custom formatted value",
   "registryDependencies": [
-    "@loveui/progress"
+    "@love-ui/progress"
   ],
   "files": [
     {

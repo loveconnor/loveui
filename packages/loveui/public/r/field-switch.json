@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-switch",
   "description": "Field with toggle switch",
   "registryDependencies": [
-    "@loveui/field",
-    "@loveui/switch"
+    "@love-ui/field",
+    "@love-ui/switch"
   ],
   "files": [
     {

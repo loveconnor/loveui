@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "rating-icon",
   "description": "Rating component using custom icons.",
   "registryDependencies": [
-    "@loveui/rating"
+    "@love-ui/rating"
   ],
   "files": [
     {

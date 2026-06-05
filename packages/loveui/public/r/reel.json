@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "reel",
   "description": "Reels experience with controls and progress indicators.",
   "registryDependencies": [
-    "@loveui/reel"
+    "@love-ui/reel"
   ],
   "files": [
     {

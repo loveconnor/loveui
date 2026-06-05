@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-invite-member",
   "description": "Dialog Invite Member example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/dialog",
-    "@loveui/field"
+    "@love-ui/button",
+    "@love-ui/dialog",
+    "@love-ui/field"
   ],
   "files": [
     {

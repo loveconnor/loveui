@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "kanban-simple",
   "description": "Simplified Kanban board highlighting drag-and-drop.",
   "registryDependencies": [
-    "@loveui/kanban",
+    "@love-ui/kanban",
     "@faker-js/faker"
   ],
   "files": [

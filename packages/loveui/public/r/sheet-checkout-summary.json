@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "sheet-checkout-summary",
   "description": "Sheet Checkout Summary example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/sheet"
+    "@love-ui/button",
+    "@love-ui/sheet"
   ],
   "files": [
     {

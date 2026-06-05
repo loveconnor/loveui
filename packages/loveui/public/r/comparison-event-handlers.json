@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "comparison-event-handlers",
   "description": "Comparison slider demonstrating event handlers.",
   "registryDependencies": [
-    "@loveui/comparison"
+    "@love-ui/comparison"
   ],
   "files": [
     {

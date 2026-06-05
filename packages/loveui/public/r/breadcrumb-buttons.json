@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "breadcrumb-buttons",
   "description": "Button breadcrumb",
   "registryDependencies": [
-    "@loveui/breadcrumb",
-    "@loveui/button"
+    "@love-ui/breadcrumb",
+    "@love-ui/button"
   ],
   "files": [
     {

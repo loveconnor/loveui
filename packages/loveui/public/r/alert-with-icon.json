@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "alert-with-icon",
   "description": "Alert with icon",
   "registryDependencies": [
-    "@loveui/alert"
+    "@love-ui/alert"
   ],
   "files": [
     {

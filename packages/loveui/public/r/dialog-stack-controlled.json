@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-stack-controlled",
   "description": "Controlled dialog stack with external trigger.",
   "registryDependencies": [
-    "@loveui/dialog-stack",
-    "@loveui/button"
+    "@love-ui/dialog-stack",
+    "@love-ui/button"
   ],
   "files": [
     {

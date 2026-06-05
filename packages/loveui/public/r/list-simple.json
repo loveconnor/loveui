@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "list-simple",
   "description": "Simplified list view using drag-and-drop ordering.",
   "registryDependencies": [
-    "@loveui/list",
+    "@love-ui/list",
     "@faker-js/faker"
   ],
   "files": [

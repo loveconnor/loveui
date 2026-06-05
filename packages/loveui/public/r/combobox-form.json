@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "combobox-form",
   "description": "Combobox form",
   "registryDependencies": [
-    "@loveui/combobox",
-    "@loveui/button",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/combobox",
+    "@love-ui/button",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

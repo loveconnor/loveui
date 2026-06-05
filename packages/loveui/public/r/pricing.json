@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "pricing",
   "description": "A pricing page with a list of plans and features.",
   "registryDependencies": [
-    "@loveui/card",
-    "@loveui/button",
-    "@loveui/badge",
-    "@loveui/tabs"
+    "@love-ui/card",
+    "@love-ui/button",
+    "@love-ui/badge",
+    "@love-ui/tabs"
   ],
   "files": [
     {

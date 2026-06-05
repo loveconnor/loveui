@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "number-field-form",
   "description": "A number in a form",
   "registryDependencies": [
-    "@loveui/number-field",
-    "@loveui/field",
-    "@loveui/form",
-    "@loveui/button"
+    "@love-ui/number-field",
+    "@love-ui/field",
+    "@love-ui/form",
+    "@love-ui/button"
   ],
   "files": [
     {

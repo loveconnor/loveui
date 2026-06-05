@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "avatar-stack-hover",
   "description": "Animated avatar stack on hover",
   "registryDependencies": [
-    "@loveui/avatar-stack",
-    "@loveui/avatar"
+    "@love-ui/avatar-stack",
+    "@love-ui/avatar"
   ],
   "files": [
     {

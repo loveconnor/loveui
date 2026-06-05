@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "form-newsletter",
   "description": "Form Newsletter example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/field",
-    "@loveui/form"
+    "@love-ui/button",
+    "@love-ui/field",
+    "@love-ui/form"
   ],
   "files": [
     {

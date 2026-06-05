@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-nested",
   "description": "Dialog with a nested dialog",
   "registryDependencies": [
-    "@loveui/dialog",
-    "@loveui/button",
-    "@loveui/field"
+    "@love-ui/dialog",
+    "@love-ui/button",
+    "@love-ui/field"
   ],
   "files": [
     {

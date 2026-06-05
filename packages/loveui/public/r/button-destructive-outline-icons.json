@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "button-destructive-outline-icons",
   "description": "Destructive outline buttons with icons",
   "registryDependencies": [
-    "@loveui/button"
+    "@love-ui/button"
   ],
   "files": [
     {

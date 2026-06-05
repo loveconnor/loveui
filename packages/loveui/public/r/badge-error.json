@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "badge-error",
   "description": "Error badge",
   "registryDependencies": [
-    "@loveui/badge"
+    "@love-ui/badge"
   ],
   "files": [
     {

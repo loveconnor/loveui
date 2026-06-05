@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "preview-card-product",
   "description": "Preview Card Product example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/badge",
-    "@loveui/preview-card"
+    "@love-ui/button",
+    "@love-ui/badge",
+    "@love-ui/preview-card"
   ],
   "files": [
     {

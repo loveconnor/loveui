@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tooltip-demo",
   "description": "Basic tooltip",
   "registryDependencies": [
-    "@loveui/tooltip",
-    "@loveui/button"
+    "@love-ui/tooltip",
+    "@love-ui/button"
   ],
   "files": [
     {

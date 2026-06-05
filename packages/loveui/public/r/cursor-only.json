@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "cursor-only",
   "description": "Cursor pointer without body",
   "registryDependencies": [
-    "@loveui/cursor"
+    "@love-ui/cursor"
   ],
   "files": [
     {

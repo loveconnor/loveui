@@ -1,6 +1,6 @@
 {
   "name": "love-ui",
-  "version": "1.2.19",
+  "version": "1.2.20",
   "private": false,
   "license": "MIT",
   "type": "module",
@@ -39,9 +39,39 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
+    "@antfu/ni": "^24.4.0",
+    "@babel/core": "^7.28.5",
+    "@babel/parser": "^7.28.5",
+    "@babel/plugin-transform-typescript": "^7.28.5",
+    "@dotenvx/dotenvx": "^1.71.0",
     "@modelcontextprotocol/sdk": "^1.18.1",
+    "clsx": "^2.1.1",
+    "commander": "^14.0.2",
+    "cosmiconfig": "^9.0.0",
+    "dedent": "^1.7.0",
+    "deepmerge": "^4.3.1",
+    "diff": "^8.0.2",
+    "execa": "^9.6.0",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.3.2",
+    "fuzzysort": "^3.1.0",
+    "https-proxy-agent": "^7.0.6",
+    "kleur": "^4.1.5",
+    "node-fetch": "^3.3.2",
+    "open": "^10.2.0",
+    "ora": "^9.0.0",
     "postcss": "^8.5.6",
-    "postcss-nested": "^7.0.2"
+    "postcss-nested": "^7.0.2",
+    "postcss-selector-parser": "^7.1.1",
+    "prompts": "^2.4.2",
+    "recast": "^0.23.11",
+    "stringify-object": "^5.0.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.0",
+    "ts-morph": "^27.0.2",
+    "tsconfig-paths": "^4.2.0",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.2"
   },
   "scripts": {
     "build": "tsup",
@@ -51,8 +81,13 @@
     "clean": "rimraf dist registry"
   },
   "devDependencies": {
+    "@types/diff": "^7.0.2",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.14.10",
+    "@types/prompts": "^2.4.9",
+    "msw": "^2.12.4",
     "rimraf": "^6.0.1",
-    "tsup": "^8.5.0"
+    "tsup": "^8.5.0",
+    "vitest": "^4.0.15"
   }
 }

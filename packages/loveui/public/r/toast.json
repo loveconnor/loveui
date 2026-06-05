@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toast",
   "dependencies": [
     "@base-ui-components/react",
-    "@loveui/gooey-toast"
+    "@love-ui/gooey-toast"
   ],
   "registryDependencies": [
-    "@loveui/button"
+    "@love-ui/button"
   ],
   "files": [
     {

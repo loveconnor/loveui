@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "fieldset-billing-address",
   "description": "Fieldset Billing Address example",
   "registryDependencies": [
-    "@loveui/field",
-    "@loveui/fieldset"
+    "@love-ui/field",
+    "@love-ui/fieldset"
   ],
   "files": [
     {

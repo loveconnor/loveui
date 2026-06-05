@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "image-zoom-background",
   "description": "Image zoom with custom modal backdrop styling.",
   "registryDependencies": [
-    "@loveui/image-zoom"
+    "@love-ui/image-zoom"
   ],
   "files": [
     {

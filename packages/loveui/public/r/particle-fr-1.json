@@ -1,14 +1,14 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "particle-fr-1",
   "description": "Frame with collapsible content and delete button",
   "dependencies": [
     "love-ui"
   ],
   "registryDependencies": [
-    "@loveui/frame",
-    "@loveui/collapsible",
-    "@loveui/button"
+    "@love-ui/frame",
+    "@love-ui/collapsible",
+    "@love-ui/button"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "collapsible-release-notes",
   "description": "Collapsible Release Notes example",
   "registryDependencies": [
-    "@loveui/collapsible"
+    "@love-ui/collapsible"
   ],
   "files": [
     {

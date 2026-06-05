@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "combobox-grouped",
   "description": "Combobox with grouped items",
   "registryDependencies": [
-    "@loveui/combobox"
+    "@love-ui/combobox"
   ],
   "files": [
     {

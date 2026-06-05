@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "pagination-mini",
   "description": "Pagination Mini example",
   "registryDependencies": [
-    "@loveui/pagination"
+    "@love-ui/pagination"
   ],
   "files": [
     {

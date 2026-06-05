@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "sheet-demo",
   "description": "Basic sheet",
   "registryDependencies": [
-    "@loveui/sheet",
-    "@loveui/button",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/sheet",
+    "@love-ui/button",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

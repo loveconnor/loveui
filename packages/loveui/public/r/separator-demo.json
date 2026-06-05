@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "separator-demo",
   "description": "Separator with horizontal and vertical orientations",
   "registryDependencies": [
-    "@loveui/separator"
+    "@love-ui/separator"
   ],
   "files": [
     {

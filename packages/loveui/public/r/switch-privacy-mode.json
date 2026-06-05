@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "switch-privacy-mode",
   "description": "Switch Privacy Mode example",
   "registryDependencies": [
-    "@loveui/switch"
+    "@love-ui/switch"
   ],
   "files": [
     {

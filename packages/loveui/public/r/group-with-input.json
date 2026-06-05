@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "group-with-input",
   "description": "Group with input",
   "registryDependencies": [
-    "@loveui/group",
-    "@loveui/button",
-    "@loveui/input"
+    "@love-ui/group",
+    "@love-ui/button",
+    "@love-ui/input"
   ],
   "files": [
     {

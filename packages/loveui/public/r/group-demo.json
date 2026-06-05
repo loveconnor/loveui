@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "group-demo",
   "description": "Group example",
   "registryDependencies": [
-    "@loveui/group",
-    "@loveui/button"
+    "@love-ui/group",
+    "@love-ui/button"
   ],
   "files": [
     {

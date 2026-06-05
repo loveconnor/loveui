@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "slider-with-label-value",
   "description": "Slider with label and value",
   "registryDependencies": [
-    "@loveui/slider",
-    "@loveui/label"
+    "@love-ui/slider",
+    "@love-ui/label"
   ],
   "files": [
     {

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-demo",
   "description": "Card example with form",
   "registryDependencies": [
-    "@loveui/card",
-    "@loveui/button",
-    "@loveui/select",
-    "@loveui/form",
-    "@loveui/field"
+    "@love-ui/card",
+    "@love-ui/button",
+    "@love-ui/select",
+    "@love-ui/form",
+    "@love-ui/field"
   ],
   "files": [
     {

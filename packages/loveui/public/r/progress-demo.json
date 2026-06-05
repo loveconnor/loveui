@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "progress-demo",
   "description": "Animated progress bar",
   "registryDependencies": [
-    "@loveui/progress"
+    "@love-ui/progress"
   ],
   "files": [
     {

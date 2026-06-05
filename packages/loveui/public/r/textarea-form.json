@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "textarea-form",
   "description": "Textarea in a form",
   "registryDependencies": [
-    "@loveui/textarea",
-    "@loveui/form",
-    "@loveui/field",
-    "@loveui/button"
+    "@love-ui/textarea",
+    "@love-ui/form",
+    "@love-ui/field",
+    "@love-ui/button"
   ],
   "files": [
     {

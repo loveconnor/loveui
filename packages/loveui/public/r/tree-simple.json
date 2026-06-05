@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tree-simple",
   "description": "Simple tree view with minimal configuration.",
   "registryDependencies": [
-    "@loveui/tree"
+    "@love-ui/tree"
   ],
   "files": [
     {

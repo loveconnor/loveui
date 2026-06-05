@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "avatar-menu",
   "description": "Avatar account menu",
   "registryDependencies": [
-    "@loveui/avatar",
-    "@loveui/button",
-    "@loveui/menu"
+    "@love-ui/avatar",
+    "@love-ui/button",
+    "@love-ui/menu"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "empty-inbox-zero",
   "description": "Empty Inbox Zero example",
   "registryDependencies": [
-    "@loveui/empty"
+    "@love-ui/empty"
   ],
   "files": [
     {

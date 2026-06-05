@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "gooey-toast-states",
   "description": "Gooey toast with different states",
   "registryDependencies": [
-    "@loveui/toast",
-    "@loveui/button"
+    "@love-ui/toast",
+    "@love-ui/button"
   ],
   "files": [
     {

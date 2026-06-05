@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toggle",
   "dependencies": [
     "@base-ui-components/react"
@@ -13,6 +13,6 @@
   ],
   "type": "registry:ui",
   "registryDependencies": [
-    "@loveui/separator"
+    "@love-ui/separator"
   ]
 }

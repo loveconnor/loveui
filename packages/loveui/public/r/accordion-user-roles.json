@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "accordion-user-roles",
   "description": "User role accordion",
   "registryDependencies": [
-    "@loveui/accordion",
-    "@loveui/avatar",
-    "@loveui/badge",
-    "@loveui/frame"
+    "@love-ui/accordion",
+    "@love-ui/avatar",
+    "@love-ui/badge",
+    "@love-ui/frame"
   ],
   "files": [
     {

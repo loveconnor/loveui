@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "switch-form",
   "description": "Switch in a form",
   "registryDependencies": [
-    "@loveui/switch",
-    "@loveui/field",
-    "@loveui/form",
-    "@loveui/button"
+    "@love-ui/switch",
+    "@love-ui/field",
+    "@love-ui/form",
+    "@love-ui/button"
   ],
   "files": [
     {

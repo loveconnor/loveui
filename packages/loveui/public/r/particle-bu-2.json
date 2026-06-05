@@ -1,12 +1,12 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "particle-bu-2",
   "description": "Card-style button with heading and description",
   "dependencies": [
     "love-ui"
   ],
   "registryDependencies": [
-    "@loveui/button"
+    "@love-ui/button"
   ],
   "files": [
     {

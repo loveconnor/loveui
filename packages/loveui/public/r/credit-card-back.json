@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "credit-card-back",
   "description": "Credit card back face focusing on CVV and expiry.",
   "registryDependencies": [
-    "@loveui/credit-card"
+    "@love-ui/credit-card"
   ],
   "files": [
     {

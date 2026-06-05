@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "combobox-disabled",
   "description": "Disabled combobox",
   "registryDependencies": [
-    "@loveui/combobox"
+    "@love-ui/combobox"
   ],
   "files": [
     {

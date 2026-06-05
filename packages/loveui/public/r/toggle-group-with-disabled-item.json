@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toggle-group-with-disabled-item",
   "description": "Toggle group with disabled item",
   "registryDependencies": [
-    "@loveui/toggle"
+    "@love-ui/toggle"
   ],
   "files": [
     {

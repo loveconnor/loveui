@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "toast-loading",
   "description": "Loading toast",
   "registryDependencies": [
-    "@loveui/toast"
+    "@love-ui/toast"
   ],
   "files": [
     {

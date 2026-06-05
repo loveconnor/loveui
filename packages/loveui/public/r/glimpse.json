@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "glimpse",
   "description": "Link preview tooltip displaying fetched metadata.",
   "registryDependencies": [
-    "@loveui/glimpse"
+    "@love-ui/glimpse"
   ],
   "files": [
     {

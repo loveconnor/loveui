@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-metric-actions",
   "description": "Metric card with actions",
   "registryDependencies": [
-    "@loveui/badge",
-    "@loveui/button",
-    "@loveui/card",
-    "@loveui/menu",
-    "@loveui/separator"
+    "@love-ui/badge",
+    "@love-ui/button",
+    "@love-ui/card",
+    "@love-ui/menu",
+    "@love-ui/separator"
   ],
   "files": [
     {

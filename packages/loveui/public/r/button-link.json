@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "button-link",
   "description": "Link button",
   "registryDependencies": [
-    "@loveui/button"
+    "@love-ui/button"
   ],
   "files": [
     {

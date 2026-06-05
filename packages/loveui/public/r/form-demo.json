@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "form-demo",
   "description": "Input in a form",
   "registryDependencies": [
-    "@loveui/form",
-    "@loveui/field",
-    "@loveui/button"
+    "@love-ui/form",
+    "@love-ui/field",
+    "@love-ui/button"
   ],
   "files": [
     {

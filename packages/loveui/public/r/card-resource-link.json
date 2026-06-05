@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "card-resource-link",
   "description": "Resource link card",
   "registryDependencies": [
-    "@loveui/card"
+    "@love-ui/card"
   ],
   "files": [
     {

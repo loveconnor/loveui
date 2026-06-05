@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "sidebar-nav",
   "description": "Sidebar navigation layout",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/separator"
+    "@love-ui/button",
+    "@love-ui/separator"
   ],
   "files": [
     {

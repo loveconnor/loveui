@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "preview-card-profile",
   "description": "Preview Card Profile example",
   "registryDependencies": [
-    "@loveui/avatar",
-    "@loveui/button",
-    "@loveui/preview-card"
+    "@love-ui/avatar",
+    "@love-ui/button",
+    "@love-ui/preview-card"
   ],
   "files": [
     {

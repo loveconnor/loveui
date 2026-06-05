@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "textarea-lg",
   "description": "Large textarea",
   "registryDependencies": [
-    "@loveui/textarea"
+    "@love-ui/textarea"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "input-lg",
   "description": "Large input",
   "registryDependencies": [
-    "@loveui/input"
+    "@love-ui/input"
   ],
   "files": [
     {

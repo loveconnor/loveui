@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "empty-upload-queue",
   "description": "Empty Upload Queue example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/empty"
+    "@love-ui/button",
+    "@love-ui/empty"
   ],
   "files": [
     {

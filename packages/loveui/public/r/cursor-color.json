@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "cursor-color",
   "description": "Cursor with custom brand color",
   "registryDependencies": [
-    "@loveui/cursor"
+    "@love-ui/cursor"
   ],
   "files": [
     {

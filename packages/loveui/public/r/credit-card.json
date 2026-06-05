@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "credit-card",
   "description": "Interactive credit card front and back with flip motion.",
   "registryDependencies": [
-    "@loveui/credit-card"
+    "@love-ui/credit-card"
   ],
   "files": [
     {

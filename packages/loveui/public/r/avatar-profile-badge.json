@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "avatar-profile-badge",
   "description": "Profile with badge",
   "registryDependencies": [
-    "@loveui/avatar",
-    "@loveui/badge"
+    "@love-ui/avatar",
+    "@love-ui/badge"
   ],
   "files": [
     {

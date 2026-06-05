@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "autocomplete-autohighlight",
   "description": "Autocomplete auto highlighting the first option",
   "registryDependencies": [
-    "@loveui/autocomplete"
+    "@love-ui/autocomplete"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "video-player",
   "description": "Video player with transport, time, and volume controls.",
   "registryDependencies": [
-    "@loveui/video-player"
+    "@love-ui/video-player"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tree-no-lines",
   "description": "Tree view without connector lines for a cleaner look.",
   "registryDependencies": [
-    "@loveui/tree"
+    "@love-ui/tree"
   ],
   "files": [
     {

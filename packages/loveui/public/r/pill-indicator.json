@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "pill-indicator",
   "description": "Pill with a leading indicator dot.",
   "registryDependencies": [
-    "@loveui/pill"
+    "@love-ui/pill"
   ],
   "files": [
     {

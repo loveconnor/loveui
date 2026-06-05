@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "skeleton-dashboard-card",
   "description": "Skeleton Dashboard Card example",
   "registryDependencies": [
-    "@loveui/skeleton"
+    "@love-ui/skeleton"
   ],
   "files": [
     {

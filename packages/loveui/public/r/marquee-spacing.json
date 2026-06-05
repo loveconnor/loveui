@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "marquee-spacing",
   "description": "Marquee with adjustable spacing between items.",
   "registryDependencies": [
-    "@loveui/marquee"
+    "@love-ui/marquee"
   ],
   "files": [
     {

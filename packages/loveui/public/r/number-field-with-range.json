@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "number-field-with-range",
   "description": "A number field with min/max constraints",
   "registryDependencies": [
-    "@loveui/number-field"
+    "@love-ui/number-field"
   ],
   "files": [
     {

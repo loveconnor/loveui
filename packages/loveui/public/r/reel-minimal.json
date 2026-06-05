@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "reel-minimal",
   "description": "Minimal reel showing progress and navigation only.",
   "registryDependencies": [
-    "@loveui/reel"
+    "@love-ui/reel"
   ],
   "files": [
     {

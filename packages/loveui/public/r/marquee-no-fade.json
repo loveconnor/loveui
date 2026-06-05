@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "marquee-no-fade",
   "description": "Marquee without fade edges.",
   "registryDependencies": [
-    "@loveui/marquee"
+    "@love-ui/marquee"
   ],
   "files": [
     {

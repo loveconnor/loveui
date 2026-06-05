@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "table-demo",
   "description": "Basic table",
   "registryDependencies": [
-    "@loveui/table",
-    "@loveui/badge"
+    "@love-ui/table",
+    "@love-ui/badge"
   ],
   "files": [
     {

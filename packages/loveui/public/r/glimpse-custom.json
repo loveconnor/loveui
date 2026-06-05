@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "glimpse-custom",
   "description": "Glimpse preview with custom surface styling.",
   "registryDependencies": [
-    "@loveui/glimpse"
+    "@love-ui/glimpse"
   ],
   "files": [
     {

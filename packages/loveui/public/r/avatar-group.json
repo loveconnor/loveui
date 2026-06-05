@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "avatar-group",
   "description": "Overlapping avatar group",
   "registryDependencies": [
-    "@loveui/avatar"
+    "@love-ui/avatar"
   ],
   "files": [
     {

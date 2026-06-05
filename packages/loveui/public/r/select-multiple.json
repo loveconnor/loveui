@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "select-multiple",
   "description": "Multiple selection with formatted value",
   "registryDependencies": [
-    "@loveui/select"
+    "@love-ui/select"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "scroll-area-horizontal",
   "description": "Scroll area - horizontal",
   "registryDependencies": [
-    "@loveui/scroll-area"
+    "@love-ui/scroll-area"
   ],
   "files": [
     {

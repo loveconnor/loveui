@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tags",
   "description": "Tags input with selected label chips.",
   "registryDependencies": [
-    "@loveui/tags"
+    "@love-ui/tags"
   ],
   "files": [
     {

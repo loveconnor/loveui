@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "qr-code-robust",
   "description": "QR code with enhanced error correction.",
   "registryDependencies": [
-    "@loveui/qr-code"
+    "@love-ui/qr-code"
   ],
   "files": [
     {

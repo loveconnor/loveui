@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "banner-themes",
   "description": "Banner with custom color themes.",
   "registryDependencies": [
-    "@loveui/banner"
+    "@love-ui/banner"
   ],
   "files": [
     {

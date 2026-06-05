@@ -1,14 +1,14 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "dialog-close-confirmation",
   "description": "Prompt before closing with unsaved changes",
   "registryDependencies": [
-    "@loveui/alert",
-    "@loveui/dialog",
-    "@loveui/button",
-    "@loveui/form",
-    "@loveui/field",
-    "@loveui/textarea"
+    "@love-ui/alert",
+    "@love-ui/dialog",
+    "@love-ui/button",
+    "@love-ui/form",
+    "@love-ui/field",
+    "@love-ui/textarea"
   ],
   "files": [
     {

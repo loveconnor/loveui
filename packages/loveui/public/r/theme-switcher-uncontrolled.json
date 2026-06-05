@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "theme-switcher-uncontrolled",
   "description": "Uncontrolled theme switcher emitting change events.",
   "registryDependencies": [
-    "@loveui/theme-switcher"
+    "@love-ui/theme-switcher"
   ],
   "files": [
     {

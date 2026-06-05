@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "relative-time",
   "description": "Relative time component comparing multiple timezones.",
   "registryDependencies": [
-    "@loveui/relative-time"
+    "@love-ui/relative-time"
   ],
   "files": [
     {

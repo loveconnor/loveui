@@ -83,8 +83,8 @@ const REGISTRY_HOMEPAGE = "https://loveui.dev";
 const ICON_REGISTRY_DIR = "registry/icons"; // path shown inside registry item
 
 const SCHEMAS = {
-  registry: "https://ui.shadcn.com/schema/registry.json",
-  item:     "https://ui.shadcn.com/schema/registry-item.json",
+  registry: "https://www.loveui.dev/schema/registry.json",
+  item:     "https://www.loveui.dev/schema/registry-item.json",
 } as const;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -202,14 +202,14 @@ function main(): void {
   writeJson(path.join(OUTPUT_DIR, "icons-all.json"), allItem);
 
   // 5. Summary
-  console.log(`\n✅ shadcn registry generated!\n`);
+  console.log(`\n✅ love-ui registry generated!\n`);
   console.log(`   Icons      : ${icons.length}`);
   console.log(`   Input      : ${INPUT_FILE}`);
   console.log(`   Output     : ${OUTPUT_DIR}\n`);
   console.log(`   Install one icon:`);
-  console.log(`   npx shadcn add ${REGISTRY_HOMEPAGE}/r/<icon-id>.json\n`);
+  console.log(`   npx love-ui add ${REGISTRY_HOMEPAGE}/r/<icon-id>.json\n`);
   console.log(`   Install all icons:`);
-  console.log(`   npx shadcn add ${REGISTRY_HOMEPAGE}/r/icons-all.json\n`);
+  console.log(`   npx love-ui add ${REGISTRY_HOMEPAGE}/r/icons-all.json\n`);
 }
 
 main();

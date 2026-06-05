@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "tooltip-icon-row",
   "description": "Tooltip Icon Row example",
   "registryDependencies": [
-    "@loveui/button",
-    "@loveui/tooltip"
+    "@love-ui/button",
+    "@love-ui/tooltip"
   ],
   "files": [
     {

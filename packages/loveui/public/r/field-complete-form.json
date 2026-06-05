@@ -1,13 +1,13 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "field-complete-form",
   "description": "Complete form built with field",
   "registryDependencies": [
-    "@loveui/field",
-    "@loveui/select",
-    "@loveui/checkbox",
-    "@loveui/form",
-    "@loveui/button"
+    "@love-ui/field",
+    "@love-ui/select",
+    "@love-ui/checkbox",
+    "@love-ui/form",
+    "@love-ui/button"
   ],
   "files": [
     {

@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "gantt-lanes",
   "description": "Gantt chart using lanes to group reservations by room.",
   "registryDependencies": [
-    "@loveui/gantt",
+    "@love-ui/gantt",
     "@faker-js/faker",
     "lodash.groupby"
   ],

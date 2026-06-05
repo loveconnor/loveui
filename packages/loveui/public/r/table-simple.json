@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "table-simple",
   "description": "Sortable project table with compact columns.",
   "registryDependencies": [
-    "@loveui/table",
+    "@love-ui/table",
     "@faker-js/faker"
   ],
   "files": [

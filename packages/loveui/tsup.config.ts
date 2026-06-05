@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsup"
 
 export default defineConfig({
   entry: ["src/index.ts", "src/mcp-server.ts"],
@@ -7,5 +7,5 @@ export default defineConfig({
   clean: true,
   minify: true,
   dts: false,
-  format: ["esm"]
-});
+  format: ["esm"],
+})

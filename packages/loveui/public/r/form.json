@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "form",
   "description": "A complete form block with multiple input types.",
   "registryDependencies": [
-    "@loveui/form"
+    "@love-ui/form"
   ],
   "files": [
     {

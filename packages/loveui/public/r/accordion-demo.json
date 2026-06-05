@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "accordion-demo",
   "description": "Basic accordion",
   "registryDependencies": [
-    "@loveui/accordion"
+    "@love-ui/accordion"
   ],
   "files": [
     {

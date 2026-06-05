@@ -9,7 +9,7 @@ const registryDir = path.join(packageRoot, "public", "r");
 const registryIndexPath = path.join(registryDir, "registry.json");
 
 const EXCLUDED_REGISTRY_NAMES = new Set([
-  "shadcn-ui",
+  "loveui-ui",
   "typescript-config",
   "eslint-config",
   "patterns",

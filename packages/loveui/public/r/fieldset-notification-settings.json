@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "fieldset-notification-settings",
   "description": "Fieldset Notification Settings example",
   "registryDependencies": [
-    "@loveui/checkbox",
-    "@loveui/field",
-    "@loveui/fieldset"
+    "@love-ui/checkbox",
+    "@love-ui/field",
+    "@love-ui/fieldset"
   ],
   "files": [
     {

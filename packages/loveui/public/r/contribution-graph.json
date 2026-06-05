@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "contribution-graph",
   "description": "Contribution graph showing activity heatmap.",
   "registryDependencies": [
-    "@loveui/contribution-graph",
+    "@love-ui/contribution-graph",
     "@faker-js/faker"
   ],
   "files": [

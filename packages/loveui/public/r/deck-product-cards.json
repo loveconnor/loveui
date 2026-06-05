@@ -1,10 +1,10 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "deck-product-cards",
   "description": "Product card deck with swipe gestures.",
   "registryDependencies": [
-    "@loveui/deck",
-    "@loveui/badge"
+    "@love-ui/deck",
+    "@love-ui/badge"
   ],
   "files": [
     {

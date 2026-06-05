@@ -1,9 +1,9 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "$schema": "https://www.loveui.dev/schema/registry-item.json",
   "name": "ticker-percent",
   "description": "Stock ticker list with percentage change display.",
   "registryDependencies": [
-    "@loveui/ticker"
+    "@love-ui/ticker"
   ],
   "files": [
     {
