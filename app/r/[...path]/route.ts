@@ -1,14 +1,9 @@
-import path from "node:path";
-
 import { registryFileResponse } from "@/lib/registry-file-response";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const FREE_REGISTRY_ROOT = path.join(
-  /* turbopackIgnore: true */ process.cwd(),
-  "packages/loveui/public/r"
-);
+const FREE_REGISTRY_ROOT = "packages/loveui/public/r";
 
 type RouteContext = {
   params: Promise<{ path?: string[] }>;

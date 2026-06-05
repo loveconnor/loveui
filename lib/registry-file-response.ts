@@ -34,7 +34,7 @@ export async function registryFileResponse({
 
   try {
     const content = await readFile(
-      path.join(/* turbopackIgnore: true */ root, fileName),
+      path.join(/* turbopackIgnore: true */ process.cwd(), root, fileName),
       "utf8"
     );
 

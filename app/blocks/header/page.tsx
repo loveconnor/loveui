@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { headers } from 'next/headers';
 import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
@@ -331,7 +332,12 @@ async function getHeaderBlockSourceFiles(
   return Promise.all(
     blockFiles.map(async (file) => {
       const content = await readFile(
-        `${process.cwd()}/${registryBase}/${blockId}/${file}`,
+        path.join(
+          /* turbopackIgnore: true */ process.cwd(),
+          registryBase,
+          blockId,
+          file,
+        ),
         'utf8',
       );
 

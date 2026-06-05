@@ -1,5 +1,3 @@
-import path from "node:path";
-
 import { NextRequest, NextResponse } from "next/server";
 
 import { isProRegistryRequestAuthorized } from "@/lib/pro-registry-auth";
@@ -8,10 +6,7 @@ import { registryFileResponse } from "@/lib/registry-file-response";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const PRO_REGISTRY_ROOT = path.join(
-  /* turbopackIgnore: true */ process.cwd(),
-  "packages/loveui-pro/public/r"
-);
+const PRO_REGISTRY_ROOT = "packages/loveui-pro/public/r";
 
 type RouteContext = {
   params: Promise<{ path?: string[] }>;
