@@ -391,7 +391,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<'li'>) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  'peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none transition-colors hover:bg-muted/70 hover:text-sidebar-accent-foreground dark:hover:bg-white/10 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!justify-center group-data-[collapsible=icon]:!gap-0 group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:[&>*:not(:first-child)]:hidden [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate',
+  'peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none transition-colors hover:bg-muted/70 hover:text-sidebar-accent-foreground dark:hover:bg-white/10 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!justify-center group-data-[collapsible=icon]:!gap-0 group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:[&>*:not(:first-child)]:hidden [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate',
   {
     variants: {
       variant: {
@@ -433,7 +433,7 @@ function SidebarMenuButton({
     'data-sidebar': 'menu-button',
     'data-slot': 'sidebar-menu-button',
     'data-size': size,
-    'data-active': isActive,
+    'data-active': isActive ? true : undefined,
     className: slotClassName,
   };
 
@@ -573,7 +573,7 @@ function SidebarMenuSubButton({
   size?: 'sm' | 'md';
 }) {
   const slotClassName = cn(
-    'flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground data-[size=md]:text-sm data-[size=sm]:text-xs [&>span:last-child]:truncate [&>svg]:size-4',
+    'flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground data-[size=md]:text-sm data-[size=sm]:text-xs [&>span:last-child]:truncate [&>svg]:size-4',
     className,
   );
   const slotProps = {
@@ -581,7 +581,7 @@ function SidebarMenuSubButton({
     'data-sidebar': 'menu-sub-button',
     'data-slot': 'sidebar-menu-sub-button',
     'data-size': size,
-    'data-active': isActive,
+    'data-active': isActive ? true : undefined,
     className: slotClassName,
   };
 
