@@ -42,6 +42,14 @@ export async function GET(_request: Request, context: RouteContext) {
     });
   }
 
+  if (routePath[0] === "colors" && routePath.length === 2) {
+    return registryFileResponse({
+      root: FREE_REGISTRY_ROOT,
+      name: "colors-zinc.json",
+      cacheControl: CACHE_CONTROL,
+    });
+  }
+
   return registryFileResponse({
     root: FREE_REGISTRY_ROOT,
     name: registryPath,
