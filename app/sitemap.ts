@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { blockLinks } from '@/lib/blocks-page-tree';
 import { componentLinks } from '@/lib/components-page-tree';
+import { assetCollections } from '@/lib/icons-registry';
 import { source } from '@/lib/source';
 import { absoluteUrl, siteUrl } from '@/lib/seo';
 
@@ -40,6 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const iconPages = assetCollections.map((collection) =>
+    sitemapEntry(collection.url, {
+      changeFrequency: 'weekly',
+      priority: collection.slug === 'icons' ? 0.85 : 0.8,
+    }),
+  );
+
   return [
     sitemapEntry('/', { changeFrequency: 'monthly', priority: 0.6 }),
     sitemapEntry('/components', { changeFrequency: 'weekly', priority: 0.95 }),
@@ -49,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...docsPages,
     ...componentPages,
     ...blockPages,
+    ...iconPages,
   ].filter((entry, index, entries) => {
     const firstIndex = entries.findIndex((item) => item.url === entry.url);
     return firstIndex === index && entry.url.startsWith(siteUrl);

@@ -1,5 +1,6 @@
 import { constants } from "node:fs";
-import { access, cp, mkdir, readdir, rm } from "node:fs/promises";
+import { access, copyFile, cp, mkdir, mkdtemp, readdir, rm } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -12,6 +13,30 @@ const sourceSkillsRoot = path.join(repoRoot, "public", "loveui-skills");
 const targetSkillsRoot = path.join(packageRoot, "skills", "loveui-skills");
 
 await access(sourceRegistryRoot, constants.R_OK);
+
+const sourceFiles = await collectFiles(sourceRegistryRoot);
+const sourceFileSet = new Set(sourceFiles);
+const preservedRegistryTempRoot = await mkdtemp(
+  path.join(os.tmpdir(), "loveui-registry-")
+);
+const preservedRegistryFiles = [];
+
+try {
+  await access(targetRegistryRoot, constants.R_OK);
+  await cp(targetRegistryRoot, preservedRegistryTempRoot, {
+    recursive: true,
+    force: true
+  });
+
+  for (const file of await collectFiles(preservedRegistryTempRoot)) {
+    if (!sourceFileSet.has(file)) {
+      preservedRegistryFiles.push(file);
+    }
+  }
+} catch {
+  // The package registry may not exist on a fresh build.
+}
+
 await rm(targetRegistryRoot, { recursive: true, force: true });
 await mkdir(path.dirname(targetRegistryRoot), { recursive: true });
 await cp(sourceRegistryRoot, targetRegistryRoot, {
@@ -19,12 +44,25 @@ await cp(sourceRegistryRoot, targetRegistryRoot, {
   force: true
 });
 
-const sourceFiles = await collectFiles(sourceRegistryRoot);
-const targetFiles = await collectFiles(targetRegistryRoot);
+for (const file of preservedRegistryFiles) {
+  const sourceFile = path.join(preservedRegistryTempRoot, file);
+  const targetFile = path.join(targetRegistryRoot, file);
 
-if (sourceFiles.length !== targetFiles.length) {
+  await mkdir(path.dirname(targetFile), { recursive: true });
+  await copyFile(sourceFile, targetFile);
+}
+
+const targetFiles = await collectFiles(targetRegistryRoot);
+const expectedRegistryFiles = new Set([
+  ...sourceFiles,
+  ...preservedRegistryFiles
+]);
+
+await rm(preservedRegistryTempRoot, { recursive: true, force: true });
+
+if (expectedRegistryFiles.size !== targetFiles.length) {
   throw new Error(
-    `Registry copy mismatch: expected ${sourceFiles.length} files, copied ${targetFiles.length}`
+    `Registry copy mismatch: expected ${expectedRegistryFiles.size} files, copied ${targetFiles.length}`
   );
 }
 
@@ -53,7 +91,7 @@ if (sourceSkillFiles.length !== targetSkillFiles.length) {
 
 console.log(`Copied ${sourceSkillFiles.length} skill files into ${path.relative(repoRoot, targetSkillsRoot)}`);
 
-async function collectFiles(root, options = {}) {
+async function collectFiles(root, options = {}, baseRoot = root) {
   const files = [];
   const entries = await readdir(root, { withFileTypes: true });
   const ignoredNames = options.ignoredNames ?? new Set();
@@ -64,13 +102,13 @@ async function collectFiles(root, options = {}) {
     const fullPath = path.join(root, entry.name);
 
     if (entry.isDirectory()) {
-      const nestedFiles = await collectFiles(fullPath, options);
+      const nestedFiles = await collectFiles(fullPath, options, baseRoot);
       files.push(...nestedFiles);
       continue;
     }
 
     if (entry.isFile()) {
-      files.push(path.relative(root, fullPath));
+      files.push(path.relative(baseRoot, fullPath));
     }
   }
 

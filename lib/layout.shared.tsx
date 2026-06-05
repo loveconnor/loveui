@@ -5,6 +5,7 @@ import {
   chartsRoute,
   componentsRoute,
   docsRoute,
+  iconsRoute,
   gitConfig,
 } from './shared';
 import { ThemeSwitch } from '@/components/theme-switch';
@@ -52,6 +53,12 @@ export function baseOptions(): BaseLayoutProps {
       {
         text: 'Charts',
         url: chartsRoute,
+        active: 'nested-url',
+        on: 'nav',
+      },
+      {
+        text: 'Icons',
+        url: iconsRoute,
         active: 'nested-url',
         on: 'nav',
       },

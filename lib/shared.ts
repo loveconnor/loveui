@@ -3,6 +3,7 @@ export const docsRoute = '/docs';
 export const componentsRoute = '/components';
 export const blocksRoute = '/blocks';
 export const chartsRoute = '/charts';
+export const iconsRoute = '/icons';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';
 

@@ -6,6 +6,7 @@ import {
   BookOpenIcon,
   FileTextIcon,
   HashIcon,
+  ImageIcon,
   LifeBuoyIcon,
   MessageSquareIcon,
   SearchIcon,
@@ -63,6 +64,13 @@ const fallbackLinks = [
     content: 'Blocks',
     url: '/blocks',
     icon: <MessageSquareIcon />,
+  },
+  {
+    id: 'icons',
+    type: 'page' as const,
+    content: 'Icons',
+    url: '/icons',
+    icon: <ImageIcon />,
   },
 ];
 

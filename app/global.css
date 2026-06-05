@@ -176,6 +176,15 @@
         minmax(0, min(980px, calc(100vw - var(--fd-sidebar-width) - var(--fd-toc-width) - 3rem)))
         var(--fd-toc-width) minmax(0, 1fr) !important;
     }
+
+    #nd-docs-layout.icons-docs-layout[data-sidebar-collapsed="true"] {
+      grid-template:
+        "sidebar header header header"
+        "sidebar toc-popover toc-popover ."
+        "sidebar main main main" 1fr
+        / var(--fd-sidebar-col) minmax(0, 1fr)
+        minmax(0, min(1900px, calc(100vw - 2rem))) minmax(0, 1fr) !important;
+    }
   }
 
   #nd-docs-layout[data-sidebar-collapsed="true"] [data-sidebar-placeholder] {
@@ -185,6 +194,24 @@
 
   #nd-docs-layout [data-sidebar-panel] {
     display: none !important;
+  }
+
+  .icons-docs-layout #nd-sidebar [data-icons-sidebar-item] {
+    width: 100%;
+  }
+
+  .icons-docs-layout #nd-sidebar [data-icons-sidebar-item] > span {
+    width: 100%;
+  }
+
+  .icons-docs-layout #nd-sidebar [data-radix-scroll-area-viewport] > div {
+    padding-bottom: 5rem !important;
+  }
+
+  .icons-docs-layout #nd-sidebar a[aria-label="GitHub"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin-inline-end: auto !important;
   }
 
   .dark #nd-sidebar p.inline-flex {

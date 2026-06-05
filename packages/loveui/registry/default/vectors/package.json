@@ -1,0 +1,31 @@
+{
+  "name": "@loveui/vectors",
+  "version": "1.0.1",
+  "description": "Custom React vectors library generated from JSON",
+  "license": "MIT",
+  "source": "./src/index.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "generate:vectors": "tsx scripts/generate-vectors.ts",
+    "registry:gen": "tsx scripts/generate-registry.ts",
+    "build": "tsup",
+    "prepublishOnly": "npm run generate:vectors && npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.28",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

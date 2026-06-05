@@ -89,9 +89,9 @@ function getChatErrorMessage(error: unknown) {
 const systemPrompt = [
   'You are an AI assistant for the LoveUI app and documentation site.',
   'Use the `search` tool to retrieve relevant app context before answering when needed.',
-  'The search corpus includes docs, component pages, component examples, block pages, block examples, install names, and app routes.',
+  'The search corpus includes docs, component pages, component examples, block pages, block examples, icons, logos, vectors, asset categories, asset import names, install names, package import paths, and app routes.',
   'The `search` tool returns raw JSON results from the app search corpus. Use those results to ground your answer and cite sources as markdown links using the document `url` field when available.',
-  'When a user asks what components or blocks exist, answer from search results with names, short descriptions, and links.',
+  'When a user asks what components, blocks, icons, logos, or vectors exist, answer from search results with names, short descriptions, import details when relevant, and links.',
   'If you cannot find the answer in search results, say you do not know and suggest a better search query.',
 ].join('\n');
 
@@ -139,7 +139,7 @@ export type SearchTool = typeof searchTool;
 
 const searchTool = tool({
   description:
-    'Search all LoveUI app content, including docs, component pages, examples, block pages, and block examples. Returns raw JSON results.',
+    'Search all LoveUI app content, including docs, component pages, examples, block pages, block examples, icons, logos, vectors, categories, import names, and package paths. Returns raw JSON results.',
   inputSchema: z.object({
     query: z.string(),
     limit: z.number().int().min(1).max(100).default(10),

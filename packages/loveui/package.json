@@ -1,6 +1,6 @@
 {
   "name": "love-ui",
-  "version": "1.2.18",
+  "version": "1.2.19",
   "private": false,
   "license": "MIT",
   "type": "module",
@@ -19,6 +19,21 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
+    },
+    "./icons": {
+      "types": "./registry/default/icons/dist/index.d.ts",
+      "import": "./registry/default/icons/dist/index.mjs",
+      "require": "./registry/default/icons/dist/index.cjs"
+    },
+    "./logos": {
+      "types": "./registry/default/logos/dist/index.d.ts",
+      "import": "./registry/default/logos/dist/index.mjs",
+      "require": "./registry/default/logos/dist/index.cjs"
+    },
+    "./vectors": {
+      "types": "./registry/default/vectors/dist/index.d.ts",
+      "import": "./registry/default/vectors/dist/index.mjs",
+      "require": "./registry/default/vectors/dist/index.cjs"
     },
     "./registry/*": "./registry/*",
     "./package.json": "./package.json"

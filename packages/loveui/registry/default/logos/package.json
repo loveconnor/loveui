@@ -1,0 +1,30 @@
+{
+  "name": "@loveui/logos",
+  "version": "1.0.3",
+  "description": "Custom React icon library generated from JSON",
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "generate:logos": "tsx scripts/generate-logos.ts",
+    "registry:gen": "tsx scripts/generate-registry.ts",
+    "build": "tsup",
+    "prepublishOnly": "npm run generate:logos && npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.28",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

@@ -6,6 +6,14 @@ import {
   getComponentExampleNames,
 } from '@/lib/component-examples';
 import { componentLinks } from '@/lib/components-page-tree';
+import {
+  assetCollections,
+  formatAssetLabel,
+  getAssetCategoryUrl,
+  getAssetCollection,
+  type AssetCollection,
+  type IconRegistryItem,
+} from '@/lib/icons-registry';
 import { source } from '@/lib/source';
 
 export type SearchDocumentType =
@@ -13,6 +21,8 @@ export type SearchDocumentType =
   | 'docs'
   | 'components'
   | 'component'
+  | 'icons'
+  | 'icon-asset'
   | 'blocks'
   | 'block'
   | 'block-example';
@@ -53,6 +63,9 @@ export async function getSearchDocuments(): Promise<SearchDocument[]> {
     ...getComponentDocuments(),
     getBlocksIndexDocument(),
     ...getBlockDocuments(blockExamples),
+    getIconsIndexDocument(),
+    ...getIconCollectionDocuments(),
+    ...getIconAssetDocuments(),
     ...blockExamples,
   ];
 }
@@ -205,6 +218,107 @@ function getBlockDocuments(blockExamples: SearchDocument[]): SearchDocument[] {
       ].join('\n'),
     };
   });
+}
+
+function getIconsIndexDocument(): SearchDocument {
+  return {
+    id: '/icons',
+    type: 'icons',
+    url: '/icons',
+    title: 'Icons',
+    description:
+      'Browse LoveUI icons, logos, and vectors for product interfaces.',
+    content: assetCollections
+      .map((collection) => {
+        const items = getAssetCollection(collection.slug);
+        const categories = getAssetCategories(collection.slug);
+
+        return `${collection.name}. ${collection.description} URL: ${collection.url}. Asset count: ${items.length}. Categories: ${categories.join(', ')}`;
+      })
+      .join('\n'),
+  };
+}
+
+function getIconCollectionDocuments(): SearchDocument[] {
+  return assetCollections.map((collection) => {
+    const items = getAssetCollection(collection.slug);
+    const categories = getAssetCategories(collection.slug);
+
+    return {
+      id: collection.url,
+      type: 'icons',
+      url: collection.url,
+      title: collection.name,
+      description: collection.description,
+      content: [
+        `LoveUI ${collection.name}.`,
+        collection.description,
+        `Route: ${collection.url}`,
+        `Asset count: ${items.length}`,
+        `Categories: ${categories.join(', ')}`,
+      ].join('\n'),
+    };
+  });
+}
+
+function getIconAssetDocuments(): SearchDocument[] {
+  return assetCollections.flatMap((collection) =>
+    getAssetCollection(collection.slug).map((item) => {
+      const importName = getAssetImportName(item);
+      const collectionLabel = collection.name;
+      const categoryLabel = formatAssetLabel(item.category);
+      const styleLabel = formatAssetLabel(item.variant);
+      const packagePath = `love-ui/${item.collection}`;
+      const aliases = [
+        item.id,
+        item.baseId,
+        item.fileName.replace(/\.svg$/, ''),
+        item.sourcePath.replace(/[/.]/g, ' '),
+        item.id.replace(/[-_]/g, ' '),
+        item.baseId.replace(/[-_]/g, ' '),
+      ];
+
+      return {
+        id: `/icons/assets/${item.collection}/${item.sourcePath}`,
+        type: 'icon-asset' as const,
+        url: getAssetCategoryUrl(item.collection, item.category, item.variant),
+        title: item.name,
+        description: `${item.name} ${collectionLabel.toLowerCase()} in ${categoryLabel}.`,
+        content: [
+          `${item.name} ${collectionLabel.toLowerCase()}.`,
+          `LoveUI ${collectionLabel}.`,
+          `Collection: ${collectionLabel}`,
+          `Category: ${categoryLabel}`,
+          `Style: ${styleLabel}`,
+          `Variant: ${item.variant}`,
+          `Import name: ${importName}`,
+          `Package import: ${packagePath}`,
+          `Import statement: import { ${importName} } from "${packagePath}"`,
+          'Install command: npm install love-ui@latest',
+          'Install command: pnpm add love-ui@latest',
+          `Preview URL: ${item.previewUrl}`,
+          `Aliases: ${aliases.join(', ')}`,
+          `Tags: ${(item.tags ?? []).join(', ')}`,
+        ].join('\n'),
+      };
+    }),
+  );
+}
+
+function getAssetCategories(collection: AssetCollection) {
+  return Array.from(
+    new Set(getAssetCollection(collection).map((item) => item.category)),
+  ).sort((a, b) => a.localeCompare(b));
+}
+
+function getAssetImportName(item: IconRegistryItem) {
+  const fileName = item.path.split('/').pop()?.replace(/\.tsx$/, '') ?? item.id;
+
+  return fileName
+    .split(/[^a-zA-Z0-9]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 }
 
 async function getBlockExampleDocuments(): Promise<SearchDocument[]> {
