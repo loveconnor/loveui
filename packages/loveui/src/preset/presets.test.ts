@@ -13,7 +13,7 @@ const mockPreset = {
   style: "new-york-v4",
   baseColor: "neutral",
   theme: "default",
-  iconLibrary: "lucide",
+  iconLibrary: "love-ui/icons",
   font: "inter",
   fontHeading: "inherit",
   rtl: false,
@@ -52,7 +52,7 @@ describe("buildInitUrl", () => {
     expect(parsed.searchParams.get("style")).toBe("new-york-v4")
     expect(parsed.searchParams.get("baseColor")).toBe("neutral")
     expect(parsed.searchParams.get("theme")).toBe("default")
-    expect(parsed.searchParams.get("iconLibrary")).toBe("lucide")
+    expect(parsed.searchParams.get("iconLibrary")).toBe("love-ui/icons")
     expect(parsed.searchParams.get("font")).toBe("inter")
     expect(parsed.searchParams.get("rtl")).toBe("false")
     expect(parsed.searchParams.get("menuAccent")).toBe("subtle")

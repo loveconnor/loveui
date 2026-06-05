@@ -19,6 +19,7 @@ export const DEFAULT_UTILS = "@/lib/utils"
 export const DEFAULT_TAILWIND_CSS = "app/globals.css"
 export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
 export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
+export const DEFAULT_ICON_LIBRARY = "love-ui/icons"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
@@ -35,10 +36,7 @@ export async function getConfig(cwd: string) {
     return null
   }
 
-  // Set default icon library if not provided.
-  if (!config.iconLibrary) {
-    config.iconLibrary = config.style === "new-york" ? "radix" : "lucide"
-  }
+  config.iconLibrary = DEFAULT_ICON_LIBRARY
 
   return await resolveConfigPaths(cwd, config)
 }

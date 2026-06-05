@@ -33,6 +33,7 @@ import {
 } from "@/src/utils/file-helper"
 import {
   DEFAULT_COMPONENTS,
+  DEFAULT_ICON_LIBRARY,
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
@@ -944,10 +945,7 @@ async function promptForMinimalConfig(
       ? opts.registryBaseConfig.tailwind.baseColor
       : "neutral"
   let cssVariables = defaultConfig.tailwind.cssVariables
-  let iconLibrary =
-    typeof opts.registryBaseConfig?.iconLibrary === "string"
-      ? opts.registryBaseConfig.iconLibrary
-      : defaultConfig.iconLibrary ?? "lucide"
+  const iconLibrary = DEFAULT_ICON_LIBRARY
 
   if (!opts.defaults && !opts.registryBaseConfig?.style) {
     const [styles, tailwindVersion] = await Promise.all([

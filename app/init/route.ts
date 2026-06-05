@@ -30,6 +30,7 @@ const MENU_COLORS = new Set([
 ]);
 
 const RADIUS_VALUES = new Set(["none", "small", "default", "large"]);
+const ICON_LIBRARY = "love-ui/icons";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -41,7 +42,6 @@ export function GET(request: NextRequest) {
   const menuAccent = readValue(params, "menuAccent", MENU_ACCENTS, "subtle");
   const menuColor = readValue(params, "menuColor", MENU_COLORS, "default");
   const radius = readValue(params, "radius", RADIUS_VALUES, "default");
-  const iconLibrary = params.get("iconLibrary") || "lucide";
   const rtl = params.get("rtl") === "true";
 
   if (!style || !baseColor || !menuAccent || !menuColor || !radius) {
@@ -61,7 +61,7 @@ export function GET(request: NextRequest) {
         baseColor,
         cssVariables: true,
       },
-      iconLibrary,
+      iconLibrary: ICON_LIBRARY,
       rtl,
       menuAccent,
       menuColor,

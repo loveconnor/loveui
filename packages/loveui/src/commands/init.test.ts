@@ -49,6 +49,7 @@ vi.mock("@/src/registry/api", () => ({
 
 vi.mock("@/src/utils/get-config", () => ({
   DEFAULT_COMPONENTS: "@/components",
+  DEFAULT_ICON_LIBRARY: "love-ui/icons",
   DEFAULT_TAILWIND_CONFIG: "tailwind.config.js",
   DEFAULT_TAILWIND_CSS: "app/globals.css",
   DEFAULT_UTILS: "@/lib/utils",
@@ -141,7 +142,7 @@ function createProjectConfig(cwd: string) {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     rtl: false,
     aliases: {
       components: "@/components",

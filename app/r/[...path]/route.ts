@@ -22,7 +22,7 @@ const BASE_INDEX_ITEM = {
   $schema: "https://www.loveui.dev/schema/registry-item.json",
   name: "index",
   type: "registry:style",
-  dependencies: ["class-variance-authority"],
+  dependencies: ["class-variance-authority", "love-ui"],
   registryDependencies: ["utils"],
 };
 

@@ -101,7 +101,7 @@ export function resolveInitUrl(
     style: preset.style,
     baseColor: preset.baseColor,
     theme: preset.theme,
-    iconLibrary: preset.iconLibrary,
+    iconLibrary: "love-ui/icons",
     font: preset.font,
     rtl: String(preset.rtl ?? false),
     menuAccent: preset.menuAccent,

@@ -586,7 +586,7 @@ export async function getProjectConfig(
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     aliases,
   }
 

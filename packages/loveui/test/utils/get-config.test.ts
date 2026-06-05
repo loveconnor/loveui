@@ -55,7 +55,7 @@ test("get project config from package imports", async () => {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     aliases: {
       components: "#components",
       ui: "#components/ui",
@@ -94,7 +94,7 @@ test("get project config from generic package import prefix", async () => {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     aliases: {
       components: "#custom/components",
       ui: "#custom/components/ui",
@@ -133,7 +133,7 @@ test("get project config from root package imports", async () => {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     aliases: {
       components: "#components",
       ui: "#components/ui",
@@ -175,7 +175,7 @@ test("get project config from partial package imports", async () => {
       cssVariables: true,
       prefix: "",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     aliases: {
       components: "#components",
       ui: "#components/ui",
@@ -253,7 +253,7 @@ test("get config", async () => {
       hooks: path.resolve(__dirname, "../fixtures/config-partial", "./hooks"),
       lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     registries: {
       "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
@@ -279,7 +279,7 @@ test("get config", async () => {
       hooks: "~/lib/hooks",
       ui: "~/ui",
     },
-    iconLibrary: "lucide",
+    iconLibrary: "love-ui/icons",
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-full"),
       tailwindConfig: path.resolve(
@@ -331,7 +331,7 @@ test("get config", async () => {
       components: "@/components",
       utils: "@/lib/utils",
     },
-    iconLibrary: "radix",
+    iconLibrary: "love-ui/icons",
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-jsx"),
       tailwindConfig: path.resolve(
@@ -378,7 +378,7 @@ test("get config", async () => {
       hooks: "#hooks",
       utils: "#utils",
     },
-    iconLibrary: "radix",
+    iconLibrary: "love-ui/icons",
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-imports"),
       tailwindConfig: path.resolve(
@@ -433,7 +433,7 @@ test("get config", async () => {
       lib: "#lib",
       utils: "#lib/utils",
     },
-    iconLibrary: "radix",
+    iconLibrary: "love-ui/icons",
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-imports-extensions"),
       tailwindConfig: "",
@@ -497,7 +497,7 @@ test("get config", async () => {
       hooks: "#hooks",
       utils: "@workspace/ui/lib/utils",
     },
-    iconLibrary: "radix",
+    iconLibrary: "love-ui/icons",
     resolvedPaths: {
       cwd: path.resolve(
         __dirname,

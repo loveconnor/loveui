@@ -83,6 +83,7 @@ export const PRESET_ICON_LIBRARIES = [
   "tabler",
   "phosphor",
   "remixicon",
+  "love-ui/icons",
 ] as const
 
 export const PRESET_FONTS = [
