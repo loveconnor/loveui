@@ -1,9 +1,9 @@
 import {
-  CheckIcon,
-  PlusIcon,
-  ShieldCheckIcon,
-  StarIcon,
-} from "lucide-react"
+  Check as CheckIcon,
+  Plus as PlusIcon,
+  ShieldCheck as ShieldCheckIcon,
+  Star as StarIcon,
+} from "love-ui/icons"
 
 import {
   Avatar,

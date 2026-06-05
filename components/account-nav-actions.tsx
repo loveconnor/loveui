@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { LogOutIcon } from "lucide-react"
+import { LogOut as LogOutIcon } from "love-ui/icons"
 import { authClient } from "@/lib/auth-client"
 
 export function AccountNavActions() {

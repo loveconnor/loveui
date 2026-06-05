@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/pill-button.tsx",
-      "content": "\"use client\"\n\nimport { XIcon } from \"lucide-react\"\n\nimport { Pill, PillButton } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    #loveui\n    <PillButton size=\"icon\" variant=\"ghost\">\n      <XIcon size={12} />\n    </PillButton>\n  </Pill>\n)\n\nexport default Example\n",
+      "content": "\"use client\"\n\nimport { X as XIcon } from \"love-ui/icons\"\n\nimport { Pill, PillButton } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    #loveui\n    <PillButton size=\"icon\" variant=\"ghost\">\n      <XIcon size={12} />\n    </PillButton>\n  </Pill>\n)\n\nexport default Example\n",
       "type": "registry:example"
     }
   ],

@@ -1,4 +1,4 @@
-import { DownloadIcon } from "lucide-react"
+import { Download as DownloadIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 

@@ -1,4 +1,4 @@
-import { CreditCardIcon } from "lucide-react"
+import { CreditCard as CreditCardIcon } from "love-ui/icons"
 
 import {
   Alert,

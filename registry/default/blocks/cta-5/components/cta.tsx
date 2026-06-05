@@ -5,7 +5,7 @@ import {
 	InputGroupInput,
 } from "@/registry/default/ui/input-group";
 import { FullWidthDivider } from "./full-width-divider";
-import { AtSignIcon, ArrowRightIcon } from "lucide-react";
+import { AtSign as AtSignIcon, ArrowRight as ArrowRightIcon } from "love-ui/icons";
 
 export function CallToAction() {
 	return (

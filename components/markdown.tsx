@@ -7,7 +7,7 @@ import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { Download, LayoutTemplate, RefreshCcw } from "lucide-react";
+import { Download, LayoutTemplate, RefreshCcw } from "love-ui/icons";
 import {
   CodeBlock,
   CodeBlockHeader,

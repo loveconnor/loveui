@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { Footer as FooterOne } from '@/registry/default/blocks/footer1/components/footer';
 import { Footer as FooterTwo } from '@/registry/default/blocks/footer2/components/footer';
@@ -25,8 +25,6 @@ const footerBlocks = [
       'app/page.tsx',
       'components/footer.tsx',
       'components/logo.tsx',
-      'components/icons/github-icon.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
   {
@@ -40,9 +38,6 @@ const footerBlocks = [
       'components/footer.tsx',
       'components/full-width-divider.tsx',
       'components/logo.tsx',
-      'components/icons/github-icon.tsx',
-      'components/icons/instagram-icon.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
   {
@@ -55,10 +50,6 @@ const footerBlocks = [
       'app/page.tsx',
       'components/footer.tsx',
       'components/logo.tsx',
-      'components/icons/github-icon.tsx',
-      'components/icons/instagram-icon.tsx',
-      'components/icons/linkedin-icon.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
   {
@@ -70,10 +61,6 @@ const footerBlocks = [
     files: [
       'app/page.tsx',
       'components/footer.tsx',
-      'components/icons/github-icon.tsx',
-      'components/icons/instagram-icon.tsx',
-      'components/icons/linkedin-icon.tsx',
-      'components/icons/x-icon.tsx',
       'components/logo.tsx',
     ],
   },
@@ -87,12 +74,6 @@ const footerBlocks = [
       'app/page.tsx',
       'components/footer.tsx',
       'components/logo.tsx',
-      'components/icons/apple-icon.tsx',
-      'components/icons/facebook-icon.tsx',
-      'components/icons/google-play-icon.tsx',
-      'components/icons/instagram-icon.tsx',
-      'components/icons/linkedin-icon.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
   {
@@ -109,13 +90,6 @@ const footerBlocks = [
       'app/page.tsx',
       'components/footer.tsx',
       'components/logo.tsx',
-      'components/icons/apple-icon.tsx',
-      'components/icons/facebook-icon.tsx',
-      'components/icons/github-icon.tsx',
-      'components/icons/google-play-icon.tsx',
-      'components/icons/instagram-icon.tsx',
-      'components/icons/linkedin-icon.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
 ];

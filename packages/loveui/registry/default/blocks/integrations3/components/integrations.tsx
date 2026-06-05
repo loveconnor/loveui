@@ -1,34 +1,30 @@
+import type { ElementType, SVGProps } from "react";
+import {
+	Cursor as CursorLogo,
+	GoogleGmail as GmailLogo,
+	Neon as NeonLogo,
+	PlanetScale as PlanetscaleLogo,
+	Polar as PolarLogo,
+	Vercel as VercelLogo,
+} from "love-ui/logos";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import { FullWidthDivider } from "./full-width-divider";
-import CursorLogo from "./logos/cursor.svg";
-import GmailLogo from "./logos/gmail.svg";
-import PlanetscaleLogo from "./logos/planetscale.svg";
-import PolarLogo from "./logos/polar.svg";
-import SupabaseLogo from "./logos/supabase.svg";
-import VercelLogo from "./logos/vercel.svg";
+
+type LogoComponent = ElementType<SVGProps<SVGSVGElement>>;
 
 type LogoType = {
-	src: { src: string } | string;
+	Component: LogoComponent;
 	alt: string;
 	isInvertable?: boolean;
 };
-
-type TileData = {
-	row: number;
-	col: number;
-	logo?: LogoType;
-};
-
-const getLogoSrc = (source: LogoType["src"]) =>
-	typeof source === "string" ? source : source.src;
+type TileData = { row: number; col: number; logo?: LogoType };
 
 export function Integrations() {
 	return (
 		<div className="relative mx-auto grid max-w-4xl grid-cols-1 gap-12 border-x md:grid-cols-2 md:items-center">
 			<FullWidthDivider className="-top-px" />
-
-			{/* Left Content */}
 			<div className="p-4 md:p-6">
 				<div className="space-y-4">
 					<h2 className="font-medium text-3xl text-foreground tracking-tight sm:text-4xl">
@@ -41,11 +37,8 @@ export function Integrations() {
 					<Button size="sm">Explore LoveUI integrations</Button>
 				</div>
 			</div>
-
-			{/* Right Content - Visual */}
 			<div className="place-items-end">
 				<div className="relative size-80">
-					{/* Grid Background */}
 					<div
 						className={cn(
 							"absolute inset-0 size-full",
@@ -54,13 +47,14 @@ export function Integrations() {
 							"mask-[radial-gradient(ellipse_at_center,black,black,transparent)]"
 						)}
 					/>
-
 					{tiles.map((tile) => (
-						<IntegrationCard key={`${tile.row}_${tile.col}`} {...tile} />
+						<IntegrationCard
+							key={String(tile.row) + "_" + String(tile.col)}
+							{...tile}
+						/>
 					))}
 				</div>
 			</div>
-
 			<FullWidthDivider className="-bottom-px" />
 		</div>
 	);
@@ -71,120 +65,73 @@ function IntegrationCard({ row, col, logo }: TileData) {
 		<div
 			className={cn(
 				"absolute flex size-16 items-center justify-center",
-				logo ? "bg-secondary/40" : "" // Styling for empty tiles
+				logo ? "bg-secondary/40" : ""
 			)}
-			style={{
-				left: col * 64, // 64px cell
-				top: row * 64,
-			}}
+			style={{ left: col * 64, top: row * 64 }}
 		>
 			{logo && (
-				<img
-					alt={logo.alt}
-					className={cn(
-						"pointer-events-none size-8 select-none object-contain p-1",
-						logo.isInvertable && "dark:invert"
-					)}
-					height={40}
-					src={getLogoSrc(logo.src)}
-					width={40}
+				<LogoAsset
+					className="pointer-events-none size-9 select-none object-contain p-1"
+					logo={logo}
 				/>
 			)}
 		</div>
 	);
 }
 
-// Coordinate mapping to approximate the "scattered" look in the image.
-// Grid 6x5.
+function LogoAsset({
+	logo,
+	className,
+}: {
+	logo: LogoType;
+	className: string;
+}) {
+	const Component = logo.Component;
+
+	return (
+		<Component
+			aria-label={logo.alt}
+			className={cn(className, logo.isInvertable && "dark:invert")}
+			role="img"
+		/>
+	);
+}
+
 const tiles: TileData[] = [
-	// Row 0
 	{
 		row: 0,
 		col: 1,
-		logo: {
-			src: VercelLogo,
-			alt: "Vercel Logo",
-			isInvertable: true,
-		},
+		logo: { Component: VercelLogo, alt: "Vercel Logo", isInvertable: true },
 	},
 	{
 		row: 0,
 		col: 3,
-		logo: {
-			src: CursorLogo,
-			alt: "Cursor Logo",
-			isInvertable: true,
-		},
+		logo: { Component: CursorLogo, alt: "Cursor Logo", isInvertable: true },
 	},
-
-	// Row 1
-	{ row: 1, col: 0 }, // Empty
-	{
-		row: 1,
-		col: 2,
-		logo: {
-			src: SupabaseLogo,
-			alt: "Supabase Logo",
-		},
-	},
-	{
-		row: 1,
-		col: 4,
-		logo: {
-			src: GmailLogo,
-			alt: "Gmail Logo",
-		},
-	},
-
-	// Row 2
+	{ row: 1, col: 0 },
+	{ row: 1, col: 2, logo: { Component: NeonLogo, alt: "Neon Logo" } },
+	{ row: 1, col: 4, logo: { Component: GmailLogo, alt: "Gmail Logo" } },
 	{
 		row: 2,
 		col: 1,
 		logo: {
-			src: PlanetscaleLogo,
+			Component: PlanetscaleLogo,
 			alt: "Planetscale Logo",
 			isInvertable: true,
 		},
 	},
-	{ row: 2, col: 3 }, // Empty
-
-	// Row 3
-
-	{ row: 3, col: 0 }, // Empty
-	{
-		row: 3,
-		col: 2,
-		logo: {
-			src: PolarLogo,
-			alt: "Polar Logo",
-		},
-	},
+	{ row: 2, col: 3 },
+	{ row: 3, col: 0 },
+	{ row: 3, col: 2, logo: { Component: PolarLogo, alt: "Polar Logo" } },
 	{
 		row: 3,
 		col: 4,
-		logo: {
-			src: VercelLogo,
-			alt: "Vercel Logo",
-			isInvertable: true,
-		},
+		logo: { Component: VercelLogo, alt: "Vercel Logo", isInvertable: true },
 	},
-
-	// Row 4
-	{
-		row: 4,
-		col: 1,
-		logo: {
-			src: SupabaseLogo,
-			alt: "Supabase Logo",
-		},
-	},
+	{ row: 4, col: 1, logo: { Component: NeonLogo, alt: "Neon Logo" } },
 	{
 		row: 4,
 		col: 3,
-		logo: {
-			src: CursorLogo,
-			alt: "Cursor Logo",
-			isInvertable: true,
-		},
+		logo: { Component: CursorLogo, alt: "Cursor Logo", isInvertable: true },
 	},
 ];

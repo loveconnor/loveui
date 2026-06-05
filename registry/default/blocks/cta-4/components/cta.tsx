@@ -1,5 +1,5 @@
 import { Button } from "@/registry/default/ui/button";
-import { CreditCardIcon, ArrowRightIcon } from "lucide-react";
+import { CreditCard as CreditCardIcon, ArrowRight as ArrowRightIcon } from "love-ui/icons";
 
 export function CallToAction() {
 	return (

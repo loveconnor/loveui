@@ -1,5 +1,4 @@
-import { GithubIcon } from "./icons/github-icon";
-import { XIcon } from "./icons/x-icon";
+import { Github as GithubIcon, X as XIcon } from "love-ui/logos";
 import { Logo } from "./logo";
 import { Button } from "@/registry/default/ui/button";
 

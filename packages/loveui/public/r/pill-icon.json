@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/pill-icon.tsx",
-      "content": "\"use client\"\n\nimport { UsersIcon } from \"lucide-react\"\n\nimport { Pill, PillIcon } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    <PillIcon icon={UsersIcon} />\n    17 users\n  </Pill>\n)\n\nexport default Example\n",
+      "content": "\"use client\"\n\nimport { Users as UsersIcon } from \"love-ui/icons\"\n\nimport { Pill, PillIcon } from \"../../../../../packages/pill\"\n\nconst Example = () => (\n  <Pill>\n    <PillIcon icon={UsersIcon} />\n    17 users\n  </Pill>\n)\n\nexport default Example\n",
       "type": "registry:example"
     }
   ],

@@ -1,10 +1,10 @@
 'use client';
 
 import {
-  CircleCheckIcon,
-  LoaderCircleIcon,
-  RefreshCwIcon,
-} from 'lucide-react';
+  CircleCheck as CircleCheckIcon,
+  LoaderCircle as LoaderCircleIcon,
+  RefreshCw as RefreshCwIcon,
+} from 'love-ui/icons';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Accordion,

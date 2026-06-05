@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "lucide-react"
+import { ChevronDown as ChevronDownIcon } from "love-ui/icons"
 
 import {
   Collapsible,

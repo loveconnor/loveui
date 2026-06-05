@@ -1,4 +1,4 @@
-import { MousePointer2Icon, MoveIcon, PenLineIcon } from "lucide-react"
+import { MousePointer2 as MousePointer2Icon, Move as MoveIcon, PenLine as PenLineIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator } from "@/registry/default/ui/toolbar"

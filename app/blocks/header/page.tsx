@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
 import { headers } from 'next/headers';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { Header as HeaderOne } from '@/registry/default/blocks/header1/components/header';
 import { DemoLayout as DemoLayoutOne } from '@/registry/default/blocks/header1/components/demo-layout';

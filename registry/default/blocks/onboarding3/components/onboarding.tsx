@@ -1,6 +1,6 @@
 'use client';
 
-import { CircleCheckIcon } from 'lucide-react';
+import { CircleCheck as CircleCheckIcon } from 'love-ui/icons';
 import { useState } from 'react';
 import { Progress } from '@/registry/default/ui/progress';
 import { cn } from '@/lib/utils';

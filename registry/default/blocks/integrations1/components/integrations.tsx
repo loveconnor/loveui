@@ -1,43 +1,49 @@
+import type { ElementType, SVGProps } from "react";
+import {
+	Cursor as CursorLogo,
+	Neon as NeonLogo,
+	Notion as NotionLogo,
+	Vercel as VercelLogo,
+} from "love-ui/logos";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
-import { ArrowUpRightIcon } from "lucide-react";
-import NotionLogo from "./logos/notion.svg";
-import SupabaseLogo from "./logos/supabase.svg";
-import VercelLogo from "./logos/vercel.svg";
-import CursorLogo from "./logos/cursor.svg";
+import { ArrowUpRight as ArrowUpRightIcon } from "love-ui/icons";
+
+type LogoComponent = ElementType<SVGProps<SVGSVGElement>>;
 
 type Integration = {
-	src: { src: string } | string;
+	Component: LogoComponent;
 	name: string;
 	description: string;
 	isInvertable?: boolean;
 };
 
-const getLogoSrc = (source: Integration["src"]) =>
-	typeof source === "string" ? source : source.src;
-
 const data: Integration[] = [
 	{
-		src: VercelLogo,
+		Component: VercelLogo,
 		name: "Vercel",
-		description: "Deploy LoveUI examples, docs, and product pages with fast previews.",
+		description:
+			"Deploy LoveUI examples, docs, and product pages with fast previews.",
 		isInvertable: true,
 	},
 	{
-		src: CursorLogo,
+		Component: CursorLogo,
 		name: "Cursor",
-		description: "Use LoveUI Skills to guide AI-assisted interface work in your editor.",
+		description:
+			"Use LoveUI Skills to guide AI-assisted interface work in your editor.",
 		isInvertable: true,
 	},
 	{
-		src: SupabaseLogo,
-		name: "Supabase",
-		description: "Pair LoveUI app screens with auth, storage, and product data.",
+		Component: NeonLogo,
+		name: "Neon",
+		description: "Pair LoveUI app screens with serverless Postgres and product data.",
 	},
 	{
-		src: NotionLogo,
+		Component: NotionLogo,
 		name: "Notion",
-		description: "Document component decisions, block usage, and product patterns.",
+		description:
+			"Document component decisions, block usage, and product patterns.",
 	},
 ];
 
@@ -55,15 +61,9 @@ export function Integrations() {
 					)}
 					key={item.name}
 				>
-					<img
-						alt={item.name}
-						className={cn(
-							"pointer-events-none size-8 shrink-0 select-none object-contain",
-							item.isInvertable && "dark:invert"
-						)}
-						height={32}
-						src={getLogoSrc(item.src)}
-						width={32}
+					<LogoAsset
+						className="pointer-events-none size-9 shrink-0 select-none object-contain"
+						integration={item}
 					/>
 					<div className="space-y-1">
 						<h3 className="font-semibold">{item.name}</h3>
@@ -82,5 +82,23 @@ export function Integrations() {
 				</Button>
 			</div>
 		</div>
+	);
+}
+
+function LogoAsset({
+	integration,
+	className,
+}: {
+	integration: Integration;
+	className: string;
+}) {
+	const Component = integration.Component;
+
+	return (
+		<Component
+			aria-label={integration.name}
+			className={cn(className, integration.isInvertable && "dark:invert")}
+			role="img"
+		/>
 	);
 }

@@ -1,9 +1,8 @@
-import { GithubIcon } from "./icons/github-icon";
-import { GoogleIcon } from "./icons/google-icon";
+import { Github as GithubIcon, GoogleIcon } from "love-ui/logos";
 import { Logo } from "./logo";
 import { Particles } from "./particles";
 import { Button } from "@/registry/default/ui/button";
-import { ChevronLeftIcon } from "lucide-react";
+import { ChevronLeft as ChevronLeftIcon } from "love-ui/icons";
 
 export function AuthPage() {
 	return (

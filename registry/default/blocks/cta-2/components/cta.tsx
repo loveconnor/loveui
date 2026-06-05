@@ -1,6 +1,6 @@
 import { Button } from "@/registry/default/ui/button";
 import { FullWidthDivider } from "./full-width-divider";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRight as ArrowRightIcon } from "love-ui/icons";
 
 export function CallToAction() {
 	return (

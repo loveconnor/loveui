@@ -2,13 +2,13 @@
 
 import { useState, type FormEventHandler } from "react"
 import {
-  CalendarIcon,
-  ImageIcon,
-  InfoIcon,
-  MapPinIcon,
-  TagIcon,
-  UsersIcon,
-} from "lucide-react"
+  Calendar as CalendarIcon,
+  Image as ImageIcon,
+  Info as InfoIcon,
+  MapPin as MapPinIcon,
+  Tag as TagIcon,
+  Users as UsersIcon,
+} from "love-ui/icons"
 import { toast } from "sonner"
 
 import {

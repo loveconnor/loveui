@@ -2,7 +2,12 @@
 
 import { Card, CardContent } from "@/registry/default/ui/card";
 import { cn } from "@/lib/utils";
-import { AlertTriangle, Check, ChevronRight, Eye } from "lucide-react";
+import {
+  TriangleAlert as AlertTriangle,
+  Check,
+  ChevronRight,
+  Eye,
+} from "love-ui/icons";
 import Link from "next/link";
 
 const data = [

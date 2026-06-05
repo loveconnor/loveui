@@ -1987,7 +1987,7 @@ const LOVE_UI_CORE_DEPS: Record<string, string> = {
   "@base-ui-components/react": "1.0.0-beta.4",
   "class-variance-authority": "^0.7.1",
   "clsx": "^2.1.1",
-  "lucide-react": "^1.16.0",
+  "love-ui": "latest",
   "tailwind-merge": "^3.3.1"
 };
 
@@ -2362,7 +2362,7 @@ export async function run(argv: string[] = process.argv.slice(2)) {
 
             // Collect dependencies from registry dependencies
             // Filter out invalid packages that don't exist on npm
-            const invalidPackages = ['@loveui/shadcn-ui', 'jotai', 'lucide-react', 'react', 'react-dom'];
+            const invalidPackages = ['@loveui/shadcn-ui', 'jotai', 'react', 'react-dom'];
 
             if (depPayload?.dependencies) {
               if (Array.isArray(depPayload.dependencies)) {

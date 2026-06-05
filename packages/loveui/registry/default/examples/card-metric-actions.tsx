@@ -1,13 +1,13 @@
 import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  MoreHorizontalIcon,
-  PinIcon,
-  SettingsIcon,
-  Share2Icon,
-  TrashIcon,
-  TriangleAlertIcon,
-} from "lucide-react"
+  ArrowDown as ArrowDownIcon,
+  ArrowUp as ArrowUpIcon,
+  Ellipsis as MoreHorizontalIcon,
+  Pin as PinIcon,
+  Settings as SettingsIcon,
+  Share2 as Share2Icon,
+  Trash as TrashIcon,
+  TriangleAlert as TriangleAlertIcon,
+} from "love-ui/icons"
 
 import { Badge } from "@/registry/default/ui/badge"
 import { Button } from "@/registry/default/ui/button"

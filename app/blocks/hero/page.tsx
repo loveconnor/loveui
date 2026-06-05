@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { Header as HeaderOne } from '@/registry/default/blocks/hero1/components/header';
 import { HeroSection as HeroOne } from '@/registry/default/blocks/hero1/components/hero';
@@ -17,17 +17,6 @@ import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 const heroBlocksDescription =
   'Hero blocks for building polished above-the-fold product and agency pages.';
 
-const logoFiles = [
-  'components/logos/claude-wordmark.svg',
-  'components/logos/clerk-wordmark.svg',
-  'components/logos/github-wordmark.svg',
-  'components/logos/nvidia-wordmark.svg',
-  'components/logos/openai-wordmark.svg',
-  'components/logos/supabase-wordmark.svg',
-  'components/logos/turso-wordmark.svg',
-  'components/logos/vercel-wordmark.svg',
-];
-
 const sharedHeroFiles = [
   'app/page.tsx',
   'components/header.tsx',
@@ -39,7 +28,6 @@ const sharedHeroFiles = [
   'components/mobile-nav.tsx',
   'components/ui/portal.tsx',
   'hooks/use-scroll.ts',
-  ...logoFiles,
 ];
 
 const heroBlocks = [

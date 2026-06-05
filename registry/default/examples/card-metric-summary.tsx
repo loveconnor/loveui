@@ -1,4 +1,4 @@
-import { TrendingUpIcon } from "lucide-react"
+import { TrendingUp as TrendingUpIcon } from "love-ui/icons"
 
 import {
   Card,

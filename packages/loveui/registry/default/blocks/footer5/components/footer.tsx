@@ -1,11 +1,6 @@
 "use client";
 
-import { AppleIcon } from "./icons/apple-icon";
-import { FacebookIcon } from "./icons/facebook-icon";
-import { GooglePlayIcon } from "./icons/google-play-icon";
-import { InstagramIcon } from "./icons/instagram-icon";
-import { LinkedinIcon } from "./icons/linkedin-icon";
-import { XIcon } from "./icons/x-icon";
+import { Instagram as InstagramIcon, LinkedIn as LinkedinIcon, X as XIcon, Apple as AppleIcon, Facebook as FacebookIcon, GooglePlay as GooglePlayIcon } from "love-ui/logos";
 import { Button } from "@/registry/default/ui/button";
 
 export function Footer() {

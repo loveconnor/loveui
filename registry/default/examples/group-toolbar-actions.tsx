@@ -1,4 +1,4 @@
-import { DownloadIcon, ShareIcon } from "lucide-react"
+import { Download as DownloadIcon, Share as ShareIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Group, GroupItem, GroupSeparator } from "@/registry/default/ui/group"

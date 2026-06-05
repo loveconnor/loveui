@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type React from "react";
 import { CobeGlobe } from "./cobe-globe";
-import { TrendingUpIcon, SquareMousePointerIcon, GlobeIcon } from "lucide-react";
+import { TrendingUp as TrendingUpIcon, SquareMousePointer as SquareMousePointerIcon, Globe as GlobeIcon } from "love-ui/icons";
 
 const features = [
 	{

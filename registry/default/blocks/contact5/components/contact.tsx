@@ -4,7 +4,7 @@ import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field";
 import { Input } from "@/registry/default/ui/input";
 import { Textarea } from "@/registry/default/ui/textarea";
 import { DecorIcon } from "./decor-icon";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "love-ui/icons";
 
 const data = [
 	{

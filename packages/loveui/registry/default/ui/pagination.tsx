@@ -2,10 +2,10 @@ import * as React from "react"
 import { mergeProps } from "@base-ui-components/react/merge-props"
 import { useRender } from "@base-ui-components/react/use-render"
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  MoreHorizontalIcon,
-} from "lucide-react"
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+  Ellipsis as MoreHorizontalIcon,
+} from "love-ui/icons"
 
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/registry/default/ui/button"

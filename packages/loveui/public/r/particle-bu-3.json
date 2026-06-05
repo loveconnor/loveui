@@ -3,7 +3,7 @@
   "name": "particle-bu-3",
   "description": "Directional pad control buttons",
   "dependencies": [
-    "lucide-react"
+    "love-ui"
   ],
   "registryDependencies": [
     "@loveui/button"
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/default/particles/particle-bu-3.tsx",
-      "content": "import {\n  ChevronDownIcon,\n  ChevronLeftIcon,\n  ChevronRightIcon,\n  ChevronUpIcon,\n  CircleIcon,\n} from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function Particle() {\n  return (\n    <div className=\"inline-grid w-fit grid-cols-3 gap-1\">\n      <Button\n        className=\"col-start-2\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Pan camera up\"\n      >\n        <ChevronUpIcon aria-hidden=\"true\" />\n      </Button>\n      <Button\n        className=\"col-start-1\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Pan camera left\"\n      >\n        <ChevronLeftIcon aria-hidden=\"true\" />\n      </Button>\n      <div className=\"flex items-center justify-center\" aria-hidden=\"true\">\n        <CircleIcon className=\"size-4 opacity-72\" />\n      </div>\n      <Button variant=\"outline\" size=\"icon\" aria-label=\"Pan camera right\">\n        <ChevronRightIcon aria-hidden=\"true\" />\n      </Button>\n      <Button\n        className=\"col-start-2\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Pan camera down\"\n      >\n        <ChevronDownIcon aria-hidden=\"true\" />\n      </Button>\n    </div>\n  )\n}\n",
+      "content": "import {\n  ChevronDown as ChevronDownIcon,\n  ChevronLeft as ChevronLeftIcon,\n  ChevronRight as ChevronRightIcon,\n  ChevronUp as ChevronUpIcon,\n  Circle as CircleIcon,\n} from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function Particle() {\n  return (\n    <div className=\"inline-grid w-fit grid-cols-3 gap-1\">\n      <Button\n        className=\"col-start-2\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Pan camera up\"\n      >\n        <ChevronUpIcon aria-hidden=\"true\" />\n      </Button>\n      <Button\n        className=\"col-start-1\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Pan camera left\"\n      >\n        <ChevronLeftIcon aria-hidden=\"true\" />\n      </Button>\n      <div className=\"flex items-center justify-center\" aria-hidden=\"true\">\n        <CircleIcon className=\"size-4 opacity-72\" />\n      </div>\n      <Button variant=\"outline\" size=\"icon\" aria-label=\"Pan camera right\">\n        <ChevronRightIcon aria-hidden=\"true\" />\n      </Button>\n      <Button\n        className=\"col-start-2\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Pan camera down\"\n      >\n        <ChevronDownIcon aria-hidden=\"true\" />\n      </Button>\n    </div>\n  )\n}\n",
       "type": "registry:block"
     }
   ],

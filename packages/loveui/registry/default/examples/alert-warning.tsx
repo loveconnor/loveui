@@ -1,4 +1,4 @@
-import { TriangleAlertIcon } from "lucide-react"
+import { TriangleAlert as TriangleAlertIcon } from "love-ui/icons"
 
 import {
   Alert,

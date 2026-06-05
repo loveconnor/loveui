@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { UserRoundPlusIcon, UsersRoundIcon } from "lucide-react"
+import { UserRoundPlus as UserRoundPlusIcon, UsersRound as UsersRoundIcon } from "love-ui/icons"
 
 import {
   Avatar,

@@ -1,6 +1,6 @@
 import { Button } from "@/registry/default/ui/button";
 import { FullWidthDivider } from "./full-width-divider";
-import { CheckIcon } from "lucide-react";
+import { Check as CheckIcon } from "love-ui/icons";
 
 type PricingPlan = {
 	name: string;

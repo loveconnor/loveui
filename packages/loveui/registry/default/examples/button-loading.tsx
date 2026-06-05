@@ -1,4 +1,4 @@
-import { LoaderCircleIcon } from "lucide-react"
+import { LoaderCircle as LoaderCircleIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 

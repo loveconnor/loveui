@@ -1,4 +1,4 @@
-import { PauseIcon, PlayIcon, SkipForwardIcon } from "lucide-react"
+import { Pause as PauseIcon, Play as PlayIcon, SkipForward as SkipForwardIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Toolbar, ToolbarButton, ToolbarGroup } from "@/registry/default/ui/toolbar"

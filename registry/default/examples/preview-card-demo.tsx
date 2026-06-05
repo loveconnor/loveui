@@ -1,4 +1,4 @@
-import { CornerUpLeftIcon, StarIcon } from "lucide-react"
+import { CornerUpLeft as CornerUpLeftIcon, Star as StarIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type React from "react";
 import { DecorIcon } from "./decor-icon";
-import { HistoryIcon, SquareDashedIcon, CommandIcon } from "lucide-react";
+import { History as HistoryIcon, SquareDashed as SquareDashedIcon, Command as CommandIcon } from "love-ui/icons";
 
 type FeatureType = {
 	title: string;

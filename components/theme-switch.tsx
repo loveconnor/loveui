@@ -1,6 +1,6 @@
 "use client";
 
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Monitor, Moon, Sun } from "love-ui/icons";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ComponentProps } from "react";
 

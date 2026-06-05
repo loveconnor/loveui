@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { FaqsSection as FaqOne } from '@/registry/default/blocks/faq-1/components/faq';
 import { FaqsSection as FaqTwo } from '@/registry/default/blocks/faq-2/components/faq';

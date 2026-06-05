@@ -1,4 +1,4 @@
-import { HouseIcon } from "lucide-react"
+import { House as HouseIcon } from "love-ui/icons"
 
 import {
   Breadcrumb,

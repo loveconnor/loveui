@@ -3,7 +3,7 @@ import { Button } from "@/registry/default/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field";
 import { Input } from "@/registry/default/ui/input";
 import { Textarea } from "@/registry/default/ui/textarea";
-import { MailIcon, PhoneIcon } from "lucide-react";
+import { Mail as MailIcon, Phone as PhoneIcon } from "love-ui/icons";
 
 const contactInfo = [
 	{

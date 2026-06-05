@@ -1,5 +1,5 @@
 import { FullWidthDivider } from "./full-width-divider";
-import { QuoteIcon } from "lucide-react";
+import { Quote as QuoteIcon } from "love-ui/icons";
 
 type Testimonial = {
 	quote: string;

@@ -1,12 +1,12 @@
 'use client';
 
 import {
-  ChartBarIcon,
-  CircleCheckIcon,
-  Code2Icon,
-  DatabaseIcon,
-  SlidersHorizontalIcon,
-} from 'lucide-react';
+  ChartBar as ChartBarIcon,
+  CircleCheck as CircleCheckIcon,
+  Code as Code2Icon,
+  Database as DatabaseIcon,
+  SlidersHorizontal as SlidersHorizontalIcon,
+} from 'love-ui/icons';
 import { useState } from 'react';
 import {
   Accordion,

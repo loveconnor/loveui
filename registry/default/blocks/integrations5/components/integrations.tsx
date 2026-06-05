@@ -1,66 +1,36 @@
+import type { ElementType, SVGProps } from "react";
+import {
+	Cursor as CursorLogo,
+	GoogleGmail as GmailLogo,
+	Neon as NeonLogo,
+	Notion as NotionLogo,
+	PlanetScale as PlanetscaleLogo,
+	Polar as PolarLogo,
+	Vercel as VercelLogo,
+} from "love-ui/logos";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
-import { ArrowUpRightIcon } from "lucide-react";
-import CursorLogo from "./logos/cursor.svg";
-import GmailLogo from "./logos/gmail.svg";
-import NotionLogo from "./logos/notion.svg";
-import PlanetscaleLogo from "./logos/planetscale.svg";
-import PolarLogo from "./logos/polar.svg";
-import SupabaseLogo from "./logos/supabase.svg";
-import VercelLogo from "./logos/vercel.svg";
+import { ArrowUpRight as ArrowUpRightIcon } from "love-ui/icons";
+
+type LogoComponent = ElementType<SVGProps<SVGSVGElement>>;
 
 type Integration = {
-	src?: { src: string } | string;
+	Component?: LogoComponent;
 	name: string;
 	isInvertable?: boolean;
 };
-
-const getLogoSrc = (source: NonNullable<Integration["src"]>) =>
-	typeof source === "string" ? source : source.src;
-
 const data: Integration[] = [
-	{
-		name: "Empty 1",
-	},
-	{
-		name: "Vercel",
-		src: VercelLogo,
-		isInvertable: true,
-	},
-	{
-		name: "Cursor",
-		src: CursorLogo,
-		isInvertable: true,
-	},
-	{
-		src: SupabaseLogo,
-		name: "Supabase",
-	},
-	{
-		name: "PlanetScale",
-		src: PlanetscaleLogo,
-		isInvertable: true,
-	},
-	{
-		name: "Notion",
-		src: NotionLogo,
-	},
-	{
-		name: "Gmail",
-		src: GmailLogo,
-	},
-	{
-		name: "Polar",
-		src: PolarLogo,
-	},
-	{
-		name: "Cursor",
-		src: CursorLogo,
-		isInvertable: true,
-	},
-	{
-		name: "Empty 2",
-	},
+	{ name: "Empty 1" },
+	{ name: "Vercel", Component: VercelLogo, isInvertable: true },
+	{ name: "Cursor", Component: CursorLogo, isInvertable: true },
+	{ name: "Neon", Component: NeonLogo },
+	{ name: "PlanetScale", Component: PlanetscaleLogo, isInvertable: true },
+	{ name: "Notion", Component: NotionLogo },
+	{ name: "Gmail", Component: GmailLogo },
+	{ name: "Polar", Component: PolarLogo },
+	{ name: "Cursor", Component: CursorLogo, isInvertable: true },
+	{ name: "Empty 2" },
 ];
 
 export function Integrations() {
@@ -74,28 +44,21 @@ export function Integrations() {
 					Use familiar tools around your copied components, blocks, and docs.
 				</p>
 			</div>
-
 			<div className="flex flex-col justify-center rounded-full border bg-secondary dark:bg-secondary/10">
 				<div className="mask-l-from-90 mask-r-from-90 flex items-center justify-center -space-x-4 p-1">
 					{data.map((item, index) => (
 						<div
 							className={cn(
 								"relative z-0 transition-transform",
-								item.src ? "hover:z-10 hover:scale-110" : ""
+								item.Component ? "hover:z-10 hover:scale-110" : ""
 							)}
-							key={`${item.name}-${index}`}
+							key={item.name + "-" + String(index)}
 						>
 							<div className="flex size-12 items-center justify-center overflow-hidden rounded-full border bg-card shadow-sm md:size-16">
-								{item.src && (
-									<img
-										alt={item.name}
-										className={cn(
-											"pointer-events-auto size-5 select-none object-contain md:size-6",
-											item.isInvertable && "dark:invert"
-										)}
-										height="auto"
-										src={getLogoSrc(item.src)}
-										width="auto"
+								{item.Component && (
+									<LogoAsset
+										className="pointer-events-auto size-6 select-none object-contain md:size-7"
+										integration={item}
 									/>
 								)}
 							</div>
@@ -108,5 +71,25 @@ export function Integrations() {
 				<ArrowUpRightIcon data-icon="inline-end" />
 			</Button>
 		</div>
+	);
+}
+
+function LogoAsset({
+	integration,
+	className,
+}: {
+	integration: Integration;
+	className: string;
+}) {
+	if (!integration.Component) return null;
+
+	const Component = integration.Component;
+
+	return (
+		<Component
+			aria-label={integration.name}
+			className={cn(className, integration.isInvertable && "dark:invert")}
+			role="img"
+		/>
 	);
 }

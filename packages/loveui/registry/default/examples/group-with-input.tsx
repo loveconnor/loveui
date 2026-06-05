@@ -1,4 +1,4 @@
-import { CopyIcon } from "lucide-react"
+import { Copy as CopyIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Group, GroupItem, GroupSeparator } from "@/registry/default/ui/group"

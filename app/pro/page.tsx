@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import {
-  ArrowRightIcon,
-  BlocksIcon,
-  CheckIcon,
-  CheckCircle2Icon,
-  Code2Icon,
-  ComponentIcon,
-  GaugeIcon,
-  LockKeyholeIcon,
-  SparklesIcon,
-} from 'lucide-react';
+  ArrowRight as ArrowRightIcon,
+  Blocks as BlocksIcon,
+  Check as CheckIcon,
+  CircleCheck as CheckCircle2Icon,
+  Code as Code2Icon,
+  Component as ComponentIcon,
+  Gauge as GaugeIcon,
+  LockKeyhole as LockKeyholeIcon,
+  Sparkles as SparklesIcon,
+} from 'love-ui/icons';
 import { Button } from '@/registry/default/ui/button';
 import { cn } from '@/lib/utils';
 import { grantProAccessFromCheckoutSession } from '@/lib/stripe-pro';

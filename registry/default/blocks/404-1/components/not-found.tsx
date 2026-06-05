@@ -7,7 +7,7 @@ import {
 	EmptyTitle,
 } from "@/registry/default/ui/empty";
 import { FullWidthDivider } from "./full-width-divider";
-import { HomeIcon, CompassIcon } from "lucide-react";
+import { House as HomeIcon, Compass as CompassIcon } from "love-ui/icons";
 
 export function NotFoundPage() {
 	return (

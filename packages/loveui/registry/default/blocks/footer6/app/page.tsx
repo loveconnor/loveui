@@ -1,4 +1,4 @@
-import { ArrowDownIcon } from "lucide-react";
+import { ArrowDown as ArrowDownIcon } from "love-ui/icons";
 import { StickyFooter } from "../components/footer";
 
 export default function FooterDemo() {

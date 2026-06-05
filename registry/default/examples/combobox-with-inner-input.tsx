@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronsUpDownIcon } from "lucide-react"
+import { ChevronsUpDown as ChevronsUpDownIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

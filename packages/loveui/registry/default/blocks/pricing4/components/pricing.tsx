@@ -6,7 +6,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "@/registry/default/ui/button";
 import { type FREQUENCY, FrequencyToggle } from "./frequency-toggle";
-import { StarIcon, CheckCircleIcon } from "lucide-react";
+import { Star as StarIcon, CircleCheck as CheckCircleIcon } from "love-ui/icons";
 
 type Plan = {
 	name: string;

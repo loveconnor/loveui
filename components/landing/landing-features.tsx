@@ -1,12 +1,12 @@
 import type React from 'react';
 import {
-  BlocksIcon,
-  BookOpenIcon,
-  Code2Icon,
-  ComponentIcon,
-  PaletteIcon,
-  SparklesIcon,
-} from 'lucide-react';
+  Blocks as BlocksIcon,
+  BookOpen as BookOpenIcon,
+  Code as Code2Icon,
+  Component as ComponentIcon,
+  Palette as PaletteIcon,
+  Sparkles as SparklesIcon,
+} from 'love-ui/icons';
 
 import { cn } from '@/lib/utils';
 

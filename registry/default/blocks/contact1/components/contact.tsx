@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { FullWidthDivider } from "./full-width-divider";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "love-ui/icons";
 
 const data = [
 	{

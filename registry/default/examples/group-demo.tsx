@@ -1,4 +1,4 @@
-import { EllipsisIcon, FilesIcon, FilmIcon } from "lucide-react"
+import { Ellipsis as EllipsisIcon, Files as FilesIcon, Film as FilmIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Group, GroupItem, GroupSeparator } from "@/registry/default/ui/group"

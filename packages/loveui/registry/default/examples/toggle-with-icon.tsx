@@ -1,4 +1,4 @@
-import { BoldIcon } from "lucide-react"
+import { Bold as BoldIcon } from "love-ui/icons"
 
 import { Toggle } from "@/registry/default/ui/toggle"
 

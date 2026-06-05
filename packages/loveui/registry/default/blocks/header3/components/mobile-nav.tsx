@@ -4,7 +4,7 @@ import { Button } from "@/registry/default/ui/button";
 import { Portal, PortalBackdrop } from "./ui/portal";
 import { companyLinks, companyLinks2, productLinks } from "./nav-links";
 import { LinkItem } from "./sheard";
-import { XIcon, MenuIcon } from "lucide-react";
+import { X as XIcon, Menu as MenuIcon } from "love-ui/icons";
 
 export function MobileNav() {
 	const [open, setOpen] = React.useState(false);

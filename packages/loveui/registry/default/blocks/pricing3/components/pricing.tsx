@@ -1,7 +1,12 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import * as PricingCard from "./pricing-card";
-import { CheckCircle2, Users, Briefcase, Building } from "lucide-react";
+import {
+  CircleCheck as CheckCircle2,
+  Users,
+  Briefcase,
+  Building,
+} from "love-ui/icons";
 
 export function PricingSection() {
 	return (

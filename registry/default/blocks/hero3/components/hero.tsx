@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
-import { ArrowRightIcon, PhoneCallIcon } from "lucide-react";
+import { ArrowRight as ArrowRightIcon, PhoneCall as PhoneCallIcon } from "love-ui/icons";
 
 export function HeroSection() {
 	return (

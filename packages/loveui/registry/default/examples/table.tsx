@@ -1,7 +1,7 @@
 "use client"
 
 import { faker } from "@faker-js/faker"
-import { ChevronRightIcon } from "lucide-react"
+import { ChevronRight as ChevronRightIcon } from "love-ui/icons"
 
 import {
   Avatar,

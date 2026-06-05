@@ -1,11 +1,8 @@
 "use client";
+import { Github as GithubIcon, Instagram as InstagramIcon, LinkedIn as LinkedinIcon, Facebook as FacebookIcon } from "love-ui/logos";
 import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 import type { ReactNode } from "react";
-import { FacebookIcon } from "./icons/facebook-icon";
-import { InstagramIcon } from "./icons/instagram-icon";
-import { LinkedinIcon } from "./icons/linkedin-icon";
-import { GithubIcon } from "./icons/github-icon";
 import { Logo } from "./logo";
 import { Button } from "@/registry/default/ui/button";
 

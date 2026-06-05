@@ -3,7 +3,7 @@
 import { Badge } from "@/registry/default/ui/badge";
 import { Card, CardContent } from "@/registry/default/ui/card";
 import { cn } from "@/lib/utils";
-import { TrendingDown, TrendingUp } from "lucide-react";
+import { TrendingDown, TrendingUp } from "love-ui/icons";
 
 const data = [
   {

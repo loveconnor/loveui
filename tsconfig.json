@@ -19,6 +19,8 @@
       "@/components/ui/chart": ["./packages/loveui-pro/components/ui/chart"],
       "@/components/ui/recharts-chart": ["./packages/loveui-pro/registry/default/ui/chart"],
       "@tabler/icons-react": ["./components/ui/tabler-icons"],
+      "love-ui/icons": ["./packages/loveui/registry/default/icons/src"],
+      "love-ui/logos": ["./packages/loveui/registry/default/logos/src/generated"],
       "@/registry/default/blocks/stats7/*": ["./packages/loveui-pro/registry/default/blocks/stats7/*"],
       "@/registry/default/blocks/stats8/*": ["./packages/loveui-pro/registry/default/blocks/stats8/*"],
       "@/registry/default/blocks/stats10/*": ["./packages/loveui-pro/registry/default/blocks/stats10/*"],

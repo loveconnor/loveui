@@ -7,7 +7,13 @@ import {
 	AccordionTrigger,
 } from "@/registry/default/ui/accordion";
 import { Button } from "@/registry/default/ui/button";
-import { LayoutGridIcon, PowerIcon, FeatherIcon, CreditCardIcon, LifeBuoyIcon } from "lucide-react";
+import {
+  LayoutGrid as LayoutGridIcon,
+  Power as PowerIcon,
+  Feather as FeatherIcon,
+  CreditCard as CreditCardIcon,
+  LifeBuoy as LifeBuoyIcon,
+} from "love-ui/icons";
 
 const categories = [
 	{

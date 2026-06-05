@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "lucide-react"
+import { ChevronRight as ChevronRightIcon } from "love-ui/icons"
 
 import {
   Accordion,

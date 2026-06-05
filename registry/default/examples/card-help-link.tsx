@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from "lucide-react"
+import { ExternalLink as ExternalLinkIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

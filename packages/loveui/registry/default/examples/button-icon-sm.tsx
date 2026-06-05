@@ -1,4 +1,4 @@
-import { PlusIcon } from "lucide-react"
+import { Plus as PlusIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 

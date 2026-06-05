@@ -1,7 +1,7 @@
 import { Badge } from "@/registry/default/ui/badge";
 import { Button } from "@/registry/default/ui/button";
 import { DecorIcon } from "./decor-icon";
-import { ShieldCheckIcon } from "lucide-react";
+import { ShieldCheck as ShieldCheckIcon } from "love-ui/icons";
 
 export function PricingSection() {
 	return (

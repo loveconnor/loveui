@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react"
+import { Search as SearchIcon } from "love-ui/icons"
 
 import { Input } from "@/registry/default/ui/input"
 

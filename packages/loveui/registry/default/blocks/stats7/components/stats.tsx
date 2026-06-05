@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/registry/default/ui/card";
 import { type ChartConfig, ChartContainer } from "@/registry/default/ui/chart";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink } from "love-ui/icons";
 import Link from "next/link";
 import { PolarAngleAxis, RadialBar, RadialBarChart } from "recharts";
 

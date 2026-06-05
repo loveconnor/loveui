@@ -1,13 +1,13 @@
 'use client';
 
 import {
-  ArchiveIcon,
-  ChevronRightIcon,
-  CircleCheckIcon,
-  CircleDashedIcon,
-  MailIcon,
-  MoreHorizontalIcon,
-} from 'lucide-react';
+  Archive as ArchiveIcon,
+  ChevronRight as ChevronRightIcon,
+  CircleCheck as CircleCheckIcon,
+  CircleDashed as CircleDashedIcon,
+  Mail as MailIcon,
+  Ellipsis as MoreHorizontalIcon,
+} from 'love-ui/icons';
 import { useState } from 'react';
 import { Button } from '@/registry/default/ui/button';
 import { Collapsible, CollapsibleContent } from '@/registry/default/ui/collapsible';

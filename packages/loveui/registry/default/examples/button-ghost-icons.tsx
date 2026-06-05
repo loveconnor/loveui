@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
+import { ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 

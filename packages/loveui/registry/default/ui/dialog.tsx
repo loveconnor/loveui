@@ -1,7 +1,7 @@
 "use client"
 
 import { Dialog as DialogPrimitive } from "@base-ui-components/react/dialog"
-import { XIcon } from "lucide-react"
+import { X as XIcon } from "love-ui/icons"
 
 import { cn } from "@/lib/utils"
 

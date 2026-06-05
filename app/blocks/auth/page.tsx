@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { AuthPage as AuthOnePage } from '@/registry/default/blocks/auth1/components/auth-page';
 import { AuthPage as AuthTwoPage } from '@/registry/default/blocks/auth2/components/auth';
@@ -23,8 +23,6 @@ const authBlocks = [
       'components/auth-page.tsx',
       'components/particles.tsx',
       'components/logo.tsx',
-      'components/icons/google-icon.tsx',
-      'components/icons/github-icon.tsx',
     ],
   },
   {
@@ -38,8 +36,6 @@ const authBlocks = [
       'components/auth.tsx',
       'components/ui/auth-divider.tsx',
       'components/ui/decor-icon.tsx',
-      'components/icons/google-icon.tsx',
-      'components/icons/github-icon.tsx',
     ],
   },
   {
@@ -54,8 +50,6 @@ const authBlocks = [
       'components/logo.tsx',
       'components/ui/auth-divider.tsx',
       'components/ui/decor-icon.tsx',
-      'components/icons/google-icon.tsx',
-      'components/icons/github-icon.tsx',
     ],
   },
 ];

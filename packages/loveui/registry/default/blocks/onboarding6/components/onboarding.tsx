@@ -1,4 +1,4 @@
-import { CheckIcon } from 'lucide-react';
+import { Check as CheckIcon } from 'love-ui/icons';
 import { cn } from '@/lib/utils';
 
 const steps = [

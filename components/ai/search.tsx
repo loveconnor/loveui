@@ -11,7 +11,14 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Loader2, MessageCircleIcon, RefreshCw, SearchIcon, Send, X } from 'lucide-react';
+import {
+  LoaderCircle as Loader2,
+  MessageCircle as MessageCircleIcon,
+  RefreshCw,
+  Search as SearchIcon,
+  Send,
+  X,
+} from 'love-ui/icons';
 import { cn } from '../../lib/cn';
 import { buttonVariants } from '../ui/button';
 import { useChat, type UseChatHelpers } from '@ai-sdk/react';

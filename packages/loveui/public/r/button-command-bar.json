@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/button-command-bar.tsx",
-      "content": "import { CommandIcon, PlusIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonCommandBar() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2\">\n      <Button>\n        <PlusIcon />\n        New task\n      </Button>\n      <Button variant=\"outline\">\n        <CommandIcon />\n        Command menu\n      </Button>\n    </div>\n  )\n}\n",
+      "content": "import { Command as CommandIcon, Plus as PlusIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonCommandBar() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2\">\n      <Button>\n        <PlusIcon />\n        New task\n      </Button>\n      <Button variant=\"outline\">\n        <CommandIcon />\n        Command menu\n      </Button>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

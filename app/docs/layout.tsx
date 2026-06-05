@@ -2,7 +2,7 @@ import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { baseOptions } from '@/lib/layout.shared';
 import { AISearch, AISearchPanel, AISearchTrigger } from '@/components/ai/search';
-import { MessageCircleIcon } from 'lucide-react';
+import { MessageCircle as MessageCircleIcon } from 'love-ui/icons';
 import { cn } from '@/lib/cn';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { DocsHeader } from '@/components/docs-header';

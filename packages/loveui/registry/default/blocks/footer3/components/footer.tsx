@@ -1,11 +1,8 @@
 "use client";
+import { Github as GithubIcon, Instagram as InstagramIcon, LinkedIn as LinkedinIcon, X as XIcon } from "love-ui/logos";
 import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
-import { GithubIcon } from "./icons/github-icon";
-import { InstagramIcon } from "./icons/instagram-icon";
-import { LinkedinIcon } from "./icons/linkedin-icon";
-import { XIcon } from "./icons/x-icon";
 import { Logo } from "./logo";
 
 type FooterLink = {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { LogoCloud as LogoCloudOne } from '@/registry/default/blocks/logo-cloud-1/components/logo-cloud';
 import { LogoCloud as LogoCloudTwo } from '@/registry/default/blocks/logo-cloud-2/components/logo-cloud';
@@ -13,17 +13,6 @@ import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 const logoCloudBlocksDescription =
   'Logo cloud blocks for showcasing customer, partner, and integration brands.';
 
-const logoFiles = [
-  'components/logos/claude-wordmark.svg',
-  'components/logos/clerk-wordmark.svg',
-  'components/logos/github-wordmark.svg',
-  'components/logos/nvidia-wordmark.svg',
-  'components/logos/openai-wordmark.svg',
-  'components/logos/supabase-wordmark.svg',
-  'components/logos/turso-wordmark.svg',
-  'components/logos/vercel-wordmark.svg',
-];
-
 const logoCloudBlocks = [
   {
     id: 'logo-cloud-1',
@@ -34,7 +23,6 @@ const logoCloudBlocks = [
     files: [
       'app/page.tsx',
       'components/logo-cloud.tsx',
-      ...logoFiles,
     ],
   },
   {
@@ -47,7 +35,6 @@ const logoCloudBlocks = [
       'app/page.tsx',
       'components/logo-cloud.tsx',
       'components/decor-icon.tsx',
-      ...logoFiles,
     ],
   },
   {
@@ -60,7 +47,6 @@ const logoCloudBlocks = [
       'app/page.tsx',
       'components/logo-cloud.tsx',
       'components/infinite-slider.tsx',
-      ...logoFiles,
     ],
   },
   {
@@ -74,7 +60,6 @@ const logoCloudBlocks = [
       'components/logo-cloud.tsx',
       'components/infinite-slider.tsx',
       'components/progressive-blur.tsx',
-      ...logoFiles,
     ],
   },
   {
@@ -86,7 +71,6 @@ const logoCloudBlocks = [
     files: [
       'app/page.tsx',
       'components/logo-cloud.tsx',
-      ...logoFiles,
     ],
   },
 ];

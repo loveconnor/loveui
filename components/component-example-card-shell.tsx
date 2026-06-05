@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Bun, NPM, PNPM, Yarn } from "@react-symbols/icons"
-import { CheckIcon, CopyIcon, TerminalIcon } from "lucide-react"
+import { Check as CheckIcon, Copy as CopyIcon, Terminal as TerminalIcon } from "love-ui/icons"
 
 import { cn } from "@/lib/cn"
 import { Button } from "@/registry/default/ui/button"

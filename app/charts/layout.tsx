@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { MessageCircleIcon } from 'lucide-react';
+import { MessageCircle as MessageCircleIcon } from 'love-ui/icons';
 
 import { AISearch, AISearchPanel, AISearchTrigger } from '@/components/ai/search';
 import { DocsHeader } from '@/components/docs-header';

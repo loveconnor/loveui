@@ -1,10 +1,10 @@
 import {
-  ChevronsUpDownIcon,
-  LogOutIcon,
-  PlusIcon,
-  SettingsIcon,
-  UserIcon,
-} from "lucide-react"
+  ChevronsUpDown as ChevronsUpDownIcon,
+  LogOut as LogOutIcon,
+  Plus as PlusIcon,
+  Settings as SettingsIcon,
+  User as UserIcon,
+} from "love-ui/icons"
 
 import {
   Avatar,

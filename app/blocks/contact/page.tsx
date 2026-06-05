@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { Contact as ContactOne } from '@/registry/default/blocks/contact1/components/contact';
 import { Contact as ContactTwo } from '@/registry/default/blocks/contact2/components/contact';
@@ -36,7 +36,6 @@ const contactBlocks = [
       'app/page.tsx',
       'components/contact.tsx',
       'components/full-width-divider.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
   {
@@ -50,8 +49,6 @@ const contactBlocks = [
       'app/page.tsx',
       'components/contact.tsx',
       'components/full-width-divider.tsx',
-      'components/icons/github-icon.tsx',
-      'components/icons/x-icon.tsx',
     ],
   },
   {

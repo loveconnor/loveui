@@ -1,5 +1,20 @@
 import type { LinkItemType } from "./sheard";
-import { GlobeIcon, LayersIcon, UserPlusIcon, BarChart3Icon, PlugIcon, CodeIcon, UsersIcon, StarIcon, HandshakeIcon, FileTextIcon, ShieldIcon, RotateCcwIcon, LeafIcon, HelpCircleIcon } from "lucide-react";
+import {
+  Globe as GlobeIcon,
+  Layers as LayersIcon,
+  UserPlus as UserPlusIcon,
+  ChartBar as BarChart3Icon,
+  Plug as PlugIcon,
+  Code as CodeIcon,
+  Users as UsersIcon,
+  Star as StarIcon,
+  Handshake as HandshakeIcon,
+  FileText as FileTextIcon,
+  Shield as ShieldIcon,
+  RotateCcw as RotateCcwIcon,
+  Leaf as LeafIcon,
+  CircleQuestionMark as HelpCircleIcon,
+} from "love-ui/icons";
 
 export const productLinks: LinkItemType[] = [
 	{

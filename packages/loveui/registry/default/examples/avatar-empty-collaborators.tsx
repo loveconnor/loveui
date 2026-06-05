@@ -1,4 +1,4 @@
-import { UserPlusIcon } from "lucide-react"
+import { UserPlus as UserPlusIcon } from "love-ui/icons"
 
 import {
   Avatar,

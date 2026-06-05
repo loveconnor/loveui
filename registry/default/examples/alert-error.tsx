@@ -1,4 +1,4 @@
-import { CircleAlertIcon } from "lucide-react"
+import { CircleAlert as CircleAlertIcon } from "love-ui/icons"
 
 import {
   Alert,

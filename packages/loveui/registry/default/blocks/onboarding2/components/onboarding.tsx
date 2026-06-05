@@ -1,21 +1,31 @@
 'use client';
 
 import {
-  CircleCheckIcon,
-  FolderIcon,
-  PlugIcon,
-  RocketIcon,
-  UsersIcon,
-  type LucideIcon,
-} from 'lucide-react';
-import { useState } from 'react';
+  CircleCheck as CircleCheckIcon,
+  Folder as FolderIcon,
+  Plug as PlugIcon,
+  Rocket as RocketIcon,
+  Users as UsersIcon,
+} from 'love-ui/icons';
+import {
+  useState,
+  type ForwardRefExoticComponent,
+  type RefAttributes,
+  type SVGProps,
+} from 'react';
 import { Button } from '@/registry/default/ui/button';
 import { cn } from '@/lib/utils';
+
+type IconComponent = ForwardRefExoticComponent<
+  SVGProps<SVGSVGElement> &
+    { size?: number | string; strokeWidth?: number } &
+    RefAttributes<SVGSVGElement>
+>;
 
 interface StepData {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: IconComponent;
   actionLabel: string;
 }
 

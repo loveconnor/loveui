@@ -1,13 +1,13 @@
 'use client';
 
 import {
-  CheckIcon,
-  ChevronDownIcon,
-  CopyIcon,
-  DownloadIcon,
-  ExternalLinkIcon,
-  SearchIcon,
-} from 'lucide-react';
+  Check as CheckIcon,
+  ChevronDown as ChevronDownIcon,
+  Copy as CopyIcon,
+  Download as DownloadIcon,
+  ExternalLink as ExternalLinkIcon,
+  Search as SearchIcon,
+} from 'love-ui/icons';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 

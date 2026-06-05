@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/button-loading.tsx",
-      "content": "import { LoaderCircleIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <LoaderCircleIcon className=\"animate-spin\" />\n      Loading...\n    </Button>\n  )\n}\n",
+      "content": "import { LoaderCircle as LoaderCircleIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <LoaderCircleIcon className=\"animate-spin\" />\n      Loading...\n    </Button>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

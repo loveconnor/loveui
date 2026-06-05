@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import {
-  BellIcon,
-  FileIcon,
-  HomeIcon,
-  InfoIcon,
-  MailIcon,
-  SettingsIcon,
-  UserIcon,
-  XIcon,
-} from 'lucide-react';
+  Bell as BellIcon,
+  File as FileIcon,
+  House as HomeIcon,
+  Info as InfoIcon,
+  Mail as MailIcon,
+  Settings as SettingsIcon,
+  User as UserIcon,
+  X as XIcon,
+} from 'love-ui/icons';
 import { Card } from '@/components/card';
 import { getComponentExampleCount } from '@/lib/component-examples';
 import { componentLinks } from '@/lib/components-page-tree';

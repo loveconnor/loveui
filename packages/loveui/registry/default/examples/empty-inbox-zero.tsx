@@ -1,4 +1,4 @@
-import { InboxIcon } from "lucide-react"
+import { Inbox as InboxIcon } from "love-ui/icons"
 
 import {
   Empty,

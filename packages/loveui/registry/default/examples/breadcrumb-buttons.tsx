@@ -1,9 +1,9 @@
 import {
-  ChevronRightIcon,
-  HouseIcon,
-  LayoutGridIcon,
-  SettingsIcon,
-} from "lucide-react"
+  ChevronRight as ChevronRightIcon,
+  House as HouseIcon,
+  LayoutGrid as LayoutGridIcon,
+  Settings as SettingsIcon,
+} from "love-ui/icons"
 
 import {
   Breadcrumb,

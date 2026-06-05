@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import { DecorIcon } from "./decor-icon";
 import { FullWidthDivider } from "./full-width-divider";
-import { ArrowRightIcon, PhoneCallIcon } from "lucide-react";
+import { ArrowRight as ArrowRightIcon, PhoneCall as PhoneCallIcon } from "love-ui/icons";
 
 export function HeroSection() {
 	return (

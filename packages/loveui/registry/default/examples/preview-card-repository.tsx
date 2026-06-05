@@ -1,4 +1,4 @@
-import { StarIcon } from "lucide-react"
+import { Star as StarIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { PreviewCard, PreviewCardPopup, PreviewCardTrigger } from "@/registry/default/ui/preview-card"

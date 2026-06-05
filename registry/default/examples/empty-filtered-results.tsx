@@ -1,4 +1,4 @@
-import { SearchXIcon } from "lucide-react"
+import { SearchX as SearchXIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

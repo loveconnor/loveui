@@ -1,33 +1,36 @@
+import type { ElementType, SVGProps } from "react";
+import {
+	Cursor as CursorLogo,
+	GoogleGmail as GmailLogo,
+	Neon as NeonLogo,
+	Notion as NotionLogo,
+	PlanetScale as PlanetscaleLogo,
+	Vercel as VercelLogo,
+} from "love-ui/logos";
+
 import { cn } from "@/lib/utils";
 import { DecorIcon } from "./decor-icon";
-import CursorLogo from "./logos/cursor.svg";
-import GmailLogo from "./logos/gmail.svg";
-import NotionLogo from "./logos/notion.svg";
-import SupabaseLogo from "./logos/supabase.svg";
-import VercelLogo from "./logos/vercel.svg";
-import PlanetscaleLogo from "./logos/planetscale.svg";
+
+type LogoComponent = ElementType<SVGProps<SVGSVGElement>>;
 
 type Integration = {
-	src: { src: string } | string;
+	Component: LogoComponent;
 	name: string;
 	description: string;
 	isInvertable?: boolean;
 	icon?: React.ReactNode;
 };
 
-const getLogoSrc = (source: Integration["src"]) =>
-	typeof source === "string" ? source : source.src;
-
 const data: Integration[] = [
 	{
-		src: VercelLogo,
+		Component: VercelLogo,
 		name: "Vercel",
 		description:
 			"Deploy LoveUI block previews, docs, and production product pages.",
 		isInvertable: true,
 	},
 	{
-		src: CursorLogo,
+		Component: CursorLogo,
 		name: "Cursor",
 		description:
 			"Use LoveUI Skills to give AI agents concrete interface guidance.",
@@ -35,29 +38,26 @@ const data: Integration[] = [
 		icon: <DecorIcon position="bottom-left" />,
 	},
 	{
-		src: SupabaseLogo,
-		name: "Supabase",
+		Component: NeonLogo,
+		name: "Neon",
 		description:
-			"Connect polished LoveUI surfaces to auth, storage, and application data.",
+			"Connect polished LoveUI surfaces to serverless Postgres and application data.",
 	},
 	{
-		src: PlanetscaleLogo,
+		Component: PlanetscaleLogo,
 		name: "PlanetScale",
-		description:
-			"Back product screens with schema changes your team can review.",
+		description: "Back product screens with schema changes your team can review.",
 		isInvertable: true,
 	},
 	{
-		src: NotionLogo,
+		Component: NotionLogo,
 		name: "Notion",
-		description:
-			"Track component decisions, block adoption, and design system notes.",
+		description: "Track component decisions, block adoption, and design system notes.",
 	},
 	{
-		src: GmailLogo,
+		Component: GmailLogo,
 		name: "Gmail",
-		description:
-			"Send product notifications from interfaces built with LoveUI forms.",
+		description: "Send product notifications from interfaces built with LoveUI forms.",
 		icon: <DecorIcon position="top-left" />,
 	},
 ];
@@ -85,9 +85,7 @@ function IntegrationCard({
 	className,
 	children,
 	...props
-}: React.ComponentProps<"div"> & {
-	integration: Integration;
-}) {
+}: React.ComponentProps<"div"> & { integration: Integration }) {
 	return (
 		<div
 			className={cn(
@@ -96,15 +94,9 @@ function IntegrationCard({
 			)}
 			{...props}
 		>
-			<img
-				alt={integration.name}
-				className={cn(
-					"pointer-events-none size-8 shrink-0 select-none object-contain",
-					integration.isInvertable && "dark:invert"
-				)}
-				height={32}
-				src={getLogoSrc(integration.src)}
-				width={32}
+			<LogoAsset
+				className="pointer-events-none size-9 shrink-0 select-none object-contain"
+				integration={integration}
 			/>
 			<div className="space-y-1">
 				<h3 className="font-semibold">{integration.name}</h3>
@@ -114,5 +106,23 @@ function IntegrationCard({
 			</div>
 			{children}
 		</div>
+	);
+}
+
+function LogoAsset({
+	integration,
+	className,
+}: {
+	integration: Integration;
+	className: string;
+}) {
+	const Component = integration.Component;
+
+	return (
+		<Component
+			aria-label={integration.name}
+			className={cn(className, integration.isInvertable && "dark:invert")}
+			role="img"
+		/>
 	);
 }

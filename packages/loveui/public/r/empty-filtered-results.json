@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/examples/empty-filtered-results.tsx",
-      "content": "import { SearchXIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\"\n\nexport default function EmptyFilteredResults() {\n  return (\n    <Empty className=\"border\">\n      <EmptyHeader>\n        <EmptyMedia variant=\"icon\"><SearchXIcon /></EmptyMedia>\n        <EmptyTitle>No matching filters</EmptyTitle>\n        <EmptyDescription>Try clearing a status or date filter.</EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent><Button variant=\"outline\" size=\"sm\">Reset filters</Button></EmptyContent>\n    </Empty>\n  )\n}\n",
+      "content": "import { SearchX as SearchXIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\"\n\nexport default function EmptyFilteredResults() {\n  return (\n    <Empty className=\"border\">\n      <EmptyHeader>\n        <EmptyMedia variant=\"icon\"><SearchXIcon /></EmptyMedia>\n        <EmptyTitle>No matching filters</EmptyTitle>\n        <EmptyDescription>Try clearing a status or date filter.</EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent><Button variant=\"outline\" size=\"sm\">Reset filters</Button></EmptyContent>\n    </Empty>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

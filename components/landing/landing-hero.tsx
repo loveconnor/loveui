@@ -1,4 +1,4 @@
-import { ArrowRightIcon, BookOpenIcon, ComponentIcon } from 'lucide-react';
+import { ArrowRight as ArrowRightIcon, BookOpen as BookOpenIcon, Component as ComponentIcon } from 'love-ui/icons';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/registry/default/ui/button';

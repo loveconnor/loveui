@@ -22,7 +22,7 @@ import {
 	InputGroupInput,
 } from "@/registry/default/ui/input-group";
 import { FullWidthDivider } from "./full-width-divider";
-import { SearchIcon, SearchSlashIcon } from "lucide-react";
+import { Search as SearchIcon, SearchSlash as SearchSlashIcon } from "love-ui/icons";
 
 export function FaqsSection() {
 	const [searchTerm, setSearchTerm] = React.useState("");

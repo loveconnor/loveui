@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/announcement.tsx",
-      "content": "\"use client\"\n\nimport { ArrowUpRightIcon } from \"lucide-react\"\n\nimport {\n  Announcement,\n  AnnouncementTag,\n  AnnouncementTitle,\n} from \"../../../../../packages/announcement\"\n\nconst Example = () => (\n  <Announcement>\n    <AnnouncementTag>Latest update</AnnouncementTag>\n    <AnnouncementTitle>\n      New feature added\n      <ArrowUpRightIcon className=\"shrink-0 text-muted-foreground\" size={16} />\n    </AnnouncementTitle>\n  </Announcement>\n)\n\nexport default Example\n",
+      "content": "\"use client\"\n\nimport { ArrowUpRight as ArrowUpRightIcon } from \"love-ui/icons\"\n\nimport {\n  Announcement,\n  AnnouncementTag,\n  AnnouncementTitle,\n} from \"../../../../../packages/announcement\"\n\nconst Example = () => (\n  <Announcement>\n    <AnnouncementTag>Latest update</AnnouncementTag>\n    <AnnouncementTitle>\n      New feature added\n      <ArrowUpRightIcon className=\"shrink-0 text-muted-foreground\" size={16} />\n    </AnnouncementTitle>\n  </Announcement>\n)\n\nexport default Example\n",
       "type": "registry:example"
     }
   ],

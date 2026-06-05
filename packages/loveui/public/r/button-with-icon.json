@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/button-with-icon.tsx",
-      "content": "import { DownloadIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <DownloadIcon />\n      Download\n    </Button>\n  )\n}\n",
+      "content": "import { Download as DownloadIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <DownloadIcon />\n      Download\n    </Button>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

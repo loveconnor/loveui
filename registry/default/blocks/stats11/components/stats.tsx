@@ -15,7 +15,7 @@ import {
 } from "@/registry/default/ui/dialog";
 import { Input } from "@/registry/default/ui/input";
 import { Label } from "@/registry/default/ui/label";
-import { Box, Edit } from "lucide-react";
+import { Box, EditRounded as Edit } from "love-ui/icons";
 
 interface MetricCardProps {
   title: string;

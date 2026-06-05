@@ -7,17 +7,17 @@ import {
   Bug,
   Calendar,
   ChartBar,
-  CheckCircle2,
+  CircleCheck as CheckCircle2,
   ChevronRight,
   Cloud,
   Database,
   FileText,
   Folder,
   Folders,
-  GitCommit,
+  GitCommitHorizontal as GitCommit,
   GitMerge,
   GitPullRequest,
-  Home,
+  House as Home,
   Hourglass,
   Key,
   Lock,
@@ -41,7 +41,7 @@ import {
   UserPlus,
   Webhook,
   X,
-} from 'lucide-react';
+} from 'love-ui/icons';
 
 export const IconActivityHeartbeat = Activity;
 export const IconAd2 = Megaphone;

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from 'react';
-import { XIcon } from 'lucide-react';
+import { X as XIcon } from 'love-ui/icons';
 import {
   Dialog,
   DialogClose,

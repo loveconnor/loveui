@@ -1,7 +1,5 @@
+import { Github as GithubIcon, Instagram as InstagramIcon, X as XIcon } from "love-ui/logos";
 import { cn } from "@/lib/utils";
-import { GithubIcon } from "./icons/github-icon";
-import { InstagramIcon } from "./icons/instagram-icon";
-import { XIcon } from "./icons/x-icon";
 import { Logo } from "./logo";
 import { Button } from "@/registry/default/ui/button";
 import { FullWidthDivider } from "./full-width-divider";

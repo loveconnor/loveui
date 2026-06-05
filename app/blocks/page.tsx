@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { FileSearchIcon, SettingsIcon, UserIcon } from 'lucide-react';
+import { FileSearch as FileSearchIcon, Settings as SettingsIcon, User as UserIcon } from 'love-ui/icons';
 import { Card } from '@/components/card';
 import { AuthPage as AuthPreviewBlock } from '@/registry/default/blocks/auth2/components/auth';
 import { BlogsSection as BlogPreviewBlock } from '@/registry/default/blocks/blogs3/components/blogs';

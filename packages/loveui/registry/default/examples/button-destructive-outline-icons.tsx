@@ -1,4 +1,4 @@
-import { ArrowRightIcon, TrashIcon } from "lucide-react"
+import { ArrowRight as ArrowRightIcon, Trash as TrashIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 

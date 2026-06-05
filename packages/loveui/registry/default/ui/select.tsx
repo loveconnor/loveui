@@ -2,10 +2,10 @@
 
 import { Select as SelectPrimitive } from "@base-ui-components/react/select"
 import {
-  ChevronDownIcon,
-  ChevronsUpDownIcon,
-  ChevronUpIcon,
-} from "lucide-react"
+  ChevronDown as ChevronDownIcon,
+  ChevronsUpDown as ChevronsUpDownIcon,
+  ChevronUp as ChevronUpIcon,
+} from "love-ui/icons"
 
 import { cn } from "@/lib/utils"
 

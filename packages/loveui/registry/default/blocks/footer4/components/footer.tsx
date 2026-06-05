@@ -1,9 +1,6 @@
+import { Github as GithubIcon, Instagram as InstagramIcon, LinkedIn as LinkedinIcon, X as XIcon } from "love-ui/logos";
 import { cn } from "@/lib/utils";
-import { GithubIcon } from "./icons/github-icon";
-import { InstagramIcon } from "./icons/instagram-icon";
-import { XIcon } from "./icons/x-icon";
-import { LinkedinIcon } from "./icons/linkedin-icon";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRight as ArrowRightIcon } from "love-ui/icons";
 
 export function Footer() {
 	return (

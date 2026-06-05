@@ -1,4 +1,4 @@
-import { Rows3Icon, Rows4Icon } from "lucide-react"
+import { Rows3 as Rows3Icon, Rows4 as Rows4Icon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Toolbar, ToolbarButton, ToolbarGroup, ToolbarSeparator } from "@/registry/default/ui/toolbar"

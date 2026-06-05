@@ -1,9 +1,8 @@
+import { Github as GithubIcon, X as XIcon } from "love-ui/logos";
 import { cn } from "@/lib/utils";
 import type React from "react";
-import { GithubIcon } from "./icons/github-icon";
-import { XIcon } from "./icons/x-icon";
 import { FullWidthDivider } from "./full-width-divider";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "love-ui/icons";
 
 const APP_EMAIL = "hello@loveui.dev";
 const APP_PHONE = "+1 555 014 2026";

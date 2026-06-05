@@ -1,6 +1,11 @@
 import { cn } from "@/lib/utils";
 import type React from "react";
-import { ZapIcon, ShieldCheckIcon, ActivityIcon, GlobeIcon } from "lucide-react";
+import {
+  Zap as ZapIcon,
+  ShieldCheck as ShieldCheckIcon,
+  Activity as ActivityIcon,
+  Globe as GlobeIcon,
+} from "love-ui/icons";
 
 type FeatureType = {
 	title: string;

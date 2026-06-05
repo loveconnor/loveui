@@ -1,7 +1,12 @@
 import { cn } from "@/lib/utils";
 import type React from "react";
 import { DecorIcon } from "./decor-icon";
-import { LayoutDashboardIcon, TerminalIcon, ShieldCheckIcon, FileTextIcon } from "lucide-react";
+import {
+  LayoutDashboard as LayoutDashboardIcon,
+  Terminal as TerminalIcon,
+  ShieldCheck as ShieldCheckIcon,
+  FileText as FileTextIcon,
+} from "love-ui/icons";
 
 type FeatureType = {
 	title: string;

@@ -1,4 +1,4 @@
-import { XIcon } from "lucide-react"
+import { X as XIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

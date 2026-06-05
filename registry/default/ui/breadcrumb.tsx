@@ -1,7 +1,7 @@
 import * as React from "react"
 import { mergeProps } from "@base-ui-components/react/merge-props"
 import { useRender } from "@base-ui-components/react/use-render"
-import { ChevronRight, MoreHorizontal } from "lucide-react"
+import { ChevronRight, Ellipsis as MoreHorizontal } from "love-ui/icons"
 
 import { cn } from "@/lib/utils"
 

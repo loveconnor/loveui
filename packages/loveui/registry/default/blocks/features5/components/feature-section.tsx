@@ -1,7 +1,14 @@
 import { cn } from "@/lib/utils";
 import type React from "react";
 import { GridPattern } from "./grid-pattern";
-import { ZapIcon, CpuIcon, FingerprintIcon, PencilIcon, Settings2Icon, SparklesIcon } from "lucide-react";
+import {
+  Zap as ZapIcon,
+  Cpu as CpuIcon,
+  FingerprintPattern as FingerprintIcon,
+  Pencil as PencilIcon,
+  Settings2 as Settings2Icon,
+  Sparkles as SparklesIcon,
+} from "love-ui/icons";
 
 type FeatureType = {
 	title: string;

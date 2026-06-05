@@ -1,7 +1,7 @@
+import { X as XIcon } from "love-ui/logos";
 import { cn } from "@/lib/utils";
-import { XIcon } from "./icons/x-icon";
 import { Button } from "@/registry/default/ui/button";
-import { Mail, Users } from "lucide-react";
+import { Mail, Users } from "love-ui/icons";
 
 const APP_EMAIL = "hello@loveui.dev";
 

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
-import { ArrowLeftIcon } from "lucide-react"
+import { ArrowLeft as ArrowLeftIcon } from "love-ui/icons"
 import { PageFooter } from "fumadocs-ui/layouts/docs/page"
 
 import { ComponentExamples } from "@/components/component-examples"

@@ -1,4 +1,4 @@
-import { InfoIcon } from "lucide-react"
+import { Info as InfoIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/registry/default/ui/tooltip"

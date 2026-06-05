@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ArrowLeft, Loader2, Mail } from 'lucide-react';
+import { ArrowLeft, LoaderCircle as Loader2, Mail } from 'love-ui/icons';
 import { Button } from '@/registry/default/ui/button';
 import {
   Field,

@@ -1,4 +1,4 @@
-import { InfoIcon } from "lucide-react"
+import { Info as InfoIcon } from "love-ui/icons"
 
 import {
   Alert,

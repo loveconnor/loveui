@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { LoaderCircleIcon } from "lucide-react"
+import { LoaderCircle as LoaderCircleIcon } from "love-ui/icons"
 
 import {
   Avatar,

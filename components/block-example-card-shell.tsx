@@ -3,16 +3,16 @@
 import * as React from "react"
 import { Bun, NPM, PNPM, Yarn } from "@react-symbols/icons"
 import {
-  CheckIcon,
-  ChevronRightIcon,
-  CopyIcon,
-  FileCodeIcon,
-  FileIcon,
-  FolderIcon,
-  FolderOpenIcon,
-  LockIcon,
-  TerminalIcon,
-} from "lucide-react"
+  Check as CheckIcon,
+  ChevronRight as ChevronRightIcon,
+  Copy as CopyIcon,
+  FileCode as FileCodeIcon,
+  File as FileIcon,
+  Folder as FolderIcon,
+  FolderOpen as FolderOpenIcon,
+  Lock as LockIcon,
+  Terminal as TerminalIcon,
+} from "love-ui/icons"
 
 import { CodeblockShiki, CopyButton } from "@/components/code-block"
 import { cn } from "@/lib/cn"

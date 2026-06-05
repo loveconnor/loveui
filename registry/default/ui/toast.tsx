@@ -3,12 +3,12 @@
 import * as React from "react"
 import { Toast } from "@base-ui-components/react/toast"
 import {
-  CircleAlertIcon,
-  CircleCheckIcon,
-  InfoIcon,
-  LoaderCircleIcon,
-  TriangleAlertIcon,
-} from "lucide-react"
+  CircleAlert as CircleAlertIcon,
+  CircleCheck as CircleCheckIcon,
+  Info as InfoIcon,
+  LoaderCircle as LoaderCircleIcon,
+  TriangleAlert as TriangleAlertIcon,
+} from "love-ui/icons"
 
 import {
   gooey,

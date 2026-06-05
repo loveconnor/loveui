@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { PanelLeftIcon } from 'lucide-react';
+import { PanelLeft as PanelLeftIcon } from 'love-ui/icons';
 import { Button } from '@/registry/default/ui/button';
 import { Input } from '@/registry/default/ui/input';
 import { Separator } from '@/registry/default/ui/separator';

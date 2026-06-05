@@ -24,7 +24,7 @@ import {
 
 import { cn } from "../../../utils/cn";
 import { Bun, NPM, PNPM, Yarn } from "@react-symbols/icons";
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import { Check as CheckIcon, ChevronDown as ChevronDownIcon } from "love-ui/icons";
 
 interface CodeBlockSelectPkgProps {
   command: string;

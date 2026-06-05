@@ -1,4 +1,4 @@
-import { LockIcon } from "lucide-react"
+import { Lock as LockIcon } from "love-ui/icons"
 
 import { Switch } from "@/registry/default/ui/switch"
 

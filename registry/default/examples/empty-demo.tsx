@@ -1,4 +1,4 @@
-import { BookIcon, RouteIcon } from "lucide-react"
+import { Book as BookIcon, Route as RouteIcon } from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

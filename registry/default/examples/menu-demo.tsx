@@ -1,10 +1,10 @@
 import {
-  PauseIcon,
-  PlayIcon,
-  SkipBackIcon,
-  SkipForwardIcon,
-  TrashIcon,
-} from "lucide-react"
+  Pause as PauseIcon,
+  Play as PlayIcon,
+  SkipBack as SkipBackIcon,
+  SkipForward as SkipForwardIcon,
+  Trash as TrashIcon,
+} from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {

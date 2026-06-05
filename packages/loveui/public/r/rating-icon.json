@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/examples/rating-icon.tsx",
-      "content": "\"use client\"\n\nimport { HeartIcon } from \"lucide-react\"\n\nimport { Rating, RatingButton } from \"../../../../../packages/rating\"\n\nconst Example = () => (\n  <Rating defaultValue={3}>\n    {Array.from({ length: 5 }).map((_, index) => (\n      <RatingButton icon={<HeartIcon />} key={index} />\n    ))}\n  </Rating>\n)\n\nexport default Example\n",
+      "content": "\"use client\"\n\nimport { Heart as HeartIcon } from \"love-ui/icons\"\n\nimport { Rating, RatingButton } from \"../../../../../packages/rating\"\n\nconst Example = () => (\n  <Rating defaultValue={3}>\n    {Array.from({ length: 5 }).map((_, index) => (\n      <RatingButton icon={<HeartIcon />} key={index} />\n    ))}\n  </Rating>\n)\n\nexport default Example\n",
       "type": "registry:example"
     }
   ],

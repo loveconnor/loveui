@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDownIcon } from "lucide-react"
+import { ChevronDown as ChevronDownIcon } from "love-ui/icons"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/default/ui/button"

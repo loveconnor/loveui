@@ -1,6 +1,5 @@
+import { Github as GithubIcon, GoogleIcon } from "love-ui/logos";
 import { cn } from "@/lib/utils";
-import { GithubIcon } from "./icons/github-icon";
-import { GoogleIcon } from "./icons/google-icon";
 import { Button } from "@/registry/default/ui/button";
 import {
 	InputGroup,
@@ -9,7 +8,7 @@ import {
 } from "@/registry/default/ui/input-group";
 import { AuthDivider } from "./ui/auth-divider";
 import { DecorIcon } from "./ui/decor-icon";
-import { AtSignIcon } from "lucide-react";
+import { AtSign as AtSignIcon } from "love-ui/icons";
 
 export function AuthPage() {
 	return (

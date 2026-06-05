@@ -1,9 +1,9 @@
 import {
-  ExternalLinkIcon,
-  MoreHorizontalIcon,
-  SettingsIcon,
-  UserIcon,
-} from "lucide-react"
+  ExternalLink as ExternalLinkIcon,
+  Ellipsis as MoreHorizontalIcon,
+  Settings as SettingsIcon,
+  User as UserIcon,
+} from "love-ui/icons"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
 import { Button } from "@/registry/default/ui/button"

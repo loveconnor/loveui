@@ -1,6 +1,6 @@
 'use client';
 
-import { SearchIcon } from 'lucide-react';
+import { Search as SearchIcon } from 'love-ui/icons';
 import type {
   FullSearchTriggerProps,
   SearchTriggerProps,

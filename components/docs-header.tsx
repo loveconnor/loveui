@@ -2,7 +2,7 @@
 
 import Link from 'fumadocs-core/link';
 import { usePathname } from 'fumadocs-core/framework';
-import { SidebarIcon } from 'lucide-react';
+import { PanelLeft as SidebarIcon } from 'love-ui/icons';
 import type { ComponentProps } from 'react';
 import {
   isLinkItemActive,

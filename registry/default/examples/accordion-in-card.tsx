@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card"
-import { ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRight as ArrowUpRightIcon } from "love-ui/icons"
 
 const items = [
   {

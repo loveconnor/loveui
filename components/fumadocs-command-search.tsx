@@ -3,14 +3,14 @@
 import { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import {
-  BookOpenIcon,
-  FileTextIcon,
-  HashIcon,
-  ImageIcon,
-  LifeBuoyIcon,
-  MessageSquareIcon,
-  SearchIcon,
-} from 'lucide-react';
+  BookOpen as BookOpenIcon,
+  FileText as FileTextIcon,
+  Hash as HashIcon,
+  Image as ImageIcon,
+  LifeBuoy as LifeBuoyIcon,
+  MessageSquare as MessageSquareIcon,
+  Search as SearchIcon,
+} from 'love-ui/icons';
 import { useDocsSearch } from 'fumadocs-core/search/client';
 import { useOnChange } from 'fumadocs-core/utils/use-on-change';
 import { useI18n } from 'fumadocs-ui/contexts/i18n';

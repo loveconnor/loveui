@@ -1,4 +1,4 @@
-import { SparklesIcon } from "lucide-react"
+import { Sparkles as SparklesIcon } from "love-ui/icons"
 
 import { Badge } from "@/registry/default/ui/badge"
 

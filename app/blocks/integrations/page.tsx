@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
-import { ArrowLeftIcon } from 'lucide-react';
+import { ArrowLeft as ArrowLeftIcon } from 'love-ui/icons';
 import { BlockExampleCardShell } from '@/components/block-example-card-shell';
 import { Integrations as IntegrationsOne } from '@/registry/default/blocks/integrations1/components/integrations';
 import { Integrations as IntegrationsTwo } from '@/registry/default/blocks/integrations2/components/integrations';
@@ -10,18 +10,6 @@ import { Integrations as IntegrationsFive } from '@/registry/default/blocks/inte
 import { Button } from '@/registry/default/ui/button';
 import { collectionPageJsonLd, seo, siteKeywords } from '@/lib/seo';
 
-const integrationLogoFiles = [
-  'components/logos/adobe.svg',
-  'components/logos/canva.svg',
-  'components/logos/cursor.svg',
-  'components/logos/gmail.svg',
-  'components/logos/notion.svg',
-  'components/logos/planetscale.svg',
-  'components/logos/polar.svg',
-  'components/logos/supabase.svg',
-  'components/logos/vercel.svg',
-];
-
 const integrationBlocksDescription =
   'Integration blocks for app ecosystems, connected tool grids, logo clusters, and workflow surfaces.';
 
@@ -30,21 +18,20 @@ const integrationBlocks = [
     id: 'integrations1',
     installName: 'integrations-one',
     title: 'Integrations 1',
-    description: 'Compact integration card grid with local logo assets and action link.',
+    description: 'Compact integration card grid with package logo assets and action link.',
     component: <IntegrationsOne />,
-    files: ['app/page.tsx', 'components/integrations.tsx', ...integrationLogoFiles],
+    files: ['app/page.tsx', 'components/integrations.tsx'],
   },
   {
     id: 'integrations2',
     installName: 'integrations-two',
     title: 'Integrations 2',
-    description: 'Bordered integration matrix with corner accents and local tool logos.',
+    description: 'Bordered integration matrix with corner accents and package tool logos.',
     component: <IntegrationsTwo />,
     files: [
       'app/page.tsx',
       'components/integrations.tsx',
       'components/decor-icon.tsx',
-      ...integrationLogoFiles,
     ],
   },
   {
@@ -57,7 +44,6 @@ const integrationBlocks = [
       'app/page.tsx',
       'components/integrations.tsx',
       'components/full-width-divider.tsx',
-      ...integrationLogoFiles,
     ],
   },
   {
@@ -66,7 +52,7 @@ const integrationBlocks = [
     title: 'Integrations 4',
     description: 'Large integration hero with masked logo tiles and product-stack copy.',
     component: <IntegrationsFour />,
-    files: ['app/page.tsx', 'components/integrations.tsx', ...integrationLogoFiles],
+    files: ['app/page.tsx', 'components/integrations.tsx'],
   },
   {
     id: 'integrations5',
@@ -74,7 +60,7 @@ const integrationBlocks = [
     title: 'Integrations 5',
     description: 'Rounded logo cluster with overlap layout and integrations CTA.',
     component: <IntegrationsFive />,
-    files: ['app/page.tsx', 'components/integrations.tsx', ...integrationLogoFiles],
+    files: ['app/page.tsx', 'components/integrations.tsx'],
   },
 ];
 

@@ -1,10 +1,10 @@
 import {
-  AlignCenterIcon,
-  AlignLeftIcon,
-  AlignRightIcon,
-  DollarSignIcon,
-  PercentIcon,
-} from "lucide-react"
+  TextAlignCenter as AlignCenterIcon,
+  TextAlignStart as AlignLeftIcon,
+  TextAlignEnd as AlignRightIcon,
+  DollarSign as DollarSignIcon,
+  Percent as PercentIcon,
+} from "love-ui/icons"
 
 import { Button } from "@/registry/default/ui/button"
 import {
