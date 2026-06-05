@@ -106,7 +106,7 @@ export function IconsBrowser({
           <TabsList className="rounded-none bg-transparent p-0">
             {assetCollections.map((item) => (
               <TabsTab
-                className="h-8 rounded-none px-3 font-mono text-sm data-selected:bg-neutral-100 dark:data-selected:bg-neutral-900"
+                className="h-8 rounded-none px-3 text-sm data-selected:bg-neutral-100 dark:data-selected:bg-neutral-900"
                 key={item.slug}
                 value={item.slug}
               >
@@ -120,7 +120,7 @@ export function IconsBrowser({
           <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 size-4 -translate-y-1/2 text-neutral-600 dark:text-neutral-400" />
           <Input
             aria-label={`Search ${collection}`}
-            className="h-9 w-full rounded-none border-neutral-200 bg-white pl-10 pr-3 font-mono text-sm text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,0.05)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50"
+            className="h-9 w-full rounded-none border-neutral-200 bg-white pl-10 pr-3 text-sm text-neutral-950 shadow-[0_1px_3px_rgba(0,0,0,0.05)] dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50"
             onChange={(event) => setQuery(event.target.value)}
             placeholder={`Search ${styledItems.length.toLocaleString()} icons...`}
             type="search"
@@ -143,7 +143,7 @@ export function IconsBrowser({
             <TabsList className="rounded-none bg-neutral-100 p-1 dark:bg-neutral-900">
             {styleOptions.map((option) => (
               <TabsTab
-                className="h-7 rounded-none px-2.5 font-mono text-sm leading-none data-selected:bg-white data-selected:font-semibold dark:data-selected:bg-neutral-950"
+                className="h-7 rounded-none px-2.5 text-sm leading-none data-selected:bg-white data-selected:font-semibold dark:data-selected:bg-neutral-950"
                 key={option.value}
                 value={option.value}
               >
@@ -167,7 +167,7 @@ export function IconsBrowser({
             ))}
           </div>
         ) : (
-          <div className="flex min-h-[50vh] items-center justify-center px-6 text-center font-mono text-sm text-neutral-500">
+          <div className="flex min-h-[50vh] items-center justify-center px-6 text-center text-sm text-neutral-500">
             No assets match the current filters.
           </div>
         )}
@@ -488,9 +488,9 @@ function ImportCopyRow({
   value: string;
 }) {
   return (
-    <div className="grid min-h-12 grid-cols-[5.75rem_minmax(0,1fr)_auto] items-center gap-3 px-3 py-2.5 font-mono text-sm">
+    <div className="grid min-h-12 grid-cols-[5.75rem_minmax(0,1fr)_auto] items-center gap-3 px-3 py-2.5 text-sm">
       <span className="text-muted-foreground">{label}</span>
-      <code className="min-w-0 overflow-x-auto whitespace-nowrap text-foreground">
+      <code className="min-w-0 overflow-x-auto whitespace-nowrap font-sans text-foreground">
         {value}
       </code>
       <Button
