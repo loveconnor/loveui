@@ -4,6 +4,8 @@ import { configWithDefaults } from "@/src/registry/config"
 import {
   BASE_COLORS,
   BUILTIN_REGISTRIES,
+  DEFAULT_REGISTRY_NAME,
+  LOVEUI_PRO_REGISTRY_NAME,
   REGISTRY_URL,
 } from "@/src/registry/constants"
 import {
@@ -186,6 +188,30 @@ export async function getRegistriesConfig(
 
 export async function getLoveUIRegistryIndex() {
   try {
+    if (DEFAULT_REGISTRY_NAME === LOVEUI_PRO_REGISTRY_NAME) {
+      const urlAndHeaders = buildUrlAndHeadersForRegistryItem(
+        `${LOVEUI_PRO_REGISTRY_NAME}/index`,
+        configWithDefaults()
+      )
+
+      if (!urlAndHeaders?.url) {
+        throw new RegistryNotFoundError(`${LOVEUI_PRO_REGISTRY_NAME}/index`)
+      }
+
+      if (
+        urlAndHeaders.headers &&
+        Object.keys(urlAndHeaders.headers).length > 0
+      ) {
+        setRegistryHeaders({
+          [urlAndHeaders.url]: urlAndHeaders.headers,
+        })
+      }
+
+      const [result] = await fetchRegistry([urlAndHeaders.url])
+
+      return registryIndexSchema.parse(result)
+    }
+
     const [result] = await fetchRegistry(["index.json"])
 
     return registryIndexSchema.parse(result)

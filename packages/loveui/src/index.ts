@@ -7,12 +7,15 @@ import { docs } from "@/src/commands/docs"
 import { eject } from "@/src/commands/eject"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
+import { login } from "@/src/commands/login"
+import { logout } from "@/src/commands/logout"
 import { mcp } from "@/src/commands/mcp"
 import { migrate } from "@/src/commands/migrate"
 import { preset } from "@/src/commands/preset"
 import { registry } from "@/src/commands/registry"
 import { search } from "@/src/commands/search"
 import { view } from "@/src/commands/view"
+import { whoami } from "@/src/commands/whoami"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -44,6 +47,9 @@ async function main() {
     .addCommand(build)
     .addCommand(mcp)
     .addCommand(preset)
+    .addCommand(login)
+    .addCommand(logout)
+    .addCommand(whoami)
     .addCommand(registry)
 
   program.parse()

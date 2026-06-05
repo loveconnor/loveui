@@ -399,6 +399,51 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
     })
   })
 
+  it("should attach the stored token for LoveUI Pro registry items", () => {
+    process.env.LOVEUI_PRO_TOKEN = "pro-token"
+
+    const result = buildUrlAndHeadersForRegistryItem(
+      "@love-ui-pro/pro-area-chart",
+      {} as any
+    )
+
+    expect(result).toEqual({
+      url: "https://www.loveui.dev/pro/r/pro-area-chart.json",
+      headers: {
+        Authorization: "Bearer pro-token",
+      },
+    })
+
+    delete process.env.LOVEUI_PRO_TOKEN
+  })
+
+  it("should not override explicit LoveUI Pro registry auth headers", () => {
+    process.env.LOVEUI_PRO_TOKEN = "stored-token"
+
+    const result = buildUrlAndHeadersForRegistryItem(
+      "@love-ui-pro/pro-area-chart",
+      {
+        registries: {
+          "@love-ui-pro": {
+            url: "https://pro.example.com/{name}.json",
+            headers: {
+              authorization: "Bearer explicit-token",
+            },
+          },
+        },
+      } as any
+    )
+
+    expect(result).toEqual({
+      url: "https://pro.example.com/pro-area-chart.json",
+      headers: {
+        authorization: "Bearer explicit-token",
+      },
+    })
+
+    delete process.env.LOVEUI_PRO_TOKEN
+  })
+
   it("should handle environment variables in config", () => {
     process.env.TEST_TOKEN = "abc123"
     process.env.API_URL = "https://api.com"

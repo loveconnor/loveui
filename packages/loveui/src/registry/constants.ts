@@ -6,6 +6,15 @@ export const REGISTRY_URL =
 
 export const LOVEUI_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
+export const LOVEUI_PRO_REGISTRY_NAME = "@love-ui-pro"
+
+export const LOVEUI_PRO_REGISTRY_URL =
+  process.env.LOVEUI_PRO_REGISTRY_URL ??
+  `${LOVEUI_URL}/pro/r/{name}.json`
+
+export const DEFAULT_REGISTRY_NAME =
+  process.env.LOVEUI_PRO_CLI === "1" ? LOVEUI_PRO_REGISTRY_NAME : "@love-ui"
+
 export const FALLBACK_STYLE = "new-york-v4"
 
 export const BASE_COLORS = [
@@ -42,6 +51,7 @@ export const BASE_COLORS = [
 // Built-in registries that are always available and cannot be overridden
 export const BUILTIN_REGISTRIES: z.infer<typeof registryConfigSchema> = {
   "@love-ui": `${REGISTRY_URL}/{name}.json`,
+  [LOVEUI_PRO_REGISTRY_NAME]: LOVEUI_PRO_REGISTRY_URL,
 }
 
 export const BUILTIN_MODULES = new Set([

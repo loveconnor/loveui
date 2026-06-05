@@ -1,4 +1,10 @@
-import { BUILTIN_REGISTRIES, REGISTRY_URL } from "@/src/registry/constants"
+import { getStoredProTokenSync } from "@/src/pro/auth"
+import {
+  BUILTIN_REGISTRIES,
+  DEFAULT_REGISTRY_NAME,
+  LOVEUI_PRO_REGISTRY_NAME,
+  REGISTRY_URL,
+} from "@/src/registry/constants"
 import { expandEnvVars } from "@/src/registry/env"
 import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
@@ -30,7 +36,7 @@ export function buildUrlAndHeadersForRegistryItem(
     if (isUrl(name) || isLocalFile(name) || isLocalPath(name)) {
       return null
     }
-    registry = "@love-ui"
+    registry = DEFAULT_REGISTRY_NAME
   }
 
   const registries = { ...BUILTIN_REGISTRIES, ...config?.registries }
@@ -45,8 +51,34 @@ export function buildUrlAndHeadersForRegistryItem(
 
   return {
     url: buildUrlFromRegistryConfig(item, registryConfig, config),
-    headers: buildHeadersFromRegistryConfig(registryConfig),
+    headers: withBuiltinRegistryHeaders(
+      registry,
+      buildHeadersFromRegistryConfig(registryConfig)
+    ),
   }
+}
+
+function withBuiltinRegistryHeaders(
+  registry: string,
+  headers: Record<string, string>
+) {
+  if (registry !== LOVEUI_PRO_REGISTRY_NAME || hasAuthorizationHeader(headers)) {
+    return headers
+  }
+
+  const token = getStoredProTokenSync()
+  if (!token) {
+    return headers
+  }
+
+  return {
+    ...headers,
+    Authorization: `Bearer ${token}`,
+  }
+}
+
+function hasAuthorizationHeader(headers: Record<string, string>) {
+  return Object.keys(headers).some((key) => key.toLowerCase() === "authorization")
 }
 
 export function buildUrlFromRegistryConfig(
