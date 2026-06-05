@@ -78,7 +78,7 @@ export const initOptionsSchema = z.object({
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
   pointer: z.boolean().optional(),
-  base: z.enum(["radix", "base"]).optional(),
+  base: z.enum(["base"]).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
   existingConfig: z.record(z.unknown()).optional(),
@@ -124,7 +124,7 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, react-router, laravel, astro)"
   )
-  .option("-b, --base <base>", "the component library to use. (radix, base)")
+  .option("-b, --base <base>", "the component library to use. (base)")
   .option("--monorepo", "scaffold a monorepo project.")
   .option("--no-monorepo", "skip the monorepo prompt.")
   .option("-p, --preset [name]", "use a preset configuration")
@@ -418,12 +418,12 @@ export const init = new Command()
               logger.break()
               process.exit(1)
             }
-            // Preset codes no longer carry base — use "radix" as placeholder.
+            // Preset codes no longer carry base. Love UI only uses Base UI.
             // The correct base is set in the URL after resolution below.
             initUrl = resolveInitUrl(
               {
                 ...decoded,
-                base: "radix",
+                base: "base",
                 rtl: options.rtl ?? false,
               },
               {
@@ -441,7 +441,7 @@ export const init = new Command()
             initUrl = resolveInitUrl(
               {
                 ...preset,
-                base: options.base ?? "radix",
+                base: "base",
                 rtl: options.rtl ?? preset.rtl,
               },
               { template: options.template, pointer: options.pointer }
@@ -457,17 +457,13 @@ export const init = new Command()
       let resolvedBase: string =
         options.base ??
         presetBase ??
-        (existingConfig?.style
-          ? (existingConfig.style as string).startsWith("base-")
-            ? "base"
-            : "radix"
-          : "")
+        (existingConfig?.style ? "base" : "")
 
       if (!resolvedBase) {
         if (components.length > 0) {
-          // When initializing from a registry item, default to radix.
+          // When initializing from a registry item, default to Base UI.
           // The registry:base config will override this.
-          resolvedBase = "radix"
+          resolvedBase = "base"
         } else {
           const base = await promptForBase()
           resolvedBase = base
@@ -939,12 +935,21 @@ async function promptForMinimalConfig(
   defaultConfig: Config,
   opts: z.infer<typeof initOptionsSchema>
 ) {
-  let style = defaultConfig.style
-  let baseColor = "neutral"
+  let style =
+    typeof opts.registryBaseConfig?.style === "string"
+      ? opts.registryBaseConfig.style
+      : defaultConfig.style
+  let baseColor =
+    typeof opts.registryBaseConfig?.tailwind?.baseColor === "string"
+      ? opts.registryBaseConfig.tailwind.baseColor
+      : "neutral"
   let cssVariables = defaultConfig.tailwind.cssVariables
-  let iconLibrary = defaultConfig.iconLibrary ?? "lucide"
+  let iconLibrary =
+    typeof opts.registryBaseConfig?.iconLibrary === "string"
+      ? opts.registryBaseConfig.iconLibrary
+      : defaultConfig.iconLibrary ?? "lucide"
 
-  if (!opts.defaults) {
+  if (!opts.defaults && !opts.registryBaseConfig?.style) {
     const [styles, tailwindVersion] = await Promise.all([
       getRegistryStyles(),
       getProjectTailwindVersionFromConfig(defaultConfig),
@@ -988,30 +993,16 @@ async function promptForMinimalConfig(
 }
 
 async function confirmBaseSwitch(existingStyle: string, resolvedBase: string) {
-  // Styles prefixed with "base-" use Base UI. Everything else is Radix.
-  const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
-  if (resolvedBase === oldBase) return resolvedBase
+  if (existingStyle.startsWith("base-")) {
+    return resolvedBase
+  }
 
   logger.warn(
-    `  You are switching from ${highlighter.info(
-      oldBase
-    )} to ${highlighter.info(resolvedBase)}.`
-  )
-  logger.warn(
-    `  Components outside the ${highlighter.info(
-      "ui"
-    )} directory that depend on ${highlighter.info(
-      oldBase
-    )} primitives may need manual updates.`
+    `  Existing config uses ${highlighter.info(
+      existingStyle
+    )}. Love UI now uses ${highlighter.info("Base UI")} presets only.`
   )
   logger.break()
 
-  const { proceed } = await prompts({
-    type: "confirm",
-    name: "proceed",
-    message: "Would you like to continue?",
-    initial: false,
-  })
-
-  return proceed ? resolvedBase : oldBase
+  return "base"
 }

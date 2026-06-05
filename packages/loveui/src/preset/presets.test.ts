@@ -48,7 +48,7 @@ describe("buildInitUrl", () => {
     const url = resolveInitUrl(mockPreset)
     const parsed = new URL(url)
     expect(parsed.origin + parsed.pathname).toBe(`${LOVEUI_URL}/init`)
-    expect(parsed.searchParams.get("base")).toBe("radix")
+    expect(parsed.searchParams.get("base")).toBe("base")
     expect(parsed.searchParams.get("style")).toBe("new-york-v4")
     expect(parsed.searchParams.get("baseColor")).toBe("neutral")
     expect(parsed.searchParams.get("theme")).toBe("default")

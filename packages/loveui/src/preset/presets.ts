@@ -97,7 +97,7 @@ export function resolveInitUrl(
   }
 ) {
   const params = new URLSearchParams({
-    base: preset.base,
+    base: "base",
     style: preset.style,
     baseColor: preset.baseColor,
     theme: preset.theme,
@@ -142,17 +142,7 @@ export function resolveInitUrl(
 }
 
 export async function promptForBase() {
-  const { base } = await prompts({
-    type: "select",
-    name: "base",
-    message: `Select a ${highlighter.info("component library")}`,
-    choices: [
-      { title: "Radix", value: "radix" },
-      { title: "Base", value: "base" },
-    ],
-  })
-  if (!base) process.exit(1)
-  return base as "radix" | "base"
+  return "base" as const
 }
 
 export async function promptForPreset(options: {

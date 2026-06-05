@@ -74,7 +74,7 @@ test("get project config from package imports", async () => {
       utils: path.resolve(cwd, "src/lib/utils.ts"),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 })
@@ -113,7 +113,7 @@ test("get project config from generic package import prefix", async () => {
       utils: path.resolve(cwd, "src/lib/utils"),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 })
@@ -152,7 +152,7 @@ test("get project config from root package imports", async () => {
       utils: path.resolve(cwd, "src/lib/utils"),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 })
@@ -193,7 +193,7 @@ test("get project config from partial package imports", async () => {
       utils: path.resolve(cwd, "src/lib/utils"),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 })
@@ -255,7 +255,7 @@ test("get config", async () => {
     },
     iconLibrary: "lucide",
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 
@@ -311,7 +311,7 @@ test("get config", async () => {
       ),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 
@@ -355,7 +355,7 @@ test("get config", async () => {
       lib: path.resolve(__dirname, "../fixtures/config-jsx", "./lib"),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 
@@ -410,7 +410,7 @@ test("get config", async () => {
       ),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 
@@ -469,7 +469,7 @@ test("get config", async () => {
       ),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 
@@ -530,7 +530,7 @@ test("get config", async () => {
       ),
     },
     registries: {
-      "@love-ui": "https://www.loveui.dev/r/styles/{style}/{name}.json",
+      "@love-ui": "https://www.loveui.dev/r/{name}.json",
     },
   })
 })
@@ -637,9 +637,9 @@ test("get workspace config shows an actionable error when a workspace package is
 })
 
 describe("getBase", () => {
-  test("returns radix for radix styles", () => {
-    expect(getBase("radix-nova")).toBe("radix")
-    expect(getBase("radix-vega")).toBe("radix")
+  test("returns base for legacy radix styles", () => {
+    expect(getBase("radix-nova")).toBe("base")
+    expect(getBase("radix-vega")).toBe("base")
   })
 
   test("returns base for base styles", () => {
@@ -647,8 +647,8 @@ describe("getBase", () => {
     expect(getBase("base-vega")).toBe("base")
   })
 
-  test("returns radix for undefined", () => {
-    expect(getBase(undefined)).toBe("radix")
+  test("returns base for undefined", () => {
+    expect(getBase(undefined)).toBe("base")
   })
 })
 
