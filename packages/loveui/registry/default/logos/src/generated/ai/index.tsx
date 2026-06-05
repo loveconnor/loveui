@@ -20,7 +20,7 @@ export { TogetherAIWordmark, TogetherAIWordmarkMetadata, type TogetherAIWordmark
 export { Windsurf, WindsurfMetadata, type WindsurfProps } from './Windsurf';
 export { WindsurfWordmark, WindsurfWordmarkMetadata, type WindsurfWordmarkProps } from './Windsurf_wordmark';
 export { Deepseek, DeepseekMetadata, type DeepseekProps } from './deepseek';
-export { HuggingFace, HuggingFaceMetadata, type HuggingFaceProps } from './hugging-face';
+export { HuggingFace, HuggingFaceMetadata, type HuggingFaceProps } from './Hugging-Face';
 export { Lovable, LovableMetadata, type LovableProps } from './lovable';
-export { Midday, MiddayMetadata, type MiddayProps } from './midday';
+export { Midday, MiddayMetadata, type MiddayProps } from './Midday';
 export { XAIGrok, XAIGrokMetadata, type XAIGrokProps } from './xAI-Grok';

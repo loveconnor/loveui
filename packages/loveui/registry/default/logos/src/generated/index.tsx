@@ -34,9 +34,9 @@ export { TogetherAIWordmark, TogetherAIWordmarkMetadata } from './ai/TogetherAI_
 export { Windsurf, WindsurfMetadata } from './ai/Windsurf';
 export { WindsurfWordmark, WindsurfWordmarkMetadata } from './ai/Windsurf_wordmark';
 export { Deepseek, DeepseekMetadata } from './ai/deepseek';
-export { HuggingFace, HuggingFaceMetadata } from './ai/hugging-face';
+export { HuggingFace, HuggingFaceMetadata } from './ai/Hugging-Face';
 export { Lovable, LovableMetadata } from './ai/lovable';
-export { Midday, MiddayMetadata } from './ai/midday';
+export { Midday, MiddayMetadata } from './ai/Midday';
 export { XAIGrok, XAIGrokMetadata } from './ai/xAI-Grok';
 export { Arc, ArcMetadata } from './browser/Arc';
 export { Bing, BingMetadata } from './browser/Bing';
@@ -600,9 +600,9 @@ import { TogetherAIWordmark, TogetherAIWordmarkMetadata } from './ai/TogetherAI_
 import { Windsurf, WindsurfMetadata } from './ai/Windsurf';
 import { WindsurfWordmark, WindsurfWordmarkMetadata } from './ai/Windsurf_wordmark';
 import { Deepseek, DeepseekMetadata } from './ai/deepseek';
-import { HuggingFace, HuggingFaceMetadata } from './ai/hugging-face';
+import { HuggingFace, HuggingFaceMetadata } from './ai/Hugging-Face';
 import { Lovable, LovableMetadata } from './ai/lovable';
-import { Midday, MiddayMetadata } from './ai/midday';
+import { Midday, MiddayMetadata } from './ai/Midday';
 import { XAIGrok, XAIGrokMetadata } from './ai/xAI-Grok';
 import { Arc, ArcMetadata } from './browser/Arc';
 import { Bing, BingMetadata } from './browser/Bing';
