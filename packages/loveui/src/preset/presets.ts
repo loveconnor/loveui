@@ -157,40 +157,15 @@ export async function promptForPreset(options: {
     type: "select",
     name: "selectedPreset",
     message: `Which ${highlighter.info("preset")} would you like to use?`,
-    choices: [
-      ...presets.map(([name, preset]) => ({
-        title: preset.title,
-        description: preset.description,
-        value: name,
-      })),
-      {
-        title: "Custom",
-        description: `Build your own at ${highlighter.info(`${LOVEUI_URL}/create`)}`,
-        value: "custom",
-      },
-    ],
+    choices: presets.map(([name, preset]) => ({
+      title: preset.title,
+      description: preset.description,
+      value: name,
+    })),
   })
 
   if (!selectedPreset) {
     process.exit(1)
-  }
-
-  if (selectedPreset === "custom") {
-    const createUrl = resolveCreateUrl({
-      command: "init",
-      rtl: options.rtl,
-      pointer: options.pointer,
-      base: options.base,
-      ...(options.template && { template: options.template }),
-    })
-    await promptToOpenPresetBuilder({
-      createUrl,
-      followUp: `Then ${highlighter.info(
-        "copy and run the command"
-      )} from loveui.dev.`,
-    })
-
-    process.exit(0)
   }
 
   const preset = DEFAULT_PRESETS[selectedPreset as keyof typeof DEFAULT_PRESETS]
