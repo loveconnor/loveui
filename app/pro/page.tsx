@@ -12,6 +12,7 @@ import {
 } from 'love-ui/icons';
 import { Button } from '@/registry/default/ui/button';
 import { cn } from '@/lib/utils';
+import { proPlans, type ProPlan } from '@/lib/pro-plans';
 import { grantProAccessFromCheckoutSession } from '@/lib/stripe-pro';
 
 export const metadata: Metadata = {
@@ -59,20 +60,11 @@ const features = [
   },
 ];
 
-const included = [
-  'Production-ready application blocks',
-  'Dashboard, data table, and navigation systems',
-  'Advanced forms, auth screens, and workspace UI',
-  'Premium marketing and SaaS page sections',
-  'Private registry access with installable source',
-  'Future Pro releases and template updates',
-];
-
 const faqs = [
   {
     question: 'What happens after checkout?',
     answer:
-      'After checkout, LoveUI grants Pro access to the email used at purchase so you can sign in and access the private Pro registry.',
+      'After checkout, LoveUI grants Pro access to the email used at purchase so you can sign in and access LoveUI Pro.',
   },
   {
     question: 'What does LoveUI Pro include?',
@@ -83,6 +75,11 @@ const faqs = [
     question: 'Can I use Pro on client projects?',
     answer:
       'Yes. LoveUI Pro is designed for production products, internal tools, SaaS applications, and client-facing work.',
+  },
+  {
+    question: 'How do Team and Enterprise access work?',
+    answer:
+      'Team starts as a shared commercial license with purchaser-managed Pro access. Enterprise is for organizations that need custom terms, procurement support, or a broader rollout.',
   },
 ];
 
@@ -253,58 +250,145 @@ function ProFeatures() {
 
 function ProPricing() {
   return (
-    <section className="px-4 py-20 md:py-28" id="pricing">
-      <div className="mx-auto w-full max-w-5xl space-y-8 text-center">
-        <div className="mx-auto max-w-3xl">
-          <p className="font-medium text-muted-foreground text-sm">Pricing</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-balance font-medium text-3xl md:text-5xl">
-            Buy once. Build with every LoveUI Pro release.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Get private registry access to production-ready blocks, app
-            systems, and templates you can copy into your product, customize,
-            and ship.
-          </p>
-        </div>
+    <section className="py-20 md:py-28" id="pricing">
+      <div className="mx-auto w-full max-w-3xl px-4 text-center">
+        <p className="font-medium text-muted-foreground text-sm">Pricing</p>
+        <h2 className="mx-auto mt-3 max-w-2xl text-balance font-medium text-3xl md:text-5xl">
+          Buy once. Build with every LoveUI Pro release.
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          Get private registry access to production-ready blocks, app systems,
+          and templates you can copy into your product, customize, and ship.
+        </p>
+      </div>
 
-        <div className="mx-auto max-w-md rounded-lg border bg-card p-6 text-left shadow-sm">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="font-medium">LoveUI Pro</p>
-              <p className="mt-1 text-muted-foreground text-sm">
-                Private registry access
-              </p>
-            </div>
-            <span className="rounded-full bg-primary/10 px-2 py-1 font-medium text-primary text-xs">
-              Lifetime
-            </span>
-          </div>
+      <div className="mt-10 flex items-stretch justify-center border-y">
+        <div className="mx-auto flex w-full max-w-7xl items-stretch justify-center">
+          <DiagonalRail />
 
-          <div className="mt-6 flex items-end gap-2">
-            <span className="font-semibold text-4xl">$99</span>
-            <span className="pb-1 text-muted-foreground text-sm">
-              one-time
-            </span>
-          </div>
-
-          <form action="/api/stripe/checkout" className="mt-6" method="post">
-            <Button className="h-11 w-full" type="submit">
-              Buy access
-              <ArrowRightIcon data-icon="inline-end" />
-            </Button>
-          </form>
-
-          <ul className="mt-6 space-y-3">
-            {included.map((item) => (
-              <li className="flex gap-2 text-sm" key={item}>
-                <CheckCircle2Icon className="mt-0.5 size-4 shrink-0 text-foreground" />
-                <span>{item}</span>
-              </li>
+          <div className="grid flex-1 items-stretch md:grid-cols-3 md:gap-6">
+            {proPlans.map((plan) => (
+              <ProPlanCard key={plan.key} plan={plan} />
             ))}
-          </ul>
+          </div>
+
+          <DiagonalRail />
         </div>
       </div>
     </section>
+  );
+}
+
+function DiagonalRail() {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative w-4 shrink-0 self-stretch overflow-hidden sm:w-6 md:w-8 lg:w-12"
+    >
+      <div className="absolute -top-30 -left-10 flex w-40 flex-col items-start justify-start">
+        {Array.from({ length: 50 }).map((_, index) => (
+          <div
+            className="h-4 origin-top-left -rotate-45 self-stretch outline outline-primary/35 outline-offset-[-0.25px]"
+            key={index}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProPlanCard({ plan }: { plan: ProPlan }) {
+  const isHighlighted = Boolean(plan.highlighted);
+
+  return (
+    <div
+      className={cn(
+        'flex h-full flex-col items-start gap-12 overflow-hidden border-x px-6 py-6 text-left',
+        isHighlighted ? 'bg-foreground text-background' : 'bg-background'
+      )}
+    >
+      <div className="grid w-full grid-rows-[auto_auto_2.75rem] items-start gap-9 md:grid-rows-[8.5rem_5.75rem_2.75rem]">
+        <div className="flex w-full flex-col items-start gap-2">
+          <div className="flex w-full items-center justify-between gap-4">
+            <p className="font-medium text-lg leading-7">{plan.name}</p>
+            <span
+              className={cn(
+                'rounded-full px-2 py-1 font-medium text-xs',
+                isHighlighted
+                  ? 'bg-background/12 text-background'
+                  : 'bg-primary/10 text-primary'
+              )}
+            >
+              {plan.badge}
+            </span>
+          </div>
+          <p
+            className={cn(
+              'w-full max-w-80 text-sm leading-5',
+              isHighlighted ? 'text-background/70' : 'text-muted-foreground'
+            )}
+          >
+            {plan.description}
+          </p>
+        </div>
+
+        <div className="flex w-full flex-col items-start gap-2">
+          <div className="flex h-15 items-center font-medium text-5xl">
+            {plan.price}
+          </div>
+          <p className="font-medium text-sm">{plan.cadence} license.</p>
+        </div>
+
+        {plan.action === 'checkout' ? (
+          <form
+            action="/api/stripe/checkout"
+            className="flex w-full items-start"
+            method="post"
+          >
+            <input name="plan" type="hidden" value={plan.key} />
+            <Button
+              className={cn(
+                'h-11 w-full',
+                isHighlighted &&
+                  'border-background bg-background text-foreground hover:bg-background/90'
+              )}
+              type="submit"
+            >
+              {plan.cta}
+              <ArrowRightIcon data-icon="inline-end" />
+            </Button>
+          </form>
+        ) : (
+          <Button
+            asChild
+            className="h-11 w-full"
+            variant={isHighlighted ? 'secondary' : 'outline'}
+          >
+            <a href={plan.href}>
+              {plan.cta}
+              <ArrowRightIcon data-icon="inline-end" />
+            </a>
+          </Button>
+        )}
+      </div>
+
+      <ul className="grid w-full gap-2">
+        {plan.features.map((item) => (
+          <li
+            className="grid min-h-10 grid-cols-[1rem_1fr] items-start gap-3 text-[12.5px] leading-5"
+            key={item}
+          >
+            <CheckCircle2Icon
+              className={cn(
+                'mt-0.5 size-4 shrink-0',
+                isHighlighted ? 'text-background' : 'text-foreground'
+              )}
+            />
+            <span className="flex-1">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -342,6 +426,7 @@ function ProCta() {
           access for the products you are building next.
         </p>
         <form action="/api/stripe/checkout" method="post">
+          <input name="plan" type="hidden" value="individual" />
           <Button className="rounded-full" size="lg" type="submit">
             Buy access
             <ArrowRightIcon data-icon="inline-end" />

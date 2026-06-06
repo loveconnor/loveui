@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { hasProAccess } from '@/lib/pro-access';
+import { getProAccessPlan } from '@/lib/pro-access';
 
 export const runtime = 'nodejs';
 
@@ -17,12 +17,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
   }
 
-  if (!(await hasProAccess(email))) {
+  const plan = await getProAccessPlan(email);
+
+  if (!plan) {
     return NextResponse.json(
       { error: 'That email does not have LoveUI Pro access.' },
       { status: 403 }
     );
   }
 
-  return NextResponse.json({ hasAccess: true });
+  return NextResponse.json({ hasAccess: true, plan });
 }

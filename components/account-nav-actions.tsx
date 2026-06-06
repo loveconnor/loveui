@@ -3,8 +3,10 @@
 import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { LogOut as LogOutIcon } from "love-ui/icons"
+import { LogOut as LogOutIcon, Users as UsersIcon } from "love-ui/icons"
 import { authClient } from "@/lib/auth-client"
+import { cn } from "@/lib/utils"
+import { proPlanLabels, type ProPlanKey } from "@/lib/pro-plans"
 
 const BOOK_A_CALL_URL = "https://cal.com/loveconnor"
 
@@ -29,6 +31,7 @@ export function AccountNavActions() {
   const [isSigningOut, setIsSigningOut] = React.useState(false)
   const [signOutError, setSignOutError] = React.useState<string | null>(null)
   const [loginHref, setLoginHref] = React.useState("/login")
+  const [proPlan, setProPlan] = React.useState<ProPlanKey | null>(null)
   const menuRef = React.useRef<HTMLDivElement>(null)
 
   async function handleSignOut() {
@@ -67,6 +70,52 @@ export function AccountNavActions() {
     const callbackUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`
     setLoginHref(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`)
   }, [])
+
+  React.useEffect(() => {
+    const email = session?.user.email
+
+    if (!email) {
+      setProPlan(null)
+      return
+    }
+
+    let isActive = true
+
+    async function loadProPlan() {
+      try {
+        const response = await fetch("/api/pro/access", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        })
+
+        if (!response.ok) {
+          if (isActive) {
+            setProPlan(null)
+          }
+          return
+        }
+
+        const body = (await response.json()) as { plan?: ProPlanKey }
+
+        if (isActive) {
+          setProPlan(body.plan ?? null)
+        }
+      } catch {
+        if (isActive) {
+          setProPlan(null)
+        }
+      }
+    }
+
+    loadProPlan()
+
+    return () => {
+      isActive = false
+    }
+  }, [session?.user.email])
 
   if (!isMounted || isPending) {
     return (
@@ -115,10 +164,23 @@ export function AccountNavActions() {
       {isOpen && (
         <div className="absolute top-full right-0 z-50 mt-2 w-56 rounded-lg border bg-fd-popover p-1 text-fd-popover-foreground shadow-lg">
           <div className="border-b px-2 py-2">
-            <p className="truncate text-xs text-fd-muted-foreground">
-              {session.user.email}
-            </p>
+            <div className="flex min-w-0 items-center gap-2">
+              <p className="truncate text-xs text-fd-muted-foreground">
+                {session.user.email}
+              </p>
+              {proPlan ? <ProPlanBadge plan={proPlan} /> : null}
+            </div>
           </div>
+          {proPlan === "team" || proPlan === "enterprise" ? (
+            <Link
+              className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-sm font-medium transition-colors hover:bg-fd-accent"
+              href="/teams"
+              onClick={() => setIsOpen(false)}
+            >
+              <UsersIcon className="size-4" />
+              Teams
+            </Link>
+          ) : null}
           <button
             type="button"
             className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-sm font-medium transition-colors hover:bg-fd-accent disabled:opacity-64"
@@ -136,5 +198,20 @@ export function AccountNavActions() {
         </div>
       )}
     </div>
+  )
+}
+
+function ProPlanBadge({ plan }: { plan: ProPlanKey }) {
+  return (
+    <span
+      className={cn(
+        "shrink-0 rounded-[3px] px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none text-white",
+        plan === "individual" && "bg-[#0d74fd]",
+        plan === "team" && "bg-emerald-600",
+        plan === "enterprise" && "bg-amber-600"
+      )}
+    >
+      {proPlanLabels[plan]}
+    </span>
   )
 }
