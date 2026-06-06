@@ -9,7 +9,8 @@
     {
       "path": "registry/default/components/comp-81.tsx",
       "content": "import { Archive as ArchiveIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return (\n    <Button>\n      <ArchiveIcon className=\"-ms-1 opacity-60\" size={16} aria-hidden=\"true\" />\n      Button\n    </Button>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-81.tsx"
     }
   ],
   "meta": {

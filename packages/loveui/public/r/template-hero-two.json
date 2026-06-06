@@ -8,8 +8,8 @@
     {
       "path": "registry/page-templates/default/templates/hero/two/app/page.tsx",
       "type": "registry:page",
-      "target": "components/page-templates/hero/two/app/page.tsx",
-      "content": "import HeroSection from \"../index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
+      "target": "app/page.tsx",
+      "content": "import HeroSection from \"../components/page-templates/hero/two/index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
     },
     {
       "path": "registry/page-templates/default/templates/hero/two/index.tsx",

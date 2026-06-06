@@ -9,7 +9,8 @@
     {
       "path": "registry/default/components/comp-417.tsx",
       "content": "import { Badge } from \"@/registry/building-blocks/default/ui/badge\"\n\nexport default function Component() {\n  return (\n    <Badge asChild>\n      <a href=\"#\">Link</a>\n    </Badge>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-417.tsx"
     }
   ],
   "meta": {

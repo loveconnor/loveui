@@ -9,7 +9,8 @@
     {
       "path": "registry/default/components/comp-102.tsx",
       "content": "import { ChevronDown as ChevronDownIcon, ChevronUp as ChevronUpIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return (\n    <div className=\"inline-flex -space-x-px rounded-md shadow-xs rtl:space-x-reverse\">\n      <Button\n        className=\"rounded-none shadow-none first:rounded-s-md last:rounded-e-md focus-visible:z-10\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Upvote\"\n      >\n        <ChevronUpIcon size={16} aria-hidden=\"true\" />\n      </Button>\n      <span className=\"flex items-center border border-input px-3 text-sm font-medium\">\n        235\n      </span>\n      <Button\n        className=\"rounded-none shadow-none first:rounded-s-md last:rounded-e-md focus-visible:z-10\"\n        variant=\"outline\"\n        size=\"icon\"\n        aria-label=\"Downvote\"\n      >\n        <ChevronDownIcon size={16} aria-hidden=\"true\" />\n      </Button>\n    </div>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-102.tsx"
     }
   ],
   "meta": {

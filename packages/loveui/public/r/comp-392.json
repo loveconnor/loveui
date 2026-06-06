@@ -9,7 +9,8 @@
     {
       "path": "registry/default/components/comp-392.tsx",
       "content": "import { UserRound as UserRoundIcon } from \"love-ui/icons\"\n\nimport { Avatar, AvatarFallback } from \"@/registry/building-blocks/default/ui/avatar\"\n\nexport default function Component() {\n  return (\n    <Avatar>\n      <AvatarFallback>\n        <UserRoundIcon size={16} className=\"opacity-60\" aria-hidden=\"true\" />\n      </AvatarFallback>\n    </Avatar>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-392.tsx"
     }
   ],
   "meta": {

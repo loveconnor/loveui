@@ -10,7 +10,8 @@
     {
       "path": "registry/default/components/comp-75.tsx",
       "content": "import { useId } from \"react\"\n\nimport { Label } from \"@/registry/building-blocks/default/ui/label\"\nimport { Textarea } from \"@/registry/building-blocks/default/ui/textarea\"\n\nexport default function Component() {\n  const id = useId()\n  return (\n    <div className=\"*:not-first:mt-2\">\n      <Label htmlFor={id}>Textarea with no resize</Label>\n      <Textarea\n        id={id}\n        className=\"[resize:none]\"\n        placeholder=\"Leave a comment\"\n      />\n    </div>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-75.tsx"
     }
   ],
   "meta": {

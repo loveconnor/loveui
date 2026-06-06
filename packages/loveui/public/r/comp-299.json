@@ -12,7 +12,8 @@
     {
       "path": "registry/default/components/comp-299.tsx",
       "content": "\"use client\"\n\nimport { toast } from \"sonner\"\n\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast(\"Deploy finished without errors.\", {\n          description: \"Main branch is now live.\",\n          action: {\n            label: \"View logs\",\n            onClick: () => console.log(\"View logs\"),\n          },\n        })\n      }}\n    >\n      Show sonner\n    </Button>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-299.tsx"
     }
   ],
   "meta": {

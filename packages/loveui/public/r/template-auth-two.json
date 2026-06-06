@@ -8,8 +8,8 @@
     {
       "path": "registry/page-templates/default/templates/auth/two/app/page.tsx",
       "type": "registry:page",
-      "target": "components/page-templates/auth/two/app/page.tsx",
-      "content": "import { LoginForm } from \"../components/login-form\"\nimport { ShaderRipple } from \"../components/shader-ripple\"\n\nexport default function Page() {\n  return (\n    <div className=\"relative flex h-screen items-center justify-center\">\n      <div className=\"relative z-10 w-full max-w-sm\">\n        <LoginForm />\n      </div>\n      <ShaderRipple className=\"absolute inset-0 -z-0 h-screen\" />\n    </div>\n  )\n}\n"
+      "target": "app/page.tsx",
+      "content": "import { LoginForm } from \"../components/page-templates/auth/two/components/login-form\"\nimport { ShaderRipple } from \"../components/page-templates/auth/two/components/shader-ripple\"\n\nexport default function Page() {\n  return (\n    <div className=\"relative flex h-screen items-center justify-center\">\n      <div className=\"relative z-10 w-full max-w-sm\">\n        <LoginForm />\n      </div>\n      <ShaderRipple className=\"absolute inset-0 -z-0 h-screen\" />\n    </div>\n  )\n}\n"
     },
     {
       "path": "registry/page-templates/default/templates/auth/two/components/login-form.tsx",

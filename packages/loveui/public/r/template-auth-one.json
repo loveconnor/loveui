@@ -8,8 +8,8 @@
     {
       "path": "registry/page-templates/default/templates/auth/one/app/page.tsx",
       "type": "registry:page",
-      "target": "components/page-templates/auth/one/app/page.tsx",
-      "content": "import { AuthPage } from \"../components/auth-page\"\n\nexport default function Page() {\n  return <AuthPage />\n}\n"
+      "target": "app/page.tsx",
+      "content": "import { AuthPage } from \"../components/page-templates/auth/one/components/auth-page\"\n\nexport default function Page() {\n  return <AuthPage />\n}\n"
     },
     {
       "path": "registry/page-templates/default/templates/auth/one/components/auth-page.tsx",

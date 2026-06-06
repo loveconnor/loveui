@@ -10,7 +10,8 @@
     {
       "path": "registry/default/components/comp-240.tsx",
       "content": "import { Label } from \"@/registry/building-blocks/default/ui/label\"\nimport { Slider } from \"@/registry/building-blocks/default/ui/slider\"\n\nexport default function Component() {\n  return (\n    <div className=\"*:not-first:mt-4\">\n      <Label>Simple slider</Label>\n      <Slider defaultValue={[25]} aria-label=\"Simple slider\" />\n    </div>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-240.tsx"
     }
   ],
   "meta": {

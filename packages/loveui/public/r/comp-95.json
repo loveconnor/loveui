@@ -10,7 +10,8 @@
     {
       "path": "registry/default/components/comp-95.tsx",
       "content": "import { ChevronDown as ChevronDownIcon } from \"love-ui/icons\"\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/building-blocks/default/ui/avatar\"\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\n\nexport default function Component() {\n  return (\n    <Button variant=\"ghost\" className=\"h-auto p-0 hover:bg-transparent\">\n      <Avatar>\n        <AvatarImage src={\"https://i.pravatar.cc/160?img=21\"} alt=\"Profile image\" />\n        <AvatarFallback>CL</AvatarFallback>\n      </Avatar>\n      <ChevronDownIcon size={16} className=\"opacity-60\" aria-hidden=\"true\" />\n    </Button>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-95.tsx"
     }
   ],
   "meta": {

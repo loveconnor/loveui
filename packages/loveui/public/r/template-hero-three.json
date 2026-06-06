@@ -8,8 +8,8 @@
     {
       "path": "registry/page-templates/default/templates/hero/three/app/page.tsx",
       "type": "registry:page",
-      "target": "components/page-templates/hero/three/app/page.tsx",
-      "content": "import HeroSection from \"../index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
+      "target": "app/page.tsx",
+      "content": "import HeroSection from \"../components/page-templates/hero/three/index\"\n\nexport default function Page() {\n  return <HeroSection />\n}\n"
     },
     {
       "path": "registry/page-templates/default/templates/hero/three/index.tsx",

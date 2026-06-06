@@ -10,7 +10,8 @@
     {
       "path": "registry/default/components/comp-99.tsx",
       "content": "\"use client\"\n\nimport { Plus as PlusIcon } from \"love-ui/icons\"\n\nimport { Button } from \"@/registry/building-blocks/default/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/registry/building-blocks/default/ui/tooltip\"\n\nexport default function Component() {\n  return (\n    <TooltipProvider delayDuration={0}>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\"outline\" size=\"icon\" aria-label=\"Add new item\">\n            <PlusIcon size={16} aria-hidden=\"true\" />\n          </Button>\n        </TooltipTrigger>\n        <TooltipContent className=\"px-2 py-1 text-xs\">Tooltip</TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  )\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/comp-99.tsx"
     }
   ],
   "meta": {
