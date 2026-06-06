@@ -51,7 +51,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
       <div className="mx-auto w-full max-w-[1280px]">
         <Link
           href="/components"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex h-9 items-center gap-2 rounded-md px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           <ArrowLeftIcon className="size-4" />
           Components

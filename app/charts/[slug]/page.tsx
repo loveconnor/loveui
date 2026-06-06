@@ -66,7 +66,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
       <div className="mx-auto w-full max-w-[1280px]">
         <Link
           href="/charts"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex h-9 items-center gap-2 rounded-md px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           <ArrowLeftIcon className="size-4" />
           Charts

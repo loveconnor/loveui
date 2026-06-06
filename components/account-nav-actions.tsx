@@ -6,6 +6,21 @@ import { useRouter } from "next/navigation"
 import { LogOut as LogOutIcon } from "love-ui/icons"
 import { authClient } from "@/lib/auth-client"
 
+const BOOK_A_CALL_URL = "https://cal.com/loveconnor"
+
+export function BookCallLink() {
+  return (
+    <a
+      href={BOOK_A_CALL_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex h-9 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground max-sm:hidden"
+    >
+      Book a Call
+    </a>
+  )
+}
+
 export function AccountNavActions() {
   const router = useRouter()
   const { data: session, isPending } = authClient.useSession()
@@ -57,7 +72,7 @@ export function AccountNavActions() {
     return (
       <div
         aria-hidden="true"
-        className="h-8 w-[148px] shrink-0 max-sm:hidden"
+        className="h-9 w-[178px] shrink-0 max-sm:hidden"
       />
     )
   }
@@ -67,13 +82,14 @@ export function AccountNavActions() {
       <div className="flex shrink-0 items-center gap-1.5 max-sm:hidden">
         <Link
           href={loginHref}
-          className="inline-flex h-8 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground"
+          className="inline-flex h-9 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground"
         >
           Log in
         </Link>
+        
         <Link
           href="/pro"
-          className="inline-flex h-8 shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground shadow-sm transition-colors hover:bg-fd-primary/90"
+          className="inline-flex h-9 shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground shadow-sm transition-colors hover:bg-fd-primary/90"
         >
           Get Access
         </Link>
@@ -82,11 +98,14 @@ export function AccountNavActions() {
   }
 
   return (
-    <div ref={menuRef} className="relative flex items-center max-sm:hidden">
+    <div
+      ref={menuRef}
+      className="relative flex items-center gap-1.5 max-sm:hidden"
+    >
       <button
         type="button"
         aria-expanded={isOpen}
-        className="inline-flex h-8 max-w-60 items-center justify-center truncate rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground data-[open=true]:bg-fd-accent data-[open=true]:text-fd-foreground"
+        className="inline-flex h-9 max-w-60 items-center justify-center truncate rounded-md px-3 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground data-[open=true]:bg-fd-accent data-[open=true]:text-fd-foreground"
         data-open={isOpen}
         onClick={() => setIsOpen((current) => !current)}
       >

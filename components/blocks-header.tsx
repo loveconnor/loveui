@@ -11,7 +11,10 @@ import { useDocsLayout } from 'fumadocs-ui/layouts/docs';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { cn } from '@/lib/cn';
 import { appName } from '@/lib/shared';
-import { AccountNavActions } from '@/components/account-nav-actions';
+import {
+  AccountNavActions,
+  BookCallLink,
+} from '@/components/account-nav-actions';
 
 function BlocksHeaderLink({ item }: { item: LinkItemType }) {
   const pathname = usePathname();
@@ -105,6 +108,7 @@ export function BlocksHeader({ className, ...props }: ComponentProps<'header'>) 
               </li>
             ))}
           </ul>
+          <BookCallLink />
         </div>
         <div className="flex flex-row items-center ms-auto -me-1.5 lg:hidden">
           {slots.searchTrigger ? (

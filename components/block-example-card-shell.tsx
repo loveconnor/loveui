@@ -150,7 +150,7 @@ function BlockCodeSheet({
               type="button"
               variant="outline"
               disabled
-              className="h-9 rounded-[10px] px-4 text-[15px] font-semibold shadow-sm"
+              className="h-9 rounded-[10px] px-3.5 text-sm font-medium shadow-sm"
             >
               <LockIcon className="size-4" />
               View code
@@ -169,7 +169,7 @@ function BlockCodeSheet({
           <Button
             type="button"
             variant="outline"
-            className="h-9 rounded-[10px] px-4 text-[15px] font-semibold shadow-sm"
+            className="h-9 rounded-[10px] px-3.5 text-sm font-medium shadow-sm"
           />
         }
       >

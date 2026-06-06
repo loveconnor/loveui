@@ -139,7 +139,7 @@ export default async function ContactBlocksPage() {
               Support channels and contact forms composed from LoveUI primitives.
             </p>
           </div>
-          <Button asChild variant="outline" className="w-fit">
+          <Button asChild variant="ghost" className="w-fit text-muted-foreground hover:text-foreground">
             <a href="/blocks">
               <ArrowLeftIcon />
               Blocks

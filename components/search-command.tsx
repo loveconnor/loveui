@@ -9,7 +9,6 @@ import { useSearchContext } from 'fumadocs-ui/contexts/search';
 
 import { cn } from '@/lib/cn';
 import { Kbd } from '@/components/ui/kbd';
-import { Button } from '@/registry/default/ui/button';
 
 type SearchCommandRootProps = Omit<
   React.ComponentProps<'button'>,
@@ -41,30 +40,44 @@ export function SearchCommand({
   if (hideIfDisabled && !enabled) return null;
 
   return (
-    <Button
+    <button
       aria-label="Search LoveUI"
       className={cn(
+        'group inline-flex h-9 shrink-0 cursor-pointer items-center rounded-md border border-border bg-transparent text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-64',
         compact
-          ? 'size-9 p-0 text-muted-foreground'
-          : 'w-full justify-start gap-2 text-muted-foreground',
+          ? 'size-9 justify-center p-0'
+          : 'w-full justify-between gap-3 px-2.5',
         className
       )}
+      disabled={!enabled}
       onClick={() => setOpenSearch(true)}
       type="button"
-      variant="outline"
       {...props}
     >
-      <SearchIcon className="size-4" />
+      <span
+        className={cn(
+          'flex min-w-0 items-center gap-3',
+          compact && 'justify-center'
+        )}
+      >
+        <SearchIcon className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
+        {compact ? null : (
+          <span className="min-w-0 flex-1 truncate text-left text-sm font-normal">
+            Search
+          </span>
+        )}
+      </span>
       {compact ? null : (
-        <>
-          <span className="min-w-0 flex-1 text-left">Search</span>
-          <Kbd className="ml-auto gap-0 px-1.5">
+        <span className="flex items-center justify-center rounded-md border border-border px-2 py-1">
+          <Kbd className="h-auto min-w-0 gap-0 rounded-none bg-transparent p-0 text-xs font-medium text-muted-foreground group-hover:text-foreground">
             {hotKey.map((key, index) => (
-              <span key={index}>{key.display}</span>
+              <span className="opacity-70" key={index}>
+                {key.display}
+              </span>
             ))}
           </Kbd>
-        </>
+        </span>
       )}
-    </Button>
+    </button>
   );
 }

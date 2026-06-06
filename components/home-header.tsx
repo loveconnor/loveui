@@ -10,7 +10,10 @@ import {
 import { useHomeLayout } from 'fumadocs-ui/layouts/home';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { cn } from '@/lib/cn';
-import { AccountNavActions } from '@/components/account-nav-actions';
+import {
+  AccountNavActions,
+  BookCallLink,
+} from '@/components/account-nav-actions';
 
 function HeaderLink({ item }: { item: LinkItemType }) {
   const pathname = usePathname();
@@ -103,6 +106,7 @@ export function HomeHeader({ className, ...props }: ComponentProps<'header'>) {
               </li>
             ))}
           </ul>
+          <BookCallLink />
         </div>
       </nav>
     </header>

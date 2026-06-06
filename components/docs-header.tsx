@@ -12,7 +12,10 @@ import { useDocsLayout } from 'fumadocs-ui/layouts/docs';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { SidebarCollapseTrigger } from 'fumadocs-ui/components/sidebar/base';
 import { cn } from '@/lib/cn';
-import { AccountNavActions } from '@/components/account-nav-actions';
+import {
+  AccountNavActions,
+  BookCallLink,
+} from '@/components/account-nav-actions';
 
 function DocsHeaderLink({ item }: { item: LinkItemType }) {
   const pathname = usePathname();
@@ -113,6 +116,7 @@ export function DocsHeader({ className, ...props }: ComponentProps<'header'>) {
           .map((item, index) => (
             <DocsHeaderLink key={index} item={item} />
           ))}
+        <BookCallLink />
         {slots.sidebar ? (
           <slots.sidebar.trigger
             className={cn(

@@ -10,6 +10,7 @@ import {
   LifeBuoy as LifeBuoyIcon,
   MessageSquare as MessageSquareIcon,
   Search as SearchIcon,
+  X as XIcon,
 } from 'love-ui/icons';
 import { useDocsSearch } from 'fumadocs-core/search/client';
 import { useOnChange } from 'fumadocs-core/utils/use-on-change';
@@ -28,7 +29,6 @@ import {
   type SearchItemType,
 } from 'fumadocs-ui/components/dialog/search';
 import type { DefaultSearchDialogProps } from 'fumadocs-ui/components/dialog/search-default';
-
 import { cn } from '@/lib/cn';
 
 function ResultIcon({ type }: { type: SearchItemType['type'] }) {
@@ -227,8 +227,12 @@ export function FumadocsCommandSearch({
             className="h-13 min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
             placeholder="Search or jump to..."
           />
-          <SearchDialogClose className="h-8 rounded-lg px-2.5 text-xs">
-            ESC
+          <SearchDialogClose
+            aria-label="Close search"
+            className="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background"
+          >
+            <XIcon className="size-4" />
+            <span className="sr-only">Close search</span>
           </SearchDialogClose>
         </div>
 

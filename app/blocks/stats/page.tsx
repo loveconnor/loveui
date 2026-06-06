@@ -164,7 +164,7 @@ export default async function StatsBlocksPage() {
               Metric cards and usage summaries composed from LoveUI primitives.
             </p>
           </div>
-          <Button asChild variant="outline" className="w-fit">
+          <Button asChild variant="ghost" className="w-fit text-muted-foreground hover:text-foreground">
             <a href="/blocks">
               <ArrowLeftIcon />
               Blocks
