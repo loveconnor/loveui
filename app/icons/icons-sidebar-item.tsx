@@ -16,11 +16,11 @@ export function IconsSidebarItem({ item }: { item: PageTree.Item }) {
 
   return (
     <Link
-      data-active={active}
+      data-active={active ? 'true' : undefined}
       data-icons-sidebar-item=""
       href={item.url}
       className={cn(
-        'flex min-h-7 w-full items-center rounded-md px-2 text-[13px] leading-none text-sidebar-foreground outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2',
+        'flex min-h-7 w-full items-center rounded-md px-2 text-[13px] leading-5 text-muted-foreground outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2',
         active && 'bg-sidebar-accent font-medium text-sidebar-accent-foreground',
       )}
     >

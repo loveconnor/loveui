@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/testimonials4/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { TestimonialsSection } from \"../components/testimonials/four/testimonials\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen place-content-center overflow-hidden p-4\">\n\t\t\t<TestimonialsSection />\n\t\t</div>\n\t);\n}\n"
+      "content": "import { TestimonialsSection } from \"../components/testimonials\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen place-content-center overflow-hidden p-4\">\n\t\t\t<TestimonialsSection />\n\t\t</div>\n\t);\n}\n"
     },
     {
       "path": "registry/default/blocks/testimonials4/components/testimonials.tsx",

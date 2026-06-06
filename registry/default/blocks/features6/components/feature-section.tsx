@@ -84,7 +84,7 @@ function SetupVisual() {
 	return (
 		<>
 			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border-4 border-dashed bg-background shadow-xs outline outline-border outline-offset-4">
-				<div className="absolute inset-0 z-10 scale-120 bg-radial from-foreground/20 via-foreground/5 to-transparent blur-xl" />
+				<div className="absolute inset-0 z-10 scale-120 bg-foreground/5 blur-xl" />
 				<CustomTimerIcon className="size-14 fill-primary/90" />
 			</div>
 
@@ -103,7 +103,7 @@ function UserBasedSecurity() {
 		<>
 			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border bg-background shadow-xs outline outline-border outline-offset-4">
 				<CustomLockIcon className="size-24" />
-				<div className="absolute inset-0 scale-120 bg-radial from-foreground/15 via-foreground/5 to-transparent blur-xl" />
+				<div className="absolute inset-0 scale-120 bg-foreground/5 blur-xl" />
 			</div>
 
 			<div className="relative mt-8 space-y-1.5 text-center">
@@ -157,7 +157,7 @@ function DashboardVisual() {
 				</div>
 			</div>
 			{/* Dashboard Screen */}
-			<div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto">
+			<div className=" relative aspect-video sm:aspect-auto">
 				<div className="absolute -right-1 -bottom-1 aspect-video max-h-50 rounded-tl-md border bg-card p-1 sm:max-h-42 md:aspect-square md:max-h-50 lg:aspect-16/12">
 					<div className="aspect-video h-full overflow-hidden rounded-tl-sm border *:pointer-events-none *:size-full *:shrink-0 *:select-none">
 						<img
@@ -269,7 +269,7 @@ function ReportsChartsSvg(props: React.ComponentProps<"svg">) {
 			<path
 				clipRule="evenodd"
 				d="M3 123C3 123 14.3298 94.153 35.1282 88.0957C55.9266 82.0384 65.9333 80.5508 65.9333 80.5508C65.9333 80.5508 80.699 80.5508 92.1777 80.5508C103.656 80.5508 100.887 63.5348 109.06 63.5348C117.233 63.5348 117.217 91.9728 124.78 91.9728C132.343 91.9728 142.264 78.03 153.831 80.5508C165.398 83.0716 186.825 91.9728 193.761 91.9728C200.697 91.9728 206.296 63.5348 214.07 63.5348C221.844 63.5348 238.653 93.7771 244.234 91.9728C249.814 90.1684 258.8 60 266.19 60C272.075 60 284.1 88.057 286.678 88.0957C294.762 88.2171 300.192 72.9284 305.423 72.9284C312.323 72.9284 323.377 65.2437 335.553 63.5348C347.729 61.8259 348.218 82.07 363.639 80.5508C367.875 80.1335 372.949 82.2017 376.437 87.1008C379.446 91.3274 381.054 97.4325 382.521 104.647C383.479 109.364 382.521 123 382.521 123"
-				fill="url(#paint0_linear_0_106)"
+				className="fill-primary/10"
 				fillRule="evenodd"
 			/>
 			<path
@@ -279,23 +279,7 @@ function ReportsChartsSvg(props: React.ComponentProps<"svg">) {
 				strokeWidth="1"
 			/>
 			<defs>
-				<linearGradient
-					gradientUnits="userSpaceOnUse"
-					id="paint0_linear_0_106"
-					x1="3"
-					x2="3"
-					y1="60"
-					y2="123"
-				>
-					<stop className="text-primary/20" stopColor="currentColor" />
-					<stop
-						className="text-background"
-						offset="1"
-						stopColor="currentColor"
-						stopOpacity="0.103775"
-					/>
-				</linearGradient>
-				<clipPath id="clip0_0_106">
+								<clipPath id="clip0_0_106">
 					<rect
 						fill="white"
 						height="30"

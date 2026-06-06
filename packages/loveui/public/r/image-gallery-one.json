@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/image-gallery-1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { ImageGallery } from \"../components/image-gallery/one/image-gallery\";\n\nexport default function DemoPage() {\n\treturn <ImageGallery />;\n}\n"
+      "content": "import { ImageGallery } from \"../components/image-gallery\";\n\nexport default function DemoPage() {\n\treturn <ImageGallery />;\n}\n"
     },
     {
       "path": "registry/default/blocks/image-gallery-1/components/image-gallery.tsx",

@@ -1,18 +1,11 @@
 import { Github as GithubIcon, GoogleIcon } from "love-ui/logos";
 import { Logo } from "./logo";
-import { Particles } from "./particles";
 import { Button } from "@/registry/default/ui/button";
 import { ChevronLeft as ChevronLeftIcon } from "love-ui/icons";
 
 export function AuthPage() {
 	return (
 		<div className="relative w-full md:h-screen md:overflow-hidden">
-			<Particles
-				className="absolute inset-0"
-				color="#666666"
-				ease={20}
-				quantity={120}
-			/>
 			<div className="relative mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-8">
 				<Button asChild className="absolute top-4 left-4" variant="ghost">
 					<a href="#">

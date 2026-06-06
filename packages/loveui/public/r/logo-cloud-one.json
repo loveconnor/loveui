@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/logo-cloud-1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { LogoCloud } from \"../components/logo-cloud/one/logo-cloud\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center p-4\">\n\t\t\t<div className=\"mx-auto max-w-3xl space-y-5\">\n\t\t\t\t<h2 className=\"text-center font-medium text-lg tracking-tight md:font-semibold md:text-2xl\">\n\t\t\t\t\t<span className=\"text-muted-foreground\">\n\t\t\t\t\t\tYour favorite companies are\n\t\t\t\t\t</span>{\" \"}\n\t\t\t\t\t<span className=\"text-primary\">our partners.</span>\n\t\t\t\t</h2>\n\t\t\t\t<LogoCloud />\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
+      "content": "import { LogoCloud } from \"../components/logo-cloud\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center p-4\">\n\t\t\t<div className=\"mx-auto max-w-3xl space-y-5\">\n\t\t\t\t<h2 className=\"text-center font-medium text-lg tracking-tight md:font-semibold md:text-2xl\">\n\t\t\t\t\t<span className=\"text-muted-foreground\">\n\t\t\t\t\t\tYour favorite companies are\n\t\t\t\t\t</span>{\" \"}\n\t\t\t\t\t<span className=\"text-primary\">our partners.</span>\n\t\t\t\t</h2>\n\t\t\t\t<LogoCloud />\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n"
     },
     {
       "path": "registry/default/blocks/logo-cloud-1/components/logo-cloud.tsx",

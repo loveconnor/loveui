@@ -4,7 +4,7 @@ import { ArrowRight as ArrowRightIcon } from "love-ui/icons";
 
 export function CallToAction() {
 	return (
-		<div className="relative mx-auto flex w-full max-w-3xl flex-col justify-between gap-y-4 border-y px-4 py-8 dark:bg-[radial-gradient(35%_80%_at_25%_0%,--theme(--color-foreground/.08),transparent)]">
+		<div className="relative mx-auto flex w-full max-w-3xl flex-col justify-between gap-y-4 border-y px-4 py-8">
 			<DecorIcon className="size-4" position="top-left" />
 			<DecorIcon className="size-4" position="top-right" />
 			<DecorIcon className="size-4" position="bottom-left" />

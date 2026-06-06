@@ -42,25 +42,19 @@ export function CallToAction() {
 					<img
 						alt="Avatar 01"
 						height={24}
-						src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=72"
+						src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=96&h=96&dpr=2&q=80"
 						width={24}
 					/>
 					<img
 						alt="Avatar 02"
 						height={24}
-						src="https://images.unsplash.com/photo-1485206412256-701ccc5b93ca?q=80&w=72"
+						src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?w=96&h=96&dpr=2&q=80"
 						width={24}
 					/>
 					<img
 						alt="Avatar 03"
 						height={24}
-						src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=72"
-						width={24}
-					/>
-					<img
-						alt="Avatar 04"
-						height={24}
-						src="https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=72"
+						src="https://images.unsplash.com/photo-1655874819398-c6dfbec68ac7?w=96&h=96&dpr=2&q=80"
 						width={24}
 					/>
 				</div>

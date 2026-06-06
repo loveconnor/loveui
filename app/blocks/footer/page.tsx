@@ -68,7 +68,7 @@ const footerBlocks = [
     id: 'footer5',
     installName: 'footer-five',
     title: 'Footer 5',
-    description: 'App-focused footer with dense links, social buttons, and store badges.',
+    description: 'Newsletter-ready footer with dense links, social buttons, and a compact signup.',
     component: <FooterFive />,
     files: [
       'app/page.tsx',

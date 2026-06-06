@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/faq-1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { FaqsSection } from \"../components/faq/one/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
+      "content": "import { FaqsSection } from \"../components/faq\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"min-h-screen w-full place-content-center\">\n\t\t\t<FaqsSection />\n\t\t</div>\n\t);\n}\n"
     },
     {
       "path": "registry/default/blocks/faq-1/components/faq.tsx",

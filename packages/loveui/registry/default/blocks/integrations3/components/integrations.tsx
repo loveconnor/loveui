@@ -19,7 +19,7 @@ type LogoType = {
 	alt: string;
 	isInvertable?: boolean;
 };
-type TileData = { row: number; col: number; logo?: LogoType };
+type TileData = { x: number; y: number; logo: LogoType };
 
 export function Integrations() {
 	return (
@@ -37,19 +37,11 @@ export function Integrations() {
 					<Button size="sm">Explore LoveUI integrations</Button>
 				</div>
 			</div>
-			<div className="place-items-end">
-				<div className="relative size-80">
-					<div
-						className={cn(
-							"absolute inset-0 size-full",
-							"bg-[linear-gradient(to_right,theme(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,theme(--color-border)_1px,transparent_1px)]",
-							"bg-size-[64px_64px]",
-							"mask-[radial-gradient(ellipse_at_center,black,black,transparent)]"
-						)}
-					/>
+			<div className="place-items-center px-8 py-12">
+				<div className="relative h-52 w-full">
 					{tiles.map((tile) => (
 						<IntegrationCard
-							key={String(tile.row) + "_" + String(tile.col)}
+							key={String(tile.x) + "_" + String(tile.y)}
 							{...tile}
 						/>
 					))}
@@ -60,14 +52,17 @@ export function Integrations() {
 	);
 }
 
-function IntegrationCard({ row, col, logo }: TileData) {
+function IntegrationCard({ x, y, logo }: TileData) {
 	return (
 		<div
 			className={cn(
-				"absolute flex size-16 items-center justify-center",
-				logo ? "bg-secondary/40" : ""
+				"absolute z-10 flex size-14 items-center justify-center rounded-md border",
+				logo ? "bg-card shadow-xs" : ""
 			)}
-			style={{ left: col * 64, top: row * 64 }}
+			style={{
+				left: `calc(${x}% - 1.75rem)`,
+				top: `calc(${y}% - 1.75rem)`,
+			}}
 		>
 			{logo && (
 				<LogoAsset
@@ -91,7 +86,7 @@ function LogoAsset({
 	return (
 		<Component
 			aria-label={logo.alt}
-			className={cn(className, logo.isInvertable && "dark:invert")}
+			className={cn(className, logo.isInvertable && "text-foreground")}
 			role="img"
 		/>
 	);
@@ -99,39 +94,35 @@ function LogoAsset({
 
 const tiles: TileData[] = [
 	{
-		row: 0,
-		col: 1,
+		x: 14,
+		y: 22,
 		logo: { Component: VercelLogo, alt: "Vercel Logo", isInvertable: true },
 	},
 	{
-		row: 0,
-		col: 3,
+		x: 60,
+		y: 22,
 		logo: { Component: CursorLogo, alt: "Cursor Logo", isInvertable: true },
 	},
-	{ row: 1, col: 0 },
-	{ row: 1, col: 2, logo: { Component: NeonLogo, alt: "Neon Logo" } },
-	{ row: 1, col: 4, logo: { Component: GmailLogo, alt: "Gmail Logo" } },
+	{ x: 36, y: 42, logo: { Component: NeonLogo, alt: "Neon Logo" } },
+	{ x: 84, y: 42, logo: { Component: GmailLogo, alt: "Gmail Logo" } },
 	{
-		row: 2,
-		col: 1,
+		x: 14,
+		y: 64,
 		logo: {
 			Component: PlanetscaleLogo,
 			alt: "Planetscale Logo",
 			isInvertable: true,
 		},
 	},
-	{ row: 2, col: 3 },
-	{ row: 3, col: 0 },
-	{ row: 3, col: 2, logo: { Component: PolarLogo, alt: "Polar Logo" } },
+	{ x: 36, y: 84, logo: { Component: PolarLogo, alt: "Polar Logo" } },
 	{
-		row: 3,
-		col: 4,
+		x: 84,
+		y: 82,
 		logo: { Component: VercelLogo, alt: "Vercel Logo", isInvertable: true },
 	},
-	{ row: 4, col: 1, logo: { Component: NeonLogo, alt: "Neon Logo" } },
 	{
-		row: 4,
-		col: 3,
+		x: 60,
+		y: 64,
 		logo: { Component: CursorLogo, alt: "Cursor Logo", isInvertable: true },
 	},
 ];

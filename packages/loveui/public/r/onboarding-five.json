@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/onboarding5/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { Onboarding05 } from \"../components/onboarding/five/onboarding\";\n\nexport default function Page() {\n\treturn <Onboarding05 />;\n}\n"
+      "content": "import { Onboarding05 } from \"../components/onboarding\";\n\nexport default function Page() {\n\treturn <Onboarding05 />;\n}\n"
     },
     {
       "path": "registry/default/blocks/onboarding5/components/onboarding.tsx",

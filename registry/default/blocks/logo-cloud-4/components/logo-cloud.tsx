@@ -42,7 +42,7 @@ const logos: Logo[] = [
 
 export function LogoCloud() {
 	return (
-		<div className="relative border-x border-y bg-linear-to-r from-secondary via-transparent to-secondary py-7">
+		<div className="relative border-x border-y bg-secondary py-7">
 			<InfiniteSlider gap={56} reverse speed={60} speedOnHover={20}>
 				{logos.map((logo) => (
 					<LogoAsset

@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/404-1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { NotFoundPage } from \"../components/404/one/not-found\";\n\nexport default function DemoPage() {\n\treturn <NotFoundPage />;\n}\n"
+      "content": "import { NotFoundPage } from \"../components/not-found\";\n\nexport default function DemoPage() {\n\treturn <NotFoundPage />;\n}\n"
     },
     {
       "path": "registry/default/blocks/404-1/components/not-found.tsx",

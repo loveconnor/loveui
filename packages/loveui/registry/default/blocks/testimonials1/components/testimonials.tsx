@@ -18,7 +18,7 @@ export function TestimonialsSection() {
 				control of the code.&quot;
 			</blockquote>
 
-			<div className="mask-[linear-gradient(to_right,transparent,black,transparent)] mx-auto my-5 h-px w-full max-w-sm bg-border" />
+			<div className=" mx-auto my-5 h-px w-full max-w-sm bg-border" />
 
 			<figcaption className="flex flex-col items-center gap-5">
 				<div className="space-y-0.5 text-center">

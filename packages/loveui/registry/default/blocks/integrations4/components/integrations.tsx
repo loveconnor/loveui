@@ -32,7 +32,7 @@ export function Integrations() {
 				</p>
 			</div>
 			<div className="place-items-end">
-				<div className="mask-[radial-gradient(ellipse_at_center,black,black,transparent)] relative size-90">
+				<div className=" relative size-90">
 					{tiles.map((tile) => (
 						<IntegrationCard
 							key={String(tile.row) + "_" + String(tile.col)}
@@ -76,7 +76,7 @@ function LogoAsset({
 	return (
 		<Component
 			aria-label={logo.alt}
-			className={cn(className, logo.isInvertable && "dark:invert")}
+			className={cn(className, logo.isInvertable && "text-foreground")}
 			role="img"
 		/>
 	);
@@ -93,7 +93,6 @@ const tiles: TileData[] = [
 		col: 3,
 		logo: { Component: CursorLogo, alt: "Cursor Logo", isInvertable: true },
 	},
-	{ row: 1, col: 0 },
 	{ row: 1, col: 2, logo: { Component: NeonLogo, alt: "Neon Logo" } },
 	{ row: 1, col: 4, logo: { Component: GmailLogo, alt: "Gmail Logo" } },
 	{
@@ -105,8 +104,6 @@ const tiles: TileData[] = [
 			isInvertable: true,
 		},
 	},
-	{ row: 2, col: 3 },
-	{ row: 3, col: 0 },
 	{ row: 3, col: 2, logo: { Component: PolarLogo, alt: "Polar Logo" } },
 	{
 		row: 3,

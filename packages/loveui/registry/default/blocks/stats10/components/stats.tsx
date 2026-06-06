@@ -138,8 +138,6 @@ export default function Stats10() {
       <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
         {summary.map((item) => {
           const sanitizedName = sanitizeName(item.name);
-          const gradientId = `gradient-${sanitizedName}`;
-
           const color =
             item.changeType === "positive" ? "hsl(142.1 76.2% 36.3%)" : "hsl(0 72.2% 50.6%)";
 
@@ -188,17 +186,11 @@ export default function Stats10() {
                     }}
                   >
                     <AreaChart data={data}>
-                      <defs>
-                        <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor={color} stopOpacity={0.3} />
-                          <stop offset="95%" stopColor={color} stopOpacity={0} />
-                        </linearGradient>
-                      </defs>
                       <XAxis dataKey="date" hide={true} />
                       <Area
                         dataKey={item.name}
                         stroke={color}
-                        fill={`url(#${gradientId})`}
+                        fill={color}
                         fillOpacity={0.4}
                         strokeWidth={1.5}
                         type="monotone"

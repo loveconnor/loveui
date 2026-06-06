@@ -16,12 +16,11 @@ const authBlocks = [
     id: 'auth1',
     installName: 'auth-one',
     title: 'Auth 1',
-    description: 'Social sign-in screen with an interactive particle field.',
+    description: 'Social sign-in screen with a focused account entry layout.',
     component: <AuthOnePage />,
     files: [
       'app/page.tsx',
       'components/auth-page.tsx',
-      'components/particles.tsx',
       'components/logo.tsx',
     ],
   },

@@ -16,7 +16,7 @@ export function AuthPage() {
 			<div
 				className={cn(
 					"relative flex w-full max-w-sm flex-col justify-between p-6 md:p-8",
-					"dark:bg-[radial-gradient(50%_80%_at_20%_0%,--theme(--color-foreground/.1),transparent)]"
+					""
 				)}
 			>
 				<div className="absolute -inset-y-6 -left-px w-px bg-border" />

@@ -76,7 +76,7 @@ export function Footer() {
 		<footer
 			className={cn(
 				"relative mx-auto flex w-full max-w-5xl flex-col items-center justify-center rounded-t-4xl border-t px-6 md:rounded-t-6xl md:px-8",
-				"dark:bg-[radial-gradient(35%_128px_at_50%_0%,--theme(--color-foreground/.1),transparent)]"
+				""
 			)}
 		>
 			<div className="absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/20 blur" />
@@ -113,7 +113,7 @@ export function Footer() {
 					))}
 				</div>
 			</div>
-			<div className="h-px w-full bg-linear-to-r via-border" />
+			<div className="h-px w-full bg-border" />
 			<div className="flex w-full items-center justify-center py-4">
 				<p className="text-muted-foreground text-sm">
 					&copy; {new Date().getFullYear()} LoveUI, All rights reserved

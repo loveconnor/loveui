@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/cta-1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { CallToAction } from \"../components/cta/one/cta\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"flex min-h-screen items-center justify-center p-4\">\n\t\t\t<CallToAction />\n\t\t</div>\n\t);\n}\n"
+      "content": "import { CallToAction } from \"../components/cta\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"flex min-h-screen items-center justify-center p-4\">\n\t\t\t<CallToAction />\n\t\t</div>\n\t);\n}\n"
     },
     {
       "path": "registry/default/blocks/cta-1/components/cta.tsx",

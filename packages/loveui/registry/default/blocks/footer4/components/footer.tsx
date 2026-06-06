@@ -7,7 +7,7 @@ export function Footer() {
 		<footer
 			className={cn(
 				"border-t",
-				"dark:bg-[radial-gradient(35%_128px_at_50%_0%,--theme(--color-foreground/.08),transparent)]"
+				""
 			)}
 		>
 			<div className="relative mx-auto max-w-5xl px-4">

@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/pricing3/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { PricingSection } from \"../components/pricing/three/pricing\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"relative min-h-screen place-content-center p-4\">\n\t\t\t<PricingSection />\n\t\t</div>\n\t);\n}\n"
+      "content": "import { PricingSection } from \"../components/pricing\";\n\nexport default function Page() {\n\treturn (\n\t\t<div className=\"relative min-h-screen place-content-center p-4\">\n\t\t\t<PricingSection />\n\t\t</div>\n\t);\n}\n"
     },
     {
       "path": "registry/default/blocks/pricing3/components/pricing.tsx",

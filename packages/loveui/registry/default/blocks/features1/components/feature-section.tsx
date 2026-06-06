@@ -20,7 +20,7 @@ export function FeatureSection() {
 				<div
 					className={cn(
 						"relative flex flex-col items-center justify-center p-2",
-						"after:absolute after:inset-y-0 after:right-0 after:h-full after:w-px after:bg-linear-to-b after:from-foreground/6 after:via-foreground/25 after:to-foreground/6",
+						"after:absolute after:inset-y-0 after:right-0 after:h-full after:w-px after:bg-border/50",
 						"[&_svg]:size-6 [&_svg]:text-muted-foreground",
 						{
 							"after:hidden": index === features.length - 1,

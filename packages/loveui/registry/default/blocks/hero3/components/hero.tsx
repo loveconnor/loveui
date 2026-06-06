@@ -13,7 +13,7 @@ export function HeroSection() {
 				<div
 					className={cn(
 						"absolute inset-0 isolate -z-10",
-						"bg-[radial-gradient(20%_80%_at_20%_0%,--theme(--color-foreground/.1),transparent)]"
+						""
 					)}
 				/>
 			</div>
@@ -71,13 +71,12 @@ export function HeroSection() {
 				<div
 					className={cn(
 						"absolute -inset-x-20 inset-y-0 -translate-y-1/3 scale-120 rounded-full",
-						"bg-[radial-gradient(ellipse_at_center,theme(--color-foreground/.1),transparent,transparent)]",
 						"blur-[50px]"
 					)}
 				/>
 				<div
 					className={cn(
-						"mask-b-from-60% relative mt-8 -mr-56 overflow-hidden px-2 sm:mt-12 sm:mr-0 md:mt-20",
+						" relative mt-8 -mr-56 overflow-hidden px-2 sm:mt-12 sm:mr-0 md:mt-20",
 						"fade-in slide-in-from-bottom-5 animate-in fill-mode-backwards delay-100 duration-1000 ease-out"
 					)}
 				>

@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/stats13/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import Stats13 from \"../components/stats/thirteen/stats\";\n\nexport default function Page() {\n\treturn <Stats13 />;\n}\n"
+      "content": "import Stats13 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats13 />;\n}\n"
     },
     {
       "path": "registry/default/blocks/stats13/components/stats.tsx",

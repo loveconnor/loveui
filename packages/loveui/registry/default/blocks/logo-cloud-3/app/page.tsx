@@ -9,9 +9,9 @@ export default function Page() {
 					<br />
 					<span className="font-semibold">Used by the leaders.</span>
 				</h2>
-				<div className="mask-[linear-gradient(to_right,transparent,black,transparent)] mx-auto my-5 h-px max-w-sm bg-border" />
+				<div className=" mx-auto my-5 h-px max-w-sm bg-border" />
 				<LogoCloud />
-				<div className="mask-[linear-gradient(to_right,transparent,black,transparent)] mt-5 h-px bg-border" />
+				<div className=" mt-5 h-px bg-border" />
 			</section>
 		</div>
 	);

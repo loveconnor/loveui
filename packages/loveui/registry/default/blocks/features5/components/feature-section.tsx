@@ -51,7 +51,7 @@ export function FeatureCard({
 			className={cn("relative overflow-hidden bg-background p-6", className)}
 			{...props}
 		>
-			<div className="mask-[radial-gradient(farthest-side_at_top,white,transparent)] pointer-events-none absolute top-0 left-1/2 -mt-2 -ml-20 size-full">
+			<div className=" pointer-events-none absolute top-0 left-1/2 -mt-2 -ml-20 size-full">
 				<GridPattern
 					className="absolute inset-0 size-full stroke-foreground/20"
 					height={40}

@@ -16,7 +16,7 @@ export function TestimonialsSection() {
 				<MaskLine className="top-0 md:w-xl" orientation="horizontal" />
 				<MaskLine className="bottom-0 md:w-xl" orientation="horizontal" />
 
-				<Avatar className="mask-[radial-gradient(circle,black_60%,transparent)] size-24 rounded-none *:rounded-none md:size-32">
+				<Avatar className=" size-24 rounded-none *:rounded-none md:size-32">
 					<AvatarImage
 						alt="Connor Love's profile picture"
 						src="https://github.com/loveconnor.png"
@@ -54,9 +54,9 @@ export function MaskLine({
 			className={cn(
 				"absolute bg-foreground/20",
 				orientation === "vertical" &&
-					"mask-t-from-80% mask-b-from-80% -inset-y-1/2 w-px",
+					" -inset-y-1/2 w-px",
 				orientation === "horizontal" &&
-					"mask-l-from-80% mask-r-from-80% -inset-x-1/2 h-px",
+					" -inset-x-1/2 h-px",
 				className
 			)}
 			{...props}

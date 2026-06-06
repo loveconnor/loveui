@@ -114,7 +114,7 @@ export function TestimonialsSection() {
 				<div
 					className={cn(
 						"mt-10 flex max-h-160 justify-center gap-6 overflow-hidden",
-						"mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]"
+						""
 					)}
 				>
 					<InfiniteSlider direction="vertical" speed={30} speedOnHover={15}>

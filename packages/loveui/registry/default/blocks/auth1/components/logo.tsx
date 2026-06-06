@@ -6,18 +6,7 @@ export const Logo = (props: React.ComponentProps<"svg">) => (
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <defs>
-    <linearGradient id="loveui-blue" x1="0" y1="0" x2="48" y2="48">
-      <stop stopColor="#38A3FF" />
-      <stop offset="0.55" stopColor="#1266F1" />
-      <stop offset="1" stopColor="#0B3FD8" />
-    </linearGradient>
-
-    <linearGradient id="loveui-shine" x1="0" y1="0" x2="1" y2="1">
-      <stop stopColor="#FFFFFF" stopOpacity="0.9" />
-      <stop offset="1" stopColor="#BBD8FF" stopOpacity="0.4" />
-    </linearGradient>
-  </defs>
+  
 
   <g transform="translate(0 0)">
     <rect
@@ -26,7 +15,7 @@ export const Logo = (props: React.ComponentProps<"svg">) => (
       width="48"
       height="48"
       rx="12"
-      fill="url(#loveui-blue)"
+      fill="#1266F1"
     />
 
     <path
@@ -69,7 +58,7 @@ export const Logo = (props: React.ComponentProps<"svg">) => (
         H18
         C19.7 29 21 27.7 21 25
         Z"
-      fill="url(#loveui-shine)"
+      fill="#BBD8FF"
       opacity="0.5"
     />
   </g>

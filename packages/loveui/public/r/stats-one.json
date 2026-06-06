@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/stats1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import Stats01 from \"../components/stats/one/stats\";\n\nexport default function Page() {\n\treturn <Stats01 />;\n}\n"
+      "content": "import Stats01 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats01 />;\n}\n"
     },
     {
       "path": "registry/default/blocks/stats1/components/stats.tsx",

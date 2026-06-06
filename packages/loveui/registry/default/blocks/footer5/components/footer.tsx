@@ -1,7 +1,8 @@
 "use client";
 
-import { Instagram as InstagramIcon, LinkedIn as LinkedinIcon, X as XIcon, Apple as AppleIcon, Facebook as FacebookIcon, GooglePlay as GooglePlayIcon } from "love-ui/logos";
+import { Instagram as InstagramIcon, LinkedIn as LinkedinIcon, X as XIcon, Facebook as FacebookIcon } from "love-ui/logos";
 import { Button } from "@/registry/default/ui/button";
+import { Input } from "@/registry/default/ui/input";
 
 export function Footer() {
 	return (
@@ -25,13 +26,13 @@ export function Footer() {
 					))}
 				</div>
 				<div className="h-px bg-border" />
-				{/* Social Buttons + App Links */}
-				<div className="flex flex-wrap items-center justify-between gap-4 py-5">
+				{/* Social buttons + newsletter */}
+				<div className="flex flex-wrap items-center justify-between gap-6 py-5">
 					<div className="flex items-center gap-2">
 						{socialLinks.map(({ icon, href }, index) => (
 							<Button
 								asChild
-								key={`social-${href}-${index}`} // More descriptive prefix
+								key={`social-${href}-${index}`}
 								size="icon"
 								variant="outline"
 							>
@@ -40,32 +41,28 @@ export function Footer() {
 						))}
 					</div>
 
-					<div className="flex gap-4">
-						<Button asChild className="h-11">
-							<a href="#">
-								<GooglePlayIcon className="size-5" />
-								<div className="flex flex-col items-start justify-center pr-2 text-left">
-									<span className="font-light text-[10px] leading-none tracking-tighter">
-										GET IT ON
-									</span>
-									<p className="font-bold text-base leading-none">
-										Google Play
-									</p>
-								</div>
-							</a>
-						</Button>
-
-						<Button asChild className="h-11">
-							<a href="#">
-								<AppleIcon className="size-5" />
-								<div className="flex flex-col items-start justify-center pr-2 text-left">
-									<span className="text-[10px] leading-none tracking-tighter">
-										Download on the
-									</span>
-									<p className="font-bold text-base leading-none">App Store</p>
-								</div>
-							</a>
-						</Button>
+					<div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+						<div className="max-w-xs">
+							<p className="font-medium text-sm">Stay in the loop</p>
+							<p className="text-muted-foreground text-xs">
+								Product notes and resources, sent occasionally.
+							</p>
+						</div>
+						<form className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+							<label className="sr-only" htmlFor="footer-email">
+								Email address
+							</label>
+							<Input
+								className="sm:w-56"
+								id="footer-email"
+								placeholder="Email address"
+								size="sm"
+								type="email"
+							/>
+							<Button className="w-full sm:w-auto" size="sm" type="submit">
+								Subscribe
+							</Button>
+						</form>
 					</div>
 				</div>
 				<div className="h-px bg-border" />

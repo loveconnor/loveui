@@ -9,7 +9,7 @@ export function Footer() {
 		<footer
 			className={cn(
 				"relative mx-auto max-w-5xl lg:border-x",
-				"dark:bg-[radial-gradient(35%_80%_at_15%_0%,--theme(--color-foreground/.1),transparent)]"
+				""
 			)}
 		>
 			<FullWidthDivider position="top" />

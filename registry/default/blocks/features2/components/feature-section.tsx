@@ -43,7 +43,7 @@ export function FeatureSection() {
 				<div className="grid grid-cols-1 md:grid-cols-3">
 					{features.map((feature) => (
 						<div
-							className="group [&_svg]:mask-b-from-0% relative p-8 [&_svg]:size-7 [&_svg]:text-muted-foreground"
+							className="group relative p-8 [&_svg]:size-7 [&_svg]:text-muted-foreground"
 							key={feature.title}
 						>
 							{feature.icon}

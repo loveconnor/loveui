@@ -19,18 +19,17 @@ type Integration = {
 	Component?: LogoComponent;
 	name: string;
 	isInvertable?: boolean;
+	logoClassName?: string;
 };
 const data: Integration[] = [
-	{ name: "Empty 1" },
 	{ name: "Vercel", Component: VercelLogo, isInvertable: true },
 	{ name: "Cursor", Component: CursorLogo, isInvertable: true },
 	{ name: "Neon", Component: NeonLogo },
 	{ name: "PlanetScale", Component: PlanetscaleLogo, isInvertable: true },
-	{ name: "Notion", Component: NotionLogo },
+	{ name: "Notion", Component: NotionLogo, logoClassName: "text-black" },
 	{ name: "Gmail", Component: GmailLogo },
 	{ name: "Polar", Component: PolarLogo },
 	{ name: "Cursor", Component: CursorLogo, isInvertable: true },
-	{ name: "Empty 2" },
 ];
 
 export function Integrations() {
@@ -45,7 +44,7 @@ export function Integrations() {
 				</p>
 			</div>
 			<div className="flex flex-col justify-center rounded-full border bg-secondary dark:bg-secondary/10">
-				<div className="mask-l-from-90 mask-r-from-90 flex items-center justify-center -space-x-4 p-1">
+				<div className=" flex items-center justify-center -space-x-2 p-1">
 					{data.map((item, index) => (
 						<div
 							className={cn(
@@ -88,7 +87,11 @@ function LogoAsset({
 	return (
 		<Component
 			aria-label={integration.name}
-			className={cn(className, integration.isInvertable && "dark:invert")}
+			className={cn(
+				className,
+				integration.isInvertable && "text-foreground",
+				integration.logoClassName
+			)}
 			role="img"
 		/>
 	);

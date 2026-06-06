@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/features3/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { FeatureSection } from \"../components/features/three/feature-section\";\n\nexport default function Page() {\n\treturn (\n\t\t<section className=\"min-h-screen place-content-center overflow-hidden px-4\">\n\t\t\t<FeatureSection />\n\t\t</section>\n\t);\n}\n"
+      "content": "import { FeatureSection } from \"../components/feature-section\";\n\nexport default function Page() {\n\treturn (\n\t\t<section className=\"min-h-screen place-content-center overflow-hidden px-4\">\n\t\t\t<FeatureSection />\n\t\t</section>\n\t);\n}\n"
     },
     {
       "path": "registry/default/blocks/features3/components/feature-section.tsx",

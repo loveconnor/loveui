@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/stats5/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import Stats05 from \"../components/stats/five/stats\";\n\nexport default function Page() {\n\treturn <Stats05 />;\n}\n"
+      "content": "import Stats05 from \"../components/stats\";\n\nexport default function Page() {\n\treturn <Stats05 />;\n}\n"
     },
     {
       "path": "registry/default/blocks/stats5/components/stats.tsx",

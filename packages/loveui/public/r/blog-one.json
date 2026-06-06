@@ -9,7 +9,7 @@
       "path": "registry/default/blocks/blogs1/app/page.tsx",
       "type": "registry:page",
       "target": "app/page.tsx",
-      "content": "import { BlogsSection } from \"../components/blog/one/blogs\";\n\nexport default function DemoPage() {\n\treturn <BlogsSection />;\n}\n"
+      "content": "import { BlogsSection } from \"../components/blogs\";\n\nexport default function DemoPage() {\n\treturn <BlogsSection />;\n}\n"
     },
     {
       "path": "registry/default/blocks/blogs1/components/blogs.tsx",

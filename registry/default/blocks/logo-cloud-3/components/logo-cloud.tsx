@@ -39,7 +39,7 @@ const logos: Logo[] = [
 
 export function LogoCloud() {
 	return (
-		<div className="mask-[linear-gradient(to_right,transparent,black,transparent)] overflow-hidden py-5">
+		<div className=" overflow-hidden py-5">
 			<InfiniteSlider gap={56} reverse speed={80} speedOnHover={25}>
 				{logos.map((logo) => (
 					<LogoAsset

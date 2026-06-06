@@ -17,6 +17,7 @@ type Integration = {
 	name: string;
 	description: string;
 	isInvertable?: boolean;
+	logoClassName?: string;
 };
 
 const data: Integration[] = [
@@ -44,6 +45,7 @@ const data: Integration[] = [
 		name: "Notion",
 		description:
 			"Document component decisions, block usage, and product patterns.",
+		logoClassName: "text-black",
 	},
 ];
 
@@ -97,7 +99,11 @@ function LogoAsset({
 	return (
 		<Component
 			aria-label={integration.name}
-			className={cn(className, integration.isInvertable && "dark:invert")}
+			className={cn(
+				className,
+				integration.isInvertable && "text-foreground",
+				integration.logoClassName
+			)}
 			role="img"
 		/>
 	);

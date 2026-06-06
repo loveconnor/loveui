@@ -71,7 +71,6 @@ function TestimonialCard({
 		<figure
 			className={cn(
 				"relative flex flex-col justify-between gap-6 px-8 pt-8 pb-6 shadow-xs md:translate-y-[calc(3rem*var(--t-card-index))]",
-				"dark:bg-[radial-gradient(50%_80%_at_25%_0%,--theme(--color-foreground/.1),transparent)]",
 				className
 			)}
 			style={
