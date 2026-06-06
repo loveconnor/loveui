@@ -18,6 +18,12 @@ export type TeamMember = {
   addedAt: string;
 };
 
+export type TeamAccess = {
+  ownerEmail: string;
+  plan: Extract<ProPlanKey, 'team' | 'enterprise'>;
+  role: 'owner' | 'member';
+};
+
 let teamMembersTablePromise: Promise<void> | null = null;
 
 function ensureTeamMembersTable() {
@@ -50,15 +56,6 @@ function ensureTeamMembersTable() {
 
     create index if not exists pro_team_members_invitation_token_hash_idx
       on pro_team_members (invitation_token_hash);
-
-    update pro_team_members
-    set status = 'accepted',
-        accepted_at = coalesce(pro_team_members.accepted_at, now())
-    from pro_access
-    where pro_access.email = pro_team_members.member_email
-      and pro_access.status = 'active'
-      and pro_team_members.status = 'pending'
-      and pro_team_members.invitation_token_hash is null;
   `).then(() => undefined);
 
   return teamMembersTablePromise;
@@ -76,6 +73,56 @@ export function isTeamPlan(
 
 export function isValidTeamEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+export async function getTeamAccessForEmail(
+  email: string,
+  accessPlan: ProPlanKey | null | undefined
+): Promise<TeamAccess | null> {
+  const normalizedEmail = normalizeTeamEmail(email);
+
+  if (isTeamPlan(accessPlan)) {
+    return {
+      ownerEmail: normalizedEmail,
+      plan: accessPlan,
+      role: 'owner',
+    };
+  }
+
+  await ensureTeamMembersTable();
+
+  const result = await db.query<{
+    owner_email: string;
+    plan: ProPlanKey;
+  }>(
+    `
+      select owner_email, plan
+      from pro_team_members
+      where member_email = $1
+        and status = 'accepted'
+      order by accepted_at desc nulls last, created_at desc
+      limit 1
+    `,
+    [normalizedEmail]
+  );
+
+  const teamMembership = result.rows[0];
+
+  if (!teamMembership) {
+    return null;
+  }
+
+  const teamPlan = normalizeProPlanKey(teamMembership.plan);
+
+  if (!isTeamPlan(teamPlan)) {
+    return null;
+  }
+
+  return {
+    ownerEmail: teamMembership.owner_email,
+    plan: teamPlan,
+    role: 'member',
+  };
 }
 
 export async function listTeamMembers(ownerEmail: string) {
@@ -274,11 +321,11 @@ export async function acceptTeamInvitation(token: string) {
     return { accepted: false as const };
   }
 
-  const plan = normalizeProPlanKey(invitation.plan);
+  const teamPlan = normalizeProPlanKey(invitation.plan);
 
   await grantProAccess({
     email: invitation.member_email,
-    plan,
+    plan: 'individual',
     userId: null,
   });
   await ensureProUser(invitation.member_email);
@@ -287,7 +334,7 @@ export async function acceptTeamInvitation(token: string) {
     accepted: true as const,
     email: invitation.member_email,
     ownerEmail: invitation.owner_email,
-    plan,
+    plan: teamPlan,
   };
 }
 

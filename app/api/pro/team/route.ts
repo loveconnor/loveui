@@ -4,7 +4,7 @@ import { auth } from '@/lib/auth';
 import { getProAccessPlan } from '@/lib/pro-access';
 import {
   addTeamMember,
-  isTeamPlan,
+  getTeamAccessForEmail,
   isValidTeamEmail,
   listTeamMembers,
   normalizeTeamEmail,
@@ -14,7 +14,7 @@ import {
 
 export const runtime = 'nodejs';
 
-async function getTeamSession() {
+async function getTeamSession({ requireOwner = false } = {}) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -25,15 +25,23 @@ async function getTeamSession() {
   }
 
   const plan = await getProAccessPlan(email);
+  const teamAccess = await getTeamAccessForEmail(email, plan);
 
-  if (!isTeamPlan(plan)) {
+  if (!teamAccess) {
     return {
-      error: 'A Team or Enterprise plan is required.',
+      error: 'Team access is required.',
       status: 403 as const,
     };
   }
 
-  return { email, plan, userId: session.user.id };
+  if (requireOwner && teamAccess.role !== 'owner') {
+    return {
+      error: 'Only the team owner can manage members.',
+      status: 403 as const,
+    };
+  }
+
+  return { email, userId: session.user.id, ...teamAccess };
 }
 
 export async function GET() {
@@ -46,16 +54,19 @@ export async function GET() {
     );
   }
 
-  const members = await listTeamMembers(teamSession.email);
+  const members = await listTeamMembers(teamSession.ownerEmail);
 
   return NextResponse.json({
+    canManage: teamSession.role === 'owner',
     members,
+    ownerEmail: teamSession.ownerEmail,
     plan: teamSession.plan,
+    role: teamSession.role,
   });
 }
 
 export async function DELETE(request: Request) {
-  const teamSession = await getTeamSession();
+  const teamSession = await getTeamSession({ requireOwner: true });
 
   if ('error' in teamSession) {
     return NextResponse.json(
@@ -77,7 +88,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
   }
 
-  if (email === normalizeTeamEmail(teamSession.email)) {
+  if (email === normalizeTeamEmail(teamSession.ownerEmail)) {
     return NextResponse.json(
       { error: 'Owner access cannot be revoked here.' },
       { status: 400 }
@@ -86,17 +97,20 @@ export async function DELETE(request: Request) {
 
   const members = await revokeTeamMember({
     memberEmail: email,
-    ownerEmail: teamSession.email,
+    ownerEmail: teamSession.ownerEmail,
   });
 
   return NextResponse.json({
+    canManage: true,
     members,
+    ownerEmail: teamSession.ownerEmail,
     plan: teamSession.plan,
+    role: teamSession.role,
   });
 }
 
 export async function PATCH(request: Request) {
-  const teamSession = await getTeamSession();
+  const teamSession = await getTeamSession({ requireOwner: true });
 
   if ('error' in teamSession) {
     return NextResponse.json(
@@ -124,14 +138,14 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
   }
 
-  if (email === normalizeTeamEmail(teamSession.email)) {
+  if (email === normalizeTeamEmail(teamSession.ownerEmail)) {
     return NextResponse.json(
       { error: 'Owner invitations cannot be resent.' },
       { status: 400 }
     );
   }
 
-  const members = await listTeamMembers(teamSession.email);
+  const members = await listTeamMembers(teamSession.ownerEmail);
   const member = members.find((item) => item.email === email);
 
   if (!member) {
@@ -150,29 +164,35 @@ export async function PATCH(request: Request) {
 
   const result = await resendTeamInvitation({
     memberEmail: email,
-    ownerEmail: teamSession.email,
+    ownerEmail: teamSession.ownerEmail,
   });
 
   if (!result.sent) {
     return NextResponse.json(
       {
         error: result.error ?? 'Invitation email could not be sent.',
+        canManage: true,
         members: result.members,
+        ownerEmail: teamSession.ownerEmail,
         plan: teamSession.plan,
+        role: teamSession.role,
       },
       { status: 503 }
     );
   }
 
   return NextResponse.json({
+    canManage: true,
     members: result.members,
+    ownerEmail: teamSession.ownerEmail,
     plan: teamSession.plan,
+    role: teamSession.role,
     sent: result.sent,
   });
 }
 
 export async function POST(request: Request) {
-  const teamSession = await getTeamSession();
+  const teamSession = await getTeamSession({ requireOwner: true });
 
   if ('error' in teamSession) {
     return NextResponse.json(
@@ -204,7 +224,7 @@ export async function POST(request: Request) {
   const result = await addTeamMember({
     addedByUserId: teamSession.userId,
     memberEmail: email,
-    ownerEmail: teamSession.email,
+    ownerEmail: teamSession.ownerEmail,
     plan: teamSession.plan,
   });
 
@@ -212,16 +232,22 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error: result.error ?? 'Invitation email could not be sent.',
+        canManage: true,
         members: result.members,
+        ownerEmail: teamSession.ownerEmail,
         plan: teamSession.plan,
+        role: teamSession.role,
       },
       { status: 503 }
     );
   }
 
   return NextResponse.json({
+    canManage: true,
     members: result.members,
+    ownerEmail: teamSession.ownerEmail,
     plan: teamSession.plan,
+    role: teamSession.role,
     sent: result.sent,
   });
 }

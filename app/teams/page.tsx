@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { TeamManagement } from '@/components/teams/team-management';
 import { auth } from '@/lib/auth';
 import { getProAccessPlan } from '@/lib/pro-access';
-import { isTeamPlan, listTeamMembers } from '@/lib/team-access';
+import { getTeamAccessForEmail, listTeamMembers } from '@/lib/team-access';
 
 export const metadata: Metadata = {
   title: 'Teams',
@@ -25,19 +25,21 @@ export default async function TeamsPage() {
   }
 
   const plan = await getProAccessPlan(session.user.email);
+  const teamAccess = await getTeamAccessForEmail(session.user.email, plan);
 
-  if (!isTeamPlan(plan)) {
+  if (!teamAccess) {
     redirect('/pro#pricing');
   }
 
-  const members = await listTeamMembers(session.user.email);
+  const members = await listTeamMembers(teamAccess.ownerEmail);
 
   return (
     <main className="bg-background">
       <TeamManagement
+        canManage={teamAccess.role === 'owner'}
         initialMembers={members}
-        ownerEmail={session.user.email}
-        plan={plan}
+        ownerEmail={teamAccess.ownerEmail}
+        plan={teamAccess.plan}
       />
     </main>
   );

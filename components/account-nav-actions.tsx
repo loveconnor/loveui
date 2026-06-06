@@ -32,6 +32,7 @@ export function AccountNavActions() {
   const [signOutError, setSignOutError] = React.useState<string | null>(null)
   const [loginHref, setLoginHref] = React.useState("/login")
   const [proPlan, setProPlan] = React.useState<ProPlanKey | null>(null)
+  const [canViewTeams, setCanViewTeams] = React.useState(false)
   const menuRef = React.useRef<HTMLDivElement>(null)
 
   async function handleSignOut() {
@@ -76,6 +77,7 @@ export function AccountNavActions() {
 
     if (!email) {
       setProPlan(null)
+      setCanViewTeams(false)
       return
     }
 
@@ -95,17 +97,23 @@ export function AccountNavActions() {
           if (isActive) {
             setProPlan(null)
           }
-          return
+        } else {
+          const body = (await response.json()) as { plan?: ProPlanKey }
+
+          if (isActive) {
+            setProPlan(body.plan ?? null)
+          }
         }
 
-        const body = (await response.json()) as { plan?: ProPlanKey }
+        const teamResponse = await fetch("/api/pro/team")
 
         if (isActive) {
-          setProPlan(body.plan ?? null)
+          setCanViewTeams(teamResponse.ok)
         }
       } catch {
         if (isActive) {
           setProPlan(null)
+          setCanViewTeams(false)
         }
       }
     }
@@ -171,7 +179,7 @@ export function AccountNavActions() {
               {proPlan ? <ProPlanBadge plan={proPlan} /> : null}
             </div>
           </div>
-          {proPlan === "team" || proPlan === "enterprise" ? (
+          {canViewTeams ? (
             <Link
               className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-sm font-medium transition-colors hover:bg-fd-accent"
               href="/teams"

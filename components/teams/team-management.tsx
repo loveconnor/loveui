@@ -49,12 +49,14 @@ import { proPlanLabels, type ProPlanKey } from "@/lib/pro-plans"
 import type { TeamMember } from "@/lib/team-access"
 
 type TeamManagementProps = {
+  canManage: boolean
   initialMembers: TeamMember[]
   ownerEmail: string
   plan: Extract<ProPlanKey, "team" | "enterprise">
 }
 
 export function TeamManagement({
+  canManage,
   initialMembers,
   ownerEmail,
   plan,
@@ -218,8 +220,9 @@ export function TeamManagement({
                 Team Members
               </h1>
               <p className="mt-5 max-w-3xl text-pretty text-muted-foreground text-lg leading-8">
-                View and manage teammates with access to LoveUI Pro under your{" "}
-                {proPlanLabels[plan]} license.
+                {canManage
+                  ? `View and manage teammates with access to LoveUI Pro under your ${proPlanLabels[plan]} license.`
+                  : `View teammates with access to LoveUI Pro under ${ownerEmail}'s ${proPlanLabels[plan]} license.`}
               </p>
           </div>
         </section>
@@ -236,25 +239,27 @@ export function TeamManagement({
                 value={query}
               />
             </div>
-            <InviteMemberDialog
-              email={email}
-              error={error}
-              isAdding={isAdding}
-              isOpen={isInviteOpen}
-              onEmailChange={(value) => {
-                setEmail(value)
-                setError(null)
-                setSuccessMessage(null)
-              }}
-              onOpenChange={(open) => {
-                setIsInviteOpen(open)
-                if (open) {
+            {canManage ? (
+              <InviteMemberDialog
+                email={email}
+                error={error}
+                isAdding={isAdding}
+                isOpen={isInviteOpen}
+                onEmailChange={(value) => {
+                  setEmail(value)
                   setError(null)
                   setSuccessMessage(null)
-                }
-              }}
-              onSubmit={handleAddMember}
-            />
+                }}
+                onOpenChange={(open) => {
+                  setIsInviteOpen(open)
+                  if (open) {
+                    setError(null)
+                    setSuccessMessage(null)
+                  }
+                }}
+                onSubmit={handleAddMember}
+              />
+            ) : null}
           </div>
 
           {successMessage ? (
@@ -281,7 +286,7 @@ export function TeamManagement({
                   <TableHead className="h-14 text-base text-muted-foreground">
                     Added date
                   </TableHead>
-                  <TableHead className="h-14 w-12 pr-4" />
+                  {canManage ? <TableHead className="h-14 w-12 pr-4" /> : null}
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -291,15 +296,16 @@ export function TeamManagement({
                     email={row.email}
                     key={`${row.role}-${row.email}`}
                     onResend={
-                      row.role === "Member" && row.status === "pending"
+                      canManage && row.role === "Member" && row.status === "pending"
                         ? () => handleResendInvitation(row.email)
                         : undefined
                     }
                     onRevoke={
-                      row.role === "Member"
+                      canManage && row.role === "Member"
                         ? () => handleRevokeMember(row.email)
                         : undefined
                     }
+                    canManage={canManage}
                     isResending={resendingEmail === row.email}
                     isRevoking={revokingEmail === row.email}
                     role={row.role}
@@ -308,7 +314,7 @@ export function TeamManagement({
                 ))}
                 {filteredRows.length === 0 ? (
                   <TableRow className="hover:bg-transparent">
-                    <TableCell colSpan={4} className="px-6 py-14">
+                    <TableCell colSpan={canManage ? 4 : 3} className="px-6 py-14">
                       <div className="flex flex-col items-center justify-center text-center">
                         <span className="flex size-10 items-center justify-center rounded-full border bg-muted/30">
                           <UsersIcon className="size-5" />
@@ -411,6 +417,7 @@ function InviteMemberDialog({
 
 function AccessRow({
   addedLabel,
+  canManage,
   email,
   isResending,
   isRevoking,
@@ -420,6 +427,7 @@ function AccessRow({
   status,
 }: {
   addedLabel: string
+  canManage: boolean
   email: string
   isResending?: boolean
   isRevoking?: boolean
@@ -443,7 +451,8 @@ function AccessRow({
       <TableCell className="text-muted-foreground text-base">
         {addedLabel}
       </TableCell>
-      <TableCell className="pr-4 text-right">
+      {canManage ? (
+        <TableCell className="pr-4 text-right">
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
@@ -483,7 +492,8 @@ function AccessRow({
             ) : null}
           </DropdownMenuContent>
         </DropdownMenu>
-      </TableCell>
+        </TableCell>
+      ) : null}
     </TableRow>
   )
 }

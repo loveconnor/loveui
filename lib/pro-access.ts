@@ -145,7 +145,6 @@ export async function revokeTeamGrantedProAccess(email: string) {
       set status = 'revoked',
           updated_at = now()
       where email = $1
-        and plan in ('team', 'enterprise')
         and stripe_checkout_session_id is null
     `,
     [email.trim().toLowerCase()]
