@@ -10,6 +10,12 @@ import {
   LockKeyhole as LockKeyholeIcon,
   Sparkles as SparklesIcon,
 } from 'love-ui/icons';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/registry/default/ui/accordion';
 import { Button } from '@/registry/default/ui/button';
 import { cn } from '@/lib/utils';
 import { proPlans, type ProPlan } from '@/lib/pro-plans';
@@ -64,22 +70,27 @@ const faqs = [
   {
     question: 'What happens after checkout?',
     answer:
-      'After checkout, LoveUI grants Pro access to the email used at purchase so you can sign in and access LoveUI Pro.',
+      'After checkout, LoveUI grants Pro access to the email used at purchase. Sign in with that email to view protected Pro code and use the Pro CLI or Pro namespace to install private registry items.',
   },
   {
-    question: 'What does LoveUI Pro include?',
+    question: 'What does LoveUI Pro include today?',
     answer:
-      'Pro focuses on the larger pieces teams rebuild repeatedly: dashboards, data tables, app shells, forms, auth flows, workspaces, landing sections, and complete templates.',
+      'The Pro foundation includes private registry access, CLI token support, advanced chart blocks, and started Pro block areas for headers, sidebars, downloads, stats, and command palettes. New Pro blocks are added as the registry grows.',
+  },
+  {
+    question: 'Are full templates and every Pro block category available now?',
+    answer:
+      'Not yet. The roadmap is the direction for Pro: deeper versions of every major block category, application systems, dashboards, data views, forms, billing, AI product blocks, commerce, docs, and complete templates. Some of that is planned rather than currently shipped.',
   },
   {
     question: 'Can I use Pro on client projects?',
     answer:
-      'Yes. LoveUI Pro is designed for production products, internal tools, SaaS applications, and client-facing work.',
+      'Yes. LoveUI Pro is designed for production products, internal tools, SaaS applications, and client-facing work. You install the source into your project, keep ownership of the code, and customize it for the product you are building.',
   },
   {
     question: 'How do Team and Enterprise access work?',
     answer:
-      'Team starts as a shared commercial license with purchaser-managed Pro access. Enterprise is for organizations that need custom terms, procurement support, or a broader rollout.',
+      'Team is for shared product or client work under one purchase. Enterprise is for organizations that need custom licensing, procurement support, security review, vendor onboarding, or roadmap alignment for a broader rollout.',
   },
 ];
 
@@ -395,19 +406,36 @@ function ProPlanCard({ plan }: { plan: ProPlan }) {
 function ProFaq() {
   return (
     <section className="px-4 py-20 md:py-28">
-      <div className="mx-auto w-full max-w-3xl border-y py-10">
-        <h2 className="text-balance font-medium text-2xl md:text-4xl">
-          Questions before you buy
-        </h2>
-        <div className="mt-8 divide-y">
-          {faqs.map((faq) => (
-            <div className="py-5" key={faq.question}>
-              <h3 className="font-medium">{faq.question}</h3>
-              <p className="mt-2 text-muted-foreground text-sm">
-                {faq.answer}
-              </p>
-            </div>
-          ))}
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 lg:flex-row">
+        <div className="flex w-full flex-col gap-4 lg:flex-1 lg:py-5">
+          <h2 className="text-balance font-semibold text-4xl leading-tight tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-base leading-7 text-muted-foreground">
+            Get clarity on Pro access,
+            <br className="hidden md:block" />
+            licensing, and what happens after checkout.
+          </p>
+        </div>
+
+        <div className="w-full lg:flex-1">
+          <Accordion className="w-full" type="single">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                className="border-b"
+                key={faq.question}
+                value={`item-${index}`}
+              >
+                <AccordionTrigger className="p-5 text-left text-base font-medium hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+
+                <AccordionContent className="p-5 text-sm leading-6">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
