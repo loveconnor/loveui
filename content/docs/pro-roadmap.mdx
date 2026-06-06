@@ -1,527 +1,577 @@
 ---
 title: LoveUI Pro Roadmap
-description: See what is planned for LoveUI Pro, including production-ready components, application blocks, and complete templates.
+description: See what is planned for LoveUI Pro, including Pro blocks for every block category, advanced charts, application systems, and complete templates.
 ---
 
-LoveUI Pro is the next layer of LoveUI: production-ready components, application blocks, and complete templates designed to help developers ship polished products faster.
+LoveUI Pro is the paid layer of LoveUI. It adds larger blocks, advanced examples, and complete product systems on top of the free component library.
 
-LoveUI will continue to provide high-quality primitives and foundational components for free. LoveUI Pro is focused on the larger pieces developers usually have to build again and again: dashboards, data tables, navigation systems, forms, auth flows, workspaces, landing-page sections, and full application templates.
+The free library will continue to include the primitives and foundation pieces developers need every day. Pro is for the bigger screens and sections that usually take longer to build well: polished marketing blocks, app navigation, analytics, charts, dashboards, settings screens, auth flows, data views, and complete templates.
 
-> Core primitives and foundational components will remain free and open-source.
+The goal is simple: give you clean source code you can install, read, edit, and ship in your own product.
 
----
-
-## What Stays Free
-
-The public LoveUI registry will continue to include the core building blocks needed to start and scale a modern interface.
-
-Examples include:
-
-- Button
-- Input
-- Card
-- Dialog
-- Tabs
-- Dropdown Menu
-- Accordion
-- Tooltip
-- Basic Tables
-- Basic Charts
-- Layout Foundations
-
-The free library is the foundation. LoveUI Pro builds on top of it.
+> Core components and foundational blocks will remain free and open source. Pro expands the registry with deeper, more complete versions.
 
 ---
 
-## What LoveUI Pro Adds
+## What Pro Is For
 
-LoveUI Pro focuses on complete, production-ready UI systems that save hours or days of implementation time.
+LoveUI Pro is built for developers and teams who want to move faster without giving up control of their codebase.
 
-Pro components and templates are planned to include:
+Pro focuses on:
 
-- Advanced application components
-- Dashboard systems
-- Enterprise data management
-- Complex navigation patterns
-- Advanced forms and workflows
-- Authentication screens
-- Team and workspace interfaces
-- Premium marketing sections
-- Complete multi-page app templates
+- More complete blocks for real product pages
+- Pro versions of every major block category
+- Advanced chart and analytics blocks
+- Application navigation and dashboard systems
+- Practical auth, settings, billing, and team screens
+- Larger templates that connect blocks into full product flows
+- Private registry access with installable source code
 
-The goal is not to give you a black-box product. The goal is to give you clean, customizable code that you own and can adapt to your application.
+Pro is not a black-box design kit. It follows the same LoveUI model: install the source, keep what you need, and change anything.
 
 ---
 
-## The Pro Standard
+## What Exists Now
 
-Every LoveUI Pro component, block, and template is designed to feel ready for real projects.
+The Pro foundation is already in place.
 
-Pro releases are expected to include:
+### Private Registry Access
 
-- Responsive layouts
-- Dark mode support
-- Accessible interaction patterns
-- TypeScript-ready code
-- Clean component structure
-- Realistic example data
-- Loading states
-- Empty states
-- Error states
-- Mobile-friendly behavior
-- Theme compatibility
-- CLI installation support
+LoveUI Pro has a protected registry path, checkout flow, access checks, login, and CLI token support. Pro users can install private registry items after signing in with the email connected to their purchase.
 
-Where possible, Pro blocks will also include realistic composition examples so you can see how each piece fits into a larger application.
-
----
-
-## Developer Experience
-
-LoveUI Pro will use the same installation style as the public registry.
+Current install paths include:
 
 ```bash
-npx loveui add enterprise-table
-npx loveui add app-sidebar
-npx loveui add saas-dashboard
-npx loveui add pricing-section-03
+npx loveui-pro login --email you@example.com
+npx loveui-pro add pro-area-chart
 ```
 
-The experience should feel consistent whether you are installing a small component, a full dashboard page, or a complete application template.
+You can also use the regular CLI with the Pro namespace:
 
----
+```bash
+npx love-ui login --email you@example.com
+npx love-ui add @love-ui-pro/pro-area-chart
+```
 
-# Current Focus
+### Pro Charts
 
-## LoveUI Pro Dashboard Kit
+Charts are the first large Pro system.
 
-The first major LoveUI Pro focus is a complete dashboard kit for building SaaS products, admin panels, internal tools, and analytics-heavy applications.
-
-This kit is planned to include:
-
-- App shell
-- Sidebar navigation
-- Workspace switcher
-- Enterprise data table
-- Dashboard widgets
-- Analytics cards
-- Chart blocks
-- Command palette
-- Authentication screens
-- Settings pages
-- Billing pages
-- Team management views
-- User management views
-
-This will serve as the foundation for larger templates and future Pro application systems.
-
----
-
-# Roadmap
-
-## Phase 1 — Core Application Systems
-
-The first phase focuses on the components and patterns that appear in almost every serious web application.
-
-### Enterprise Data Table
-
-A production-grade table system for complex data interfaces.
-
-Planned features:
-
-- Server-side pagination
-- Multi-column sorting
-- Column filtering
-- Global search
-- Column visibility controls
-- Row selection
-- Bulk actions
-- Inline editing
-- Export actions
-- Virtualized rendering
-- Loading, empty, and error states
-
-### App Shell & Navigation
-
-Flexible navigation systems for dashboards, SaaS products, and internal tools.
-
-Planned features:
-
-- Collapsible sidebars
-- Workspace switchers
-- Organization switchers
-- Mobile navigation drawers
-- Multi-level navigation trees
-- Command navigation
-- Account menus
-- Responsive layout patterns
-
-### Dashboard Widgets
-
-Composable dashboard components for product, revenue, team, and usage analytics.
-
-Planned blocks:
-
-- KPI cards
-- Revenue cards
-- Usage cards
-- Activity feeds
-- Notification panels
-- Team overview cards
-- Metric comparison cards
-- Recent activity sections
-
-### Command Palette
-
-A universal command center for modern applications.
-
-Planned features:
-
-- Keyboard navigation
-- Searchable actions
-- Recent actions
-- Category grouping
-- Async search support
-- Custom action rendering
-- Navigation commands
-- Application shortcuts
-
-### Analytics & Charts
-
-Production-ready chart blocks for dashboard and reporting interfaces.
-
-Available chart families:
+Current Pro chart families include:
 
 - Area charts
 - Bar charts
 - Line charts
-- Pie charts
+- Pie and donut charts
 - Radar charts
 - Radial charts
+- Scatter charts
+- Funnel charts
+- Treemap charts
+
+These include many variations for labels, legends, stacked views, active states, dense data, custom axes, comparison views, and dashboard-style reporting.
+
+The chart system also includes shared chart UI for palettes, responsive containers, legends, tooltips, and metric-friendly layouts.
+
+### Pro Blocks Already Started
+
+Pro block work has started across practical page and app categories.
+
+Current Pro block areas include:
+
+- Header blocks for SaaS, commerce, and enterprise navigation
+- Sidebar blocks for app shells, workspaces, mail-style layouts, and team switching
+- Download blocks for products, platforms, release links, and integration discovery
+- Stats blocks for analytics, metrics, growth, and reporting sections
+- Command palette examples for app search, quick actions, async search, and AI-style launchers
+
+These are the start of the larger Pro block library.
 
 ---
 
-## Phase 2 — Workflow Components
+## The Main Pro Direction
 
-The second phase focuses on interactive workflows that are common in product, operations, and business applications.
+The next major push is to add Pro blocks across the full block library.
 
-### Advanced Forms
+Free blocks give you strong starting points. Pro blocks should go deeper. They should feel closer to a finished production section, with better composition, more realistic content, stronger responsive behavior, and useful states.
 
-Form systems for onboarding, settings, checkout, surveys, and internal tools.
+For each block category, Pro versions should usually add:
 
-Planned features:
+- More complete layouts
+- More realistic product copy and data
+- Better mobile behavior
+- More interaction detail
+- More advanced variants
+- Dark mode support
+- Clean source structure
+- Composition examples that show how the block fits into a real page
 
-- Multi-step forms
-- Form wizards
-- Dynamic field arrays
-- Conditional fields
-- Survey builders
-- Validation patterns
-- Review steps
+The public blocks are the foundation. Pro blocks are the production pass.
+
+---
+
+## Pro Blocks For Every Category
+
+LoveUI Pro is moving toward Pro versions for every major block category.
+
+### 404
+
+Pro 404 blocks will be more useful recovery screens, not just simple missing-page messages.
+
+Planned directions:
+
+- Product-style 404 pages
+- Search and navigation recovery
+- Suggested links and recent pages
+- App-style empty route states
+- Support and contact fallbacks
+
+### Auth
+
+Auth blocks will expand into complete account entry flows.
+
+Planned directions:
+
+- Sign in and sign up screens
+- Magic link and one-time code screens
+- Password reset flows
+- Team invitation screens
+- Organization selection
+- Account handoff and success states
+
+### Blog
+
+Blog blocks will support content-heavy sites, changelogs, product updates, and editorial pages.
+
+Planned directions:
+
+- Article index layouts
+- Featured post sections
+- Category and tag layouts
+- Author cards
+- Changelog-style feeds
+- Newsletter and content CTA sections
+
+### Contact
+
+Contact blocks will go beyond a basic form.
+
+Planned directions:
+
+- Sales contact pages
+- Support request flows
+- Office and location layouts
+- Community/contact hub pages
+- Multi-step contact forms
 - Success and error states
 
-### Authentication UI Kit
+### CTA
 
-Pre-built authentication and account-management screens.
+CTA blocks will focus on conversion moments across marketing and product pages.
 
-Planned screens:
+Planned directions:
 
-- Sign in
-- Sign up
-- Password reset
-- Magic link
-- Multi-factor authentication
-- Team invitations
-- Organization switching
-- Account settings
-- Profile settings
+- Trial signup sections
+- Demo request sections
+- Newsletter capture
+- App download CTAs
+- Upgrade and billing CTAs
+- Product launch CTAs
 
-### Interactive Kanban Board
+### Download
 
-A complete board system for project management and workflow tracking.
+Download blocks are already started in Pro and will become a larger system for software, plugins, and product releases.
 
-Planned features:
+Planned directions:
 
-- Drag-and-drop cards
-- Multi-column workflows
-- Column customization
-- Card labels
-- Card assignments
-- Reordering animations
-- Mobile-friendly interactions
-- Empty column states
+- OS-specific download cards
+- Version and release metadata
+- Requirements and compatibility
+- Plugin marketplace layouts
+- Integration search
+- Update and release note links
 
-### Booking & Calendar Suite
+### FAQ
 
-Scheduling components for booking flows, availability, and calendar-based interfaces.
+FAQ blocks will support support pages, pricing pages, product pages, and docs.
 
-Planned features:
+Planned directions:
 
-- Single-date selection
-- Date ranges
-- Multi-month views
-- Booking flows
-- Time-slot scheduling
-- Availability selectors
-- Preset shortcuts
-- Disabled date states
+- Pricing FAQs
+- Product onboarding FAQs
+- Support category FAQs
+- Accordion and split-page layouts
+- Searchable FAQ sections
+- Contact fallback states
 
-### Motion & Micro-Interactions
+### Features
 
-Premium interaction patterns for more expressive interfaces.
+Feature blocks will expand into richer product storytelling.
 
-Planned effects:
+Planned directions:
 
-- Animated counters
-- Morphing elements
-- Floating action systems
-- Interactive hover states
-- Advanced page transitions
-- Polished loading animations
-- Subtle dashboard motion patterns
+- Product capability grids
+- Feature comparison layouts
+- Interactive feature sections
+- Screenshot-led feature blocks
+- Benefit and outcome sections
+- Persona-specific feature groups
+
+### Footer
+
+Footer blocks will support more complete product and company navigation.
+
+Planned directions:
+
+- SaaS footers
+- Developer tool footers
+- Commerce footers
+- App store and download footers
+- Large resource menus
+- Newsletter and social sections
+
+### Header
+
+Pro header blocks are already started. This category will continue to grow because navigation is one of the highest-impact parts of a real product page.
+
+Planned directions:
+
+- SaaS headers
+- Commerce headers
+- Enterprise platform headers
+- Product menu navigation
+- Account actions
+- Search and cart patterns
+- Mobile navigation drawers
+- Theme and utility controls
+
+### Hero
+
+Hero blocks will include stronger first-screen product storytelling.
+
+Planned directions:
+
+- SaaS product heroes
+- Launch page heroes
+- Dashboard preview heroes
+- Developer tool heroes
+- Waitlist heroes
+- App and mobile product heroes
+- Conversion-focused hero variants
+
+### Image Gallery
+
+Image gallery blocks will support product visuals, portfolios, media grids, and commerce galleries.
+
+Planned directions:
+
+- Product screenshot galleries
+- Responsive media grids
+- Portfolio layouts
+- Commerce galleries
+- Editorial galleries
+- Lightbox-ready compositions
+
+### Integrations
+
+Integration blocks will support product ecosystems and connected-tool pages.
+
+Planned directions:
+
+- Integration directories
+- Search and filter layouts
+- Integration detail sections
+- Connected app grids
+- Partner and tool matrices
+- Setup and connection states
+
+### Logo Cloud
+
+Logo cloud blocks will support customer proof, partner proof, and social trust.
+
+Planned directions:
+
+- Customer logo rows
+- Partner matrices
+- Animated logo strips
+- Industry-grouped logo clouds
+- Proof sections with metrics
+- Case-study linked logo groups
+
+### Onboarding
+
+Onboarding blocks will support product setup, activation, and first-run experiences.
+
+Planned directions:
+
+- Setup checklists
+- Multi-step onboarding screens
+- Progress summaries
+- Empty states with next actions
+- Workspace setup flows
+- Product activation flows
+
+### Pricing
+
+Pricing blocks will become a deeper Pro system because pricing pages often need more than static cards.
+
+Planned directions:
+
+- Plan comparison tables
+- Monthly/yearly toggles
+- Usage-based pricing sections
+- Enterprise sales CTAs
+- Checkout handoff sections
+- FAQ and trust sections
+- Billing-page variants
+
+### Sidebar
+
+Pro sidebar blocks are already started. This category will keep expanding into complete app navigation systems.
+
+Planned directions:
+
+- Collapsible app sidebars
+- Workspace and team switchers
+- Nested navigation
+- Notification navigation
+- Account menus
+- Mail and inbox layouts
+- Mobile app navigation
+
+### Stats
+
+Stats blocks are already started in Pro and will continue to grow with more dashboard and marketing uses.
+
+Planned directions:
+
+- KPI sections
+- Growth metrics
+- Revenue summaries
+- Usage stats
+- Team and product metrics
+- Comparison cards
+- Analytics-ready metric layouts
+
+### Testimonials
+
+Testimonial blocks will support stronger proof sections for product pages, launches, and agencies.
+
+Planned directions:
+
+- Customer quote grids
+- Founder quote sections
+- Case study previews
+- Rotating testimonial layouts
+- Logo and quote combinations
+- Persona-based proof sections
+
+### Command Palette
+
+Command palette blocks are already started in Pro and will become part of the application system.
+
+Planned directions:
+
+- App navigation commands
+- Quick actions
+- Recent actions
+- Async search
+- Grouped results
+- AI command launchers
+- Keyboard-first workflows
 
 ---
 
-## Phase 3 — Premium Page Systems
+## More Pro Blocks Being Added
 
-LoveUI already includes a growing collection of production-ready blocks for common marketing and product pages. LoveUI Pro will expand beyond standard sections into deeper page systems built for real application workflows, product launches, documentation, commerce, and AI interfaces.
+In addition to Pro versions of existing block categories, LoveUI Pro will add new block families for product teams building full applications.
 
-These systems are designed for moments where a single component is not enough. Each Pro page system will combine layout, responsive behavior, realistic states, and polished interaction patterns so developers can move from idea to finished interface faster.
+### Dashboard Blocks
 
-### Launch & Marketing Systems
+Dashboard blocks will help teams build SaaS products, admin panels, internal tools, and analytics pages.
 
-Advanced marketing experiences for product launches, waitlists, campaigns, and conversion-focused pages.
+Planned blocks:
 
-Planned systems:
+- Dashboard overview pages
+- KPI card grids
+- Revenue panels
+- Usage summaries
+- Activity feeds
+- Notification panels
+- Team overview sections
+- Chart dashboards
 
-- Product launch pages
-- Waitlist pages
-- Coming soon pages
-- Announcement pages
-- Feature comparison sections
-- Interactive pricing experiences
-- Demo request flows
-- Customer story layouts
-- Changelog announcement sections
-- Conversion-focused CTA systems
+### Data Blocks
 
-### AI Product Systems
+Data-heavy products need more than a basic table.
 
-Interface systems for building modern AI applications, copilots, assistants, and usage-based products.
+Planned blocks:
 
-Planned systems:
+- Advanced tables
+- Filter bars
+- Bulk action toolbars
+- Column visibility controls
+- Empty and loading table states
+- Export action patterns
+- Detail drawers
+- Audit and activity logs
 
-- Chat application layouts
-- Conversation history panels
-- Prompt builder interfaces
-- Model selector components
-- Usage dashboard sections
-- Credit balance interfaces
-- AI billing sections
-- Playground layouts
-- Generated output panels
+### Forms And Workflow Blocks
+
+Pro will include larger form and workflow patterns for settings, onboarding, checkout, and internal tools.
+
+Planned blocks:
+
+- Multi-step forms
+- Review steps
+- Settings forms
+- Billing forms
+- Dynamic field groups
+- Success and error states
+- Confirmation screens
+
+### Team And Workspace Blocks
+
+Modern products usually need teams, organizations, roles, and shared workspaces.
+
+Planned blocks:
+
+- Team member lists
+- Invite flows
+- Role and permission screens
+- Workspace switchers
+- Organization settings
+- Seat and member management
+- Access request states
+
+### Billing And Account Blocks
+
+Billing and account pages should feel polished, not like an afterthought.
+
+Planned blocks:
+
+- Plan management
+- Subscription status
+- Invoice history
+- Payment method cards
+- Usage and limit panels
+- Upgrade and downgrade flows
+- Account profile screens
+
+### AI Product Blocks
+
+AI products need recurring interface patterns that are still easy to customize.
+
+Planned blocks:
+
+- Chat layouts
+- Conversation history
+- Prompt builders
+- Model selectors
+- Usage and credit panels
+- Generated output views
 - Feedback and rating flows
+- AI command interfaces
 
-### Documentation Systems
+### Commerce Blocks
 
-Page systems for building polished documentation, changelogs, API references, and developer portals.
+Commerce blocks will support storefronts, digital products, subscriptions, and checkout flows.
 
-Planned systems:
+Planned blocks:
 
-- Documentation sidebars
+- Product grids
+- Product detail sections
+- Cart drawers
+- Checkout layouts
+- Order summaries
+- Collection pages
+- Product galleries
+- Account order history
+
+### Documentation Blocks
+
+Documentation blocks will help teams build polished docs, changelogs, and developer portals.
+
+Planned blocks:
+
+- Docs navigation
 - API reference layouts
 - Changelog pages
 - Version switchers
-- Table of contents systems
-- Search result layouts
 - Code example sections
-- Method reference blocks
-- Release note pages
-- Developer onboarding pages
+- Search result layouts
+- Developer onboarding sections
 
-### Commerce Systems
+---
 
-Composable commerce sections for storefronts, digital products, subscriptions, and checkout experiences.
+## Complete Templates
 
-Planned systems:
+Templates are the long-term layer above Pro blocks. A template combines components, blocks, pages, and example data into a complete starting point.
 
-- Product listing layouts
-- Product detail sections
-- Collection pages
-- Category browsing sections
-- Shopping cart drawers
-- Checkout layouts
-- Order summary sections
-- Account order history
-- Subscription management panels
-- Product gallery systems
+Planned templates include:
 
-### Dashboard Page Systems
+- SaaS dashboard template
+- Admin dashboard template
+- AI application template
+- Documentation platform template
+- Commerce template
+- Marketing launch template
 
-Advanced page-level blocks for SaaS products, internal tools, admin panels, and analytics-heavy applications.
-
-Planned systems:
-
-- Analytics overview pages
-- Billing management pages
-- Team management pages
-- User management views
-- Settings pages
-- Notification center layouts
-- Activity log pages
-- Usage monitoring pages
-- Role and permission pages
-- Workspace administration pages
-
---- 
-
-## Phase 4 — Complete Application Templates
-
-Templates combine Pro components and blocks into complete application foundations.
-
-Each template is planned to include:
+Each template should include:
 
 - Routing structure
 - Responsive layouts
 - Theme support
-- Authentication screens
-- Production folder structure
+- Auth and account screens where useful
 - Example data
 - Reusable page patterns
-- Component composition examples
-
-### SaaS Dashboard Template
-
-A complete SaaS application foundation.
-
-Planned pages:
-
-- Dashboard
-- Analytics
-- Teams
-- Projects
-- Settings
-- Billing
-- User Management
-
-Planned systems:
-
-- Sidebar navigation
-- Enterprise tables
-- Charts
-- Command palette
-- Dashboard widgets
-- Authentication pages
-
-### AI Application Template
-
-A production-ready foundation for AI products.
-
-Planned pages:
-
-- Chat interface
-- Conversation history
-- Prompt management
-- Usage dashboard
-- Billing
-- Settings
-
-Planned systems:
-
-- Chat components
-- Model selection
-- Credit tracking
-- Mobile navigation
-- Usage analytics
-
-### Admin Dashboard Template
-
-A complete administration platform for managing users, roles, data, and activity.
-
-Planned pages:
-
-- Users
-- Roles
-- Permissions
-- Audit logs
-- Settings
-- Analytics
-
-Planned systems:
-
-- Data tables
-- Access controls
-- Management panels
-- Activity tracking
-- Permission views
-
-### Documentation Platform Template
-
-A complete documentation system for products, APIs, and developer tools.
-
-Planned pages:
-
-- Documentation
-- API references
-- Changelog
-- Blog
-- Search results
-
-Planned systems:
-
-- Documentation navigation
-- Command search
-- Code blocks
-- Table of contents
-- Version switching
-
-### E-Commerce Template
-
-A storefront and commerce foundation.
-
-Planned pages:
-
-- Product catalog
-- Collections
-- Product detail
-- Cart
-- Checkout
-- Account dashboard
-
-Planned systems:
-
-- Product filtering
-- Cart management
-- Checkout flow
-- Product galleries
-- Customer dashboard
+- Clear component composition
+- Source code you can own and edit
 
 ---
 
-## Phase 5 — Platform Vision
+## Quality Standard
 
-The long-term vision for LoveUI Pro is to become more than a collection of components.
+Every Pro block should feel closer to production than a simple example.
 
-LoveUI is moving toward a complete application-building system where every layer works together:
+Pro releases should aim for:
 
-Primitive → Component → Block → Page → Template
+- Responsive desktop and mobile layouts
+- Dark mode support
+- Accessible interaction patterns
+- TypeScript-ready code
+- Clean file structure
+- Realistic content and data
+- Loading states where they matter
+- Empty states where they matter
+- Error states where they matter
+- Theme compatibility
+- CLI installation support
 
-Over time, LoveUI Pro is planned to support more advanced workflows, including:
+The standard is not "more decorative." The standard is "more useful in a real product."
 
-- AI-ready component metadata
-- Block-level regeneration
-- Theme-aware templates
-- Application starter generation
-- More complete page systems
-- More production-ready examples
-- Deeper integration with the LoveUI registry
+---
 
-The end goal is simple: help developers build complete, production-ready applications faster while keeping full ownership of their codebase.
+## How Free And Pro Work Together
+
+LoveUI will keep a clear split:
+
+- Free components are the foundation.
+- Free blocks are strong starting points.
+- Pro blocks are deeper, more complete, and more specialized.
+- Pro systems combine blocks into full product surfaces.
+- Pro templates combine systems into application foundations.
+
+The full path is:
+
+Component → Block → Pro Block → Page System → Template
+
+That is the direction of LoveUI Pro.
 
 ---
 
 ## Roadmap Notes
 
-This roadmap represents the current direction for LoveUI Pro. Features, release order, and scope may change as the library evolves and as feedback comes in from developers using LoveUI in real projects.
+This roadmap describes the current direction for LoveUI Pro. Scope, names, release order, and exact block counts can change as the registry grows.
 
-LoveUI Pro will be built around the same principles as the free library: clean code, strong design, accessibility, customization, and developer ownership.
+The principle will stay the same: LoveUI Pro should help developers ship polished interfaces faster while keeping full ownership of the code.

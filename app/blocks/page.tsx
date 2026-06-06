@@ -293,6 +293,15 @@ type BlockCategory = {
   isPro?: boolean;
 };
 
+function getOrderedBlockCategories(categories: BlockCategory[]) {
+  const standardCategories = categories.filter((category) => !category.isPro);
+  const proCategories = categories
+    .filter((category) => category.isPro)
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  return [...standardCategories, ...proCategories];
+}
+
 const marketingBlockCategories: BlockCategory[] = [
   {
     title: 'Header',
@@ -483,6 +492,8 @@ function BlockCategorySection({
   description: string;
   categories: BlockCategory[];
 }) {
+  const orderedCategories = getOrderedBlockCategories(categories);
+
   return (
     <section className="mt-12">
       <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -499,7 +510,7 @@ function BlockCategorySection({
         </span>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-        {categories.map((category) => (
+        {orderedCategories.map((category) => (
           <BlockCategoryCard category={category} key={category.url} />
         ))}
       </div>
