@@ -91,7 +91,7 @@ describe("buildInitUrl", () => {
   })
 
   it("should include chartColor from default presets", () => {
-    const url = resolveInitUrl({ ...DEFAULT_PRESETS.sera, base: "base" })
+    const url = resolveInitUrl({ ...DEFAULT_PRESETS.editorial, base: "base" })
     const parsed = new URL(url)
     expect(parsed.searchParams.get("chartColor")).toBe("taupe")
   })

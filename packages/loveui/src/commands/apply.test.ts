@@ -27,7 +27,7 @@ describe("resolveApplyInitUrl", () => {
   })
 
   it("should include the inferred template for named presets", () => {
-    const initUrl = resolveApplyInitUrl("lyra", "base", {
+    const initUrl = resolveApplyInitUrl("mono", "base", {
       template: "next",
       rtl: true,
     })
@@ -40,7 +40,7 @@ describe("resolveApplyInitUrl", () => {
   })
 
   it("should keep the current base for raw preset URLs without injecting a template", () => {
-    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
+    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=default&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
     const initUrl = resolveApplyInitUrl(presetUrl, "base", {
       template: "next",
       rtl: true,
@@ -65,7 +65,7 @@ describe("resolveApplyInitUrl", () => {
   })
 
   it("should include only for named presets", () => {
-    const initUrl = resolveApplyInitUrl("lyra", "base", {
+    const initUrl = resolveApplyInitUrl("mono", "base", {
       template: "next",
       rtl: true,
       only: "font",
@@ -76,7 +76,7 @@ describe("resolveApplyInitUrl", () => {
   })
 
   it("should include only for raw preset URLs", () => {
-    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
+    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=default&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
     const initUrl = resolveApplyInitUrl(presetUrl, "base", {
       template: "next",
       rtl: true,
@@ -88,7 +88,7 @@ describe("resolveApplyInitUrl", () => {
   })
 
   it("should preserve only from raw preset URLs", () => {
-    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&only=font`
+    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=default&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&only=font`
     const initUrl = resolveApplyInitUrl(presetUrl, "base", {
       template: "next",
       rtl: true,
@@ -140,14 +140,14 @@ describe("parseApplyOnlyParts", () => {
 
 describe("getPresetUrlOnly", () => {
   it("reads only from love-ui init URLs", () => {
-    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=nova&only=font`
+    const presetUrl = `${LOVEUI_URL}/init?base=radix&style=default&only=font`
 
     expect(getPresetUrlOnly(presetUrl)).toBe("font")
   })
 
   it("reads only from non-love-ui init URLs", () => {
     const presetUrl =
-      "http://localhost:4000/init?base=radix&style=nova&only=font"
+      "http://localhost:4000/init?base=radix&style=default&only=font"
 
     expect(getPresetUrlOnly(presetUrl)).toBe("font")
     expect(resolveApplyOnly(getPresetUrlOnly(presetUrl))).toEqual(["font"])
@@ -155,7 +155,7 @@ describe("getPresetUrlOnly", () => {
 
   it("ignores only on non-init URLs", () => {
     const presetUrl =
-      "http://localhost:4000/r/styles/nova/button.json?only=font"
+      "http://localhost:4000/r/styles/default/button.json?only=font"
 
     expect(getPresetUrlOnly(presetUrl)).toBeUndefined()
   })

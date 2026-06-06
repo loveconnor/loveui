@@ -5,7 +5,7 @@ import { createStyleMap } from "./create-style-map"
 describe("parseStyle", () => {
   it("extracts tailwind classes from @apply directives", () => {
     const css = `
-      .style-nova {
+      .style-default {
         .cn-alert-dialog-content {
           @apply bg-background gap-4 rounded-xl border;
         }

@@ -8,14 +8,10 @@ const CACHE_CONTROL =
   "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400";
 
 const STYLES_INDEX = [
-  { name: "base-nova", label: "Nova" },
-  { name: "base-vega", label: "Vega" },
-  { name: "base-maia", label: "Maia" },
-  { name: "base-lyra", label: "Lyra" },
-  { name: "base-mira", label: "Mira" },
-  { name: "base-luma", label: "Luma" },
-  { name: "base-sera", label: "Sera" },
-  { name: "base-rhea", label: "Rhea" },
+  { name: "base-default", label: "Default" },
+  { name: "base-crisp", label: "Crisp" },
+  { name: "base-mono", label: "Mono" },
+  { name: "base-editorial", label: "Editorial" },
 ];
 
 const BASE_INDEX_ITEM = {

@@ -47,7 +47,7 @@ describe("encodePreset / decodePreset", () => {
 
   it("should round-trip a custom config", () => {
     const config: PresetConfig = {
-      style: "lyra",
+      style: "mono",
       baseColor: "zinc",
       theme: "blue",
       chartColor: "emerald",
@@ -74,10 +74,10 @@ describe("encodePreset / decodePreset", () => {
   })
 
   it("should handle partial config by filling defaults", () => {
-    const code = encodePreset({ style: "lyra" })
+    const code = encodePreset({ style: "mono" })
     const decoded = decodePreset(code)
     expect(decoded).not.toBeNull()
-    expect(decoded!.style).toBe("lyra")
+    expect(decoded!.style).toBe("mono")
     expect(decoded!.theme).toBe(DEFAULT_PRESET_CONFIG.theme)
   })
 
@@ -186,7 +186,7 @@ describe("v1/v2 backward compatibility", () => {
   it("should decode old 'a'-prefixed codes without chartColor", () => {
     const decoded = decodePreset("a0")
     expect(decoded).not.toBeNull()
-    expect(decoded!.style).toBe("nova")
+    expect(decoded!.style).toBe("default")
     expect(decoded!.theme).toBe("neutral")
     expect(decoded!.chartColor).toBeUndefined()
     expect(decoded!.fontHeading).toBe("inherit")
@@ -234,7 +234,7 @@ describe("isPresetCode", () => {
   })
 
   it("should return false for named presets", () => {
-    expect(isPresetCode("radix-nova")).toBe(false)
+    expect(isPresetCode("radix-default")).toBe(false)
   })
 
   it("should return false for strings that are too long", () => {

@@ -132,7 +132,7 @@ export const init = new Command()
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option(
     "-d, --defaults",
-    "use default configuration: --template=next --preset=base-nova",
+    "use default configuration: --template=next --preset=base-default",
     false
   )
   .option("-f, --force", "force overwrite of existing configuration.", false)
@@ -476,7 +476,7 @@ export const init = new Command()
       if (options.defaults && !components.some(isUrl)) {
         const initUrl = resolveInitUrl(
           {
-            ...DEFAULT_PRESETS.nova,
+            ...DEFAULT_PRESETS.default,
             base: resolvedBase,
             rtl: options.rtl ?? false,
           },

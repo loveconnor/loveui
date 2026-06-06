@@ -8,7 +8,7 @@ export default function PreviewCardProfile() {
       <PreviewCardTrigger render={<Button variant="ghost" />}>Connor Love</PreviewCardTrigger>
       <PreviewCardPopup>
         <div className="flex gap-3">
-          <Avatar><AvatarImage src="https://github.com/loveconnor" alt="Morgan" /><AvatarFallback>CL</AvatarFallback></Avatar>
+          <Avatar><AvatarImage src="https://github.com/loveconnor" alt="Connor" /><AvatarFallback>CL</AvatarFallback></Avatar>
           <div><div className="font-medium">Connor Love</div><p className="text-sm text-muted-foreground">Designer & Developer</p></div>
         </div>
       </PreviewCardPopup>

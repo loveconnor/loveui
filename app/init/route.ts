@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const PRESET_STYLES = new Set([
-  "nova",
-  "vega",
-  "maia",
-  "lyra",
-  "mira",
-  "luma",
-  "sera",
-  "rhea",
+  "default",
+  "crisp",
+  "mono",
+  "editorial",
 ]);
 
 const BASE_COLORS = new Set([
@@ -37,7 +33,7 @@ export const dynamic = "force-dynamic";
 
 export function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
-  const style = readValue(params, "style", PRESET_STYLES, "nova");
+  const style = readValue(params, "style", PRESET_STYLES, "default");
   const baseColor = readValue(params, "baseColor", BASE_COLORS, "neutral");
   const menuAccent = readValue(params, "menuAccent", MENU_ACCENTS, "subtle");
   const menuColor = readValue(params, "menuColor", MENU_COLORS, "default");

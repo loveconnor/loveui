@@ -134,7 +134,7 @@ describe("addComponents", () => {
       devDependencies: [],
       files: [
         {
-          path: "registry/base-nova/ui/card.tsx",
+          path: "registry/base-default/ui/card.tsx",
           target: "components/ui/card.tsx",
           type: "registry:ui",
           content: `export function CardTitle() { return <div className="cn-font-heading" /> }`,
@@ -164,7 +164,7 @@ describe("addComponents", () => {
     await addComponents(
       ["card"],
       {
-        style: "base-nova",
+        style: "base-default",
         rsc: true,
         tsx: true,
         tailwind: {

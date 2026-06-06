@@ -90,7 +90,7 @@ describe("preset commands", () => {
       code: "b123",
       fallbacks: [],
       values: {
-        style: "luma",
+        style: "crisp",
         baseColor: "mist",
         theme: "blue",
         chartColor: "emerald",
@@ -111,7 +111,7 @@ describe("preset commands", () => {
       code: "b0",
       version: "b",
       values: {
-        style: "nova",
+        style: "default",
         baseColor: "neutral",
         theme: "neutral",
         chartColor: "neutral",
@@ -158,7 +158,7 @@ describe("preset commands", () => {
       "Preset",
       "  code         b0",
       "  version      b",
-      "  style        nova",
+      "  style        default",
       "  baseColor    neutral",
       "  theme        neutral",
       "  chartColor   neutral",
@@ -181,7 +181,7 @@ describe("preset commands", () => {
       code: "a0",
       version: "a",
       values: {
-        style: "nova",
+        style: "default",
         baseColor: "neutral",
         theme: "neutral",
         chartColor: "blue",
@@ -283,7 +283,7 @@ describe("preset commands", () => {
       code: "b123",
       fallbacks: ["theme"],
       values: {
-        style: "luma",
+        style: "crisp",
         baseColor: "mist",
         theme: "neutral",
         chartColor: "emerald",
@@ -313,7 +313,7 @@ describe("preset commands", () => {
       code: "b123",
       fallbacks: [],
       values: {
-        style: "luma",
+        style: "crisp",
         baseColor: "mist",
         theme: "blue",
         chartColor: "emerald",
@@ -334,7 +334,7 @@ describe("preset commands", () => {
       code: "b123",
       fallbacks: ["theme"],
       values: {
-        style: "luma",
+        style: "crisp",
         baseColor: "mist",
         theme: "neutral",
         chartColor: "emerald",

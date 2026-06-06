@@ -13,14 +13,10 @@
 export const PRESET_BASES = ["radix", "base"] as const
 
 export const PRESET_STYLES = [
-  "nova",
-  "vega",
-  "maia",
-  "lyra",
-  "mira",
-  "luma",
-  "sera",
-  "rhea",
+  "default",
+  "crisp",
+  "mono",
+  "editorial",
 ] as const
 
 export const PRESET_BASE_COLORS = [

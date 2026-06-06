@@ -49,7 +49,7 @@ vi.mock("@/src/utils/logger", () => ({
 
 const fixtureConfig = {
   $schema: "https://www.loveui.dev/schema.json",
-  style: "base-nova",
+  style: "base-default",
   rsc: true,
   tsx: true,
   tailwind: {

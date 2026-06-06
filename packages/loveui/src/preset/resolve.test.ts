@@ -64,7 +64,7 @@ async function createTestConfig(options: {
   }
 
   return createConfig({
-    style: options.style ?? "base-luma",
+    style: options.style ?? "base-crisp",
     tailwind: {
       css: "globals.css",
       baseColor: options.baseColor ?? "mist",
@@ -103,7 +103,7 @@ describe("resolveProjectPreset", () => {
     const result = await resolveProjectPreset(config)
 
     expect(result.values).toEqual({
-      style: "luma",
+      style: "crisp",
       baseColor: "mist",
       theme: "blue",
       chartColor: "emerald",
@@ -147,7 +147,7 @@ describe("resolveProjectPreset", () => {
 
   it("matches serif font imports against the serif root variable", async () => {
     const config = await createTestConfig({
-      style: "base-nova",
+      style: "base-default",
       css: `@import "@fontsource-variable/inter";
 @import "@fontsource-variable/eb-garamond";
 
@@ -194,7 +194,7 @@ describe("resolveProjectPreset", () => {
     const result = await resolveProjectPreset(config)
 
     expect(result.values).toEqual({
-      style: "luma",
+      style: "crisp",
       baseColor: "mist",
       theme: "neutral",
       chartColor: "neutral",
@@ -265,7 +265,7 @@ export default function RootLayout({
     })
 
     expect(result.values).toMatchObject({
-      style: "luma",
+      style: "crisp",
       theme: "blue",
       chartColor: "emerald",
       font: "inter",
@@ -315,7 +315,7 @@ export default function App({ Component, pageProps }) {
     })
 
     expect(result.values).toMatchObject({
-      style: "luma",
+      style: "crisp",
       font: "inter",
       fontHeading: "inherit",
     })
