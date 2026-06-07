@@ -80,6 +80,20 @@ export function LandingHero() {
             Browse components
           </a>
         </div>
+
+        <a
+          className="block transition-opacity hover:opacity-80 md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-400 md:duration-500 md:ease-out"
+          href="https://www.producthunt.com/products/loveui?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-loveui"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img
+            alt="LoveUI - Build beautiful apps, faster. | Product Hunt"
+            height={54}
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1165339&theme=light&t=1780813422163"
+            width={250}
+          />
+        </a>
       </div>
 
       <div className="relative mx-auto hidden max-w-5xl overflow-hidden md:block">
