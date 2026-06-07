@@ -1,11 +1,12 @@
-import { ArrowRight as ArrowRightIcon, BookOpen as BookOpenIcon, Component as ComponentIcon } from 'love-ui/icons';
-import Image from 'next/image';
-
 import { cn } from '@/lib/utils';
-import { Button } from '@/registry/default/ui/button';
 
 import { DecorIcon } from './decor-icon';
 import { FullWidthDivider } from './full-width-divider';
+import {
+  ArrowRightIcon,
+  BookOpenIcon,
+  ComponentIcon,
+} from './landing-icons';
 
 export function LandingHero() {
   return (
@@ -51,8 +52,7 @@ export function LandingHero() {
 
         <h1
           className={cn(
-            'text-balance text-center text-4xl tracking-tight md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-100 md:duration-500 md:ease-out md:text-5xl lg:text-6xl',
-            'text-shadow-[0_0px_50px_theme(--color-foreground/.2)]'
+            'text-balance text-center text-4xl tracking-tight md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-100 md:duration-500 md:ease-out md:text-5xl lg:text-6xl'
           )}
         >
           Build faster with LoveUI
@@ -65,45 +65,36 @@ export function LandingHero() {
         </p>
 
         <div className="flex flex-row flex-wrap items-center justify-center gap-3 pt-2 md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-300 md:duration-500 md:ease-out">
-          <Button asChild className="rounded-full" size="lg">
-            <a href="/docs/get-started">
-              Start reading
-              <ArrowRightIcon data-icon="inline-end" />
-            </a>
-          </Button>
-          <Button asChild className="rounded-full" size="lg" variant="secondary">
-            <a href="/components">
-              <ComponentIcon data-icon="inline-start" />
-              Browse components
-            </a>
-          </Button>
+          <a
+            className="inline-flex min-h-9 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 py-2 text-primary-foreground text-sm font-medium leading-none shadow-primary/24 shadow-xs transition-colors hover:bg-primary/90"
+            href="/docs/get-started"
+          >
+            Start reading
+            <ArrowRightIcon className="size-4" />
+          </a>
+          <a
+            className="inline-flex min-h-9 items-center justify-center gap-2 rounded-full border border-border bg-secondary px-4 py-2 text-secondary-foreground text-sm font-medium leading-none shadow-xs transition-colors hover:bg-secondary/80"
+            href="/components"
+          >
+            <ComponentIcon className="size-4" />
+            Browse components
+          </a>
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-5xl overflow-hidden">
+      <div className="relative mx-auto hidden max-w-5xl overflow-hidden md:block">
         <DecorIcon className="size-4" position="top-left" />
         <DecorIcon className="size-4" position="top-right" />
         <DecorIcon className="size-4" position="bottom-left" />
         <DecorIcon className="size-4" position="bottom-right" />
         <FullWidthDivider className="-top-px" position="top" />
         <div className="overflow-hidden border-x bg-card/60">
-          <Image
+          <img
             alt="LoveUI documentation preview in light mode"
-            className="block h-auto w-full dark:hidden"
-            fetchPriority="high"
-            height={720}
-            priority
-            sizes="(min-width: 1024px) 1024px, calc(100vw - 32px)"
-            src="/page-light.webp"
-            width={1280}
-          />
-          <Image
-            alt="LoveUI documentation preview in dark mode"
-            className="hidden h-auto w-full dark:block"
+            className="h-auto w-full"
             height={720}
             loading="lazy"
-            sizes="(min-width: 1024px) 1024px, calc(100vw - 32px)"
-            src="/page-dark.webp"
+            src="/page-light.webp"
             width={1280}
           />
         </div>

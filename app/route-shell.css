@@ -1,0 +1,9 @@
+@import "./loveui-globals.css";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@source "../registry/**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+@source "../app/**/*.{ts,tsx}";
+@source "../packages/loveui-pro/app/**/*.{ts,tsx}";
+@source "../packages/loveui-pro/components/**/*.{ts,tsx}";
+@source "../packages/loveui-pro/registry/**/*.{ts,tsx}";

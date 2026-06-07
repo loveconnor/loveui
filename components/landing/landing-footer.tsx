@@ -1,8 +1,5 @@
-import Image from 'next/image';
-
-import { Button } from '@/registry/default/ui/button';
-
 import { GithubIcon } from './github-icon';
+import { LogoMark } from './logo-mark';
 
 const navLinks = [
   { href: '/docs', label: 'Docs' },
@@ -18,24 +15,16 @@ export function LandingFooter() {
       <div className="flex flex-col gap-6 py-6">
         <div className="flex items-center justify-between gap-4">
           <a className="flex items-center gap-2" href="/">
-            <Image
-              alt="LoveUI"
-              className="size-8 rounded-md"
-              height={32}
-              sizes="32px"
-              src="/icon.svg"
-              width={32}
-            />
+            <LogoMark className="size-8 rounded-md" />
             <span className="font-medium">LoveUI</span>
           </a>
-          <Button asChild size="icon" variant="ghost">
-            <a
-              aria-label="LoveUI on GitHub"
-              href="https://github.com/loveconnor/loveui"
-            >
-              <GithubIcon />
-            </a>
-          </Button>
+          <a
+            aria-label="LoveUI on GitHub"
+            className="inline-flex size-8 items-center justify-center rounded-lg border border-transparent transition-colors hover:bg-accent"
+            href="https://github.com/loveconnor/loveui"
+          >
+            <GithubIcon className="size-4" />
+          </a>
         </div>
 
         <nav>

@@ -1,3 +1,4 @@
+@import "./route-shell.css";
 @import "katex/dist/katex.min.css";
 
 /* Editor (ProseMirror) heading styles — Tailwind's preflight resets h1–h6 */

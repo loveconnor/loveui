@@ -1,12 +1,12 @@
 import type React from 'react';
 import {
-  Blocks as BlocksIcon,
-  BookOpen as BookOpenIcon,
-  Code as Code2Icon,
-  Component as ComponentIcon,
-  Palette as PaletteIcon,
-  Sparkles as SparklesIcon,
-} from 'love-ui/icons';
+  BlocksIcon,
+  BookOpenIcon,
+  CodeIcon,
+  ComponentIcon,
+  PaletteIcon,
+  SparklesIcon,
+} from './landing-icons';
 
 import { cn } from '@/lib/utils';
 
@@ -103,7 +103,7 @@ const features: Feature[] = [
   },
   {
     title: 'Own the code',
-    icon: <Code2Icon />,
+    icon: <CodeIcon />,
     description: 'Every install lands in your app, ready to edit and review.',
   },
 ];

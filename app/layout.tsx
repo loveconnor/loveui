@@ -1,10 +1,5 @@
-import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
-import localFont from 'next/font/local';
 import type { Metadata } from 'next';
-import { ToastProvider } from '@/registry/default/ui/toast';
-import { AnalyticsProvider } from '@/components/analytics-provider';
-import { FumadocsCommandSearch } from '@/components/fumadocs-command-search';
 import { appName } from '@/lib/shared';
 import {
   seo,
@@ -12,28 +7,6 @@ import {
   softwareSourceCodeJsonLd,
   webSiteJsonLd,
 } from '@/lib/seo';
-
-const loveSans = localFont({
-  src: [
-    {
-      path: '../public/fonts/LoveSans-Regular.woff',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/LoveSans-Medium.woff',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/LoveSans-Semibold.woff',
-      weight: '600',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-love-sans',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   applicationName: appName,
@@ -113,7 +86,6 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="en"
-      className={loveSans.variable}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -123,17 +95,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="flex flex-col min-h-screen">
-        <AnalyticsProvider />
-        <ToastProvider>
-          <RootProvider
-            search={{ SearchDialog: FumadocsCommandSearch }}
-            theme={{ enabled: false }}
-          >
-            {children}
-          </RootProvider>
-        </ToastProvider>
-      </body>
+      <body className="flex min-h-screen flex-col">{children}</body>
     </html>
   );
 }

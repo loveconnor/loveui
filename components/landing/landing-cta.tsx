@@ -1,9 +1,6 @@
-import { ArrowRight as ArrowRightIcon } from 'love-ui/icons';
-
-import { Button } from '@/registry/default/ui/button';
-
 import { DecorIcon } from './decor-icon';
 import { GithubIcon } from './github-icon';
+import { ArrowRightIcon } from './landing-icons';
 
 export function LandingCta() {
   return (
@@ -27,18 +24,20 @@ export function LandingCta() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-2">
-          <Button asChild variant="outline">
-            <a href="https://github.com/loveconnor/loveui">
-              <GithubIcon data-icon="inline-start" />
-              GitHub
-            </a>
-          </Button>
-          <Button asChild>
-            <a href="/docs">
-              Open docs
-              <ArrowRightIcon data-icon="inline-end" />
-            </a>
-          </Button>
+          <a
+            className="inline-flex min-h-8 items-center justify-center gap-2 rounded-lg border border-border bg-background px-3 py-1.5 text-sm font-medium leading-none shadow-xs transition-colors hover:bg-accent/50"
+            href="https://github.com/loveconnor/loveui"
+          >
+            <GithubIcon className="size-4" />
+            GitHub
+          </a>
+          <a
+            className="inline-flex min-h-8 items-center justify-center gap-2 rounded-lg border border-primary bg-primary px-3 py-1.5 text-primary-foreground text-sm font-medium leading-none shadow-primary/24 shadow-xs transition-colors hover:bg-primary/90"
+            href="/docs"
+          >
+            Open docs
+            <ArrowRightIcon className="size-4" />
+          </a>
         </div>
       </div>
     </section>

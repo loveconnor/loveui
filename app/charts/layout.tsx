@@ -9,6 +9,7 @@ import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { chartsPageTree } from '@/lib/charts-page-tree';
 import { baseOptions } from '@/lib/layout.shared';
 import { cn } from '@/lib/cn';
+import { AppProviders } from '@/components/app-providers';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,37 +17,39 @@ export default function Layout({ children }: { children: ReactNode }) {
   const layoutOptions = baseOptions();
 
   return (
-    <DocsLayout
-      tree={chartsPageTree}
-      tabs={false}
-      {...layoutOptions}
-      containerProps={{
-        className: '[--fd-header-height:--spacing(14)]',
-        style: {
-          gridTemplate: `"sidebar sidebar header header header"
+    <AppProviders>
+      <DocsLayout
+        tree={chartsPageTree}
+        tabs={false}
+        {...layoutOptions}
+        containerProps={{
+          className: '[--fd-header-height:--spacing(14)]',
+          style: {
+            gridTemplate: `"sidebar sidebar header header header"
 "sidebar sidebar toc-popover toc-popover ."
 "sidebar sidebar main main main" 1fr / minmax(min-content, 1fr) var(--fd-sidebar-col) minmax(0, calc(var(--fd-layout-width,97rem) - var(--fd-sidebar-width))) minmax(min-content, 1fr) minmax(min-content, 1fr)`,
-        },
-      }}
-      slots={{ ...layoutOptions.slots, header: DocsHeader }}
-    >
-      <AISearch>
-        <AISearchPanel />
-        <AISearchTrigger
-          position="float"
-          className={cn(
-            buttonVariants({
-              variant: 'secondary',
-              className: 'rounded-2xl text-fd-muted-foreground',
-            }),
-          )}
-        >
-          <MessageCircleIcon className="size-4.5" />
-          Ask AI
-        </AISearchTrigger>
-      </AISearch>
+          },
+        }}
+        slots={{ ...layoutOptions.slots, header: DocsHeader }}
+      >
+        <AISearch>
+          <AISearchPanel />
+          <AISearchTrigger
+            position="float"
+            className={cn(
+              buttonVariants({
+                variant: 'secondary',
+                className: 'rounded-2xl text-fd-muted-foreground',
+              }),
+            )}
+          >
+            <MessageCircleIcon className="size-4.5" />
+            Ask AI
+          </AISearchTrigger>
+        </AISearch>
 
-      {children}
-    </DocsLayout>
+        {children}
+      </DocsLayout>
+    </AppProviders>
   );
 }
