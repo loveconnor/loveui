@@ -1,4 +1,5 @@
 import { ArrowRight as ArrowRightIcon, BookOpen as BookOpenIcon, Component as ComponentIcon } from 'love-ui/icons';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/registry/default/ui/button';
@@ -38,7 +39,7 @@ export function LandingHero() {
         <a
           className={cn(
             'group mx-auto flex w-fit items-center gap-3 rounded-full border bg-card px-3 py-1 shadow',
-            'fade-in slide-in-from-bottom-10 animate-in fill-mode-backwards transition-all delay-500 duration-500 ease-out'
+            'transition-all duration-200 ease-out md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-500 md:duration-500'
           )}
           href="/docs/get-started"
         >
@@ -50,20 +51,20 @@ export function LandingHero() {
 
         <h1
           className={cn(
-            'fade-in slide-in-from-bottom-10 animate-in text-balance fill-mode-backwards text-center text-4xl tracking-tight delay-100 duration-500 ease-out md:text-5xl lg:text-6xl',
+            'text-balance text-center text-4xl tracking-tight md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-100 md:duration-500 md:ease-out md:text-5xl lg:text-6xl',
             'text-shadow-[0_0px_50px_theme(--color-foreground/.2)]'
           )}
         >
           Build faster with LoveUI
         </h1>
 
-        <p className="fade-in slide-in-from-bottom-10 mx-auto max-w-2xl animate-in fill-mode-backwards text-center text-base text-foreground/80 delay-200 duration-500 ease-out sm:text-lg md:text-xl">
+        <p className="mx-auto max-w-2xl text-center text-base text-foreground/80 sm:text-lg md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-200 md:duration-500 md:ease-out md:text-xl">
           Docs for installing components, composing blocks, and using the
           LoveUI skill to ship polished interfaces without losing control of
           your codebase.
         </p>
 
-        <div className="fade-in slide-in-from-bottom-10 flex animate-in flex-row flex-wrap items-center justify-center gap-3 fill-mode-backwards pt-2 delay-300 duration-500 ease-out">
+        <div className="flex flex-row flex-wrap items-center justify-center gap-3 pt-2 md:fade-in md:slide-in-from-bottom-10 md:animate-in md:fill-mode-backwards md:delay-300 md:duration-500 md:ease-out">
           <Button asChild className="rounded-full" size="lg">
             <a href="/docs/get-started">
               Start reading
@@ -86,17 +87,22 @@ export function LandingHero() {
         <DecorIcon className="size-4" position="bottom-right" />
         <FullWidthDivider className="-top-px" position="top" />
         <div className="overflow-hidden border-x bg-card/60">
-          <img
+          <Image
             alt="LoveUI documentation preview in light mode"
-            className="block w-full dark:hidden"
+            className="block h-auto w-full dark:hidden"
+            fetchPriority="high"
             height={720}
+            priority
+            sizes="(min-width: 1024px) 1024px, calc(100vw - 32px)"
             src="/page-light.webp"
             width={1280}
           />
-          <img
+          <Image
             alt="LoveUI documentation preview in dark mode"
-            className="hidden w-full dark:block"
+            className="hidden h-auto w-full dark:block"
             height={720}
+            loading="lazy"
+            sizes="(min-width: 1024px) 1024px, calc(100vw - 32px)"
             src="/page-dark.webp"
             width={1280}
           />

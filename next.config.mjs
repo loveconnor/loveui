@@ -12,6 +12,38 @@ const posthogAssetsHost =
 const config = {
   reactStrictMode: true,
   skipTrailingSlashRedirect: true,
+  async headers() {
+    return [
+      {
+        source: '/icons/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source:
+          '/:asset(page-light.webp|page-dark.webp|logo.png|icon.svg|apple-icon.png|favicon.ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

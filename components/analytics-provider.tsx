@@ -2,32 +2,60 @@
 
 import * as React from 'react';
 
-import { identifySiteUser, resetSiteAnalytics } from '@/lib/analytics';
-import { authClient } from '@/lib/auth-client';
-
 export function AnalyticsProvider() {
-  const { data: session, isPending } = authClient.useSession();
   const previousUserIdRef = React.useRef<string | null>(null);
-  const user = session?.user;
 
   React.useEffect(() => {
-    if (isPending) return;
+    let isActive = true;
 
-    if (user?.id) {
-      identifySiteUser({
-        id: user.id,
-        email: user.email,
-        name: user.name,
-      });
-      previousUserIdRef.current = user.id;
-      return;
-    }
+    const syncAnalytics = async () => {
+      const [{ authClient }, analytics] = await Promise.all([
+        import('@/lib/auth-client'),
+        import('@/lib/analytics'),
+      ]);
 
-    if (previousUserIdRef.current) {
-      resetSiteAnalytics();
-      previousUserIdRef.current = null;
-    }
-  }, [isPending, user?.email, user?.id, user?.name]);
+      if (!isActive) return;
+
+      const { data: session } = await authClient.getSession();
+      const user = session?.user;
+
+      if (!isActive) return;
+
+      if (user?.id) {
+        analytics.identifySiteUser({
+          id: user.id,
+          email: user.email,
+          name: user.name,
+        });
+        previousUserIdRef.current = user.id;
+        return;
+      }
+
+      if (previousUserIdRef.current) {
+        analytics.resetSiteAnalytics();
+        previousUserIdRef.current = null;
+      }
+    };
+
+    const idleId =
+      'requestIdleCallback' in window
+        ? window.requestIdleCallback(() => {
+            syncAnalytics().catch(() => {});
+          })
+        : globalThis.setTimeout(() => {
+            syncAnalytics().catch(() => {});
+          }, 1500);
+
+    return () => {
+      isActive = false;
+
+      if ('cancelIdleCallback' in window && typeof idleId === 'number') {
+        window.cancelIdleCallback(idleId);
+      } else {
+        globalThis.clearTimeout(idleId);
+      }
+    };
+  }, []);
 
   return null;
 }

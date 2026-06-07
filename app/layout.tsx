@@ -16,24 +16,9 @@ import {
 const loveSans = localFont({
   src: [
     {
-      path: '../public/fonts/LoveSans-Light.woff',
-      weight: '300',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/LoveSans-LightItalic.woff',
-      weight: '300',
-      style: 'italic',
-    },
-    {
       path: '../public/fonts/LoveSans-Regular.woff',
       weight: '400',
       style: 'normal',
-    },
-    {
-      path: '../public/fonts/LoveSans-RegularItalic.woff',
-      weight: '400',
-      style: 'italic',
     },
     {
       path: '../public/fonts/LoveSans-Medium.woff',
@@ -41,29 +26,9 @@ const loveSans = localFont({
       style: 'normal',
     },
     {
-      path: '../public/fonts/LoveSans-MediumItalic.woff',
-      weight: '500',
-      style: 'italic',
-    },
-    {
       path: '../public/fonts/LoveSans-Semibold.woff',
       weight: '600',
       style: 'normal',
-    },
-    {
-      path: '../public/fonts/LoveSans-SemiboldItalic.woff',
-      weight: '600',
-      style: 'italic',
-    },
-    {
-      path: '../public/fonts/LoveSans-Bold.woff',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/LoveSans-BoldItalic.woff',
-      weight: '700',
-      style: 'italic',
     },
   ],
   variable: '--font-love-sans',
@@ -125,12 +90,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: '/favicon.ico' }],
-    shortcut: ['/favicon.ico'],
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut: ['/icon.svg'],
     apple: [
       {
-        url: '/logo.png',
-        sizes: '1254x1254',
+        url: '/apple-icon.png',
+        sizes: '180x180',
         type: 'image/png',
       },
     ],

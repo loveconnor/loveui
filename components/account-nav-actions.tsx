@@ -4,11 +4,17 @@ import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { LogOut as LogOutIcon, Users as UsersIcon } from "love-ui/icons"
-import { authClient } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
 import { proPlanLabels, type ProPlanKey } from "@/lib/pro-plans"
 
 const BOOK_A_CALL_URL = "https://cal.com/loveconnor"
+
+type AuthClient = Awaited<typeof import("@/lib/auth-client")>["authClient"]
+type AccountSession = {
+  user: {
+    email: string
+  }
+} | null
 
 export function BookCallLink() {
   return (
@@ -25,7 +31,10 @@ export function BookCallLink() {
 
 export function AccountNavActions() {
   const router = useRouter()
-  const { data: session, isPending } = authClient.useSession()
+  const authClientRef = React.useRef<AuthClient | null>(null)
+  const [session, setSession] = React.useState<AccountSession>(null)
+  const [isPending, setIsPending] = React.useState(true)
+  const [isDesktop, setIsDesktop] = React.useState(false)
   const [isMounted, setIsMounted] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
   const [isSigningOut, setIsSigningOut] = React.useState(false)
@@ -36,6 +45,11 @@ export function AccountNavActions() {
   const menuRef = React.useRef<HTMLDivElement>(null)
 
   async function handleSignOut() {
+    const authClient =
+      authClientRef.current ??
+      (await import("@/lib/auth-client")).authClient
+
+    authClientRef.current = authClient
     setIsSigningOut(true)
     setSignOutError(null)
 
@@ -55,6 +69,47 @@ export function AccountNavActions() {
   React.useEffect(() => {
     setIsMounted(true)
   }, [])
+
+  React.useEffect(() => {
+    const media = window.matchMedia("(min-width: 640px)")
+    const handleChange = () => setIsDesktop(media.matches)
+
+    handleChange()
+    media.addEventListener("change", handleChange)
+
+    return () => media.removeEventListener("change", handleChange)
+  }, [])
+
+  React.useEffect(() => {
+    if (!isDesktop) return
+
+    let isActive = true
+
+    async function loadSession() {
+      setIsPending(true)
+
+      try {
+        const { authClient } = await import("@/lib/auth-client")
+        authClientRef.current = authClient
+
+        const { data } = await authClient.getSession()
+
+        if (isActive) {
+          setSession(data)
+        }
+      } finally {
+        if (isActive) {
+          setIsPending(false)
+        }
+      }
+    }
+
+    loadSession()
+
+    return () => {
+      isActive = false
+    }
+  }, [isDesktop])
 
   React.useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
@@ -125,11 +180,15 @@ export function AccountNavActions() {
     }
   }, [session?.user.email])
 
-  if (!isMounted || isPending) {
+  if (!isMounted || !isDesktop) {
+    return null
+  }
+
+  if (isPending) {
     return (
       <div
         aria-hidden="true"
-        className="h-9 w-[178px] shrink-0 max-sm:hidden"
+        className="h-9 w-[178px] shrink-0"
       />
     )
   }

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import '../docs-shell.css';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { MessageCircle as MessageCircleIcon } from 'love-ui/icons';
 import { AISearch, AISearchPanel, AISearchTrigger } from '@/components/ai/search';

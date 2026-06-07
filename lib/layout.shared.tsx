@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import Image from 'next/image';
 import {
   appName,
   blocksRoute,
@@ -20,11 +21,12 @@ export function baseOptions(): BaseLayoutProps {
       // JSX supported
       title: (
         <span className="inline-flex items-center gap-2">
-          <img
+          <Image
             alt=""
             className="size-6 rounded-md"
             height={24}
-            src="/logo.png"
+            sizes="24px"
+            src="/icon.svg"
             width={24}
           />
           <span>{appName}</span>

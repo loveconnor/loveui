@@ -1,7 +1,5 @@
 'use client';
 
-import posthog from 'posthog-js';
-
 type AnalyticsPrimitive = string | number | boolean | null | undefined;
 
 export type AnalyticsProperties = Record<
@@ -22,21 +20,38 @@ export function isAnalyticsEnabled() {
 }
 
 function cleanProperties(properties: AnalyticsProperties = {}) {
-  return Object.fromEntries(
-    Object.entries(properties).filter(([, value]) => value !== undefined)
-  );
+  const cleaned: AnalyticsProperties = {};
+
+  for (const key in properties) {
+    const value = properties[key];
+
+    if (value !== undefined) {
+      cleaned[key] = value;
+    }
+  }
+
+  return cleaned;
 }
 
-export function captureSiteEvent(
+async function getPosthog() {
+  if (!isAnalyticsEnabled()) return null;
+
+  const { default: posthog } = await import('posthog-js');
+
+  return posthog;
+}
+
+export async function captureSiteEvent(
   event: string,
   properties?: AnalyticsProperties
 ) {
-  if (!isAnalyticsEnabled()) return;
+  const posthog = await getPosthog();
+  if (!posthog) return;
 
   posthog.capture(event, cleanProperties(properties));
 }
 
-export function identifySiteUser({
+export async function identifySiteUser({
   email,
   id,
   name,
@@ -45,7 +60,8 @@ export function identifySiteUser({
   id: string;
   name?: string | null;
 }) {
-  if (!isAnalyticsEnabled()) return;
+  const posthog = await getPosthog();
+  if (!posthog) return;
 
   posthog.identify(
     id,
@@ -56,8 +72,9 @@ export function identifySiteUser({
   );
 }
 
-export function resetSiteAnalytics() {
-  if (!isAnalyticsEnabled()) return;
+export async function resetSiteAnalytics() {
+  const posthog = await getPosthog();
+  if (!posthog) return;
 
   posthog.reset();
 }

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Button } from '@/registry/default/ui/button';
 
 import { GithubIcon } from './github-icon';
@@ -16,11 +18,12 @@ export function LandingFooter() {
       <div className="flex flex-col gap-6 py-6">
         <div className="flex items-center justify-between gap-4">
           <a className="flex items-center gap-2" href="/">
-            <img
+            <Image
               alt="LoveUI"
               className="size-8 rounded-md"
               height={32}
-              src="/logo.png"
+              sizes="32px"
+              src="/icon.svg"
               width={32}
             />
             <span className="font-medium">LoveUI</span>
