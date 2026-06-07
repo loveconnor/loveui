@@ -16,22 +16,22 @@ The pack starts with a main `SKILL.md` file.
 That file gives the agent a repeatable workflow:
 
 1. Understand the product, audience, framework, and existing design system.
-2. Read the right reference files for the task.
+2. Read only the reference files needed for the task.
 3. Use the LoveUI registry as the source of truth for components and examples.
 4. Choose one clear visual direction.
 5. Pick a layout blueprint.
 6. Build the UI with reusable structure.
 7. Check the result before calling it done.
 
-The goal is to make the agent slower in the right places. It should inspect the project, make deliberate design choices, and verify the result instead of dropping in generic UI.
+The goal is to make the agent slower in the right places without flooding its context. It should inspect the project, make deliberate design choices, and verify the result instead of dropping in generic UI.
 
 ## What is included
 
 The pack has three main parts:
 
 - **Root skill:** the main instructions in `SKILL.md`.
-- **Reference files:** detailed guidance for visual design, interaction behavior, accessibility, forms, content, navigation, architecture, motion, and testing.
-- **Specialist skills:** focused skills for common design tasks like auditing, polishing, adapting, simplifying, and improving copy.
+- **Reference files:** five condensed guides for design, interaction, structure, content/accessibility, and implementation quality.
+- **Specialist skills:** eight focused workflows for building, auditing, polishing, adapting, hardening, clarifying, extracting, and learning project conventions.
 
 The root skill routes the agent to the right supporting material based on the request.
 
@@ -41,24 +41,13 @@ Reference files are included with the installed skill pack.
 
 They explain the standards the agent should apply while working:
 
-- `visual-primitives.md` sets the base visual rules: clear type, disciplined spacing, restrained color, subtle borders, and no unnecessary decoration.
-- `interaction-heuristics.md` covers hover, focus, disabled, loading, empty, error, and success states.
-- `structural-cleanliness.md` covers semantic HTML, component boundaries, responsive layout, and reusable structure.
-- `accessibility-baseline.md` covers contrast, keyboard access, focus order, labels, ARIA use, and touch targets.
-- `content-ux-writing.md` covers labels, helper text, empty states, errors, confirmations, and destructive action copy.
-- `forms-and-validation.md` covers form structure, validation timing, async validation, and submit behavior.
-- `motion-and-feedback.md` covers transitions, feedback, skeletons, toasts, and reduced motion.
-- `navigation-and-information-architecture.md` covers navigation hierarchy, wayfinding, breadcrumbs, and URL state.
-- `component-api-and-naming.md` covers component names, prop names, variants, composition, and API quality.
-- `frontend-architecture.md` covers state boundaries, data flow, side effects, and feature structure.
-- `testing-and-quality-strategy.md` covers what to test based on risk.
-- `mcp-catalog-workflow.md` tells the agent how to inspect the LoveUI registry before choosing components.
-- `page-blueprints.md` gives starting layouts for dashboards, docs, settings pages, agent workspaces, diff review, and history views.
-- `design-directions.md` helps the agent choose one visual direction before coding.
-- `screenshot-translation-protocol.md` helps the agent translate screenshots or mockups into implementation decisions.
-- `quality-gates.md` is the final checklist before the work is finished.
+- `design-system.md` covers visual direction, typography, color, spacing, layout rhythm, imagery, and common AI design anti-patterns.
+- `interaction-states.md` covers controls, forms, loading, empty/error/success states, feedback, motion, and agent Plan -> Preview -> Apply flows.
+- `structure-architecture.md` covers semantic layout, responsive behavior, navigation, component APIs, state boundaries, and reuse.
+- `content-accessibility.md` covers UX writing, labels, errors, empty states, keyboard support, contrast, ARIA, touch targets, and resilient text.
+- `implementation-quality.md` covers LoveUI MCP lookup, page blueprints, screenshot translation, testing strategy, and final quality gates.
 
-The agent does not need every file for every task. For example, a form task should use the forms reference. A navigation task should use the navigation reference. A broad redesign should use more of the set.
+The agent does not need every file for every task. For example, a copy task can use `content-accessibility.md` and `interaction-states.md`, while a broad redesign should also use `design-system.md`, `structure-architecture.md`, and `implementation-quality.md`.
 
 ## Specialist skills
 
@@ -66,26 +55,16 @@ Specialist skills are included with the installed skill pack.
 
 Each one handles a narrower kind of work:
 
-- `frontend-design` builds distinctive, production-grade frontend interfaces.
-- `audit` reviews interface quality and returns prioritized issues.
-- `critique` gives design feedback on hierarchy, flow, and overall effectiveness.
-- `polish` fixes spacing, alignment, consistency, and small visual details.
-- `adapt` improves a design across mobile, tablet, desktop, or another context.
-- `harden` improves resilience for errors, long text, i18n, and edge cases.
-- `optimize` improves loading speed, rendering, animation, images, and bundle size.
-- `clarify` improves labels, instructions, errors, and other UX copy.
-- `onboard` improves onboarding flows, empty states, and first-time user experience.
-- `extract` turns repeated patterns into reusable components, tokens, or design-system pieces.
-- `normalize` adjusts a feature so it matches the existing design system.
-- `distill` removes unnecessary complexity and makes the UI simpler.
-- `bolder` adds more visual impact when a design is too plain.
-- `quieter` tones down a design that is too loud or distracting.
-- `colorize` adds strategic color to a design that is too gray or flat.
-- `animate` adds useful motion and micro-interactions.
-- `delight` adds small moments of personality and polish.
-- `teach-loveui` gathers project design context once and saves it for future sessions.
+- `build` creates or redesigns production-quality pages, dashboards, product surfaces, and app workflows.
+- `audit` reviews interface quality and returns prioritized findings with severity, impact, and recommended fixes.
+- `polish` fixes spacing, hierarchy, consistency, restraint, visual impact, and final details.
+- `adapt` improves responsive behavior, density, viewport support, and alternate usage contexts.
+- `harden` improves accessibility, errors, performance, i18n, long content, and production edge cases.
+- `clarify` improves labels, instructions, validation messages, empty states, onboarding copy, and UX writing.
+- `extract` turns repeated patterns into reusable components, variants, tokens, or design-system rules.
+- `teach-loveui` gathers project design context once and summarizes reusable guidance for future sessions.
 
-When the pack is installed, the agent should scan these skills and choose the most specific one for the job. For example, "make this form easier to understand" should route to `clarify`, while "make this dashboard production ready" may use `audit` first and `polish` after fixes.
+When the pack is installed, the agent should choose one primary specialist and add a second only when the task clearly crosses concerns. For example, "make this form easier to understand" should route to `clarify`, while "make this dashboard production ready" may use `audit` first and `polish` after fixes.
 
 ## How it changes agent behavior
 
@@ -112,7 +91,7 @@ A good LoveUI Skills run usually follows this path:
 1. **Scope the work.** The agent identifies the screen, users, core actions, and constraints.
 2. **Read references.** The agent opens the files that match the task.
 3. **Inspect LoveUI options.** If the LoveUI MCP server is available, the agent checks the live registry before choosing components.
-4. **Pick a direction.** The agent chooses one visual direction, such as Technical Console for developer tools or Modern SaaS Crisp for guided product flows.
+4. **Pick a direction.** The agent chooses one visual direction that fits the product, audience, and workflow.
 5. **Pick a blueprint.** The agent starts from a page pattern, such as docs, dashboard, settings, workspace, or agent workflow.
 6. **Implement carefully.** The agent builds reusable structure, keeps semantics correct, and handles key states.
 7. **Verify.** The agent runs checks, reviews the UI, and fixes issues before reporting back.
@@ -209,6 +188,10 @@ Use loveui-skills to redesign this settings page.
 ```
 
 ```text
+Use loveui-skills build to create the workspace view.
+```
+
+```text
 Use loveui-skills audit on the dashboard and list the issues by severity.
 ```
 
@@ -218,6 +201,10 @@ Use loveui-skills polish to fix spacing, alignment, and responsive behavior.
 
 ```text
 Use loveui-skills clarify to improve the form labels and validation messages.
+```
+
+```text
+Use loveui-skills harden on this billing flow before launch.
 ```
 
 ```text

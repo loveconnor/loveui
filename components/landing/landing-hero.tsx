@@ -91,10 +91,18 @@ export function LandingHero() {
         <div className="overflow-hidden border-x bg-card/60">
           <img
             alt="LoveUI documentation preview in light mode"
-            className="h-auto w-full"
+            className="h-auto w-full dark:hidden"
             height={720}
             loading="lazy"
             src="/page-light.webp"
+            width={1280}
+          />
+          <img
+            alt="LoveUI documentation preview in dark mode"
+            className="hidden h-auto w-full dark:block"
+            height={720}
+            loading="lazy"
+            src="/page-dark.webp"
             width={1280}
           />
         </div>

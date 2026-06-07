@@ -5,59 +5,30 @@ description: Build beautiful, professional software interfaces and websites with
 
 # LoveUI Skills
 
-Follow this skill to design and implement polished, production-ready UI in LoveUI projects.
+Follow this skill to design, implement, review, and improve polished UI in LoveUI projects. Load the smallest amount of extra context that can complete the task well.
 
-## Reference System (Read in Every UI Task)
+## Specialist Routing
 
-- Read `references/visual-primitives.md` to set non-negotiable visual constraints.
-- Read `references/interaction-heuristics.md` to define interaction behavior and state handling.
-- Read `references/structural-cleanliness.md` to enforce semantic, reusable, responsive architecture.
-- Use `references/quality-gates.md` as the final ship checklist.
+Use one primary specialist from `skills/*/SKILL.md` when the request matches it. Add a second specialist only when the task genuinely crosses concerns.
 
-## Extended References (Read Based on Scope)
+- `skills/build/SKILL.md`: new pages, redesigns, visual direction, landing/product/dashboard UI.
+- `skills/audit/SKILL.md`: review only; findings, severity, and recommended fixes.
+- `skills/polish/SKILL.md`: spacing, hierarchy, consistency, visual restraint or impact, final quality pass.
+- `skills/adapt/SKILL.md`: responsive behavior, viewport changes, density, alternate contexts.
+- `skills/harden/SKILL.md`: accessibility, errors, performance, i18n, long content, production edge cases.
+- `skills/clarify/SKILL.md`: labels, empty states, onboarding, validation copy, UX writing.
+- `skills/extract/SKILL.md`: reusable components, tokens, variants, design-system cleanup.
+- `skills/teach-loveui/SKILL.md`: learn and summarize project design conventions.
 
-- Read `references/accessibility-baseline.md` for accessibility requirements (contrast, keyboard, ARIA, touch targets).
-- Read `references/content-ux-writing.md` for microcopy, error language, and destructive action wording.
-- Read `references/forms-and-validation.md` for form architecture, validation timing, and async validation behavior.
-- Read `references/motion-and-feedback.md` for motion timing, feedback primitives, skeleton/spinner decisions.
-- Read `references/navigation-and-information-architecture.md` for navigation hierarchy, wayfinding, and URL state.
-- Read `references/screenshot-translation-protocol.md` when implementing from screenshots, mockups, or visual references.
-- Read `references/component-api-and-naming.md` for prop/API quality, composition patterns, and naming.
-- Read `references/frontend-architecture.md` for state boundaries, data flow, side-effect placement, and feature structure.
-- Read `references/testing-and-quality-strategy.md` for test scope, visual regression, and release quality gates.
+If no specialist applies, use this root workflow plus only the references needed for the request.
 
-## Skill Pack Discovery (Required)
+## Reference Routing
 
-This repository is a multi-skill pack. In addition to this root skill, the agent must treat every `skills/*/SKILL.md` file as an available specialized skill when this pack is installed.
-
-Before implementation work, scan the `skills/` directory and select the best matching specialist skill(s) for the request.
-
-### Available Specialist Skills
-
-- `skills/adapt/SKILL.md`
-- `skills/animate/SKILL.md`
-- `skills/audit/SKILL.md`
-- `skills/bolder/SKILL.md`
-- `skills/clarify/SKILL.md`
-- `skills/colorize/SKILL.md`
-- `skills/critique/SKILL.md`
-- `skills/delight/SKILL.md`
-- `skills/distill/SKILL.md`
-- `skills/extract/SKILL.md`
-- `skills/frontend-design/SKILL.md`
-- `skills/harden/SKILL.md`
-- `skills/normalize/SKILL.md`
-- `skills/onboard/SKILL.md`
-- `skills/optimize/SKILL.md`
-- `skills/polish/SKILL.md`
-- `skills/quieter/SKILL.md`
-- `skills/teach-loveui/SKILL.md`
-
-### Routing Rule
-
-- Prefer the most specific specialist skill over generic guidance when one clearly matches the task.
-- If multiple specialist skills apply, use one primary skill and at most one supporting skill to avoid conflicting directives.
-- If no specialist skill applies, continue with this root skill and the `references/*` system.
+- Read `references/design-system.md` for visual direction, typography, color, spacing, depth, and anti-patterns.
+- Read `references/interaction-states.md` for controls, forms, loading, empty/error/success states, feedback, and motion.
+- Read `references/structure-architecture.md` for semantic layout, navigation, responsive structure, component APIs, state boundaries, and reuse.
+- Read `references/content-accessibility.md` for microcopy, labels, keyboard support, contrast, ARIA, and touch targets.
+- Read `references/implementation-quality.md` for LoveUI MCP lookup, page blueprints, screenshot translation, test scope, and final quality gates.
 
 ## Required Tooling
 
@@ -69,11 +40,8 @@ Before implementation work, scan the `skills/` directory and select the best mat
 ## Core Rules
 
 - Start by extracting constraints: product type, audience, framework, existing design system, and timeline.
-- Choose one visual direction before coding. Avoid generic default layouts.
+- Choose one visual direction before coding; make it fit the product, not the model's default taste.
 - Build a coherent token system first: spacing, typography, colors, radius, shadows.
-- Enforce visual rules from `references/visual-primitives.md` before component assembly.
-- Enforce interaction/state rules from `references/interaction-heuristics.md` for every interactive surface.
-- Enforce semantic and reuse rules from `references/structural-cleanliness.md` when defining components/layouts.
 - Design desktop and mobile together.
 - Define loading, empty, error, and success states for core surfaces.
 - Preserve existing visual patterns when working in an established codebase.
@@ -85,7 +53,7 @@ Before implementation work, scan the `skills/` directory and select the best mat
 
 When the UI includes an agent, automation, or “apply changes” workflow, the implementation MUST include:
 
-### Plan → Preview → Apply
+### Plan -> Preview -> Apply
 
 - **Plan:** 1–3 bullets: what will change, why, what won’t change.
 - **Preview:** diffs/screenshots/structured change summary BEFORE commit.
@@ -116,45 +84,32 @@ When the UI includes an agent, automation, or “apply changes” workflow, the 
 - List exact pages/views and core user actions for each.
 - For agent surfaces, define the Plan/Preview/Apply flow and the rollback strategy.
 
-2. Set constraints from references.
-- Read `references/visual-primitives.md` and commit to visual constraints (color, type, spacing, depth).
-- Read `references/interaction-heuristics.md` and list required states/interactions per core action.
-- Read `references/structural-cleanliness.md` and define component boundaries + semantic landmarks.
-- If scope includes forms, read `references/forms-and-validation.md`.
-- If scope includes content or system messaging, read `references/content-ux-writing.md`.
-- If scope includes navigation changes, read `references/navigation-and-information-architecture.md`.
-- If scope includes motion/feedback patterns, read `references/motion-and-feedback.md`.
-- If user provides screenshots or mockups, read `references/screenshot-translation-protocol.md` and report preserve/normalize/invent decisions.
-- For all production work, read `references/accessibility-baseline.md`, `references/component-api-and-naming.md`, `references/frontend-architecture.md`, and `references/testing-and-quality-strategy.md`.
+2. Load only relevant references.
+- Always use `references/design-system.md` for visual work and `references/implementation-quality.md` before final verification.
+- Add interaction, structure, content/accessibility references based on scope.
 
-3. Build live LoveUI catalog context with MCP.
-- Read `references/mcp-catalog-workflow.md`.
+3. Build live LoveUI catalog context with MCP when LoveUI components, blocks, templates, or examples are relevant.
 - Call `resources/list` and map candidate registry items for the requested UI.
 - Call `get-loveui-package` for each selected item before implementation.
 
-4. Choose visual direction.
-- Read `references/design-directions.md`.
-- Commit to one direction for the implementation.
+4. Choose visual direction and layout blueprint.
+- State the direction in one sentence.
+- Start from the closest blueprint in `references/implementation-quality.md` and adapt it.
 
-5. Choose layout blueprint.
-- Read `references/page-blueprints.md`.
-- Start from the closest blueprint and adapt.
-
-6. Implement foundations.
+5. Implement foundations.
 - Set design tokens and section rhythm first.
 - Confirm consistent container widths and breakpoints.
 
-7. Build reusable UI and compose pages.
+6. Build reusable UI and compose pages.
 - Build reusable components before page assembly.
 - Keep APIs variant-driven and minimal.
 - Ensure semantics and keyboard support.
 - For agent UIs, prefer an “Agent UI Kit” set of blocks:
   - command palette, plan/preview/apply panel, diff viewer, run log/timeline, history/restore, inspector.
 
-8. Apply quality gates.
-- Read `references/quality-gates.md`.
-- Verify visual primitives, interaction heuristics, and structural cleanliness checks passed.
-- Verify accessibility, copy quality, navigation clarity, component API cleanliness, architecture boundaries, and testing gates passed when applicable.
+7. Apply quality gates.
+- Use `references/implementation-quality.md`.
+- Verify visual quality, interaction states, structural cleanliness, accessibility, responsive behavior, and relevant tests.
 - Fix all failing checks before finalizing.
 
 ## Output Contract
@@ -162,9 +117,6 @@ When the UI includes an agent, automation, or “apply changes” workflow, the 
 Always provide:
 
 - The chosen visual direction and brief rationale.
-- Confirmation that `visual-primitives`, `interaction-heuristics`, and `structural-cleanliness` constraints were applied.
-- Any additional references used (accessibility/forms/content/motion/navigation/architecture/testing) and how they influenced decisions.
-- For screenshot-driven tasks, include what was preserved, normalized, and invented.
 - Files created/updated.
 - Commands run.
 - Any remaining gaps or tradeoffs.
