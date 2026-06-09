@@ -64,6 +64,12 @@ export function baseOptions(): BaseLayoutProps {
         active: 'nested-url',
         on: 'nav',
       },
+      /*{
+        text: 'Builder',
+        url: '/builder',
+        active: 'nested-url',
+        on: 'nav',
+      },*/
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
     slots: {
