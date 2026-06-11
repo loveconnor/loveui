@@ -25,7 +25,7 @@ export default async function BuilderPage() {
 
   const [projects, catalog] = await Promise.all([
     session.canSaveBuilds ? listBuilderProjects(session.userId) : [],
-    getBuilderRegistryCatalog(),
+    getBuilderRegistryCatalog({ includePro: session.canSaveBuilds }),
   ])
   const activeProject =
     projects[0] ??

@@ -37,28 +37,28 @@ const REGISTRY_ROOT = path.join(
   /* turbopackIgnore: true */ process.cwd(),
   "packages/loveui/public/r"
 )
+const PRO_REGISTRY_ROOT = path.join(
+  /* turbopackIgnore: true */ process.cwd(),
+  "packages/loveui-pro/public/r"
+)
 
 const BUILDER_EXCLUDED_REGISTRY_SOURCES = new Set(["example-app", "page-template"])
 
-export async function getBuilderRegistryCatalog() {
-  const registryIndex = await readRegistryIndex()
-  const registryItems = (registryIndex.items ?? [])
+export async function getBuilderRegistryCatalog({
+  includePro = false,
+}: {
+  includePro?: boolean
+} = {}) {
+  const registryIndexes = await Promise.all([
+    readRegistryIndex(),
+    includePro ? readRegistryIndex(PRO_REGISTRY_ROOT) : Promise.resolve(null),
+  ])
+  const registryItems = registryIndexes
+    .flatMap((registryIndex) => registryIndex?.items ?? [])
     .filter((item) =>
       isBuilderCatalogRegistryType(item) && !isExcludedBuilderRegistryItem(item)
     )
-    .map((item): BuilderCatalogItem => {
-      const category = item.categories?.find((entry) => entry !== "block") ??
-        item.categories?.[0] ??
-        String(item.type).replace("registry:", "")
-
-      return {
-        name: item.name,
-        title: formatRegistryTitle(item),
-        description: item.description ?? "LoveUI registry item.",
-        type: item.type as BuilderCatalogItem["type"],
-        category,
-      }
-    })
+    .map(registryItemToCatalogItem)
 
   const iconStyle = getAssetStyle("icons")
   const iconItems = getAssetCollection("icons")
@@ -67,9 +67,13 @@ export async function getBuilderRegistryCatalog() {
     .map(iconToCatalogItem)
 
   return {
-    blocks: registryItems.filter((item) => item.type === "registry:block"),
-    components: registryItems.filter(
-      (item) => item.type === "registry:ui" || item.type === "registry:example"
+    blocks: mergeCatalogItems(
+      registryItems.filter((item) => item.type === "registry:block")
+    ),
+    components: mergeCatalogItems(
+      registryItems.filter(
+        (item) => item.type === "registry:ui" || item.type === "registry:example"
+      )
     ),
     icons: iconItems,
   }
@@ -95,22 +99,33 @@ function isExcludedBuilderRegistryItem(item: BuilderRegistryItemPayload) {
   )
 }
 
-export async function getRegistryPayload(name: string) {
+export async function getRegistryPayload(
+  name: string,
+  {
+    includePro = false,
+  }: {
+    includePro?: boolean
+  } = {}
+) {
   const safeName = normalizeRegistryName(name)
 
   if (!safeName) return null
 
-  try {
-    const content = await readFile(path.join(REGISTRY_ROOT, `${safeName}.json`), "utf8")
+  for (const root of includePro ? [PRO_REGISTRY_ROOT, REGISTRY_ROOT] : [REGISTRY_ROOT]) {
+    try {
+      const content = await readFile(path.join(root, `${safeName}.json`), "utf8")
 
-    return JSON.parse(content) as BuilderRegistryItemPayload
-  } catch {
-    return null
+      return JSON.parse(content) as BuilderRegistryItemPayload
+    } catch {
+      // Try the next registry root.
+    }
   }
+
+  return null
 }
 
-export async function readRegistryIndex() {
-  const content = await readFile(path.join(REGISTRY_ROOT, "registry.json"), "utf8")
+export async function readRegistryIndex(root = REGISTRY_ROOT) {
+  const content = await readFile(path.join(root, "registry.json"), "utf8")
 
   return JSON.parse(content) as RegistryIndex
 }
@@ -155,6 +170,32 @@ function iconToCatalogItem(item: IconRegistryItem): BuilderCatalogItem {
     sourcePath: item.sourcePath,
     exportName: toPascalCase(item.id),
   }
+}
+
+function registryItemToCatalogItem(item: BuilderRegistryItemPayload): BuilderCatalogItem {
+  return {
+    name: item.name,
+    title: formatRegistryTitle(item),
+    description: item.description ?? "LoveUI registry item.",
+    type: item.type as BuilderCatalogItem["type"],
+    category: getRegistryCategory(item),
+  }
+}
+
+function mergeCatalogItems(items: BuilderCatalogItem[]) {
+  return Array.from(
+    items
+      .reduce((map, item) => map.set(item.name, item), new Map<string, BuilderCatalogItem>())
+      .values()
+  )
+}
+
+function getRegistryCategory(item: BuilderRegistryItemPayload) {
+  return (
+    item.categories?.find((entry) => entry !== "block" && entry !== "pro") ??
+    item.categories?.[0] ??
+    String(item.type).replace("registry:", "")
+  )
 }
 
 function formatRegistryTitle(item: BuilderRegistryItemPayload) {

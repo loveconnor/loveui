@@ -69,6 +69,7 @@ export async function POST(request: Request, context: RouteContext) {
     document: { ...document, framework: requestedFramework },
     framework: requestedFramework,
     projectName,
+    includeProRegistry: session.canSaveBuilds,
   })
 
   if (isCloudProject) {

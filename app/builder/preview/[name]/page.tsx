@@ -1,6 +1,7 @@
 import type { ComponentType } from "react"
 
 import { AppProviders } from "@/components/app-providers"
+import { getBuilderSession } from "@/lib/builder/auth"
 import { getComponentExampleNames } from "@/lib/component-examples"
 import { Index } from "@/registry/__index__"
 import { BuilderPreviewSurface } from "./builder-preview-surface"
@@ -13,10 +14,13 @@ type PreviewPageProps = {
 }
 
 type PreviewModule = {
-  default: ComponentType
+  default?: ComponentType
+  [key: string]: unknown
 }
 
-const blockPreviewLoaders: Record<string, () => Promise<PreviewModule>> = {
+type PreviewLoader = () => Promise<PreviewModule>
+
+const blockPreviewLoaders: Record<string, PreviewLoader> = {
   "404-one": () => import("@/registry/default/blocks/404-1/app/page"),
   "404-two": () => import("@/registry/default/blocks/404-2/app/page"),
   "auth-one": () => import("@/registry/default/blocks/auth1/app/page"),
@@ -128,13 +132,223 @@ const blockPreviewLoaders: Record<string, () => Promise<PreviewModule>> = {
     import("@/registry/default/blocks/testimonials6/app/page"),
 }
 
+const proBlockPreviewLoaders: Record<string, PreviewLoader> = {
+  "download-01": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/download-01/download"),
+  "download-02": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/download-02/download"),
+  "header-01": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/header-01/page"),
+  "header-02": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/header-02/page"),
+  "header-03": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/header-03/page"),
+  "header-04": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/header-04/page"),
+  "header-05": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/header-05/page"),
+  "sidebar-01": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/sidebar-01"),
+  "sidebar-02": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/sidebar-02"),
+  "sidebar-03": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/sidebar-03"),
+  "sidebar-04": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/sidebar-04/app/page"),
+  "sidebar-05": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/sidebar-05/app/page"),
+  "sidebar-06": () =>
+    import("@/packages/loveui-pro/registry/default/blocks/sidebar-06/app/page"),
+}
+
+const proChartPreviewLoaders: Record<string, PreviewLoader> = {
+  "pro-area-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-2"),
+  "pro-area-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-2"),
+  "pro-area-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-3"),
+  "pro-area-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-4"),
+  "pro-area-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-5"),
+  "pro-area-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-6"),
+  "pro-area-chart-7": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-7"),
+  "pro-area-chart-8": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-8"),
+  "pro-area-chart-9": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-9"),
+  "pro-area-chart-10": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/area-chart/area-chart-10"),
+  "pro-bar-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-2"),
+  "pro-bar-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-2"),
+  "pro-bar-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-3"),
+  "pro-bar-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-4"),
+  "pro-bar-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-5"),
+  "pro-bar-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-6"),
+  "pro-bar-chart-7": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-7"),
+  "pro-bar-chart-8": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-8"),
+  "pro-bar-chart-9": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-9"),
+  "pro-bar-chart-10": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/bar-chart/bar-chart-10"),
+  "pro-funnel-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-1"),
+  "pro-funnel-chart-1": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-1"),
+  "pro-funnel-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-2"),
+  "pro-funnel-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-3"),
+  "pro-funnel-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-4"),
+  "pro-funnel-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-5"),
+  "pro-funnel-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/funnel-chart/funnel-chart-6"),
+  "pro-line-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-2"),
+  "pro-line-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-2"),
+  "pro-line-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-3"),
+  "pro-line-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-4"),
+  "pro-line-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-5"),
+  "pro-line-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-6"),
+  "pro-line-chart-7": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-7"),
+  "pro-line-chart-8": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-8"),
+  "pro-line-chart-9": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-9"),
+  "pro-line-chart-10": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/line-chart/line-chart-10"),
+  "pro-pie-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-1"),
+  "pro-pie-chart-1": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-1"),
+  "pro-pie-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-2"),
+  "pro-pie-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-3"),
+  "pro-pie-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-4"),
+  "pro-pie-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-5"),
+  "pro-pie-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-6"),
+  "pro-pie-chart-7": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-7"),
+  "pro-pie-chart-8": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-8"),
+  "pro-pie-chart-9": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-9"),
+  "pro-pie-chart-10": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/pie-chart/pie-chart-10"),
+  "pro-radar-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-1"),
+  "pro-radar-chart-1": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-1"),
+  "pro-radar-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-2"),
+  "pro-radar-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-3"),
+  "pro-radar-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-4"),
+  "pro-radar-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-5"),
+  "pro-radar-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-6"),
+  "pro-radar-chart-7": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-7"),
+  "pro-radar-chart-8": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-8"),
+  "pro-radar-chart-9": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-9"),
+  "pro-radar-chart-10": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-10"),
+  "pro-radar-chart-11": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-11"),
+  "pro-radar-chart-12": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-12"),
+  "pro-radar-chart-13": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-13"),
+  "pro-radar-chart-14": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radar-chart/radar-chart-14"),
+  "pro-radial-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-1"),
+  "pro-radial-chart-1": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-1"),
+  "pro-radial-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-2"),
+  "pro-radial-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-3"),
+  "pro-radial-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-4"),
+  "pro-radial-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-5"),
+  "pro-radial-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/radial-chart/radial-chart-6"),
+  "pro-scatter-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-1"),
+  "pro-scatter-chart-1": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-1"),
+  "pro-scatter-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-2"),
+  "pro-scatter-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-3"),
+  "pro-scatter-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-4"),
+  "pro-scatter-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-5"),
+  "pro-scatter-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-6"),
+  "pro-scatter-chart-7": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-7"),
+  "pro-scatter-chart-8": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/scatter-chart/scatter-chart-8"),
+  "pro-treemap-chart": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart"),
+  "pro-treemap-chart-1": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart-1"),
+  "pro-treemap-chart-2": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart-2"),
+  "pro-treemap-chart-3": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart-3"),
+  "pro-treemap-chart-4": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart-4"),
+  "pro-treemap-chart-5": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart-5"),
+  "pro-treemap-chart-6": () =>
+    import("@/packages/loveui-pro/registry/charts/blocks/treemap-chart/treemap-chart-6"),
+}
+
 export default async function BuilderPreviewPage({
   params,
   searchParams,
 }: PreviewPageProps) {
   const { name } = await params
   const { shapeId, theme } = await searchParams
-  const Component = await resolvePreviewComponent(name)
+  const includePro =
+    name in proBlockPreviewLoaders || name in proChartPreviewLoaders
+      ? (await getBuilderSession()).canSaveBuilds
+      : false
+  const Component = await resolvePreviewComponent(name, {
+    includePro,
+  })
   const previewTheme = theme === "dark" ? "dark" : "light"
 
   if (!Component) {
@@ -162,13 +376,36 @@ export default async function BuilderPreviewPage({
   )
 }
 
-async function resolvePreviewComponent(name: string) {
+async function resolvePreviewComponent(
+  name: string,
+  {
+    includePro = false,
+  }: {
+    includePro?: boolean
+  } = {}
+) {
+  const proBlockLoader = includePro ? proBlockPreviewLoaders[name] : undefined
+
+  if (proBlockLoader) {
+    const module = await proBlockLoader()
+
+    return getPreviewComponent(module)
+  }
+
+  const proChartLoader = includePro ? proChartPreviewLoaders[name] : undefined
+
+  if (proChartLoader) {
+    const module = await proChartLoader()
+
+    return getPreviewComponent(module)
+  }
+
   const blockLoader = blockPreviewLoaders[name]
 
   if (blockLoader) {
     const module = await blockLoader()
 
-    return module.default
+    return getPreviewComponent(module)
   }
 
   const directExample = Index[name]?.component
@@ -178,6 +415,14 @@ async function resolvePreviewComponent(name: string) {
   const firstExampleName = getComponentExampleNames(name)[0]
 
   return firstExampleName ? Index[firstExampleName]?.component : undefined
+}
+
+function getPreviewComponent(module: PreviewModule) {
+  if (module.default) return module.default
+
+  return Object.entries(module).find(
+    ([name, value]) => name.startsWith("Chart") && typeof value === "function"
+  )?.[1] as ComponentType | undefined
 }
 
 function PreviewMessage({ title, detail }: { title: string; detail: string }) {

@@ -66,6 +66,7 @@ export async function POST(request: Request, context: RouteContext) {
     document: { ...document, framework },
     framework,
     projectName,
+    includeProRegistry: session.canSaveBuilds,
   })
 
   return NextResponse.json({ files })

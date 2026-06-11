@@ -42,12 +42,19 @@ export async function createBuilderProjectZip({
   document,
   framework,
   projectName,
+  includeProRegistry = false,
 }: {
   document: BuilderDocument
   framework: BuilderFramework
   projectName: string
+  includeProRegistry?: boolean
 }) {
-  const files = await createProjectFiles({ document, framework, projectName })
+  const files = await createProjectFiles({
+    document,
+    framework,
+    projectName,
+    includeProRegistry,
+  })
   const zip = new JSZip()
 
   for (const file of files) {
@@ -61,12 +68,16 @@ export async function createProjectFiles({
   document,
   framework,
   projectName,
+  includeProRegistry = false,
 }: {
   document: BuilderDocument
   framework: BuilderFramework
   projectName: string
+  includeProRegistry?: boolean
 }) {
-  const registryItems = await resolveDocumentRegistryItems(document)
+  const registryItems = await resolveDocumentRegistryItems(document, {
+    includeProRegistry,
+  })
   const dependencies = new Set<string>()
   const sourceFiles = new Map<string, string>()
 
@@ -107,7 +118,14 @@ export async function createProjectFiles({
   return files.sort((a, b) => a.path.localeCompare(b.path))
 }
 
-async function resolveDocumentRegistryItems(document: BuilderDocument) {
+async function resolveDocumentRegistryItems(
+  document: BuilderDocument,
+  {
+    includeProRegistry = false,
+  }: {
+    includeProRegistry?: boolean
+  } = {}
+) {
   const names = Array.from(
     new Set(
       document.items
@@ -123,7 +141,9 @@ async function resolveDocumentRegistryItems(document: BuilderDocument) {
     const name = queue.shift()
     if (!name || resolved.has(name)) continue
 
-    const payload = await getRegistryPayload(name)
+    const payload = await getRegistryPayload(name, {
+      includePro: includeProRegistry,
+    })
     if (!payload) continue
 
     resolved.set(name, payload)
@@ -501,6 +521,7 @@ function transformRegistrySource(source: string) {
   return source
     .replace(/@\/registry\/default\/ui\//g, "@/components/ui/")
     .replace(/@\/registry\/default\/blocks\//g, "@/components/blocks/")
+    .replace(/@\/components\/ui\/recharts-chart/g, "@/components/ui/chart")
 }
 
 function normalizeTargetPath(target: string | undefined, framework: BuilderFramework) {
