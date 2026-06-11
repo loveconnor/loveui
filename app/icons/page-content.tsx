@@ -8,6 +8,7 @@ import {
   getAssetCollection,
   getAssetCollectionMeta,
   getAssetStyle,
+  getAssetCategoryItems,
   getAssetStyleOptions,
   type AssetCollection,
 } from '@/lib/icons-registry';
@@ -40,6 +41,13 @@ export function IconsCollectionPage({
     name: `LoveUI ${meta?.name ?? 'Icons'}`,
     description,
     url: meta?.url ?? '/icons',
+    items: getAssetCategoryItems({ collection, style: activeStyle }).map(
+      (item) => ({
+        name: `${item.label} ${meta?.name ?? 'Icons'}`,
+        description: `${item.count} ${meta?.name.toLowerCase() ?? 'icons'} in the ${item.label} category.`,
+        url: item.url.replace(/\?.*$/, ''),
+      }),
+    ),
   });
 
   return (

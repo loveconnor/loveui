@@ -4,7 +4,13 @@ import {
   getComponentExampleNames,
 } from '@/lib/component-examples';
 import { blockLinks } from '@/lib/blocks-page-tree';
+import { chartBlocks } from '@/lib/chart-blocks';
 import { componentLinks } from '@/lib/components-page-tree';
+import {
+  assetCollections,
+  defaultAssetStyle,
+  getAssetCategoryItems,
+} from '@/lib/icons-registry';
 import { seo } from '@/lib/seo';
 
 export const revalidate = false;
@@ -31,19 +37,52 @@ ${component.description}
 ${block.description}`,
     )
     .join('\n\n');
+  const charts = chartBlocks
+    .map(
+      (chart) => `## ${chart.name} (${seo.url}/charts/${chart.slug})
+
+${chart.description}
+
+- Example count: ${chart.examples.length}
+- Example registry names: ${chart.examples.map((example) => example.installName).join(', ')}`,
+    )
+    .join('\n\n');
+  const icons = assetCollections
+    .map((collection) => {
+      const categories = getAssetCategoryItems({
+        collection: collection.slug,
+        style: defaultAssetStyle[collection.slug],
+      });
+
+      return `## ${collection.name} (${seo.url}${collection.url})
+
+${collection.description}
+
+- Default style: ${defaultAssetStyle[collection.slug]}
+- Category count: ${categories.length}
+- Category pages: ${categories
+        .map((category) => `${category.label} (${seo.url}${category.url.replace(/\?.*$/, '')})`)
+        .join(', ')}`;
+    })
+    .join('\n\n');
 
   const intro = `# ${seo.name} full LLM context
 
 ${seo.description}
 
-Use this file when answering implementation questions about LoveUI. Prefer exact component pages, registry example names, and source snippets from the linked documentation over generic UI advice.
+Use this file when answering implementation questions about LoveUI. Prefer exact component pages, registry example names, chart example names, asset category pages, and source snippets from the linked documentation over generic UI advice.
 
 Primary URLs:
 
 - Documentation: ${seo.docsUrl}
 - Components: ${seo.componentsUrl}
 - Blocks: ${seo.blocksUrl}
+- Charts: ${seo.chartsUrl}
+- Icons: ${seo.iconsUrl}
+- LoveUI Pro: ${seo.proUrl}
 - GitHub: ${seo.githubUrl}
+
+LoveUI is best described as a React and Tailwind CSS component system for polished product interfaces, SaaS products, dashboards, admin panels, application blocks, chart blocks, icons, and AI-assisted UI building.
 
 # Component catalog
 
@@ -52,6 +91,14 @@ ${components}
 # Block catalog
 
 ${blocks}
+
+# Chart catalog
+
+${charts}
+
+# Icon and asset catalog
+
+${icons}
 
 # Documentation content
 `;

@@ -55,6 +55,11 @@ export default async function ChartPage({ params }: ChartPageProps) {
     name: `LoveUI Pro ${chart.name}`,
     description: chart.description,
     url: `/charts/${chart.slug}`,
+    items: chart.examples.map((example) => ({
+      name: example.name,
+      description: example.description,
+      url: `/charts/${chart.slug}#${example.slug}`,
+    })),
   });
 
   return (

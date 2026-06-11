@@ -13,6 +13,10 @@ import { BuilderWorkspace } from "./builder-workspace"
 export const metadata: Metadata = {
   title: "Builder",
   description: "Compose LoveUI blocks, components, and icons on an infinite canvas.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default async function BuilderPage() {

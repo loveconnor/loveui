@@ -1,13 +1,37 @@
 import type { Metadata } from 'next';
 
 import { IconsCollectionPage } from './page-content';
+import { seo, siteKeywords } from '@/lib/seo';
+
+const iconsDescription =
+  'Browse LoveUI interface icons, logos, and vectors for React product interfaces.';
 
 export const metadata: Metadata = {
   title: 'Icons',
-  description:
-    'Browse LoveUI icons, logos, and vectors for product interfaces.',
+  description: iconsDescription,
+  keywords: [
+    ...siteKeywords,
+    'React icons',
+    'SVG icons',
+    'product interface icons',
+    'UI icon library',
+  ],
   alternates: {
     canonical: '/icons',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: seo.name,
+    title: 'LoveUI Icons',
+    description: iconsDescription,
+    url: '/icons',
+    images: ['/logo.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LoveUI Icons',
+    description: iconsDescription,
+    images: ['/logo.png'],
   },
 };
 

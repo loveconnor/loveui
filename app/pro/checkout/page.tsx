@@ -1,3 +1,13 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'LoveUI Pro checkout',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default function CheckoutPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-xl flex-col justify-center px-6">

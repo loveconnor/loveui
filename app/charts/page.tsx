@@ -43,6 +43,11 @@ export default function ChartsPage() {
     name: 'LoveUI Pro Charts',
     description: chartsDescription,
     url: '/charts',
+    items: chartBlocks.map((chart) => ({
+      name: chart.name,
+      description: chart.description,
+      url: `/charts/${chart.slug}`,
+    })),
   });
 
   return (

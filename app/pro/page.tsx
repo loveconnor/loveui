@@ -18,13 +18,41 @@ import {
 } from '@/registry/default/ui/accordion';
 import { Button } from '@/registry/default/ui/button';
 import { cn } from '@/lib/utils';
+import { faqPageJsonLd, productJsonLd, seo, siteKeywords } from '@/lib/seo';
 import { proPlans, type ProPlan } from '@/lib/pro-plans';
 import { grantProAccessFromCheckoutSession } from '@/lib/stripe-pro';
 
+const proDescription =
+  'Get LoveUI Pro for production-ready React blocks, application systems, templates, chart blocks, and private registry access.';
+
 export const metadata: Metadata = {
   title: 'LoveUI Pro',
-  description:
-    'Get LoveUI Pro for production-ready blocks, application systems, templates, and private registry access.',
+  description: proDescription,
+  keywords: [
+    ...siteKeywords,
+    'LoveUI Pro',
+    'React templates',
+    'SaaS templates',
+    'dashboard templates',
+    'premium React blocks',
+  ],
+  alternates: {
+    canonical: '/pro',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: seo.name,
+    title: 'LoveUI Pro',
+    description: proDescription,
+    url: '/pro',
+    images: ['/logo.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LoveUI Pro',
+    description: proDescription,
+    images: ['/logo.png'],
+  },
 };
 
 const features = [
@@ -125,9 +153,21 @@ export default async function ProPage({ searchParams }: ProPageProps) {
     params.checkout === 'success' && params.session_id
       ? await grantProAccessFromCheckoutSession(params.session_id)
       : null;
+  const jsonLd = [
+    productJsonLd({
+      name: 'LoveUI Pro',
+      description: proDescription,
+      url: '/pro',
+    }),
+    faqPageJsonLd(faqs),
+  ];
 
   return (
     <main className="relative overflow-hidden bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {checkoutResult?.granted && (
         <div className="border-b bg-primary/8 px-4 py-3 text-center text-sm">
           Pro access is active for {checkoutResult.email}. Sign in with that

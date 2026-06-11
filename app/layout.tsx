@@ -4,6 +4,7 @@ import { appName } from '@/lib/shared';
 import {
   seo,
   siteKeywords,
+  organizationJsonLd,
   softwareSourceCodeJsonLd,
   webSiteJsonLd,
 } from '@/lib/seo';
@@ -81,7 +82,11 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: LayoutProps<'/'>) {
-  const jsonLd = [webSiteJsonLd(), softwareSourceCodeJsonLd()];
+  const jsonLd = [
+    organizationJsonLd(),
+    webSiteJsonLd(),
+    softwareSourceCodeJsonLd(),
+  ];
 
   return (
     <html

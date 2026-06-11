@@ -1,7 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { blockLinks } from '@/lib/blocks-page-tree';
+import { chartBlocks } from '@/lib/chart-blocks';
 import { componentLinks } from '@/lib/components-page-tree';
-import { assetCollections } from '@/lib/icons-registry';
+import {
+  assetCollections,
+  defaultAssetStyle,
+  getAssetCategoryItems,
+} from '@/lib/icons-registry';
 import { source } from '@/lib/source';
 import { absoluteUrl, siteUrl } from '@/lib/seo';
 
@@ -14,7 +19,6 @@ function sitemapEntry(
 ): MetadataRoute.Sitemap[number] {
   return {
     url: absoluteUrl(path),
-    lastModified: new Date(),
     ...options,
   };
 }
@@ -41,6 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const chartPages = chartBlocks.map((chart) =>
+    sitemapEntry(`/charts/${chart.slug}`, {
+      changeFrequency: 'weekly',
+      priority: 0.82,
+    }),
+  );
+
   const iconPages = assetCollections.map((collection) =>
     sitemapEntry(collection.url, {
       changeFrequency: 'weekly',
@@ -48,16 +59,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const iconCategoryPages = assetCollections.flatMap((collection) =>
+    getAssetCategoryItems({
+      collection: collection.slug,
+      style: defaultAssetStyle[collection.slug],
+    }).map((category) =>
+      sitemapEntry(category.url.replace(/\?.*$/, ''), {
+        changeFrequency: 'weekly',
+        priority: 0.72,
+      }),
+    ),
+  );
+
   return [
     sitemapEntry('/', { changeFrequency: 'monthly', priority: 0.6 }),
     sitemapEntry('/components', { changeFrequency: 'weekly', priority: 0.95 }),
     sitemapEntry('/blocks', { changeFrequency: 'weekly', priority: 0.9 }),
+    sitemapEntry('/charts', { changeFrequency: 'weekly', priority: 0.85 }),
+    sitemapEntry('/icons', { changeFrequency: 'weekly', priority: 0.85 }),
+    sitemapEntry('/pro', { changeFrequency: 'weekly', priority: 0.8 }),
     sitemapEntry('/llms.txt', { changeFrequency: 'weekly', priority: 0.5 }),
     sitemapEntry('/llms-full.txt', { changeFrequency: 'weekly', priority: 0.5 }),
     ...docsPages,
     ...componentPages,
     ...blockPages,
+    ...chartPages,
     ...iconPages,
+    ...iconCategoryPages,
   ].filter((entry, index, entries) => {
     const firstIndex = entries.findIndex((item) => item.url === entry.url);
     return firstIndex === index && entry.url.startsWith(siteUrl);

@@ -3,9 +3,11 @@ import { componentLinks } from '@/lib/components-page-tree';
 import {
   appName,
   blocksRoute,
+  chartsRoute,
   componentsRoute,
   docsRoute,
   gitConfig,
+  iconsRoute,
 } from '@/lib/shared';
 
 export const siteUrl = (
@@ -31,6 +33,14 @@ export const siteKeywords = [
   'admin UI',
 ];
 
+export const seoAudience = [
+  'frontend developers',
+  'React developers',
+  'design engineers',
+  'product teams',
+  'AI coding assistants',
+];
+
 export const seo = {
   name: appName,
   title: `${appName} - React components for product interfaces`,
@@ -40,6 +50,9 @@ export const seo = {
   docsUrl: `${siteUrl}${docsRoute}`,
   componentsUrl: `${siteUrl}${componentsRoute}`,
   blocksUrl: `${siteUrl}${blocksRoute}`,
+  chartsUrl: `${siteUrl}${chartsRoute}`,
+  iconsUrl: `${siteUrl}${iconsRoute}`,
+  proUrl: `${siteUrl}/pro`,
   llmsTxtUrl: `${siteUrl}/llms.txt`,
   llmsFullTxtUrl: `${siteUrl}/llms-full.txt`,
   ogImage: `${siteUrl}/logo.png`,
@@ -59,8 +72,16 @@ export function webSiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: appName,
+    alternateName: ['Love UI', 'LoveUI Components'],
     url: siteUrl,
     description: siteDescription,
+    inLanguage: 'en',
+    keywords: siteKeywords.join(', '),
+    audience: seoAudience.map((audienceType) => ({
+      '@type': 'Audience',
+      audienceType,
+    })),
+    publisher: organizationJsonLd(false),
     potentialAction: {
       '@type': 'SearchAction',
       target: `${siteUrl}/api/search?q={search_term_string}`,
@@ -69,17 +90,35 @@ export function webSiteJsonLd() {
   };
 }
 
+export function organizationJsonLd(withContext = true) {
+  return {
+    ...(withContext ? { '@context': 'https://schema.org' } : {}),
+    '@type': 'Organization',
+    name: appName,
+    url: siteUrl,
+    logo: seo.ogImage,
+    sameAs: [seo.githubUrl],
+  };
+}
+
 export function softwareSourceCodeJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     name: appName,
+    alternateName: 'LoveUI React components',
     codeRepository: seo.githubUrl,
     programmingLanguage: ['TypeScript', 'TSX', 'CSS'],
     runtimePlatform: ['React', 'Next.js', 'Tailwind CSS'],
     license: 'https://opensource.org/license/mit',
     description: siteDescription,
     url: siteUrl,
+    applicationCategory: 'DeveloperApplication',
+    keywords: siteKeywords.join(', '),
+    audience: seoAudience.map((audienceType) => ({
+      '@type': 'Audience',
+      audienceType,
+    })),
   };
 }
 
@@ -87,12 +126,20 @@ export function collectionPageJsonLd({
   name,
   description,
   url,
+  items,
 }: {
   name: string;
   description: string;
   url: string;
+  items?: Array<{ name: string; description?: string; url: string }>;
 }) {
-  const mainEntity = collectionMainEntity(url);
+  const mainEntity = items
+    ? itemList(name, items.map((item) => ({
+        name: item.name,
+        description: item.description ?? '',
+        url: item.url,
+      })))
+    : collectionMainEntity(url);
 
   return {
     '@context': 'https://schema.org',
@@ -101,6 +148,10 @@ export function collectionPageJsonLd({
     description,
     url: absoluteUrl(url),
     ...(mainEntity ? { mainEntity } : {}),
+    breadcrumb: breadcrumbListJsonLd([
+      { name: 'Home', url: '/' },
+      { name, url },
+    ], false),
     isPartOf: {
       '@type': 'WebSite',
       name: appName,
@@ -176,11 +227,13 @@ export function componentJsonLd({
   description,
   url,
   exampleCount,
+  exampleNames = [],
 }: {
   name: string;
   description: string;
   url: string;
   exampleCount: number;
+  exampleNames?: string[];
 }) {
   return {
     '@context': 'https://schema.org',
@@ -204,6 +257,47 @@ export function componentJsonLd({
       '@type': 'ItemList',
       numberOfItems: exampleCount,
       name: `${name} examples`,
+      itemListElement: exampleNames.map((exampleName, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: exampleName,
+      })),
+    },
+    breadcrumb: breadcrumbListJsonLd([
+      { name: 'Home', url: '/' },
+      { name: 'Components', url: componentsRoute },
+      { name, url },
+    ], false),
+  };
+}
+
+export function productJsonLd({
+  name,
+  description,
+  url,
+}: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    description,
+    url: absoluteUrl(url),
+    image: seo.ogImage,
+    brand: organizationJsonLd(false),
+    category: 'Software source code and UI templates',
+    audience: seoAudience.map((audienceType) => ({
+      '@type': 'Audience',
+      audienceType,
+    })),
+    offers: {
+      '@type': 'AggregateOffer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'USD',
+      url: absoluteUrl(url),
     },
   };
 }
@@ -224,10 +318,51 @@ export function docsArticleJsonLd({
     description,
     url: absoluteUrl(url),
     about: ['LoveUI', 'React components', 'Tailwind CSS', 'UI development'],
+    author: organizationJsonLd(false),
+    publisher: organizationJsonLd(false),
+    inLanguage: 'en',
+    breadcrumb: breadcrumbListJsonLd([
+      { name: 'Home', url: '/' },
+      { name: 'Docs', url: docsRoute },
+      { name: title, url },
+    ], false),
     isPartOf: {
       '@type': 'WebSite',
       name: appName,
       url: siteUrl,
     },
+  };
+}
+
+export function faqPageJsonLd(
+  questions: Array<{ question: string; answer: string }>,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questions.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function breadcrumbListJsonLd(
+  items: Array<{ name: string; url: string }>,
+  withContext = true,
+) {
+  return {
+    ...(withContext ? { '@context': 'https://schema.org' } : {}),
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.url),
+    })),
   };
 }

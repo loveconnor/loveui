@@ -40,6 +40,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
     description: pageDescription,
     url: `/components/${component.slug}`,
     exampleCount,
+    exampleNames: getComponentExampleNames(slug),
   })
 
   return (
