@@ -3,6 +3,7 @@ import Image from 'next/image';
 import {
   appName,
   blocksRoute,
+  builderRoute,
   chartsRoute,
   componentsRoute,
   docsRoute,
@@ -64,12 +65,12 @@ export function baseOptions(): BaseLayoutProps {
         active: 'nested-url',
         on: 'nav',
       },
-      /*{
+      {
         text: 'Builder',
-        url: '/builder',
+        url: builderRoute,
         active: 'nested-url',
         on: 'nav',
-      },*/
+      },
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
     slots: {

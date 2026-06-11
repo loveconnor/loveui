@@ -21,6 +21,9 @@ export type BuilderRegistryItemPayload = {
   title?: string
   description?: string
   categories?: string[]
+  meta?: {
+    source?: string
+  }
   files?: RegistryFile[]
   dependencies?: string[]
   registryDependencies?: string[]
@@ -35,13 +38,13 @@ const REGISTRY_ROOT = path.join(
   "packages/loveui/public/r"
 )
 
+const BUILDER_EXCLUDED_REGISTRY_SOURCES = new Set(["example-app", "page-template"])
+
 export async function getBuilderRegistryCatalog() {
   const registryIndex = await readRegistryIndex()
   const registryItems = (registryIndex.items ?? [])
     .filter((item) =>
-      item.type === "registry:block" ||
-      item.type === "registry:ui" ||
-      item.type === "registry:example"
+      isBuilderCatalogRegistryType(item) && !isExcludedBuilderRegistryItem(item)
     )
     .map((item): BuilderCatalogItem => {
       const category = item.categories?.find((entry) => entry !== "block") ??
@@ -70,6 +73,26 @@ export async function getBuilderRegistryCatalog() {
     ),
     icons: iconItems,
   }
+}
+
+function isBuilderCatalogRegistryType(item: BuilderRegistryItemPayload) {
+  return (
+    item.type === "registry:block" ||
+    item.type === "registry:ui" ||
+    item.type === "registry:example"
+  )
+}
+
+function isExcludedBuilderRegistryItem(item: BuilderRegistryItemPayload) {
+  const source = item.meta?.source
+
+  if (source && BUILDER_EXCLUDED_REGISTRY_SOURCES.has(source)) return true
+
+  return Boolean(
+    item.categories?.some((category) =>
+      BUILDER_EXCLUDED_REGISTRY_SOURCES.has(category)
+    )
+  )
 }
 
 export async function getRegistryPayload(name: string) {

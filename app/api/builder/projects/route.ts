@@ -12,8 +12,8 @@ export const runtime = "nodejs"
 export async function GET() {
   const session = await getBuilderSession()
 
-  if ("error" in session) {
-    return NextResponse.json({ error: session.error }, { status: session.status })
+  if (!session.canSaveBuilds) {
+    return NextResponse.json({ projects: [] })
   }
 
   const projects = await listBuilderProjects(session.userId)
@@ -24,8 +24,11 @@ export async function GET() {
 export async function POST(request: Request) {
   const session = await getBuilderSession()
 
-  if ("error" in session) {
-    return NextResponse.json({ error: session.error }, { status: session.status })
+  if (!session.canSaveBuilds) {
+    return NextResponse.json(
+      { error: "Saving builds requires LoveUI Pro." },
+      { status: 403 }
+    )
   }
 
   let body: unknown = {}

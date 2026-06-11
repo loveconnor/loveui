@@ -21,8 +21,11 @@ type RouteContext = {
 export async function GET(_request: Request, context: RouteContext) {
   const session = await getBuilderSession()
 
-  if ("error" in session) {
-    return NextResponse.json({ error: session.error }, { status: session.status })
+  if (!session.canSaveBuilds) {
+    return NextResponse.json(
+      { error: "Saving builds requires LoveUI Pro." },
+      { status: 403 }
+    )
   }
 
   const { id } = await context.params
@@ -38,8 +41,11 @@ export async function GET(_request: Request, context: RouteContext) {
 export async function PATCH(request: Request, context: RouteContext) {
   const session = await getBuilderSession()
 
-  if ("error" in session) {
-    return NextResponse.json({ error: session.error }, { status: session.status })
+  if (!session.canSaveBuilds) {
+    return NextResponse.json(
+      { error: "Saving builds requires LoveUI Pro." },
+      { status: 403 }
+    )
   }
 
   let body: unknown = {}
@@ -79,8 +85,11 @@ export async function PATCH(request: Request, context: RouteContext) {
 export async function DELETE(_request: Request, context: RouteContext) {
   const session = await getBuilderSession()
 
-  if ("error" in session) {
-    return NextResponse.json({ error: session.error }, { status: session.status })
+  if (!session.canSaveBuilds) {
+    return NextResponse.json(
+      { error: "Saving builds requires LoveUI Pro." },
+      { status: 403 }
+    )
   }
 
   const { id } = await context.params

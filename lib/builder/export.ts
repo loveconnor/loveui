@@ -8,6 +8,7 @@ import {
 import type {
   BuilderDocument,
   BuilderDocumentItem,
+  BuilderDocumentPage,
   BuilderFramework,
 } from "@/lib/builder/types"
 
@@ -212,29 +213,46 @@ function createEntryFile({
     return `import { ${item.importName} as ${item.componentName} } from "${item.importPath}"`
   })
   const importByKey = new Map(imports.map((item) => [item.key, item]))
-  const page = document.pages[0] ?? {
-    id: "page-home",
-    name: "Home",
-    x: 0,
-    y: 0,
-    w: 1200,
-    h: 900,
+  const pages =
+    document.pages.length > 0
+      ? document.pages
+      : [{ id: "page-home", name: "Home", x: 0, y: 0, w: 1280, h: 800 }]
+  const sortedItems = [...document.items].sort((a, b) => a.zIndex - b.zIndex)
+  const itemsByPage = new Map<string, BuilderDocumentItem[]>()
+
+  for (const item of sortedItems) {
+    const page = findContainingPage(item, pages) ?? pages[0]
+    const bucket = itemsByPage.get(page.id)
+
+    if (bucket) {
+      bucket.push(item)
+    } else {
+      itemsByPage.set(page.id, [item])
+    }
   }
-  const itemMarkup = [...document.items]
-    .sort((a, b) => a.zIndex - b.zIndex)
-    .map((item) => renderDocumentItem(item, importByKey.get(item.id)))
+
+  const frameMarkup = pages
+    .map((page) => {
+      const itemMarkup = (itemsByPage.get(page.id) ?? [])
+        .map((item) => renderDocumentItem(item, importByKey.get(item.id), page))
+        .join("\n")
+
+      return `      {/* ${escapeComment(page.name)} */}
+      <section
+        aria-label="${escapeAttribute(page.name)}"
+        className="relative mx-auto overflow-hidden rounded-lg border bg-background"
+        style={{ width: ${Math.round(page.w)}, minHeight: ${Math.round(page.h)} }}
+      >
+${itemMarkup || "        <div className=\"p-8 text-sm text-muted-foreground\">Add LoveUI items in Builder, then export again.</div>"}
+      </section>`
+    })
     .join("\n")
   const content = `${importLines.join("\n")}
 
 export default function ${framework === "next" ? "Page" : "App"}() {
   return (
-    <main className="min-h-screen bg-background p-6 text-foreground">
-      <div
-        className="relative mx-auto overflow-hidden rounded-lg border bg-background"
-        style={{ width: ${page.w}, minHeight: ${page.h} }}
-      >
-${itemMarkup || "        <div className=\"p-8 text-sm text-muted-foreground\">Add LoveUI items in Builder, then export again.</div>"}
-      </div>
+    <main className="min-h-screen space-y-10 bg-background p-6 text-foreground">
+${frameMarkup}
     </main>
   )
 }
@@ -246,11 +264,36 @@ ${itemMarkup || "        <div className=\"p-8 text-sm text-muted-foreground\">Ad
   }
 }
 
-function renderDocumentItem(item: BuilderDocumentItem, importInfo?: ComponentImport) {
+function findContainingPage(
+  item: BuilderDocumentItem,
+  pages: BuilderDocumentPage[]
+) {
+  const centerX = item.x + item.w / 2
+  const centerY = item.y + item.h / 2
+
+  return pages.find(
+    (page) =>
+      centerX >= page.x &&
+      centerX <= page.x + page.w &&
+      centerY >= page.y &&
+      centerY <= page.y + page.h
+  )
+}
+
+function renderDocumentItem(
+  item: BuilderDocumentItem,
+  importInfo: ComponentImport | undefined,
+  page: BuilderDocumentPage
+) {
   const className = item.overrides?.className?.trim()
   const label = item.overrides?.label?.trim()
   const notes = item.overrides?.notes?.trim()
-  const style = `left: ${item.x}px, top: ${item.y}px, width: ${item.w}px, minHeight: ${item.h}px, transform: "rotate(${item.rotation}rad)", zIndex: ${item.zIndex}`
+  const left = Math.round(item.x - page.x)
+  const top = Math.round(item.y - page.y)
+  const rotation = item.rotation
+    ? `, transform: "rotate(${item.rotation}rad)"`
+    : ""
+  const style = `left: ${left}, top: ${top}, width: ${Math.round(item.w)}, minHeight: ${Math.round(item.h)}${rotation}, zIndex: ${item.zIndex}`
   const wrapperClass = className
     ? `absolute ${escapeAttribute(className)}`
     : "absolute"

@@ -3,6 +3,7 @@ import { LogoMark } from '@/components/landing/logo-mark';
 import {
   appName,
   blocksRoute,
+  builderRoute,
   chartsRoute,
   componentsRoute,
   docsRoute,
@@ -16,6 +17,7 @@ const navLinks = [
   { href: blocksRoute, label: 'Blocks' },
   { href: chartsRoute, label: 'Charts' },
   { href: iconsRoute, label: 'Icons' },
+  { href: builderRoute, label: 'Builder' },
 ];
 
 export default function Layout({ children }: LayoutProps<'/'>) {

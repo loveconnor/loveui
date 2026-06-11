@@ -1,7 +1,6 @@
 import type { ComponentType } from "react"
 
 import { AppProviders } from "@/components/app-providers"
-import { getBuilderSession } from "@/lib/builder/auth"
 import { getComponentExampleNames } from "@/lib/component-examples"
 import { Index } from "@/registry/__index__"
 import { BuilderPreviewSurface } from "./builder-preview-surface"
@@ -10,7 +9,7 @@ export const dynamic = "force-dynamic"
 
 type PreviewPageProps = {
   params: Promise<{ name: string }>
-  searchParams: Promise<{ shapeId?: string }>
+  searchParams: Promise<{ shapeId?: string; theme?: string }>
 }
 
 type PreviewModule = {
@@ -133,15 +132,10 @@ export default async function BuilderPreviewPage({
   params,
   searchParams,
 }: PreviewPageProps) {
-  const session = await getBuilderSession()
-
-  if ("error" in session) {
-    return <PreviewMessage title="Preview unavailable" detail={session.error} />
-  }
-
   const { name } = await params
-  const { shapeId } = await searchParams
+  const { shapeId, theme } = await searchParams
   const Component = await resolvePreviewComponent(name)
+  const previewTheme = theme === "dark" ? "dark" : "light"
 
   if (!Component) {
     return (
@@ -154,8 +148,13 @@ export default async function BuilderPreviewPage({
 
   return (
     <AppProviders>
-      <main className="min-h-screen overflow-auto bg-background text-foreground">
-        <BuilderPreviewSurface shapeId={shapeId || name}>
+      <main
+        className={`min-h-screen overflow-auto bg-background text-foreground ${previewTheme === "dark" ? "dark" : ""}`}
+      >
+        <BuilderPreviewSurface
+          shapeId={shapeId || name}
+          previewTheme={previewTheme}
+        >
           <Component />
         </BuilderPreviewSurface>
       </main>

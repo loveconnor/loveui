@@ -7,6 +7,23 @@ export type BuilderRegistryType =
   | "registry:ui"
   | "registry:example"
   | "asset:icon"
+  | "primitive:text"
+  | "primitive:box"
+
+/**
+ * Per-element overrides applied inside a rendered block/component preview.
+ * Keyed by the element's stable `data-builder-el` id.
+ */
+export type BuilderElementOverride = {
+  /** Translation offset in px relative to the element's natural position. */
+  dx?: number
+  dy?: number
+  /** Explicit size in px. */
+  w?: number
+  h?: number
+  /** Inline CSS declarations, camelCase keys (e.g. backgroundColor). */
+  styles?: Record<string, string>
+}
 
 export type BuilderCatalogItem = {
   name: string
@@ -36,8 +53,14 @@ export type BuilderDocumentItem = {
     label?: string
     className?: string
     notes?: string
+    /** Text content for primitive:text layers. */
+    content?: string
+    /** Item-level inline styles, camelCase keys (fill, radius, opacity…). */
+    styles?: Record<string, string>
     text?: Record<string, string>
     textStyles?: Record<string, { fontSize?: number }>
+    /** Overrides for elements inside the rendered preview. */
+    elements?: Record<string, BuilderElementOverride>
   }
 }
 
@@ -152,8 +175,14 @@ export function normalizeBuilderDocument(
                   notes: item.overrides.notes
                     ? String(item.overrides.notes)
                     : undefined,
+                  content:
+                    item.overrides.content !== undefined
+                      ? String(item.overrides.content)
+                      : undefined,
+                  styles: normalizeStyleMap(item.overrides.styles),
                   text: normalizeTextOverrides(item.overrides.text),
                   textStyles: normalizeTextStyleOverrides(item.overrides.textStyles),
+                  elements: normalizeElementOverrides(item.overrides.elements),
                 }
               : undefined,
         }))
@@ -166,7 +195,9 @@ function normalizeRegistryType(value: unknown): BuilderRegistryType {
     value === "registry:block" ||
     value === "registry:ui" ||
     value === "registry:example" ||
-    value === "asset:icon"
+    value === "asset:icon" ||
+    value === "primitive:text" ||
+    value === "primitive:box"
   ) {
     return value
   }
@@ -188,6 +219,44 @@ function normalizeTextOverrides(value: unknown) {
     .filter(([key]) => key)
 
   return entries.length ? Object.fromEntries(entries) : undefined
+}
+
+function normalizeStyleMap(value: unknown) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return undefined
+
+  const entries = Object.entries(value)
+    .map(([key, entry]) => [String(key), String(entry)] as const)
+    .filter(([key, entry]) => key && entry)
+
+  return entries.length ? Object.fromEntries(entries) : undefined
+}
+
+function normalizeElementOverrides(value: unknown) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return undefined
+
+  const result: Record<string, BuilderElementOverride> = {}
+
+  for (const [key, raw] of Object.entries(value)) {
+    if (!key || !raw || typeof raw !== "object") continue
+
+    const input = raw as BuilderElementOverride
+    const entry: BuilderElementOverride = {}
+    const dx = toFiniteNumber(input.dx, 0)
+    const dy = toFiniteNumber(input.dy, 0)
+    const w = toFiniteNumber(input.w, NaN)
+    const h = toFiniteNumber(input.h, NaN)
+    const styles = normalizeStyleMap(input.styles)
+
+    if (dx) entry.dx = dx
+    if (dy) entry.dy = dy
+    if (Number.isFinite(w) && w > 0) entry.w = w
+    if (Number.isFinite(h) && h > 0) entry.h = h
+    if (styles) entry.styles = styles
+
+    if (Object.keys(entry).length > 0) result[key] = entry
+  }
+
+  return Object.keys(result).length > 0 ? result : undefined
 }
 
 function normalizeTextStyleOverrides(value: unknown) {
