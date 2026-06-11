@@ -17,6 +17,18 @@ type SnapGuides = {
   horizontal: number[]
 }
 
+type HorizontalResizeSnap = {
+  score: number
+  dw: number
+  guides: number[]
+}
+
+type VerticalResizeSnap = {
+  score: number
+  dh: number
+  guides: number[]
+}
+
 type HandleId = "nw" | "n" | "ne" | "e" | "se" | "s" | "sw" | "w"
 
 const HANDLES: { id: HandleId; cursor: string }[] = [
@@ -937,8 +949,8 @@ function findHorizontalResizeSnap(
   targets: Rect[],
   threshold: number,
   dirX: -1 | 1
-) {
-  let best: { score: number; dw: number; guides: number[] } | null = null
+): HorizontalResizeSnap | null {
+  let best: HorizontalResizeSnap | null = null
   const draggedEdge = dirX > 0 ? proposed.x + proposed.w : proposed.x
 
   function consider(score: number, dw: number, guides: number[]) {
@@ -971,8 +983,8 @@ function findVerticalResizeSnap(
   targets: Rect[],
   threshold: number,
   dirY: -1 | 1
-) {
-  let best: { score: number; dh: number; guides: number[] } | null = null
+): VerticalResizeSnap | null {
+  let best: VerticalResizeSnap | null = null
   const draggedEdge = dirY > 0 ? proposed.y + proposed.h : proposed.y
 
   function consider(score: number, dh: number, guides: number[]) {
