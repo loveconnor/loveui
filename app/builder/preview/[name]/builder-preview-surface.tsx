@@ -229,7 +229,10 @@ export function BuilderPreviewSurface({
         `[data-builder-el="${CSS.escape(id)}"]`
       )
 
-      if (element) restoreOriginalStyle(element)
+      if (element) {
+        restoreOriginalStyle(element)
+        delete element.dataset.builderLinkPageId
+      }
 
       touchedElementsRef.current.delete(id)
     }
@@ -436,8 +439,45 @@ export function BuilderPreviewSurface({
   }, [applyElementOverrides, applyTextOverrides, post, selectElement, shapeId])
 
   // Escape steps out: text edit → element selection → studio exit.
+  const hideSelectedElement = React.useCallback(() => {
+    const id = selectedIdRef.current
+
+    if (!id) return
+
+    const next = {
+      ...(elementOverridesRef.current[id] ?? {}),
+      hidden: true,
+    }
+
+    elementOverridesRef.current = {
+      ...elementOverridesRef.current,
+      [id]: next,
+    }
+
+    const element = getSelectedElement()
+
+    if (element) {
+      restoreOriginalStyle(element)
+      applyOverrideToElement(element, next)
+      touchedElementsRef.current.add(id)
+    }
+
+    postElementOverrides()
+    selectElement(null)
+  }, [getSelectedElement, postElementOverrides, selectElement])
+
   React.useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
+      if (
+        (event.key === "Delete" || event.key === "Backspace") &&
+        selectedIdRef.current &&
+        !textEditingId
+      ) {
+        event.preventDefault()
+        hideSelectedElement()
+        return
+      }
+
       if (event.key !== "Escape") return
 
       if (textEditingId) {
@@ -459,7 +499,7 @@ export function BuilderPreviewSurface({
     window.addEventListener("keydown", handleKeyDown)
 
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [post, selectElement, shapeId, textEditingId])
+  }, [hideSelectedElement, post, selectElement, shapeId, textEditingId])
 
   // Keep the overlay glued to the element on scroll/resize.
   React.useEffect(() => {
@@ -1101,12 +1141,24 @@ function applyOverrideToElement(
 ) {
   const style = element.style
 
+  if (override.hidden) {
+    style.display = "none"
+    delete element.dataset.builderLinkPageId
+    return
+  }
+
   if (override.dx || override.dy) {
     style.transform = `translate(${override.dx ?? 0}px, ${override.dy ?? 0}px)`
   }
 
   if (override.w !== undefined) style.width = `${override.w}px`
   if (override.h !== undefined) style.height = `${override.h}px`
+
+  if (override.link?.kind === "frame") {
+    element.dataset.builderLinkPageId = override.link.pageId
+  } else {
+    delete element.dataset.builderLinkPageId
+  }
 
   for (const [key, value] of Object.entries(override.styles ?? {})) {
     // Keys are camelCase CSS properties.

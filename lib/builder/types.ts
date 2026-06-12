@@ -23,6 +23,15 @@ export type BuilderElementOverride = {
   h?: number
   /** Inline CSS declarations, camelCase keys (e.g. backgroundColor). */
   styles?: Record<string, string>
+  /** Hide this element from the rendered block/export without deleting source. */
+  hidden?: boolean
+  /** Prototype/export link target for interactive elements inside a preview. */
+  link?: BuilderElementLink
+}
+
+export type BuilderElementLink = {
+  kind: "frame"
+  pageId: string
 }
 
 export type BuilderCatalogItem = {
@@ -252,11 +261,29 @@ function normalizeElementOverrides(value: unknown) {
     if (Number.isFinite(w) && w > 0) entry.w = w
     if (Number.isFinite(h) && h > 0) entry.h = h
     if (styles) entry.styles = styles
+    if (input.hidden) entry.hidden = true
+    const link = normalizeElementLink(input.link)
+
+    if (link) entry.link = link
 
     if (Object.keys(entry).length > 0) result[key] = entry
   }
 
   return Object.keys(result).length > 0 ? result : undefined
+}
+
+function normalizeElementLink(value: unknown): BuilderElementLink | undefined {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return undefined
+  }
+
+  const input = value as Partial<BuilderElementLink>
+
+  if (input.kind === "frame" && input.pageId) {
+    return { kind: "frame", pageId: String(input.pageId) }
+  }
+
+  return undefined
 }
 
 function normalizeTextStyleOverrides(value: unknown) {

@@ -12,6 +12,7 @@ import {
   Check,
   ChevronDown,
   FileCode,
+  Link,
   Lock,
   LockOpen,
   RotateCw,
@@ -122,6 +123,7 @@ export function BuilderInspectorPanel({
             dispatch={dispatch}
             element={activeElement}
             item={editingItem}
+            pages={state.pages}
           />
         ) : total === 0 ? (
           <EmptyInspector itemCount={state.items.length} />
@@ -311,10 +313,12 @@ export function BuilderInspectorPanel({
 function ElementInspector({
   item,
   element,
+  pages,
   dispatch,
 }: {
   item: BuilderDocumentItem
   element: BuilderElementSelection
+  pages: BuilderDocumentPage[]
   dispatch: React.Dispatch<StudioAction>
 }) {
   const mark = useGestureHistory(dispatch)
@@ -336,6 +340,21 @@ function ElementInspector({
   const patchOverride = (partial: Partial<BuilderElementOverride>) => {
     mark()
     commitOverride({ ...override, ...partial })
+  }
+
+  const setFrameLink = (pageId: string) => {
+    mark()
+
+    commitOverride({
+      ...override,
+      link: pageId ? { kind: "frame", pageId } : undefined,
+    })
+  }
+
+  const setHidden = (hidden: boolean) => {
+    mark()
+
+    commitOverride({ ...override, hidden: hidden ? true : undefined })
   }
 
   const patchStyles = (partial: Record<string, string | undefined>) => {
@@ -419,6 +438,29 @@ function ElementInspector({
         </p>
       </Section>
 
+      <Section title="Link">
+        <div className="grid gap-2">
+          <SelectField
+            label="Destination frame"
+            options={[
+              { value: "", label: "None" },
+              ...pages.map((page) => ({
+                value: page.id,
+                label: page.name,
+              })),
+            ]}
+            value={override.link?.kind === "frame" ? override.link.pageId : ""}
+            onChange={setFrameLink}
+          />
+          {override.link?.kind === "frame" ? (
+            <div className="flex items-center gap-1.5 rounded-md border bg-muted/40 px-2 py-1.5 text-[10px] text-muted-foreground">
+              <Link className="size-3 shrink-0" />
+              Exported as a page link.
+            </div>
+          ) : null}
+        </div>
+      </Section>
+
       <Section title="Fill">
         <ColorField
           label="Background"
@@ -483,6 +525,24 @@ function ElementInspector({
 
       <Section title="">
         <div className="grid gap-1.5">
+          {override.hidden ? (
+            <button
+              type="button"
+              className="flex h-8 items-center justify-center gap-2 rounded-md border text-xs font-medium transition-colors hover:bg-muted"
+              onClick={() => setHidden(false)}
+            >
+              Restore section
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="flex h-8 items-center justify-center gap-2 rounded-md border border-destructive/30 text-xs font-medium text-destructive transition-colors hover:bg-destructive/10"
+              onClick={() => setHidden(true)}
+            >
+              <Trash2 className="size-3.5" />
+              Delete selected section
+            </button>
+          )}
           {hasOverride ? (
             <button
               type="button"

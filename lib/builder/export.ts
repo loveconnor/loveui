@@ -9,6 +9,7 @@ import type {
   BuilderDocument,
   BuilderDocumentItem,
   BuilderDocumentPage,
+  BuilderElementOverride,
   BuilderFramework,
 } from "@/lib/builder/types"
 
@@ -23,6 +24,13 @@ type ComponentImport = {
   importName: string
   importPath: string
   isDefault: boolean
+}
+
+type PageRoute = {
+  page: BuilderDocumentPage
+  path: string
+  componentName: string
+  routeSegment: string | null
 }
 
 const baseDependencies = {
@@ -112,7 +120,8 @@ export async function createProjectFiles({
       content,
     })),
     createUtilsFile(framework),
-    createEntryFile({ document, framework, imports }),
+    createRuntimeOverridesFile(framework),
+    ...createEntryFiles({ document, framework, imports }),
   ]
 
   return files.sort((a, b) => a.path.localeCompare(b.path))
@@ -216,7 +225,7 @@ function createComponentImports({
   return imports
 }
 
-function createEntryFile({
+function createEntryFiles({
   document,
   framework,
   imports,
@@ -224,7 +233,7 @@ function createEntryFile({
   document: BuilderDocument
   framework: BuilderFramework
   imports: ComponentImport[]
-}) {
+}): ExportFile[] {
   const importLines = imports.map((item) => {
     if (item.isDefault) {
       return `import ${item.componentName} from "${item.importPath}"`
@@ -237,6 +246,10 @@ function createEntryFile({
     document.pages.length > 0
       ? document.pages
       : [{ id: "page-home", name: "Home", x: 0, y: 0, w: 1280, h: 800 }]
+  const pageRoutes = createPageRoutes(pages)
+  const routeByPageId = new Map(
+    pageRoutes.map((route) => [route.page.id, route.path])
+  )
   const sortedItems = [...document.items].sort((a, b) => a.zIndex - b.zIndex)
   const itemsByPage = new Map<string, BuilderDocumentItem[]>()
 
@@ -251,37 +264,98 @@ function createEntryFile({
     }
   }
 
-  const frameMarkup = pages
-    .map((page) => {
-      const itemMarkup = (itemsByPage.get(page.id) ?? [])
-        .map((item) => renderDocumentItem(item, importByKey.get(item.id), page))
+  const pageComponentImports = `${importLines.join("\n")}
+import { BuilderElementOverrides } from "@/components/loveui-builder-overrides"`
+  const pageComponents = pageRoutes
+    .map((route) => {
+      const itemMarkup = (itemsByPage.get(route.page.id) ?? [])
+        .map((item) =>
+          renderDocumentItem(
+            item,
+            importByKey.get(item.id),
+            route.page,
+            routeByPageId
+          )
+        )
         .join("\n")
 
-      return `      {/* ${escapeComment(page.name)} */}
+      return `export function ${route.componentName}() {
+  return (
+    <main className="min-h-screen bg-background p-6 text-foreground">
+      {/* ${escapeComment(route.page.name)} */}
       <section
-        aria-label="${escapeAttribute(page.name)}"
+        aria-label="${escapeAttribute(route.page.name)}"
         className="relative mx-auto overflow-hidden rounded-lg border bg-background"
-        style={{ width: ${Math.round(page.w)}, minHeight: ${Math.round(page.h)} }}
+        style={{ width: ${Math.round(route.page.w)}, minHeight: ${Math.round(route.page.h)} }}
       >
 ${itemMarkup || "        <div className=\"p-8 text-sm text-muted-foreground\">Add LoveUI items in Builder, then export again.</div>"}
-      </section>`
-    })
-    .join("\n")
-  const content = `${importLines.join("\n")}
-
-export default function ${framework === "next" ? "Page" : "App"}() {
-  return (
-    <main className="min-h-screen space-y-10 bg-background p-6 text-foreground">
-${frameMarkup}
+      </section>
     </main>
   )
-}
-`
+}`
+    })
+    .join("\n\n")
+  const generatedPagesPath =
+    framework === "next"
+      ? "components/builder-generated-pages.tsx"
+      : "src/components/builder-generated-pages.tsx"
+  const files: ExportFile[] = [
+    {
+      path: generatedPagesPath,
+      content: `${pageComponentImports}
 
-  return {
-    path: framework === "next" ? "app/page.tsx" : "src/App.tsx",
-    content,
+${pageComponents}
+`,
+    },
+  ]
+
+  if (framework === "next") {
+    for (const route of pageRoutes) {
+      files.push({
+        path: route.routeSegment
+          ? `app/${route.routeSegment}/page.tsx`
+          : "app/page.tsx",
+        content: `import { ${route.componentName} } from "@/components/builder-generated-pages"
+
+export default function Page() {
+  return <${route.componentName} />
+}
+`,
+      })
+    }
+
+    return files
   }
+
+  const routeEntries = pageRoutes
+    .map(
+      (route) =>
+        `  { path: "${route.path}", Component: ${route.componentName} },`
+    )
+    .join("\n")
+
+  files.push({
+    path: "src/App.tsx",
+    content: `import { ${pageRoutes.map((route) => route.componentName).join(", ")} } from "@/components/builder-generated-pages"
+
+const routes = [
+${routeEntries}
+]
+
+export default function App() {
+  const pathname =
+    typeof window === "undefined"
+      ? "/"
+      : window.location.pathname.replace(/\\/$/, "") || "/"
+  const route = routes.find((entry) => entry.path === pathname) ?? routes[0]
+  const Component = route.Component
+
+  return <Component />
+}
+`,
+  })
+
+  return files
 }
 
 function findContainingPage(
@@ -303,7 +377,8 @@ function findContainingPage(
 function renderDocumentItem(
   item: BuilderDocumentItem,
   importInfo: ComponentImport | undefined,
-  page: BuilderDocumentPage
+  page: BuilderDocumentPage,
+  routeByPageId: Map<string, string>
 ) {
   const className = item.overrides?.className?.trim()
   const label = item.overrides?.label?.trim()
@@ -334,8 +409,308 @@ function renderDocumentItem(
 
   return `        <section className="${wrapperClass}" style={{ ${style} }}>
           ${notes ? `{/* ${escapeComment(notes)} */}` : ""}
-          <${importInfo.componentName} />
+          ${renderWithRuntimeOverrides(
+            `<${importInfo.componentName} />`,
+            item,
+            routeByPageId
+          )}
         </section>`
+}
+
+function createPageRoutes(pages: BuilderDocumentPage[]): PageRoute[] {
+  const usedSegments = new Set<string>()
+  const usedComponents = new Set<string>()
+
+  return pages.map((page, index) => {
+    const baseSegment = slugify(page.name) || `page-${index + 1}`
+    let routeSegment = index === 0 ? null : baseSegment
+    let suffix = 2
+
+    while (routeSegment && usedSegments.has(routeSegment)) {
+      routeSegment = `${baseSegment}-${suffix}`
+      suffix += 1
+    }
+
+    if (routeSegment) usedSegments.add(routeSegment)
+
+    return {
+      page,
+      path: routeSegment ? `/${routeSegment}` : "/",
+      componentName: uniqueIdentifier(`${page.name} page`, usedComponents),
+      routeSegment,
+    }
+  })
+}
+
+function renderWithRuntimeOverrides(
+  componentMarkup: string,
+  item: BuilderDocumentItem,
+  routeByPageId: Map<string, string>
+) {
+  const textOverrides = item.overrides?.text
+  const textStyles = item.overrides?.textStyles
+  const elementOverrides = createRuntimeElementOverrides(item, routeByPageId)
+  const props: string[] = []
+
+  if (textOverrides && Object.keys(textOverrides).length > 0) {
+    props.push(`textOverrides={${JSON.stringify(textOverrides)}}`)
+  }
+
+  if (textStyles && Object.keys(textStyles).length > 0) {
+    props.push(`textStyles={${JSON.stringify(textStyles)}}`)
+  }
+
+  if (elementOverrides && Object.keys(elementOverrides).length > 0) {
+    props.push(`elementOverrides={${JSON.stringify(elementOverrides)}}`)
+  }
+
+  if (props.length === 0) return componentMarkup
+
+  return `<BuilderElementOverrides ${props.join(" ")}>
+            ${componentMarkup}
+          </BuilderElementOverrides>`
+}
+
+function createRuntimeElementOverrides(
+  item: BuilderDocumentItem,
+  routeByPageId: Map<string, string>
+) {
+  const elements = item.overrides?.elements
+
+  if (!elements) return undefined
+
+  const result: Record<
+    string,
+    BuilderElementOverride & { linkHref?: string }
+  > = {}
+
+  for (const [id, override] of Object.entries(elements)) {
+    const linkHref =
+      override.link?.kind === "frame"
+        ? routeByPageId.get(override.link.pageId)
+        : undefined
+    const next = { ...override, linkHref }
+
+    delete next.link
+
+    if (
+      next.dx ||
+      next.dy ||
+      next.w !== undefined ||
+      next.h !== undefined ||
+      next.styles ||
+      next.hidden ||
+      next.linkHref
+    ) {
+      result[id] = next
+    }
+  }
+
+  return Object.keys(result).length > 0 ? result : undefined
+}
+
+function createRuntimeOverridesFile(framework: BuilderFramework): ExportFile {
+  return {
+    path:
+      framework === "next"
+        ? "components/loveui-builder-overrides.tsx"
+        : "src/components/loveui-builder-overrides.tsx",
+    content: `"use client"
+
+import * as React from "react"
+
+type BuilderRuntimeElementOverride = {
+  dx?: number
+  dy?: number
+  w?: number
+  h?: number
+  styles?: Record<string, string>
+  hidden?: boolean
+  linkHref?: string
+}
+
+export function BuilderElementOverrides({
+  children,
+  textOverrides = {},
+  textStyles = {},
+  elementOverrides = {},
+}: {
+  children: React.ReactNode
+  textOverrides?: Record<string, string>
+  textStyles?: Record<string, { fontSize?: number }>
+  elementOverrides?: Record<string, BuilderRuntimeElementOverride>
+}) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const root = rootRef.current
+
+    if (!root) return
+
+    prepareEditableText(root)
+    prepareElements(root)
+    applyTextOverrides(root, textOverrides, textStyles)
+    applyElementOverrides(root, elementOverrides)
+  }, [textOverrides, textStyles, elementOverrides])
+
+  React.useEffect(() => {
+    const root = rootRef.current
+
+    if (!root) return
+
+    function activate(target: EventTarget | null) {
+      if (!(target instanceof HTMLElement)) return false
+
+      const linked = target.closest<HTMLElement>("[data-builder-link-href]")
+
+      if (!linked || !root.contains(linked)) return false
+
+      const href = linked.dataset.builderLinkHref
+
+      if (!href) return false
+
+      window.location.href = href
+
+      return true
+    }
+
+    function handleClick(event: MouseEvent) {
+      if (activate(event.target)) event.preventDefault()
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Enter" && event.key !== " ") return
+      if (activate(event.target)) event.preventDefault()
+    }
+
+    root.addEventListener("click", handleClick)
+    root.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      root.removeEventListener("click", handleClick)
+      root.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
+
+  return <div ref={rootRef}>{children}</div>
+}
+
+function applyElementOverrides(
+  root: HTMLElement,
+  overrides: Record<string, BuilderRuntimeElementOverride>
+) {
+  for (const [id, override] of Object.entries(overrides)) {
+    const element = root.querySelector<HTMLElement>(
+      \`[data-builder-el="\${CSS.escape(id)}"]\`
+    )
+
+    if (!element) continue
+
+    if (override.hidden) {
+      element.style.display = "none"
+      element.removeAttribute("data-builder-link-href")
+      continue
+    }
+
+    if (override.dx || override.dy) {
+      element.style.transform = \`translate(\${override.dx ?? 0}px, \${override.dy ?? 0}px)\`
+    }
+
+    if (override.w !== undefined) element.style.width = \`\${override.w}px\`
+    if (override.h !== undefined) element.style.height = \`\${override.h}px\`
+
+    for (const [key, value] of Object.entries(override.styles ?? {})) {
+      ;(element.style as unknown as Record<string, string>)[key] = value
+    }
+
+    if (override.linkHref) {
+      if (element instanceof HTMLAnchorElement) {
+        element.href = override.linkHref
+      } else {
+        element.dataset.builderLinkHref = override.linkHref
+        element.setAttribute("role", "link")
+        element.tabIndex = element.tabIndex >= 0 ? element.tabIndex : 0
+        if (!element.style.cursor) element.style.cursor = "pointer"
+      }
+    }
+  }
+}
+
+function prepareElements(root: HTMLElement) {
+  if (root.dataset.builderElPrepared === "true") return
+
+  root.dataset.builderElPrepared = "true"
+
+  let index = 0
+
+  root.querySelectorAll<HTMLElement>("*").forEach((element) => {
+    if (element.closest("svg") && element.tagName.toLowerCase() !== "svg") return
+
+    element.dataset.builderEl = String(index++)
+  })
+}
+
+function prepareEditableText(root: HTMLElement) {
+  if (root.dataset.builderTextPrepared === "true") return
+
+  root.dataset.builderTextPrepared = "true"
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const text = node.textContent
+      const parent = node.parentElement
+
+      if (!text?.trim() || !parent) return NodeFilter.FILTER_REJECT
+      if (parent.closest("[data-builder-text-id]")) return NodeFilter.FILTER_REJECT
+      if (parent.closest("script, style, svg, textarea, input, select")) {
+        return NodeFilter.FILTER_REJECT
+      }
+
+      return NodeFilter.FILTER_ACCEPT
+    },
+  })
+
+  const textNodes: Text[] = []
+  let current = walker.nextNode()
+
+  while (current) {
+    textNodes.push(current as Text)
+    current = walker.nextNode()
+  }
+
+  textNodes.forEach((node, index) => {
+    const span = document.createElement("span")
+
+    span.dataset.builderTextId = String(index)
+    span.dataset.builderOriginalText = node.textContent ?? ""
+    span.textContent = node.textContent
+
+    node.replaceWith(span)
+  })
+}
+
+function applyTextOverrides(
+  root: HTMLElement,
+  textOverrides: Record<string, string>,
+  textStyles: Record<string, { fontSize?: number }>
+) {
+  root.querySelectorAll<HTMLElement>("[data-builder-text-id]").forEach((span) => {
+    const id = span.dataset.builderTextId
+    const original = span.dataset.builderOriginalText
+
+    if (!id || original === undefined) return
+
+    const nextText = textOverrides[id] ?? original
+
+    if (span.textContent !== nextText) span.textContent = nextText
+
+    const fontSize = textStyles[id]?.fontSize
+
+    span.style.fontSize = fontSize ? \`\${fontSize}px\` : ""
+  })
+}
+`,
+  }
 }
 
 function createTemplateFiles({
