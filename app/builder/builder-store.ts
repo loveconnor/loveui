@@ -70,6 +70,12 @@ export type StudioAction =
       patch: Partial<BuilderDocumentPage>
       history?: boolean
     }
+  | {
+      type: "resize-frame"
+      id: string
+      patch: Partial<Pick<BuilderDocumentPage, "x" | "y" | "w" | "h">>
+      history?: boolean
+    }
   | { type: "delete-ids"; ids: string[] }
   | { type: "duplicate-ids"; ids: string[] }
   | { type: "paste-items"; items: BuilderDocumentItem[] }
@@ -178,6 +184,21 @@ export function unionBounds(list: Bounds[]): Bounds | null {
 export function boundsIntersect(a: Bounds, b: Bounds) {
   return (
     a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y
+  )
+}
+
+function isItemInsideFrame(
+  item: Pick<BuilderDocumentItem, "x" | "y" | "w" | "h">,
+  frame: Pick<BuilderDocumentPage, "x" | "y" | "w" | "h">
+) {
+  const centerX = item.x + item.w / 2
+  const centerY = item.y + item.h / 2
+
+  return (
+    centerX >= frame.x &&
+    centerX <= frame.x + frame.w &&
+    centerY >= frame.y &&
+    centerY <= frame.y + frame.h
   )
 }
 
@@ -314,6 +335,51 @@ export function studioReducer(
       )
 
       return touched({ ...base, pages })
+    }
+
+    case "resize-frame": {
+      const frame = state.pages.find((page) => page.id === action.id)
+
+      if (!frame) return state
+
+      const base = action.history ? pushHistory(state) : state
+      const nextFrame = {
+        ...frame,
+        ...action.patch,
+        w:
+          action.patch.w === undefined
+            ? frame.w
+            : Math.max(action.patch.w, 320),
+        h:
+          action.patch.h === undefined
+            ? frame.h
+            : Math.max(action.patch.h, 320),
+      }
+      const scaleX = nextFrame.w / frame.w
+      const dx = nextFrame.x - frame.x
+      const dy = nextFrame.y - frame.y
+      const shouldScaleContents =
+        Number.isFinite(scaleX) &&
+        scaleX !== 1
+      const shouldMoveContents = dx !== 0 || dy !== 0
+
+      const items = shouldScaleContents || shouldMoveContents
+        ? base.items.map((item) =>
+            !item.locked && isItemInsideFrame(item, frame)
+              ? {
+                  ...item,
+                  x: nextFrame.x + (item.x - frame.x) * scaleX,
+                  y: item.y + dy,
+                  w: Math.max(item.w * scaleX, 16),
+                }
+              : item
+          )
+        : base.items
+      const pages = base.pages.map((page) =>
+        page.id === action.id ? nextFrame : page
+      )
+
+      return touched({ ...base, items, pages })
     }
 
     case "delete-ids": {

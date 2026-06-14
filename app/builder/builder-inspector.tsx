@@ -233,7 +233,7 @@ export function BuilderInspectorPanel({
                       className="h-7 rounded-md border text-[11px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                       onClick={() =>
                         dispatch({
-                          type: "update-frame",
+                          type: "resize-frame",
                           id: singleFrame.id,
                           patch: { w: preset.w, h: preset.h },
                           history: true,
@@ -252,7 +252,11 @@ export function BuilderInspectorPanel({
             ) : null}
 
             {single && single.registryType !== "asset:icon" ? (
-              <ItemAppearance dispatch={dispatch} item={single} />
+              <ItemAppearance
+                dispatch={dispatch}
+                item={single}
+                pages={state.pages}
+              />
             ) : null}
 
             {single ? (
@@ -660,7 +664,7 @@ function FrameGeometry({
   dispatch: React.Dispatch<StudioAction>
 }) {
   function update(patch: Partial<BuilderDocumentPage>) {
-    dispatch({ type: "update-frame", id: frame.id, patch, history: true })
+    dispatch({ type: "resize-frame", id: frame.id, patch, history: true })
   }
 
   return (
@@ -723,20 +727,46 @@ function useItemStyles(
 function ItemAppearance({
   item,
   dispatch,
+  pages,
 }: {
   item: BuilderDocumentItem
   dispatch: React.Dispatch<StudioAction>
+  pages: BuilderDocumentPage[]
 }) {
   const { styles, patchStyles } = useItemStyles(item, dispatch)
+  const mark = useGestureHistory(dispatch)
 
   const opacityRaw = styles.opacity ? Number(styles.opacity) : 1
   const opacity = Number.isFinite(opacityRaw) ? opacityRaw : 1
   const radius = parsePx(styles.borderRadius) ?? 0
   const shadow = styles.boxShadow ?? ""
+  const canStickHeader = isHeaderLayer(item) && isItemInsideAnyFrame(item, pages)
 
   return (
     <Section title="Appearance">
       <div className="grid gap-2">
+        {canStickHeader ? (
+          <label className="flex min-h-8 items-center justify-between gap-3 rounded-md border bg-background px-2 py-1.5">
+            <span className="text-xs font-medium">Sticky header</span>
+            <input
+              type="checkbox"
+              checked={Boolean(item.overrides?.stickyHeader)}
+              className="size-4 accent-foreground"
+              onChange={(event) => {
+                mark()
+                dispatch({
+                  type: "update-item",
+                  id: item.id,
+                  patch: {
+                    overrides: {
+                      stickyHeader: event.target.checked || undefined,
+                    },
+                  },
+                })
+              }}
+            />
+          </label>
+        ) : null}
         {item.registryType === "primitive:box" ? (
           <ColorField
             label="Fill"
@@ -781,6 +811,36 @@ function ItemAppearance({
         />
       </div>
     </Section>
+  )
+}
+
+function isHeaderLayer(item: BuilderDocumentItem) {
+  return (
+    item.registryType === "registry:block" &&
+    (item.registryName.startsWith("header-") ||
+      item.title.toLowerCase().includes("header"))
+  )
+}
+
+function isItemInsideAnyFrame(
+  item: Pick<BuilderDocumentItem, "x" | "y" | "w" | "h">,
+  pages: BuilderDocumentPage[]
+) {
+  return pages.some((page) => isItemInsideFrame(item, page))
+}
+
+function isItemInsideFrame(
+  item: Pick<BuilderDocumentItem, "x" | "y" | "w" | "h">,
+  frame: Pick<BuilderDocumentPage, "x" | "y" | "w" | "h">
+) {
+  const centerX = item.x + item.w / 2
+  const centerY = item.y + item.h / 2
+
+  return (
+    centerX >= frame.x &&
+    centerX <= frame.x + frame.w &&
+    centerY >= frame.y &&
+    centerY <= frame.y + frame.h
   )
 }
 

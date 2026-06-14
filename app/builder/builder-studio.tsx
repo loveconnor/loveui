@@ -6,6 +6,7 @@ import {
   ChevronDown,
   Copy,
   Download,
+  Eye,
   FileCode,
   Folder,
   LoaderCircle,
@@ -19,6 +20,7 @@ import { cn } from "@/lib/cn"
 import type { BuilderPreviewChildMessage } from "@/lib/builder/preview-protocol"
 import type {
   BuilderCatalogItem,
+  BuilderDocument,
   BuilderDocumentItem,
   BuilderFramework,
   BuilderProject,
@@ -92,6 +94,18 @@ export function BuilderStudio({
     () => buildDocument({ state, framework, theme: project.document.theme }),
     [state, framework, project.document.theme]
   )
+
+  React.useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      publishBuilderPreviewSnapshot({
+        projectId: project.id,
+        projectName: project.name,
+        document,
+      })
+    }, 80)
+
+    return () => window.clearTimeout(timeout)
+  }, [document, project.id, project.name])
 
   React.useEffect(() => {
     if (canSaveBuilds) return
@@ -334,6 +348,43 @@ export function BuilderStudio({
     }
   }
 
+  async function openFramePreview(frameId: string) {
+    const previewWindow = window.open("", "_blank")
+    const saved = await save()
+
+    if (!saved) {
+      previewWindow?.close()
+      return
+    }
+
+    const previewDocument = buildDocument({
+      state: stateRef.current,
+      framework: frameworkRef.current,
+      theme: projectRef.current.document.theme,
+    })
+    const snapshotKey = getBuilderPreviewSnapshotKey(projectRef.current.id)
+
+    publishBuilderPreviewSnapshot({
+      projectId: projectRef.current.id,
+      projectName: projectRef.current.name,
+      document: previewDocument,
+    })
+
+    const params = new URLSearchParams({
+      project: projectRef.current.id,
+      frame: frameId,
+      snapshot: snapshotKey,
+    })
+
+    const previewUrl = `/builder/preview?${params.toString()}`
+
+    if (previewWindow) {
+      previewWindow.location.href = previewUrl
+    } else {
+      window.open(previewUrl, "_blank")
+    }
+  }
+
   /* ----------------------------- Insertion ----------------------------- */
 
   const insertCatalogItem = React.useCallback(
@@ -345,6 +396,7 @@ export function BuilderStudio({
         registryType: catalogItem.type,
         title: catalogItem.title,
         previewUrl: catalogItem.previewUrl,
+        assetCollection: catalogItem.assetCollection,
         x: Math.round(point.x - size.w / 2),
         y: Math.round(point.y - size.h / 2),
         w: size.w,
@@ -365,7 +417,7 @@ export function BuilderStudio({
     try {
       if (item.registryType === "asset:icon") {
         await navigator.clipboard.writeText(
-          `import { ${toPascalCase(item.registryName)} } from "love-ui/icons"`
+          `import { ${toPascalCase(item.registryName)} } from "${getAssetImportPath(item)}"`
         )
         return
       }
@@ -651,6 +703,7 @@ export function BuilderStudio({
         canSaveBuilds={canSaveBuilds}
         canRedo={state.future.length > 0}
         canUndo={state.past.length > 0}
+        frames={state.pages}
         framework={framework}
         isExporting={isExporting}
         project={project}
@@ -662,6 +715,7 @@ export function BuilderStudio({
         onExportZip={() => void exportZip()}
         onFrameworkChange={setFramework}
         onOpenCode={() => setCodeOpen(true)}
+        onPreviewFrame={(frameId) => void openFramePreview(frameId)}
         onRedo={() => dispatch({ type: "redo" })}
         onRenameProject={(name) => {
           setProject((entry) => ({ ...entry, name }))
@@ -752,6 +806,7 @@ function StudioTopBar({
   project,
   projects,
   saveState,
+  frames,
   framework,
   canUndo,
   canRedo,
@@ -766,12 +821,14 @@ function StudioTopBar({
   onRedo,
   onSave,
   onOpenCode,
+  onPreviewFrame,
   onExportZip,
 }: {
   canSaveBuilds: boolean
   project: BuilderProject
   projects: BuilderProject[]
   saveState: SaveState
+  frames: BuilderProject["document"]["pages"]
   framework: BuilderFramework
   canUndo: boolean
   canRedo: boolean
@@ -786,9 +843,11 @@ function StudioTopBar({
   onRedo: () => void
   onSave: () => void
   onOpenCode: () => void
+  onPreviewFrame: (frameId: string) => void
   onExportZip: () => void
 }) {
   const [menuOpen, setMenuOpen] = React.useState(false)
+  const [previewMenuOpen, setPreviewMenuOpen] = React.useState(false)
 
   return (
     <header className="relative z-40 flex h-12 shrink-0 items-center gap-2 border-b bg-background px-3">
@@ -962,6 +1021,59 @@ function StudioTopBar({
         <option value="react">React</option>
       </select>
 
+      <div className="relative">
+        <button
+          type="button"
+          disabled={frames.length === 0}
+          className="flex h-8 items-center gap-2 rounded-md border px-3 text-xs font-medium transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-50"
+          onClick={() => {
+            if (frames.length === 1 && frames[0]) {
+              onPreviewFrame(frames[0].id)
+              return
+            }
+
+            setPreviewMenuOpen((open) => !open)
+          }}
+        >
+          <Eye className="size-3.5" />
+          Preview
+          {frames.length > 1 ? <ChevronDown className="size-3" /> : null}
+        </button>
+
+        {previewMenuOpen && frames.length > 1 ? (
+          <>
+            <div
+              className="fixed inset-0 z-40"
+              aria-hidden
+              onClick={() => setPreviewMenuOpen(false)}
+            />
+            <div className="absolute right-0 top-full z-50 mt-1.5 w-56 rounded-lg border bg-background p-1 shadow-xl">
+              <div className="px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                Preview frame
+              </div>
+              <div className="max-h-72 overflow-y-auto">
+                {frames.map((frame) => (
+                  <button
+                    key={frame.id}
+                    type="button"
+                    className="flex w-full min-w-0 items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs font-medium transition-colors hover:bg-muted"
+                    onClick={() => {
+                      onPreviewFrame(frame.id)
+                      setPreviewMenuOpen(false)
+                    }}
+                  >
+                    <span className="min-w-0 flex-1 truncate">{frame.name}</span>
+                    <span className="shrink-0 text-[10px] text-muted-foreground">
+                      {Math.round(frame.w)}x{Math.round(frame.h)}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : null}
+      </div>
+
       <button
         type="button"
         className="flex h-8 items-center gap-2 rounded-md border px-3 text-xs font-medium transition-colors hover:bg-muted"
@@ -1029,6 +1141,56 @@ function toPascalCase(value: string) {
     .split(/[-_]/)
     .map((part) => `${part[0]?.toUpperCase() ?? ""}${part.slice(1)}`)
     .join("")
+}
+
+function getAssetImportPath(item: BuilderDocumentItem) {
+  return `love-ui/${item.assetCollection ?? "icons"}`
+}
+
+function getBuilderPreviewSnapshotKey(projectId: string) {
+  return `loveui:builder:preview:${projectId}`
+}
+
+function getBuilderPreviewChannelName(projectId: string) {
+  return `loveui:builder:preview-channel:${projectId}`
+}
+
+function publishBuilderPreviewSnapshot({
+  projectId,
+  projectName,
+  document,
+}: {
+  projectId: string
+  projectName: string
+  document: BuilderDocument
+}) {
+  const snapshot = {
+    type: "builder-preview:snapshot",
+    projectId,
+    projectName,
+    document,
+    updatedAt: new Date().toISOString(),
+  }
+
+  try {
+    window.localStorage.setItem(
+      getBuilderPreviewSnapshotKey(projectId),
+      JSON.stringify(snapshot)
+    )
+  } catch {
+    // Preview sync is best-effort; keep Builder usable if storage is unavailable.
+  }
+
+  try {
+    if (!("BroadcastChannel" in window)) return
+
+    const channel = new BroadcastChannel(getBuilderPreviewChannelName(projectId))
+
+    channel.postMessage(snapshot)
+    channel.close()
+  } catch {
+    // Storage events still provide a fallback for browsers without channels.
+  }
 }
 
 function formatRelativeTime(iso: string) {

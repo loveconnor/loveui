@@ -70,6 +70,8 @@ type Interaction =
       ids: string[]
       startBounds: Map<string, Bounds>
       groupStart: Bounds
+      minScaleX: number
+      minScaleY: number
       began: boolean
     }
   | {
@@ -336,20 +338,16 @@ export const BuilderCanvas = React.forwardRef<BuilderCanvasHandle, BuilderCanvas
 
         if (!groupStart) return
 
-        const startBounds = new Map<string, Bounds>()
-
-        for (const id of current.selection) {
-          const bounds = getNodeBounds(current, id)
-
-          if (bounds) startBounds.set(id, bounds)
-        }
+        const resizeStart = getResizeStart(current, current.selection, groupStart)
 
         interactionRef.current = {
           kind: "resize",
           handle: handle.dataset.resizeHandle as HandleId,
-          ids: current.selection,
-          startBounds,
+          ids: [...resizeStart.bounds.keys()],
+          startBounds: resizeStart.bounds,
           groupStart,
+          minScaleX: resizeStart.minScaleX,
+          minScaleY: resizeStart.minScaleY,
           began: false,
         }
         return
@@ -589,8 +587,8 @@ export const BuilderCanvas = React.forwardRef<BuilderCanvasHandle, BuilderCanvas
         let scaleY =
           vertical === 0 ? 1 : ((world.y - anchor.y) * vertical) / group.h
 
-        scaleX = Math.max(scaleX, 16 / group.w)
-        scaleY = Math.max(scaleY, 16 / group.h)
+        scaleX = Math.max(scaleX, interaction.minScaleX)
+        scaleY = Math.max(scaleY, interaction.minScaleY)
 
         if (event.shiftKey && horizontal !== 0 && vertical !== 0) {
           const uniform = Math.max(scaleX, scaleY)
@@ -599,14 +597,76 @@ export const BuilderCanvas = React.forwardRef<BuilderCanvasHandle, BuilderCanvas
           scaleY = uniform
         }
 
+        let nextGuides: SnapGuides = { vertical: [], horizontal: [] }
+
+        if (!event.metaKey) {
+          const resizingIds = new Set(interaction.ids)
+          const staticBounds: Bounds[] = [
+            ...current.items
+              .filter((item) => !resizingIds.has(item.id))
+              .map((item) => ({ x: item.x, y: item.y, w: item.w, h: item.h })),
+            ...current.pages
+              .filter((page) => !resizingIds.has(page.id))
+              .map((page) => ({ x: page.x, y: page.y, w: page.w, h: page.h })),
+          ]
+          const snap = computeResizeSnap({
+            anchor,
+            group,
+            horizontal,
+            minScaleX: interaction.minScaleX,
+            minScaleY: interaction.minScaleY,
+            scaleX,
+            scaleY,
+            staticBounds,
+            threshold: 6 / cam.z,
+            vertical,
+          })
+
+          scaleX = snap.scaleX
+          scaleY = snap.scaleY
+          nextGuides = snap.guides
+        }
+
+        setGuides(nextGuides)
+
         const bounds: Record<string, Bounds> = {}
+        const selectedFrameIds = new Set(
+          current.selection.filter((id) => current.pages.some((page) => page.id === id))
+        )
+        const containingFrameByItemId = new Map<string, Bounds>()
+
+        for (const frameId of selectedFrameIds) {
+          const frameBounds = interaction.startBounds.get(frameId)
+
+          if (!frameBounds) continue
+
+          for (const [id, start] of interaction.startBounds) {
+            if (
+              id !== frameId &&
+              !selectedFrameIds.has(id) &&
+              isBoundsInsideFrame(start, frameBounds)
+            ) {
+              containingFrameByItemId.set(id, frameBounds)
+            }
+          }
+        }
 
         for (const [id, start] of interaction.startBounds) {
+          const containingFrame = containingFrameByItemId.get(id)
+          const scaledFrame = containingFrame
+            ? getScaledBounds(containingFrame, anchor, scaleX, scaleY)
+            : null
+          const frameDy = scaledFrame && containingFrame
+            ? scaledFrame.y - containingFrame.y
+            : 0
+
           bounds[id] = {
             x: anchor.x + (start.x - anchor.x) * scaleX,
-            y: anchor.y + (start.y - anchor.y) * scaleY,
+            y: containingFrame
+              ? start.y + frameDy
+              : anchor.y + (start.y - anchor.y) * scaleY,
             w: start.w * scaleX,
-            h: start.h * scaleY,
+            h: containingFrame ? start.h : start.h * scaleY,
           }
         }
 
@@ -953,8 +1013,14 @@ const CanvasItem = React.memo(function CanvasItem({
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 alt={item.title}
-                className="h-full w-full object-contain dark:invert"
+                className={cn(
+                  "h-full w-full object-contain",
+                  (!item.assetCollection || item.assetCollection === "icons") &&
+                    "dark:invert"
+                )}
                 draggable={false}
+                loading="lazy"
+                decoding="async"
                 src={item.previewUrl}
               />
             ) : (
@@ -1386,6 +1452,180 @@ function getResizeAnchor(bounds: Bounds, handle: HandleId) {
         ? bounds.y
         : bounds.y,
   }
+}
+
+function getResizeStart(
+  state: StudioState,
+  selection: string[],
+  groupStart: Bounds
+) {
+  const bounds = new Map<string, Bounds>()
+  const selectedFrameIds = new Set(
+    selection.filter((id) => state.pages.some((page) => page.id === id))
+  )
+
+  for (const id of selection) {
+    const nodeBounds = getNodeBounds(state, id)
+
+    if (nodeBounds) bounds.set(id, nodeBounds)
+  }
+
+  for (const page of state.pages) {
+    if (!selectedFrameIds.has(page.id)) continue
+
+    for (const item of state.items) {
+      if (item.locked || bounds.has(item.id)) continue
+
+      if (isItemInsideFrame(item, page)) {
+        bounds.set(item.id, { x: item.x, y: item.y, w: item.w, h: item.h })
+      }
+    }
+  }
+
+  let minScaleX = 16 / groupStart.w
+  let minScaleY = 16 / groupStart.h
+
+  for (const frameId of selectedFrameIds) {
+    const frameBounds = bounds.get(frameId)
+
+    if (!frameBounds) continue
+
+    minScaleX = Math.max(minScaleX, 320 / frameBounds.w)
+    minScaleY = Math.max(minScaleY, 320 / frameBounds.h)
+  }
+
+  return { bounds, minScaleX, minScaleY }
+}
+
+function computeResizeSnap({
+  anchor,
+  group,
+  horizontal,
+  minScaleX,
+  minScaleY,
+  scaleX,
+  scaleY,
+  staticBounds,
+  threshold,
+  vertical,
+}: {
+  anchor: { x: number; y: number }
+  group: Bounds
+  horizontal: -1 | 0 | 1
+  minScaleX: number
+  minScaleY: number
+  scaleX: number
+  scaleY: number
+  staticBounds: Bounds[]
+  threshold: number
+  vertical: -1 | 0 | 1
+}) {
+  let nextScaleX = scaleX
+  let nextScaleY = scaleY
+  const guides: SnapGuides = { vertical: [], horizontal: [] }
+  const targetXs = staticBounds.flatMap((bounds) => [
+    bounds.x,
+    bounds.x + bounds.w / 2,
+    bounds.x + bounds.w,
+  ])
+  const targetYs = staticBounds.flatMap((bounds) => [
+    bounds.y,
+    bounds.y + bounds.h / 2,
+    bounds.y + bounds.h,
+  ])
+
+  if (horizontal !== 0) {
+    const proposed = getScaledBounds(group, anchor, nextScaleX, nextScaleY)
+    const activeX = horizontal > 0 ? proposed.x + proposed.w : proposed.x
+    const snapX = getClosestSnap(activeX, targetXs, threshold)
+
+    if (snapX !== null) {
+      const nextWidth =
+        horizontal > 0 ? snapX - anchor.x : anchor.x - snapX
+      const snappedScaleX = nextWidth / group.w
+
+      if (snappedScaleX >= minScaleX) {
+        nextScaleX = snappedScaleX
+        guides.vertical = [snapX]
+      }
+    }
+  }
+
+  if (vertical !== 0) {
+    const proposed = getScaledBounds(group, anchor, nextScaleX, nextScaleY)
+    const activeY = vertical > 0 ? proposed.y + proposed.h : proposed.y
+    const snapY = getClosestSnap(activeY, targetYs, threshold)
+
+    if (snapY !== null) {
+      const nextHeight =
+        vertical > 0 ? snapY - anchor.y : anchor.y - snapY
+      const snappedScaleY = nextHeight / group.h
+
+      if (snappedScaleY >= minScaleY) {
+        nextScaleY = snappedScaleY
+        guides.horizontal = [snapY]
+      }
+    }
+  }
+
+  return { scaleX: nextScaleX, scaleY: nextScaleY, guides }
+}
+
+function getScaledBounds(
+  bounds: Bounds,
+  anchor: { x: number; y: number },
+  scaleX: number,
+  scaleY: number
+): Bounds {
+  return {
+    x: anchor.x + (bounds.x - anchor.x) * scaleX,
+    y: anchor.y + (bounds.y - anchor.y) * scaleY,
+    w: bounds.w * scaleX,
+    h: bounds.h * scaleY,
+  }
+}
+
+function getClosestSnap(source: number, targets: number[], threshold: number) {
+  let closest: number | null = null
+  let closestDelta = Number.POSITIVE_INFINITY
+
+  for (const target of targets) {
+    const delta = Math.abs(target - source)
+
+    if (delta <= threshold && delta < closestDelta) {
+      closest = target
+      closestDelta = delta
+    }
+  }
+
+  return closest
+}
+
+function isItemInsideFrame(
+  item: Pick<BuilderDocumentItem, "x" | "y" | "w" | "h">,
+  frame: Pick<BuilderDocumentPage, "x" | "y" | "w" | "h">
+) {
+  const centerX = item.x + item.w / 2
+  const centerY = item.y + item.h / 2
+
+  return (
+    centerX >= frame.x &&
+    centerX <= frame.x + frame.w &&
+    centerY >= frame.y &&
+    centerY <= frame.y + frame.h
+  )
+}
+
+function isBoundsInsideFrame(item: Bounds, frame: Bounds) {
+  const centerX = item.x + item.w / 2
+  const centerY = item.y + item.h / 2
+
+  return (
+    centerX >= frame.x &&
+    centerX <= frame.x + frame.w &&
+    centerY >= frame.y &&
+    centerY <= frame.y + frame.h
+  )
 }
 
 function getHandlePosition(

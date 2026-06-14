@@ -192,7 +192,7 @@ function createComponentImports({
         key: item.id,
         componentName,
         importName: toPascalCase(item.registryName),
-        importPath: "love-ui/icons",
+        importPath: getAssetImportPath(item),
         isDefault: false,
       })
       continue
@@ -268,7 +268,9 @@ function createEntryFiles({
 import { BuilderElementOverrides } from "@/components/loveui-builder-overrides"`
   const pageComponents = pageRoutes
     .map((route) => {
-      const itemMarkup = (itemsByPage.get(route.page.id) ?? [])
+      const pageItems = itemsByPage.get(route.page.id) ?? []
+      const hasStickyHeader = pageItems.some((item) => item.overrides?.stickyHeader)
+      const itemMarkup = pageItems
         .map((item) =>
           renderDocumentItem(
             item,
@@ -285,7 +287,7 @@ import { BuilderElementOverrides } from "@/components/loveui-builder-overrides"`
       {/* ${escapeComment(route.page.name)} */}
       <section
         aria-label="${escapeAttribute(route.page.name)}"
-        className="relative mx-auto overflow-hidden rounded-lg border bg-background"
+        className="relative mx-auto ${hasStickyHeader ? "overflow-visible" : "overflow-hidden"} rounded-lg border bg-background"
         style={{ width: ${Math.round(route.page.w)}, minHeight: ${Math.round(route.page.h)} }}
       >
 ${itemMarkup || "        <div className=\"p-8 text-sm text-muted-foreground\">Add LoveUI items in Builder, then export again.</div>"}
@@ -388,10 +390,13 @@ function renderDocumentItem(
   const rotation = item.rotation
     ? `, transform: "rotate(${item.rotation}rad)"`
     : ""
-  const style = `left: ${left}, top: ${top}, width: ${Math.round(item.w)}, minHeight: ${Math.round(item.h)}${rotation}, zIndex: ${item.zIndex}`
+  const stickyHeader = Boolean(item.overrides?.stickyHeader)
+  const style = stickyHeader
+    ? `top: 0, marginLeft: ${left}, marginTop: ${top}, width: ${Math.round(item.w)}, minHeight: ${Math.round(item.h)}${rotation}, zIndex: ${Math.max(item.zIndex, 1000)}`
+    : `left: ${left}, top: ${top}, width: ${Math.round(item.w)}, minHeight: ${Math.round(item.h)}${rotation}, zIndex: ${item.zIndex}`
   const wrapperClass = className
-    ? `absolute ${escapeAttribute(className)}`
-    : "absolute"
+    ? `${stickyHeader ? "sticky" : "absolute"} ${escapeAttribute(className)}`
+    : stickyHeader ? "sticky" : "absolute"
 
   if (!importInfo) {
     return `        <section className="${wrapperClass}" style={{ ${style} }}>
@@ -979,6 +984,10 @@ function toPascalCase(value: string) {
     .join("")
 
   return normalized.match(/^[0-9]/) ? `Item${normalized}` : normalized
+}
+
+function getAssetImportPath(item: BuilderDocumentItem) {
+  return `love-ui/${item.assetCollection ?? "icons"}`
 }
 
 function slugify(value: string) {

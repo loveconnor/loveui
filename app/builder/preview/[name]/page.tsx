@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic"
 
 type PreviewPageProps = {
   params: Promise<{ name: string }>
-  searchParams: Promise<{ shapeId?: string; theme?: string }>
+  searchParams: Promise<{ mode?: string; shapeId?: string; theme?: string }>
 }
 
 type PreviewModule = {
@@ -341,7 +341,7 @@ export default async function BuilderPreviewPage({
   searchParams,
 }: PreviewPageProps) {
   const { name } = await params
-  const { shapeId, theme } = await searchParams
+  const { mode, shapeId, theme } = await searchParams
   const includePro =
     name in proBlockPreviewLoaders || name in proChartPreviewLoaders
       ? (await getBuilderSession()).canSaveBuilds
@@ -366,6 +366,7 @@ export default async function BuilderPreviewPage({
         className={`min-h-screen overflow-auto bg-background text-foreground ${previewTheme === "dark" ? "dark" : ""}`}
       >
         <BuilderPreviewSurface
+          interactive={mode === "interactive"}
           shapeId={shapeId || name}
           previewTheme={previewTheme}
         >

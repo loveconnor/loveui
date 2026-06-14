@@ -30,6 +30,7 @@ export type BuilderCatalog = {
 }
 
 type CatalogTab = keyof BuilderCatalog
+const ASSET_BATCH_SIZE = 160
 
 export function BuilderLibraryPanel({
   catalog,
@@ -87,6 +88,8 @@ function InsertTab({
   const [tab, setTab] = React.useState<CatalogTab>("blocks")
   const [query, setQuery] = React.useState("")
   const [category, setCategory] = React.useState("all")
+  const [assetVisibleCount, setAssetVisibleCount] = React.useState(ASSET_BATCH_SIZE)
+  const deferredQuery = React.useDeferredValue(query)
 
   const items = catalog[tab]
   const categories = React.useMemo(
@@ -97,7 +100,7 @@ function InsertTab({
     [items]
   )
   const visible = React.useMemo(() => {
-    const normalized = query.trim().toLowerCase()
+    const normalized = deferredQuery.trim().toLowerCase()
 
     return items.filter((item) => {
       if (category !== "all" && item.category !== category) return false
@@ -107,7 +110,21 @@ function InsertTab({
         .toLowerCase()
         .includes(normalized)
     })
-  }, [items, query, category])
+  }, [items, deferredQuery, category])
+  const visibleAssets =
+    tab === "icons" ? visible.slice(0, assetVisibleCount) : visible
+
+  React.useEffect(() => {
+    setAssetVisibleCount(ASSET_BATCH_SIZE)
+  }, [tab, category, query])
+
+  const loadMoreAssets = React.useCallback(() => {
+    if (tab !== "icons") return
+
+    setAssetVisibleCount((count) =>
+      Math.min(count + ASSET_BATCH_SIZE, visible.length)
+    )
+  }, [tab, visible.length])
 
   return (
     <>
@@ -154,14 +171,25 @@ function InsertTab({
         ) : null}
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto p-2">
+      <div
+        className="min-h-0 flex-1 overflow-y-auto p-2"
+        onScroll={(event) => {
+          if (tab !== "icons" || assetVisibleCount >= visible.length) return
+
+          const element = event.currentTarget
+
+          if (element.scrollTop + element.clientHeight >= element.scrollHeight - 240) {
+            loadMoreAssets()
+          }
+        }}
+      >
         {visible.length === 0 ? (
           <p className="px-2 py-8 text-center text-xs text-muted-foreground">
             No results. Try a different search.
           </p>
         ) : tab === "icons" ? (
           <div className="grid grid-cols-4 gap-1">
-            {visible.map((item) => (
+            {visibleAssets.map((item) => (
               <button
                 key={`${item.type}:${item.name}`}
                 type="button"
@@ -175,8 +203,14 @@ function InsertTab({
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     alt={item.title}
-                    className="size-6 object-contain dark:invert"
+                    className={cn(
+                      "size-6 object-contain",
+                      (!item.assetCollection || item.assetCollection === "icons") &&
+                        "dark:invert"
+                    )}
                     draggable={false}
+                    loading="lazy"
+                    decoding="async"
                     src={item.previewUrl}
                   />
                 ) : (
@@ -399,6 +433,7 @@ function LayerRow({
 
 function formatLabel(value: string) {
   return value
+    .replace(/\//g, " / ")
     .replace(/[_-]+/g, " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase())
 }

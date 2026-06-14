@@ -1,6 +1,8 @@
 export const builderFrameworks = ["next", "vite", "react"] as const
+export const builderAssetCollections = ["icons", "logos", "vectors"] as const
 
 export type BuilderFramework = (typeof builderFrameworks)[number]
+export type BuilderAssetCollection = (typeof builderAssetCollections)[number]
 
 export type BuilderRegistryType =
   | "registry:block"
@@ -43,6 +45,7 @@ export type BuilderCatalogItem = {
   previewUrl?: string
   sourcePath?: string
   exportName?: string
+  assetCollection?: BuilderAssetCollection
 }
 
 export type BuilderDocumentItem = {
@@ -51,6 +54,7 @@ export type BuilderDocumentItem = {
   registryType: BuilderRegistryType
   title: string
   previewUrl?: string
+  assetCollection?: BuilderAssetCollection
   x: number
   y: number
   w: number
@@ -64,6 +68,8 @@ export type BuilderDocumentItem = {
     notes?: string
     /** Text content for primitive:text layers. */
     content?: string
+    /** Keeps header layers pinned to the top while preview/export scrolls. */
+    stickyHeader?: boolean
     /** Item-level inline styles, camelCase keys (fill, radius, opacity…). */
     styles?: Record<string, string>
     text?: Record<string, string>
@@ -165,6 +171,7 @@ export function normalizeBuilderDocument(
           registryType: normalizeRegistryType(item.registryType),
           title: String(item.title || item.registryName || "LoveUI item"),
           previewUrl: item.previewUrl ? String(item.previewUrl) : undefined,
+          assetCollection: normalizeAssetCollection(item.assetCollection),
           x: toFiniteNumber(item.x, 48 + index * 24),
           y: toFiniteNumber(item.y, 48 + index * 24),
           w: Math.max(toFiniteNumber(item.w, 360), 80),
@@ -188,6 +195,7 @@ export function normalizeBuilderDocument(
                     item.overrides.content !== undefined
                       ? String(item.overrides.content)
                       : undefined,
+                  stickyHeader: Boolean(item.overrides.stickyHeader) || undefined,
                   styles: normalizeStyleMap(item.overrides.styles),
                   text: normalizeTextOverrides(item.overrides.text),
                   textStyles: normalizeTextStyleOverrides(item.overrides.textStyles),
@@ -197,6 +205,12 @@ export function normalizeBuilderDocument(
         }))
       : [],
   }
+}
+
+function normalizeAssetCollection(value: unknown): BuilderAssetCollection | undefined {
+  return builderAssetCollections.includes(value as BuilderAssetCollection)
+    ? value as BuilderAssetCollection
+    : undefined
 }
 
 function normalizeRegistryType(value: unknown): BuilderRegistryType {

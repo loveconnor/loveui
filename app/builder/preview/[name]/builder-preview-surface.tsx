@@ -68,10 +68,12 @@ type DragState =
     }
 
 export function BuilderPreviewSurface({
+  interactive = false,
   shapeId,
   previewTheme,
   children,
 }: {
+  interactive?: boolean
   shapeId: string
   previewTheme: "light" | "dark"
   children: React.ReactNode
@@ -362,6 +364,8 @@ export function BuilderPreviewSurface({
   // Suppress the block's own interactivity (links navigating, demo buttons…)
   // and turn clicks into element selection instead.
   React.useEffect(() => {
+    if (interactive) return
+
     function handleClickCapture(event: MouseEvent) {
       const root = rootRef.current
       const overlay = overlayRef.current
@@ -407,7 +411,7 @@ export function BuilderPreviewSurface({
       document.removeEventListener("click", handleClickCapture, true)
       document.removeEventListener("dblclick", handleDoubleClickCapture, true)
     }
-  }, [selectElement, startTextEdit])
+  }, [interactive, selectElement, startTextEdit])
 
   // Messages from the studio.
   React.useEffect(() => {
@@ -467,6 +471,8 @@ export function BuilderPreviewSurface({
   }, [getSelectedElement, postElementOverrides, selectElement])
 
   React.useEffect(() => {
+    if (interactive) return
+
     function handleKeyDown(event: KeyboardEvent) {
       if (
         (event.key === "Delete" || event.key === "Backspace") &&
@@ -499,7 +505,7 @@ export function BuilderPreviewSurface({
     window.addEventListener("keydown", handleKeyDown)
 
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [hideSelectedElement, post, selectElement, shapeId, textEditingId])
+  }, [hideSelectedElement, interactive, post, selectElement, shapeId, textEditingId])
 
   // Keep the overlay glued to the element on scroll/resize.
   React.useEffect(() => {
@@ -737,7 +743,7 @@ export function BuilderPreviewSurface({
     <>
       <div ref={rootRef}>{children}</div>
 
-      {selectedRect && !textEditingId ? (
+      {selectedRect && !textEditingId && !interactive ? (
         <div
           ref={overlayRef}
           className="fixed inset-0 z-[2147483640]"
@@ -797,7 +803,7 @@ export function BuilderPreviewSurface({
         </div>
       ) : null}
 
-      {textEditingId ? (
+      {textEditingId && !interactive ? (
         <div className="fixed right-3 top-3 z-[2147483647] flex items-center gap-1 rounded-md border bg-background/95 p-1 text-foreground shadow-lg backdrop-blur">
           <button
             type="button"
